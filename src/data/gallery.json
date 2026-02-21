@@ -1,0 +1,67 @@
+{
+  "argyro": [
+    { "src": "/images/houses/argyro/01.jpg", "alt": "House Argyro — traditional stone facade in Mavrikiano village", "isFeatured": true },
+    { "src": "/images/houses/argyro/02.jpg", "alt": "House Argyro — sea-view veranda on 1st floor", "isFeatured": false },
+    { "src": "/images/houses/argyro/03.jpg", "alt": "House Argyro — living room with vaulted ceiling", "isFeatured": false },
+    { "src": "/images/houses/argyro/04.jpg", "alt": "House Argyro — double bedroom with stone walls", "isFeatured": false }
+  ],
+  "leonidas": [
+    { "src": "/images/houses/leonidas/01.jpg", "alt": "House Leonidas — stone house with sea view, Mavrikiano", "isFeatured": true },
+    { "src": "/images/houses/leonidas/02.jpg", "alt": "House Leonidas — living area with traditional stone walls", "isFeatured": false },
+    { "src": "/images/houses/leonidas/03.jpg", "alt": "House Leonidas — main bedroom", "isFeatured": false },
+    { "src": "/images/houses/leonidas/04.jpg", "alt": "House Leonidas — sea-view terrace", "isFeatured": false }
+  ],
+  "margarita": [
+    { "src": "/images/houses/margarita/01.jpg", "alt": "House Margarita — traditional stone house with sea view, Mavrikiano", "isFeatured": true },
+    { "src": "/images/houses/margarita/02.jpg", "alt": "House Margarita — sea-view veranda on 1st floor", "isFeatured": false },
+    { "src": "/images/houses/margarita/03.jpg", "alt": "House Margarita — courtyard area", "isFeatured": false },
+    { "src": "/images/houses/margarita/04.jpg", "alt": "House Margarita — main bedroom", "isFeatured": false }
+  ],
+  "dimitra": [
+    { "src": "/images/houses/dimitra/01.jpg", "alt": "House Dimitra — stone house with shared pool garden", "isFeatured": true },
+    { "src": "/images/houses/dimitra/02.jpg", "alt": "House Dimitra — bright living area", "isFeatured": false },
+    { "src": "/images/houses/dimitra/03.jpg", "alt": "House Dimitra — double bedroom", "isFeatured": false },
+    { "src": "/images/houses/dimitra/04.jpg", "alt": "House Dimitra — shared pool terrace", "isFeatured": false }
+  ],
+  "penelope": [
+    { "src": "/images/houses/penelope/01.jpg", "alt": "House Penelope — garden terrace with shared pool", "isFeatured": true },
+    { "src": "/images/houses/penelope/02.jpg", "alt": "House Penelope — living and dining area", "isFeatured": false },
+    { "src": "/images/houses/penelope/03.jpg", "alt": "House Penelope — main bedroom", "isFeatured": false },
+    { "src": "/images/houses/penelope/04.jpg", "alt": "House Penelope — pool terrace with sun loungers", "isFeatured": false }
+  ],
+  "erato": [
+    { "src": "/images/houses/erato/01.jpg", "alt": "House Erato — sunken garden entrance in village lane", "isFeatured": true },
+    { "src": "/images/houses/erato/02.jpg", "alt": "House Erato — private pool and garden", "isFeatured": false },
+    { "src": "/images/houses/erato/03.jpg", "alt": "House Erato — bedroom with traditional decor", "isFeatured": false }
+  ],
+  "clio": [
+    { "src": "/images/houses/clio/01.jpg", "alt": "House Clio — traditional stone house with olive grove view", "isFeatured": true },
+    { "src": "/images/houses/clio/02.jpg", "alt": "House Clio — garden terrace", "isFeatured": false },
+    { "src": "/images/houses/clio/03.jpg", "alt": "House Clio — living area", "isFeatured": false },
+    { "src": "/images/houses/clio/04.jpg", "alt": "House Clio — bedroom", "isFeatured": false }
+  ],
+  "efterpi": [
+    { "src": "/images/houses/efterpi/01.jpg", "alt": "House Efterpi — courtyard stone house in Mavrikiano village", "isFeatured": true },
+    { "src": "/images/houses/efterpi/02.jpg", "alt": "House Efterpi — summer kitchen and BBQ area", "isFeatured": false },
+    { "src": "/images/houses/efterpi/03.jpg", "alt": "House Efterpi — living area", "isFeatured": false }
+  ],
+  "kalliopi": [
+    { "src": "/images/houses/kalliopi/01.jpg", "alt": "House Kalliopi — upper-floor stone house in Mavrikiano", "isFeatured": true },
+    { "src": "/images/houses/kalliopi/02.jpg", "alt": "House Kalliopi — stone terrace with mountain view", "isFeatured": false },
+    { "src": "/images/houses/kalliopi/03.jpg", "alt": "House Kalliopi — bedroom", "isFeatured": false }
+  ],
+  "monastiri": [
+    { "src": "/images/houses/monastiri/01.jpg", "alt": "House Monastiri — sea view stone house with private dipping pool", "isFeatured": true },
+    { "src": "/images/houses/monastiri/02.jpg", "alt": "House Monastiri — Elounda Bay panorama from terrace", "isFeatured": false },
+    { "src": "/images/houses/monastiri/03.jpg", "alt": "House Monastiri — living and dining area", "isFeatured": false },
+    { "src": "/images/houses/monastiri/04.jpg", "alt": "House Monastiri — private dipping pool at dusk", "isFeatured": false }
+  ],
+  "almond-tree-villa": [
+    { "src": "/images/villa/almond-tree-villa/01.jpg", "alt": "Almond Tree Villa — panoramic pool terrace over Elounda Bay, Vrouchas", "isFeatured": true },
+    { "src": "/images/villa/almond-tree-villa/02.jpg", "alt": "Almond Tree Villa — Spinalonga and Mirabello Gulf from the terrace", "isFeatured": false },
+    { "src": "/images/villa/almond-tree-villa/03.jpg", "alt": "Almond Tree Villa — spacious open-plan living and dining", "isFeatured": false },
+    { "src": "/images/villa/almond-tree-villa/04.jpg", "alt": "Almond Tree Villa — master bedroom with sea view", "isFeatured": false },
+    { "src": "/images/villa/almond-tree-villa/05.jpg", "alt": "Almond Tree Villa — private pool 9 m × 4 m at evening light", "isFeatured": false },
+    { "src": "/images/villa/almond-tree-villa/06.jpg", "alt": "Almond Tree Villa — garden with almond trees", "isFeatured": false }
+  ]
+}

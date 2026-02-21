@@ -1,0 +1,24 @@
+Project: traditional-homes.gr
+Stack: Astro (static output) + Tailwind CSS + TypeScript. Deploy target: Cloudflare Pages.
+Do NOT convert this project to React/Vite/Next. Do NOT add React dependencies. No lucide-react.
+
+Rules (non-negotiable):
+1) Minimal diffs: change only what the request requires. Do not refactor unrelated files.
+2) Do not install new npm packages unless strictly required. If required, explain why and keep it to one package.
+3) Use existing components and styles. Keep the design calm and consistent (no “template-y” UI).
+4) SEO must be correct:
+   - Every page must set unique: title + meta description + canonical.
+   - Keep OpenGraph + Twitter meta.
+   - Add JSON-LD where relevant (Organization site-wide; LodgingBusiness/Hotel on unit pages).
+   - No keyword stuffing. Use factual copy.
+   - Ensure headings are hierarchical (one H1 per page), images have descriptive alt text.
+5) Data rules:
+   - inventory.json is the source of truth. Do not change its schema unless explicitly asked.
+   - Adapt templates/components to read from inventory.json as-is.
+6) Cloudflare-ready:
+   - Static only. No server runtime assumptions.
+   - Support public/robots.txt, public/_headers, and sitemap output.
+
+Work style:
+- Before coding, summarize your plan in 3–6 bullets and list the exact files you will edit.
+- Then implement.

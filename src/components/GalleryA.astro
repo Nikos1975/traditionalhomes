@@ -1,0 +1,191 @@
+---
+import type { GalleryImage } from '../types';
+
+interface Props {
+  images: GalleryImage[];
+  unitName: string;
+}
+
+const { images, unitName } = Astro.props;
+const featured = images.find((img) => img.isFeatured) ?? images[0];
+const thumbs = images.filter((img) => !img.isFeatured);
+---
+
+<section class="mb-8" aria-label={`Photos of ${unitName}`}>
+  <div
+    class="relative overflow-hidden rounded-xl bg-stone-300"
+    style="aspect-ratio: 16/9; max-height: 560px;"
+  >
+    {featured ? (
+      <img
+        src={featured.src}
+        alt={featured.alt}
+        width="1280"
+        height="720"
+        class="w-full h-full object-cover"
+        fetchpriority="high"
+        decoding="async"
+        onerror="this.src='/images/placeholder.jpg'"
+      />
+    ) : (
+      <div class="w-full h-full flex items-center justify-center bg-stone-200 text-stone-500 text-sm">
+        <!-- TODO: Add photos for {unitName} to /public{images[0]?.src.replace('jpg','') ?? ''} -->
+        Photo coming soon
+      </div>
+    )}
+  </div>
+
+  {thumbs.length > 0 && (
+    <div class="mt-3 grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 gap-2" role="list" aria-label="Photo thumbnails">
+      {thumbs.map((img, i) => (
+        <button
+          type="button"
+          class="group relative overflow-hidden rounded-md bg-stone-200 aspect-square cursor-pointer"
+          aria-label={`View photo: ${img.alt}`}
+          data-lightbox-trigger
+          data-src={img.src}
+          data-alt={img.alt}
+          data-index={i + 1}
+          role="listitem"
+        >
+          <img
+            src={img.src}
+            alt={img.alt}
+            width="160"
+            height="160"
+            loading="lazy"
+            decoding="async"
+            class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+            onerror="this.parentElement.style.display='none'"
+          />
+          <span class="sr-only">Open full image</span>
+        </button>
+      ))}
+    </div>
+  )}
+</section>
+
+<dialog
+  id="gallery-lightbox"
+  data-lightbox
+  aria-label="Photo lightbox"
+  aria-modal="true"
+>
+  <div class="relative w-full h-full flex items-center justify-center p-4">
+    <button
+      id="lightbox-close"
+      class="absolute top-4 right-4 z-10 flex items-center justify-center w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors duration-150"
+      aria-label="Close photo"
+    >
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+      </svg>
+    </button>
+
+    <button
+      id="lightbox-prev"
+      class="absolute left-4 top-1/2 -translate-y-1/2 z-10 flex items-center justify-center w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors duration-150"
+      aria-label="Previous photo"
+    >
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <polyline points="15 18 9 12 15 6"/>
+      </svg>
+    </button>
+
+    <button
+      id="lightbox-next"
+      class="absolute right-16 top-1/2 -translate-y-1/2 z-10 flex items-center justify-center w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors duration-150"
+      aria-label="Next photo"
+    >
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <polyline points="9 18 15 12 9 6"/>
+      </svg>
+    </button>
+
+    <figure class="flex flex-col items-center gap-3 max-w-5xl w-full">
+      <img
+        id="lightbox-img"
+        src=""
+        alt=""
+        class="max-h-[80vh] max-w-full rounded-lg object-contain"
+        width="1280"
+        height="800"
+      />
+      <figcaption id="lightbox-caption" class="text-white/70 text-sm text-center px-4"></figcaption>
+    </figure>
+  </div>
+</dialog>
+
+<script>
+  const allImages: { src: string; alt: string }[] = JSON.parse(
+    document.getElementById('gallery-data')?.textContent ?? '[]'
+  );
+
+  const lightbox = document.getElementById('gallery-lightbox') as HTMLDialogElement | null;
+  const lbImg = document.getElementById('lightbox-img') as HTMLImageElement | null;
+  const lbCaption = document.getElementById('lightbox-caption');
+  const closeBtn = document.getElementById('lightbox-close');
+  const prevBtn = document.getElementById('lightbox-prev');
+  const nextBtn = document.getElementById('lightbox-next');
+
+  let currentIndex = 0;
+  const triggers = Array.from(document.querySelectorAll('[data-lightbox-trigger]'));
+
+  function buildImageList() {
+    return triggers.map((btn) => ({
+      src: (btn as HTMLElement).dataset.src ?? '',
+      alt: (btn as HTMLElement).dataset.alt ?? '',
+    }));
+  }
+
+  function showImage(index: number) {
+    const imgs = buildImageList();
+    if (!imgs.length || !lbImg || !lbCaption) return;
+    currentIndex = (index + imgs.length) % imgs.length;
+    const img = imgs[currentIndex];
+    lbImg.src = img.src;
+    lbImg.alt = img.alt;
+    lbCaption.textContent = img.alt;
+    if (prevBtn) prevBtn.style.display = imgs.length <= 1 ? 'none' : '';
+    if (nextBtn) nextBtn.style.display = imgs.length <= 1 ? 'none' : '';
+  }
+
+  function openLightbox(index: number) {
+    showImage(index);
+    lightbox?.showModal();
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    lightbox?.close();
+    document.body.style.overflow = '';
+  }
+
+  triggers.forEach((btn, i) => {
+    btn.addEventListener('click', () => openLightbox(i));
+  });
+
+  closeBtn?.addEventListener('click', closeLightbox);
+  prevBtn?.addEventListener('click', () => showImage(currentIndex - 1));
+  nextBtn?.addEventListener('click', () => showImage(currentIndex + 1));
+
+  lightbox?.addEventListener('click', (e) => {
+    if (e.target === lightbox) closeLightbox();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (!lightbox?.open) return;
+    if (e.key === 'Escape') { closeLightbox(); return; }
+    if (e.key === 'ArrowLeft') showImage(currentIndex - 1);
+    if (e.key === 'ArrowRight') showImage(currentIndex + 1);
+  });
+
+  let touchStartX = 0;
+  lightbox?.addEventListener('touchstart', (e) => {
+    touchStartX = e.changedTouches[0].clientX;
+  }, { passive: true });
+  lightbox?.addEventListener('touchend', (e) => {
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    if (Math.abs(dx) > 50) dx < 0 ? showImage(currentIndex + 1) : showImage(currentIndex - 1);
+  });
+</script>

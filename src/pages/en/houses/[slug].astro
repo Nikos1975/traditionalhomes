@@ -1,0 +1,191 @@
+---
+import Base from '../../../layouts/Base.astro';
+import GalleryA from '../../../components/GalleryA.astro';
+import AtAGlance from '../../../components/AtAGlance.astro';
+import inventory from '../../../inventory/inventory.json';
+import { validateInventory } from '../../../utils/validateInventory';
+import galleryData from '../../../data/gallery.json';
+import siteCopy from '../../../data/siteCopy.json';
+import type { InventoryUnit, GalleryImage } from '../../../types';
+
+export async function getStaticPaths() {
+  const units = inventory as InventoryUnit[];
+  validateInventory(units);
+  return units
+    .filter((u) => u.type === 'house')
+    .map((unit) => ({ params: { slug: unit.slug } }));
+}
+
+const { slug } = Astro.params;
+const units = inventory as InventoryUnit[];
+const unit = units.find((u) => u.slug === slug && u.type === 'house');
+
+if (!unit) {
+  return Astro.redirect('/en/houses/', 302);
+}
+
+const gallery = (galleryData as Record<string, GalleryImage[]>)[slug] ?? [];
+const nearUnits = unit.location_relations?.near
+  ?.map((s) => units.find((u) => u.slug === s))
+  .filter(Boolean) as InventoryUnit[];
+
+const pageTitle = `${unit.name} — ${unit.location}, Elounda | Elounda Traditional Homes`;
+const pageDescription = `${unit.name} — sleeps ${unit.sleeps_max}, ${unit.bedrooms} bedroom${unit.bedrooms > 1 ? 's' : ''}, ${unit.pool !== 'none' ? unit.pool + ' pool, ' : ''}${unit.view}. Traditional stone house in ${unit.location}, Elounda, Crete.`;
+---
+
+<Base
+  title={pageTitle}
+  description={pageDescription}
+  canonicalUrl={`https://traditional-homes.gr/en/houses/${slug}/`}
+>
+
+  <div class="site-max site-pad py-10 md:py-14">
+
+    <nav class="text-xs text-muted mb-6" aria-label="Breadcrumb">
+      <ol class="flex items-center gap-1.5" role="list">
+        <li><a href="/en/" class="hover:text-body-text transition-colors duration-150">Home</a></li>
+        <li aria-hidden="true">›</li>
+        <li><a href="/en/houses/" class="hover:text-body-text transition-colors duration-150">Houses &amp; Villa</a></li>
+        <li aria-hidden="true">›</li>
+        <li class="text-body-text font-medium" aria-current="page">{unit.name}</li>
+      </ol>
+    </nav>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
+
+      <div class="lg:col-span-2">
+
+        <div class="mb-6">
+          <h1 class="font-serif text-4xl md:text-5xl text-body-text mb-1">{unit.name}</h1>
+          <p class="text-muted">{unit.location}, {unit.area}, Crete</p>
+        </div>
+
+        <GalleryA images={gallery} unitName={unit.name} />
+
+        <div class="mb-8">
+          <div class="constraint-block">
+            <p class="font-medium text-amber-900 mb-2 flex items-center gap-1.5 text-sm">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+              Before you book
+            </p>
+            <ul class="space-y-1.5 text-sm">
+              {unit.hard_constraints.map((c) => (
+                <li class="flex items-start gap-2">
+                  <span class="mt-1.5 flex-shrink-0 w-1 h-1 rounded-full bg-amber-700"></span>
+                  <span>{c}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          {unit.access_detail && (
+            <div class="mt-3 bg-stone-200 border border-stone-300 rounded px-4 py-3 text-sm text-stone-700">
+              <p class="font-medium mb-1">Access detail</p>
+              <p>{unit.access_detail}</p>
+            </div>
+          )}
+        </div>
+
+        <AtAGlance unit={unit} />
+
+        <section class="mb-8" aria-label="Amenities">
+          <h2 class="font-sans font-semibold text-sm uppercase tracking-wider text-muted mb-4">What's included</h2>
+          <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+            {unit.amenities.map((amenity) => (
+              <li class="flex items-center gap-2 text-sm text-stone-700">
+                <svg class="flex-shrink-0 text-success" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                {amenity}
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        {nearUnits.length > 0 && (
+          <section class="mb-8" aria-label="Nearby properties">
+            <h2 class="font-sans font-semibold text-sm uppercase tracking-wider text-muted mb-4">Nearby</h2>
+            <div class="flex flex-wrap gap-3">
+              {nearUnits.map((near) => near && (
+                <a
+                  href={`/en/houses/${near.slug}/`}
+                  class="border border-stone-300 rounded-lg px-4 py-2.5 text-sm hover:border-stone-500 hover:bg-stone-200 transition-colors duration-150"
+                >
+                  <span class="font-medium text-body-text">{near.name}</span>
+                  <span class="text-muted ml-1">· sleeps {near.sleeps_max}</span>
+                </a>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {unit.pool === 'shared' && unit.shared_pool_with && (
+          <div class="mb-8 p-4 bg-amber-50 border border-amber-200 rounded-lg text-sm text-amber-900">
+            <p class="font-medium mb-1">Shared pool</p>
+            <p>
+              The pool for this property is shared with {unit.shared_pool_with.map((s) => {
+                const partner = units.find((u) => u.slug === s);
+                return partner ? partner.name : s;
+              }).join(' and ')}.
+              Both properties are managed by the same owner and the pool is reserved for guests of both houses only.
+            </p>
+          </div>
+        )}
+
+      </div>
+
+      <aside class="lg:sticky lg:top-20 lg:self-start">
+        <div class="bg-white rounded-xl border border-stone-200 p-6 shadow-card">
+          <p class="font-serif text-xl text-body-text mb-1">{unit.name}</p>
+          <p class="text-sm text-muted mb-5">{unit.location} · Sleeps {unit.sleeps_max}</p>
+
+          <div class="flex flex-col gap-2 mb-6 text-sm">
+            <div class="flex justify-between py-2 border-b border-stone-100">
+              <span class="text-muted">Bedrooms</span>
+              <span class="font-medium">{unit.bedrooms}</span>
+            </div>
+            <div class="flex justify-between py-2 border-b border-stone-100">
+              <span class="text-muted">Pool</span>
+              <span class="font-medium capitalize">{unit.pool === 'none' ? 'No pool' : unit.pool}</span>
+            </div>
+            <div class="flex justify-between py-2 border-b border-stone-100">
+              <span class="text-muted">Wi-Fi</span>
+              <span class="font-medium text-success">Free</span>
+            </div>
+            <div class="flex justify-between py-2">
+              <span class="text-muted">Pets</span>
+              <span class="font-medium">≤5 kg on request</span>
+            </div>
+          </div>
+
+          <a
+            href={unit.availability_url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-cta w-full text-sm mb-3"
+          >
+            Check Availability
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
+            </svg>
+          </a>
+          <a href="/en/contact/" class="btn-outline w-full text-sm text-center">
+            Ask a question
+          </a>
+
+          <div class="mt-5 pt-4 border-t border-stone-100 text-xs text-muted text-center leading-relaxed">
+            Bookings are processed via our availability system.
+            <a href="/en/policies/" class="underline hover:text-body-text transition-colors duration-150 ml-1">View policies</a>
+          </div>
+        </div>
+
+        <div class="mt-4 bg-amber-50 border border-amber-200 rounded-lg px-4 py-3 text-xs text-amber-900">
+          <p class="font-medium mb-1">Access reminder</p>
+          <p>{siteCopy.accessNoteShort}</p>
+          <a href={siteCopy.accessAnchorUrl} class="underline hover:text-amber-700 transition-colors duration-150 mt-1 inline-block">
+            Full details
+          </a>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+
+</Base>

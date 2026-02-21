@@ -1,0 +1,68 @@
+---
+import Base from '../../layouts/Base.astro';
+import siteCopy from '../../data/siteCopy.json';
+---
+
+<Base
+  title="About | Elounda Traditional Homes"
+  description={siteCopy.metaDescriptionAbout}
+  canonicalUrl="https://traditional-homes.gr/en/about/"
+>
+
+  <div class="site-max site-pad py-12 md:py-16">
+
+    <nav class="text-xs text-muted mb-6" aria-label="Breadcrumb">
+      <ol class="flex items-center gap-1.5" role="list">
+        <li><a href="/en/" class="hover:text-body-text transition-colors duration-150">Home</a></li>
+        <li aria-hidden="true">›</li>
+        <li class="text-body-text font-medium" aria-current="page">About</li>
+      </ol>
+    </nav>
+
+    <div class="max-w-2xl">
+
+      <h1 class="font-serif text-4xl md:text-5xl text-body-text mb-6">About</h1>
+
+      <div class="space-y-5 text-stone-600 leading-relaxed">
+        <p>
+          Elounda Traditional Homes is a family-run collection of traditional stone houses and one hillside villa in the villages of Mavrikiano and Vrouchas, above Elounda on the northeast coast of Crete.
+        </p>
+        <p>
+          The ten houses in Mavrikiano have been individually restored over several years, keeping the original stone construction and traditional architectural character while adding the practical comfort needed for a proper stay — functional kitchens, reliable hot water, proper beds, and fast Wi-Fi.
+        </p>
+        <p>
+          The aim is a straightforward experience: stay in a traditional house, in a real village, in a part of Crete that gets quieter and more beautiful the higher you go. There is no reception, no pool bar, and no resort infrastructure. The sea, restaurants, and the Spinalonga ferry are a few minutes' drive down the hill.
+        </p>
+        <p>
+          Villa Almyra in Vrouchas is the larger property in the collection — a four-bedroom villa on the hillside above Mavrikiano, with a long panoramic view over Elounda Bay and the Mirabello Gulf.
+        </p>
+      </div>
+
+      <div class="mt-10 pt-8 border-t border-stone-200">
+        <h2 class="font-serif text-2xl text-body-text mb-4">Contact</h2>
+        <p class="text-sm text-stone-600 mb-4">
+          For booking enquiries or questions about specific properties, use the contact page or book directly through the availability system.
+        </p>
+        <div class="flex flex-wrap gap-3">
+          <a href="/en/contact/" class="btn-outline text-sm">Contact us</a>
+          <a
+            href={siteCopy.bookingEngineUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-cta text-sm"
+          >
+            Check Availability
+          </a>
+        </div>
+      </div>
+
+      <div class="mt-8 pt-6 border-t border-stone-200">
+        <p class="text-sm text-stone-500">
+          traditional-homes.gr &nbsp;·&nbsp; Mavrikiano &amp; Vrouchas, Elounda, Crete
+        </p>
+      </div>
+
+    </div>
+  </div>
+
+</Base>

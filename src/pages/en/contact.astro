@@ -1,0 +1,151 @@
+---
+import Base from '../../layouts/Base.astro';
+import siteCopy from '../../data/siteCopy.json';
+---
+
+<Base
+  title="Contact | Elounda Traditional Homes"
+  description={siteCopy.metaDescriptionContact}
+  canonicalUrl="https://traditional-homes.gr/en/contact/"
+>
+
+  <div class="site-max site-pad py-12 md:py-16">
+
+    <nav class="text-xs text-muted mb-6" aria-label="Breadcrumb">
+      <ol class="flex items-center gap-1.5" role="list">
+        <li><a href="/en/" class="hover:text-body-text transition-colors duration-150">Home</a></li>
+        <li aria-hidden="true">›</li>
+        <li class="text-body-text font-medium" aria-current="page">Contact</li>
+      </ol>
+    </nav>
+
+    <div class="grid grid-cols-1 lg:grid-cols-5 gap-12">
+
+      <div class="lg:col-span-3">
+        <h1 class="font-serif text-4xl md:text-5xl text-body-text mb-4">Contact</h1>
+        <p class="section-sub mb-8">
+          Questions about a specific property, a group booking, or anything else — use the form below and we'll respond as soon as possible.
+        </p>
+
+        <form
+          class="space-y-5"
+          name="contact"
+          method="POST"
+          action="/en/contact/?sent=1"
+          aria-label="Contact form"
+        >
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            <div>
+              <label for="name" class="block text-sm font-medium text-body-text mb-1.5">Name</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                required
+                autocomplete="name"
+                class="w-full border border-stone-300 rounded-lg px-3.5 py-2.5 text-sm text-body-text bg-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors duration-150"
+                placeholder="Your name"
+              />
+            </div>
+            <div>
+              <label for="email" class="block text-sm font-medium text-body-text mb-1.5">Email</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                autocomplete="email"
+                class="w-full border border-stone-300 rounded-lg px-3.5 py-2.5 text-sm text-body-text bg-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors duration-150"
+                placeholder="you@example.com"
+              />
+            </div>
+          </div>
+
+          <div>
+            <label for="property" class="block text-sm font-medium text-body-text mb-1.5">Property (optional)</label>
+            <select
+              id="property"
+              name="property"
+              class="w-full border border-stone-300 rounded-lg px-3.5 py-2.5 text-sm text-body-text bg-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors duration-150"
+            >
+              <option value="">— General enquiry —</option>
+              <option value="argyro">House Argyro</option>
+              <option value="leonidas">House Leonidas</option>
+              <option value="margarita">House Margarita</option>
+              <option value="dimitra">House Dimitra</option>
+              <option value="penelope">House Penelope</option>
+              <option value="erato">House Erato</option>
+              <option value="clio">House Clio</option>
+              <option value="efterpi">House Efterpi</option>
+              <option value="kalliopi">House Kalliopi</option>
+              <option value="monastiri">House Monastiri</option>
+              <option value="almond-tree-villa">Almond Tree Villa (Vrouchas)</option>
+              <option value="multiple">Multiple properties</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="message" class="block text-sm font-medium text-body-text mb-1.5">Message</label>
+            <textarea
+              id="message"
+              name="message"
+              rows={5}
+              required
+              class="w-full border border-stone-300 rounded-lg px-3.5 py-2.5 text-sm text-body-text bg-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors duration-150 resize-y"
+              placeholder="Your question or message..."
+            ></textarea>
+          </div>
+
+          <div>
+            <button type="submit" class="btn-cta w-full sm:w-auto text-sm px-8">
+              Send message
+            </button>
+          </div>
+
+          <p class="text-xs text-muted">
+            We aim to respond within one business day. For urgent booking matters, please also check availability directly in the <a href={siteCopy.bookingEngineUrl} target="_blank" rel="noopener noreferrer" class="underline hover:text-body-text transition-colors duration-150">booking system</a>.
+          </p>
+        </form>
+      </div>
+
+      <aside class="lg:col-span-2">
+        <div class="bg-white rounded-xl border border-stone-200 p-6 shadow-card mb-6">
+          <h2 class="font-sans font-semibold text-body-text mb-4">Before contacting</h2>
+          <ul class="space-y-3 text-sm text-stone-600">
+            <li class="flex items-start gap-2">
+              <svg class="flex-shrink-0 mt-0.5 text-muted" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              <span>For availability and pricing, use the <a href={siteCopy.bookingEngineUrl} target="_blank" rel="noopener noreferrer" class="underline hover:text-body-text transition-colors duration-150">booking system</a> directly — it has live availability.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <svg class="flex-shrink-0 mt-0.5 text-muted" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+              <span>Many questions are answered on the <a href="/en/faq/" class="underline hover:text-body-text transition-colors duration-150">FAQ page</a>.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <svg class="flex-shrink-0 mt-0.5 text-muted" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg>
+              <span>Access and house rules are on the <a href="/en/policies/" class="underline hover:text-body-text transition-colors duration-150">Policies page</a>.</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="bg-stone-200 rounded-xl p-6">
+          <h2 class="font-sans font-semibold text-body-text mb-3 text-sm uppercase tracking-wider">Group bookings</h2>
+          <p class="text-sm text-stone-600 leading-relaxed">
+            If you need multiple properties for the same dates (family gatherings, friend groups), contact us directly. We can confirm simultaneous availability across houses and assist with coordination.
+          </p>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+
+</Base>
+
+<script>
+  const params = new URLSearchParams(window.location.search);
+  if (params.get('sent') === '1') {
+    const form = document.querySelector('form[name="contact"]');
+    if (form) {
+      form.innerHTML = '<div class="bg-success/10 border border-success/30 rounded-lg p-6 text-success"><p class="font-medium mb-1">Message sent</p><p class="text-sm">Thank you — we\'ll be in touch shortly.</p></div>';
+    }
+  }
+</script>

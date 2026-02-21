@@ -1,0 +1,63 @@
+---
+const currentYear = new Date().getFullYear();
+const bookingUrl = 'http://traditionalhomes.reserve-online.net/';
+---
+
+<footer class="bg-footer-bg text-footer-text">
+  <div class="site-max site-pad py-12 md:py-16">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8">
+
+      <div>
+        <div class="mb-4">
+          <p class="font-serif text-lg text-white leading-tight">Elounda Traditional Homes</p>
+          <p class="text-sm text-footer-text/70 mt-1">Mavrikiano &amp; Vrouchas &middot; Crete</p>
+        </div>
+        <p class="text-sm text-footer-text/70 leading-relaxed">
+          A family-run collection of restored stone houses in the villages above Elounda, northeast Crete.
+        </p>
+        <p class="text-sm text-footer-text/50 mt-3">traditional-homes.gr</p>
+      </div>
+
+      <div>
+        <h3 class="font-sans font-semibold text-white text-sm uppercase tracking-wider mb-4">Properties</h3>
+        <ul class="space-y-2 text-sm">
+          <li><a href="/en/houses/" class="text-footer-text/70 hover:text-white transition-colors duration-150">All Stone Houses</a></li>
+          <li><a href="/en/villa/almond-tree-villa/" class="text-footer-text/70 hover:text-white transition-colors duration-150">Almond Tree Villa — Vrouchas</a></li>
+          <li>
+            <a
+              href={bookingUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-footer-text/70 hover:text-white transition-colors duration-150"
+            >
+              Check Availability ↗
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="font-sans font-semibold text-white text-sm uppercase tracking-wider mb-4">Information</h3>
+        <ul class="space-y-2 text-sm">
+          <li><a href="/en/location/" class="text-footer-text/70 hover:text-white transition-colors duration-150">Location &amp; Getting Here</a></li>
+          <li><a href="/en/faq/" class="text-footer-text/70 hover:text-white transition-colors duration-150">FAQ</a></li>
+          <li><a href="/en/policies/" class="text-footer-text/70 hover:text-white transition-colors duration-150">Policies &amp; House Rules</a></li>
+          <li><a href="/en/about/" class="text-footer-text/70 hover:text-white transition-colors duration-150">About</a></li>
+          <li><a href="/en/contact/" class="text-footer-text/70 hover:text-white transition-colors duration-150">Contact</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="border-t border-white/10 mt-10 pt-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+      <p class="text-xs text-footer-text/40">
+        &copy; {currentYear} Elounda Traditional Homes. All rights reserved.
+      </p>
+      <nav class="flex gap-4 text-xs" aria-label="Legal">
+        <a href="/en/policies/" class="text-footer-text/40 hover:text-footer-text/70 transition-colors duration-150">Policies</a>
+        <a href="/en/policies/#access" class="text-footer-text/40 hover:text-footer-text/70 transition-colors duration-150">Accessibility</a>
+        <a href="/en/contact/" class="text-footer-text/40 hover:text-footer-text/70 transition-colors duration-150">Contact</a>
+      </nav>
+    </div>
+  </div>
+</footer>

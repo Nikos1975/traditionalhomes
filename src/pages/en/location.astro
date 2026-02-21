@@ -1,0 +1,112 @@
+---
+import Base from '../../layouts/Base.astro';
+import siteCopy from '../../data/siteCopy.json';
+---
+
+<Base
+  title="Location — Mavrikiano & Vrouchas, Elounda | Elounda Traditional Homes"
+  description={siteCopy.metaDescriptionLocation}
+  canonicalUrl="https://traditional-homes.gr/en/location/"
+>
+
+  <div class="site-max site-pad py-12 md:py-16">
+
+    <nav class="text-xs text-muted mb-6" aria-label="Breadcrumb">
+      <ol class="flex items-center gap-1.5" role="list">
+        <li><a href="/en/" class="hover:text-body-text transition-colors duration-150">Home</a></li>
+        <li aria-hidden="true">›</li>
+        <li class="text-body-text font-medium" aria-current="page">Location</li>
+      </ol>
+    </nav>
+
+    <div class="max-w-3xl">
+      <h1 class="font-serif text-4xl md:text-5xl text-body-text mb-4">Location</h1>
+      <p class="section-sub mb-10">
+        Two villages on the hillside above Elounda, northeast Crete.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-5 gap-10 mb-14">
+      <div class="lg:col-span-3 space-y-8">
+
+        <section aria-labelledby="mavrikiano-heading">
+          <h2 id="mavrikiano-heading" class="font-serif text-2xl text-body-text mb-3">Mavrikiano</h2>
+          <p class="text-stone-600 leading-relaxed mb-4">
+            A small traditional village perched on the hillside above Elounda town. The ten stone houses are located here, spread along the village lanes. The village is quiet, with no tourist infrastructure of its own — restaurants, shops, and beaches are a short drive down to Elounda.
+          </p>
+          <p class="text-stone-600 leading-relaxed">
+            Most of the houses have open views toward Elounda Bay and the island of Spinalonga, with the Mirabello Gulf beyond.
+          </p>
+        </section>
+
+        <section aria-labelledby="vrouchas-heading">
+          <h2 id="vrouchas-heading" class="font-serif text-2xl text-body-text mb-3">Vrouchas</h2>
+          <p class="text-stone-600 leading-relaxed mb-4">
+            Located above and slightly inland from Mavrikiano, Vrouchas is a quieter hillside village. Villa Almyra is situated here, with panoramic views across Elounda Bay, Spinalonga, and the full sweep of the Mirabello Gulf. The approach road is steep and narrow in places — standard passenger cars are suitable.
+          </p>
+        </section>
+
+        <section aria-labelledby="distances-heading">
+          <h2 id="distances-heading" class="font-serif text-2xl text-body-text mb-3">Distances</h2>
+          <div class="space-y-3 text-sm">
+            {[
+              { label: 'Elounda town centre', value: 'approx 5 min drive' },
+              { label: 'Nearest beach (Elounda)', value: 'approx 5–8 min drive' },
+              { label: 'Spinalonga island ferry (from Elounda)', value: 'approx 5 min drive to port' },
+              { label: 'Agios Nikolaos town', value: 'approx 15 min drive' },
+              { label: 'Heraklion airport (HER)', value: 'approx 60–75 min drive' },
+              { label: 'Sitia airport (JSH)', value: 'approx 40–50 min drive' },
+            ].map(({ label, value }) => (
+              <div class="flex items-baseline justify-between py-2.5 border-b border-stone-200 gap-4">
+                <span class="text-stone-700">{label}</span>
+                <span class="text-muted text-right flex-shrink-0">{value}</span>
+              </div>
+            ))}
+          </div>
+          <p class="text-xs text-muted mt-3">Times are approximate road distances. We do not guarantee specific journey times.</p>
+        </section>
+
+        <section aria-labelledby="getting-here-heading">
+          <h2 id="getting-here-heading" class="font-serif text-2xl text-body-text mb-3">Getting here</h2>
+          <div class="space-y-4 text-stone-600 leading-relaxed text-sm">
+            <div>
+              <p class="font-medium text-body-text mb-1">By car (recommended)</p>
+              <p>A rental car is the most practical option. The E75 and regional roads connect Heraklion and Sitia airports to the Elounda area. Detailed directions and GPS coordinates are sent with your booking confirmation.</p>
+            </div>
+            <div>
+              <p class="font-medium text-body-text mb-1">By bus</p>
+              <p>KTEL buses run between Heraklion and Agios Nikolaos; local buses connect Agios Nikolaos and Elounda. The Elounda bus stop is at the bottom of the hill — a taxi or walk uphill is needed from there.</p>
+            </div>
+            <div>
+              <p class="font-medium text-body-text mb-1">Taxis</p>
+              <p>Taxis are available from both airports and from Agios Nikolaos. We can provide local taxi contact information on request.</p>
+            </div>
+          </div>
+        </section>
+
+      </div>
+
+      <div class="lg:col-span-2">
+        <div class="sticky top-24">
+          <div class="rounded-xl overflow-hidden bg-stone-200 mb-4" style="aspect-ratio: 3/4;">
+            <img
+              src="/images/location-map.jpg"
+              alt="Map of the Elounda area showing Mavrikiano and Vrouchas villages"
+              width="480"
+              height="640"
+              loading="lazy"
+              decoding="async"
+              class="w-full h-full object-cover"
+              onerror="this.parentElement.innerHTML='<div class=\'w-full h-full flex items-center justify-center bg-stone-200 text-stone-400 text-sm p-4 text-center\'>Map image — TODO: add /public/images/location-map.jpg</div>'"
+            />
+          </div>
+          <p class="text-xs text-muted text-center">
+            Mavrikiano &amp; Vrouchas sit above Elounda Bay, northeast Crete
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</Base>

@@ -1,0 +1,215 @@
+---
+import Base from '../../layouts/Base.astro';
+import UnitCard from '../../components/UnitCard.astro';
+import inventory from '../../inventory/inventory.json';
+import siteCopy from '../../data/siteCopy.json';
+import type { InventoryUnit } from '../../types';
+import { validateInventory } from '../../utils/validateInventory';
+
+const units = inventory as InventoryUnit[];
+validateInventory(units);
+const houses = units.filter((u) => u.type === 'house');
+const villa = units.find((u) => u.type === 'villa');
+---
+
+<Base
+  title="Elounda Traditional Homes | Stone Houses & Villa in Crete"
+  description={siteCopy.metaDescriptionHome}
+  canonicalUrl="https://traditional-homes.gr/en/"
+>
+
+  <section class="relative overflow-hidden bg-stone-800" aria-label="Hero">
+    <div class="absolute inset-0 bg-gradient-to-b from-stone-900/60 via-stone-900/40 to-stone-900/70 z-10"></div>
+    <div
+      class="absolute inset-0 bg-center bg-cover"
+      style="background-image: url('/images/hero.jpg');"
+      role="img"
+      aria-label="Traditional stone houses in Mavrikiano village above Elounda Bay, Crete"
+    ></div>
+
+    <div class="relative z-20 site-max site-pad py-24 md:py-36 lg:py-48 flex flex-col items-start">
+      <p class="font-sans text-sm font-medium text-white/70 uppercase tracking-widest mb-4">
+        Mavrikiano &amp; Vrouchas · Elounda, Crete
+      </p>
+      <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl text-white max-w-2xl leading-tight mb-5">
+        {siteCopy.heroHeadline}
+      </h1>
+      <p class="font-sans text-lg text-white/80 max-w-lg leading-relaxed mb-8">
+        {siteCopy.heroSubline}
+      </p>
+      <div class="flex flex-wrap gap-3">
+        <a href="/en/houses/" class="btn-outline bg-white text-body-text border-white hover:bg-stone-100 hover:border-stone-100 text-sm">
+          View Houses &amp; Villa
+        </a>
+        <a
+          href={siteCopy.bookingEngineUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn-cta text-sm"
+        >
+          Check Availability
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="site-max site-pad py-16 md:py-24" aria-label="Houses and Villa overview">
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+      <div>
+        <h2 class="section-heading">Ten houses. One villa.</h2>
+        <p class="section-sub max-w-xl">
+          All properties are traditional stone houses restored for comfortable stays. Located in Mavrikiano village (houses) and Vrouchas (villa), both within the greater Elounda area.
+        </p>
+      </div>
+      <a href="/en/houses/" class="btn-outline text-sm flex-shrink-0">Browse all properties</a>
+    </div>
+
+    <div class="access-note mb-8 flex items-start gap-2">
+      <svg class="flex-shrink-0 mt-0.5" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
+      </svg>
+      <span>
+        {siteCopy.accessNoteShort}&nbsp;
+        <a href={siteCopy.accessAnchorUrl} class="underline hover:text-body-text transition-colors duration-150">Full access details.</a>
+      </span>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+      {houses.map((unit) => (
+        <div class="reveal">
+          <UnitCard unit={unit} />
+        </div>
+      ))}
+    </div>
+
+    {villa && (
+      <div class="border-t border-stone-200 pt-8 mt-4">
+        <h3 class="font-serif text-2xl text-body-text mb-6">The Villa</h3>
+        <div class="max-w-sm reveal">
+          <UnitCard unit={villa} />
+        </div>
+      </div>
+    )}
+
+    <div class="mt-8 text-center">
+      <a href="/en/houses/" class="btn-outline text-sm">
+        View all 11 properties
+      </a>
+    </div>
+  </section>
+
+  <section class="bg-stone-200 border-y border-stone-300" aria-label="Location teaser">
+    <div class="site-max site-pad py-16 md:py-20 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+      <div class="reveal">
+        <p class="text-xs font-medium uppercase tracking-widest text-muted mb-3">Location</p>
+        <h2 class="font-serif text-3xl md:text-4xl text-body-text mb-4">
+          Above Elounda Bay
+        </h2>
+        <p class="text-stone-600 leading-relaxed mb-6">
+          Mavrikiano and Vrouchas sit on the hillside above Elounda town on the northeast coast of Crete. The sea is visible from most properties. The centre of Elounda is a short drive down the hill.
+        </p>
+        <div class="flex flex-col gap-2 text-sm text-stone-700 mb-6">
+          <div class="flex items-center gap-2">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="text-muted flex-shrink-0"><circle cx="12" cy="10" r="3"/><path d="M12 2a8 8 0 0 0-8 8c0 5.25 8 12 8 12s8-6.75 8-12a8 8 0 0 0-8-8z"/></svg>
+            <span>Elounda town — 5 min drive</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="text-muted flex-shrink-0"><circle cx="12" cy="10" r="3"/><path d="M12 2a8 8 0 0 0-8 8c0 5.25 8 12 8 12s8-6.75 8-12a8 8 0 0 0-8-8z"/></svg>
+            <span>Heraklion airport (HER) — approx 70 km</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="text-muted flex-shrink-0"><circle cx="12" cy="10" r="3"/><path d="M12 2a8 8 0 0 0-8 8c0 5.25 8 12 8 12s8-6.75 8-12a8 8 0 0 0-8-8z"/></svg>
+            <span>Sitia airport (JSH) — approx 40 km</span>
+          </div>
+        </div>
+        <a href="/en/location/" class="btn-outline text-sm">Location &amp; getting here</a>
+      </div>
+      <div class="reveal rounded-xl overflow-hidden bg-stone-300" style="aspect-ratio: 4/3;">
+        <img
+          src="/images/location-map.jpg"
+          alt="Map showing Mavrikiano and Vrouchas above Elounda Bay, northeast Crete"
+          width="640"
+          height="480"
+          loading="lazy"
+          decoding="async"
+          class="w-full h-full object-cover"
+          onerror="this.src=''"
+        />
+      </div>
+    </div>
+  </section>
+
+  <section class="site-max site-pad py-16 md:py-24" aria-label="FAQ teaser and about">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+      <div class="reveal">
+        <div class="w-10 h-10 rounded-full bg-sea-100 flex items-center justify-center mb-4">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0880A8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </div>
+        <h3 class="font-serif text-xl text-body-text mb-2">Frequently asked</h3>
+        <p class="text-sm text-stone-600 leading-relaxed mb-4">
+          Answers on Wi-Fi, access, pets, parking, shared pools, check-in times, and more.
+        </p>
+        <a href="/en/faq/" class="text-sm text-sea-700 hover:text-sea-700/70 font-medium transition-colors duration-150 underline underline-offset-2">
+          Read the FAQ
+        </a>
+      </div>
+
+      <div class="reveal">
+        <div class="w-10 h-10 rounded-full bg-stone-200 flex items-center justify-center mb-4">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#6B5F50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <h3 class="font-serif text-xl text-body-text mb-2">About these homes</h3>
+        <p class="text-sm text-stone-600 leading-relaxed mb-4">
+          A family-run collection of restored stone houses. The aim is simple stays in traditional architecture, without the resort experience.
+        </p>
+        <a href="/en/about/" class="text-sm text-sea-700 hover:text-sea-700/70 font-medium transition-colors duration-150 underline underline-offset-2">
+          About us
+        </a>
+      </div>
+
+      <div class="reveal">
+        <div class="w-10 h-10 rounded-full bg-stone-200 flex items-center justify-center mb-4">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#6B5F50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        </div>
+        <h3 class="font-serif text-xl text-body-text mb-2">Policies &amp; house rules</h3>
+        <p class="text-sm text-stone-600 leading-relaxed mb-4">
+          Check-in/out times, access information, pet policy, and quiet hours. Clear and straightforward.
+        </p>
+        <a href="/en/policies/" class="text-sm text-sea-700 hover:text-sea-700/70 font-medium transition-colors duration-150 underline underline-offset-2">
+          View policies
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="bg-footer-bg" aria-label="Final CTA">
+    <div class="site-max site-pad py-16 md:py-20 text-center">
+      <h2 class="font-serif text-3xl md:text-4xl text-white mb-4">Ready to book?</h2>
+      <p class="text-footer-text/70 text-base max-w-md mx-auto mb-8">
+        Bookings are handled through our availability system. Select a property and check dates directly.
+      </p>
+      <div class="flex flex-wrap gap-3 justify-center">
+        <a href="/en/houses/" class="btn-outline border-white/30 text-white hover:bg-white/10 hover:border-white/50 text-sm">
+          Browse properties
+        </a>
+        <a
+          href={siteCopy.bookingEngineUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn-cta text-sm"
+        >
+          Check Availability
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</Base>

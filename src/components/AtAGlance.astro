@@ -1,0 +1,75 @@
+---
+import type { InventoryUnit } from '../types';
+
+interface Props {
+  unit: InventoryUnit;
+}
+
+const { unit } = Astro.props;
+
+const poolLabel =
+  unit.pool === 'private' ? 'Private pool'
+  : unit.pool === 'shared' ? `Shared pool (with ${unit.shared_pool_with?.join(' & ')})`
+  : 'No pool';
+---
+
+<section class="mb-8">
+  <h2 class="font-sans font-semibold text-sm uppercase tracking-wider text-muted mb-4">At a glance</h2>
+  <div class="grid grid-cols-2 sm:grid-cols-3 gap-px bg-stone-200 rounded-xl overflow-hidden border border-stone-200">
+
+    <div class="bg-white px-4 py-3 flex flex-col gap-0.5">
+      <span class="text-xs text-muted">Sleeps</span>
+      <span class="font-medium text-body-text">{unit.sleeps_max}</span>
+    </div>
+
+    <div class="bg-white px-4 py-3 flex flex-col gap-0.5">
+      <span class="text-xs text-muted">Bedrooms</span>
+      <span class="font-medium text-body-text">{unit.bedrooms}</span>
+    </div>
+
+    <div class="bg-white px-4 py-3 flex flex-col gap-0.5">
+      <span class="text-xs text-muted">Bathrooms</span>
+      <span class="font-medium text-body-text">{unit.bathrooms}</span>
+    </div>
+
+    <div class="bg-white px-4 py-3 flex flex-col gap-0.5">
+      <span class="text-xs text-muted">Pool</span>
+      <span class:list={['font-medium text-sm', unit.pool !== 'none' ? 'text-sea-700' : 'text-body-text']}>
+        {poolLabel}
+      </span>
+    </div>
+
+    <div class="bg-white px-4 py-3 flex flex-col gap-0.5">
+      <span class="text-xs text-muted">View</span>
+      <span class="font-medium text-body-text text-sm">{unit.view}</span>
+    </div>
+
+    <div class="bg-white px-4 py-3 flex flex-col gap-0.5">
+      <span class="text-xs text-muted">Floors</span>
+      <span class="font-medium text-body-text">{unit.floors}</span>
+    </div>
+
+    <div class="bg-white px-4 py-3 flex flex-col gap-0.5">
+      <span class="text-xs text-muted">Internal stairs</span>
+      <span class:list={['font-medium text-sm', unit.internal_stairs ? 'text-amber-800' : 'text-success']}>
+        {unit.internal_stairs ? 'Yes' : 'No'}
+      </span>
+    </div>
+
+    <div class="bg-white px-4 py-3 flex flex-col gap-0.5">
+      <span class="text-xs text-muted">Parking</span>
+      <span class="font-medium text-body-text text-sm">{unit.parking}</span>
+    </div>
+
+    <div class="bg-white px-4 py-3 flex flex-col gap-0.5">
+      <span class="text-xs text-muted">Wi-Fi</span>
+      <span class="font-medium text-success text-sm">Free</span>
+    </div>
+
+    <div class="bg-white px-4 py-3 flex flex-col gap-0.5">
+      <span class="text-xs text-muted">Pets</span>
+      <span class="font-medium text-body-text text-sm">{unit.pets}</span>
+    </div>
+
+  </div>
+</section>

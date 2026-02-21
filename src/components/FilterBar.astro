@@ -1,0 +1,99 @@
+---
+---
+
+<div class="mb-8">
+  <div class="flex flex-wrap gap-2 items-center" id="filter-bar" role="group" aria-label="Filter properties">
+    <span class="font-sans text-sm font-medium text-stone-600 mr-1">Filter:</span>
+
+    <button class="filter-chip active" data-filter="all" type="button">All</button>
+
+    <span class="text-stone-300 hidden sm:inline" aria-hidden="true">|</span>
+
+    <button class="filter-chip" data-filter="sleeps-2" type="button">Sleeps 2</button>
+    <button class="filter-chip" data-filter="sleeps-4" type="button">Sleeps 4+</button>
+    <button class="filter-chip" data-filter="sleeps-6" type="button">Sleeps 6+</button>
+
+    <span class="text-stone-300 hidden sm:inline" aria-hidden="true">|</span>
+
+    <button class="filter-chip" data-filter="pool" type="button">Has pool</button>
+    <button class="filter-chip" data-filter="no-pool" type="button">No pool</button>
+
+    <span class="text-stone-300 hidden sm:inline" aria-hidden="true">|</span>
+
+    <button class="filter-chip" data-filter="1floor" type="button">Single floor</button>
+  </div>
+
+  <p id="filter-count" class="text-sm text-muted mt-3 hidden" aria-live="polite" aria-atomic="true"></p>
+</div>
+
+<style>
+  .filter-chip {
+    @apply inline-flex items-center font-sans text-sm px-3 py-1.5 rounded-full border border-stone-300 text-stone-600 bg-white transition-all duration-150 cursor-pointer;
+  }
+  .filter-chip:hover {
+    @apply border-stone-500 text-body-text bg-stone-100;
+  }
+  .filter-chip.active {
+    @apply border-footer-bg bg-footer-bg text-white;
+  }
+</style>
+
+<script>
+  const chips = document.querySelectorAll<HTMLButtonElement>('.filter-chip');
+  const cards = document.querySelectorAll<HTMLElement>('[data-unit]');
+  const countEl = document.getElementById('filter-count');
+
+  let activeFilter = 'all';
+
+  function applyFilter(filter: string) {
+    activeFilter = filter;
+    let visible = 0;
+
+    cards.forEach((card) => {
+      const sleeps = parseInt(card.dataset.sleeps ?? '0', 10);
+      const pool = card.dataset.pool ?? 'none';
+      const stairs = card.dataset.stairs === 'yes';
+      const floors = parseInt(card.dataset.floors ?? '1', 10);
+
+      let show = false;
+      switch (filter) {
+        case 'all':
+          show = true; break;
+        case 'sleeps-2':
+          show = sleeps <= 2; break;
+        case 'sleeps-4':
+          show = sleeps >= 4; break;
+        case 'sleeps-6':
+          show = sleeps >= 6; break;
+        case 'pool':
+          show = pool !== 'none'; break;
+        case 'no-pool':
+          show = pool === 'none'; break;
+        case '1floor':
+          show = floors === 1; break;
+        default:
+          show = true;
+      }
+
+      card.style.display = show ? '' : 'none';
+      if (show) visible++;
+    });
+
+    if (countEl) {
+      if (filter === 'all') {
+        countEl.classList.add('hidden');
+      } else {
+        countEl.textContent = `${visible} ${visible === 1 ? 'property' : 'properties'} match`;
+        countEl.classList.remove('hidden');
+      }
+    }
+
+    chips.forEach((c) => c.classList.toggle('active', c.dataset.filter === filter));
+  }
+
+  chips.forEach((chip) => {
+    chip.addEventListener('click', () => {
+      applyFilter(chip.dataset.filter ?? 'all');
+    });
+  });
+</script>

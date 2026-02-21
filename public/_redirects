@@ -1,0 +1,17 @@
+# Cloudflare Pages redirects
+
+# Root to /en/
+/                         /en/         301
+
+# Old index.php URLs
+/index.php/en/*           /en/:splat   301
+/index.php                /en/         301
+
+# Trailing slash enforcement (handled by Astro build, but belt-and-braces)
+/en                       /en/         301
+/en/houses                /en/houses/  301
+/en/location              /en/location/ 301
+/en/faq                   /en/faq/     301
+/en/policies              /en/policies/ 301
+/en/about                 /en/about/   301
+/en/contact               /en/contact/ 301

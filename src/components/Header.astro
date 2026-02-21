@@ -1,0 +1,178 @@
+---
+const navLinks = [
+  { label: 'Houses', href: '/en/houses/' },
+  { label: 'Villa', href: '/en/villa/almond-tree-villa/' },
+  { label: 'Location', href: '/en/location/' },
+  { label: 'FAQ', href: '/en/faq/' },
+  { label: 'About', href: '/en/about/' },
+  { label: 'Contact', href: '/en/contact/' },
+];
+
+const currentPath = Astro.url.pathname;
+const bookingUrl = 'http://traditionalhomes.reserve-online.net/';
+---
+
+<header
+  class="fixed top-0 left-0 right-0 z-40 bg-header-bg border-b border-header-border"
+  style="height: var(--header-h, 64px);"
+>
+  <div class="site-max site-pad h-full flex items-center justify-between gap-4">
+
+    <a
+      href="/en/"
+      class="flex flex-col leading-none group flex-shrink-0"
+      aria-label="Elounda Traditional Homes — home"
+    >
+      <span class="font-serif text-lg text-body-text group-hover:text-stone-600 transition-colors duration-150 tracking-tight">
+        Elounda Traditional Homes
+      </span>
+      <span class="font-sans text-xs text-muted mt-0.5 tracking-wide">
+        Mavrikiano &amp; Vrouchas &middot; Crete
+      </span>
+    </a>
+
+    <nav class="hidden lg:flex items-center gap-1" aria-label="Main navigation">
+      {navLinks.map(({ label, href }) => {
+        const isActive = currentPath === href || currentPath.startsWith(href.replace(/\/$/, '') + '/');
+        return (
+          <a
+            href={href}
+            class:list={[
+              'font-sans text-sm px-3 py-1.5 rounded transition-colors duration-150',
+              isActive
+                ? 'text-body-text font-medium bg-stone-200'
+                : 'text-muted hover:text-body-text hover:bg-stone-100'
+            ]}
+            aria-current={isActive ? 'page' : undefined}
+          >
+            {label}
+          </a>
+        );
+      })}
+    </nav>
+
+    <div class="flex items-center gap-3">
+      <a
+        href={bookingUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn-cta text-xs sm:text-sm hidden sm:inline-flex"
+      >
+        Check Availability
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
+        </svg>
+      </a>
+
+      <button
+        id="menu-open"
+        class="lg:hidden flex items-center justify-center w-10 h-10 rounded text-stone-700 hover:bg-stone-200 transition-colors duration-150"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+      >
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div
+  id="mobile-menu"
+  role="dialog"
+  aria-label="Navigation menu"
+  aria-modal="true"
+  class="fixed inset-0 z-50 lg:hidden hidden"
+>
+  <div id="menu-backdrop" class="absolute inset-0 bg-black/40" aria-hidden="true"></div>
+  <nav
+    class="absolute top-0 right-0 h-full w-72 max-w-full bg-header-bg flex flex-col shadow-xl"
+    aria-label="Mobile navigation"
+  >
+    <div class="flex items-center justify-between px-5 h-16 border-b border-header-border flex-shrink-0">
+      <span class="font-serif text-base text-body-text">Menu</span>
+      <button
+        id="menu-close"
+        class="flex items-center justify-center w-9 h-9 rounded text-stone-600 hover:bg-stone-200 transition-colors duration-150"
+        aria-label="Close navigation menu"
+      >
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+    </div>
+
+    <ul class="flex-1 overflow-y-auto py-4 px-3 space-y-0.5" role="list">
+      {navLinks.map(({ label, href }) => {
+        const isActive = currentPath === href || currentPath.startsWith(href.replace(/\/$/, '') + '/');
+        return (
+          <li>
+            <a
+              href={href}
+              class:list={[
+                'flex items-center font-sans text-base px-4 py-3 rounded transition-colors duration-150',
+                isActive
+                  ? 'text-body-text font-medium bg-stone-200'
+                  : 'text-stone-700 hover:text-body-text hover:bg-stone-100'
+              ]}
+              aria-current={isActive ? 'page' : undefined}
+            >
+              {label}
+            </a>
+          </li>
+        );
+      })}
+    </ul>
+
+    <div class="p-4 border-t border-header-border flex-shrink-0">
+      <a
+        href={bookingUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn-cta w-full text-sm"
+      >
+        Check Availability
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
+        </svg>
+      </a>
+    </div>
+  </nav>
+</div>
+
+<div style="height: var(--header-h, 64px);" aria-hidden="true"></div>
+
+<script>
+  const openBtn = document.getElementById('menu-open') as HTMLButtonElement | null;
+  const closeBtn = document.getElementById('menu-close') as HTMLButtonElement | null;
+  const backdrop = document.getElementById('menu-backdrop');
+  const menu = document.getElementById('mobile-menu');
+
+  function openMenu() {
+    if (!menu || !openBtn) return;
+    menu.classList.remove('hidden');
+    openBtn.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+    closeBtn?.focus();
+  }
+
+  function closeMenu() {
+    if (!menu || !openBtn) return;
+    menu.classList.add('hidden');
+    openBtn.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+    openBtn.focus();
+  }
+
+  openBtn?.addEventListener('click', openMenu);
+  closeBtn?.addEventListener('click', closeMenu);
+  backdrop?.addEventListener('click', closeMenu);
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !menu?.classList.contains('hidden')) {
+      closeMenu();
+    }
+  });
+</script>

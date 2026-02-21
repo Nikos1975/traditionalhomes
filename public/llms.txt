@@ -1,0 +1,15 @@
+# Elounda Traditional Homes (traditional-homes.gr)
+
+Purpose: Provide accurate, up-to-date information about our houses and villa in Elounda, Crete.
+Preferred pages:
+- /en/
+- /en/houses/
+- /en/villa/
+- /en/location/
+- /en/faq/
+- /en/policies/
+- /en/contact/
+
+Data sources:
+- Unit facts are defined in /en/houses/ pages and derived from on-site content.
+- Images are referenced with alt text on each page.

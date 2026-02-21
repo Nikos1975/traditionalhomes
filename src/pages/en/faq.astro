@@ -1,0 +1,161 @@
+---
+import Base from '../../layouts/Base.astro';
+import siteCopy from '../../data/siteCopy.json';
+
+const faqs = [
+  {
+    q: 'Are the properties step-free or wheelchair accessible?',
+    a: 'No. All properties are located in traditional stone villages with uneven terrain. Each property has at least one step from the path or parking area to the entrance. Some properties have internal stairs between floors. Full access information is available on the Policies page and on each individual property page.',
+    category: 'access',
+  },
+  {
+    q: 'Which properties have internal stairs?',
+    a: "House Argyro, House Erato, House Stavros, and Villa Almyra all have internal stairs between floors. Houses Leonidas, Penelope, Dimitra, Thalia, Eleni, Mneme, and Kirki are single-floor layouts once inside. House Erato's entrance is accessed by stairs down from the lane. Check the individual property page for specific access detail.",
+    category: 'access',
+  },
+  {
+    q: 'Which houses share a pool?',
+    a: 'House Penelope and House Dimitra share a pool. The pool is for the exclusive use of guests in those two houses only — it is not a communal pool open to all properties. Houses Leonidas, Eleni, and Stavros each have their own private pool. Villa Almyra has its own private pool. The remaining houses have no pool.',
+    category: 'pools',
+  },
+  {
+    q: 'Is Wi-Fi included?',
+    a: 'Yes. Free Wi-Fi is included in all properties. Coverage varies between properties due to stone wall construction — in most cases Wi-Fi reaches the terrace.',
+    category: 'amenities',
+  },
+  {
+    q: 'Are pets allowed?',
+    a: 'Small pets up to 5 kg may be accepted on request. Please contact us before booking to confirm availability for your specific dates and property. A cleaning fee may apply.',
+    category: 'policies',
+  },
+  {
+    q: 'What are the check-in and check-out times?',
+    a: `Check-in is from ${siteCopy.checkIn}. Check-out is by ${siteCopy.checkOut}. Early check-in or late check-out may be possible on request, subject to availability. Key collection arrangements are confirmed with your booking.`,
+    category: 'policies',
+  },
+  {
+    q: 'Where are the houses exactly?',
+    a: 'The ten stone houses are in Mavrikiano village, which sits on the hillside above Elounda town on the northeast coast of Crete. Villa Almyra is in Vrouchas, a few minutes further uphill. Exact GPS coordinates and directions are provided with your booking confirmation.',
+    category: 'location',
+  },
+  {
+    q: 'Is parking available?',
+    a: 'Most properties have private parking nearby or on site. Houses in the village centre use shared village parking within 50–80 metres of the entrance. Specific parking information is listed on each property page.',
+    category: 'amenities',
+  },
+  {
+    q: 'Do you have a minimum stay requirement?',
+    a: 'Minimum stay requirements depend on the season and property. This is shown in the availability system when selecting dates.',
+    category: 'booking',
+  },
+  {
+    q: 'How do I book?',
+    a: 'Bookings are made through our availability system. Select the property you are interested in and check available dates. If you have questions before booking, use the contact page.',
+    category: 'booking',
+  },
+  {
+    q: 'Can I visit multiple properties during one stay?',
+    a: 'Each property is booked individually. If you are booking for a group requiring multiple houses, please contact us directly so we can confirm availability across properties simultaneously.',
+    category: 'booking',
+  },
+  {
+    q: 'What is the cancellation policy?',
+    a: siteCopy.cancellationPolicy,
+    category: 'policies',
+  },
+  {
+    q: 'Are the photos on the website accurate?',
+    a: 'The photos show the actual properties. Some photos are representative of work in progress — updated photos will be added as they become available. Property descriptions list all relevant features, constraints, and amenities.',
+    category: 'general',
+  },
+];
+
+const categories = [
+  { id: 'access', label: 'Access & Mobility' },
+  { id: 'pools', label: 'Pools' },
+  { id: 'amenities', label: 'Amenities' },
+  { id: 'policies', label: 'Policies' },
+  { id: 'location', label: 'Location' },
+  { id: 'booking', label: 'Booking' },
+  { id: 'general', label: 'General' },
+];
+---
+
+<Base
+  title="FAQ | Elounda Traditional Homes"
+  description={siteCopy.metaDescriptionFaq}
+  canonicalUrl="https://traditional-homes.gr/en/faq/"
+>
+
+  <div class="site-max site-pad py-12 md:py-16">
+
+    <nav class="text-xs text-muted mb-6" aria-label="Breadcrumb">
+      <ol class="flex items-center gap-1.5" role="list">
+        <li><a href="/en/" class="hover:text-body-text transition-colors duration-150">Home</a></li>
+        <li aria-hidden="true">›</li>
+        <li class="text-body-text font-medium" aria-current="page">FAQ</li>
+      </ol>
+    </nav>
+
+    <div class="max-w-3xl">
+      <h1 class="font-serif text-4xl md:text-5xl text-body-text mb-4">Frequently asked questions</h1>
+      <p class="section-sub mb-10">Answers to common questions about the properties, access, policies, and booking.</p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-10">
+
+      <nav class="lg:col-span-1" aria-label="FAQ categories">
+        <p class="font-sans text-xs font-medium uppercase tracking-wider text-muted mb-3">Jump to</p>
+        <ul class="space-y-1 text-sm">
+          {categories.map((cat) => (
+            <li>
+              <a href={`#${cat.id}`} class="text-stone-600 hover:text-body-text transition-colors duration-150 block py-1">
+                {cat.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+
+      <div class="lg:col-span-3 space-y-12">
+        {categories.map((cat) => {
+          const items = faqs.filter((f) => f.category === cat.id);
+          if (!items.length) return null;
+          return (
+            <section id={cat.id} aria-labelledby={`${cat.id}-heading`}>
+              <h2 id={`${cat.id}-heading`} class="font-serif text-2xl text-body-text mb-6 pb-3 border-b border-stone-200">
+                {cat.label}
+              </h2>
+              <dl class="space-y-6">
+                {items.map((faq) => (
+                  <div>
+                    <dt class="font-medium text-body-text mb-2">{faq.q}</dt>
+                    <dd class="text-stone-600 leading-relaxed text-sm">{faq.a}</dd>
+                    {faq.category === 'access' && (
+                      <dd class="mt-2 text-xs text-muted">
+                        <a href="/en/policies/#access" class="underline hover:text-body-text transition-colors duration-150">
+                          Full access information on the Policies page
+                        </a>
+                      </dd>
+                    )}
+                  </div>
+                ))}
+              </dl>
+            </section>
+          );
+        })}
+      </div>
+
+    </div>
+
+    <div class="mt-16 pt-8 border-t border-stone-200 flex flex-col sm:flex-row gap-4 items-start">
+      <div>
+        <p class="font-medium text-body-text mb-1">Still have a question?</p>
+        <p class="text-sm text-muted">Use the contact form and we'll get back to you.</p>
+      </div>
+      <a href="/en/contact/" class="btn-outline text-sm flex-shrink-0">Contact us</a>
+    </div>
+
+  </div>
+
+</Base>
