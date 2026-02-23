@@ -9,9 +9,12 @@ export default {
         'body-bg': '#F7F4EE',
         'body-text': '#2C2419',
         'muted': '#6B5F50',
-        'primary': '#0F2A33',
-        'cta': '#AC0814',
-        'cta-hover': '#8A0610',
+        'primary': '#0BBFF5',
+
+        // CTA (terracotta)
+        'cta': '#B44B2A',
+        'cta-hover': '#9A3F23',
+
         'footer-bg': '#0F2A33',
         'footer-text': '#C8D8DD',
         'stone-100': '#F7F4EE',
@@ -24,10 +27,12 @@ export default {
         'stone-800': '#2C2419',
         'sea-100': '#E0F7FF',
         'sea-200': '#A8E9FD',
-        'sea-500': '#1CA7D0',
-        'sea-700': '#1A3D4A',
+        'sea-500': '#0BBFF5',
+        'sea-700': '#0880A8',
         'success': '#2D6A4F',
         'warning': '#B45309',
+
+        // keep "error" red for validation/messages
         'error': '#AC0814',
       },
       fontFamily: {
@@ -39,15 +44,15 @@ export default {
         '88': '22rem',
       },
       maxWidth: {
-        'site': '1280px',
+        site: '1280px',
       },
       boxShadow: {
-        'header': '0 1px 0 0 #E6E1D8',
-        'card': '0 2px 12px 0 rgba(44,36,25,0.08)',
+        header: '0 1px 0 0 #E6E1D8',
+        card: '0 2px 12px 0 rgba(44,36,25,0.08)',
         'card-hover': '0 8px 28px 0 rgba(44,36,25,0.14)',
       },
       transitionTimingFunction: {
-        'smooth': 'cubic-bezier(0.4, 0, 0.2, 1)',
+        smooth: 'cubic-bezier(0.4, 0, 0.2, 1)',
       },
     },
   },
