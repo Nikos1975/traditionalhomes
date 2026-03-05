@@ -1,4 +1,6 @@
 ---
+import fs from 'node:fs';
+import path from 'node:path';
 import Base from '../../../layouts/Base.astro';
 import GalleryA from '../../../components/GalleryA.astro';
 import AtAGlance from '../../../components/AtAGlance.astro';
@@ -25,6 +27,16 @@ if (!unit) {
 }
 
 const gallery = (galleryData as Record<string, GalleryImage[]>)[slug] ?? [];
+
+const heroDir = path.join(process.cwd(), 'public', 'images', 'houses', slug, '2400');
+let heroImage = '';
+if (fs.existsSync(heroDir)) {
+  const files = fs.readdirSync(heroDir).filter(f => f.includes('2400') && f.endsWith('.webp'));
+  if (files.length > 0) {
+    heroImage = `/images/houses/${slug}/2400/${files[0]}`;
+  }
+}
+
 const nearUnits = unit.location_relations?.near
   ?.map((s) => units.find((u) => u.slug === s))
   .filter(Boolean) as InventoryUnit[];
@@ -38,6 +50,22 @@ const pageDescription = `${unit.name} — sleeps ${unit.sleeps_max}, ${unit.bedr
   description={pageDescription}
   canonicalUrl={`https://traditional-homes.gr/en/houses/${slug}/`}
 >
+
+  {heroImage && (
+    <section class="relative overflow-hidden bg-stone-800" aria-label="Hero" style="height: 60vh; min-height: 400px; max-height: 800px;">
+      <div class="absolute inset-0 bg-gradient-to-b from-stone-900/40 via-transparent to-stone-900/60 z-10"></div>
+      <div
+        class="absolute inset-0 bg-center bg-cover"
+        style={`background-image: url('${heroImage}');`}
+        role="img"
+        aria-label={`Hero image of ${unit.name}`}
+      ></div>
+      <div class="relative z-20 site-max site-pad h-full flex flex-col justify-end pb-8 md:pb-12">
+        <h1 class="font-serif text-4xl md:text-5xl lg:text-6xl text-white mb-2 drop-shadow-md">{unit.name}</h1>
+        <p class="text-white/90 text-lg drop-shadow-md">{unit.location}, {unit.area}, Crete</p>
+      </div>
+    </section>
+  )}
 
   <div class="site-max site-pad py-10 md:py-14">
 
@@ -55,10 +83,12 @@ const pageDescription = `${unit.name} — sleeps ${unit.sleeps_max}, ${unit.bedr
 
       <div class="lg:col-span-2">
 
-        <div class="mb-6">
-          <h1 class="font-serif text-4xl md:text-5xl text-body-text mb-1">{unit.name}</h1>
-          <p class="text-muted">{unit.location}, {unit.area}, Crete</p>
-        </div>
+        {!heroImage && (
+          <div class="mb-6">
+            <h1 class="font-serif text-4xl md:text-5xl text-body-text mb-1">{unit.name}</h1>
+            <p class="text-muted">{unit.location}, {unit.area}, Crete</p>
+          </div>
+        )}
 
         <GalleryA images={gallery} unitName={unit.name} />
 

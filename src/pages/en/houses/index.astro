@@ -1,17 +1,36 @@
 ---
 import Base from '../../../layouts/Base.astro';
 import UnitCard from '../../../components/UnitCard.astro';
+import GroupCard from '../../../components/GroupCard.astro';
 import FilterBar from '../../../components/FilterBar.astro';
 import inventory from '../../../inventory/inventory.json';
+import groupsData from '../../../inventory/groups.json';
 import siteCopy from '../../../data/siteCopy.json';
 import type { InventoryUnit } from '../../../types';
+import type { ListingItem } from '../../../utils/filters';
 import { validateInventory } from '../../../utils/validateInventory';
 
 const units = inventory as InventoryUnit[];
 validateInventory(units);
 const houses = units.filter((u) => u.type === 'house');
 const villa = units.find((u) => u.type === 'villa');
-const totalCount = units.length;
+
+const allItems: ListingItem[] = [
+  ...units.map((unit) => ({
+    id: unit.slug,
+    type: unit.type as 'home' | 'villa',
+    name: unit.name,
+    sleepsMax: unit.sleeps_max,
+    bedrooms: unit.bedrooms,
+    seaView: unit.view.toLowerCase().includes('sea') || unit.view.toLowerCase().includes('bay'),
+    pool: unit.pool,
+    internalStairs: unit.internal_stairs,
+    entryLevel: null,
+  })),
+  ...(groupsData as ListingItem[])
+];
+
+const totalCount = allItems.length;
 ---
 
 <Base
@@ -32,8 +51,7 @@ const totalCount = units.length;
       </nav>
       <h1 class="font-serif text-4xl md:text-5xl text-body-text mb-4">Houses &amp; Villa</h1>
       <p class="text-stone-600 max-w-2xl leading-relaxed">
-        {houses.length} traditional stone houses in Mavrikiano village and {villa ? 'one hillside villa' : 'a villa'} in Vrouchas — all within the Elounda area of northeast Crete.
-        Each property is individually restored and managed.
+        {houses.length} traditional stone houses in Mavrikiano village and {villa ? 'one hillside villa' : 'a villa'} in Vrouchas — all within the Elounda area of northeast Crete. We also carefully configure bundled properties for larger groups staying together.
       </p>
     </div>
 
@@ -48,7 +66,7 @@ const totalCount = units.length;
       </span>
     </div>
 
-    <FilterBar />
+    <FilterBar items={allItems} />
 
     <div
       class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
@@ -56,6 +74,9 @@ const totalCount = units.length;
     >
       {units.map((unit) => (
         <UnitCard unit={unit} />
+      ))}
+      {groupsData.map((group) => (
+        <GroupCard group={group as ListingItem} />
       ))}
     </div>
 

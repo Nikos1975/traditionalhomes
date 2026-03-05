@@ -1,0 +1,93 @@
+---
+import type { ListingItem } from '../utils/filters';
+import gallery from '../data/gallery.json';
+import inventory from '../inventory/inventory.json';
+
+interface Props {
+  group: ListingItem;
+}
+
+const { group } = Astro.props;
+
+// Use the first member's featured image
+const firstMember = group.members?.[0];
+const galleryData = firstMember ? (gallery as Record<string, { src: string; alt: string; isFeatured: boolean; srcset?: string }[]>)[firstMember] : [];
+const featuredImg = galleryData?.find((img) => img.isFeatured);
+
+const memberNames = group.members?.map(m => inventory.find(u => u.slug === m)?.name ?? m).join(' + ');
+---
+
+<article
+  class="group bg-white rounded-xl overflow-hidden shadow-card hover:shadow-card-hover transition-shadow duration-300 flex flex-col"
+  data-id={group.id}
+>
+  <div class="block relative overflow-hidden bg-stone-200" style="aspect-ratio: 4/3;">
+    <img
+      src={featuredImg?.src ?? '/images/placeholder.svg'}
+      srcset={featuredImg?.srcset}
+      sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+      alt={featuredImg?.alt ?? group.name}
+      width="600"
+      height="450"
+      loading="lazy"
+      decoding="async"
+      class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+      onerror="this.src='/images/placeholder.svg'"
+    />
+    <span class="badge bg-footer-bg text-white absolute top-3 right-3 shadow-md flex-shrink-0">Group Stay</span>
+  </div>
+
+  <div class="flex flex-col flex-1 p-5">
+    <div class="flex items-start justify-between gap-2 mb-2">
+      <div>
+        <h2 class="font-serif text-xl text-body-text leading-tight block">
+          {group.name}
+        </h2>
+        <p class="text-xs text-muted mt-0.5">Mavrikiano, Elounda</p>
+      </div>
+    </div>
+
+    <div class="flex flex-col gap-1 text-sm text-stone-600 mb-3 mt-1">
+      <span class="flex items-center gap-1.5 font-medium text-stone-800">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        Includes: {memberNames}
+      </span>
+      <span class="flex items-center gap-1.5">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        Sleeps {group.sleepsMax}
+      </span>
+      <span class="flex items-center gap-1.5">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 4v16"/><path d="M2 8h18a2 2 0 0 1 2 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/></svg>
+        {group.bedrooms} {group.bedrooms === 1 ? 'bedroom' : 'bedrooms'}
+      </span>
+    </div>
+
+    {group.poolAccess === 'exclusive_shared' && (
+      <div class="mb-3">
+        <span class="badge-pool">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12h20M2 12c0-5.5 4.5-10 10-10s10 4.5 10 10M2 12c0 5.5 4.5 10 10 10s10-4.5 10-10"/></svg>
+          Shared pool (exclusive when booked together)
+        </span>
+      </div>
+    )}
+
+    {group.poolAccess === 'private' && (
+      <div class="mb-3">
+        <span class="badge-pool">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12h20M2 12c0-5.5 4.5-10 10-10s10 4.5 10 10M2 12c0 5.5 4.5 10 10 10s10-4.5 10-10"/></svg>
+          Private Pool Included
+        </span>
+      </div>
+    )}
+
+    <p class="text-xs text-amber-800 bg-amber-50 border border-amber-200 rounded px-2.5 py-1.5 mb-4 leading-snug">
+      Booking: To reserve this group stay, please select both homes for the exact same dates on our booking engine.
+    </p>
+
+    <div class="mt-auto pt-3 border-t border-stone-100 flex gap-2">
+      <a href="/en/contact/" class="btn-outline flex-1 text-xs py-2.5 text-center">
+        Contact us
+      </a>
+    </div>
+  </div>
+</article>

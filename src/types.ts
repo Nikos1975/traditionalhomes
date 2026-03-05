@@ -33,6 +33,8 @@ export interface GalleryImage {
   src: string;
   alt: string;
   isFeatured: boolean;
+  tags?: string[];
+  srcset?: string;
 }
 
 export interface SiteCopy {

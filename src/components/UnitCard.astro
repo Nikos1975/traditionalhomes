@@ -14,16 +14,13 @@ const featuredImg = galleryData.find((img) => img.isFeatured);
 
 <article
   class="group bg-white rounded-xl overflow-hidden shadow-card hover:shadow-card-hover transition-shadow duration-300 flex flex-col"
-  data-unit
-  data-sleeps={unit.sleeps_max}
-  data-bedrooms={unit.bedrooms}
-  data-pool={unit.pool}
-  data-stairs={unit.internal_stairs ? 'yes' : 'no'}
-  data-floors={unit.floors}
+  data-id={unit.slug}
 >
   <a href={unitPagePath} class="block relative overflow-hidden bg-stone-200" style="aspect-ratio: 4/3;" tabindex="-1" aria-hidden="true">
     <img
       src={featuredImg?.src ?? '/images/placeholder.svg'}
+      srcset={featuredImg?.srcset}
+      sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
       alt={featuredImg?.alt ?? unit.name}
       width="600"
       height="450"
@@ -70,8 +67,13 @@ const featuredImg = galleryData.find((img) => img.isFeatured);
       </span>
       <span class="flex items-center gap-1">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="2" ry="2"/><path d="M12 2v20"/><path d="M2 12h20"/></svg>
-        {unit.floors} {unit.floors === 1 ? 'floor' : 'floors'}
+        {unit.internal_stairs ? 'Internal stairs' : 'No internal stairs'}
       </span>
+      {(unit.view.toLowerCase().includes('sea') || unit.view.toLowerCase().includes('bay')) && (
+        <span class="flex items-center gap-1 text-sky-700 font-medium">
+          Sea view
+        </span>
+      )}
     </div>
 
     {unit.internal_stairs && (

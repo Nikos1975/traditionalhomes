@@ -33,7 +33,9 @@
     "availability_url": "https://traditionalhomes.reserve-online.net/?room=HARGYR",
     "featured_image_alt": "House Argyro — traditional stone facade in Mavrikiano village",
     "location_relations": {
-      "near": ["leonidas"],
+      "near": [
+        "leonidas"
+      ],
       "above": null,
       "below": null
     }
@@ -71,7 +73,10 @@
     "availability_url": "https://traditionalhomes.reserve-online.net/?room=HLEONI",
     "featured_image_alt": "House Leonidas — stone house with sea view, Mavrikiano",
     "location_relations": {
-      "near": ["argyro", "margarita"],
+      "near": [
+        "argyro",
+        "margarita"
+      ],
       "above": null,
       "below": null
     }
@@ -111,15 +116,17 @@
     "availability_url": "https://traditionalhomes.reserve-online.net/?room=HMARGA",
     "featured_image_alt": "House Margarita — traditional stone house with sea view, Mavrikiano",
     "location_relations": {
-      "near": ["leonidas"],
+      "near": [
+        "leonidas"
+      ],
       "above": null,
       "below": null
     }
   },
   {
-    "slug": "dimitra",
+    "slug": "demetra",
     "type": "house",
-    "name": "House Dimitra",
+    "name": "House Demetra",
     "location": "Mavrikiano",
     "area": "Elounda",
     "sleeps_max": 4,
@@ -127,7 +134,9 @@
     "bathrooms": 1,
     "pool": "shared",
     "pool_notes": "Shared pool with House Penelope",
-    "shared_pool_with": ["penelope"],
+    "shared_pool_with": [
+      "penelope"
+    ],
     "floors": 1,
     "internal_stairs": false,
     "view": "Mountain view",
@@ -146,11 +155,13 @@
       "Wi-Fi"
     ],
     "access_detail": null,
-    "booking_id": "HDIMIT",
+    "booking_id": "HDEMET",
     "availability_url": "https://traditionalhomes.reserve-online.net/?room=HDIMIT",
-    "featured_image_alt": "House Dimitra — stone house with shared pool garden, Mavrikiano",
+    "featured_image_alt": "House Demetra — stone house with shared pool garden, Mavrikiano",
     "location_relations": {
-      "near": ["penelope"],
+      "near": [
+        "penelope"
+      ],
       "above": null,
       "below": null
     }
@@ -165,8 +176,10 @@
     "bedrooms": 2,
     "bathrooms": 1,
     "pool": "shared",
-    "pool_notes": "Shared pool with House Dimitra",
-    "shared_pool_with": ["dimitra"],
+    "pool_notes": "Shared pool with House Demetra",
+    "shared_pool_with": [
+      "demetra"
+    ],
     "floors": 1,
     "internal_stairs": false,
     "view": "Olive grove view",
@@ -175,7 +188,7 @@
     "pets": "Small pets (≤5 kg) on request",
     "hard_constraints": [
       "Not step-free — at least one step from path to entrance",
-      "Pool is shared with House Dimitra"
+      "Pool is shared with House Demetra"
     ],
     "amenities": [
       "Air conditioning",
@@ -189,7 +202,9 @@
     "availability_url": "https://traditionalhomes.reserve-online.net/?room=HPENEL",
     "featured_image_alt": "House Penelope — garden terrace with shared pool, Mavrikiano",
     "location_relations": {
-      "near": ["dimitra"],
+      "near": [
+        "demetra"
+      ],
       "above": null,
       "below": null
     }
@@ -228,7 +243,9 @@
     "availability_url": "https://traditionalhomes.reserve-online.net/?room=HERCLI",
     "featured_image_alt": "House Erato — sunken garden entrance in Mavrikiano village lane",
     "location_relations": {
-      "near": ["clio"],
+      "near": [
+        "clio"
+      ],
       "above": null,
       "below": null
     }
@@ -267,7 +284,9 @@
     "availability_url": "https://traditionalhomes.reserve-online.net/?room=HCLIO",
     "featured_image_alt": "House Clio — traditional stone house with olive grove view, Mavrikiano",
     "location_relations": {
-      "near": ["erato"],
+      "near": [
+        "erato"
+      ],
       "above": null,
       "below": null
     }
@@ -305,7 +324,9 @@
     "availability_url": "https://traditionalhomes.reserve-online.net/?room=HEFTER",
     "featured_image_alt": "House Efterpi — courtyard stone house in Mavrikiano village",
     "location_relations": {
-      "near": ["kalliopi"],
+      "near": [
+        "kalliopi"
+      ],
       "above": null,
       "below": null
     }
@@ -343,7 +364,9 @@
     "availability_url": "https://traditionalhomes.reserve-online.net/?room=HKALLI",
     "featured_image_alt": "House Kalliopi — upper-floor stone house in Mavrikiano village",
     "location_relations": {
-      "near": ["efterpi"],
+      "near": [
+        "efterpi"
+      ],
       "above": null,
       "below": null
     }

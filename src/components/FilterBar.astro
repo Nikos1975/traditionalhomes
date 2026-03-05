@@ -1,29 +1,42 @@
 ---
+import type { ListingItem } from '../utils/filters';
+
+interface Props {
+  items: ListingItem[];
+}
+
+const { items } = Astro.props;
 ---
 
 <div class="mb-8">
-  <div class="flex flex-wrap gap-2 items-center" id="filter-bar" role="group" aria-label="Filter properties">
-    <span class="font-sans text-sm font-medium text-stone-600 mr-1">Filter:</span>
-
-    <button class="filter-chip active" data-filter="all" type="button">All</button>
-
-    <span class="text-stone-300 hidden sm:inline" aria-hidden="true">|</span>
-
-    <button class="filter-chip" data-filter="sleeps-2" type="button">Sleeps 2</button>
-    <button class="filter-chip" data-filter="sleeps-4" type="button">Sleeps 4+</button>
-    <button class="filter-chip" data-filter="sleeps-6" type="button">Sleeps 6+</button>
-
-    <span class="text-stone-300 hidden sm:inline" aria-hidden="true">|</span>
-
-    <button class="filter-chip" data-filter="pool" type="button">Has pool</button>
-    <button class="filter-chip" data-filter="no-pool" type="button">No pool</button>
-
-    <span class="text-stone-300 hidden sm:inline" aria-hidden="true">|</span>
-
-    <button class="filter-chip" data-filter="1floor" type="button">Single floor</button>
+  <div class="flex items-center gap-6 mb-5 border-b border-stone-200" id="view-tabs" role="tablist">
+    <button class="view-tab active pb-2 border-b-2 border-footer-bg text-stone-800 font-medium font-sans text-sm transition-colors" data-view="all" role="tab" aria-selected="true">All stays</button>
+    <button class="view-tab pb-2 border-b-2 border-transparent text-stone-500 hover:text-stone-700 font-medium font-sans text-sm transition-colors" data-view="homes" role="tab" aria-selected="false">Homes & Villa</button>
+    <button class="view-tab pb-2 border-b-2 border-transparent text-stone-500 hover:text-stone-700 font-medium font-sans text-sm transition-colors" data-view="groups" role="tab" aria-selected="false">Group stays</button>
   </div>
 
-  <p id="filter-count" class="text-sm text-muted mt-3 hidden" aria-live="polite" aria-atomic="true"></p>
+  <div class="flex flex-wrap gap-2 items-center mb-4" id="quick-filters">
+    <button class="filter-chip active" data-action="all">All</button>
+    <button class="filter-chip" data-action="sleeps-3">Sleeps 3</button>
+    <button class="filter-chip" data-action="sleeps-4">Sleeps 4+</button>
+    <button class="filter-chip" data-action="sleeps-6">Sleeps 6+</button>
+    <button class="filter-chip" data-action="sleeps-8">Sleeps 8+</button>
+    <button class="filter-chip" data-action="sea-view">Sea view</button>
+    <button class="filter-chip" data-action="private-pool">Private pool</button>
+    
+    <span class="text-stone-300 hidden sm:inline" aria-hidden="true">|</span>
+    
+    <button class="filter-chip" data-action="bed-2">Bedrooms 2+</button>
+    <button class="filter-chip" data-action="bed-3">Bedrooms 3+</button>
+    <button class="filter-chip" data-action="shared-pool">Shared pool</button>
+    <button class="filter-chip" data-action="no-pool">No pool</button>
+    
+    <button class="text-xs underline text-stone-500 hover:text-stone-800 ml-2" data-action="clear" type="button">Clear filters</button>
+  </div>
+
+  <p id="filter-count" class="text-sm text-muted mt-2 hidden" aria-live="polite" aria-atomic="true"></p>
+
+  <script id="filter-data" type="application/json" set:html={JSON.stringify(items)}></script>
 </div>
 
 <style>
@@ -39,61 +52,155 @@
 </style>
 
 <script>
-  const chips = document.querySelectorAll<HTMLButtonElement>('.filter-chip');
-  const cards = document.querySelectorAll<HTMLElement>('[data-unit]');
+  import { applyFilters, initialFilters, type FilterState, type ListingItem } from '../utils/filters';
+
+  const dataScript = document.getElementById('filter-data');
+  const items: ListingItem[] = dataScript ? JSON.parse(dataScript.textContent || '[]') : [];
+
+  const domCards = new Map<string, HTMLElement>();
+  items.forEach(item => {
+    const el = document.querySelector(`[data-id="${item.id}"]`) as HTMLElement;
+    if (el) domCards.set(item.id, el);
+  });
+
+  let state: FilterState = { ...initialFilters, view: 'all' };
+
   const countEl = document.getElementById('filter-count');
+  const tabs = document.querySelectorAll('.view-tab');
+  const chips = document.querySelectorAll('.filter-chip');
 
-  let activeFilter = 'all';
+  function render() {
+    const matched = applyFilters(items, state);
+    const matchedIds = new Set(matched.map(m => m.id));
 
-  function applyFilter(filter: string) {
-    activeFilter = filter;
-    let visible = 0;
-
-    cards.forEach((card) => {
-      const sleeps = parseInt(card.dataset.sleeps ?? '0', 10);
-      const pool = card.dataset.pool ?? 'none';
-      const stairs = card.dataset.stairs === 'yes';
-      const floors = parseInt(card.dataset.floors ?? '1', 10);
-
-      let show = false;
-      switch (filter) {
-        case 'all':
-          show = true; break;
-        case 'sleeps-2':
-          show = sleeps <= 2; break;
-        case 'sleeps-4':
-          show = sleeps >= 4; break;
-        case 'sleeps-6':
-          show = sleeps >= 6; break;
-        case 'pool':
-          show = pool !== 'none'; break;
-        case 'no-pool':
-          show = pool === 'none'; break;
-        case '1floor':
-          show = floors === 1; break;
-        default:
-          show = true;
+    let visibleCount = 0;
+    domCards.forEach((el, id) => {
+      if (matchedIds.has(id)) {
+        el.style.display = '';
+        visibleCount++;
+      } else {
+        el.style.display = 'none';
       }
-
-      card.style.display = show ? '' : 'none';
-      if (show) visible++;
     });
 
     if (countEl) {
-      if (filter === 'all') {
+      const isDefault = 
+        state.capacityMode === 'none' && 
+        state.bedroomsMin === null && 
+        state.seaView === false && 
+        state.pool === null;
+
+      if (isDefault && state.view === 'all') {
         countEl.classList.add('hidden');
       } else {
-        countEl.textContent = `${visible} ${visible === 1 ? 'property' : 'properties'} match`;
+        countEl.textContent = `${visibleCount} ${visibleCount === 1 ? 'property' : 'properties'} match`;
         countEl.classList.remove('hidden');
       }
     }
 
-    chips.forEach((c) => c.classList.toggle('active', c.dataset.filter === filter));
+    // Update active tab styles
+    tabs.forEach(tab => {
+      const isSelected = (tab as HTMLElement).dataset.view === state.view;
+      tab.setAttribute('aria-selected', isSelected.toString());
+      if (isSelected) {
+        tab.classList.add('border-footer-bg', 'text-stone-800');
+        tab.classList.remove('border-transparent', 'text-stone-500');
+      } else {
+        tab.classList.add('border-transparent', 'text-stone-500');
+        tab.classList.remove('border-footer-bg', 'text-stone-800');
+      }
+    });
+
+    // Update active chip styles
+    chips.forEach(chip => {
+      const action = (chip as HTMLElement).dataset.action;
+      let isActive = false;
+      
+      if (action === 'all') {
+        isActive = state.capacityMode === 'none' && state.bedroomsMin === null && !state.seaView && state.pool === null;
+      } else if (action === 'sleeps-3') {
+        isActive = state.capacityMode === 'exact' && state.capacityValue === 3;
+      } else if (action === 'sleeps-4') {
+        isActive = state.capacityMode === 'min' && state.capacityValue === 4;
+      } else if (action === 'sleeps-6') {
+        isActive = state.capacityMode === 'min' && state.capacityValue === 6;
+      } else if (action === 'sleeps-8') {
+        isActive = state.capacityMode === 'min' && state.capacityValue === 8;
+      } else if (action === 'sea-view') {
+        isActive = state.seaView;
+      } else if (action === 'private-pool') {
+        isActive = state.pool === 'private';
+      } else if (action === 'shared-pool') {
+        isActive = state.pool === 'shared';
+      } else if (action === 'no-pool') {
+        isActive = state.pool === 'none';
+      } else if (action === 'bed-2') {
+        isActive = state.bedroomsMin === 2;
+      } else if (action === 'bed-3') {
+        isActive = state.bedroomsMin === 3;
+      }
+
+      if (isActive) {
+        chip.classList.add('active');
+      } else {
+        chip.classList.remove('active');
+      }
+    });
   }
 
-  chips.forEach((chip) => {
-    chip.addEventListener('click', () => {
-      applyFilter(chip.dataset.filter ?? 'all');
+  // Bind tabs
+  tabs.forEach(tab => {
+    tab.addEventListener('click', (e) => {
+      const v = (e.currentTarget as HTMLElement).dataset.view as FilterState['view'];
+      state = { ...initialFilters, view: v };
+      render();
     });
   });
+
+  // Bind chips
+  chips.forEach(chip => {
+    chip.addEventListener('click', (e) => {
+      const btn = e.currentTarget as HTMLElement;
+      const action = btn.dataset.action;
+      
+      if (action === 'all') {
+        state = { ...initialFilters, view: state.view };
+      } else if (action === 'sleeps-3') {
+        state.capacityMode = state.capacityMode === 'exact' && state.capacityValue === 3 ? 'none' : 'exact';
+        state.capacityValue = state.capacityMode === 'exact' ? 3 : null;
+      } else if (action === 'sleeps-4') {
+        state.capacityMode = state.capacityMode === 'min' && state.capacityValue === 4 ? 'none' : 'min';
+        state.capacityValue = state.capacityMode === 'min' ? 4 : null;
+      } else if (action === 'sleeps-6') {
+        state.capacityMode = state.capacityMode === 'min' && state.capacityValue === 6 ? 'none' : 'min';
+        state.capacityValue = state.capacityMode === 'min' ? 6 : null;
+      } else if (action === 'sleeps-8') {
+        state.capacityMode = state.capacityMode === 'min' && state.capacityValue === 8 ? 'none' : 'min';
+        state.capacityValue = state.capacityMode === 'min' ? 8 : null;
+      } else if (action === 'sea-view') {
+        state.seaView = !state.seaView;
+      } else if (action === 'private-pool') {
+        state.pool = state.pool === 'private' ? null : 'private';
+      } else if (action === 'shared-pool') {
+        state.pool = state.pool === 'shared' ? null : 'shared';
+      } else if (action === 'no-pool') {
+        state.pool = state.pool === 'none' ? null : 'none';
+      } else if (action === 'bed-2') {
+        state.bedroomsMin = state.bedroomsMin === 2 ? null : 2;
+      } else if (action === 'bed-3') {
+        state.bedroomsMin = state.bedroomsMin === 3 ? null : 3;
+      }
+      
+      render();
+    });
+  });
+
+  // Bind clear
+  document.querySelector('[data-action="clear"]')?.addEventListener('click', () => {
+    state = { ...initialFilters, view: state.view };
+    render();
+  });
+
+  // Initial render
+  render();
 </script>

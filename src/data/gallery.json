@@ -1,67 +1,2121 @@
 {
   "argyro": [
-    { "src": "/images/houses/argyro/01.jpg", "alt": "House Argyro — traditional stone facade in Mavrikiano village", "isFeatured": true },
-    { "src": "/images/houses/argyro/02.jpg", "alt": "House Argyro — sea-view veranda on 1st floor", "isFeatured": false },
-    { "src": "/images/houses/argyro/03.jpg", "alt": "House Argyro — living room with vaulted ceiling", "isFeatured": false },
-    { "src": "/images/houses/argyro/04.jpg", "alt": "House Argyro — double bedroom with stone walls", "isFeatured": false }
-  ],
-  "leonidas": [
-    { "src": "/images/houses/leonidas/01.jpg", "alt": "House Leonidas — stone house with sea view, Mavrikiano", "isFeatured": true },
-    { "src": "/images/houses/leonidas/02.jpg", "alt": "House Leonidas — living area with traditional stone walls", "isFeatured": false },
-    { "src": "/images/houses/leonidas/03.jpg", "alt": "House Leonidas — main bedroom", "isFeatured": false },
-    { "src": "/images/houses/leonidas/04.jpg", "alt": "House Leonidas — sea-view terrace", "isFeatured": false }
-  ],
-  "margarita": [
-    { "src": "/images/houses/margarita/01.jpg", "alt": "House Margarita — traditional stone house with sea view, Mavrikiano", "isFeatured": true },
-    { "src": "/images/houses/margarita/02.jpg", "alt": "House Margarita — sea-view veranda on 1st floor", "isFeatured": false },
-    { "src": "/images/houses/margarita/03.jpg", "alt": "House Margarita — courtyard area", "isFeatured": false },
-    { "src": "/images/houses/margarita/04.jpg", "alt": "House Margarita — main bedroom", "isFeatured": false }
-  ],
-  "dimitra": [
-    { "src": "/images/houses/dimitra/01.jpg", "alt": "House Dimitra — stone house with shared pool garden", "isFeatured": true },
-    { "src": "/images/houses/dimitra/02.jpg", "alt": "House Dimitra — bright living area", "isFeatured": false },
-    { "src": "/images/houses/dimitra/03.jpg", "alt": "House Dimitra — double bedroom", "isFeatured": false },
-    { "src": "/images/houses/dimitra/04.jpg", "alt": "House Dimitra — shared pool terrace", "isFeatured": false }
-  ],
-  "penelope": [
-    { "src": "/images/houses/penelope/01.jpg", "alt": "House Penelope — garden terrace with shared pool", "isFeatured": true },
-    { "src": "/images/houses/penelope/02.jpg", "alt": "House Penelope — living and dining area", "isFeatured": false },
-    { "src": "/images/houses/penelope/03.jpg", "alt": "House Penelope — main bedroom", "isFeatured": false },
-    { "src": "/images/houses/penelope/04.jpg", "alt": "House Penelope — pool terrace with sun loungers", "isFeatured": false }
-  ],
-  "erato": [
-    { "src": "/images/houses/erato/01.jpg", "alt": "House Erato — sunken garden entrance in village lane", "isFeatured": true },
-    { "src": "/images/houses/erato/02.jpg", "alt": "House Erato — private pool and garden", "isFeatured": false },
-    { "src": "/images/houses/erato/03.jpg", "alt": "House Erato — bedroom with traditional decor", "isFeatured": false }
+    {
+      "src": "/images/houses/argyro/1024/argyro-entrance-exterior-01-1024.webp",
+      "srcset": "/images/houses/argyro/480/argyro-entrance-exterior-01-480.webp 480w, /images/houses/argyro/768/argyro-entrance-exterior-01-768.webp 768w, /images/houses/argyro/1024/argyro-entrance-exterior-01-1024.webp 1024w, /images/houses/argyro/1600/argyro-entrance-exterior-01-1600.webp 1600w",
+      "alt": "Argyro entrance exterior 01",
+      "isFeatured": true,
+      "tags": [
+        "exterior"
+      ]
+    },
+    {
+      "src": "/images/houses/argyro/1024/argyro-entrance-exterior-02-1024.webp",
+      "srcset": "/images/houses/argyro/480/argyro-entrance-exterior-02-480.webp 480w, /images/houses/argyro/768/argyro-entrance-exterior-02-768.webp 768w, /images/houses/argyro/1024/argyro-entrance-exterior-02-1024.webp 1024w, /images/houses/argyro/1600/argyro-entrance-exterior-02-1600.webp 1600w",
+      "alt": "Argyro entrance exterior 02",
+      "isFeatured": true,
+      "tags": [
+        "exterior"
+      ]
+    },
+    {
+      "src": "/images/houses/argyro/1024/argyro-hero-veranda-sea-view-01-1024.webp",
+      "srcset": "/images/houses/argyro/480/argyro-hero-veranda-sea-view-01-480.webp 480w, /images/houses/argyro/768/argyro-hero-veranda-sea-view-01-768.webp 768w, /images/houses/argyro/1024/argyro-hero-veranda-sea-view-01-1024.webp 1024w, /images/houses/argyro/1600/argyro-hero-veranda-sea-view-01-1600.webp 1600w, /images/houses/argyro/2400/argyro-hero-veranda-sea-view-01-2400.webp 2400w",
+      "alt": "Argyro hero veranda sea view 01",
+      "isFeatured": true,
+      "tags": [
+        "view",
+        "outdoor"
+      ]
+    },
+    {
+      "src": "/images/houses/argyro/1024/argyro-village-exterior-beeraki-01-1024.webp",
+      "srcset": "/images/houses/argyro/480/argyro-village-exterior-beeraki-01-480.webp 480w, /images/houses/argyro/768/argyro-village-exterior-beeraki-01-768.webp 768w, /images/houses/argyro/1024/argyro-village-exterior-beeraki-01-1024.webp 1024w, /images/houses/argyro/1600/argyro-village-exterior-beeraki-01-1600.webp 1600w",
+      "alt": "Argyro village exterior beeraki 01",
+      "isFeatured": true,
+      "tags": [
+        "exterior"
+      ]
+    },
+    {
+      "src": "/images/houses/argyro/768/leonidas-exterior-facade-01--768.webp",
+      "srcset": "/images/houses/argyro/480/leonidas-exterior-facade-01--480.webp 480w, /images/houses/argyro/768/leonidas-exterior-facade-01--768.webp 768w",
+      "alt": "Leonidas exterior facade 01",
+      "isFeatured": true,
+      "tags": [
+        "exterior"
+      ]
+    },
+    {
+      "src": "/images/houses/argyro/768/leonidas-hero-terrace-sea-view-01--768.webp",
+      "srcset": "/images/houses/argyro/480/leonidas-hero-terrace-sea-view-01--480.webp 480w, /images/houses/argyro/768/leonidas-hero-terrace-sea-view-01--768.webp 768w",
+      "alt": "Leonidas hero terrace sea view 01",
+      "isFeatured": true,
+      "tags": [
+        "view",
+        "outdoor"
+      ]
+    },
+    {
+      "src": "/images/houses/argyro/1024/argyro-bathroom-01-1024.webp",
+      "srcset": "/images/houses/argyro/480/argyro-bathroom-01-480.webp 480w, /images/houses/argyro/768/argyro-bathroom-01-768.webp 768w, /images/houses/argyro/1024/argyro-bathroom-01-1024.webp 1024w, /images/houses/argyro/1600/argyro-bathroom-01-1600.webp 1600w",
+      "alt": "Argyro bathroom 01",
+      "isFeatured": false,
+      "tags": [
+        "bathroom"
+      ]
+    },
+    {
+      "src": "/images/houses/argyro/1024/argyro-bathroom-02-1024.webp",
+      "srcset": "/images/houses/argyro/480/argyro-bathroom-02-480.webp 480w, /images/houses/argyro/768/argyro-bathroom-02-768.webp 768w, /images/houses/argyro/1024/argyro-bathroom-02-1024.webp 1024w, /images/houses/argyro/1600/argyro-bathroom-02-1600.webp 1600w",
+      "alt": "Argyro bathroom 02",
+      "isFeatured": false,
+      "tags": [
+        "bathroom"
+      ]
+    },
+    {
+      "src": "/images/houses/argyro/1024/argyro-bathroom-door-detail-01-1024.webp",
+      "srcset": "/images/houses/argyro/480/argyro-bathroom-door-detail-01-480.webp 480w, /images/houses/argyro/768/argyro-bathroom-door-detail-01-768.webp 768w, /images/houses/argyro/1024/argyro-bathroom-door-detail-01-1024.webp 1024w, /images/houses/argyro/1600/argyro-bathroom-door-detail-01-1600.webp 1600w",
+      "alt": "Argyro bathroom door detail 01",
+      "isFeatured": false,
+      "tags": [
+        "bathroom"
+      ]
+    },
+    {
+      "src": "/images/houses/argyro/1024/argyro-bedroom-01-1024.webp",
+      "srcset": "/images/houses/argyro/480/argyro-bedroom-01-480.webp 480w, /images/houses/argyro/768/argyro-bedroom-01-768.webp 768w, /images/houses/argyro/1024/argyro-bedroom-01-1024.webp 1024w, /images/houses/argyro/1600/argyro-bedroom-01-1600.webp 1600w",
+      "alt": "Argyro bedroom 01",
+      "isFeatured": false,
+      "tags": [
+        "bedroom"
+      ]
+    },
+    {
+      "src": "/images/houses/argyro/1024/argyro-bedroom-03-1024.webp",
+      "srcset": "/images/houses/argyro/480/argyro-bedroom-03-480.webp 480w, /images/houses/argyro/768/argyro-bedroom-03-768.webp 768w, /images/houses/argyro/1024/argyro-bedroom-03-1024.webp 1024w, /images/houses/argyro/1600/argyro-bedroom-03-1600.webp 1600w",
+      "alt": "Argyro bedroom 03",
+      "isFeatured": false,
+      "tags": [
+        "bedroom"
+      ]
+    },
+    {
+      "src": "/images/houses/argyro/1024/argyro-bedroom-arched-ceiling-01-1024.webp",
+      "srcset": "/images/houses/argyro/480/argyro-bedroom-arched-ceiling-01-480.webp 480w, /images/houses/argyro/768/argyro-bedroom-arched-ceiling-01-768.webp 768w, /images/houses/argyro/1024/argyro-bedroom-arched-ceiling-01-1024.webp 1024w, /images/houses/argyro/1600/argyro-bedroom-arched-ceiling-01-1600.webp 1600w",
+      "alt": "Argyro bedroom arched ceiling 01",
+      "isFeatured": false,
+      "tags": [
+        "bedroom"
+      ]
+    },
+    {
+      "src": "/images/houses/argyro/1024/argyro-bedroom-sea-view-02-1024.webp",
+      "srcset": "/images/houses/argyro/480/argyro-bedroom-sea-view-02-480.webp 480w, /images/houses/argyro/768/argyro-bedroom-sea-view-02-768.webp 768w, /images/houses/argyro/1024/argyro-bedroom-sea-view-02-1024.webp 1024w, /images/houses/argyro/1600/argyro-bedroom-sea-view-02-1600.webp 1600w",
+      "alt": "Argyro bedroom sea view 02",
+      "isFeatured": false,
+      "tags": [
+        "view",
+        "bedroom"
+      ]
+    },
+    {
+      "src": "/images/houses/argyro/1024/argyro-bedroom-stone-stairs-01-1024.webp",
+      "srcset": "/images/houses/argyro/480/argyro-bedroom-stone-stairs-01-480.webp 480w, /images/houses/argyro/768/argyro-bedroom-stone-stairs-01-768.webp 768w, /images/houses/argyro/1024/argyro-bedroom-stone-stairs-01-1024.webp 1024w, /images/houses/argyro/1600/argyro-bedroom-stone-stairs-01-1600.webp 1600w",
+      "alt": "Argyro bedroom stone stairs 01",
+      "isFeatured": false,
+      "tags": [
+        "bedroom",
+        "exterior"
+      ]
+    },
+    {
+      "src": "/images/houses/argyro/1024/argyro-bedroom-stone-stairs-02-1024.webp",
+      "srcset": "/images/houses/argyro/480/argyro-bedroom-stone-stairs-02-480.webp 480w, /images/houses/argyro/768/argyro-bedroom-stone-stairs-02-768.webp 768w, /images/houses/argyro/1024/argyro-bedroom-stone-stairs-02-1024.webp 1024w, /images/houses/argyro/1600/argyro-bedroom-stone-stairs-02-1600.webp 1600w",
+      "alt": "Argyro bedroom stone stairs 02",
+      "isFeatured": false,
+      "tags": [
+        "bedroom",
+        "exterior"
+      ]
+    },
+    {
+      "src": "/images/houses/argyro/1024/argyro-kitchen-01-1024.webp",
+      "srcset": "/images/houses/argyro/480/argyro-kitchen-01-480.webp 480w, /images/houses/argyro/768/argyro-kitchen-01-768.webp 768w, /images/houses/argyro/1024/argyro-kitchen-01-1024.webp 1024w, /images/houses/argyro/1600/argyro-kitchen-01-1600.webp 1600w",
+      "alt": "Argyro kitchen 01",
+      "isFeatured": false,
+      "tags": [
+        "kitchen"
+      ]
+    },
+    {
+      "src": "/images/houses/argyro/1024/argyro-kitchen-02-1024.webp",
+      "srcset": "/images/houses/argyro/480/argyro-kitchen-02-480.webp 480w, /images/houses/argyro/768/argyro-kitchen-02-768.webp 768w, /images/houses/argyro/1024/argyro-kitchen-02-1024.webp 1024w, /images/houses/argyro/1600/argyro-kitchen-02-1600.webp 1600w",
+      "alt": "Argyro kitchen 02",
+      "isFeatured": false,
+      "tags": [
+        "kitchen"
+      ]
+    },
+    {
+      "src": "/images/houses/argyro/1024/argyro-kitchen-living-open-plan-01-1024.webp",
+      "srcset": "/images/houses/argyro/480/argyro-kitchen-living-open-plan-01-480.webp 480w, /images/houses/argyro/768/argyro-kitchen-living-open-plan-01-768.webp 768w, /images/houses/argyro/1024/argyro-kitchen-living-open-plan-01-1024.webp 1024w, /images/houses/argyro/1600/argyro-kitchen-living-open-plan-01-1600.webp 1600w",
+      "alt": "Argyro kitchen living open plan 01",
+      "isFeatured": false,
+      "tags": [
+        "living-area",
+        "kitchen"
+      ]
+    },
+    {
+      "src": "/images/houses/argyro/1024/argyro-living-room-arched-ceiling-01-1024.webp",
+      "srcset": "/images/houses/argyro/480/argyro-living-room-arched-ceiling-01-480.webp 480w, /images/houses/argyro/768/argyro-living-room-arched-ceiling-01-768.webp 768w, /images/houses/argyro/1024/argyro-living-room-arched-ceiling-01-1024.webp 1024w, /images/houses/argyro/1600/argyro-living-room-arched-ceiling-01-1600.webp 1600w",
+      "alt": "Argyro living room arched ceiling 01",
+      "isFeatured": false,
+      "tags": [
+        "living-area"
+      ]
+    },
+    {
+      "src": "/images/houses/argyro/1024/argyro-living-room-fireplace-01-1024.webp",
+      "srcset": "/images/houses/argyro/480/argyro-living-room-fireplace-01-480.webp 480w, /images/houses/argyro/768/argyro-living-room-fireplace-01-768.webp 768w, /images/houses/argyro/1024/argyro-living-room-fireplace-01-1024.webp 1024w, /images/houses/argyro/1600/argyro-living-room-fireplace-01-1600.webp 1600w",
+      "alt": "Argyro living room fireplace 01",
+      "isFeatured": false,
+      "tags": [
+        "living-area"
+      ]
+    },
+    {
+      "src": "/images/houses/argyro/1024/argyro-living-room-fireplace-02-1024.webp",
+      "srcset": "/images/houses/argyro/480/argyro-living-room-fireplace-02-480.webp 480w, /images/houses/argyro/768/argyro-living-room-fireplace-02-768.webp 768w, /images/houses/argyro/1024/argyro-living-room-fireplace-02-1024.webp 1024w, /images/houses/argyro/1600/argyro-living-room-fireplace-02-1600.webp 1600w",
+      "alt": "Argyro living room fireplace 02",
+      "isFeatured": false,
+      "tags": [
+        "living-area"
+      ]
+    },
+    {
+      "src": "/images/houses/argyro/1024/argyro-living-room-seating-01-1024.webp",
+      "srcset": "/images/houses/argyro/480/argyro-living-room-seating-01-480.webp 480w, /images/houses/argyro/768/argyro-living-room-seating-01-768.webp 768w, /images/houses/argyro/1024/argyro-living-room-seating-01-1024.webp 1024w, /images/houses/argyro/1600/argyro-living-room-seating-01-1600.webp 1600w",
+      "alt": "Argyro living room seating 01",
+      "isFeatured": false,
+      "tags": [
+        "view",
+        "living-area"
+      ]
+    },
+    {
+      "src": "/images/houses/argyro/1024/argyro-living-room-stone-stairs-01-1024.webp",
+      "srcset": "/images/houses/argyro/480/argyro-living-room-stone-stairs-01-480.webp 480w, /images/houses/argyro/768/argyro-living-room-stone-stairs-01-768.webp 768w, /images/houses/argyro/1024/argyro-living-room-stone-stairs-01-1024.webp 1024w, /images/houses/argyro/1600/argyro-living-room-stone-stairs-01-1600.webp 1600w",
+      "alt": "Argyro living room stone stairs 01",
+      "isFeatured": false,
+      "tags": [
+        "living-area",
+        "exterior"
+      ]
+    },
+    {
+      "src": "/images/houses/argyro/1024/argyro-master-bedroom-01-1024.webp",
+      "srcset": "/images/houses/argyro/480/argyro-master-bedroom-01-480.webp 480w, /images/houses/argyro/768/argyro-master-bedroom-01-768.webp 768w, /images/houses/argyro/1024/argyro-master-bedroom-01-1024.webp 1024w, /images/houses/argyro/1600/argyro-master-bedroom-01-1600.webp 1600w",
+      "alt": "Argyro master bedroom 01",
+      "isFeatured": false,
+      "tags": [
+        "bedroom"
+      ]
+    },
+    {
+      "src": "/images/houses/argyro/1024/argyro-master-bedroom-veranda-view-01-1024.webp",
+      "srcset": "/images/houses/argyro/480/argyro-master-bedroom-veranda-view-01-480.webp 480w, /images/houses/argyro/768/argyro-master-bedroom-veranda-view-01-768.webp 768w, /images/houses/argyro/1024/argyro-master-bedroom-veranda-view-01-1024.webp 1024w, /images/houses/argyro/1600/argyro-master-bedroom-veranda-view-01-1600.webp 1600w",
+      "alt": "Argyro master bedroom veranda view 01",
+      "isFeatured": false,
+      "tags": [
+        "view",
+        "bedroom",
+        "outdoor"
+      ]
+    },
+    {
+      "src": "/images/houses/argyro/1024/argyro-master-bedroom-veranda-view-02-1024.webp",
+      "srcset": "/images/houses/argyro/480/argyro-master-bedroom-veranda-view-02-480.webp 480w, /images/houses/argyro/768/argyro-master-bedroom-veranda-view-02-768.webp 768w, /images/houses/argyro/1024/argyro-master-bedroom-veranda-view-02-1024.webp 1024w, /images/houses/argyro/1600/argyro-master-bedroom-veranda-view-02-1600.webp 1600w",
+      "alt": "Argyro master bedroom veranda view 02",
+      "isFeatured": false,
+      "tags": [
+        "view",
+        "bedroom",
+        "outdoor"
+      ]
+    },
+    {
+      "src": "/images/houses/argyro/1024/argyro-master-bedroom-veranda-view-03-1024.webp",
+      "srcset": "/images/houses/argyro/480/argyro-master-bedroom-veranda-view-03-480.webp 480w, /images/houses/argyro/768/argyro-master-bedroom-veranda-view-03-768.webp 768w, /images/houses/argyro/1024/argyro-master-bedroom-veranda-view-03-1024.webp 1024w, /images/houses/argyro/1600/argyro-master-bedroom-veranda-view-03-1600.webp 1600w",
+      "alt": "Argyro master bedroom veranda view 03",
+      "isFeatured": false,
+      "tags": [
+        "view",
+        "bedroom",
+        "outdoor"
+      ]
+    },
+    {
+      "src": "/images/houses/argyro/1024/argyro-veranda-dining-01-1024.webp",
+      "srcset": "/images/houses/argyro/480/argyro-veranda-dining-01-480.webp 480w, /images/houses/argyro/768/argyro-veranda-dining-01-768.webp 768w, /images/houses/argyro/1024/argyro-veranda-dining-01-1024.webp 1024w, /images/houses/argyro/1600/argyro-veranda-dining-01-1600.webp 1600w",
+      "alt": "Argyro veranda dining 01",
+      "isFeatured": false,
+      "tags": [
+        "living-area",
+        "outdoor"
+      ]
+    },
+    {
+      "src": "/images/houses/argyro/1024/argyro-veranda-dining-02-1024.webp",
+      "srcset": "/images/houses/argyro/480/argyro-veranda-dining-02-480.webp 480w, /images/houses/argyro/768/argyro-veranda-dining-02-768.webp 768w, /images/houses/argyro/1024/argyro-veranda-dining-02-1024.webp 1024w, /images/houses/argyro/1600/argyro-veranda-dining-02-1600.webp 1600w",
+      "alt": "Argyro veranda dining 02",
+      "isFeatured": false,
+      "tags": [
+        "living-area",
+        "outdoor"
+      ]
+    },
+    {
+      "src": "/images/houses/argyro/1024/argyro-veranda-dining-sea-view-03-1024.webp",
+      "srcset": "/images/houses/argyro/480/argyro-veranda-dining-sea-view-03-480.webp 480w, /images/houses/argyro/768/argyro-veranda-dining-sea-view-03-768.webp 768w, /images/houses/argyro/1024/argyro-veranda-dining-sea-view-03-1024.webp 1024w, /images/houses/argyro/1600/argyro-veranda-dining-sea-view-03-1600.webp 1600w",
+      "alt": "Argyro veranda dining sea view 03",
+      "isFeatured": false,
+      "tags": [
+        "view",
+        "living-area",
+        "outdoor"
+      ]
+    },
+    {
+      "src": "/images/houses/argyro/1024/argyro-veranda-sea-view-02-1024.webp",
+      "srcset": "/images/houses/argyro/480/argyro-veranda-sea-view-02-480.webp 480w, /images/houses/argyro/768/argyro-veranda-sea-view-02-768.webp 768w, /images/houses/argyro/1024/argyro-veranda-sea-view-02-1024.webp 1024w, /images/houses/argyro/1600/argyro-veranda-sea-view-02-1600.webp 1600w",
+      "alt": "Argyro veranda sea view 02",
+      "isFeatured": false,
+      "tags": [
+        "view",
+        "outdoor"
+      ]
+    },
+    {
+      "src": "/images/houses/argyro/1024/argyro-veranda-sea-view-03-1024.webp",
+      "srcset": "/images/houses/argyro/480/argyro-veranda-sea-view-03-480.webp 480w, /images/houses/argyro/768/argyro-veranda-sea-view-03-768.webp 768w, /images/houses/argyro/1024/argyro-veranda-sea-view-03-1024.webp 1024w, /images/houses/argyro/1600/argyro-veranda-sea-view-03-1600.webp 1600w",
+      "alt": "Argyro veranda sea view 03",
+      "isFeatured": false,
+      "tags": [
+        "view",
+        "outdoor"
+      ]
+    },
+    {
+      "src": "/images/houses/argyro/1024/argyro-view-sea-01-1024.webp",
+      "srcset": "/images/houses/argyro/480/argyro-view-sea-01-480.webp 480w, /images/houses/argyro/768/argyro-view-sea-01-768.webp 768w, /images/houses/argyro/1024/argyro-view-sea-01-1024.webp 1024w, /images/houses/argyro/1600/argyro-view-sea-01-1600.webp 1600w",
+      "alt": "Argyro view sea 01",
+      "isFeatured": false,
+      "tags": [
+        "view"
+      ]
+    },
+    {
+      "src": "/images/houses/argyro/768/leonidas-bathroom-01--512.webp",
+      "srcset": "/images/houses/argyro/480/leonidas-bathroom-01--320.webp 480w, /images/houses/argyro/768/leonidas-bathroom-01--512.webp 768w",
+      "alt": "Leonidas bathroom 01",
+      "isFeatured": false,
+      "tags": [
+        "bathroom"
+      ]
+    },
+    {
+      "src": "/images/houses/argyro/768/leonidas-bedroom-01--574.webp",
+      "srcset": "/images/houses/argyro/480/leonidas-bedroom-01--359.webp 480w, /images/houses/argyro/768/leonidas-bedroom-01--574.webp 768w",
+      "alt": "Leonidas bedroom 01",
+      "isFeatured": false,
+      "tags": [
+        "bedroom"
+      ]
+    },
+    {
+      "src": "/images/houses/argyro/768/leonidas-bedroom-02--574.webp",
+      "srcset": "/images/houses/argyro/480/leonidas-bedroom-02--359.webp 480w, /images/houses/argyro/768/leonidas-bedroom-02--574.webp 768w",
+      "alt": "Leonidas bedroom 02",
+      "isFeatured": false,
+      "tags": [
+        "bedroom"
+      ]
+    },
+    {
+      "src": "/images/houses/argyro/768/leonidas-bedroom-canopy-01--768.webp",
+      "srcset": "/images/houses/argyro/480/leonidas-bedroom-canopy-01--480.webp 480w, /images/houses/argyro/768/leonidas-bedroom-canopy-01--768.webp 768w",
+      "alt": "Leonidas bedroom canopy 01",
+      "isFeatured": false,
+      "tags": [
+        "bedroom"
+      ]
+    },
+    {
+      "src": "/images/houses/argyro/768/leonidas-kitchen-open-plan-01--768.webp",
+      "srcset": "/images/houses/argyro/480/leonidas-kitchen-open-plan-01--480.webp 480w, /images/houses/argyro/768/leonidas-kitchen-open-plan-01--768.webp 768w",
+      "alt": "Leonidas kitchen open plan 01",
+      "isFeatured": false,
+      "tags": [
+        "kitchen"
+      ]
+    },
+    {
+      "src": "/images/houses/argyro/768/leonidas-living-room-02--768.webp",
+      "srcset": "/images/houses/argyro/480/leonidas-living-room-02--480.webp 480w, /images/houses/argyro/768/leonidas-living-room-02--768.webp 768w",
+      "alt": "Leonidas living room 02",
+      "isFeatured": false,
+      "tags": [
+        "living-area"
+      ]
+    },
+    {
+      "src": "/images/houses/argyro/768/leonidas-living-room-wide-01--768.webp",
+      "srcset": "/images/houses/argyro/480/leonidas-living-room-wide-01--480.webp 480w, /images/houses/argyro/768/leonidas-living-room-wide-01--768.webp 768w",
+      "alt": "Leonidas living room wide 01",
+      "isFeatured": false,
+      "tags": [
+        "living-area"
+      ]
+    },
+    {
+      "src": "/images/houses/argyro/768/leonidas-master-bedroom-arched-ceiling-01--768.webp",
+      "srcset": "/images/houses/argyro/480/leonidas-master-bedroom-arched-ceiling-01--480.webp 480w, /images/houses/argyro/768/leonidas-master-bedroom-arched-ceiling-01--768.webp 768w",
+      "alt": "Leonidas master bedroom arched ceiling 01",
+      "isFeatured": false,
+      "tags": [
+        "bedroom"
+      ]
+    },
+    {
+      "src": "/images/houses/argyro/768/leonidas-master-bedroom-sea-vew-01--768.webp",
+      "srcset": "/images/houses/argyro/480/leonidas-master-bedroom-sea-vew-01--480.webp 480w, /images/houses/argyro/768/leonidas-master-bedroom-sea-vew-01--768.webp 768w",
+      "alt": "Leonidas master bedroom sea vew 01",
+      "isFeatured": false,
+      "tags": [
+        "view",
+        "bedroom"
+      ]
+    },
+    {
+      "src": "/images/houses/argyro/768/leonidas-village-lane-01--768.webp",
+      "srcset": "/images/houses/argyro/480/leonidas-village-lane-01--480.webp 480w, /images/houses/argyro/768/leonidas-village-lane-01--768.webp 768w",
+      "alt": "Leonidas village lane 01",
+      "isFeatured": false,
+      "tags": [
+        "exterior"
+      ]
+    }
   ],
   "clio": [
-    { "src": "/images/houses/clio/01.jpg", "alt": "House Clio — traditional stone house with olive grove view", "isFeatured": true },
-    { "src": "/images/houses/clio/02.jpg", "alt": "House Clio — garden terrace", "isFeatured": false },
-    { "src": "/images/houses/clio/03.jpg", "alt": "House Clio — living area", "isFeatured": false },
-    { "src": "/images/houses/clio/04.jpg", "alt": "House Clio — bedroom", "isFeatured": false }
+    {
+      "src": "/images/houses/clio/1024/clio-hero-interior-balcony-view-01%20-1024.webp",
+      "srcset": "/images/houses/clio/480/clio-hero-interior-balcony-view-01%20-480.webp 480w, /images/houses/clio/768/clio-hero-interior-balcony-view-01%20-768.webp 768w, /images/houses/clio/1024/clio-hero-interior-balcony-view-01%20-1024.webp 1024w, /images/houses/clio/1600/clio-hero-interior-balcony-view-01%20-1600.webp 1600w, /images/houses/clio/2400/clio-hero-interior-balcony-view-01%20-2400.webp 2400w",
+      "alt": "Clio hero interior balcony view 01 ",
+      "isFeatured": true,
+      "tags": [
+        "view"
+      ]
+    },
+    {
+      "src": "/images/houses/clio/1024/clio-balcony-view%20-01-1024.webp",
+      "srcset": "/images/houses/clio/480/clio-balcony-view%20-01-480.webp 480w, /images/houses/clio/768/clio-balcony-view%20-01-768.webp 768w, /images/houses/clio/1024/clio-balcony-view%20-01-1024.webp 1024w, /images/houses/clio/1600/clio-balcony-view%20-01-1600.webp 1600w",
+      "alt": "Clio balcony view  01",
+      "isFeatured": false,
+      "tags": [
+        "view"
+      ]
+    },
+    {
+      "src": "/images/houses/clio/1024/clio-bathroom-01-1024.webp",
+      "srcset": "/images/houses/clio/480/clio-bathroom-01-480.webp 480w, /images/houses/clio/768/clio-bathroom-01-768.webp 768w, /images/houses/clio/1024/clio-bathroom-01-1024.webp 1024w, /images/houses/clio/1600/clio-bathroom-01-1600.webp 1600w",
+      "alt": "Clio bathroom 01",
+      "isFeatured": false,
+      "tags": [
+        "bathroom"
+      ]
+    },
+    {
+      "src": "/images/houses/clio/1024/clio-bedroom-01%20-1024.webp",
+      "srcset": "/images/houses/clio/480/clio-bedroom-01%20-480.webp 480w, /images/houses/clio/768/clio-bedroom-01%20-768.webp 768w, /images/houses/clio/1024/clio-bedroom-01%20-1024.webp 1024w, /images/houses/clio/1600/clio-bedroom-01%20-1600.webp 1600w",
+      "alt": "Clio bedroom 01 ",
+      "isFeatured": false,
+      "tags": [
+        "bedroom"
+      ]
+    },
+    {
+      "src": "/images/houses/clio/1024/clio-kitchen-01-1024.webp",
+      "srcset": "/images/houses/clio/480/clio-kitchen-01-480.webp 480w, /images/houses/clio/768/clio-kitchen-01-768.webp 768w, /images/houses/clio/1024/clio-kitchen-01-1024.webp 1024w, /images/houses/clio/1600/clio-kitchen-01-1600.webp 1600w",
+      "alt": "Clio kitchen 01",
+      "isFeatured": false,
+      "tags": [
+        "kitchen"
+      ]
+    },
+    {
+      "src": "/images/houses/clio/1024/clio-kitchen-living-01%20-1024.webp",
+      "srcset": "/images/houses/clio/480/clio-kitchen-living-01%20-480.webp 480w, /images/houses/clio/768/clio-kitchen-living-01%20-768.webp 768w, /images/houses/clio/1024/clio-kitchen-living-01%20-1024.webp 1024w, /images/houses/clio/1600/clio-kitchen-living-01%20-1600.webp 1600w",
+      "alt": "Clio kitchen living 01 ",
+      "isFeatured": false,
+      "tags": [
+        "living-area",
+        "kitchen"
+      ]
+    },
+    {
+      "src": "/images/houses/clio/1024/clio-living-room-01-1024.webp",
+      "srcset": "/images/houses/clio/480/clio-living-room-01-480.webp 480w, /images/houses/clio/768/clio-living-room-01-768.webp 768w, /images/houses/clio/1024/clio-living-room-01-1024.webp 1024w, /images/houses/clio/1600/clio-living-room-01-1600.webp 1600w",
+      "alt": "Clio living room 01",
+      "isFeatured": false,
+      "tags": [
+        "living-area"
+      ]
+    },
+    {
+      "src": "/images/houses/clio/1024/clio-master-bedroom-01-1024.webp",
+      "srcset": "/images/houses/clio/480/clio-master-bedroom-01-480.webp 480w, /images/houses/clio/768/clio-master-bedroom-01-768.webp 768w, /images/houses/clio/1024/clio-master-bedroom-01-1024.webp 1024w, /images/houses/clio/1600/clio-master-bedroom-01-1600.webp 1600w",
+      "alt": "Clio master bedroom 01",
+      "isFeatured": false,
+      "tags": [
+        "bedroom"
+      ]
+    }
+  ],
+  "demetra": [
+    {
+      "src": "/images/houses/demetra/1024/demetra-hero-shared-pool-01-1024.webp",
+      "srcset": "/images/houses/demetra/480/demetra-hero-shared-pool-01-480.webp 480w, /images/houses/demetra/768/demetra-hero-shared-pool-01-768.webp 768w, /images/houses/demetra/1024/demetra-hero-shared-pool-01-1024.webp 1024w, /images/houses/demetra/1600/demetra-hero-shared-pool-01-1600.webp 1600w, /images/houses/demetra/2400/demetra-hero-shared-pool-01-2400.webp 2400w",
+      "alt": "Demetra hero shared pool 01",
+      "isFeatured": true,
+      "tags": [
+        "pool"
+      ]
+    },
+    {
+      "src": "/images/houses/demetra/1024/demetra-arched-doorway-01-1024.webp",
+      "srcset": "/images/houses/demetra/480/demetra-arched-doorway-01-480.webp 480w, /images/houses/demetra/768/demetra-arched-doorway-01-768.webp 768w, /images/houses/demetra/1024/demetra-arched-doorway-01-1024.webp 1024w, /images/houses/demetra/1600/demetra-arched-doorway-01-1600.webp 1600w",
+      "alt": "Demetra arched doorway 01",
+      "isFeatured": false,
+      "tags": [
+        "interior"
+      ]
+    },
+    {
+      "src": "/images/houses/demetra/1024/demetra-bathroom-01-1024.webp",
+      "srcset": "/images/houses/demetra/480/demetra-bathroom-01-480.webp 480w, /images/houses/demetra/768/demetra-bathroom-01-768.webp 768w, /images/houses/demetra/1024/demetra-bathroom-01-1024.webp 1024w, /images/houses/demetra/1600/demetra-bathroom-01-1600.webp 1600w",
+      "alt": "Demetra bathroom 01",
+      "isFeatured": false,
+      "tags": [
+        "bathroom"
+      ]
+    },
+    {
+      "src": "/images/houses/demetra/1024/demetra-bedroom-01-1024.webp",
+      "srcset": "/images/houses/demetra/480/demetra-bedroom-01-480.webp 480w, /images/houses/demetra/768/demetra-bedroom-01-768.webp 768w, /images/houses/demetra/1024/demetra-bedroom-01-1024.webp 1024w, /images/houses/demetra/1600/demetra-bedroom-01-1600.webp 1600w",
+      "alt": "Demetra bedroom 01",
+      "isFeatured": false,
+      "tags": [
+        "bedroom"
+      ]
+    },
+    {
+      "src": "/images/houses/demetra/1024/demetra-bedroom-twin-beds-01-1024.webp",
+      "srcset": "/images/houses/demetra/480/demetra-bedroom-twin-beds-01-480.webp 480w, /images/houses/demetra/768/demetra-bedroom-twin-beds-01-768.webp 768w, /images/houses/demetra/1024/demetra-bedroom-twin-beds-01-1024.webp 1024w, /images/houses/demetra/1600/demetra-bedroom-twin-beds-01-1600.webp 1600w",
+      "alt": "Demetra bedroom twin beds 01",
+      "isFeatured": false,
+      "tags": [
+        "bedroom"
+      ]
+    },
+    {
+      "src": "/images/houses/demetra/1024/demetra-courtyard-terrace-01-1024.webp",
+      "srcset": "/images/houses/demetra/480/demetra-courtyard-terrace-01-480.webp 480w, /images/houses/demetra/768/demetra-courtyard-terrace-01-768.webp 768w, /images/houses/demetra/1024/demetra-courtyard-terrace-01-1024.webp 1024w, /images/houses/demetra/1600/demetra-courtyard-terrace-01-1600.webp 1600w",
+      "alt": "Demetra courtyard terrace 01",
+      "isFeatured": false,
+      "tags": [
+        "outdoor"
+      ]
+    },
+    {
+      "src": "/images/houses/demetra/1024/demetra-courtyard-terrace-02-1024.webp",
+      "srcset": "/images/houses/demetra/480/demetra-courtyard-terrace-02-480.webp 480w, /images/houses/demetra/768/demetra-courtyard-terrace-02-768.webp 768w, /images/houses/demetra/1024/demetra-courtyard-terrace-02-1024.webp 1024w, /images/houses/demetra/1600/demetra-courtyard-terrace-02-1600.webp 1600w",
+      "alt": "Demetra courtyard terrace 02",
+      "isFeatured": false,
+      "tags": [
+        "outdoor"
+      ]
+    },
+    {
+      "src": "/images/houses/demetra/1024/demetra-kitchen-01-1024.webp",
+      "srcset": "/images/houses/demetra/480/demetra-kitchen-01-480.webp 480w, /images/houses/demetra/768/demetra-kitchen-01-768.webp 768w, /images/houses/demetra/1024/demetra-kitchen-01-1024.webp 1024w, /images/houses/demetra/1600/demetra-kitchen-01-1600.webp 1600w",
+      "alt": "Demetra kitchen 01",
+      "isFeatured": false,
+      "tags": [
+        "kitchen"
+      ]
+    },
+    {
+      "src": "/images/houses/demetra/1024/demetra-kitchen-approach-01-1024.webp",
+      "srcset": "/images/houses/demetra/480/demetra-kitchen-approach-01-480.webp 480w, /images/houses/demetra/768/demetra-kitchen-approach-01-768.webp 768w, /images/houses/demetra/1024/demetra-kitchen-approach-01-1024.webp 1024w, /images/houses/demetra/1600/demetra-kitchen-approach-01-1600.webp 1600w",
+      "alt": "Demetra kitchen approach 01",
+      "isFeatured": false,
+      "tags": [
+        "kitchen"
+      ]
+    },
+    {
+      "src": "/images/houses/demetra/1024/demetra-living-room-01-1024.webp",
+      "srcset": "/images/houses/demetra/480/demetra-living-room-01-480.webp 480w, /images/houses/demetra/768/demetra-living-room-01-768.webp 768w, /images/houses/demetra/1024/demetra-living-room-01-1024.webp 1024w, /images/houses/demetra/1600/demetra-living-room-01-1600.webp 1600w",
+      "alt": "Demetra living room 01",
+      "isFeatured": false,
+      "tags": [
+        "living-area"
+      ]
+    },
+    {
+      "src": "/images/houses/demetra/1024/demetra-living-room-wide-01-1024.webp",
+      "srcset": "/images/houses/demetra/480/demetra-living-room-wide-01-480.webp 480w, /images/houses/demetra/768/demetra-living-room-wide-01-768.webp 768w, /images/houses/demetra/1024/demetra-living-room-wide-01-1024.webp 1024w, /images/houses/demetra/1600/demetra-living-room-wide-01-1600.webp 1600w",
+      "alt": "Demetra living room wide 01",
+      "isFeatured": false,
+      "tags": [
+        "living-area"
+      ]
+    },
+    {
+      "src": "/images/houses/demetra/1024/demetra-room-to-pool-01-1024.webp",
+      "srcset": "/images/houses/demetra/480/demetra-room-to-pool-01-480.webp 480w, /images/houses/demetra/768/demetra-room-to-pool-01-768.webp 768w, /images/houses/demetra/1024/demetra-room-to-pool-01-1024.webp 1024w, /images/houses/demetra/1600/demetra-room-to-pool-01-1600.webp 1600w",
+      "alt": "Demetra room to pool 01",
+      "isFeatured": false,
+      "tags": [
+        "pool"
+      ]
+    },
+    {
+      "src": "/images/houses/demetra/1024/demetra-shared-pool-context-01-1024.webp",
+      "srcset": "/images/houses/demetra/480/demetra-shared-pool-context-01-480.webp 480w, /images/houses/demetra/768/demetra-shared-pool-context-01-768.webp 768w, /images/houses/demetra/1024/demetra-shared-pool-context-01-1024.webp 1024w, /images/houses/demetra/1600/demetra-shared-pool-context-01-1600.webp 1600w",
+      "alt": "Demetra shared pool context 01",
+      "isFeatured": false,
+      "tags": [
+        "pool"
+      ]
+    },
+    {
+      "src": "/images/houses/demetra/1024/demetra-shared-pool-long-view-01-1024.webp",
+      "srcset": "/images/houses/demetra/480/demetra-shared-pool-long-view-01-480.webp 480w, /images/houses/demetra/768/demetra-shared-pool-long-view-01-768.webp 768w, /images/houses/demetra/1024/demetra-shared-pool-long-view-01-1024.webp 1024w, /images/houses/demetra/1600/demetra-shared-pool-long-view-01-1600.webp 1600w",
+      "alt": "Demetra shared pool long view 01",
+      "isFeatured": false,
+      "tags": [
+        "pool",
+        "view"
+      ]
+    },
+    {
+      "src": "/images/houses/demetra/1024/demetra-shared-pool-wide-01-1024.webp",
+      "srcset": "/images/houses/demetra/480/demetra-shared-pool-wide-01-480.webp 480w, /images/houses/demetra/768/demetra-shared-pool-wide-01-768.webp 768w, /images/houses/demetra/1024/demetra-shared-pool-wide-01-1024.webp 1024w, /images/houses/demetra/1600/demetra-shared-pool-wide-01-1600.webp 1600w",
+      "alt": "Demetra shared pool wide 01",
+      "isFeatured": false,
+      "tags": [
+        "pool"
+      ]
+    },
+    {
+      "src": "/images/houses/demetra/1024/demetra-shared-poolside-seating-01-1024.webp",
+      "srcset": "/images/houses/demetra/480/demetra-shared-poolside-seating-01-480.webp 480w, /images/houses/demetra/768/demetra-shared-poolside-seating-01-768.webp 768w, /images/houses/demetra/1024/demetra-shared-poolside-seating-01-1024.webp 1024w, /images/houses/demetra/1600/demetra-shared-poolside-seating-01-1600.webp 1600w",
+      "alt": "Demetra shared poolside seating 01",
+      "isFeatured": false,
+      "tags": [
+        "pool",
+        "view"
+      ]
+    },
+    {
+      "src": "/images/houses/demetra/1024/demetra-terrace-doorway-01-1024.webp",
+      "srcset": "/images/houses/demetra/480/demetra-terrace-doorway-01-480.webp 480w, /images/houses/demetra/768/demetra-terrace-doorway-01-768.webp 768w, /images/houses/demetra/1024/demetra-terrace-doorway-01-1024.webp 1024w, /images/houses/demetra/1600/demetra-terrace-doorway-01-1600.webp 1600w",
+      "alt": "Demetra terrace doorway 01",
+      "isFeatured": false,
+      "tags": [
+        "outdoor"
+      ]
+    },
+    {
+      "src": "/images/houses/demetra/1024/demetra-terrace-sunbeds-01-1024.webp",
+      "srcset": "/images/houses/demetra/480/demetra-terrace-sunbeds-01-480.webp 480w, /images/houses/demetra/768/demetra-terrace-sunbeds-01-768.webp 768w, /images/houses/demetra/1024/demetra-terrace-sunbeds-01-1024.webp 1024w, /images/houses/demetra/1600/demetra-terrace-sunbeds-01-1600.webp 1600w",
+      "alt": "Demetra terrace sunbeds 01",
+      "isFeatured": false,
+      "tags": [
+        "outdoor"
+      ]
+    }
+  ],
+  "dimitra": [
+    {
+      "src": "/images/houses/dimitra/1024/demetra-hero-shared-pool-01-1024.webp",
+      "srcset": "/images/houses/dimitra/480/demetra-hero-shared-pool-01-480.webp 480w, /images/houses/dimitra/768/demetra-hero-shared-pool-01-768.webp 768w, /images/houses/dimitra/1024/demetra-hero-shared-pool-01-1024.webp 1024w, /images/houses/dimitra/1600/demetra-hero-shared-pool-01-1600.webp 1600w, /images/houses/dimitra/2400/demetra-hero-shared-pool-01-2400.webp 2400w",
+      "alt": "Demetra hero shared pool 01",
+      "isFeatured": true,
+      "tags": [
+        "pool"
+      ]
+    },
+    {
+      "src": "/images/houses/dimitra/1024/demetra-arched-doorway-01-1024.webp",
+      "srcset": "/images/houses/dimitra/480/demetra-arched-doorway-01-480.webp 480w, /images/houses/dimitra/768/demetra-arched-doorway-01-768.webp 768w, /images/houses/dimitra/1024/demetra-arched-doorway-01-1024.webp 1024w, /images/houses/dimitra/1600/demetra-arched-doorway-01-1600.webp 1600w",
+      "alt": "Demetra arched doorway 01",
+      "isFeatured": false,
+      "tags": [
+        "interior"
+      ]
+    },
+    {
+      "src": "/images/houses/dimitra/1024/demetra-bathroom-01-1024.webp",
+      "srcset": "/images/houses/dimitra/480/demetra-bathroom-01-480.webp 480w, /images/houses/dimitra/768/demetra-bathroom-01-768.webp 768w, /images/houses/dimitra/1024/demetra-bathroom-01-1024.webp 1024w, /images/houses/dimitra/1600/demetra-bathroom-01-1600.webp 1600w",
+      "alt": "Demetra bathroom 01",
+      "isFeatured": false,
+      "tags": [
+        "bathroom"
+      ]
+    },
+    {
+      "src": "/images/houses/dimitra/1024/demetra-bedroom-01-1024.webp",
+      "srcset": "/images/houses/dimitra/480/demetra-bedroom-01-480.webp 480w, /images/houses/dimitra/768/demetra-bedroom-01-768.webp 768w, /images/houses/dimitra/1024/demetra-bedroom-01-1024.webp 1024w, /images/houses/dimitra/1600/demetra-bedroom-01-1600.webp 1600w",
+      "alt": "Demetra bedroom 01",
+      "isFeatured": false,
+      "tags": [
+        "bedroom"
+      ]
+    },
+    {
+      "src": "/images/houses/dimitra/1024/demetra-bedroom-twin-beds-01-1024.webp",
+      "srcset": "/images/houses/dimitra/480/demetra-bedroom-twin-beds-01-480.webp 480w, /images/houses/dimitra/768/demetra-bedroom-twin-beds-01-768.webp 768w, /images/houses/dimitra/1024/demetra-bedroom-twin-beds-01-1024.webp 1024w, /images/houses/dimitra/1600/demetra-bedroom-twin-beds-01-1600.webp 1600w",
+      "alt": "Demetra bedroom twin beds 01",
+      "isFeatured": false,
+      "tags": [
+        "bedroom"
+      ]
+    },
+    {
+      "src": "/images/houses/dimitra/1024/demetra-courtyard-terrace-01-1024.webp",
+      "srcset": "/images/houses/dimitra/480/demetra-courtyard-terrace-01-480.webp 480w, /images/houses/dimitra/768/demetra-courtyard-terrace-01-768.webp 768w, /images/houses/dimitra/1024/demetra-courtyard-terrace-01-1024.webp 1024w, /images/houses/dimitra/1600/demetra-courtyard-terrace-01-1600.webp 1600w",
+      "alt": "Demetra courtyard terrace 01",
+      "isFeatured": false,
+      "tags": [
+        "outdoor"
+      ]
+    },
+    {
+      "src": "/images/houses/dimitra/1024/demetra-courtyard-terrace-02-1024.webp",
+      "srcset": "/images/houses/dimitra/480/demetra-courtyard-terrace-02-480.webp 480w, /images/houses/dimitra/768/demetra-courtyard-terrace-02-768.webp 768w, /images/houses/dimitra/1024/demetra-courtyard-terrace-02-1024.webp 1024w, /images/houses/dimitra/1600/demetra-courtyard-terrace-02-1600.webp 1600w",
+      "alt": "Demetra courtyard terrace 02",
+      "isFeatured": false,
+      "tags": [
+        "outdoor"
+      ]
+    },
+    {
+      "src": "/images/houses/dimitra/1024/demetra-kitchen-01-1024.webp",
+      "srcset": "/images/houses/dimitra/480/demetra-kitchen-01-480.webp 480w, /images/houses/dimitra/768/demetra-kitchen-01-768.webp 768w, /images/houses/dimitra/1024/demetra-kitchen-01-1024.webp 1024w, /images/houses/dimitra/1600/demetra-kitchen-01-1600.webp 1600w",
+      "alt": "Demetra kitchen 01",
+      "isFeatured": false,
+      "tags": [
+        "kitchen"
+      ]
+    },
+    {
+      "src": "/images/houses/dimitra/1024/demetra-kitchen-approach-01-1024.webp",
+      "srcset": "/images/houses/dimitra/480/demetra-kitchen-approach-01-480.webp 480w, /images/houses/dimitra/768/demetra-kitchen-approach-01-768.webp 768w, /images/houses/dimitra/1024/demetra-kitchen-approach-01-1024.webp 1024w, /images/houses/dimitra/1600/demetra-kitchen-approach-01-1600.webp 1600w",
+      "alt": "Demetra kitchen approach 01",
+      "isFeatured": false,
+      "tags": [
+        "kitchen"
+      ]
+    },
+    {
+      "src": "/images/houses/dimitra/1024/demetra-living-room-01-1024.webp",
+      "srcset": "/images/houses/dimitra/480/demetra-living-room-01-480.webp 480w, /images/houses/dimitra/768/demetra-living-room-01-768.webp 768w, /images/houses/dimitra/1024/demetra-living-room-01-1024.webp 1024w, /images/houses/dimitra/1600/demetra-living-room-01-1600.webp 1600w",
+      "alt": "Demetra living room 01",
+      "isFeatured": false,
+      "tags": [
+        "living-area"
+      ]
+    },
+    {
+      "src": "/images/houses/dimitra/1024/demetra-living-room-wide-01-1024.webp",
+      "srcset": "/images/houses/dimitra/480/demetra-living-room-wide-01-480.webp 480w, /images/houses/dimitra/768/demetra-living-room-wide-01-768.webp 768w, /images/houses/dimitra/1024/demetra-living-room-wide-01-1024.webp 1024w, /images/houses/dimitra/1600/demetra-living-room-wide-01-1600.webp 1600w",
+      "alt": "Demetra living room wide 01",
+      "isFeatured": false,
+      "tags": [
+        "living-area"
+      ]
+    },
+    {
+      "src": "/images/houses/dimitra/1024/demetra-room-to-pool-01-1024.webp",
+      "srcset": "/images/houses/dimitra/480/demetra-room-to-pool-01-480.webp 480w, /images/houses/dimitra/768/demetra-room-to-pool-01-768.webp 768w, /images/houses/dimitra/1024/demetra-room-to-pool-01-1024.webp 1024w, /images/houses/dimitra/1600/demetra-room-to-pool-01-1600.webp 1600w",
+      "alt": "Demetra room to pool 01",
+      "isFeatured": false,
+      "tags": [
+        "pool"
+      ]
+    },
+    {
+      "src": "/images/houses/dimitra/1024/demetra-shared-pool-context-01-1024.webp",
+      "srcset": "/images/houses/dimitra/480/demetra-shared-pool-context-01-480.webp 480w, /images/houses/dimitra/768/demetra-shared-pool-context-01-768.webp 768w, /images/houses/dimitra/1024/demetra-shared-pool-context-01-1024.webp 1024w, /images/houses/dimitra/1600/demetra-shared-pool-context-01-1600.webp 1600w",
+      "alt": "Demetra shared pool context 01",
+      "isFeatured": false,
+      "tags": [
+        "pool"
+      ]
+    },
+    {
+      "src": "/images/houses/dimitra/1024/demetra-shared-pool-long-view-01-1024.webp",
+      "srcset": "/images/houses/dimitra/480/demetra-shared-pool-long-view-01-480.webp 480w, /images/houses/dimitra/768/demetra-shared-pool-long-view-01-768.webp 768w, /images/houses/dimitra/1024/demetra-shared-pool-long-view-01-1024.webp 1024w, /images/houses/dimitra/1600/demetra-shared-pool-long-view-01-1600.webp 1600w",
+      "alt": "Demetra shared pool long view 01",
+      "isFeatured": false,
+      "tags": [
+        "pool",
+        "view"
+      ]
+    },
+    {
+      "src": "/images/houses/dimitra/1024/demetra-shared-pool-wide-01-1024.webp",
+      "srcset": "/images/houses/dimitra/480/demetra-shared-pool-wide-01-480.webp 480w, /images/houses/dimitra/768/demetra-shared-pool-wide-01-768.webp 768w, /images/houses/dimitra/1024/demetra-shared-pool-wide-01-1024.webp 1024w, /images/houses/dimitra/1600/demetra-shared-pool-wide-01-1600.webp 1600w",
+      "alt": "Demetra shared pool wide 01",
+      "isFeatured": false,
+      "tags": [
+        "pool"
+      ]
+    },
+    {
+      "src": "/images/houses/dimitra/1024/demetra-shared-poolside-seating-01-1024.webp",
+      "srcset": "/images/houses/dimitra/480/demetra-shared-poolside-seating-01-480.webp 480w, /images/houses/dimitra/768/demetra-shared-poolside-seating-01-768.webp 768w, /images/houses/dimitra/1024/demetra-shared-poolside-seating-01-1024.webp 1024w, /images/houses/dimitra/1600/demetra-shared-poolside-seating-01-1600.webp 1600w",
+      "alt": "Demetra shared poolside seating 01",
+      "isFeatured": false,
+      "tags": [
+        "pool",
+        "view"
+      ]
+    },
+    {
+      "src": "/images/houses/dimitra/1024/demetra-terrace-doorway-01-1024.webp",
+      "srcset": "/images/houses/dimitra/480/demetra-terrace-doorway-01-480.webp 480w, /images/houses/dimitra/768/demetra-terrace-doorway-01-768.webp 768w, /images/houses/dimitra/1024/demetra-terrace-doorway-01-1024.webp 1024w, /images/houses/dimitra/1600/demetra-terrace-doorway-01-1600.webp 1600w",
+      "alt": "Demetra terrace doorway 01",
+      "isFeatured": false,
+      "tags": [
+        "outdoor"
+      ]
+    },
+    {
+      "src": "/images/houses/dimitra/1024/demetra-terrace-sunbeds-01-1024.webp",
+      "srcset": "/images/houses/dimitra/480/demetra-terrace-sunbeds-01-480.webp 480w, /images/houses/dimitra/768/demetra-terrace-sunbeds-01-768.webp 768w, /images/houses/dimitra/1024/demetra-terrace-sunbeds-01-1024.webp 1024w, /images/houses/dimitra/1600/demetra-terrace-sunbeds-01-1600.webp 1600w",
+      "alt": "Demetra terrace sunbeds 01",
+      "isFeatured": false,
+      "tags": [
+        "outdoor"
+      ]
+    }
   ],
   "efterpi": [
-    { "src": "/images/houses/efterpi/01.jpg", "alt": "House Efterpi — courtyard stone house in Mavrikiano village", "isFeatured": true },
-    { "src": "/images/houses/efterpi/02.jpg", "alt": "House Efterpi — summer kitchen and BBQ area", "isFeatured": false },
-    { "src": "/images/houses/efterpi/03.jpg", "alt": "House Efterpi — living area", "isFeatured": false }
+    {
+      "src": "/images/houses/efterpi/1024/efterpi-hero-exterior-01-1024.webp",
+      "srcset": "/images/houses/efterpi/480/efterpi-hero-exterior-01-480.webp 480w, /images/houses/efterpi/768/efterpi-hero-exterior-01-768.webp 768w, /images/houses/efterpi/1024/efterpi-hero-exterior-01-1024.webp 1024w, /images/houses/efterpi/1600/efterpi-hero-exterior-01-1600.webp 1600w, /images/houses/efterpi/2400/efterpi-hero-exterior-01-2400.webp 2400w",
+      "alt": "Efterpi hero exterior 01",
+      "isFeatured": true,
+      "tags": [
+        "exterior"
+      ]
+    },
+    {
+      "src": "/images/houses/efterpi/1024/efterpi-bathroom-01-1024.webp",
+      "srcset": "/images/houses/efterpi/480/efterpi-bathroom-01-480.webp 480w, /images/houses/efterpi/768/efterpi-bathroom-01-768.webp 768w, /images/houses/efterpi/1024/efterpi-bathroom-01-1024.webp 1024w, /images/houses/efterpi/1600/efterpi-bathroom-01-1600.webp 1600w",
+      "alt": "Efterpi bathroom 01",
+      "isFeatured": false,
+      "tags": [
+        "bathroom"
+      ]
+    },
+    {
+      "src": "/images/houses/efterpi/1024/efterpi-kitchen-dining-stone-01-1024.webp",
+      "srcset": "/images/houses/efterpi/480/efterpi-kitchen-dining-stone-01-480.webp 480w, /images/houses/efterpi/768/efterpi-kitchen-dining-stone-01-768.webp 768w, /images/houses/efterpi/1024/efterpi-kitchen-dining-stone-01-1024.webp 1024w, /images/houses/efterpi/1600/efterpi-kitchen-dining-stone-01-1600.webp 1600w",
+      "alt": "Efterpi kitchen dining stone 01",
+      "isFeatured": false,
+      "tags": [
+        "living-area",
+        "kitchen",
+        "exterior"
+      ]
+    },
+    {
+      "src": "/images/houses/efterpi/1024/efterpi-living-room-arched-01-1024.webp",
+      "srcset": "/images/houses/efterpi/480/efterpi-living-room-arched-01-480.webp 480w, /images/houses/efterpi/768/efterpi-living-room-arched-01-768.webp 768w, /images/houses/efterpi/1024/efterpi-living-room-arched-01-1024.webp 1024w, /images/houses/efterpi/1600/efterpi-living-room-arched-01-1600.webp 1600w",
+      "alt": "Efterpi living room arched 01",
+      "isFeatured": false,
+      "tags": [
+        "living-area"
+      ]
+    },
+    {
+      "src": "/images/houses/efterpi/1024/efterpi-living-room-entrance-01-1024.webp",
+      "srcset": "/images/houses/efterpi/480/efterpi-living-room-entrance-01-480.webp 480w, /images/houses/efterpi/768/efterpi-living-room-entrance-01-768.webp 768w, /images/houses/efterpi/1024/efterpi-living-room-entrance-01-1024.webp 1024w, /images/houses/efterpi/1600/efterpi-living-room-entrance-01-1600.webp 1600w",
+      "alt": "Efterpi living room entrance 01",
+      "isFeatured": false,
+      "tags": [
+        "living-area"
+      ]
+    },
+    {
+      "src": "/images/houses/efterpi/1024/efterpi-living-room-single-beds-01-1024.webp",
+      "srcset": "/images/houses/efterpi/480/efterpi-living-room-single-beds-01-480.webp 480w, /images/houses/efterpi/768/efterpi-living-room-single-beds-01-768.webp 768w, /images/houses/efterpi/1024/efterpi-living-room-single-beds-01-1024.webp 1024w, /images/houses/efterpi/1600/efterpi-living-room-single-beds-01-1600.webp 1600w",
+      "alt": "Efterpi living room single beds 01",
+      "isFeatured": false,
+      "tags": [
+        "living-area"
+      ]
+    },
+    {
+      "src": "/images/houses/efterpi/1024/efterpi-living-room-single-beds-02-1024.webp",
+      "srcset": "/images/houses/efterpi/480/efterpi-living-room-single-beds-02-480.webp 480w, /images/houses/efterpi/768/efterpi-living-room-single-beds-02-768.webp 768w, /images/houses/efterpi/1024/efterpi-living-room-single-beds-02-1024.webp 1024w, /images/houses/efterpi/1600/efterpi-living-room-single-beds-02-1600.webp 1600w",
+      "alt": "Efterpi living room single beds 02",
+      "isFeatured": false,
+      "tags": [
+        "living-area"
+      ]
+    },
+    {
+      "src": "/images/houses/efterpi/1024/efterpi-living-room-wide-01-1024.webp",
+      "srcset": "/images/houses/efterpi/480/efterpi-living-room-wide-01-480.webp 480w, /images/houses/efterpi/768/efterpi-living-room-wide-01-768.webp 768w, /images/houses/efterpi/1024/efterpi-living-room-wide-01-1024.webp 1024w, /images/houses/efterpi/1600/efterpi-living-room-wide-01-1600.webp 1600w",
+      "alt": "Efterpi living room wide 01",
+      "isFeatured": false,
+      "tags": [
+        "living-area"
+      ]
+    },
+    {
+      "src": "/images/houses/efterpi/1024/efterpi-living-room-wide-02-1024.webp",
+      "srcset": "/images/houses/efterpi/480/efterpi-living-room-wide-02-480.webp 480w, /images/houses/efterpi/768/efterpi-living-room-wide-02-768.webp 768w, /images/houses/efterpi/1024/efterpi-living-room-wide-02-1024.webp 1024w, /images/houses/efterpi/1600/efterpi-living-room-wide-02-1600.webp 1600w",
+      "alt": "Efterpi living room wide 02",
+      "isFeatured": false,
+      "tags": [
+        "living-area"
+      ]
+    },
+    {
+      "src": "/images/houses/efterpi/1024/efterpi-master-bedroom-01-1024.webp",
+      "srcset": "/images/houses/efterpi/480/efterpi-master-bedroom-01-480.webp 480w, /images/houses/efterpi/768/efterpi-master-bedroom-01-768.webp 768w, /images/houses/efterpi/1024/efterpi-master-bedroom-01-1024.webp 1024w, /images/houses/efterpi/1600/efterpi-master-bedroom-01-1600.webp 1600w",
+      "alt": "Efterpi master bedroom 01",
+      "isFeatured": false,
+      "tags": [
+        "bedroom"
+      ]
+    },
+    {
+      "src": "/images/houses/efterpi/1024/efterpi-master-bedroom-02-1024.webp",
+      "srcset": "/images/houses/efterpi/480/efterpi-master-bedroom-02-480.webp 480w, /images/houses/efterpi/768/efterpi-master-bedroom-02-768.webp 768w, /images/houses/efterpi/1024/efterpi-master-bedroom-02-1024.webp 1024w, /images/houses/efterpi/1600/efterpi-master-bedroom-02-1600.webp 1600w",
+      "alt": "Efterpi master bedroom 02",
+      "isFeatured": false,
+      "tags": [
+        "bedroom"
+      ]
+    },
+    {
+      "src": "/images/houses/efterpi/1024/efterpi-master-bedroom-03-1024.webp",
+      "srcset": "/images/houses/efterpi/480/efterpi-master-bedroom-03-480.webp 480w, /images/houses/efterpi/768/efterpi-master-bedroom-03-768.webp 768w, /images/houses/efterpi/1024/efterpi-master-bedroom-03-1024.webp 1024w, /images/houses/efterpi/1600/efterpi-master-bedroom-03-1600.webp 1600w",
+      "alt": "Efterpi master bedroom 03",
+      "isFeatured": false,
+      "tags": [
+        "bedroom"
+      ]
+    },
+    {
+      "src": "/images/houses/efterpi/1024/margarita-kitchenette-single-beds-02-1024.webp",
+      "srcset": "/images/houses/efterpi/480/margarita-kitchenette-single-beds-02-480.webp 480w, /images/houses/efterpi/768/margarita-kitchenette-single-beds-02-768.webp 768w, /images/houses/efterpi/1024/margarita-kitchenette-single-beds-02-1024.webp 1024w, /images/houses/efterpi/1600/margarita-kitchenette-single-beds-02-1600.webp 1600w",
+      "alt": "Margarita kitchenette single beds 02",
+      "isFeatured": false,
+      "tags": [
+        "kitchen"
+      ]
+    }
+  ],
+  "erato": [
+    {
+      "src": "/images/houses/erato/1024/erato-hero-private-pool-01-1024.webp",
+      "srcset": "/images/houses/erato/480/erato-hero-private-pool-01-480.webp 480w, /images/houses/erato/768/erato-hero-private-pool-01-768.webp 768w, /images/houses/erato/1024/erato-hero-private-pool-01-1024.webp 1024w, /images/houses/erato/1600/erato-hero-private-pool-01-1600.webp 1600w, /images/houses/erato/2400/erato-hero-private-pool-01-2400.webp 2400w",
+      "alt": "Erato hero private pool 01",
+      "isFeatured": true,
+      "tags": [
+        "pool"
+      ]
+    },
+    {
+      "src": "/images/houses/erato/1024/erato-hero-private-pool-02-1024.webp",
+      "srcset": "/images/houses/erato/480/erato-hero-private-pool-02-480.webp 480w, /images/houses/erato/768/erato-hero-private-pool-02-768.webp 768w, /images/houses/erato/1024/erato-hero-private-pool-02-1024.webp 1024w, /images/houses/erato/1600/erato-hero-private-pool-02-1600.webp 1600w, /images/houses/erato/2400/erato-hero-private-pool-02-2400.webp 2400w",
+      "alt": "Erato hero private pool 02",
+      "isFeatured": true,
+      "tags": [
+        "pool"
+      ]
+    },
+    {
+      "src": "/images/houses/erato/1024/erato-bathroom-01-1024.webp",
+      "srcset": "/images/houses/erato/480/erato-bathroom-01-480.webp 480w, /images/houses/erato/768/erato-bathroom-01-768.webp 768w, /images/houses/erato/1024/erato-bathroom-01-1024.webp 1024w, /images/houses/erato/1600/erato-bathroom-01-1600.webp 1600w",
+      "alt": "Erato bathroom 01",
+      "isFeatured": false,
+      "tags": [
+        "bathroom"
+      ]
+    },
+    {
+      "src": "/images/houses/erato/1024/erato-kitchen-01-1024.webp",
+      "srcset": "/images/houses/erato/480/erato-kitchen-01-480.webp 480w, /images/houses/erato/768/erato-kitchen-01-768.webp 768w, /images/houses/erato/1024/erato-kitchen-01-1024.webp 1024w, /images/houses/erato/1600/erato-kitchen-01-1600.webp 1600w",
+      "alt": "Erato kitchen 01",
+      "isFeatured": false,
+      "tags": [
+        "kitchen"
+      ]
+    },
+    {
+      "src": "/images/houses/erato/1024/erato-living-room-01-1024.webp",
+      "srcset": "/images/houses/erato/480/erato-living-room-01-480.webp 480w, /images/houses/erato/768/erato-living-room-01-768.webp 768w, /images/houses/erato/1024/erato-living-room-01-1024.webp 1024w, /images/houses/erato/1600/erato-living-room-01-1600.webp 1600w",
+      "alt": "Erato living room 01",
+      "isFeatured": false,
+      "tags": [
+        "living-area"
+      ]
+    },
+    {
+      "src": "/images/houses/erato/1024/erato-living-room-fireplace-01-1024.webp",
+      "srcset": "/images/houses/erato/480/erato-living-room-fireplace-01-480.webp 480w, /images/houses/erato/768/erato-living-room-fireplace-01-768.webp 768w, /images/houses/erato/1024/erato-living-room-fireplace-01-1024.webp 1024w, /images/houses/erato/1600/erato-living-room-fireplace-01-1600.webp 1600w",
+      "alt": "Erato living room fireplace 01",
+      "isFeatured": false,
+      "tags": [
+        "living-area"
+      ]
+    },
+    {
+      "src": "/images/houses/erato/1024/erato-living-room-sofa-bed-01-1024.webp",
+      "srcset": "/images/houses/erato/480/erato-living-room-sofa-bed-01-480.webp 480w, /images/houses/erato/768/erato-living-room-sofa-bed-01-768.webp 768w, /images/houses/erato/1024/erato-living-room-sofa-bed-01-1024.webp 1024w, /images/houses/erato/1600/erato-living-room-sofa-bed-01-1600.webp 1600w",
+      "alt": "Erato living room sofa bed 01",
+      "isFeatured": false,
+      "tags": [
+        "living-area"
+      ]
+    },
+    {
+      "src": "/images/houses/erato/1024/erato-master-bedroom-01-1024.webp",
+      "srcset": "/images/houses/erato/480/erato-master-bedroom-01-480.webp 480w, /images/houses/erato/768/erato-master-bedroom-01-768.webp 768w, /images/houses/erato/1024/erato-master-bedroom-01-1024.webp 1024w, /images/houses/erato/1600/erato-master-bedroom-01-1600.webp 1600w",
+      "alt": "Erato master bedroom 01",
+      "isFeatured": false,
+      "tags": [
+        "bedroom"
+      ]
+    },
+    {
+      "src": "/images/houses/erato/1024/erato-master-bedroom-02-1024.webp",
+      "srcset": "/images/houses/erato/480/erato-master-bedroom-02-480.webp 480w, /images/houses/erato/768/erato-master-bedroom-02-768.webp 768w, /images/houses/erato/1024/erato-master-bedroom-02-1024.webp 1024w, /images/houses/erato/1600/erato-master-bedroom-02-1600.webp 1600w",
+      "alt": "Erato master bedroom 02",
+      "isFeatured": false,
+      "tags": [
+        "bedroom"
+      ]
+    },
+    {
+      "src": "/images/houses/erato/1024/erato-pool-edge-detail-01-1024.webp",
+      "srcset": "/images/houses/erato/480/erato-pool-edge-detail-01-480.webp 480w, /images/houses/erato/768/erato-pool-edge-detail-01-768.webp 768w, /images/houses/erato/1024/erato-pool-edge-detail-01-1024.webp 1024w, /images/houses/erato/1600/erato-pool-edge-detail-01-1600.webp 1600w",
+      "alt": "Erato pool edge detail 01",
+      "isFeatured": false,
+      "tags": [
+        "pool"
+      ]
+    },
+    {
+      "src": "/images/houses/erato/1024/erato-poolside-seating-01-1024.webp",
+      "srcset": "/images/houses/erato/480/erato-poolside-seating-01-480.webp 480w, /images/houses/erato/768/erato-poolside-seating-01-768.webp 768w, /images/houses/erato/1024/erato-poolside-seating-01-1024.webp 1024w, /images/houses/erato/1600/erato-poolside-seating-01-1600.webp 1600w",
+      "alt": "Erato poolside seating 01",
+      "isFeatured": false,
+      "tags": [
+        "pool",
+        "view"
+      ]
+    },
+    {
+      "src": "/images/houses/erato/1024/erato-poolside-walkway-01-1024.webp",
+      "srcset": "/images/houses/erato/480/erato-poolside-walkway-01-480.webp 480w, /images/houses/erato/768/erato-poolside-walkway-01-768.webp 768w, /images/houses/erato/1024/erato-poolside-walkway-01-1024.webp 1024w, /images/houses/erato/1600/erato-poolside-walkway-01-1600.webp 1600w",
+      "alt": "Erato poolside walkway 01",
+      "isFeatured": false,
+      "tags": [
+        "pool"
+      ]
+    },
+    {
+      "src": "/images/houses/erato/1024/erato-private-pool-wide-01-1024.webp",
+      "srcset": "/images/houses/erato/480/erato-private-pool-wide-01-480.webp 480w, /images/houses/erato/768/erato-private-pool-wide-01-768.webp 768w, /images/houses/erato/1024/erato-private-pool-wide-01-1024.webp 1024w, /images/houses/erato/1600/erato-private-pool-wide-01-1600.webp 1600w",
+      "alt": "Erato private pool wide 01",
+      "isFeatured": false,
+      "tags": [
+        "pool"
+      ]
+    },
+    {
+      "src": "/images/houses/erato/1024/erato-terrace-pool-deck-01-1024.webp",
+      "srcset": "/images/houses/erato/480/erato-terrace-pool-deck-01-480.webp 480w, /images/houses/erato/768/erato-terrace-pool-deck-01-768.webp 768w, /images/houses/erato/1024/erato-terrace-pool-deck-01-1024.webp 1024w, /images/houses/erato/1600/erato-terrace-pool-deck-01-1600.webp 1600w",
+      "alt": "Erato terrace pool deck 01",
+      "isFeatured": false,
+      "tags": [
+        "pool",
+        "outdoor"
+      ]
+    },
+    {
+      "src": "/images/houses/erato/1024/erato-view-mountains-01-1024.webp",
+      "srcset": "/images/houses/erato/480/erato-view-mountains-01-480.webp 480w, /images/houses/erato/768/erato-view-mountains-01-768.webp 768w, /images/houses/erato/1024/erato-view-mountains-01-1024.webp 1024w, /images/houses/erato/1600/erato-view-mountains-01-1600.webp 1600w",
+      "alt": "Erato view mountains 01",
+      "isFeatured": false,
+      "tags": [
+        "view"
+      ]
+    },
+    {
+      "src": "/images/houses/erato/1024/EratoHouseElounda17-1024.webp",
+      "srcset": "/images/houses/erato/480/EratoHouseElounda17-480.webp 480w, /images/houses/erato/768/EratoHouseElounda17-768.webp 768w, /images/houses/erato/1024/EratoHouseElounda17-1024.webp 1024w, /images/houses/erato/1600/EratoHouseElounda17-1600.webp 1600w",
+      "alt": "EratoHouseElounda17",
+      "isFeatured": false,
+      "tags": [
+        "interior"
+      ]
+    }
   ],
   "kalliopi": [
-    { "src": "/images/houses/kalliopi/01.jpg", "alt": "House Kalliopi — upper-floor stone house in Mavrikiano", "isFeatured": true },
-    { "src": "/images/houses/kalliopi/02.jpg", "alt": "House Kalliopi — stone terrace with mountain view", "isFeatured": false },
-    { "src": "/images/houses/kalliopi/03.jpg", "alt": "House Kalliopi — bedroom", "isFeatured": false }
+    {
+      "src": "/images/houses/kalliopi/1024/kalliopi-exterior-facade-02-645.webp",
+      "srcset": "/images/houses/kalliopi/480/kalliopi-exterior-facade-02-302.webp 480w, /images/houses/kalliopi/768/kalliopi-exterior-facade-02-484.webp 768w, /images/houses/kalliopi/1024/kalliopi-exterior-facade-02-645.webp 1024w, /images/houses/kalliopi/1600/kalliopi-exterior-facade-02-1008.webp 1600w",
+      "alt": "Kalliopi exterior facade 02",
+      "isFeatured": true,
+      "tags": [
+        "exterior"
+      ]
+    },
+    {
+      "src": "/images/houses/kalliopi/1024/kalliopi-hero-exterior-facade-01-706.webp",
+      "srcset": "/images/houses/kalliopi/480/kalliopi-hero-exterior-facade-01-331.webp 480w, /images/houses/kalliopi/768/kalliopi-hero-exterior-facade-01-529.webp 768w, /images/houses/kalliopi/1024/kalliopi-hero-exterior-facade-01-706.webp 1024w, /images/houses/kalliopi/1600/kalliopi-hero-exterior-facade-01-1103.webp 1600w, /images/houses/kalliopi/2400/kalliopi-hero-exterior-facade-01-1655.webp 2400w",
+      "alt": "Kalliopi hero exterior facade 01",
+      "isFeatured": true,
+      "tags": [
+        "exterior"
+      ]
+    },
+    {
+      "src": "/images/houses/kalliopi/1024/kalliopi-entrance-courtyard-01-1024.webp",
+      "srcset": "/images/houses/kalliopi/480/kalliopi-entrance-courtyard-01-480.webp 480w, /images/houses/kalliopi/768/kalliopi-entrance-courtyard-01-768.webp 768w, /images/houses/kalliopi/1024/kalliopi-entrance-courtyard-01-1024.webp 1024w, /images/houses/kalliopi/1600/kalliopi-entrance-courtyard-01-1600.webp 1600w",
+      "alt": "Kalliopi entrance courtyard 01",
+      "isFeatured": false,
+      "tags": [
+        "outdoor"
+      ]
+    },
+    {
+      "src": "/images/houses/kalliopi/1024/kalliopi-kitchen-dining-01-1024.webp",
+      "srcset": "/images/houses/kalliopi/480/kalliopi-kitchen-dining-01-480.webp 480w, /images/houses/kalliopi/768/kalliopi-kitchen-dining-01-768.webp 768w, /images/houses/kalliopi/1024/kalliopi-kitchen-dining-01-1024.webp 1024w, /images/houses/kalliopi/1600/kalliopi-kitchen-dining-01-1600.webp 1600w",
+      "alt": "Kalliopi kitchen dining 01",
+      "isFeatured": false,
+      "tags": [
+        "living-area",
+        "kitchen"
+      ]
+    },
+    {
+      "src": "/images/houses/kalliopi/1024/kalliopi-living-room-fireplace-01-765.webp",
+      "srcset": "/images/houses/kalliopi/480/kalliopi-living-room-fireplace-01-359.webp 480w, /images/houses/kalliopi/768/kalliopi-living-room-fireplace-01-574.webp 768w, /images/houses/kalliopi/1024/kalliopi-living-room-fireplace-01-765.webp 1024w, /images/houses/kalliopi/1600/kalliopi-living-room-fireplace-01-1195.webp 1600w",
+      "alt": "Kalliopi living room fireplace 01",
+      "isFeatured": false,
+      "tags": [
+        "living-area"
+      ]
+    },
+    {
+      "src": "/images/houses/kalliopi/1024/kalliopi-living-room-single-beds-01-1024.webp",
+      "srcset": "/images/houses/kalliopi/480/kalliopi-living-room-single-beds-01-480.webp 480w, /images/houses/kalliopi/768/kalliopi-living-room-single-beds-01-768.webp 768w, /images/houses/kalliopi/1024/kalliopi-living-room-single-beds-01-1024.webp 1024w, /images/houses/kalliopi/1600/kalliopi-living-room-single-beds-01-1600.webp 1600w",
+      "alt": "Kalliopi living room single beds 01",
+      "isFeatured": false,
+      "tags": [
+        "living-area"
+      ]
+    },
+    {
+      "src": "/images/houses/kalliopi/1024/kalliopi-living-room-single-beds-02-1024.webp",
+      "srcset": "/images/houses/kalliopi/480/kalliopi-living-room-single-beds-02-480.webp 480w, /images/houses/kalliopi/768/kalliopi-living-room-single-beds-02-768.webp 768w, /images/houses/kalliopi/1024/kalliopi-living-room-single-beds-02-1024.webp 1024w, /images/houses/kalliopi/1600/kalliopi-living-room-single-beds-02-1600.webp 1600w",
+      "alt": "Kalliopi living room single beds 02",
+      "isFeatured": false,
+      "tags": [
+        "living-area"
+      ]
+    },
+    {
+      "src": "/images/houses/kalliopi/1024/kalliopi-living-room-wide-01-1024.webp",
+      "srcset": "/images/houses/kalliopi/480/kalliopi-living-room-wide-01-480.webp 480w, /images/houses/kalliopi/768/kalliopi-living-room-wide-01-768.webp 768w, /images/houses/kalliopi/1024/kalliopi-living-room-wide-01-1024.webp 1024w, /images/houses/kalliopi/1600/kalliopi-living-room-wide-01-1600.webp 1600w",
+      "alt": "Kalliopi living room wide 01",
+      "isFeatured": false,
+      "tags": [
+        "living-area"
+      ]
+    },
+    {
+      "src": "/images/houses/kalliopi/1024/kalliopi-living-room-wide-02-1024.webp",
+      "srcset": "/images/houses/kalliopi/480/kalliopi-living-room-wide-02-480.webp 480w, /images/houses/kalliopi/768/kalliopi-living-room-wide-02-768.webp 768w, /images/houses/kalliopi/1024/kalliopi-living-room-wide-02-1024.webp 1024w, /images/houses/kalliopi/1600/kalliopi-living-room-wide-02-1600.webp 1600w",
+      "alt": "Kalliopi living room wide 02",
+      "isFeatured": false,
+      "tags": [
+        "living-area"
+      ]
+    },
+    {
+      "src": "/images/houses/kalliopi/1024/kalliopi-living-room-wide-03-1024.webp",
+      "srcset": "/images/houses/kalliopi/480/kalliopi-living-room-wide-03-480.webp 480w, /images/houses/kalliopi/768/kalliopi-living-room-wide-03-768.webp 768w, /images/houses/kalliopi/1024/kalliopi-living-room-wide-03-1024.webp 1024w, /images/houses/kalliopi/1600/kalliopi-living-room-wide-03-1600.webp 1600w",
+      "alt": "Kalliopi living room wide 03",
+      "isFeatured": false,
+      "tags": [
+        "living-area"
+      ]
+    },
+    {
+      "src": "/images/houses/kalliopi/1024/kalliopi-master-bedroom-01-1024.webp",
+      "srcset": "/images/houses/kalliopi/480/kalliopi-master-bedroom-01-480.webp 480w, /images/houses/kalliopi/768/kalliopi-master-bedroom-01-768.webp 768w, /images/houses/kalliopi/1024/kalliopi-master-bedroom-01-1024.webp 1024w, /images/houses/kalliopi/1600/kalliopi-master-bedroom-01-1600.webp 1600w",
+      "alt": "Kalliopi master bedroom 01",
+      "isFeatured": false,
+      "tags": [
+        "bedroom"
+      ]
+    },
+    {
+      "src": "/images/houses/kalliopi/1024/kalliopi-master-bedroom-02-1024.webp",
+      "srcset": "/images/houses/kalliopi/480/kalliopi-master-bedroom-02-480.webp 480w, /images/houses/kalliopi/768/kalliopi-master-bedroom-02-768.webp 768w, /images/houses/kalliopi/1024/kalliopi-master-bedroom-02-1024.webp 1024w, /images/houses/kalliopi/1600/kalliopi-master-bedroom-02-1600.webp 1600w",
+      "alt": "Kalliopi master bedroom 02",
+      "isFeatured": false,
+      "tags": [
+        "bedroom"
+      ]
+    },
+    {
+      "src": "/images/houses/kalliopi/1024/kalliopi-stairs-01-1024.webp",
+      "srcset": "/images/houses/kalliopi/480/kalliopi-stairs-01-480.webp 480w, /images/houses/kalliopi/768/kalliopi-stairs-01-768.webp 768w, /images/houses/kalliopi/1024/kalliopi-stairs-01-1024.webp 1024w, /images/houses/kalliopi/1600/kalliopi-stairs-01-1600.webp 1600w",
+      "alt": "Kalliopi stairs 01",
+      "isFeatured": false,
+      "tags": [
+        "interior"
+      ]
+    },
+    {
+      "src": "/images/houses/kalliopi/1024/kalliopi-terrace-view-01-1024.webp",
+      "srcset": "/images/houses/kalliopi/480/kalliopi-terrace-view-01-480.webp 480w, /images/houses/kalliopi/768/kalliopi-terrace-view-01-768.webp 768w, /images/houses/kalliopi/1024/kalliopi-terrace-view-01-1024.webp 1024w, /images/houses/kalliopi/1600/kalliopi-terrace-view-01-1600.webp 1600w",
+      "alt": "Kalliopi terrace view 01",
+      "isFeatured": false,
+      "tags": [
+        "view",
+        "outdoor"
+      ]
+    },
+    {
+      "src": "/images/houses/kalliopi/1024/kalliopi-terrace-view-02-687.webp",
+      "srcset": "/images/houses/kalliopi/480/kalliopi-terrace-view-02-322.webp 480w, /images/houses/kalliopi/768/kalliopi-terrace-view-02-515.webp 768w, /images/houses/kalliopi/1024/kalliopi-terrace-view-02-687.webp 1024w, /images/houses/kalliopi/1600/kalliopi-terrace-view-02-1073.webp 1600w",
+      "alt": "Kalliopi terrace view 02",
+      "isFeatured": false,
+      "tags": [
+        "view",
+        "outdoor"
+      ]
+    }
+  ],
+  "leonidas": [
+    {
+      "src": "/images/houses/leonidas/1024/leonidas-exterior-facade-01-1024.webp",
+      "srcset": "/images/houses/leonidas/480/leonidas-exterior-facade-01-480.webp 480w, /images/houses/leonidas/768/leonidas-exterior-facade-01-768.webp 768w, /images/houses/leonidas/1024/leonidas-exterior-facade-01-1024.webp 1024w, /images/houses/leonidas/1600/leonidas-exterior-facade-01-1600.webp 1600w",
+      "alt": "Leonidas exterior facade 01",
+      "isFeatured": true,
+      "tags": [
+        "exterior"
+      ]
+    },
+    {
+      "src": "/images/houses/leonidas/1024/leonidas-hero-terrace-sea-view-01-1024.webp",
+      "srcset": "/images/houses/leonidas/480/leonidas-hero-terrace-sea-view-01-480.webp 480w, /images/houses/leonidas/768/leonidas-hero-terrace-sea-view-01-768.webp 768w, /images/houses/leonidas/1024/leonidas-hero-terrace-sea-view-01-1024.webp 1024w, /images/houses/leonidas/1600/leonidas-hero-terrace-sea-view-01-1600.webp 1600w, /images/houses/leonidas/2400/leonidas-hero-terrace-sea-view-01-2400.webp 2400w",
+      "alt": "Leonidas hero terrace sea view 01",
+      "isFeatured": true,
+      "tags": [
+        "view",
+        "outdoor"
+      ]
+    },
+    {
+      "src": "/images/houses/leonidas/1024/leonidas-bathroom-01-683.webp",
+      "srcset": "/images/houses/leonidas/480/leonidas-bathroom-01-320.webp 480w, /images/houses/leonidas/768/leonidas-bathroom-01-512.webp 768w, /images/houses/leonidas/1024/leonidas-bathroom-01-683.webp 1024w, /images/houses/leonidas/1600/leonidas-bathroom-01-1067.webp 1600w",
+      "alt": "Leonidas bathroom 01",
+      "isFeatured": false,
+      "tags": [
+        "bathroom"
+      ]
+    },
+    {
+      "src": "/images/houses/leonidas/1024/leonidas-bedroom-01-765.webp",
+      "srcset": "/images/houses/leonidas/480/leonidas-bedroom-01-359.webp 480w, /images/houses/leonidas/768/leonidas-bedroom-01-574.webp 768w, /images/houses/leonidas/1024/leonidas-bedroom-01-765.webp 1024w, /images/houses/leonidas/1600/leonidas-bedroom-01-1195.webp 1600w",
+      "alt": "Leonidas bedroom 01",
+      "isFeatured": false,
+      "tags": [
+        "bedroom"
+      ]
+    },
+    {
+      "src": "/images/houses/leonidas/1024/leonidas-bedroom-02-765.webp",
+      "srcset": "/images/houses/leonidas/480/leonidas-bedroom-02-359.webp 480w, /images/houses/leonidas/768/leonidas-bedroom-02-574.webp 768w, /images/houses/leonidas/1024/leonidas-bedroom-02-765.webp 1024w, /images/houses/leonidas/1600/leonidas-bedroom-02-1196.webp 1600w",
+      "alt": "Leonidas bedroom 02",
+      "isFeatured": false,
+      "tags": [
+        "bedroom"
+      ]
+    },
+    {
+      "src": "/images/houses/leonidas/1024/leonidas-bedroom-canopy-01-1024.webp",
+      "srcset": "/images/houses/leonidas/480/leonidas-bedroom-canopy-01-480.webp 480w, /images/houses/leonidas/768/leonidas-bedroom-canopy-01-768.webp 768w, /images/houses/leonidas/1024/leonidas-bedroom-canopy-01-1024.webp 1024w, /images/houses/leonidas/1600/leonidas-bedroom-canopy-01-1600.webp 1600w",
+      "alt": "Leonidas bedroom canopy 01",
+      "isFeatured": false,
+      "tags": [
+        "bedroom"
+      ]
+    },
+    {
+      "src": "/images/houses/leonidas/1024/leonidas-kitchen-open-plan-01-1024.webp",
+      "srcset": "/images/houses/leonidas/480/leonidas-kitchen-open-plan-01-480.webp 480w, /images/houses/leonidas/768/leonidas-kitchen-open-plan-01-768.webp 768w, /images/houses/leonidas/1024/leonidas-kitchen-open-plan-01-1024.webp 1024w, /images/houses/leonidas/1600/leonidas-kitchen-open-plan-01-1600.webp 1600w",
+      "alt": "Leonidas kitchen open plan 01",
+      "isFeatured": false,
+      "tags": [
+        "kitchen"
+      ]
+    },
+    {
+      "src": "/images/houses/leonidas/1024/leonidas-living-room-02-1024.webp",
+      "srcset": "/images/houses/leonidas/480/leonidas-living-room-02-480.webp 480w, /images/houses/leonidas/768/leonidas-living-room-02-768.webp 768w, /images/houses/leonidas/1024/leonidas-living-room-02-1024.webp 1024w, /images/houses/leonidas/1600/leonidas-living-room-02-1600.webp 1600w",
+      "alt": "Leonidas living room 02",
+      "isFeatured": false,
+      "tags": [
+        "living-area"
+      ]
+    },
+    {
+      "src": "/images/houses/leonidas/1024/leonidas-living-room-wide-01-1024.webp",
+      "srcset": "/images/houses/leonidas/480/leonidas-living-room-wide-01-480.webp 480w, /images/houses/leonidas/768/leonidas-living-room-wide-01-768.webp 768w, /images/houses/leonidas/1024/leonidas-living-room-wide-01-1024.webp 1024w, /images/houses/leonidas/1600/leonidas-living-room-wide-01-1600.webp 1600w",
+      "alt": "Leonidas living room wide 01",
+      "isFeatured": false,
+      "tags": [
+        "living-area"
+      ]
+    },
+    {
+      "src": "/images/houses/leonidas/1024/leonidas-master-bedroom-arched-ceiling-01-1024.webp",
+      "srcset": "/images/houses/leonidas/480/leonidas-master-bedroom-arched-ceiling-01-480.webp 480w, /images/houses/leonidas/768/leonidas-master-bedroom-arched-ceiling-01-768.webp 768w, /images/houses/leonidas/1024/leonidas-master-bedroom-arched-ceiling-01-1024.webp 1024w, /images/houses/leonidas/1600/leonidas-master-bedroom-arched-ceiling-01-1600.webp 1600w",
+      "alt": "Leonidas master bedroom arched ceiling 01",
+      "isFeatured": false,
+      "tags": [
+        "bedroom"
+      ]
+    },
+    {
+      "src": "/images/houses/leonidas/1024/leonidas-master-bedroom-sea-vew-01-1024.webp",
+      "srcset": "/images/houses/leonidas/480/leonidas-master-bedroom-sea-vew-01-480.webp 480w, /images/houses/leonidas/768/leonidas-master-bedroom-sea-vew-01-768.webp 768w, /images/houses/leonidas/1024/leonidas-master-bedroom-sea-vew-01-1024.webp 1024w, /images/houses/leonidas/1600/leonidas-master-bedroom-sea-vew-01-1600.webp 1600w",
+      "alt": "Leonidas master bedroom sea vew 01",
+      "isFeatured": false,
+      "tags": [
+        "view",
+        "bedroom"
+      ]
+    },
+    {
+      "src": "/images/houses/leonidas/1024/leonidas-village-lane-01-1024.webp",
+      "srcset": "/images/houses/leonidas/480/leonidas-village-lane-01-480.webp 480w, /images/houses/leonidas/768/leonidas-village-lane-01-768.webp 768w, /images/houses/leonidas/1024/leonidas-village-lane-01-1024.webp 1024w, /images/houses/leonidas/1600/leonidas-village-lane-01-1600.webp 1600w",
+      "alt": "Leonidas village lane 01",
+      "isFeatured": false,
+      "tags": [
+        "exterior"
+      ]
+    }
+  ],
+  "margarita": [
+    {
+      "src": "/images/houses/margarita/1024/margarita-exterior-approach-01-1024.webp",
+      "srcset": "/images/houses/margarita/480/margarita-exterior-approach-01-480.webp 480w, /images/houses/margarita/768/margarita-exterior-approach-01-768.webp 768w, /images/houses/margarita/1024/margarita-exterior-approach-01-1024.webp 1024w, /images/houses/margarita/1600/margarita-exterior-approach-01-1600.webp 1600w",
+      "alt": "Margarita exterior approach 01",
+      "isFeatured": true,
+      "tags": [
+        "exterior"
+      ]
+    },
+    {
+      "src": "/images/houses/margarita/1024/margarita-hero-terrace-sea-view-01-1024.webp",
+      "srcset": "/images/houses/margarita/480/margarita-hero-terrace-sea-view-01-480.webp 480w, /images/houses/margarita/768/margarita-hero-terrace-sea-view-01-768.webp 768w, /images/houses/margarita/1024/margarita-hero-terrace-sea-view-01-1024.webp 1024w, /images/houses/margarita/1600/margarita-hero-terrace-sea-view-01-1600.webp 1600w, /images/houses/margarita/2400/margarita-hero-terrace-sea-view-01-2400.webp 2400w",
+      "alt": "Margarita hero terrace sea view 01",
+      "isFeatured": true,
+      "tags": [
+        "view",
+        "outdoor"
+      ]
+    },
+    {
+      "src": "/images/houses/margarita/1024/margarita-bathroom-bathtab-01-1024.webp",
+      "srcset": "/images/houses/margarita/480/margarita-bathroom-bathtab-01-480.webp 480w, /images/houses/margarita/768/margarita-bathroom-bathtab-01-768.webp 768w, /images/houses/margarita/1024/margarita-bathroom-bathtab-01-1024.webp 1024w, /images/houses/margarita/1600/margarita-bathroom-bathtab-01-1600.webp 1600w",
+      "alt": "Margarita bathroom bathtab 01",
+      "isFeatured": false,
+      "tags": [
+        "bathroom"
+      ]
+    },
+    {
+      "src": "/images/houses/margarita/1024/margarita-bedroom-arched-01-1024.webp",
+      "srcset": "/images/houses/margarita/480/margarita-bedroom-arched-01-480.webp 480w, /images/houses/margarita/768/margarita-bedroom-arched-01-768.webp 768w, /images/houses/margarita/1024/margarita-bedroom-arched-01-1024.webp 1024w, /images/houses/margarita/1600/margarita-bedroom-arched-01-1600.webp 1600w",
+      "alt": "Margarita bedroom arched 01",
+      "isFeatured": false,
+      "tags": [
+        "bedroom"
+      ]
+    },
+    {
+      "src": "/images/houses/margarita/1024/margarita-bedroom-single-beds-01-1024.webp",
+      "srcset": "/images/houses/margarita/480/margarita-bedroom-single-beds-01-480.webp 480w, /images/houses/margarita/768/margarita-bedroom-single-beds-01-768.webp 768w, /images/houses/margarita/1024/margarita-bedroom-single-beds-01-1024.webp 1024w, /images/houses/margarita/1600/margarita-bedroom-single-beds-01-1600.webp 1600w",
+      "alt": "Margarita bedroom single beds 01",
+      "isFeatured": false,
+      "tags": [
+        "bedroom"
+      ]
+    },
+    {
+      "src": "/images/houses/margarita/1024/margarita-bedroom-single-beds-02-1024.webp",
+      "srcset": "/images/houses/margarita/480/margarita-bedroom-single-beds-02-480.webp 480w, /images/houses/margarita/768/margarita-bedroom-single-beds-02-768.webp 768w, /images/houses/margarita/1024/margarita-bedroom-single-beds-02-1024.webp 1024w, /images/houses/margarita/1600/margarita-bedroom-single-beds-02-1600.webp 1600w",
+      "alt": "Margarita bedroom single beds 02",
+      "isFeatured": false,
+      "tags": [
+        "bedroom"
+      ]
+    },
+    {
+      "src": "/images/houses/margarita/1024/margarita-courtyard-entrance-01-1024.webp",
+      "srcset": "/images/houses/margarita/480/margarita-courtyard-entrance-01-480.webp 480w, /images/houses/margarita/768/margarita-courtyard-entrance-01-768.webp 768w, /images/houses/margarita/1024/margarita-courtyard-entrance-01-1024.webp 1024w, /images/houses/margarita/1600/margarita-courtyard-entrance-01-1600.webp 1600w",
+      "alt": "Margarita courtyard entrance 01",
+      "isFeatured": false,
+      "tags": [
+        "outdoor"
+      ]
+    },
+    {
+      "src": "/images/houses/margarita/1024/margarita-entrance-door-detail-01-1024.webp",
+      "srcset": "/images/houses/margarita/480/margarita-entrance-door-detail-01-480.webp 480w, /images/houses/margarita/768/margarita-entrance-door-detail-01-768.webp 768w, /images/houses/margarita/1024/margarita-entrance-door-detail-01-1024.webp 1024w, /images/houses/margarita/1600/margarita-entrance-door-detail-01-1600.webp 1600w",
+      "alt": "Margarita entrance door detail 01",
+      "isFeatured": false,
+      "tags": [
+        "interior"
+      ]
+    },
+    {
+      "src": "/images/houses/margarita/1024/margarita-entrance-stone-01-1024.webp",
+      "srcset": "/images/houses/margarita/480/margarita-entrance-stone-01-480.webp 480w, /images/houses/margarita/768/margarita-entrance-stone-01-768.webp 768w, /images/houses/margarita/1024/margarita-entrance-stone-01-1024.webp 1024w, /images/houses/margarita/1600/margarita-entrance-stone-01-1600.webp 1600w",
+      "alt": "Margarita entrance stone 01",
+      "isFeatured": false,
+      "tags": [
+        "exterior"
+      ]
+    },
+    {
+      "src": "/images/houses/margarita/1024/margarita-living-room-arched-01-1024.webp",
+      "srcset": "/images/houses/margarita/480/margarita-living-room-arched-01-480.webp 480w, /images/houses/margarita/768/margarita-living-room-arched-01-768.webp 768w, /images/houses/margarita/1024/margarita-living-room-arched-01-1024.webp 1024w, /images/houses/margarita/1600/margarita-living-room-arched-01-1600.webp 1600w",
+      "alt": "Margarita living room arched 01",
+      "isFeatured": false,
+      "tags": [
+        "living-area"
+      ]
+    },
+    {
+      "src": "/images/houses/margarita/1024/margarita-living-room-fireplace-01-1024.webp",
+      "srcset": "/images/houses/margarita/480/margarita-living-room-fireplace-01-480.webp 480w, /images/houses/margarita/768/margarita-living-room-fireplace-01-768.webp 768w, /images/houses/margarita/1024/margarita-living-room-fireplace-01-1024.webp 1024w, /images/houses/margarita/1600/margarita-living-room-fireplace-01-1600.webp 1600w",
+      "alt": "Margarita living room fireplace 01",
+      "isFeatured": false,
+      "tags": [
+        "living-area"
+      ]
+    },
+    {
+      "src": "/images/houses/margarita/1024/margarita-living-room-fireplace-02-1024.webp",
+      "srcset": "/images/houses/margarita/480/margarita-living-room-fireplace-02-480.webp 480w, /images/houses/margarita/768/margarita-living-room-fireplace-02-768.webp 768w, /images/houses/margarita/1024/margarita-living-room-fireplace-02-1024.webp 1024w, /images/houses/margarita/1600/margarita-living-room-fireplace-02-1600.webp 1600w",
+      "alt": "Margarita living room fireplace 02",
+      "isFeatured": false,
+      "tags": [
+        "living-area"
+      ]
+    },
+    {
+      "src": "/images/houses/margarita/1024/margarita-master-bedroom-01-1024.webp",
+      "srcset": "/images/houses/margarita/480/margarita-master-bedroom-01-480.webp 480w, /images/houses/margarita/768/margarita-master-bedroom-01-768.webp 768w, /images/houses/margarita/1024/margarita-master-bedroom-01-1024.webp 1024w, /images/houses/margarita/1600/margarita-master-bedroom-01-1600.webp 1600w",
+      "alt": "Margarita master bedroom 01",
+      "isFeatured": false,
+      "tags": [
+        "bedroom"
+      ]
+    },
+    {
+      "src": "/images/houses/margarita/1600/margarita-stair-stone-01-1600.webp",
+      "srcset": "/images/houses/margarita/480/margarita-stair-stone-01-480.webp 480w, /images/houses/margarita/768/margarita-stair-stone-01-768.webp 768w, /images/houses/margarita/1600/margarita-stair-stone-01-1600.webp 1600w",
+      "alt": "Margarita stair stone 01",
+      "isFeatured": false,
+      "tags": [
+        "exterior"
+      ]
+    },
+    {
+      "src": "/images/houses/margarita/1024/margarita-terrace-dining-sea-view-02-1024.webp",
+      "srcset": "/images/houses/margarita/480/margarita-terrace-dining-sea-view-02-480.webp 480w, /images/houses/margarita/768/margarita-terrace-dining-sea-view-02-768.webp 768w, /images/houses/margarita/1024/margarita-terrace-dining-sea-view-02-1024.webp 1024w, /images/houses/margarita/1600/margarita-terrace-dining-sea-view-02-1600.webp 1600w",
+      "alt": "Margarita terrace dining sea view 02",
+      "isFeatured": false,
+      "tags": [
+        "view",
+        "living-area",
+        "outdoor"
+      ]
+    },
+    {
+      "src": "/images/houses/margarita/1024/margarita-terrace-dining-set-01-1024.webp",
+      "srcset": "/images/houses/margarita/480/margarita-terrace-dining-set-01-480.webp 480w, /images/houses/margarita/768/margarita-terrace-dining-set-01-768.webp 768w, /images/houses/margarita/1024/margarita-terrace-dining-set-01-1024.webp 1024w, /images/houses/margarita/1600/margarita-terrace-dining-set-01-1600.webp 1600w",
+      "alt": "Margarita terrace dining set 01",
+      "isFeatured": false,
+      "tags": [
+        "living-area",
+        "outdoor"
+      ]
+    },
+    {
+      "src": "/images/houses/margarita/1024/margarita-view-sea-01-1024.webp",
+      "srcset": "/images/houses/margarita/480/margarita-view-sea-01-480.webp 480w, /images/houses/margarita/768/margarita-view-sea-01-768.webp 768w, /images/houses/margarita/1024/margarita-view-sea-01-1024.webp 1024w, /images/houses/margarita/1600/margarita-view-sea-01-1600.webp 1600w",
+      "alt": "Margarita view sea 01",
+      "isFeatured": false,
+      "tags": [
+        "view"
+      ]
+    },
+    {
+      "src": "/images/houses/margarita/1024/margarita-stair-stone-01.webp",
+      "srcset": "/images/houses/margarita/1024/margarita-stair-stone-01.webp 1024w",
+      "alt": "Margarita stair stone",
+      "isFeatured": false,
+      "tags": [
+        "exterior"
+      ]
+    }
   ],
   "monastiri": [
-    { "src": "/images/houses/monastiri/01.jpg", "alt": "House Monastiri — sea view stone house with private dipping pool", "isFeatured": true },
-    { "src": "/images/houses/monastiri/02.jpg", "alt": "House Monastiri — Elounda Bay panorama from terrace", "isFeatured": false },
-    { "src": "/images/houses/monastiri/03.jpg", "alt": "House Monastiri — living and dining area", "isFeatured": false },
-    { "src": "/images/houses/monastiri/04.jpg", "alt": "House Monastiri — private dipping pool at dusk", "isFeatured": false }
+    {
+      "src": "/images/houses/monastiri/1024/monastiri-exterior-approach-01-685.webp",
+      "srcset": "/images/houses/monastiri/480/monastiri-exterior-approach-01-321.webp 480w, /images/houses/monastiri/768/monastiri-exterior-approach-01-514.webp 768w, /images/houses/monastiri/1024/monastiri-exterior-approach-01-685.webp 1024w, /images/houses/monastiri/1600/monastiri-exterior-approach-01-1071.webp 1600w",
+      "alt": "Monastiri exterior approach 01",
+      "isFeatured": true,
+      "tags": [
+        "exterior"
+      ]
+    },
+    {
+      "src": "/images/houses/monastiri/1024/monastiri-exterior-facade-02-1024.webp",
+      "srcset": "/images/houses/monastiri/480/monastiri-exterior-facade-02-480.webp 480w, /images/houses/monastiri/768/monastiri-exterior-facade-02-768.webp 768w, /images/houses/monastiri/1024/monastiri-exterior-facade-02-1024.webp 1024w, /images/houses/monastiri/1600/monastiri-exterior-facade-02-1600.webp 1600w",
+      "alt": "Monastiri exterior facade 02",
+      "isFeatured": true,
+      "tags": [
+        "exterior"
+      ]
+    },
+    {
+      "src": "/images/houses/monastiri/1024/monastiri-hero-exterior-facade-01-1024.webp",
+      "srcset": "/images/houses/monastiri/480/monastiri-hero-exterior-facade-01-480.webp 480w, /images/houses/monastiri/768/monastiri-hero-exterior-facade-01-768.webp 768w, /images/houses/monastiri/1024/monastiri-hero-exterior-facade-01-1024.webp 1024w, /images/houses/monastiri/1600/monastiri-hero-exterior-facade-01-1600.webp 1600w, /images/houses/monastiri/2400/monastiri-hero-exterior-facade-01-2400.webp 2400w",
+      "alt": "Monastiri hero exterior facade 01",
+      "isFeatured": true,
+      "tags": [
+        "exterior"
+      ]
+    },
+    {
+      "src": "/images/houses/monastiri/1024/monastiri-bathroom-01-1024.webp",
+      "srcset": "/images/houses/monastiri/480/monastiri-bathroom-01-480.webp 480w, /images/houses/monastiri/768/monastiri-bathroom-01-768.webp 768w, /images/houses/monastiri/1024/monastiri-bathroom-01-1024.webp 1024w, /images/houses/monastiri/1600/monastiri-bathroom-01-1600.webp 1600w",
+      "alt": "Monastiri bathroom 01",
+      "isFeatured": false,
+      "tags": [
+        "bathroom"
+      ]
+    },
+    {
+      "src": "/images/houses/monastiri/1024/monastiri-bedroom-alternate-01-1024.webp",
+      "srcset": "/images/houses/monastiri/480/monastiri-bedroom-alternate-01-480.webp 480w, /images/houses/monastiri/768/monastiri-bedroom-alternate-01-768.webp 768w, /images/houses/monastiri/1024/monastiri-bedroom-alternate-01-1024.webp 1024w, /images/houses/monastiri/1600/monastiri-bedroom-alternate-01-1600.webp 1600w",
+      "alt": "Monastiri bedroom alternate 01",
+      "isFeatured": false,
+      "tags": [
+        "bedroom"
+      ]
+    },
+    {
+      "src": "/images/houses/monastiri/1024/monastiri-bedroom-first-floor-01-1024.webp",
+      "srcset": "/images/houses/monastiri/480/monastiri-bedroom-first-floor-01-480.webp 480w, /images/houses/monastiri/768/monastiri-bedroom-first-floor-01-768.webp 768w, /images/houses/monastiri/1024/monastiri-bedroom-first-floor-01-1024.webp 1024w, /images/houses/monastiri/1600/monastiri-bedroom-first-floor-01-1600.webp 1600w",
+      "alt": "Monastiri bedroom first floor 01",
+      "isFeatured": false,
+      "tags": [
+        "bedroom"
+      ]
+    },
+    {
+      "src": "/images/houses/monastiri/1024/monastiri-bedroom-ground-floor-01-1024.webp",
+      "srcset": "/images/houses/monastiri/480/monastiri-bedroom-ground-floor-01-480.webp 480w, /images/houses/monastiri/768/monastiri-bedroom-ground-floor-01-768.webp 768w, /images/houses/monastiri/1024/monastiri-bedroom-ground-floor-01-1024.webp 1024w, /images/houses/monastiri/1600/monastiri-bedroom-ground-floor-01-1600.webp 1600w",
+      "alt": "Monastiri bedroom ground floor 01",
+      "isFeatured": false,
+      "tags": [
+        "bedroom"
+      ]
+    },
+    {
+      "src": "/images/houses/monastiri/1024/monastiri-bedroom-single-beds-first-floor-01-1024.webp",
+      "srcset": "/images/houses/monastiri/480/monastiri-bedroom-single-beds-first-floor-01-480.webp 480w, /images/houses/monastiri/768/monastiri-bedroom-single-beds-first-floor-01-768.webp 768w, /images/houses/monastiri/1024/monastiri-bedroom-single-beds-first-floor-01-1024.webp 1024w, /images/houses/monastiri/1600/monastiri-bedroom-single-beds-first-floor-01-1600.webp 1600w",
+      "alt": "Monastiri bedroom single beds first floor 01",
+      "isFeatured": false,
+      "tags": [
+        "bedroom"
+      ]
+    },
+    {
+      "src": "/images/houses/monastiri/1024/monastiri-courtyard-pool-01-1024.webp",
+      "srcset": "/images/houses/monastiri/480/monastiri-courtyard-pool-01-480.webp 480w, /images/houses/monastiri/768/monastiri-courtyard-pool-01-768.webp 768w, /images/houses/monastiri/1024/monastiri-courtyard-pool-01-1024.webp 1024w, /images/houses/monastiri/1600/monastiri-courtyard-pool-01-1600.webp 1600w, /images/houses/monastiri/2400/monastiri-courtyard-pool-01-2400.webp 2400w",
+      "alt": "Monastiri courtyard pool 01",
+      "isFeatured": false,
+      "tags": [
+        "pool",
+        "outdoor"
+      ]
+    },
+    {
+      "src": "/images/houses/monastiri/1024/monastiri-courtyard-pool-02-1024.webp",
+      "srcset": "/images/houses/monastiri/480/monastiri-courtyard-pool-02-480.webp 480w, /images/houses/monastiri/768/monastiri-courtyard-pool-02-768.webp 768w, /images/houses/monastiri/1024/monastiri-courtyard-pool-02-1024.webp 1024w, /images/houses/monastiri/1600/monastiri-courtyard-pool-02-1600.webp 1600w",
+      "alt": "Monastiri courtyard pool 02",
+      "isFeatured": false,
+      "tags": [
+        "pool",
+        "outdoor"
+      ]
+    },
+    {
+      "src": "/images/houses/monastiri/1024/monastiri-courtyard-pool-night-01-765.webp",
+      "srcset": "/images/houses/monastiri/480/monastiri-courtyard-pool-night-01-358.webp 480w, /images/houses/monastiri/768/monastiri-courtyard-pool-night-01-573.webp 768w, /images/houses/monastiri/1024/monastiri-courtyard-pool-night-01-765.webp 1024w, /images/houses/monastiri/1600/monastiri-courtyard-pool-night-01-1195.webp 1600w",
+      "alt": "Monastiri courtyard pool night 01",
+      "isFeatured": false,
+      "tags": [
+        "pool",
+        "outdoor"
+      ]
+    },
+    {
+      "src": "/images/houses/monastiri/1024/monastiri-dining-upper-level-01-1024.webp",
+      "srcset": "/images/houses/monastiri/480/monastiri-dining-upper-level-01-480.webp 480w, /images/houses/monastiri/768/monastiri-dining-upper-level-01-768.webp 768w, /images/houses/monastiri/1024/monastiri-dining-upper-level-01-1024.webp 1024w, /images/houses/monastiri/1600/monastiri-dining-upper-level-01-1600.webp 1600w",
+      "alt": "Monastiri dining upper level 01",
+      "isFeatured": false,
+      "tags": [
+        "living-area"
+      ]
+    },
+    {
+      "src": "/images/houses/monastiri/1024/monastiri-entrance-arched-door-01-685.webp",
+      "srcset": "/images/houses/monastiri/480/monastiri-entrance-arched-door-01-321.webp 480w, /images/houses/monastiri/768/monastiri-entrance-arched-door-01-514.webp 768w, /images/houses/monastiri/1024/monastiri-entrance-arched-door-01-685.webp 1024w, /images/houses/monastiri/1600/monastiri-entrance-arched-door-01-1071.webp 1600w",
+      "alt": "Monastiri entrance arched door 01",
+      "isFeatured": false,
+      "tags": [
+        "interior"
+      ]
+    },
+    {
+      "src": "/images/houses/monastiri/1024/monastiri-kitchen-dining-upper-level-01-1024.webp",
+      "srcset": "/images/houses/monastiri/480/monastiri-kitchen-dining-upper-level-01-480.webp 480w, /images/houses/monastiri/768/monastiri-kitchen-dining-upper-level-01-768.webp 768w, /images/houses/monastiri/1024/monastiri-kitchen-dining-upper-level-01-1024.webp 1024w, /images/houses/monastiri/1600/monastiri-kitchen-dining-upper-level-01-1600.webp 1600w",
+      "alt": "Monastiri kitchen dining upper level 01",
+      "isFeatured": false,
+      "tags": [
+        "living-area",
+        "kitchen"
+      ]
+    },
+    {
+      "src": "/images/houses/monastiri/1024/monastiri-layout-overview-01-1024.webp",
+      "srcset": "/images/houses/monastiri/480/monastiri-layout-overview-01-480.webp 480w, /images/houses/monastiri/768/monastiri-layout-overview-01-768.webp 768w, /images/houses/monastiri/1024/monastiri-layout-overview-01-1024.webp 1024w, /images/houses/monastiri/1600/monastiri-layout-overview-01-1600.webp 1600w",
+      "alt": "Monastiri layout overview 01",
+      "isFeatured": false,
+      "tags": [
+        "view"
+      ]
+    },
+    {
+      "src": "/images/houses/monastiri/1024/monastiri-living-room-02-685.webp",
+      "srcset": "/images/houses/monastiri/480/monastiri-living-room-02-321.webp 480w, /images/houses/monastiri/768/monastiri-living-room-02-514.webp 768w, /images/houses/monastiri/1024/monastiri-living-room-02-685.webp 1024w, /images/houses/monastiri/1600/monastiri-living-room-02-1071.webp 1600w",
+      "alt": "Monastiri living room 02",
+      "isFeatured": false,
+      "tags": [
+        "living-area"
+      ]
+    },
+    {
+      "src": "/images/houses/monastiri/1024/monastiri-stairs-01-1024.webp",
+      "srcset": "/images/houses/monastiri/480/monastiri-stairs-01-480.webp 480w, /images/houses/monastiri/768/monastiri-stairs-01-768.webp 768w, /images/houses/monastiri/1024/monastiri-stairs-01-1024.webp 1024w, /images/houses/monastiri/1600/monastiri-stairs-01-1600.webp 1600w",
+      "alt": "Monastiri stairs 01",
+      "isFeatured": false,
+      "tags": [
+        "interior"
+      ]
+    },
+    {
+      "src": "/images/houses/monastiri/1024/monastiri-stairs-02-683.webp",
+      "srcset": "/images/houses/monastiri/480/monastiri-stairs-02-320.webp 480w, /images/houses/monastiri/768/monastiri-stairs-02-512.webp 768w, /images/houses/monastiri/1024/monastiri-stairs-02-683.webp 1024w, /images/houses/monastiri/1600/monastiri-stairs-02-1067.webp 1600w",
+      "alt": "Monastiri stairs 02",
+      "isFeatured": false,
+      "tags": [
+        "interior"
+      ]
+    },
+    {
+      "src": "/images/houses/monastiri/1024/monastiri-upper-level-01-1024.webp",
+      "srcset": "/images/houses/monastiri/480/monastiri-upper-level-01-480.webp 480w, /images/houses/monastiri/768/monastiri-upper-level-01-768.webp 768w, /images/houses/monastiri/1024/monastiri-upper-level-01-1024.webp 1024w, /images/houses/monastiri/1600/monastiri-upper-level-01-1600.webp 1600w",
+      "alt": "Monastiri upper level 01",
+      "isFeatured": false,
+      "tags": [
+        "interior"
+      ]
+    }
+  ],
+  "penelope": [
+    {
+      "src": "/images/houses/penelope/1024/penelope-hero-arched-doorway-view-01-1024.webp",
+      "srcset": "/images/houses/penelope/480/penelope-hero-arched-doorway-view-01-480.webp 480w, /images/houses/penelope/768/penelope-hero-arched-doorway-view-01-768.webp 768w, /images/houses/penelope/1024/penelope-hero-arched-doorway-view-01-1024.webp 1024w, /images/houses/penelope/1600/penelope-hero-arched-doorway-view-01-1600.webp 1600w, /images/houses/penelope/2400/penelope-hero-arched-doorway-view-01-2400.webp 2400w",
+      "alt": "Penelope hero arched doorway view 01",
+      "isFeatured": true,
+      "tags": [
+        "view"
+      ]
+    },
+    {
+      "src": "/images/houses/penelope/1024/penelope-bathroom-01-1024.webp",
+      "srcset": "/images/houses/penelope/480/penelope-bathroom-01-480.webp 480w, /images/houses/penelope/768/penelope-bathroom-01-768.webp 768w, /images/houses/penelope/1024/penelope-bathroom-01-1024.webp 1024w, /images/houses/penelope/1600/penelope-bathroom-01-1600.webp 1600w",
+      "alt": "Penelope bathroom 01",
+      "isFeatured": false,
+      "tags": [
+        "bathroom"
+      ]
+    },
+    {
+      "src": "/images/houses/penelope/1024/penelope-bedroom-twin-beds-01-1024.webp",
+      "srcset": "/images/houses/penelope/480/penelope-bedroom-twin-beds-01-480.webp 480w, /images/houses/penelope/768/penelope-bedroom-twin-beds-01-768.webp 768w, /images/houses/penelope/1024/penelope-bedroom-twin-beds-01-1024.webp 1024w, /images/houses/penelope/1600/penelope-bedroom-twin-beds-01-1600.webp 1600w",
+      "alt": "Penelope bedroom twin beds 01",
+      "isFeatured": false,
+      "tags": [
+        "bedroom"
+      ]
+    },
+    {
+      "src": "/images/houses/penelope/1024/penelope-covered-terrace-01-1024.webp",
+      "srcset": "/images/houses/penelope/480/penelope-covered-terrace-01-480.webp 480w, /images/houses/penelope/768/penelope-covered-terrace-01-768.webp 768w, /images/houses/penelope/1024/penelope-covered-terrace-01-1024.webp 1024w, /images/houses/penelope/1600/penelope-covered-terrace-01-1600.webp 1600w",
+      "alt": "Penelope covered terrace 01",
+      "isFeatured": false,
+      "tags": [
+        "outdoor"
+      ]
+    },
+    {
+      "src": "/images/houses/penelope/1024/penelope-detail-kitchen-shelf-01-1024.webp",
+      "srcset": "/images/houses/penelope/480/penelope-detail-kitchen-shelf-01-480.webp 480w, /images/houses/penelope/768/penelope-detail-kitchen-shelf-01-768.webp 768w, /images/houses/penelope/1024/penelope-detail-kitchen-shelf-01-1024.webp 1024w, /images/houses/penelope/1600/penelope-detail-kitchen-shelf-01-1600.webp 1600w",
+      "alt": "Penelope detail kitchen shelf 01",
+      "isFeatured": false,
+      "tags": [
+        "kitchen"
+      ]
+    },
+    {
+      "src": "/images/houses/penelope/1024/penelope-kitchen-01-1024.webp",
+      "srcset": "/images/houses/penelope/480/penelope-kitchen-01-480.webp 480w, /images/houses/penelope/768/penelope-kitchen-01-768.webp 768w, /images/houses/penelope/1024/penelope-kitchen-01-1024.webp 1024w, /images/houses/penelope/1600/penelope-kitchen-01-1600.webp 1600w",
+      "alt": "Penelope kitchen 01",
+      "isFeatured": false,
+      "tags": [
+        "kitchen"
+      ]
+    },
+    {
+      "src": "/images/houses/penelope/1024/penelope-living-room-wide-01-1024.webp",
+      "srcset": "/images/houses/penelope/480/penelope-living-room-wide-01-480.webp 480w, /images/houses/penelope/768/penelope-living-room-wide-01-768.webp 768w, /images/houses/penelope/1024/penelope-living-room-wide-01-1024.webp 1024w, /images/houses/penelope/1600/penelope-living-room-wide-01-1600.webp 1600w",
+      "alt": "Penelope living room wide 01",
+      "isFeatured": false,
+      "tags": [
+        "living-area"
+      ]
+    },
+    {
+      "src": "/images/houses/penelope/1024/penelope-living-room-wide-02-1024.webp",
+      "srcset": "/images/houses/penelope/480/penelope-living-room-wide-02-480.webp 480w, /images/houses/penelope/768/penelope-living-room-wide-02-768.webp 768w, /images/houses/penelope/1024/penelope-living-room-wide-02-1024.webp 1024w, /images/houses/penelope/1600/penelope-living-room-wide-02-1600.webp 1600w",
+      "alt": "Penelope living room wide 02",
+      "isFeatured": false,
+      "tags": [
+        "living-area"
+      ]
+    },
+    {
+      "src": "/images/houses/penelope/1024/penelope-master-bedroom-01-1024.webp",
+      "srcset": "/images/houses/penelope/480/penelope-master-bedroom-01-480.webp 480w, /images/houses/penelope/768/penelope-master-bedroom-01-768.webp 768w, /images/houses/penelope/1024/penelope-master-bedroom-01-1024.webp 1024w, /images/houses/penelope/1600/penelope-master-bedroom-01-1600.webp 1600w",
+      "alt": "Penelope master bedroom 01",
+      "isFeatured": false,
+      "tags": [
+        "bedroom"
+      ]
+    },
+    {
+      "src": "/images/houses/penelope/1024/penelope-master-bedroom-attic-01-1024.webp",
+      "srcset": "/images/houses/penelope/480/penelope-master-bedroom-attic-01-480.webp 480w, /images/houses/penelope/768/penelope-master-bedroom-attic-01-768.webp 768w, /images/houses/penelope/1024/penelope-master-bedroom-attic-01-1024.webp 1024w, /images/houses/penelope/1600/penelope-master-bedroom-attic-01-1600.webp 1600w",
+      "alt": "Penelope master bedroom attic 01",
+      "isFeatured": false,
+      "tags": [
+        "bedroom"
+      ]
+    },
+    {
+      "src": "/images/houses/penelope/1024/penelope-shared-pool-context-01-1024.webp",
+      "srcset": "/images/houses/penelope/480/penelope-shared-pool-context-01-480.webp 480w, /images/houses/penelope/768/penelope-shared-pool-context-01-768.webp 768w, /images/houses/penelope/1024/penelope-shared-pool-context-01-1024.webp 1024w, /images/houses/penelope/1600/penelope-shared-pool-context-01-1600.webp 1600w",
+      "alt": "Penelope shared pool context 01",
+      "isFeatured": false,
+      "tags": [
+        "pool"
+      ]
+    },
+    {
+      "src": "/images/houses/penelope/1024/penelope-terrace-dining-01-1024.webp",
+      "srcset": "/images/houses/penelope/480/penelope-terrace-dining-01-480.webp 480w, /images/houses/penelope/768/penelope-terrace-dining-01-768.webp 768w, /images/houses/penelope/1024/penelope-terrace-dining-01-1024.webp 1024w, /images/houses/penelope/1600/penelope-terrace-dining-01-1600.webp 1600w",
+      "alt": "Penelope terrace dining 01",
+      "isFeatured": false,
+      "tags": [
+        "living-area",
+        "outdoor"
+      ]
+    },
+    {
+      "src": "/images/houses/penelope/1024/penelope-terrace-dining-02-1024.webp",
+      "srcset": "/images/houses/penelope/480/penelope-terrace-dining-02-480.webp 480w, /images/houses/penelope/768/penelope-terrace-dining-02-768.webp 768w, /images/houses/penelope/1024/penelope-terrace-dining-02-1024.webp 1024w, /images/houses/penelope/1600/penelope-terrace-dining-02-1600.webp 1600w",
+      "alt": "Penelope terrace dining 02",
+      "isFeatured": false,
+      "tags": [
+        "living-area",
+        "outdoor"
+      ]
+    },
+    {
+      "src": "/images/houses/penelope/1024/penelope-terrace-doorway-01-1024.webp",
+      "srcset": "/images/houses/penelope/480/penelope-terrace-doorway-01-480.webp 480w, /images/houses/penelope/768/penelope-terrace-doorway-01-768.webp 768w, /images/houses/penelope/1024/penelope-terrace-doorway-01-1024.webp 1024w, /images/houses/penelope/1600/penelope-terrace-doorway-01-1600.webp 1600w",
+      "alt": "Penelope terrace doorway 01",
+      "isFeatured": false,
+      "tags": [
+        "outdoor"
+      ]
+    },
+    {
+      "src": "/images/houses/penelope/1024/penelope-terrace-kitchen-01-1024.webp",
+      "srcset": "/images/houses/penelope/480/penelope-terrace-kitchen-01-480.webp 480w, /images/houses/penelope/768/penelope-terrace-kitchen-01-768.webp 768w, /images/houses/penelope/1024/penelope-terrace-kitchen-01-1024.webp 1024w, /images/houses/penelope/1600/penelope-terrace-kitchen-01-1600.webp 1600w",
+      "alt": "Penelope terrace kitchen 01",
+      "isFeatured": false,
+      "tags": [
+        "kitchen",
+        "outdoor"
+      ]
+    }
   ],
   "almond-tree-villa": [
-    { "src": "/images/villa/almond-tree-villa/01.jpg", "alt": "Almond Tree Villa — panoramic pool terrace over Elounda Bay, Vrouchas", "isFeatured": true },
-    { "src": "/images/villa/almond-tree-villa/02.jpg", "alt": "Almond Tree Villa — Spinalonga and Mirabello Gulf from the terrace", "isFeatured": false },
-    { "src": "/images/villa/almond-tree-villa/03.jpg", "alt": "Almond Tree Villa — spacious open-plan living and dining", "isFeatured": false },
-    { "src": "/images/villa/almond-tree-villa/04.jpg", "alt": "Almond Tree Villa — master bedroom with sea view", "isFeatured": false },
-    { "src": "/images/villa/almond-tree-villa/05.jpg", "alt": "Almond Tree Villa — private pool 9 m × 4 m at evening light", "isFeatured": false },
-    { "src": "/images/villa/almond-tree-villa/06.jpg", "alt": "Almond Tree Villa — garden with almond trees", "isFeatured": false }
+    {
+      "src": "/images/villa/almond-tree-villa/1024/almond-tree-villa-hero-garden-pool-01-1024.webp",
+      "srcset": "/images/villa/almond-tree-villa/480/almond-tree-villa-hero-garden-pool-01-480.webp 480w, /images/villa/almond-tree-villa/768/almond-tree-villa-hero-garden-pool-01-768.webp 768w, /images/villa/almond-tree-villa/1024/almond-tree-villa-hero-garden-pool-01-1024.webp 1024w, /images/villa/almond-tree-villa/1600/almond-tree-villa-hero-garden-pool-01-1600.webp 1600w",
+      "alt": "Almond tree villa hero garden pool 01",
+      "isFeatured": true,
+      "tags": [
+        "pool",
+        "outdoor"
+      ]
+    },
+    {
+      "src": "/images/villa/almond-tree-villa/1024/almond-tree-villa-hero-garden-pool-wide-01-1024.webp",
+      "srcset": "/images/villa/almond-tree-villa/480/almond-tree-villa-hero-garden-pool-wide-01-480.webp 480w, /images/villa/almond-tree-villa/768/almond-tree-villa-hero-garden-pool-wide-01-768.webp 768w, /images/villa/almond-tree-villa/1024/almond-tree-villa-hero-garden-pool-wide-01-1024.webp 1024w, /images/villa/almond-tree-villa/1600/almond-tree-villa-hero-garden-pool-wide-01-1600.webp 1600w, /images/villa/almond-tree-villa/2400/almond-tree-villa-hero-garden-pool-wide-01-2400.webp 2400w",
+      "alt": "Almond tree villa hero garden pool wide 01",
+      "isFeatured": true,
+      "tags": [
+        "pool",
+        "outdoor"
+      ]
+    },
+    {
+      "src": "/images/villa/almond-tree-villa/2400/almond-tree-villa-hero-garden-pool-02-2400.webp",
+      "srcset": "/images/villa/almond-tree-villa/2400/almond-tree-villa-hero-garden-pool-02-2400.webp 2400w",
+      "alt": "Almond tree villa hero garden pool 02",
+      "isFeatured": true,
+      "tags": [
+        "pool",
+        "outdoor"
+      ]
+    },
+    {
+      "src": "/images/villa/almond-tree-villa/1024/almond-tree-villa-bbq-oven-01-1024.webp",
+      "srcset": "/images/villa/almond-tree-villa/480/almond-tree-villa-bbq-oven-01-480.webp 480w, /images/villa/almond-tree-villa/768/almond-tree-villa-bbq-oven-01-768.webp 768w, /images/villa/almond-tree-villa/1024/almond-tree-villa-bbq-oven-01-1024.webp 1024w, /images/villa/almond-tree-villa/1600/almond-tree-villa-bbq-oven-01-1600.webp 1600w",
+      "alt": "Almond tree villa bbq oven 01",
+      "isFeatured": false,
+      "tags": [
+        "kitchen"
+      ]
+    },
+    {
+      "src": "/images/villa/almond-tree-villa/1024/almond-tree-villa-bedroom-twin-beds-02-01-1024.webp",
+      "srcset": "/images/villa/almond-tree-villa/480/almond-tree-villa-bedroom-twin-beds-02-01-480.webp 480w, /images/villa/almond-tree-villa/768/almond-tree-villa-bedroom-twin-beds-02-01-768.webp 768w, /images/villa/almond-tree-villa/1024/almond-tree-villa-bedroom-twin-beds-02-01-1024.webp 1024w, /images/villa/almond-tree-villa/1600/almond-tree-villa-bedroom-twin-beds-02-01-1600.webp 1600w",
+      "alt": "Almond tree villa bedroom twin beds 02 01",
+      "isFeatured": false,
+      "tags": [
+        "bedroom"
+      ]
+    },
+    {
+      "src": "/images/villa/almond-tree-villa/1024/almond-tree-villa-first-floor-bathroom-01-1024.webp",
+      "srcset": "/images/villa/almond-tree-villa/480/almond-tree-villa-first-floor-bathroom-01-480.webp 480w, /images/villa/almond-tree-villa/768/almond-tree-villa-first-floor-bathroom-01-768.webp 768w, /images/villa/almond-tree-villa/1024/almond-tree-villa-first-floor-bathroom-01-1024.webp 1024w, /images/villa/almond-tree-villa/1600/almond-tree-villa-first-floor-bathroom-01-1600.webp 1600w",
+      "alt": "Almond tree villa first floor bathroom 01",
+      "isFeatured": false,
+      "tags": [
+        "bathroom"
+      ]
+    },
+    {
+      "src": "/images/villa/almond-tree-villa/1024/almond-tree-villa-first-floor-master-bedroom-03-01-1024.webp",
+      "srcset": "/images/villa/almond-tree-villa/480/almond-tree-villa-first-floor-master-bedroom-03-01-480.webp 480w, /images/villa/almond-tree-villa/768/almond-tree-villa-first-floor-master-bedroom-03-01-768.webp 768w, /images/villa/almond-tree-villa/1024/almond-tree-villa-first-floor-master-bedroom-03-01-1024.webp 1024w, /images/villa/almond-tree-villa/1600/almond-tree-villa-first-floor-master-bedroom-03-01-1600.webp 1600w",
+      "alt": "Almond tree villa first floor master bedroom 03 01",
+      "isFeatured": false,
+      "tags": [
+        "bedroom"
+      ]
+    },
+    {
+      "src": "/images/villa/almond-tree-villa/1024/almond-tree-villa-first-floor-twin-beds-01-1024.webp",
+      "srcset": "/images/villa/almond-tree-villa/480/almond-tree-villa-first-floor-twin-beds-01-480.webp 480w, /images/villa/almond-tree-villa/768/almond-tree-villa-first-floor-twin-beds-01-768.webp 768w, /images/villa/almond-tree-villa/1024/almond-tree-villa-first-floor-twin-beds-01-1024.webp 1024w, /images/villa/almond-tree-villa/1600/almond-tree-villa-first-floor-twin-beds-01-1600.webp 1600w",
+      "alt": "Almond tree villa first floor twin beds 01",
+      "isFeatured": false,
+      "tags": [
+        "interior"
+      ]
+    },
+    {
+      "src": "/images/villa/almond-tree-villa/1024/almond-tree-villa-first-floor-twin-beds-02-1024.webp",
+      "srcset": "/images/villa/almond-tree-villa/480/almond-tree-villa-first-floor-twin-beds-02-480.webp 480w, /images/villa/almond-tree-villa/768/almond-tree-villa-first-floor-twin-beds-02-768.webp 768w, /images/villa/almond-tree-villa/1024/almond-tree-villa-first-floor-twin-beds-02-1024.webp 1024w, /images/villa/almond-tree-villa/1600/almond-tree-villa-first-floor-twin-beds-02-1600.webp 1600w",
+      "alt": "Almond tree villa first floor twin beds 02",
+      "isFeatured": false,
+      "tags": [
+        "interior"
+      ]
+    },
+    {
+      "src": "/images/villa/almond-tree-villa/1024/almond-tree-villa-first-floor-twin-beds-closet-01-684.webp",
+      "srcset": "/images/villa/almond-tree-villa/480/almond-tree-villa-first-floor-twin-beds-closet-01-320.webp 480w, /images/villa/almond-tree-villa/768/almond-tree-villa-first-floor-twin-beds-closet-01-513.webp 768w, /images/villa/almond-tree-villa/1024/almond-tree-villa-first-floor-twin-beds-closet-01-684.webp 1024w, /images/villa/almond-tree-villa/1600/almond-tree-villa-first-floor-twin-beds-closet-01-1068.webp 1600w",
+      "alt": "Almond tree villa first floor twin beds closet 01",
+      "isFeatured": false,
+      "tags": [
+        "interior"
+      ]
+    },
+    {
+      "src": "/images/villa/almond-tree-villa/1024/almond-tree-villa-first-floor-twin-beds-detail-01-1024.webp",
+      "srcset": "/images/villa/almond-tree-villa/480/almond-tree-villa-first-floor-twin-beds-detail-01-480.webp 480w, /images/villa/almond-tree-villa/768/almond-tree-villa-first-floor-twin-beds-detail-01-768.webp 768w, /images/villa/almond-tree-villa/1024/almond-tree-villa-first-floor-twin-beds-detail-01-1024.webp 1024w, /images/villa/almond-tree-villa/1600/almond-tree-villa-first-floor-twin-beds-detail-01-1600.webp 1600w",
+      "alt": "Almond tree villa first floor twin beds detail 01",
+      "isFeatured": false,
+      "tags": [
+        "interior"
+      ]
+    },
+    {
+      "src": "/images/villa/almond-tree-villa/1024/almond-tree-villa-ground-floor-bathroom-01-1024.webp",
+      "srcset": "/images/villa/almond-tree-villa/480/almond-tree-villa-ground-floor-bathroom-01-480.webp 480w, /images/villa/almond-tree-villa/768/almond-tree-villa-ground-floor-bathroom-01-768.webp 768w, /images/villa/almond-tree-villa/1024/almond-tree-villa-ground-floor-bathroom-01-1024.webp 1024w, /images/villa/almond-tree-villa/1600/almond-tree-villa-ground-floor-bathroom-01-1600.webp 1600w",
+      "alt": "Almond tree villa ground floor bathroom 01",
+      "isFeatured": false,
+      "tags": [
+        "bathroom"
+      ]
+    },
+    {
+      "src": "/images/villa/almond-tree-villa/1024/almond-tree-villa-ground-floor-living-room-01-1024.webp",
+      "srcset": "/images/villa/almond-tree-villa/480/almond-tree-villa-ground-floor-living-room-01-480.webp 480w, /images/villa/almond-tree-villa/768/almond-tree-villa-ground-floor-living-room-01-768.webp 768w, /images/villa/almond-tree-villa/1024/almond-tree-villa-ground-floor-living-room-01-1024.webp 1024w, /images/villa/almond-tree-villa/1600/almond-tree-villa-ground-floor-living-room-01-1600.webp 1600w",
+      "alt": "Almond tree villa ground floor living room 01",
+      "isFeatured": false,
+      "tags": [
+        "living-area"
+      ]
+    },
+    {
+      "src": "/images/villa/almond-tree-villa/1024/almond-tree-villa-ground-floor-living-room-dinning-01-1024.webp",
+      "srcset": "/images/villa/almond-tree-villa/480/almond-tree-villa-ground-floor-living-room-dinning-01-480.webp 480w, /images/villa/almond-tree-villa/768/almond-tree-villa-ground-floor-living-room-dinning-01-768.webp 768w, /images/villa/almond-tree-villa/1024/almond-tree-villa-ground-floor-living-room-dinning-01-1024.webp 1024w, /images/villa/almond-tree-villa/1600/almond-tree-villa-ground-floor-living-room-dinning-01-1600.webp 1600w",
+      "alt": "Almond tree villa ground floor living room dinning 01",
+      "isFeatured": false,
+      "tags": [
+        "living-area"
+      ]
+    },
+    {
+      "src": "/images/villa/almond-tree-villa/1024/almond-tree-villa-ground-floor-master-bedroom-01-1024.webp",
+      "srcset": "/images/villa/almond-tree-villa/480/almond-tree-villa-ground-floor-master-bedroom-01-480.webp 480w, /images/villa/almond-tree-villa/768/almond-tree-villa-ground-floor-master-bedroom-01-768.webp 768w, /images/villa/almond-tree-villa/1024/almond-tree-villa-ground-floor-master-bedroom-01-1024.webp 1024w, /images/villa/almond-tree-villa/1600/almond-tree-villa-ground-floor-master-bedroom-01-1600.webp 1600w",
+      "alt": "Almond tree villa ground floor master bedroom 01",
+      "isFeatured": false,
+      "tags": [
+        "bedroom"
+      ]
+    },
+    {
+      "src": "/images/villa/almond-tree-villa/1024/almond-tree-villa-ground-floor-master-bedroom-02-1024.webp",
+      "srcset": "/images/villa/almond-tree-villa/480/almond-tree-villa-ground-floor-master-bedroom-02-480.webp 480w, /images/villa/almond-tree-villa/768/almond-tree-villa-ground-floor-master-bedroom-02-768.webp 768w, /images/villa/almond-tree-villa/1024/almond-tree-villa-ground-floor-master-bedroom-02-1024.webp 1024w, /images/villa/almond-tree-villa/1600/almond-tree-villa-ground-floor-master-bedroom-02-1600.webp 1600w",
+      "alt": "Almond tree villa ground floor master bedroom 02",
+      "isFeatured": false,
+      "tags": [
+        "bedroom"
+      ]
+    },
+    {
+      "src": "/images/villa/almond-tree-villa/1024/almond-tree-villa-ground-floor-master-bedroom-03-1024.webp",
+      "srcset": "/images/villa/almond-tree-villa/480/almond-tree-villa-ground-floor-master-bedroom-03-480.webp 480w, /images/villa/almond-tree-villa/768/almond-tree-villa-ground-floor-master-bedroom-03-768.webp 768w, /images/villa/almond-tree-villa/1024/almond-tree-villa-ground-floor-master-bedroom-03-1024.webp 1024w, /images/villa/almond-tree-villa/1600/almond-tree-villa-ground-floor-master-bedroom-03-1600.webp 1600w",
+      "alt": "Almond tree villa ground floor master bedroom 03",
+      "isFeatured": false,
+      "tags": [
+        "bedroom"
+      ]
+    },
+    {
+      "src": "/images/villa/almond-tree-villa/1024/almond-tree-villa-outdoor-dining-pergola-01-1024.webp",
+      "srcset": "/images/villa/almond-tree-villa/480/almond-tree-villa-outdoor-dining-pergola-01-480.webp 480w, /images/villa/almond-tree-villa/768/almond-tree-villa-outdoor-dining-pergola-01-768.webp 768w, /images/villa/almond-tree-villa/1024/almond-tree-villa-outdoor-dining-pergola-01-1024.webp 1024w, /images/villa/almond-tree-villa/1600/almond-tree-villa-outdoor-dining-pergola-01-1600.webp 1600w",
+      "alt": "Almond tree villa outdoor dining pergola 01",
+      "isFeatured": false,
+      "tags": [
+        "living-area"
+      ]
+    },
+    {
+      "src": "/images/villa/almond-tree-villa/1024/almond-tree-villa-outdoor-dining-pergola-02-1024.webp",
+      "srcset": "/images/villa/almond-tree-villa/480/almond-tree-villa-outdoor-dining-pergola-02-480.webp 480w, /images/villa/almond-tree-villa/768/almond-tree-villa-outdoor-dining-pergola-02-768.webp 768w, /images/villa/almond-tree-villa/1024/almond-tree-villa-outdoor-dining-pergola-02-1024.webp 1024w, /images/villa/almond-tree-villa/1600/almond-tree-villa-outdoor-dining-pergola-02-1600.webp 1600w",
+      "alt": "Almond tree villa outdoor dining pergola 02",
+      "isFeatured": false,
+      "tags": [
+        "living-area"
+      ]
+    },
+    {
+      "src": "/images/villa/almond-tree-villa/1024/almond-tree-villa-outdoor-dining-pergola-03-1024.webp",
+      "srcset": "/images/villa/almond-tree-villa/480/almond-tree-villa-outdoor-dining-pergola-03-480.webp 480w, /images/villa/almond-tree-villa/768/almond-tree-villa-outdoor-dining-pergola-03-768.webp 768w, /images/villa/almond-tree-villa/1024/almond-tree-villa-outdoor-dining-pergola-03-1024.webp 1024w, /images/villa/almond-tree-villa/1600/almond-tree-villa-outdoor-dining-pergola-03-1600.webp 1600w",
+      "alt": "Almond tree villa outdoor dining pergola 03",
+      "isFeatured": false,
+      "tags": [
+        "living-area"
+      ]
+    },
+    {
+      "src": "/images/villa/almond-tree-villa/1024/almond-tree-villa-outdoor-dining-terrace-01-1024.webp",
+      "srcset": "/images/villa/almond-tree-villa/480/almond-tree-villa-outdoor-dining-terrace-01-480.webp 480w, /images/villa/almond-tree-villa/768/almond-tree-villa-outdoor-dining-terrace-01-768.webp 768w, /images/villa/almond-tree-villa/1024/almond-tree-villa-outdoor-dining-terrace-01-1024.webp 1024w, /images/villa/almond-tree-villa/1600/almond-tree-villa-outdoor-dining-terrace-01-1600.webp 1600w",
+      "alt": "Almond tree villa outdoor dining terrace 01",
+      "isFeatured": false,
+      "tags": [
+        "living-area",
+        "outdoor"
+      ]
+    },
+    {
+      "src": "/images/villa/almond-tree-villa/1024/almond-tree-villa-private-pool-wide-02-1024.webp",
+      "srcset": "/images/villa/almond-tree-villa/480/almond-tree-villa-private-pool-wide-02-480.webp 480w, /images/villa/almond-tree-villa/768/almond-tree-villa-private-pool-wide-02-768.webp 768w, /images/villa/almond-tree-villa/1024/almond-tree-villa-private-pool-wide-02-1024.webp 1024w, /images/villa/almond-tree-villa/1600/almond-tree-villa-private-pool-wide-02-1600.webp 1600w",
+      "alt": "Almond tree villa private pool wide 02",
+      "isFeatured": false,
+      "tags": [
+        "pool"
+      ]
+    },
+    {
+      "src": "/images/villa/almond-tree-villa/1024/almond-tree-villa-second-floor-living-kitchenette-01-1024.webp",
+      "srcset": "/images/villa/almond-tree-villa/480/almond-tree-villa-second-floor-living-kitchenette-01-480.webp 480w, /images/villa/almond-tree-villa/768/almond-tree-villa-second-floor-living-kitchenette-01-768.webp 768w, /images/villa/almond-tree-villa/1024/almond-tree-villa-second-floor-living-kitchenette-01-1024.webp 1024w, /images/villa/almond-tree-villa/1600/almond-tree-villa-second-floor-living-kitchenette-01-1600.webp 1600w",
+      "alt": "Almond tree villa second floor living kitchenette 01",
+      "isFeatured": false,
+      "tags": [
+        "living-area",
+        "kitchen"
+      ]
+    },
+    {
+      "src": "/images/villa/almond-tree-villa/1024/almond-tree-villa-second-floor-living-room-01-1024.webp",
+      "srcset": "/images/villa/almond-tree-villa/480/almond-tree-villa-second-floor-living-room-01-480.webp 480w, /images/villa/almond-tree-villa/768/almond-tree-villa-second-floor-living-room-01-768.webp 768w, /images/villa/almond-tree-villa/1024/almond-tree-villa-second-floor-living-room-01-1024.webp 1024w, /images/villa/almond-tree-villa/1600/almond-tree-villa-second-floor-living-room-01-1600.webp 1600w",
+      "alt": "Almond tree villa second floor living room 01",
+      "isFeatured": false,
+      "tags": [
+        "living-area"
+      ]
+    },
+    {
+      "src": "/images/villa/almond-tree-villa/1024/almond-tree-villa-second-floor-living-room-02-1024.webp",
+      "srcset": "/images/villa/almond-tree-villa/480/almond-tree-villa-second-floor-living-room-02-480.webp 480w, /images/villa/almond-tree-villa/768/almond-tree-villa-second-floor-living-room-02-768.webp 768w, /images/villa/almond-tree-villa/1024/almond-tree-villa-second-floor-living-room-02-1024.webp 1024w, /images/villa/almond-tree-villa/1600/almond-tree-villa-second-floor-living-room-02-1600.webp 1600w",
+      "alt": "Almond tree villa second floor living room 02",
+      "isFeatured": false,
+      "tags": [
+        "living-area"
+      ]
+    },
+    {
+      "src": "/images/villa/almond-tree-villa/1024/almond-tree-villa-second-floor-master-bedroom-03-01-1024.webp",
+      "srcset": "/images/villa/almond-tree-villa/480/almond-tree-villa-second-floor-master-bedroom-03-01-480.webp 480w, /images/villa/almond-tree-villa/768/almond-tree-villa-second-floor-master-bedroom-03-01-768.webp 768w, /images/villa/almond-tree-villa/1024/almond-tree-villa-second-floor-master-bedroom-03-01-1024.webp 1024w, /images/villa/almond-tree-villa/1600/almond-tree-villa-second-floor-master-bedroom-03-01-1600.webp 1600w",
+      "alt": "Almond tree villa second floor master bedroom 03 01",
+      "isFeatured": false,
+      "tags": [
+        "bedroom"
+      ]
+    },
+    {
+      "src": "/images/villa/almond-tree-villa/1024/almond-tree-villa-second-floor-master-bedroom-03-02-1024.webp",
+      "srcset": "/images/villa/almond-tree-villa/480/almond-tree-villa-second-floor-master-bedroom-03-02-480.webp 480w, /images/villa/almond-tree-villa/768/almond-tree-villa-second-floor-master-bedroom-03-02-768.webp 768w, /images/villa/almond-tree-villa/1024/almond-tree-villa-second-floor-master-bedroom-03-02-1024.webp 1024w, /images/villa/almond-tree-villa/1600/almond-tree-villa-second-floor-master-bedroom-03-02-1600.webp 1600w",
+      "alt": "Almond tree villa second floor master bedroom 03 02",
+      "isFeatured": false,
+      "tags": [
+        "bedroom"
+      ]
+    },
+    {
+      "src": "/images/villa/almond-tree-villa/1024/almond-tree-villa-second-floor-master-bedroom-03-03-1024.webp",
+      "srcset": "/images/villa/almond-tree-villa/480/almond-tree-villa-second-floor-master-bedroom-03-03-480.webp 480w, /images/villa/almond-tree-villa/768/almond-tree-villa-second-floor-master-bedroom-03-03-768.webp 768w, /images/villa/almond-tree-villa/1024/almond-tree-villa-second-floor-master-bedroom-03-03-1024.webp 1024w, /images/villa/almond-tree-villa/1600/almond-tree-villa-second-floor-master-bedroom-03-03-1600.webp 1600w",
+      "alt": "Almond tree villa second floor master bedroom 03 03",
+      "isFeatured": false,
+      "tags": [
+        "bedroom"
+      ]
+    },
+    {
+      "src": "/images/villa/almond-tree-villa/1024/almond-tree-villa-second-floor-terrace-02-1024.webp",
+      "srcset": "/images/villa/almond-tree-villa/480/almond-tree-villa-second-floor-terrace-02-480.webp 480w, /images/villa/almond-tree-villa/768/almond-tree-villa-second-floor-terrace-02-768.webp 768w, /images/villa/almond-tree-villa/1024/almond-tree-villa-second-floor-terrace-02-1024.webp 1024w, /images/villa/almond-tree-villa/1600/almond-tree-villa-second-floor-terrace-02-1600.webp 1600w",
+      "alt": "Almond tree villa second floor terrace 02",
+      "isFeatured": false,
+      "tags": [
+        "outdoor"
+      ]
+    },
+    {
+      "src": "/images/villa/almond-tree-villa/1024/almond-tree-villa-second-floor-terrace-sea-view-02-1024.webp",
+      "srcset": "/images/villa/almond-tree-villa/480/almond-tree-villa-second-floor-terrace-sea-view-02-480.webp 480w, /images/villa/almond-tree-villa/768/almond-tree-villa-second-floor-terrace-sea-view-02-768.webp 768w, /images/villa/almond-tree-villa/1024/almond-tree-villa-second-floor-terrace-sea-view-02-1024.webp 1024w, /images/villa/almond-tree-villa/1600/almond-tree-villa-second-floor-terrace-sea-view-02-1600.webp 1600w",
+      "alt": "Almond tree villa second floor terrace sea view 02",
+      "isFeatured": false,
+      "tags": [
+        "view",
+        "outdoor"
+      ]
+    },
+    {
+      "src": "/images/villa/almond-tree-villa/1024/almond-tree-villa-second-floor-twin-beds-02-1024.webp",
+      "srcset": "/images/villa/almond-tree-villa/480/almond-tree-villa-second-floor-twin-beds-02-480.webp 480w, /images/villa/almond-tree-villa/768/almond-tree-villa-second-floor-twin-beds-02-768.webp 768w, /images/villa/almond-tree-villa/1024/almond-tree-villa-second-floor-twin-beds-02-1024.webp 1024w, /images/villa/almond-tree-villa/1600/almond-tree-villa-second-floor-twin-beds-02-1600.webp 1600w",
+      "alt": "Almond tree villa second floor twin beds 02",
+      "isFeatured": false,
+      "tags": [
+        "interior"
+      ]
+    },
+    {
+      "src": "/images/villa/almond-tree-villa/1024/siiting%20area%20outdoor%201-1024.webp",
+      "srcset": "/images/villa/almond-tree-villa/480/siiting%20area%20outdoor%201-480.webp 480w, /images/villa/almond-tree-villa/768/siiting%20area%20outdoor%201-768.webp 768w, /images/villa/almond-tree-villa/1024/siiting%20area%20outdoor%201-1024.webp 1024w, /images/villa/almond-tree-villa/1600/siiting%20area%20outdoor%201-1600.webp 1600w",
+      "alt": "Siiting area outdoor 1",
+      "isFeatured": false,
+      "tags": [
+        "interior"
+      ]
+    }
   ]
 }

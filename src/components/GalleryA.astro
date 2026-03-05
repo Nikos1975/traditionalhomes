@@ -19,13 +19,15 @@ const thumbs = images.filter((img) => !img.isFeatured);
     {featured ? (
       <img
         src={featured.src}
+        srcset={featured.srcset}
+        sizes="(min-width: 1024px) 66vw, 100vw"
         alt={featured.alt}
         width="1280"
         height="720"
         class="w-full h-full object-cover"
         fetchpriority="high"
         decoding="async"
-        onerror="this.src='/images/placeholder.jpg'"
+        onerror="this.src='/images/placeholder.svg'"
       />
     ) : (
       <div class="w-full h-full flex items-center justify-center bg-stone-200 text-stone-500 text-sm">
@@ -50,6 +52,8 @@ const thumbs = images.filter((img) => !img.isFeatured);
         >
           <img
             src={img.src}
+            srcset={img.srcset}
+            sizes="(min-width: 768px) 12vw, (min-width: 640px) 16vw, 25vw"
             alt={img.alt}
             width="160"
             height="160"
