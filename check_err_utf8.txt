@@ -1,0 +1,48 @@
+02:23:42 [types] Generated 123ms
+02:23:42 [check] Getting diagnostics for Astro files in D:\_projects\_traditional-homes...
+[96minject_srcset.cjs[0m:[93m57[0m:[93m23[0m - [93mwarning[0m[90m ts(6133): [0m'targetSuffix2' is declared but its value is never read.
+
+[7m57[0m                 const targetSuffix2 = `${baseName}--${size}`;
+[7m  [0m [93m                      ~~~~~~~~~~~~~[0m
+[96minject_srcset.cjs[0m:[93m56[0m:[93m23[0m - [93mwarning[0m[90m ts(6133): [0m'targetSuffix1' is declared but its value is never read.
+
+[7m56[0m                 const targetSuffix1 = `${baseName}-${size}`;
+[7m  [0m [93m                      ~~~~~~~~~~~~~[0m
+
+[96msrc/components/FilterBar.astro[0m:[93m39[0m:[93m11[0m - [93mwarning[0m[90m astro(4000): [0mThis script will be treated as if it has the `is:inline` directive because it contains an attribute. Therefore, features that require processing (e.g. using TypeScript or npm packages in the script) are unavailable.
+
+See docs for more details: https://docs.astro.build/en/guides/client-side-scripts/#script-processing.
+
+Add the `is:inline` directive explicitly to silence this hint.
+
+[7m39[0m   <script id="filter-data" type="application/json" set:html={JSON.stringify(items)}></script>
+[7m  [0m [93m          ~~[0m
+
+[96msrc/components/GalleryA.astro[0m:[93m30[0m:[93m23[0m - [93mwarning[0m[90m ts(6133): [0m'src' is declared but its value is never read.
+
+[7m30[0m         onerror="this.src='/images/placeholder.svg'"
+[7m  [0m [93m                      ~~~[0m
+[96msrc/components/GalleryA.astro[0m:[93m124[0m:[93m9[0m - [93mwarning[0m[90m ts(6133): [0m'allImages' is declared but its value is never read.
+
+[7m124[0m   const allImages: { src: string; alt: string }[] = JSON.parse(
+[7m   [0m [93m        ~~~~~~~~~[0m
+
+[96msrc/components/GroupCard.astro[0m:[93m35[0m:[93m21[0m - [93mwarning[0m[90m ts(6133): [0m'src' is declared but its value is never read.
+
+[7m35[0m       onerror="this.src='/images/placeholder.svg'"
+[7m  [0m [93m                    ~~~[0m
+
+[96msrc/components/UnitCard.astro[0m:[93m22[0m:[93m28[0m - [91merror[0m[90m ts(2339): [0mProperty 'srcset' does not exist on type '{ src: string; alt: string; isFeatured: boolean; }'.
+
+[7m22[0m       srcset={featuredImg?.srcset}
+[7m  [0m [91m                           ~~~~~~[0m
+[96msrc/components/UnitCard.astro[0m:[93m30[0m:[93m21[0m - [93mwarning[0m[90m ts(6133): [0m'src' is declared but its value is never read.
+
+[7m30[0m       onerror="this.src='/images/placeholder.svg'"
+[7m  [0m [93m                    ~~~[0m
+
+Result (31 files): 
+- 1 error
+- 0 warnings
+- 7 hints
+

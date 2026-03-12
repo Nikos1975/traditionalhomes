@@ -8,7 +8,7 @@ interface Props {
 
 const { unit } = Astro.props;
 const unitPagePath = unit.type === 'villa' ? `/en/villa/${unit.slug}/` : `/en/houses/${unit.slug}/`;
-const galleryData = (gallery as Record<string, { src: string; alt: string; isFeatured: boolean }[]>)[unit.slug] ?? [];
+const galleryData = (gallery as Record<string, { src: string; alt: string; isFeatured: boolean; srcset?: string }[]>)[unit.slug] ?? [];
 const featuredImg = galleryData.find((img) => img.isFeatured);
 ---
 
