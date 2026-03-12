@@ -85,8 +85,11 @@ const memberNames = group.members?.map(m => inventory.find(u => u.slug === m)?.n
     </p>
 
     <div class="mt-auto pt-3 border-t border-stone-100 flex gap-2">
-      <a href="/en/contact/" class="btn-outline flex-1 text-xs py-2.5 text-center">
-        Contact us
+      <a href={firstMember ? `/en/houses/${firstMember}/` : '#'} class="btn-outline flex-1 text-xs py-2.5 text-center">
+        View details
+      </a>
+      <a href="https://traditionalhomes.reserve-online.net/" target="_blank" rel="noopener noreferrer" class="btn-cta flex-1 text-xs py-2.5 text-center">
+        Check availability
       </a>
     </div>
   </div>

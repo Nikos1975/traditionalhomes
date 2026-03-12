@@ -34,10 +34,10 @@ const featuredImg = galleryData.find((img) => img.isFeatured);
         {unit.pool === 'private' ? (
           <>
             <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12h20M2 12c0-5.5 4.5-10 10-10s10 4.5 10 10M2 12c0 5.5 4.5 10 10 10s10-4.5 10-10"/></svg>
-            Pool
+            {unit.slug === 'monastiri' ? 'Private dripped pool' : 'Private pool'}
           </>
         ) : (
-          <>Shared Pool</>
+          <>Shared pool</>
         )}
       </span>
     )}

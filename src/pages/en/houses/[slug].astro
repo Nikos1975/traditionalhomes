@@ -14,13 +14,13 @@ export async function getStaticPaths() {
   const units = inventory as InventoryUnit[];
   validateInventory(units);
   return units
-    .filter((u) => u.type === 'house')
+    .filter((u) => u.type === 'home')
     .map((unit) => ({ params: { slug: unit.slug } }));
 }
 
 const { slug } = Astro.params;
 const units = inventory as InventoryUnit[];
-const unit = units.find((u) => u.slug === slug && u.type === 'house');
+const unit = units.find((u) => u.slug === slug && u.type === 'home');
 
 if (!unit) {
   return Astro.redirect('/en/houses/', 302);

@@ -4,7 +4,7 @@ const EXPECTED_HOUSES = 10;
 const EXPECTED_VILLA_BOOKING_ID = 'ASP3SV';
 
 export function validateInventory(units: InventoryUnit[]): void {
-  const houses = units.filter((u) => u.type === 'house');
+  const houses = units.filter((u) => u.type === 'home');
   const villas = units.filter((u) => u.type === 'villa');
   const errors: string[] = [];
 

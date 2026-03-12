@@ -1,6 +1,6 @@
 export interface InventoryUnit {
   slug: string;
-  type: 'house' | 'villa';
+  type: 'home' | 'villa';
   name: string;
   location: string;
   area: string;
