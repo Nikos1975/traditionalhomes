@@ -1,0 +1,96 @@
+---
+export interface MarkerData {
+  id: string;
+  lat: number;
+  lng: number;
+  title: string;
+  url?: string;
+}
+
+interface Props {
+  markers: MarkerData[];
+  zoom?: number;
+  center?: [number, number];
+  height?: string;
+  interactive?: boolean;
+  mapId?: string;
+}
+
+const { markers, zoom = 15, center, height = '400px', interactive = true, mapId = 'map' } = Astro.props;
+---
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+
+<div id={mapId} class="leaflet-map-container z-0 rounded-xl overflow-hidden" style={`height: ${height}; width: 100%;`} 
+     data-markers={JSON.stringify(markers)} 
+     data-zoom={zoom} 
+     data-center={JSON.stringify(center)} 
+     data-interactive={interactive.toString()}>
+</div>
+
+<script>
+  import 'leaflet/dist/leaflet.css'; // Vite needs this for bundling properly sometimes, but we keep the CDN link above as fallback
+</script>
+<script>
+  import L from 'leaflet';
+
+  // Fix missing marker icons in Leaflet with webpack/vite
+  delete (L.Icon.Default.prototype as any)._getIconUrl;
+  L.Icon.Default.mergeOptions({
+    iconRetinaUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png',
+    iconUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png',
+    shadowUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png',
+  });
+
+  const mapElements = document.querySelectorAll('.leaflet-map-container');
+
+  mapElements.forEach((el) => {
+    if ((el as any)._leaflet_id) return; // Prevent re-initialization
+
+    const markersData = JSON.parse(el.getAttribute('data-markers') || '[]');
+    const zoom = parseInt(el.getAttribute('data-zoom') || '15', 10);
+    const centerAttr = el.getAttribute('data-center');
+    const interactive = el.getAttribute('data-interactive') === 'true';
+
+    let center: [number, number] = [35.2668, 25.719]; // Default to Mavrikiano
+    
+    if (centerAttr && centerAttr !== 'undefined') {
+      try { center = JSON.parse(centerAttr); } catch(e){}
+    } else if (markersData.length > 0) {
+      // Auto-center based on first marker if center not provided
+      center = [markersData[0].lat, markersData[0].lng];
+    }
+
+    const map = L.map(el as HTMLElement, {
+      center: center,
+      zoom: zoom,
+      scrollWheelZoom: false, // usually want disabled to avoid accidental scroll
+      dragging: interactive,
+      zoomControl: interactive,
+      doubleClickZoom: interactive
+    });
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a>'
+    }).addTo(map);
+
+    const bounds = L.latLngBounds([]);
+
+    markersData.forEach((marker: any) => {
+      if (marker.lat && marker.lng) {
+        const m = L.marker([marker.lat, marker.lng]).addTo(map);
+        if (marker.title) {
+          m.bindPopup(marker.url ? `<a href="${marker.url}" class="font-medium text-stone-800 hover:text-stone-600 underline">${marker.title}</a>` : marker.title);
+        }
+        bounds.extend([marker.lat, marker.lng]);
+      }
+    });
+
+    if (markersData.length > 1 && !centerAttr) {
+       map.fitBounds(bounds, { padding: [30, 30] });
+    }
+
+    // Expose map to window for external controls
+    (window as any)[`leaflet_map_${el.id}`] = map;
+  });
+</script>

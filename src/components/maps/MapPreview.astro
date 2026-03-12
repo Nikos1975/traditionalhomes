@@ -1,0 +1,42 @@
+---
+// src/components/maps/MapPreview.astro
+// Lightweight static or minimal-JS preview of the map for the homepage
+
+import { locations } from '../../data/locations';
+
+// We just extract Mavrikiano and Vrouchas centers for visual reference without loading Leaflet
+const mavrikiano = locations.find(l => l.group === 'mavrikiano' && l.lat);
+const vrouchas = locations.find(l => l.group === 'vrouchas' && l.lat);
+---
+<div class="map-preview relative rounded-xl overflow-hidden bg-stone-200 border border-stone-200 flex flex-col items-center justify-center h-[350px]">
+  <!-- Placeholder Map Graphic (Static Image is optimal, using a styled div for now) -->
+  <div class="absolute inset-0 opacity-40" style="background-image: radial-gradient(#d6d3d1 1px, transparent 1px); background-size: 20px 20px;"></div>
+  
+  <div class="relative z-10 flex flex-col sm:flex-row gap-8 items-center justify-center w-full px-8">
+    
+    <div class="flex flex-col items-center text-center">
+      <div class="w-10 h-10 rounded-full bg-stone-800 text-white flex items-center justify-center shadow-lg mb-2">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+      </div>
+      <span class="font-serif text-lg text-stone-800">Mavrikiano</span>
+      <span class="text-xs text-stone-500 font-medium tracking-wide uppercase mt-1">10 Houses</span>
+    </div>
+    
+    <div class="h-px w-16 sm:w-24 bg-stone-400 border-dashed hidden sm:block"></div>
+    
+    <div class="flex flex-col items-center text-center">
+      <div class="w-10 h-10 rounded-full bg-stone-500 text-white flex items-center justify-center shadow-lg mb-2">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+      </div>
+      <span class="font-serif text-lg text-stone-800">Vrouchas</span>
+      <span class="text-xs text-stone-500 font-medium tracking-wide uppercase mt-1">1 Villa</span>
+    </div>
+    
+  </div>
+
+  <div class="absolute bottom-6 z-10">
+    <a href="/en/location/" class="btn-outline bg-white/90 backdrop-blur-sm border-stone-300 text-sm px-6 py-2.5 shadow-sm hover:bg-stone-800 hover:text-white hover:border-stone-800 transition-all">
+      Explore interactive map
+    </a>
+  </div>
+</div>

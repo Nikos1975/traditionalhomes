@@ -13,7 +13,9 @@
   "dependencies": {
     "@astrojs/sitemap": "^3.7.0",
     "@astrojs/tailwind": "^5.1.0",
+    "@types/leaflet": "^1.9.21",
     "astro": "^4.6.0",
+    "leaflet": "^1.9.4",
     "sharp": "^0.34.5"
   },
   "devDependencies": {

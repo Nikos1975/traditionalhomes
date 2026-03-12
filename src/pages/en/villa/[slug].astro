@@ -8,6 +8,8 @@ import inventory from '../../../inventory/inventory.json';
 import { validateInventory } from '../../../utils/validateInventory';
 import galleryData from '../../../data/gallery.json';
 import siteCopy from '../../../data/siteCopy.json';
+import SinglePinMap from '../../../components/maps/SinglePinMap.astro';
+import { locations } from '../../../data/locations';
 import type { InventoryUnit, GalleryImage } from '../../../types';
 
 export async function getStaticPaths() {
@@ -39,6 +41,8 @@ if (fs.existsSync(heroDir)) {
 
 const pageTitle = `${unit.name} — ${unit.location}, Elounda | Elounda Traditional Homes`;
 const pageDescription = `${unit.name} in ${unit.location} — sleeps ${unit.sleeps_max}, ${unit.bedrooms} bedrooms, private pool. Panoramic views over Elounda Bay and the Mirabello Gulf, Crete.`;
+
+const locData = locations.find(l => l.slug === slug);
 ---
 
 <Base
@@ -139,6 +143,13 @@ const pageDescription = `${unit.name} in ${unit.location} — sleeps ${unit.slee
               <a href="/en/location/" class="underline hover:text-body-text ml-1 transition-colors duration-150">Location details</a>
             </p>
           </div>
+        )}
+
+        {locData && (
+          <section class="mb-8 border-t border-stone-200 pt-8" aria-label="Location Map">
+            <h2 class="font-sans font-semibold text-sm uppercase tracking-wider text-muted mb-4">Location</h2>
+            <SinglePinMap location={locData} />
+          </section>
         )}
 
       </div>

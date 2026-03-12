@@ -1,6 +1,7 @@
 ---
 import Base from '../../layouts/Base.astro';
 import siteCopy from '../../data/siteCopy.json';
+import MasterLocationMap from '../../components/maps/MasterLocationMap.astro';
 ---
 
 <Base
@@ -85,27 +86,12 @@ import siteCopy from '../../data/siteCopy.json';
         </section>
 
       </div>
-
-      <div class="lg:col-span-2">
-        <div class="sticky top-24">
-          <div class="rounded-xl overflow-hidden bg-stone-200 mb-4" style="aspect-ratio: 3/4;">
-            <img
-              src="/images/location-map.jpg"
-              alt="Map of the Elounda area showing Mavrikiano and Vrouchas villages"
-              width="480"
-              height="640"
-              loading="lazy"
-              decoding="async"
-              class="w-full h-full object-cover"
-              onerror="this.parentElement.innerHTML='<div class=\'w-full h-full flex items-center justify-center bg-stone-200 text-stone-400 text-sm p-4 text-center\'>Map image — TODO: add /public/images/location-map.jpg</div>'"
-            />
-          </div>
-          <p class="text-xs text-muted text-center">
-            Mavrikiano &amp; Vrouchas sit above Elounda Bay, northeast Crete
-          </p>
-        </div>
-      </div>
     </div>
+
+    <section aria-labelledby="interactive-map-heading" class="mt-8 border-t border-stone-200 pt-12">
+      <h2 id="interactive-map-heading" class="font-serif text-3xl text-body-text mb-6">Interactive Map</h2>
+      <MasterLocationMap />
+    </section>
 
   </div>
 

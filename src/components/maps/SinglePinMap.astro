@@ -1,0 +1,46 @@
+---
+import LeafletMap from './LeafletMap.astro';
+import type { LocationItem } from '../../data/locations';
+
+interface Props {
+  location: LocationItem;
+  height?: string;
+}
+
+const { location, height = '300px' } = Astro.props;
+
+interface MarkerData {
+  id: string;
+  lat: number;
+  lng: number;
+  title: string;
+}
+
+let markers: MarkerData[] = [];
+if (location && location.lat && location.lng) {
+  markers.push({
+    id: location.id,
+    lat: location.lat,
+    lng: location.lng,
+    title: location.title
+  });
+}
+---
+{markers.length > 0 ? (
+  <div class="single-pin-map relative border border-stone-200 rounded-xl overflow-hidden shadow-sm">
+    <LeafletMap markers={markers} zoom={16} height={height} mapId={`map-${location.id}`} />
+    <div class="bg-stone-50 border-t border-stone-200 px-4 py-3 flex justify-between items-center">
+      <div class="text-xs text-stone-600">
+        <span class="font-medium text-stone-800">{location.title}</span><br/>
+        {location.locationLabel}
+      </div>
+      <a href="/en/location/" class="text-xs px-3 py-1.5 bg-white border border-stone-300 rounded hover:bg-stone-100 font-medium text-stone-700 transition-colors">
+        View map
+      </a>
+    </div>
+  </div>
+) : (
+  <div class="bg-stone-50 rounded-xl p-8 text-center text-stone-500 text-sm border border-stone-200" style={`height: ${height}; display: flex; align-items: center; justify-content: center;`}>
+    Map coordinates unavailable
+  </div>
+)}

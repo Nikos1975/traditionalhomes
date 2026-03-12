@@ -1,6 +1,7 @@
 ---
 import Base from '../../layouts/Base.astro';
 import UnitCard from '../../components/UnitCard.astro';
+import MapPreview from '../../components/maps/MapPreview.astro';
 import inventory from '../../inventory/inventory.json';
 import siteCopy from '../../data/siteCopy.json';
 import type { InventoryUnit } from '../../types';
@@ -127,17 +128,8 @@ const villa = units.find((u) => u.type === 'villa');
         </div>
         <a href="/en/location/" class="btn-outline text-sm">Location &amp; getting here</a>
       </div>
-      <div class="reveal rounded-xl overflow-hidden bg-stone-300" style="aspect-ratio: 4/3;">
-        <img
-          src="/images/location-map.jpg"
-          alt="Map showing Mavrikiano and Vrouchas above Elounda Bay, northeast Crete"
-          width="640"
-          height="480"
-          loading="lazy"
-          decoding="async"
-          class="w-full h-full object-cover"
-          onerror="this.style.display='none'"
-        />
+      <div class="reveal">
+        <MapPreview />
       </div>
     </div>
   </section>

@@ -8,6 +8,8 @@ import inventory from '../../../inventory/inventory.json';
 import { validateInventory } from '../../../utils/validateInventory';
 import galleryData from '../../../data/gallery.json';
 import siteCopy from '../../../data/siteCopy.json';
+import SinglePinMap from '../../../components/maps/SinglePinMap.astro';
+import { locations } from '../../../data/locations';
 import type { InventoryUnit, GalleryImage } from '../../../types';
 
 export async function getStaticPaths() {
@@ -43,6 +45,8 @@ const nearUnits = unit.location_relations?.near
 
 const pageTitle = `${unit.name} — ${unit.location}, Elounda | Elounda Traditional Homes`;
 const pageDescription = `${unit.name} — sleeps ${unit.sleeps_max}, ${unit.bedrooms} bedroom${unit.bedrooms > 1 ? 's' : ''}, ${unit.pool !== 'none' ? unit.pool + ' pool, ' : ''}${unit.view}. Traditional stone house in ${unit.location}, Elounda, Crete.`;
+
+const locData = locations.find(l => l.slug === slug);
 ---
 
 <Base
@@ -157,6 +161,13 @@ const pageDescription = `${unit.name} — sleeps ${unit.sleeps_max}, ${unit.bedr
               Both properties are managed by the same owner and the pool is reserved for guests of both houses only.
             </p>
           </div>
+        )}
+
+        {locData && (
+          <section class="mb-8 border-t border-stone-200 pt-8" aria-label="Location Map">
+            <h2 class="font-sans font-semibold text-sm uppercase tracking-wider text-muted mb-4">Location</h2>
+            <SinglePinMap location={locData} />
+          </section>
         )}
 
       </div>
