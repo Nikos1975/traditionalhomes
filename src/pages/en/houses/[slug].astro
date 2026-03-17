@@ -9,7 +9,8 @@ import { validateInventory } from '../../../utils/validateInventory';
 import galleryData from '../../../data/gallery.json';
 import siteCopy from '../../../data/siteCopy.json';
 import SinglePinMap from '../../../components/maps/SinglePinMap.astro';
-import { locations } from '../../../data/locations';
+import { locations, parkingOnly } from '../../../data/locations';
+import { getArrivalInstructions } from '../../../utils/arrival';
 import type { InventoryUnit, GalleryImage } from '../../../types';
 
 export async function getStaticPaths() {
@@ -47,6 +48,10 @@ const pageTitle = `${unit.name} — ${unit.location}, Elounda | Elounda Traditio
 const pageDescription = `${unit.name} — sleeps ${unit.sleeps_max}, ${unit.bedrooms} bedroom${unit.bedrooms > 1 ? 's' : ''}, ${unit.pool !== 'none' ? unit.pool + ' pool, ' : ''}${unit.view}. Traditional stone house in ${unit.location}, Elounda, Crete.`;
 
 const locData = locations.find(l => l.slug === slug);
+const parkingLoc = parkingOnly[0];
+const arrivalInfo = locData && parkingLoc 
+  ? getArrivalInstructions(locData.googleMapsUrl, parkingLoc.googleMapsUrl)
+  : null;
 ---
 
 <Base
@@ -166,6 +171,32 @@ const locData = locations.find(l => l.slug === slug);
         {locData && (
           <section class="mb-8 border-t border-stone-200 pt-8" aria-label="Location Map">
             <h2 class="font-sans font-semibold text-sm uppercase tracking-wider text-muted mb-4">Location</h2>
+            
+            <div class="mb-6">
+              <a href={locData.googleMapsUrl} target="_blank" rel="noopener noreferrer" class="btn-outline text-sm mb-6 inline-flex items-center gap-2">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                Open in Google Maps
+              </a>
+
+              {arrivalInfo && (
+                <div class="bg-stone-50 border border-stone-200 rounded-lg p-5 text-sm text-stone-700 space-y-3 mt-4">
+                  <h3 class="font-medium text-body-text mb-2">Arrival instructions</h3>
+                  <p class="flex items-start gap-2">
+                    <span class="font-medium">1.</span>
+                    <span>Arrive at the private parking first — <a href={parkingLoc?.googleMapsUrl} target="_blank" class="underline hover:text-body-text transition-colors">View parking map</a></span>
+                  </p>
+                  <p class="flex items-start gap-2">
+                    <span class="font-medium">2.</span>
+                    <span>Alternative: You may drop luggage briefly near the house. — <a href={locData.googleMapsUrl} target="_blank" class="underline hover:text-body-text transition-colors">View house map</a></span>
+                  </p>
+                  <p class="text-stone-500 mt-2 leading-relaxed">
+                    We usually meet guests at the parking and guide them personally to the house (Mrs Olga).<br/>
+                    {arrivalInfo.earlyArrival}
+                  </p>
+                </div>
+              )}
+            </div>
+
             <SinglePinMap location={locData} />
           </section>
         )}

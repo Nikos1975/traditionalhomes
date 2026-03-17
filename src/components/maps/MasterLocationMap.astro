@@ -5,15 +5,23 @@ import { locations } from '../../data/locations';
 // Use all properties that have coordinates defined
 const allLocs = locations.filter(l => l.lat && l.lng);
 
-const markers = allLocs.map(loc => ({
-  id: loc.id,
-  lat: loc.lat!,
-  lng: loc.lng!,
-  title: loc.title,
-  url: loc.type === 'villa' ? `/en/villa/${loc.slug}/` : `/en/houses/${loc.slug}/`,
-  type: loc.type,
-  group: loc.group
-}));
+const markers = allLocs.map(loc => {
+  let url = '';
+  if (loc.type === 'villa') {
+    url = `/en/villa/${loc.slug}/`;
+  } else if (loc.type === 'house') {
+    url = `/en/houses/${loc.slug}/`;
+  }
+  return {
+    id: loc.id,
+    lat: loc.lat!,
+    lng: loc.lng!,
+    title: loc.title,
+    url: url,
+    type: loc.type,
+    group: loc.group
+  };
+});
 ---
 <div class="master-location-map flex flex-col lg:flex-row gap-6">
   
@@ -38,7 +46,12 @@ const markers = allLocs.map(loc => ({
             <p class="text-xs text-stone-500 mb-2">{loc.locationLabel}</p>
             <div class="flex justify-between items-center mt-3">
               <span class="text-[10px] uppercase font-bold tracking-wider text-stone-500 bg-stone-100 px-2 py-1 rounded">{loc.type}</span>
-              <a href={loc.type === 'villa' ? `/en/villa/${loc.slug}/` : `/en/houses/${loc.slug}/`} class="text-xs font-medium text-stone-600 hover:text-stone-900 underline z-10 relative">View details</a>
+              <div class="flex flex-col items-end gap-1.5 z-10 relative">
+                <a href={loc.googleMapsUrl} target="_blank" rel="noopener noreferrer" class="text-[11px] font-medium text-stone-600 hover:text-stone-900 underline">View on map</a>
+                {(loc.type === 'house' || loc.type === 'villa') && (
+                  <a href={loc.type === 'villa' ? `/en/villa/${loc.slug}/` : `/en/houses/${loc.slug}/`} class="text-[11px] font-medium text-stone-600 hover:text-stone-900 underline">View details</a>
+                )}
+              </div>
             </div>
           </div>
         ))}

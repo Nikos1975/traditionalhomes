@@ -5,8 +5,8 @@
 import { locations } from '../../data/locations';
 
 // We just extract Mavrikiano and Vrouchas centers for visual reference without loading Leaflet
-const mavrikiano = locations.find(l => l.group === 'mavrikiano' && l.lat);
-const vrouchas = locations.find(l => l.group === 'vrouchas' && l.lat);
+const mavrikiano = locations.find(l => l.group === 'mavrikiano' && l.lat !== undefined);
+const vrouchas = locations.find(l => l.group === 'vrouchas' && l.lat !== undefined);
 ---
 <div class="map-preview relative rounded-xl overflow-hidden bg-stone-200 border border-stone-200 flex flex-col items-center justify-center h-[350px]">
   <!-- Placeholder Map Graphic (Static Image is optimal, using a styled div for now) -->
