@@ -79,9 +79,9 @@ const villa = units.find((u) => u.type === 'villa');
     </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-      {houses.map((unit) => (
+      {houses.map((unit, index) => (
         <div class="reveal">
-          <UnitCard unit={unit} />
+          <UnitCard unit={unit} priority={index < 3} />
         </div>
       ))}
     </div>

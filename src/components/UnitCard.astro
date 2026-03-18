@@ -4,16 +4,17 @@ import gallery from '../data/gallery.json';
 
 interface Props {
   unit: InventoryUnit;
+  priority?: boolean;
 }
 
-const { unit } = Astro.props;
+const { unit, priority = false } = Astro.props;
 const unitPagePath = unit.type === 'villa' ? `/en/villa/${unit.slug}/` : `/en/houses/${unit.slug}/`;
 const galleryData = (gallery as Record<string, { src: string; alt: string; isFeatured: boolean; srcset?: string }[]>)[unit.slug] ?? [];
 const featuredImg = galleryData.find((img) => img.isFeatured);
 ---
 
 <article
-  class="group bg-white rounded-xl overflow-hidden shadow-card hover:shadow-card-hover transition-shadow duration-300 flex flex-col"
+  class="group bg-white rounded-xl overflow-hidden shadow-premium hover:shadow-premium-hover transition-all duration-300 flex flex-col"
   data-id={unit.slug}
 >
   <a href={unitPagePath} class="block relative overflow-hidden bg-stone-200" style="aspect-ratio: 4/3;" tabindex="-1" aria-hidden="true">
@@ -24,9 +25,10 @@ const featuredImg = galleryData.find((img) => img.isFeatured);
       alt={featuredImg?.alt ?? unit.name}
       width="600"
       height="450"
-      loading="lazy"
+      loading={priority ? 'eager' : 'lazy'}
       decoding="async"
-      class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+      fetchpriority={priority ? 'high' : 'auto'}
+      class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
       onerror="this.src='/images/placeholder.svg'"
     />
     {unit.pool !== 'none' && (

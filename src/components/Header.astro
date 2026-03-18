@@ -12,8 +12,8 @@ const currentPath = Astro.url.pathname;
 const bookingUrl = 'http://traditionalhomes.reserve-online.net/';
 ---
 
-<header
-  class="fixed top-0 left-0 right-0 z-40 bg-header-bg border-b border-header-border"
+  class="fixed top-0 left-0 right-0 z-40 border-b border-transparent transition-all duration-300"
+  id="main-header"
   style="height: var(--header-h, 64px);"
 >
   <div class="site-max site-pad h-full flex items-center justify-between gap-4">
@@ -175,4 +175,18 @@ const bookingUrl = 'http://traditionalhomes.reserve-online.net/';
       closeMenu();
     }
   });
+
+  const header = document.getElementById('main-header');
+  function handleScroll() {
+    if (!header) return;
+    if (window.scrollY > 20) {
+      header.classList.add('glass');
+      header.classList.replace('border-transparent', 'border-white/20');
+    } else {
+      header.classList.remove('glass');
+      header.classList.replace('border-white/20', 'border-transparent');
+    }
+  }
+  window.addEventListener('scroll', handleScroll, { passive: true });
+  handleScroll();
 </script>

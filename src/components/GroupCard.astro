@@ -5,9 +5,10 @@ import inventory from '../inventory/inventory.json';
 
 interface Props {
   group: ListingItem;
+  priority?: boolean;
 }
 
-const { group } = Astro.props;
+const { group, priority = false } = Astro.props;
 
 // Use the first member's featured image
 const firstMember = group.members?.[0];
@@ -18,7 +19,7 @@ const memberNames = group.members?.map(m => inventory.find(u => u.slug === m)?.n
 ---
 
 <article
-  class="group bg-white rounded-xl overflow-hidden shadow-card hover:shadow-card-hover transition-shadow duration-300 flex flex-col"
+  class="group bg-white rounded-xl overflow-hidden shadow-premium hover:shadow-premium-hover transition-all duration-300 flex flex-col"
   data-id={group.id}
 >
   <div class="block relative overflow-hidden bg-stone-200" style="aspect-ratio: 4/3;">
@@ -29,9 +30,10 @@ const memberNames = group.members?.map(m => inventory.find(u => u.slug === m)?.n
       alt={featuredImg?.alt ?? group.name}
       width="600"
       height="450"
-      loading="lazy"
+      loading={priority ? 'eager' : 'lazy'}
       decoding="async"
-      class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+      fetchpriority={priority ? 'high' : 'auto'}
+      class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
       onerror="this.src='/images/placeholder.svg'"
     />
     <span class="badge bg-footer-bg text-white absolute top-3 right-3 shadow-md flex-shrink-0">Group Stay</span>

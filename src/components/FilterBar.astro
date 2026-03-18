@@ -26,12 +26,12 @@ const { items } = Astro.props;
     
     <span class="text-stone-300 hidden sm:inline" aria-hidden="true">|</span>
     
-    <button class="filter-chip" data-action="bed-2">Bedrooms 2+</button>
-    <button class="filter-chip" data-action="bed-3">Bedrooms 3+</button>
-    <button class="filter-chip" data-action="shared-pool">Shared pool</button>
-    <button class="filter-chip" data-action="no-pool">No pool</button>
+    <button class="filter-chip" data-action="bed-2" role="button" aria-pressed="false">Bedrooms 2+</button>
+    <button class="filter-chip" data-action="bed-3" role="button" aria-pressed="false">Bedrooms 3+</button>
+    <button class="filter-chip" data-action="shared-pool" role="button" aria-pressed="false">Shared pool</button>
+    <button class="filter-chip" data-action="no-pool" role="button" aria-pressed="false">No pool</button>
     
-    <button class="text-xs underline text-stone-500 hover:text-stone-800 ml-2" data-action="clear" type="button">Clear filters</button>
+    <button class="text-xs underline text-stone-500 hover:text-stone-800 ml-2" data-action="clear" type="button" aria-label="Clear all active filters">Clear filters</button>
   </div>
 
   <p id="filter-count" class="text-sm text-muted mt-2 hidden" aria-live="polite" aria-atomic="true"></p>
@@ -65,11 +65,52 @@ const { items } = Astro.props;
 
   let state: FilterState = { ...initialFilters, view: 'all' };
 
+  // Sync state with URL on load
+  function syncFromUrl() {
+    const params = new URLSearchParams(window.location.search);
+    const view = params.get('view') as FilterState['view'];
+    if (view && ['all', 'homes', 'groups'].includes(view)) state.view = view;
+    
+    const sleeps = params.get('sleeps');
+    if (sleeps) {
+      if (sleeps.startsWith('min-')) {
+        state.capacityMode = 'min';
+        state.capacityValue = parseInt(sleeps.replace('min-', ''));
+      } else {
+        state.capacityMode = 'exact';
+        state.capacityValue = parseInt(sleeps);
+      }
+    }
+
+    const bed = params.get('bed');
+    if (bed) state.bedroomsMin = parseInt(bed);
+
+    if (params.get('pool')) state.pool = params.get('pool') as FilterState['pool'];
+    if (params.get('sea') === '1') state.seaView = true;
+  }
+
+  function syncToUrl() {
+    const params = new URLSearchParams();
+    if (state.view !== 'all') params.set('view', state.view);
+    
+    if (state.capacityMode !== 'none') {
+      const val = state.capacityMode === 'min' ? `min-${state.capacityValue}` : `${state.capacityValue}`;
+      params.set('sleeps', val);
+    }
+    
+    if (state.bedroomsMin) params.set('bed', state.bedroomsMin.toString());
+    if (state.pool) params.set('pool', state.pool);
+    if (state.seaView) params.set('sea', '1');
+
+    const newUrl = params.toString() ? `${window.location.pathname}?${params.toString()}` : window.location.pathname;
+    window.history.replaceState({}, '', newUrl);
+  }
+
   const countEl = document.getElementById('filter-count');
   const tabs = document.querySelectorAll('.view-tab');
   const chips = document.querySelectorAll('.filter-chip');
 
-  function render() {
+  function render(updateUrl = true) {
     const matched = applyFilters(items, state);
     const matchedIds = new Set(matched.map(m => m.id));
 
@@ -140,12 +181,15 @@ const { items } = Astro.props;
         isActive = state.bedroomsMin === 3;
       }
 
+      chip.setAttribute('aria-pressed', isActive.toString());
       if (isActive) {
         chip.classList.add('active');
       } else {
         chip.classList.remove('active');
       }
     });
+
+    if (updateUrl) syncToUrl();
   }
 
   // Bind tabs
@@ -201,6 +245,13 @@ const { items } = Astro.props;
     render();
   });
 
+  // Handle back/forward buttons
+  window.addEventListener('popstate', () => {
+    syncFromUrl();
+    render(false);
+  });
+
   // Initial render
-  render();
+  syncFromUrl();
+  render(false);
 </script>

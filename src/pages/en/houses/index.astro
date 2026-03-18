@@ -72,11 +72,11 @@ const totalCount = allItems.length;
       class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
       aria-label={`All ${totalCount} properties`}
     >
-      {units.map((unit) => (
-        <UnitCard unit={unit} />
+      {units.map((unit, index) => (
+        <UnitCard unit={unit} priority={index < 3} />
       ))}
-      {groupsData.map((group) => (
-        <GroupCard group={group as ListingItem} />
+      {groupsData.map((group, index) => (
+        <GroupCard group={group as ListingItem} priority={index < 3} />
       ))}
     </div>
 
