@@ -9,14 +9,19 @@ export default {
         'body-bg': '#F7F4EE',
         'body-text': '#2C2419',
         'muted': '#6B5F50',
-        'primary': '#0BBFF5',
+        
+        // Primary (Role: MAIN ACTION - Terracotta)
+        'primary': '#B44B2A',
+        'primary-hover': '#9A3F23',
 
-        // CTA (terracotta)
-        'cta': '#B44B2A',
-        'cta-hover': '#9A3F23',
+        // Accent (Role: LIMITED USE - Muted Blue)
+        'accent-blue': '#0880A8',
 
+        // UI
         'footer-bg': '#0F2A33',
         'footer-text': '#C8D8DD',
+        
+        // Base Stone scale
         'stone-100': '#F7F4EE',
         'stone-200': '#EEE9DF',
         'stone-300': '#E6E1D8',
@@ -25,14 +30,10 @@ export default {
         'stone-600': '#6B5F50',
         'stone-700': '#453A2D',
         'stone-800': '#2C2419',
-        'sea-100': '#E0F7FF',
-        'sea-200': '#A8E9FD',
-        'sea-500': '#0BBFF5',
-        'sea-700': '#0880A8',
+
+        // State
         'success': '#2D6A4F',
         'warning': '#B45309',
-
-        // keep "error" red for validation/messages
         'error': '#AC0814',
       },
       fontFamily: {

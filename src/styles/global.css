@@ -50,18 +50,11 @@
 }
 
 @layer components {
-  .btn-cta {
-    @apply inline-flex items-center justify-center gap-2 bg-cta text-white font-sans font-medium text-sm px-5 py-3 rounded transition-colors duration-150;
-  }
-  .btn-cta:hover {
-    @apply bg-cta-hover;
-  }
-
-  .btn-primary {
+  .btn-primary, .btn-cta {
     @apply inline-flex items-center justify-center gap-2 bg-primary text-white font-sans font-medium text-sm px-5 py-3 rounded transition-colors duration-150;
   }
-  .btn-primary:hover {
-    @apply bg-sea-700;
+  .btn-primary:hover, .btn-cta:hover {
+    @apply bg-primary-hover;
   }
 
   .btn-outline {
@@ -76,7 +69,7 @@
   }
 
   .badge-pool {
-    @apply badge bg-sea-100 text-sea-700;
+    @apply badge bg-stone-200 text-accent-blue border border-stone-300;
   }
 
   .badge-shared-pool {

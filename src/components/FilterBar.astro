@@ -10,7 +10,7 @@ const { items } = Astro.props;
 
 <div class="mb-8">
   <div class="flex items-center gap-6 mb-5 border-b border-stone-200" id="view-tabs" role="tablist">
-    <button class="view-tab active pb-2 border-b-2 border-footer-bg text-stone-800 font-medium font-sans text-sm transition-colors" data-view="all" role="tab" aria-selected="true">All stays</button>
+    <button class="view-tab active pb-2 border-b-2 border-stone-800 text-primary font-semibold font-sans text-sm transition-colors" data-view="all" role="tab" aria-selected="true">All stays</button>
     <button class="view-tab pb-2 border-b-2 border-transparent text-stone-500 hover:text-stone-700 font-medium font-sans text-sm transition-colors" data-view="homes" role="tab" aria-selected="false">Homes & Villa</button>
     <button class="view-tab pb-2 border-b-2 border-transparent text-stone-500 hover:text-stone-700 font-medium font-sans text-sm transition-colors" data-view="groups" role="tab" aria-selected="false">Group stays</button>
   </div>
@@ -47,7 +47,7 @@ const { items } = Astro.props;
     @apply border-stone-500 text-body-text bg-stone-100;
   }
   .filter-chip.active {
-    @apply border-footer-bg bg-footer-bg text-white;
+    @apply border-transparent bg-primary text-white;
   }
 </style>
 
@@ -144,11 +144,11 @@ const { items } = Astro.props;
       const isSelected = (tab as HTMLElement).dataset.view === state.view;
       tab.setAttribute('aria-selected', isSelected.toString());
       if (isSelected) {
-        tab.classList.add('border-footer-bg', 'text-stone-800');
-        tab.classList.remove('border-transparent', 'text-stone-500');
+        tab.classList.add('border-stone-800', 'text-primary', 'font-semibold');
+        tab.classList.remove('border-transparent', 'text-stone-500', 'font-medium');
       } else {
-        tab.classList.add('border-transparent', 'text-stone-500');
-        tab.classList.remove('border-footer-bg', 'text-stone-800');
+        tab.classList.add('border-transparent', 'text-stone-500', 'font-medium');
+        tab.classList.remove('border-stone-800', 'text-primary', 'font-semibold');
       }
     });
 
