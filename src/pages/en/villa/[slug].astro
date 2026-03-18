@@ -11,6 +11,7 @@ import siteCopy from '../../../data/siteCopy.json';
 import SinglePinMap from '../../../components/maps/SinglePinMap.astro';
 import { locations, parkingOnly } from '../../../data/locations';
 import { getArrivalInstructions } from '../../../utils/arrival';
+import { getEntry, render } from 'astro:content';
 import type { InventoryUnit, GalleryImage } from '../../../types';
 
 export async function getStaticPaths() {
@@ -48,6 +49,12 @@ const parkingLoc = parkingOnly[0];
 const arrivalInfo = locData && parkingLoc 
   ? getArrivalInstructions(locData.googleMapsUrl, parkingLoc.googleMapsUrl)
   : null;
+
+const entry = await getEntry('villa', slug);
+if (!entry) {
+  return Astro.redirect('/en/houses/', 302);
+}
+const { Content } = await render(entry);
 ---
 
 <Base
@@ -127,6 +134,10 @@ const arrivalInfo = locData && parkingLoc
         </div>
 
         <AtAGlance unit={unit} />
+
+        <div class="prose prose-stone max-w-none mb-10 text-stone-700 leading-relaxed">
+          <Content />
+        </div>
 
         <section class="mb-8" aria-label="Amenities">
           <h2 class="font-sans font-semibold text-sm uppercase tracking-wider text-muted mb-4">What's included</h2>
