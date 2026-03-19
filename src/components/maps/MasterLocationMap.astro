@@ -47,22 +47,32 @@ const markers = allLocs.map(loc => {
     <div class="location-list overflow-y-auto pr-2" style="max-height: 550px;">
       <div class="flex flex-col gap-3">
         {allLocs.map(loc => (
-          <div class="location-card bg-white/80 backdrop-blur-sm border border-stone-200 rounded-lg p-4 cursor-pointer hover:border-stone-400 hover:shadow-md transition-all" 
+          <div class="location-card group/card relative bg-white border border-stone-200 rounded-lg p-4 cursor-pointer hover:border-stone-400 hover:shadow-md transition-all overflow-hidden" 
                data-id={loc.id} 
                data-type={loc.type} 
                data-group={loc.group}
                data-image={loc.image}>
-            <h3 class="font-serif text-lg text-body-text">{loc.title}</h3>
-            <p class="text-xs text-stone-500 mb-2">{loc.locationLabel}</p>
-            <div class="flex justify-between items-center mt-3">
-              <span class="text-[10px] uppercase font-bold tracking-wider text-stone-500 bg-stone-100 px-2 py-1 rounded">{loc.type}</span>
-              <div class="flex flex-col items-end gap-1.5 z-10 relative">
-                {loc.googleMapsUrl && (
-                  <a href={loc.googleMapsUrl} target="_blank" rel="noopener noreferrer" class="text-[11px] font-medium text-stone-600 hover:text-stone-900 underline">View on map</a>
-                )}
-                {(loc.type === 'house' || (loc as any).type === 'home' || loc.type === 'villa') && (
-                  <a href={loc.type === 'villa' ? `/en/villa/${loc.slug}/` : `/en/houses/${loc.slug}/`} class="text-[11px] font-medium text-stone-600 hover:text-stone-900 underline">View details</a>
-                )}
+            
+            {/* Ambient Card Background */}
+            {loc.image && (
+              <div class="absolute inset-0 z-0 opacity-[0.03] group-hover/card:opacity-[0.08] transition-opacity duration-500 bg-cover bg-center pointer-events-none"
+                   style={`background-image: url('${loc.image}')`}>
+              </div>
+            )}
+
+            <div class="relative z-10">
+              <h3 class="font-serif text-lg text-body-text">{loc.title}</h3>
+              <p class="text-xs text-stone-500 mb-2">{loc.locationLabel}</p>
+              <div class="flex justify-between items-center mt-3">
+                <span class="text-[10px] uppercase font-bold tracking-wider text-stone-500 bg-stone-100/50 px-2 py-1 rounded">{loc.type}</span>
+                <div class="flex flex-col items-end gap-1.5 z-10 relative">
+                  {loc.googleMapsUrl && (
+                    <a href={loc.googleMapsUrl} target="_blank" rel="noopener noreferrer" class="text-[11px] font-medium text-stone-600 hover:text-stone-900 underline">View on map</a>
+                  )}
+                  {(loc.type === 'house' || (loc as any).type === 'home' || loc.type === 'villa') && (
+                    <a href={loc.type === 'villa' ? `/en/villa/${loc.slug}/` : `/en/houses/${loc.slug}/`} class="text-[11px] font-medium text-stone-600 hover:text-stone-900 underline">View details</a>
+                  )}
+                </div>
               </div>
             </div>
           </div>
