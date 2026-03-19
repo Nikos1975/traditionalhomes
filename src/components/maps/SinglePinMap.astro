@@ -34,7 +34,7 @@ if (location && location.lat && location.lng) {
         <span class="font-medium text-stone-800">{location.title}</span><br/>
         {location.locationLabel}
       </div>
-      <a href="/en/location/" class="text-xs px-3 py-1.5 bg-white border border-stone-300 rounded hover:bg-stone-100 font-medium text-stone-700 transition-colors">
+      <a href={`/en/location/?id=${location.id}#map-section`} class="text-xs px-3 py-1.5 bg-white border border-stone-300 rounded hover:bg-stone-100 font-medium text-stone-700 transition-colors">
         View map
       </a>
     </div>

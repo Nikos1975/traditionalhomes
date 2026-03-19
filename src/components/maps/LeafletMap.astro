@@ -75,14 +75,28 @@ const { markers, zoom = 15, center, height = '400px', interactive = true, mapId 
     }).addTo(map);
 
     const bounds = L.latLngBounds([]);
+    const layers: Record<string, any> = {};
+    const usedPositions: string[] = [];
 
     markersData.forEach((marker: any) => {
       if (marker.lat && marker.lng) {
-        const m = L.marker([marker.lat, marker.lng]).addTo(map);
+        // Resolve identical coordinates by applying a tiny offset
+        let finalLat = marker.lat;
+        let finalLng = marker.lng;
+        const posKey = `${finalLat.toFixed(6)},${finalLng.toFixed(6)}`;
+        
+        if (usedPositions.includes(posKey)) {
+          finalLng += 0.00004; // Visual offset for overlapping pins (e.g. Erato/Clio)
+        }
+        usedPositions.push(`${finalLat.toFixed(6)},${finalLng.toFixed(6)}`);
+
+        const m = L.marker([finalLat, finalLng]).addTo(map);
+        layers[marker.id] = m;
+
         if (marker.title) {
           m.bindPopup(marker.url ? `<a href="${marker.url}" class="font-medium text-stone-800 hover:text-stone-600 underline">${marker.title}</a>` : marker.title);
         }
-        bounds.extend([marker.lat, marker.lng]);
+        bounds.extend([finalLat, finalLng]);
       }
     });
 
@@ -90,7 +104,19 @@ const { markers, zoom = 15, center, height = '400px', interactive = true, mapId 
        map.fitBounds(bounds, { padding: [30, 30] });
     }
 
+    // Deep link focusing logic
+    const urlParams = new URLSearchParams(window.location.search);
+    const targetId = urlParams.get('id');
+    if (targetId && layers[targetId]) {
+      const targetMarker = layers[targetId];
+      setTimeout(() => {
+        map.setView(targetMarker.getLatLng(), 18);
+        targetMarker.openPopup();
+      }, 500);
+    }
+
     // Expose map to window for external controls
     (window as any)[`leaflet_map_${el.id}`] = map;
+    (window as any)[`leaflet_layers_${el.id}`] = layers;
   });
 </script>

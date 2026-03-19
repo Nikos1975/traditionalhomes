@@ -79,7 +79,7 @@ export const locations: LocationItem[] = [
         locationLabel: "Mavrikiano, Elounda",
         lat: 35.266957667346475,
         lng: 25.718782164603414,
-        googleMapsUrl: null,
+        googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=35.266957667346475,25.718782164603414",
         needsVerification: false,
         coordinateSource: "direct",
         source: "manual verification"
@@ -107,7 +107,7 @@ export const locations: LocationItem[] = [
         locationLabel: "Mavrikiano, Elounda",
         lat: 35.2668510316977,
         lng: 25.718792311479703,
-        googleMapsUrl: null,
+        googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=35.2668510316977,25.718792311479703",
         needsVerification: false,
         coordinateSource: "direct",
         source: "manual verification"
@@ -135,7 +135,7 @@ export const locations: LocationItem[] = [
         locationLabel: "Mavrikiano, Elounda",
         lat: 35.26681671540303,
         lng: 25.718993121354547,
-        googleMapsUrl: null,
+        googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=35.26681671540303,25.718993121354547",
         needsVerification: false,
         coordinateSource: "direct",
         source: "manual verification"
