@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import { ViewTransitions } from 'astro:transitions';
 
 interface Props {
   title: string;
@@ -36,6 +37,7 @@ const canonical = canonicalUrl ?? new URL(Astro.url.pathname, siteUrl).href;
     <meta name="description" content={description} />
     {noindex && <meta name="robots" content="noindex" />}
     <link rel="canonical" href={canonical} />
+    <ViewTransitions />
 
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
@@ -76,32 +78,34 @@ const canonical = canonicalUrl ?? new URL(Astro.url.pathname, siteUrl).href;
     </button>
 
     <script>
-      document.getElementById('chat-trigger')?.addEventListener('click', () => {
-        const loaded = document.getElementById('chat-widget');
-        if (!loaded) {
-          const div = document.createElement('div');
-          div.id = 'chat-widget';
-          div.innerHTML = '<p style="position:fixed;bottom:5rem;right:1.5rem;background:#0F2A33;color:#fff;padding:1rem 1.25rem;border-radius:0.5rem;font-size:0.875rem;max-width:260px;z-index:50;box-shadow:0 8px 32px rgba(0,0,0,0.3)">For booking enquiries, please use the availability button or contact us by email. Chat coming soon.</p>';
-          document.body.appendChild(div);
-          setTimeout(() => div.remove(), 5000);
+      document.addEventListener('astro:page-load', () => {
+        document.getElementById('chat-trigger')?.addEventListener('click', () => {
+          const loaded = document.getElementById('chat-widget');
+          if (!loaded) {
+            const div = document.createElement('div');
+            div.id = 'chat-widget';
+            div.innerHTML = '<p style="position:fixed;bottom:5rem;right:1.5rem;background:#0F2A33;color:#fff;padding:1rem 1.25rem;border-radius:0.5rem;font-size:0.875rem;max-width:260px;z-index:50;box-shadow:0 8px 32px rgba(0,0,0,0.3)">For booking enquiries, please use the availability button or contact us by email. Chat coming soon.</p>';
+            document.body.appendChild(div);
+            setTimeout(() => div.remove(), 5000);
+          }
+        });
+
+        const reveals = document.querySelectorAll('.reveal');
+        if (reveals.length && 'IntersectionObserver' in window) {
+          const obs = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((e) => {
+                if (e.isIntersecting) {
+                  e.target.classList.add('visible');
+                  obs.unobserve(e.target);
+                }
+              });
+            },
+            { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+          );
+          reveals.forEach((el) => obs.observe(el));
         }
       });
-
-      const reveals = document.querySelectorAll('.reveal');
-      if (reveals.length && 'IntersectionObserver' in window) {
-        const obs = new IntersectionObserver(
-          (entries) => {
-            entries.forEach((e) => {
-              if (e.isIntersecting) {
-                e.target.classList.add('visible');
-                obs.unobserve(e.target);
-              }
-            });
-          },
-          { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
-        );
-        reveals.forEach((el) => obs.observe(el));
-      }
     </script>
   </body>
 </html>

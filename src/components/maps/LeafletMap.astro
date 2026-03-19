@@ -7,6 +7,7 @@ export interface MarkerData {
   url?: string;
   image?: string;
   subtitle?: string;
+  distanceTag?: string;
 }
 
 interface Props {
@@ -62,7 +63,16 @@ const { markers, zoom = 15, center, height = '400px', interactive = true, mapId 
     color: #78716c;
     text-transform: uppercase;
     letter-spacing: 0.025em;
+    margin: 0 0 4px 0;
+  }
+  .popup-distance {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 0.7rem;
+    color: #a8a29e;
     margin: 0 0 8px 0;
+    display: flex;
+    align-items: center;
+    gap: 4px;
   }
   .popup-link {
     display: inline-block;
@@ -160,6 +170,7 @@ const { markers, zoom = 15, center, height = '400px', interactive = true, mapId 
               <div class="popup-info">
                 <h3 class="popup-title">${marker.title}</h3>
                 ${marker.subtitle ? `<p class="popup-subtitle">${marker.subtitle}</p>` : ''}
+                ${marker.distanceTag ? `<p class="popup-distance">${marker.distanceTag}</p>` : ''}
                 ${marker.url ? `<a href="${marker.url}" class="popup-link">View details</a>` : ''}
               </div>
             </div>

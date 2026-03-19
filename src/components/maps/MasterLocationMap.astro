@@ -21,7 +21,8 @@ const markers = allLocs.map(loc => {
     type: loc.type,
     group: loc.group,
     image: loc.image,
-    subtitle: loc.subtitle
+    subtitle: loc.subtitle,
+    distanceTag: loc.distanceTag
   };
 });
 ---
@@ -89,7 +90,7 @@ const markers = allLocs.map(loc => {
 
 <script>
   // Handle interactive filters and map connection
-  document.addEventListener('DOMContentLoaded', () => {
+  document.addEventListener('astro:page-load', () => {
     // Wait for Leaflet init to complete
     setTimeout(() => {
       const mapContainer = document.getElementById('master-map');

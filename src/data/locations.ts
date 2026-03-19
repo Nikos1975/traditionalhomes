@@ -10,6 +10,7 @@ export type LocationItem = {
     googleMapsUrl: string | null
     image?: string
     subtitle?: string
+    distanceTag?: string
     needsVerification: boolean
     coordinateSource: "direct"
     source: string
@@ -28,6 +29,7 @@ export const locations: LocationItem[] = [
         googleMapsUrl: "https://goo.gl/maps/W4dYTNibdcbtHaJKA",
         image: "/images/houses/argyro/480/argyro-hero-veranda-sea-view-01-480.webp",
         subtitle: "Stone House • Sleeps 4",
+        distanceTag: "🚶 10 min walk to Elounda center",
         needsVerification: false,
         coordinateSource: "direct",
         source: "manual verification"
@@ -44,6 +46,7 @@ export const locations: LocationItem[] = [
         googleMapsUrl: "https://goo.gl/maps/PFL8D7ojmPa2GkYo8",
         image: "/images/houses/leonidas/480/leonidas-hero-terrace-sea-view-01-480.webp",
         subtitle: "Stone House • Sleeps 3",
+        distanceTag: "🚶 10 min walk to Elounda center",
         needsVerification: false,
         coordinateSource: "direct",
         source: "manual verification"
@@ -60,6 +63,7 @@ export const locations: LocationItem[] = [
         googleMapsUrl: "https://goo.gl/maps/oBoYTAqEBQJRTb9P6",
         image: "/images/houses/margarita/480/margarita-hero-terrace-sea-view-01-480.webp",
         subtitle: "Stone House • Sleeps 6",
+        distanceTag: "🚶 10 min walk to Elounda center",
         needsVerification: false,
         coordinateSource: "direct",
         source: "manual verification"
@@ -76,6 +80,7 @@ export const locations: LocationItem[] = [
         googleMapsUrl: "https://goo.gl/maps/8eZxC4NA9JQH8DFM7",
         image: "/images/houses/clio/480/clio-hero-interior-balcony-view-01 -480.webp",
         subtitle: "Stone House • Sleeps 4",
+        distanceTag: "🚶 10 min walk to Elounda center",
         needsVerification: false,
         coordinateSource: "direct",
         source: "manual verification"
@@ -92,6 +97,7 @@ export const locations: LocationItem[] = [
         googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=35.266957667346475,25.718782164603414",
         image: "/images/houses/erato/480/erato-hero-private-pool-01-480.webp",
         subtitle: "Stone House • Private Pool • Sleeps 4",
+        distanceTag: "🚶 10 min walk to Elounda center",
         needsVerification: false,
         coordinateSource: "direct",
         source: "manual verification"
@@ -108,6 +114,7 @@ export const locations: LocationItem[] = [
         googleMapsUrl: "https://goo.gl/maps/X3L8yFbk3W8YZCBK8",
         image: "/images/houses/demetra/480/demetra-hero-shared-pool-01-480.webp",
         subtitle: "Stone House • Shared Pool • Sleeps 4",
+        distanceTag: "🚶 10 min walk to Elounda center",
         needsVerification: false,
         coordinateSource: "direct",
         source: "manual verification"
@@ -124,6 +131,7 @@ export const locations: LocationItem[] = [
         googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=35.2668510316977,25.718792311479703",
         image: "/images/houses/penelope/480/penelope-hero-arched-doorway-view-01-480.webp",
         subtitle: "Stone House • Shared Pool • Sleeps 6",
+        distanceTag: "🚶 10 min walk to Elounda center",
         needsVerification: false,
         coordinateSource: "direct",
         source: "manual verification"
@@ -140,6 +148,7 @@ export const locations: LocationItem[] = [
         googleMapsUrl: "https://maps.app.goo.gl/LyrmpEy4huy3RB4p8",
         image: "/images/houses/efterpi/480/efterpi-hero-exterior-01-480.webp",
         subtitle: "Stone House • Sleeps 5",
+        distanceTag: "🚶 10 min walk to Elounda center",
         needsVerification: false,
         coordinateSource: "direct",
         source: "manual verification"
@@ -156,6 +165,7 @@ export const locations: LocationItem[] = [
         googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=35.26681671540303,25.718993121354547",
         image: "/images/houses/kalliopi/480/kalliopi-hero-exterior-facade-01-331.webp",
         subtitle: "Stone House • Sleeps 4",
+        distanceTag: "🚶 10 min walk to Elounda center",
         needsVerification: false,
         coordinateSource: "direct",
         source: "manual verification"
@@ -172,6 +182,7 @@ export const locations: LocationItem[] = [
         googleMapsUrl: "https://goo.gl/maps/hggQAnymcFkZuG7y8",
         image: "/images/houses/monastiri/480/monastiri-hero-exterior-facade-01-480.webp",
         subtitle: "Stone House • Private Pool • Sleeps 6",
+        distanceTag: "🚶 10 min walk to Elounda center",
         needsVerification: false,
         coordinateSource: "direct",
         source: "manual verification"
@@ -204,6 +215,7 @@ export const locations: LocationItem[] = [
         googleMapsUrl: "https://goo.gl/maps/xNj5fxp2RWKeokaAA",
         image: "/images/villa/almond-tree-villa/480/almond-tree-villa-hero-outdoor-dining-terrace-02-480.webp",
         subtitle: "Luxury Villa • Private Pool • Sleeps 10",
+        distanceTag: "🚗 5 min drive to Plaka beach",
         needsVerification: false,
         coordinateSource: "direct",
         source: "manual verification"

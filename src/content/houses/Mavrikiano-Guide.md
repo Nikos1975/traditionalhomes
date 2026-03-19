@@ -1,0 +1,104 @@
+---
+title: "Mavrikiano Area, Access & Practical Information"
+description: "A complete guide to nearby attractions, beaches, and distances from Mavrikiano, Crete."
+---
+# Mavrikiano Area, Access & Practical Information
+
+## Distances from Mavrikiano
+
+| Destination | National Geographic Style Description | Driving (Time & Distance) | Walking (Time & Distance) |
+| :--- | :--- | :--- | :--- |
+| **Center of Elounda (Schisma)** | The bustling heart of the region, blending a traditional fishing port with vibrant Mediterranean life. It serves as the central hub for tavernas, local markets, taxis, and buses. | **3 min** (800 m) | **10 min** (800 m) |
+| **Spinalonga** | A poignant Venetian fortress island and former leper colony rising dramatically from the shimmering sapphire waters of the Mirabello Bay. | **7 min** (4.1 km) to Plaka boats | **56 min** (4.1 km) to Plaka boats |
+| **Plaka village** | A tranquil coastal enclave with a pristine pebble shoreline, traditional tavernas, and unobstructed cinematic views of Spinalonga. | **7 min** (4.1 km) | **56 min** (4.1 km) |
+| **Sunken City of Olous** | Beneath the translucent waters of the isthmus lie the submerged ruins and scattered mosaics of an ancient Minoan metropolis. | **5 min** (1.8 km) | **23 min** (1.7 km) |
+| **Agios Nikolaos** | The vibrant capital of the Lassithi region, famous for its legendary bottomless lake, bustling marina, and lively shopping streets. | **19 min** (11.8 km) | *Not recommended* |
+| **Heraklion Airport (HER)** | The bustling gateway to Crete, where the modern world converges with the ancient island via the northern coastal highway. | **1 hr 2 min** (67.9 km) | *Not recommended* |
+
+---
+
+## Beaches of the Area
+
+* **Elounda Public Beach (Schisma):** 800 m from Mavrikiano. A vibrant, sun-drenched crescent of sand with a shallow entry, cafés, sunbed hire, and water sports.
+* **Kanali Beach:** 1.2 km. A calm, pebbly stretch located beside the Elounda Canal.
+* **Hiona Beach:** 1.5 km. A quiet local beach situated right next to the harbour.
+* **Mavrikiano Beach / Tigania:** 1.5 km. A hidden, sandy cove tucked away beside the main beach.
+* **Driros Beach:** 3.5 km. A natural and serene spot resting between Elounda and Plaka.
+* **Plaka Beach:** 4.1 km. Pristine pebbles offering direct, stunning views of Spinalonga.
+* **Kolokytha Beach:** 4.5 km. A remote, shallow turquoise bay hidden on a rugged peninsula, accessible by boat or a scenic, untamed walk.
+
+---
+
+## Historical Sites & Landmarks
+
+* **Ancient Sunken City of Olous:** Minoan-era foundations and mosaics visible below the causeway waterline. 
+* **Spinalonga Island:** A formidable Venetian fortress (built 1579) that later served as Greece's leper colony (1903–1957). Accessible by boat from Elounda and Plaka.
+* **Elounda Canal:** An impressive waterway cut through the isthmus, built by French military engineers in 1897–98.
+* **Paleochristian Basilica of Poros:** Features beautifully preserved early Christian mosaics.
+* **Elounda Salt Pans (Alikes):** Venetian-era salt flats that are now a notable and serene spot for birdwatching.
+* **Gournia:** Located 30 km from Elounda, this is the only fully excavated Minoan city in Crete.
+
+---
+
+## Transport & Practical Information
+
+* **Taxis:** Readily available in the center of Elounda.
+* **Car Rental:** Available in both Elounda and Agios Nikolaos.
+* **Public Bus:** Limited service runs between Elounda and Agios Nikolaos.
+* **Boats to Spinalonga:** Depart frequently from both the Elounda harbour and Plaka village.
+
+---
+
+## Recommended Day-Trip Itinerary: The Mirabello Circuit
+
+This itinerary maximizes the morning cool for historical exploration and reserves the heat of the afternoon for refreshing swims.
+
+* **08:30 AM | Departure to Plaka:** Head to Plaka early to beat the midday heat and the larger tour groups.
+* **09:00 AM | Spinalonga Exploration:** Catch one of the first boats from Plaka to Spinalonga. Spend 1.5 to 2 hours wandering the stone pathways.
+* **11:30 AM | Seaside Lunch in Plaka:** Choose a traditional waterfront taverna in Plaka and enjoy freshly caught seafood with a view of the fortress.
+* **01:30 PM | Afternoon Swim at Plaka Beach:** Cool off in the crystal-clear waters of the pebble beach right next to the village.
+* **03:00 PM | Sunken City of Olous:** Drive south through Elounda to the isthmus. Park near the windmills and snorkel over the submerged ruins.
+* **04:30 PM | Retreat to Kolokitha Beach:** Brave the rugged dirt road (or take the scenic hike over the hill) to this hidden, sandy cove. 
+* **07:00 PM | Return to Mavrikiano:** Head back to your base to refresh before enjoying a traditional Cretan dinner under the stars.
+
+---
+
+## Essential Packing List
+
+To fully enjoy the varied terrain and environments around Elounda, pack these essentials:
+
+* **Footwear for varied terrain:** Sturdy walking sandals or sneakers (essential for the uneven stones of Spinalonga and the hike to Kolokitha).
+* **Water shoes:** Highly recommended for Plaka's pebble beach and around the rocky ruins of Olous.
+* **Snorkeling gear:** A must-have for observing the underwater mosaics at the Sunken City of Olous.
+* **Sun protection:** A wide-brimmed hat, polarized sunglasses, and reef-safe sunscreen.
+* **Hydration & Snacks:** Bring plenty of water, especially for the hike over the Kolokitha peninsula.
+* **Light layers:** A lightweight, breathable long-sleeve shirt or cover-up for boat rides and intense midday sun.
+* **Dry bag:** To protect your phone, wallet, and keys from sea spray on boats or while relaxing on the beaches.
+
+---
+
+## Spinalonga Visitor Information (2026 Season)
+
+### Operating Hours (Summer Season: April 1 - October 31)
+The archaeological site is open daily from **08:30 AM to 6:00 PM** (18:00).
+* The last admission is typically 30 minutes before closing.
+* *Note: The site is closed to the general public during the winter months (November 1st - March 31st).*
+
+### Site Entrance Tickets
+You will purchase your entrance tickets at the ticket office immediately upon disembarking on the island.
+* **Full Price:** €20
+* **Reduced Price:** €10 (Seniors over 65)
+* **Free Admission:** Children, young people, and students under 25 (EU citizens).
+
+### Boat Transfers
+Boats operate continuously throughout the day starting around 8:30 AM or 9:00 AM. There is no need to book in advance.
+
+#### From Plaka (Shortest Crossing)
+* **Ticket Price:** €10 to €12 for a round trip.
+* **Travel Time:** About 7 to 10 minutes.
+* **Frequency:** Every 30 minutes.
+
+#### From Schisma Eloundas (Scenic Route)
+* **Ticket Price:** €12 to €14 for a round trip.
+* **Travel Time:** About 20 to 25 minutes.
+* **Frequency:** Every 30 minutes.
