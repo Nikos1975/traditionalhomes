@@ -9,7 +9,7 @@ const markers = allLocs.map(loc => {
   let url = '';
   if (loc.type === 'villa') {
     url = `/en/villa/${loc.slug}/`;
-  } else if (loc.type === 'house') {
+  } else if (loc.type === 'house' || (loc as any).type === 'home') {
     url = `/en/houses/${loc.slug}/`;
   }
   return {
@@ -47,8 +47,10 @@ const markers = allLocs.map(loc => {
             <div class="flex justify-between items-center mt-3">
               <span class="text-[10px] uppercase font-bold tracking-wider text-stone-500 bg-stone-100 px-2 py-1 rounded">{loc.type}</span>
               <div class="flex flex-col items-end gap-1.5 z-10 relative">
-                <a href={loc.googleMapsUrl} target="_blank" rel="noopener noreferrer" class="text-[11px] font-medium text-stone-600 hover:text-stone-900 underline">View on map</a>
-                {(loc.type === 'house' || loc.type === 'villa') && (
+                {loc.googleMapsUrl && (
+                  <a href={loc.googleMapsUrl} target="_blank" rel="noopener noreferrer" class="text-[11px] font-medium text-stone-600 hover:text-stone-900 underline">View on map</a>
+                )}
+                {(loc.type === 'house' || (loc as any).type === 'home' || loc.type === 'villa') && (
                   <a href={loc.type === 'villa' ? `/en/villa/${loc.slug}/` : `/en/houses/${loc.slug}/`} class="text-[11px] font-medium text-stone-600 hover:text-stone-900 underline">View details</a>
                 )}
               </div>
@@ -127,7 +129,7 @@ const markers = allLocs.map(loc => {
             
             let shouldShow = false;
             if (filterMode === 'all') shouldShow = true;
-            else if (filterMode === 'house') shouldShow = type === 'house';
+            else if (filterMode === 'house') shouldShow = type === 'house' || type === 'home';
             else if (filterMode === 'villa') shouldShow = type === 'villa';
             else if (filterMode === 'mavrikiano') shouldShow = group === 'mavrikiano';
             else if (filterMode === 'vrouchas') shouldShow = group === 'vrouchas';

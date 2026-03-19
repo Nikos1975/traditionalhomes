@@ -163,7 +163,7 @@ export const locations: LocationItem[] = [
         locationLabel: "Mavrikiano, Elounda",
         lat: 35.2670833,
         lng: 25.7188333,
-        googleMapsUrl: null,
+        googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=35.2670833,25.7188333",
         needsVerification: false,
         coordinateSource: "direct",
         source: "manual verification"
