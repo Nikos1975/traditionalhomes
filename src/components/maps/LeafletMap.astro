@@ -164,8 +164,20 @@ const { markers, zoom = 15, center, height = '400px', interactive = true, mapId 
               </div>
             </div>
           `;
+          
           m.bindPopup(popupHtml);
+
+          m.on('popupopen', () => {
+            el.dispatchEvent(new CustomEvent('marker-focused', { 
+              detail: { 
+                id: marker.id,
+                image: marker.image,
+                title: marker.title
+              } 
+            }));
+          });
         }
+
         bounds.extend([finalLat, finalLng]);
       }
     });
