@@ -5,6 +5,8 @@ export interface MarkerData {
   lng: number;
   title: string;
   url?: string;
+  image?: string;
+  subtitle?: string;
 }
 
 interface Props {
@@ -20,6 +22,64 @@ const { markers, zoom = 15, center, height = '400px', interactive = true, mapId 
 ---
 
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+
+<style is:global>
+  /* Custom Leaflet Popup Styling */
+  .leaflet-popup-content-wrapper {
+    padding: 0;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  }
+  .leaflet-popup-content {
+    margin: 0 !important;
+    width: 240px !important;
+  }
+  .custom-popup {
+    display: flex;
+    flex-direction: column;
+  }
+  .popup-img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    background-color: #f5f5f4;
+  }
+  .popup-info {
+    padding: 12px;
+  }
+  .popup-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #1c1917;
+    margin: 0 0 2px 0;
+    line-height: 1.2;
+  }
+  .popup-subtitle {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 0.7rem;
+    color: #78716c;
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+    margin: 0 0 8px 0;
+  }
+  .popup-link {
+    display: inline-block;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #615a52;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .popup-link:hover {
+    color: #1c1917;
+  }
+  .leaflet-popup-tip {
+    box-shadow: 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  }
+</style>
 
 <div id={mapId} class="leaflet-map-container z-0 rounded-xl overflow-hidden" style={`height: ${height}; width: 100%;`} 
      data-markers={JSON.stringify(markers)} 
@@ -94,7 +154,17 @@ const { markers, zoom = 15, center, height = '400px', interactive = true, mapId 
         layers[marker.id] = m;
 
         if (marker.title) {
-          m.bindPopup(marker.url ? `<a href="${marker.url}" class="font-medium text-stone-800 hover:text-stone-600 underline">${marker.title}</a>` : marker.title);
+          const popupHtml = `
+            <div class="custom-popup">
+              ${marker.image ? `<img src="${marker.image}" alt="${marker.title}" class="popup-img" />` : ''}
+              <div class="popup-info">
+                <h3 class="popup-title">${marker.title}</h3>
+                ${marker.subtitle ? `<p class="popup-subtitle">${marker.subtitle}</p>` : ''}
+                ${marker.url ? `<a href="${marker.url}" class="popup-link">View details</a>` : ''}
+              </div>
+            </div>
+          `;
+          m.bindPopup(popupHtml);
         }
         bounds.extend([finalLat, finalLng]);
       }
