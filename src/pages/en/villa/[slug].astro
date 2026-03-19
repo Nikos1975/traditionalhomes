@@ -41,6 +41,9 @@ if (fs.existsSync(heroDir)) {
   }
 }
 
+const ogImagePath = path.join(process.cwd(), 'public', 'images', 'villa', slug, 'og.jpg');
+const ogImage = fs.existsSync(ogImagePath) ? `/images/villa/${slug}/og.jpg` : undefined;
+
 const pageTitle = `${unit.name} — ${unit.location}, Elounda | Elounda Traditional Homes`;
 const pageDescription = `${unit.name} in ${unit.location} — sleeps ${unit.sleeps_max}, ${unit.bedrooms} bedrooms, private pool. Panoramic views over Elounda Bay and the Mirabello Gulf, Crete.`;
 
@@ -61,6 +64,7 @@ const { Content } = await render(entry);
   title={pageTitle}
   description={pageDescription}
   canonicalUrl={`https://traditional-homes.gr/en/villa/${slug}/`}
+  ogImage={ogImage}
 >
 
   {heroImage && (

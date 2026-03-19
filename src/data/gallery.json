@@ -4,7 +4,7 @@
       "src": "/images/houses/argyro/1024/argyro-entrance-exterior-01-1024.webp",
       "srcset": "/images/houses/argyro/480/argyro-entrance-exterior-01-480.webp 480w, /images/houses/argyro/768/argyro-entrance-exterior-01-768.webp 768w, /images/houses/argyro/1024/argyro-entrance-exterior-01-1024.webp 1024w, /images/houses/argyro/1600/argyro-entrance-exterior-01-1600.webp 1600w",
       "alt": "Argyro entrance exterior 01",
-      "isFeatured": true,
+      "isFeatured": false,
       "tags": [
         "exterior"
       ]
@@ -13,7 +13,7 @@
       "src": "/images/houses/argyro/1024/argyro-entrance-exterior-02-1024.webp",
       "srcset": "/images/houses/argyro/480/argyro-entrance-exterior-02-480.webp 480w, /images/houses/argyro/768/argyro-entrance-exterior-02-768.webp 768w, /images/houses/argyro/1024/argyro-entrance-exterior-02-1024.webp 1024w, /images/houses/argyro/1600/argyro-entrance-exterior-02-1600.webp 1600w",
       "alt": "Argyro entrance exterior 02",
-      "isFeatured": true,
+      "isFeatured": false,
       "tags": [
         "exterior"
       ]
@@ -32,30 +32,12 @@
       "src": "/images/houses/argyro/1024/argyro-village-exterior-beeraki-01-1024.webp",
       "srcset": "/images/houses/argyro/480/argyro-village-exterior-beeraki-01-480.webp 480w, /images/houses/argyro/768/argyro-village-exterior-beeraki-01-768.webp 768w, /images/houses/argyro/1024/argyro-village-exterior-beeraki-01-1024.webp 1024w, /images/houses/argyro/1600/argyro-village-exterior-beeraki-01-1600.webp 1600w",
       "alt": "Argyro village exterior beeraki 01",
-      "isFeatured": true,
+      "isFeatured": false,
       "tags": [
         "exterior"
       ]
     },
-    {
-      "src": "/images/houses/argyro/768/leonidas-exterior-facade-01--768.webp",
-      "srcset": "/images/houses/argyro/480/leonidas-exterior-facade-01--480.webp 480w, /images/houses/argyro/768/leonidas-exterior-facade-01--768.webp 768w",
-      "alt": "Leonidas exterior facade 01",
-      "isFeatured": true,
-      "tags": [
-        "exterior"
-      ]
-    },
-    {
-      "src": "/images/houses/argyro/768/leonidas-hero-terrace-sea-view-01--768.webp",
-      "srcset": "/images/houses/argyro/480/leonidas-hero-terrace-sea-view-01--480.webp 480w, /images/houses/argyro/768/leonidas-hero-terrace-sea-view-01--768.webp 768w",
-      "alt": "Leonidas hero terrace sea view 01",
-      "isFeatured": true,
-      "tags": [
-        "view",
-        "outdoor"
-      ]
-    },
+
     {
       "src": "/images/houses/argyro/1024/argyro-bathroom-01-1024.webp",
       "srcset": "/images/houses/argyro/480/argyro-bathroom-01-480.webp 480w, /images/houses/argyro/768/argyro-bathroom-01-768.webp 768w, /images/houses/argyro/1024/argyro-bathroom-01-1024.webp 1024w, /images/houses/argyro/1600/argyro-bathroom-01-1600.webp 1600w",
@@ -315,97 +297,6 @@
       "isFeatured": false,
       "tags": [
         "view"
-      ]
-    },
-    {
-      "src": "/images/houses/argyro/768/leonidas-bathroom-01--512.webp",
-      "srcset": "/images/houses/argyro/480/leonidas-bathroom-01--320.webp 480w, /images/houses/argyro/768/leonidas-bathroom-01--512.webp 768w",
-      "alt": "Leonidas bathroom 01",
-      "isFeatured": false,
-      "tags": [
-        "bathroom"
-      ]
-    },
-    {
-      "src": "/images/houses/argyro/768/leonidas-bedroom-01--574.webp",
-      "srcset": "/images/houses/argyro/480/leonidas-bedroom-01--359.webp 480w, /images/houses/argyro/768/leonidas-bedroom-01--574.webp 768w",
-      "alt": "Leonidas bedroom 01",
-      "isFeatured": false,
-      "tags": [
-        "bedroom"
-      ]
-    },
-    {
-      "src": "/images/houses/argyro/768/leonidas-bedroom-02--574.webp",
-      "srcset": "/images/houses/argyro/480/leonidas-bedroom-02--359.webp 480w, /images/houses/argyro/768/leonidas-bedroom-02--574.webp 768w",
-      "alt": "Leonidas bedroom 02",
-      "isFeatured": false,
-      "tags": [
-        "bedroom"
-      ]
-    },
-    {
-      "src": "/images/houses/argyro/768/leonidas-bedroom-canopy-01--768.webp",
-      "srcset": "/images/houses/argyro/480/leonidas-bedroom-canopy-01--480.webp 480w, /images/houses/argyro/768/leonidas-bedroom-canopy-01--768.webp 768w",
-      "alt": "Leonidas bedroom canopy 01",
-      "isFeatured": false,
-      "tags": [
-        "bedroom"
-      ]
-    },
-    {
-      "src": "/images/houses/argyro/768/leonidas-kitchen-open-plan-01--768.webp",
-      "srcset": "/images/houses/argyro/480/leonidas-kitchen-open-plan-01--480.webp 480w, /images/houses/argyro/768/leonidas-kitchen-open-plan-01--768.webp 768w",
-      "alt": "Leonidas kitchen open plan 01",
-      "isFeatured": false,
-      "tags": [
-        "kitchen"
-      ]
-    },
-    {
-      "src": "/images/houses/argyro/768/leonidas-living-room-02--768.webp",
-      "srcset": "/images/houses/argyro/480/leonidas-living-room-02--480.webp 480w, /images/houses/argyro/768/leonidas-living-room-02--768.webp 768w",
-      "alt": "Leonidas living room 02",
-      "isFeatured": false,
-      "tags": [
-        "living-area"
-      ]
-    },
-    {
-      "src": "/images/houses/argyro/768/leonidas-living-room-wide-01--768.webp",
-      "srcset": "/images/houses/argyro/480/leonidas-living-room-wide-01--480.webp 480w, /images/houses/argyro/768/leonidas-living-room-wide-01--768.webp 768w",
-      "alt": "Leonidas living room wide 01",
-      "isFeatured": false,
-      "tags": [
-        "living-area"
-      ]
-    },
-    {
-      "src": "/images/houses/argyro/768/leonidas-master-bedroom-arched-ceiling-01--768.webp",
-      "srcset": "/images/houses/argyro/480/leonidas-master-bedroom-arched-ceiling-01--480.webp 480w, /images/houses/argyro/768/leonidas-master-bedroom-arched-ceiling-01--768.webp 768w",
-      "alt": "Leonidas master bedroom arched ceiling 01",
-      "isFeatured": false,
-      "tags": [
-        "bedroom"
-      ]
-    },
-    {
-      "src": "/images/houses/argyro/768/leonidas-master-bedroom-sea-vew-01--768.webp",
-      "srcset": "/images/houses/argyro/480/leonidas-master-bedroom-sea-vew-01--480.webp 480w, /images/houses/argyro/768/leonidas-master-bedroom-sea-vew-01--768.webp 768w",
-      "alt": "Leonidas master bedroom sea vew 01",
-      "isFeatured": false,
-      "tags": [
-        "view",
-        "bedroom"
-      ]
-    },
-    {
-      "src": "/images/houses/argyro/768/leonidas-village-lane-01--768.webp",
-      "srcset": "/images/houses/argyro/480/leonidas-village-lane-01--480.webp 480w, /images/houses/argyro/768/leonidas-village-lane-01--768.webp 768w",
-      "alt": "Leonidas village lane 01",
-      "isFeatured": false,
-      "tags": [
-        "exterior"
       ]
     }
   ],
@@ -1824,9 +1715,9 @@
   ],
   "almond-tree-villa": [
     {
-      "src": "/images/villa/almond-tree-villa/1024/almond-tree-villa-hero-garden-pool-01-1024.webp",
-      "srcset": "/images/villa/almond-tree-villa/480/almond-tree-villa-hero-garden-pool-01-480.webp 480w, /images/villa/almond-tree-villa/768/almond-tree-villa-hero-garden-pool-01-768.webp 768w, /images/villa/almond-tree-villa/1024/almond-tree-villa-hero-garden-pool-01-1024.webp 1024w, /images/villa/almond-tree-villa/1600/almond-tree-villa-hero-garden-pool-01-1600.webp 1600w",
-      "alt": "Almond tree villa hero garden pool 01",
+      "src": "/images/villa/almond-tree-villa/1024/almond-tree-villa-hero-outdoor-dining-terrace-02-1024.webp",
+      "srcset": "/images/villa/almond-tree-villa/480/almond-tree-villa-hero-outdoor-dining-terrace-02-480.webp 480w, /images/villa/almond-tree-villa/768/almond-tree-villa-hero-outdoor-dining-terrace-02-768.webp 768w, /images/villa/almond-tree-villa/1024/almond-tree-villa-hero-outdoor-dining-terrace-02-1024.webp 1024w, /images/villa/almond-tree-villa/1600/almond-tree-villa-hero-outdoor-dining-terrace-02-1600.webp 1600w",
+      "alt": "Almond tree villa hero outdoor dining terrace 02",
       "isFeatured": true,
       "tags": [
         "pool",
@@ -1834,20 +1725,20 @@
       ]
     },
     {
-      "src": "/images/villa/almond-tree-villa/1024/almond-tree-villa-hero-garden-pool-wide-01-1024.webp",
-      "srcset": "/images/villa/almond-tree-villa/480/almond-tree-villa-hero-garden-pool-wide-01-480.webp 480w, /images/villa/almond-tree-villa/768/almond-tree-villa-hero-garden-pool-wide-01-768.webp 768w, /images/villa/almond-tree-villa/1024/almond-tree-villa-hero-garden-pool-wide-01-1024.webp 1024w, /images/villa/almond-tree-villa/1600/almond-tree-villa-hero-garden-pool-wide-01-1600.webp 1600w, /images/villa/almond-tree-villa/2400/almond-tree-villa-hero-garden-pool-wide-01-2400.webp 2400w",
-      "alt": "Almond tree villa hero garden pool wide 01",
-      "isFeatured": true,
+      "src": "/images/villa/almond-tree-villa/1024/almond-tree-villa-garden-pool-wide-01-1024.webp",
+      "srcset": "/images/villa/almond-tree-villa/480/almond-tree-villa-garden-pool-wide-01-480.webp 480w, /images/villa/almond-tree-villa/768/almond-tree-villa-garden-pool-wide-01-768.webp 768w, /images/villa/almond-tree-villa/1024/almond-tree-villa-garden-pool-wide-01-1024.webp 1024w, /images/villa/almond-tree-villa/1600/almond-tree-villa-garden-pool-wide-01-1600.webp 1600w",
+      "alt": "Almond tree villa garden pool wide 01",
+      "isFeatured": false,
       "tags": [
         "pool",
         "outdoor"
       ]
     },
     {
-      "src": "/images/villa/almond-tree-villa/2400/almond-tree-villa-hero-garden-pool-02-2400.webp",
-      "srcset": "/images/villa/almond-tree-villa/2400/almond-tree-villa-hero-garden-pool-02-2400.webp 2400w",
-      "alt": "Almond tree villa hero garden pool 02",
-      "isFeatured": true,
+      "src": "/images/villa/almond-tree-villa/1600/almond-tree-villa-garden-pool-02-1600.webp",
+      "srcset": "/images/villa/almond-tree-villa/1600/almond-tree-villa-garden-pool-02-1600.webp 1600w",
+      "alt": "Almond tree villa garden pool 02",
+      "isFeatured": false,
       "tags": [
         "pool",
         "outdoor"

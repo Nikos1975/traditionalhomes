@@ -37,8 +37,8 @@ export default {
         'error': '#AC0814',
       },
       fontFamily: {
-        serif: ['"DM Serif Display"', 'Georgia', 'Cambria', 'serif'],
-        sans: ['"DM Sans"', 'system-ui', 'sans-serif'],
+        serif: ['"Cormorant Garamond"', 'Georgia', 'Cambria', 'serif'],
+        sans: ['"Work Sans"', 'system-ui', 'sans-serif'],
       },
       spacing: {
         '18': '4.5rem',
