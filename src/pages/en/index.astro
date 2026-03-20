@@ -126,7 +126,11 @@ const villa = units.find((u) => u.type === 'villa');
             <span>Sitia airport (JSH) — approx 40 km</span>
           </div>
         </div>
-        <a href="/en/location/" class="btn-outline text-sm">Location &amp; getting here</a>
+        <div class="flex flex-wrap gap-3">
+          <a href="/en/location/" class="btn-outline text-sm">Location &amp; travel</a>
+          <a href="/en/guide/mavrikiano/" class="btn-outline border-amber-700 text-amber-900 hover:bg-amber-700 hover:text-white transition-colors duration-200 text-sm">Mavrikiano Guide</a>
+          <a href="/en/guide/vrouchas/" class="btn-outline border-amber-700 text-amber-900 hover:bg-amber-700 hover:text-white transition-colors duration-200 text-sm">Vrouchas Guide</a>
+        </div>
       </div>
       <div class="reveal">
         <MapPreview />

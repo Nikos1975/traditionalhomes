@@ -35,7 +35,17 @@ const faqs = [
   },
   {
     q: 'Where are the houses exactly?',
-    a: 'The ten stone houses are in Mavrikiano village, which sits on the hillside above Elounda town on the northeast coast of Crete. Villa Almyra is in Vrouchas, a few minutes further uphill. Exact GPS coordinates and directions are provided with your booking confirmation.',
+    a: 'The ten stone houses are in Mavrikiano village, which sits on the hillside above Elounda town on the northeast coast of Crete. Villa Almyra is in Vrouchas, a few minutes further uphill. Exact GPS coordinates and directions are provided with your booking confirmation. We highly recommend exploring our detailed <a href="/en/guide/mavrikiano/" class="underline hover:text-amber-800 transition-colors font-medium">Mavrikiano Area Guide</a> and <a href="/en/guide/vrouchas/" class="underline hover:text-amber-800 transition-colors font-medium">Vrouchas Area Guide</a> for local insights and day-trip itineraries.',
+    category: 'location',
+  },
+  {
+    q: 'How far are the nearest beaches?',
+    a: 'The closest beach is in Elounda (approx 5–8 min drive). We also highly recommend the pristine pebble beaches of Plaka, just a 5-minute drive from the Villa or 10 minutes from the houses. For detailed driving times to secluded coves and popular sandy stretches, read the beaches section in our <a href="/en/guide/mavrikiano/" class="underline hover:text-amber-800 transition-colors font-medium">Mavrikiano Area Guide</a>.',
+    category: 'location',
+  },
+  {
+    q: 'How do we visit Spinalonga Island?',
+    a: 'Boats depart frequently from both Plaka (a scenic 7–10 minute crossing) and Elounda harbour (20–25 minutes). The historical site is open daily during the summer season. Check our <a href="/en/guide/vrouchas/" class="underline hover:text-amber-800 transition-colors font-medium">Vrouchas & Plaka Area Guide</a> for detailed operating hours, ticket prices, and the best time of day to visit.',
     category: 'location',
   },
   {
@@ -130,7 +140,7 @@ const categories = [
                 {items.map((faq) => (
                   <div>
                     <dt class="font-medium text-body-text mb-2">{faq.q}</dt>
-                    <dd class="text-stone-600 leading-relaxed text-sm">{faq.a}</dd>
+                    <dd class="text-stone-600 leading-relaxed text-sm" set:html={faq.a}></dd>
                     {faq.category === 'access' && (
                       <dd class="mt-2 text-xs text-muted">
                         <a href="/en/policies/#access" class="underline hover:text-body-text transition-colors duration-150">
