@@ -1,45 +1,13 @@
+---
 import Base from '../../../layouts/Base.astro';
+import * as Guide from '../../../guides/Mavrikiano-Guide.md';
 
-export async function getStaticPaths() {
-  return [
-    { 
-      params: { slug: 'mavrikiano' }, 
-      props: { 
-        filenameParam: 'mavrikiano-guide',
-        title: 'Mavrikiano Area Guide',
-        description: 'Complete guide to Mavrikiano, Elounda. Discover beaches, historical sites, dining, and daily itineraries near your traditional stone house.'
-      } 
-    },
-    { 
-      params: { slug: 'vrouchas' }, 
-      props: { 
-        filenameParam: 'vrouchas-guide',
-        title: 'Vrouchas & Plaka Area Guide',
-        description: 'Complete guide to Vrouchas and Plaka, Crete. Discover pristine beaches, Spinalonga access, and local mountain village life.'
-      } 
-    }
-  ];
-}
-
-const { slug } = Astro.params;
-const { filenameParam, title, description } = Astro.props;
-
-// Use Vite's glob import to bypass Astro Collection strictness
-const allGuides = import.meta.glob<any>('../../../guides/*.md', { eager: true });
-const guideKey = Object.keys(allGuides).find(k => k.toLowerCase().includes(filenameParam));
-
-if (!guideKey) {
-  return Astro.redirect('/en/location/');
-}
-
-const guide = allGuides[guideKey];
-const Content = guide.Content;
-
+const { Content, frontmatter } = Guide;
 ---
 
 <Base 
-  title={`${title} | Elounda Traditional Homes`} 
-  description={description}
+  title={`${frontmatter.title} | Elounda Traditional Homes`} 
+  description={frontmatter.description}
 >
   <div class="site-max site-pad py-12 md:py-20 min-h-[70vh]">
     <nav class="text-xs text-muted mb-8" aria-label="Breadcrumb">
@@ -48,7 +16,7 @@ const Content = guide.Content;
         <li aria-hidden="true">›</li>
         <li><a href="/en/location/" class="hover:text-body-text transition-colors duration-150">Location</a></li>
         <li aria-hidden="true">›</li>
-        <li class="text-body-text font-medium" aria-current="page">{title}</li>
+        <li class="text-body-text font-medium" aria-current="page">{frontmatter.title}</li>
       </ol>
     </nav>
 
