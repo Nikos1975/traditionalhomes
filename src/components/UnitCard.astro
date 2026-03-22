@@ -1,6 +1,6 @@
 ---
+import { Image } from 'astro:assets';
 import type { InventoryUnit } from '../types';
-import gallery from '../data/gallery.json';
 
 interface Props {
   unit: InventoryUnit;
@@ -9,108 +9,103 @@ interface Props {
 
 const { unit, priority = false } = Astro.props;
 
-let unitPagePath = '#';
-if (unit.type === 'villa') {
-  unitPagePath = `/en/villa/${unit.slug}/`;
-} else if (unit.type === 'home' || (unit as any).type === 'house') {
-  unitPagePath = `/en/houses/${unit.slug}/`;
-}
-const galleryData = (gallery as Record<string, { src: string; alt: string; isFeatured: boolean; srcset?: string }[]>)[unit.slug] ?? [];
-const featuredImg = galleryData.find((img) => img.isFeatured);
+// 1. PATH LOGIC (Matches your localized folder structure)
+const unitPagePath = unit.type === 'villa' 
+  ? `/en/villa/${unit.slug}/` 
+  : `/en/houses/${unit.slug}/`;
+
+// 2. IMAGE AUTOMATION
+const allImages = import.meta.glob('/src/assets/images/**/*.{webp,jpg,jpeg,png}', { eager: true });
+const propertyFolder = `/src/assets/images/${unit.slug}/`;
+
+// Find the hero image or fallback to the first one in the folder
+const propertyImages = Object.keys(allImages).filter(key => key.includes(propertyFolder));
+const featuredImgAsset = (allImages[propertyImages.find(key => key.toLowerCase().includes('hero')) || propertyImages[0]] as any)?.default;
+
+// 3. UI HELPERS
+const isSeaView = unit.view.toLowerCase().includes('sea') || unit.view.toLowerCase().includes('bay');
 ---
 
 <article
-  class="group bg-white rounded-xl overflow-hidden shadow-premium hover:shadow-premium-hover transition-all duration-300 flex flex-col"
+  class="group bg-white rounded-[2rem] overflow-hidden border border-stone-100 shadow-premium hover:shadow-premium-hover hover:-translate-y-1 transition-all duration-500 flex flex-col"
   data-id={unit.slug}
 >
-  <a href={unitPagePath} class="block relative overflow-hidden bg-stone-200" style="aspect-ratio: 4/3;" tabindex="-1" aria-hidden="true">
-    <img
-      src={featuredImg?.src ?? '/images/placeholder.svg'}
-      srcset={featuredImg?.srcset}
-      sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-      alt={featuredImg?.alt ?? unit.name}
-      width="600"
-      height="450"
-      loading={priority ? 'eager' : 'lazy'}
-      decoding="async"
-      fetchpriority={priority ? 'high' : 'auto'}
-      class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
-      onerror="this.src='/images/placeholder.svg'"
-    />
+  {/* OPTIMIZED IMAGE SECTION */}
+  <a href={unitPagePath} class="block relative overflow-hidden bg-stone-900 aspect-[4/3]" tabindex="-1" aria-hidden="true">
+    {featuredImgAsset ? (
+      <Image
+        src={featuredImgAsset}
+        alt={unit.name}
+        width={600}
+        height={450}
+        loading={priority ? 'eager' : 'lazy'}
+        class="w-full h-full object-cover opacity-90 transition-transform duration-[10s] ease-out group-hover:scale-105"
+      />
+    ) : (
+      <div class="w-full h-full flex items-center justify-center text-stone-400 text-[10px] uppercase tracking-[0.2em] font-bold">
+        Photo Coming Soon
+      </div>
+    )}
+
+    {/* PREMIUM POOL BADGE */}
     {unit.pool !== 'none' && (
-      <span class:list={['absolute top-3 left-3', unit.pool === 'shared' ? 'badge-shared-pool' : 'badge-pool']}>
-        {unit.pool === 'private' ? (
-          <>
-            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12h20M2 12c0-5.5 4.5-10 10-10s10 4.5 10 10M2 12c0 5.5 4.5 10 10 10s10-4.5 10-10"/></svg>
-            {unit.slug === 'monastiri' ? 'Private dripped pool' : 'Private pool'}
-          </>
-        ) : (
-          <>Shared pool</>
-        )}
+      <span class:list={['absolute top-4 left-4 px-3 py-1.5 rounded-full text-[9px] font-bold uppercase tracking-[0.2em] flex items-center gap-2 shadow-md backdrop-blur-md transition-colors', 
+        unit.pool === 'shared' ? 'bg-stone-900/80 text-white' : 'bg-white/95 text-primary']}>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 12h20M2 12c0-5.5 4.5-10 10-10s10 4.5 10 10M2 12c0 5.5 4.5 10 10 10s10-4.5 10-10"/></svg>
+        {unit.pool === 'private' ? (unit.slug === 'monastiri' ? 'Private Dripping Pool' : 'Private Pool') : 'Shared Pool'}
       </span>
     )}
   </a>
 
-  <div class="flex flex-col flex-1 p-5">
-    <div class="flex items-start justify-between gap-2 mb-2">
+  <div class="flex flex-col flex-1 p-8">
+    
+    {/* HEADER */}
+    <div class="flex items-start justify-between gap-4 mb-6">
       <div>
-        <a href={unitPagePath} class="font-serif text-xl text-body-text hover:text-stone-600 transition-colors duration-150 leading-tight block">
+        <p class="text-[9px] uppercase tracking-[0.3em] text-stone-400 mb-2 font-bold">{unit.location} · {unit.area}</p>
+        <a href={unitPagePath} class="font-serif text-3xl text-body-text group-hover:text-primary transition-colors leading-tight block">
           {unit.name}
         </a>
-        <p class="text-xs text-muted mt-0.5">{unit.location}, {unit.area}</p>
       </div>
       {unit.type === 'villa' && (
-        <span class="badge bg-footer-bg text-white mt-0.5 flex-shrink-0">Villa</span>
+        <span class="px-3 py-1 bg-stone-100 text-stone-600 border border-stone-200 text-[9px] uppercase font-bold tracking-[0.2em] rounded-full">Villa</span>
       )}
     </div>
 
-    <div class="flex flex-wrap gap-x-4 gap-y-1 text-sm text-stone-600 mb-3 mt-1">
-      <span class="flex items-center gap-1">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-        Sleeps {unit.sleeps_max}
+    {/* SPECS GRID */}
+    <div class="grid grid-cols-2 gap-y-4 mb-8">
+      <span class="flex items-center gap-3 text-xs text-stone-500 font-light">
+        <svg class="text-stone-400" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        Up to {unit.sleeps_max} Guests
       </span>
-      <span class="flex items-center gap-1">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 4v16"/><path d="M2 8h18a2 2 0 0 1 2 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/></svg>
-        {unit.bedrooms} {unit.bedrooms === 1 ? 'bedroom' : 'bedrooms'}
+      <span class="flex items-center gap-3 text-xs text-stone-500 font-light">
+        <svg class="text-stone-400" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 4v16"/><path d="M2 8h18a2 2 0 0 1 2 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/></svg>
+        {unit.bedrooms} {unit.bedrooms === 1 ? 'Bedroom' : 'Bedrooms'}
       </span>
-      <span class="flex items-center gap-1">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="2" ry="2"/><path d="M12 2v20"/><path d="M2 12h20"/></svg>
-        {unit.internal_stairs ? 'Internal stairs' : 'No internal stairs'}
-      </span>
-      {(unit.view.toLowerCase().includes('sea') || unit.view.toLowerCase().includes('bay')) && (
-        <span class="flex items-center gap-1 text-accent-blue font-medium">
-          Sea view
+      {isSeaView && (
+        <span class="flex items-center gap-3 text-xs text-primary font-medium col-span-2">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          Direct Sea View
         </span>
       )}
     </div>
 
-    {unit.internal_stairs && (
-      <div class="mb-3">
-        <span class="badge-stairs">
-          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-          Internal stairs
-        </span>
+    {/* ACCESS ALERT (Editorial Note Style) */}
+    {unit.access_detail && (
+      <div class="mb-8 p-4 bg-amber-50/50 border border-amber-100 rounded-2xl">
+        <p class="text-[11px] text-amber-900/80 leading-relaxed italic">
+          <strong>Editor's Note:</strong> {unit.access_detail}
+        </p>
       </div>
     )}
 
-    {unit.access_detail && (
-      <p class="text-xs text-amber-800 bg-amber-50 border border-amber-200 rounded px-2.5 py-1.5 mb-4 leading-snug">
-        {unit.access_detail}
-      </p>
-    )}
-
-    <div class="mt-auto pt-3 border-t border-stone-100 flex gap-2">
-      <a href={unitPagePath} class="btn-outline flex-1 text-xs py-2.5 text-center">
-        View details
+    {/* ACTION BUTTONS */}
+    <div class="mt-auto pt-6 border-t border-stone-100 flex gap-3">
+      <a href={unitPagePath} class="btn-outline flex-1 py-3 px-0 text-center rounded-xl bg-white shadow-sm hover:shadow-md transition-shadow">
+        Details
       </a>
       <a
         href={unit.availability_url}
         target="_blank"
-        rel="noopener noreferrer"
-        class="btn-cta flex-1 text-xs py-2.5"
-      >
-        Check availability
-      </a>
-    </div>
-  </div>
-</article>
+        rel="noopener"
+        class="btn-cta flex-1 py

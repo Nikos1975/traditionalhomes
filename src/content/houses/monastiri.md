@@ -1,37 +1,17 @@
 ---
 slug: "monastiri"
 title: "House Monastiri"
-summary: "A historic multi-level stone house in Mavrikiano above Elounda, with a private dipping pool, sea-view balconies, and space for up to six guests."
+summary: "A historic, multi-level stone residence in Mavrikiano, distinguished by its private dipping pool, layered sea-view balconies, and rich architectural heritage."
 ---
 
-House Monastiri — polished website description
-Hero version
+### A Legacy in Stone
+House Monastiri is not just a place to stay; it is a landmark of Mavrikiano’s history. Painstakingly reconstructed in 2003 using historical engravings as a guide, the home stands proudly on the original site of the Prophet Elias Monastery. This profound heritage gives the expansive 120-square-metre residence a rooted, monumental presence, offering guests a rare opportunity to live within the architectural legacy and spiritual calm of eastern Crete.
 
-House Monastiri is a historic multi-level stone home in Mavrikiano above Elounda, created for guests who want privacy, sea views, and a stronger sense of place. With its 120 m² layout, private dipping pool, wraparound balconies, and open views across Elounda and Mirabello Bay, it suits couples, families, or friends of up to 6 guests. From the house, Elounda’s beach, harbor, tavernas, and shops are about a 10-minute walk away.
-Source: the details you provided in your Monastiri notes.
+### The Interior Narrative
+Unfolding elegantly across three distinct levels, the interior architecture is designed to balance shared moments with absolute privacy. The layout comfortably accommodates up to six guests, making it an exceptional choice for families or groups of friends. Featuring three private bedrooms, two bathrooms, a fully equipped kitchen, and a living room that opens directly to the outdoors, the vertical design creates natural separation while maintaining a warm, cohesive aesthetic through thick stone walls and traditional timber details.
 
-Full website description
+### Mediterranean Outdoor Living
+The outdoor experience at Monastiri is beautifully layered, offering a journey of different atmospheres rather than a single terrace. At the lower level, a private stone courtyard houses a refreshing dipping pool—a secluded, shaded oasis perfect for cooling off during the midday heat. Above, elevated wraparound balconies open toward sweeping, panoramic views of Elounda and the Mirabello Gulf, providing a cinematic backdrop for morning coffees or atmospheric sunset dinners.
 
-House Monastiri is a restored traditional stone home in the hillside village of Mavrikiano, just above Elounda. More than a place to stay, it is one of the most historically distinctive houses in your collection, combining panoramic sea views, a private dipping pool, and a layout designed across multiple levels for greater separation and privacy. The house offers 120 m² of living space for up to 6 guests, making it especially well suited to families, couples traveling together, or small groups who want independent bedrooms within a shared house.
-Source: the details you provided in your Monastiri notes.
-
-The outdoor space gives Monastiri much of its character. A private dipping pool sits within the stone courtyard, while sea-view balconies open toward Elounda and the wider bay. Rather than one single terrace experience, the house offers several vantage points: a quieter courtyard below for cooling off and more elevated balconies above for breakfast, reading, or evening views. This makes the house feel more architectural and layered than the simpler one-level homes in the collection.
-Source: the details you provided in your Monastiri notes.
-
-Inside, Monastiri is arranged across three levels, with three private bedrooms, two bathrooms, a full kitchen, a dining space, and a sitting room with balcony access. The layout naturally creates privacy between sleeping areas, which is useful for mixed groups or families traveling together. The historical identity also matters here: your notes describe the house as rebuilt on the site of the Prophet Elias Monastery, with the current version reconstructed in 2003 using historical engravings as inspiration. That background gives the house a more rooted and memorable presence without needing to overstate it.
-Source: the details you provided in your Monastiri notes.
-
-Practical note for the page
-
-House Monastiri is arranged across three levels with interior and exterior stairs, and includes balconies and a private dipping pool. Because of this layout, it may be less suitable for guests with reduced mobility or very young children unless they are closely supervised.
-Source: the details you provided in your Monastiri notes.
-
-Short summary card
-
-A historic multi-level stone house in Mavrikiano above Elounda, with a private dipping pool, sea-view balconies, and space for up to six guests.
-Source: the details you provided in your Monastiri notes.
-
-Optional tighter version
-
-House Monastiri is a traditional multi-level stone home in Mavrikiano above Elounda, suited to couples, families, or friends of up to 6 guests. It combines a 120 m² layout, 3 private bedrooms, private dipping pool, and sea-view balconies with a stronger historic identity than a standard holiday rental. Elounda’s beach, harbor, tavernas, and shops are about a 10-minute walk away. Please note that the house includes multiple stairs and split levels as part of its traditional layout.
-Source: the details you provided in your Monastiri notes.
+### The Mavrikiano Setting
+Despite its grand, secluded atmosphere, Monastiri remains effortlessly connected to the vibrant life of the coast. A scenic 10-minute walk down the historic village pathways brings you directly to Elounda’s pristine beaches, bustling harbor, and waterfront tavernas. It stands as a majestic sanctuary perched above the bay—a culturally rich and tranquil base from which to explore Spinalonga, Plaka, and the wider Lasithi region.

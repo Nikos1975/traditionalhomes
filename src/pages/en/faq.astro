@@ -10,12 +10,12 @@ const faqs = [
   },
   {
     q: 'Which properties have internal stairs?',
-    a: "<a href=\"/en/houses/argyro/\" class=\"underline hover:text-amber-800 transition-colors\">House Argyro</a>, <a href=\"/en/houses/leonidas/\" class=\"underline hover:text-amber-800 transition-colors\">House Leonidas</a>, <a href=\"/en/houses/margarita/\" class=\"underline hover:text-amber-800 transition-colors\">House Margarita</a>, <a href=\"/en/houses/penelope/\" class=\"underline hover:text-amber-800 transition-colors\">House Penelope</a>, <a href=\"/en/houses/erato/\" class=\"underline hover:text-amber-800 transition-colors\">House Erato</a>, <a href=\"/en/houses/clio/\" class=\"underline hover:text-amber-800 transition-colors\">House Clio</a>, <a href=\"/en/houses/efterpi/\" class=\"underline hover:text-amber-800 transition-colors\">House Efterpi</a>, <a href=\"/en/houses/kalliopi/\" class=\"underline hover:text-amber-800 transition-colors\">House Kalliopi</a>, <a href=\"/en/houses/monastiri/\" class=\"underline hover:text-amber-800 transition-colors\">House Monastiri</a>, and <a href=\"/en/houses/almond-tree-villa/\" class=\"underline hover:text-amber-800 transition-colors\">Almond Tree Villa</a> all have internal stairs or split-level floors. <a href=\"/en/houses/demetra/\" class=\"underline hover:text-amber-800 transition-colors\">House Demetra</a> is the only property featuring a single-floor layout once inside. <a href=\"/en/houses/erato/\" class=\"underline hover:text-amber-800 transition-colors\">House Erato</a>'s entrance is accessed by stairs down from the lane. Check the individual property page for specific access detail.",
+    a: "House Argyro, Leonidas, Margarita, Penelope, Erato, Clio, Efterpi, Kalliopi, Monastiri, and Almond Tree Villa all have internal stairs or split-level floors. House Demetra is the only property featuring a single-floor layout once inside. Check the individual property page for specific access detail.",
     category: 'access',
   },
   {
     q: 'Which houses share a pool?',
-    a: '<a href="/en/houses/penelope/" class="underline hover:text-amber-800 transition-colors">House Penelope</a> and <a href="/en/houses/demetra/" class="underline hover:text-amber-800 transition-colors">House Demetra</a> share a pool. The pool is for the exclusive use of guests in those two houses only — it is not a communal pool open to all properties. <a href="/en/houses/erato/" class="underline hover:text-amber-800 transition-colors">House Erato</a>, <a href="/en/houses/monastiri/" class="underline hover:text-amber-800 transition-colors">House Monastiri</a>, and <a href="/en/houses/almond-tree-villa/" class="underline hover:text-amber-800 transition-colors">Almond Tree Villa</a> each feature their own private pool. The remaining houses have no pool.',
+    a: 'House Penelope and House Demetra share a pool. The pool is for the exclusive use of guests in those two houses only. House Erato, House Monastiri, and Almond Tree Villa each feature their own private pool. The remaining houses have no pool.',
     category: 'pools',
   },
   {
@@ -30,22 +30,12 @@ const faqs = [
   },
   {
     q: 'What are the check-in and check-out times?',
-    a: `Check-in is from ${siteCopy.checkIn}. Check-out is by ${siteCopy.checkOut}. Early check-in or late check-out may be possible on request, subject to availability. Key collection arrangements are confirmed with your booking.`,
+    a: `Check-in is from ${siteCopy.checkIn}. Check-out is by ${siteCopy.checkOut}. Early check-in or late check-out may be possible on request, subject to availability.`,
     category: 'policies',
   },
   {
     q: 'Where are the houses exactly?',
-    a: 'The ten stone houses are in Mavrikiano village, which sits on the hillside above Elounda town on the northeast coast of Crete. Villa Almyra is in Vrouchas, a few minutes further uphill. Exact GPS coordinates and directions are provided with your booking confirmation. We highly recommend exploring our detailed <a href="/en/guide/mavrikiano/" class="underline hover:text-amber-800 transition-colors font-medium">Mavrikiano Area Guide</a> and <a href="/en/guide/vrouchas/" class="underline hover:text-amber-800 transition-colors font-medium">Vrouchas Area Guide</a> for local insights and day-trip itineraries.',
-    category: 'location',
-  },
-  {
-    q: 'How far are the nearest beaches?',
-    a: 'The closest beach is in Elounda (approx 5–8 min drive). We also highly recommend the pristine pebble beaches of Plaka, just a 5-minute drive from the Villa or 10 minutes from the houses. For detailed driving times to secluded coves and popular sandy stretches, read the beaches section in our <a href="/en/guide/mavrikiano/" class="underline hover:text-amber-800 transition-colors font-medium">Mavrikiano Area Guide</a>.',
-    category: 'location',
-  },
-  {
-    q: 'How do we visit Spinalonga Island?',
-    a: 'Boats depart frequently from both Plaka (a scenic 7–10 minute crossing) and Elounda harbour (20–25 minutes). The historical site is open daily during the summer season. Check our <a href="/en/guide/vrouchas/" class="underline hover:text-amber-800 transition-colors font-medium">Vrouchas & Plaka Area Guide</a> for detailed operating hours, ticket prices, and the best time of day to visit.',
+    a: 'The ten stone houses are in Mavrikiano village, on the hillside above Elounda. Villa Almyra is in Vrouchas, a few minutes further uphill. Exact GPS coordinates are provided with your booking confirmation.',
     category: 'location',
   },
   {
@@ -54,97 +44,98 @@ const faqs = [
     category: 'amenities',
   },
   {
-    q: 'Do you have a minimum stay requirement?',
-    a: 'Minimum stay requirements depend on the season and property. This is shown in the availability system when selecting dates.',
-    category: 'booking',
-  },
-  {
-    q: 'How do I book?',
-    a: 'Bookings are made through our availability system. Select the property you are interested in and check available dates. If you have questions before booking, use the contact page.',
-    category: 'booking',
-  },
-  {
-    q: 'Can I visit multiple properties during one stay?',
-    a: 'Each property is booked individually. If you are booking for a group requiring multiple houses, please contact us directly so we can confirm availability across properties simultaneously.',
-    category: 'booking',
-  },
-  {
     q: 'What is the cancellation policy?',
     a: siteCopy.cancellationPolicy,
     category: 'policies',
-  },
-  {
-    q: 'Are the photos on the website accurate?',
-    a: 'The photos show the actual properties. Some photos are representative of work in progress — updated photos will be added as they become available. Property descriptions list all relevant features, constraints, and amenities.',
-    category: 'general',
   },
 ];
 
 const categories = [
   { id: 'access', label: 'Access & Mobility' },
   { id: 'pools', label: 'Pools' },
-  { id: 'amenities', label: 'Amenities' },
-  { id: 'policies', label: 'Policies' },
+  { id: 'amenities', label: 'Amenities & Tech' },
   { id: 'location', label: 'Location' },
-  { id: 'booking', label: 'Booking' },
-  { id: 'general', label: 'General' },
+  { id: 'policies', label: 'Stay Policies' },
 ];
 ---
 
 <Base
-  title="FAQ | Elounda Traditional Homes"
+  title={`FAQ | Frequently Asked Questions | ${siteCopy.siteName}`}
   description={siteCopy.metaDescriptionFaq}
   canonicalUrl="https://traditional-homes.gr/en/faq/"
 >
 
-  <div class="site-max site-pad py-12 md:py-16">
+  <div class="site-max site-pad py-16 md:py-24">
 
-    <nav class="text-xs text-muted mb-6" aria-label="Breadcrumb">
-      <ol class="flex items-center gap-1.5" role="list">
-        <li><a href="/en/" class="hover:text-body-text transition-colors duration-150">Home</a></li>
-        <li aria-hidden="true">›</li>
-        <li class="text-body-text font-medium" aria-current="page">FAQ</li>
+    {/* BREADCRUMBS */}
+    <nav class="text-[10px] uppercase tracking-[0.3em] text-stone-400 mb-8 font-bold" aria-label="Breadcrumb">
+      <ol class="flex items-center gap-2" role="list">
+        <li><a href="/en/" class="hover:text-stone-900 transition-colors">Home</a></li>
+        <li aria-hidden="true" class="text-stone-200">/</li>
+        <li class="text-stone-900" aria-current="page">FAQ</li>
       </ol>
     </nav>
 
-    <div class="max-w-3xl">
-      <h1 class="font-serif text-4xl md:text-5xl text-body-text mb-4">Frequently asked questions</h1>
-      <p class="section-sub mb-10">Answers to common questions about the properties, access, policies, and booking.</p>
+    {/* HERO SECTION */}
+    <div class="max-w-3xl mb-16 md:mb-24">
+      <h1 class="font-serif text-5xl md:text-7xl text-stone-900 mb-8 leading-tight tracking-tight">
+        Frequently Asked <span class="italic text-stone-400">Questions</span>
+      </h1>
+      <p class="text-xl text-stone-500 font-light leading-relaxed max-w-2xl">
+        Practical information regarding the collection, village life, and our booking policies.
+      </p>
     </div>
 
-    <div class="grid grid-cols-1 lg:grid-cols-4 gap-10">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 relative">
 
-      <nav class="lg:col-span-1" aria-label="FAQ categories">
-        <p class="font-sans text-xs font-medium uppercase tracking-wider text-muted mb-3">Jump to</p>
-        <ul class="space-y-1 text-sm">
-          {categories.map((cat) => (
-            <li>
-              <a href={`#${cat.id}`} class="text-stone-600 hover:text-body-text transition-colors duration-150 block py-1">
-                {cat.label}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </nav>
+      {/* STICKY SIDE NAV */}
+      <aside class="lg:col-span-3 hidden lg:block">
+        <div class="sticky top-32 space-y-8">
+          <div>
+            <p class="text-[10px] uppercase tracking-[0.3em] font-bold text-stone-400 mb-6">In this section</p>
+            <nav class="flex flex-col gap-4" aria-label="FAQ categories">
+              {categories.map((cat) => (
+                <a 
+                  href={`#${cat.id}`} 
+                  class="text-sm text-stone-600 hover:text-stone-950 hover:translate-x-1 transition-all duration-300 flex items-center gap-3 group"
+                >
+                  <span class="w-1.5 h-1.5 rounded-full bg-stone-200 group-hover:bg-primary transition-colors"></span>
+                  {cat.label}
+                </a>
+              ))}
+            </nav>
+          </div>
+          
+          <div class="p-6 bg-stone-50 rounded-2xl border border-stone-100">
+            <p class="text-xs text-stone-500 font-light mb-4 leading-relaxed italic">Need direct assistance?</p>
+            <a href="/en/contact/" class="btn-cta text-xs py-2 w-full justify-center">Contact Us</a>
+          </div>
+        </div>
+      </aside>
 
-      <div class="lg:col-span-3 space-y-12">
+      {/* FAQ CONTENT */}
+      <div class="lg:col-span-9 space-y-24">
         {categories.map((cat) => {
           const items = faqs.filter((f) => f.category === cat.id);
           if (!items.length) return null;
           return (
-            <section id={cat.id} aria-labelledby={`${cat.id}-heading`}>
-              <h2 id={`${cat.id}-heading`} class="font-serif text-2xl text-body-text mb-6 pb-3 border-b border-stone-200">
+            <section id={cat.id} aria-labelledby={`${cat.id}-heading`} class="scroll-mt-32 animate-in fade-in slide-in-from-bottom-4 duration-700">
+              <h2 id={`${cat.id}-heading`} class="font-serif text-3xl text-stone-900 mb-10 flex items-baseline gap-4">
                 {cat.label}
+                <span class="h-px flex-1 bg-stone-100"></span>
               </h2>
-              <dl class="space-y-6">
+              
+              <dl class="space-y-12">
                 {items.map((faq) => (
-                  <div>
-                    <dt class="font-medium text-body-text mb-2">{faq.q}</dt>
-                    <dd class="text-stone-600 leading-relaxed text-sm" set:html={faq.a}></dd>
+                  <div class="group">
+                    <dt class="font-serif text-xl text-stone-900 mb-3 group-hover:text-primary transition-colors duration-300">
+                      {faq.q}
+                    </dt>
+                    <dd class="text-stone-500 leading-relaxed font-light text-lg max-w-3xl" set:html={faq.a}></dd>
                     {faq.category === 'access' && (
-                      <dd class="mt-2 text-xs text-muted">
-                        <a href="/en/policies/#access" class="underline hover:text-body-text transition-colors duration-150">
-                          Full access information on the Policies page
+                      <dd class="mt-4">
+                        <a href="/en/policies/#access" class="text-xs uppercase tracking-widest font-bold text-stone-400 hover:text-stone-900 border-b border-stone-100 hover:border-stone-900 transition-all pb-1">
+                          View Detailed Accessibility Guide
                         </a>
                       </dd>
                     )}
@@ -155,17 +146,21 @@ const categories = [
           );
         })}
       </div>
-
     </div>
-
-    <div class="mt-16 pt-8 border-t border-stone-200 flex flex-col sm:flex-row gap-4 items-start">
-      <div>
-        <p class="font-medium text-body-text mb-1">Still have a question?</p>
-        <p class="text-sm text-muted">Use the contact form and we'll get back to you.</p>
-      </div>
-      <a href="/en/contact/" class="btn-outline text-sm flex-shrink-0">Contact us</a>
+    
+    {/* MOBILE CALL TO ACTION */}
+    <div class="mt-24 pt-12 border-t border-stone-100 text-center lg:hidden">
+      <p class="font-serif text-2xl text-stone-900 mb-4 italic">Still have a question?</p>
+      <a href="/en/contact/" class="btn-cta">Contact our Team</a>
     </div>
 
   </div>
 
 </Base>
+
+<style>
+  /* Smooth scrolling for the category links */
+  html {
+    scroll-behavior: smooth;
+  }
+</style>

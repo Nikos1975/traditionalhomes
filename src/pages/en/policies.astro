@@ -1,142 +1,160 @@
 ---
 import Base from '../../layouts/Base.astro';
 import siteCopy from '../../data/siteCopy.json';
+
+const sections = [
+  { id: "access", label: "Access & Mobility" },
+  { id: "check-in-out", label: "Check-in & Out" },
+  { id: "pets", label: "Pet Policy" },
+  { id: "wifi", label: "Connectivity" },
+  { id: "quiet-hours", label: "Quiet Hours" },
+  { id: "smoking", label: "Smoking" },
+  { id: "cancellation", label: "Cancellation" }
+];
 ---
 
 <Base
-  title="Policies & House Rules | Elounda Traditional Homes"
+  title={`Policies & House Rules | ${siteCopy.siteName}`}
   description={siteCopy.metaDescriptionPolicies}
   canonicalUrl="https://traditional-homes.gr/en/policies/"
 >
 
-  <div class="site-max site-pad py-12 md:py-16">
-
-    <nav class="text-xs text-muted mb-6" aria-label="Breadcrumb">
-      <ol class="flex items-center gap-1.5" role="list">
-        <li><a href="/en/" class="hover:text-body-text transition-colors duration-150">Home</a></li>
-        <li aria-hidden="true">›</li>
-        <li class="text-body-text font-medium" aria-current="page">Policies</li>
+  <div class="site-max site-pad py-16 md:py-24">
+    
+    {/* BREADCRUMB */}
+    <nav class="text-[10px] uppercase tracking-[0.4em] text-stone-400 mb-12 font-bold" aria-label="Breadcrumb">
+      <ol class="flex items-center gap-2" role="list">
+        <li><a href="/en/" class="hover:text-stone-900 transition-colors">Home</a></li>
+        <li aria-hidden="true" class="text-stone-200">/</li>
+        <li class="text-stone-900" aria-current="page">Policies</li>
       </ol>
     </nav>
 
-    <div class="max-w-3xl">
-      <h1 class="font-serif text-4xl md:text-5xl text-body-text mb-4">Policies &amp; House Rules</h1>
-      <p class="section-sub mb-10">House rules, access information, and policies for all Elounda Traditional Homes properties.</p>
-
-      <nav class="mb-10 p-4 bg-stone-200 rounded-lg text-sm" aria-label="Policies sections">
-        <p class="font-medium text-body-text mb-2">On this page</p>
-        <ul class="space-y-1 text-stone-600">
-          <li><a href="#access" class="hover:text-body-text transition-colors duration-150 underline-offset-2 hover:underline">Access &amp; mobility</a></li>
-          <li><a href="#check-in-out" class="hover:text-body-text transition-colors duration-150 underline-offset-2 hover:underline">Check-in &amp; check-out</a></li>
-          <li><a href="#pets" class="hover:text-body-text transition-colors duration-150 underline-offset-2 hover:underline">Pets</a></li>
-          <li><a href="#wifi" class="hover:text-body-text transition-colors duration-150 underline-offset-2 hover:underline">Wi-Fi</a></li>
-          <li><a href="#quiet-hours" class="hover:text-body-text transition-colors duration-150 underline-offset-2 hover:underline">Quiet hours</a></li>
-          <li><a href="#smoking" class="hover:text-body-text transition-colors duration-150 underline-offset-2 hover:underline">Smoking</a></li>
-          <li><a href="#cancellation" class="hover:text-body-text transition-colors duration-150 underline-offset-2 hover:underline">Cancellation</a></li>
-        </ul>
-      </nav>
-
-      <div class="space-y-10">
-
-        <section id="access" aria-labelledby="access-heading" class="scroll-mt-20">
-          <h2 id="access-heading" class="font-serif text-2xl text-body-text mb-4 pb-3 border-b border-stone-200">
-            Access &amp; Mobility
-          </h2>
-          <div class="bg-amber-50 border border-amber-200 rounded-lg p-5 mb-5">
-            <p class="font-medium text-amber-900 mb-2">Important — please read before booking</p>
-            <p class="text-amber-900 leading-relaxed">{siteCopy.accessNoteFull}</p>
-          </div>
-          <div class="space-y-4 text-stone-600 leading-relaxed text-sm">
-            <p>
-              All properties are traditional stone houses in hillside villages. The terrain is uneven cobblestone, stepped lanes, and sloped paths. None of the properties are step-free, and none are accessible by wheelchair.
-            </p>
-            <p>
-              Each property description includes a specific note on stairs, floor levels, and any notable access features (for example, House Erato has a sunken entrance accessed by stairs down from the lane; House Stavros has bedrooms across two floors).
-            </p>
-            <p>
-              If you have mobility concerns or specific access needs, please contact us before booking so we can advise on the most suitable property for your requirements.
-            </p>
-            <p>
-              <a href="/en/houses/" class="underline underline-offset-2 hover:text-body-text transition-colors duration-150">
-                View all properties — access information is shown on each individual page.
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+      
+      {/* LEFT: STICKY NAVIGATION */}
+      <aside class="hidden lg:block lg:col-span-3 sticky top-32">
+        <p class="text-[10px] uppercase tracking-[0.3em] font-bold text-stone-900 mb-6">On this page</p>
+        <ul class="space-y-4 border-l border-stone-100">
+          {sections.map(section => (
+            <li>
+              <a 
+                href={`#${section.id}`} 
+                class="block pl-4 text-sm text-stone-500 hover:text-primary hover:border-l hover:border-primary -ml-px transition-all duration-200"
+              >
+                {section.label}
               </a>
+            </li>
+          ))}
+        </ul>
+        <div class="mt-12 p-6 bg-stone-50 rounded-2xl border border-stone-100">
+           <p class="text-xs text-stone-500 leading-relaxed italic">
+             "Our rules exist to ensure the harmony of village life and the comfort of all our guests."
+           </p>
+        </div>
+      </aside>
+
+      {/* RIGHT: CONTENT */}
+      <div class="lg:col-span-8 lg:col-start-5 max-w-3xl">
+        <header class="mb-16">
+          <h1 class="font-serif text-5xl md:text-6xl text-stone-950 mb-6 leading-tight tracking-tight">
+            House <span class="italic text-stone-400">Rules</span>
+          </h1>
+          <p class="text-xl text-stone-500 font-light leading-relaxed">
+            Essential information regarding your stay, access requirements, and our commitment to the local community.
+          </p>
+        </header>
+
+        <div class="space-y-20">
+
+          {/* ACCESS & MOBILITY */}
+          <section id="access" class="scroll-mt-32 group">
+            <div class="flex items-center gap-4 mb-6">
+               <span class="text-[10px] font-bold text-primary tracking-widest uppercase">01</span>
+               <h2 class="font-serif text-3xl text-stone-950">Access & Mobility</h2>
+            </div>
+            
+            <div class="bg-primary/5 border border-primary/20 rounded-[2rem] p-8 mb-8 shadow-sm">
+              <div class="flex items-start gap-4 text-primary mb-4">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                <p class="font-bold uppercase tracking-widest text-[11px]">Critical Arrival Information</p>
+              </div>
+              <p class="text-stone-900 leading-relaxed font-medium">{siteCopy.accessNoteFull}</p>
+            </div>
+
+            <div class="space-y-6 text-stone-600 font-light leading-relaxed">
+              <p>
+                All properties are traditional stone houses in historic hillside villages. The terrain consists of uneven cobblestones, stepped lanes, and sloped paths. <strong>None of the properties are step-free</strong>, and they are not suitable for wheelchair access.
+              </p>
+              <p>
+                Each home has unique architectural quirks. For example, some bedrooms are accessed via external stone stairs, while others feature traditional sunken entrances.
+              </p>
+              <a href="/en/houses/" class="inline-flex items-center gap-2 text-stone-900 font-bold text-xs uppercase tracking-widest border-b border-stone-200 hover:border-primary transition-all pb-1 group">
+                View individual property access
+                <svg class="group-hover:translate-x-1 transition-transform" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </a>
+            </div>
+          </section>
+
+          {/* CHECK-IN/OUT */}
+          <section id="check-in-out" class="scroll-mt-32">
+            <div class="flex items-center gap-4 mb-8">
+               <span class="text-[10px] font-bold text-primary tracking-widest uppercase">02</span>
+               <h2 class="font-serif text-3xl text-stone-950">Arrival & Departure</h2>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
+              <div class="p-8 bg-stone-50 rounded-3xl border border-stone-100 text-center group hover:bg-stone-950 transition-colors duration-500">
+                <p class="text-[10px] uppercase tracking-widest text-stone-400 font-bold mb-2 group-hover:text-primary">Check-in After</p>
+                <p class="font-serif text-4xl text-stone-950 group-hover:text-white">{siteCopy.checkIn}</p>
+              </div>
+              <div class="p-8 bg-stone-50 rounded-3xl border border-stone-100 text-center group hover:bg-stone-950 transition-colors duration-500">
+                <p class="text-[10px] uppercase tracking-widest text-stone-400 font-bold mb-2 group-hover:text-primary">Check-out By</p>
+                <p class="font-serif text-4xl text-stone-950 group-hover:text-white">{siteCopy.checkOut}</p>
+              </div>
+            </div>
+            <p class="text-stone-500 font-light text-sm italic text-center">
+              Early arrivals and late departures are subject to availability and cleaning schedules.
             </p>
-          </div>
-        </section>
+          </section>
 
-        <section id="check-in-out" aria-labelledby="check-in-heading" class="scroll-mt-20">
-          <h2 id="check-in-heading" class="font-serif text-2xl text-body-text mb-4 pb-3 border-b border-stone-200">
-            Check-in &amp; Check-out
-          </h2>
-          <div class="grid grid-cols-2 gap-4 mb-4">
-            <div class="bg-white border border-stone-200 rounded-lg p-4 text-center">
-              <p class="text-xs text-muted mb-1">Check-in</p>
-              <p class="font-serif text-xl text-body-text">{siteCopy.checkIn}</p>
-            </div>
-            <div class="bg-white border border-stone-200 rounded-lg p-4 text-center">
-              <p class="text-xs text-muted mb-1">Check-out</p>
-              <p class="font-serif text-xl text-body-text">{siteCopy.checkOut}</p>
-            </div>
-          </div>
-          <p class="text-sm text-stone-600 leading-relaxed">
-            Early check-in or late check-out may be available on request, subject to cleaning schedules and adjacent bookings. Key collection and handover details are confirmed separately with each booking.
+          {/* REUSABLE POLICY BLOCKS */}
+          {[
+            { id: "pets", num: "03", title: "Pet Policy", text: `${siteCopy.pets}. Please coordinate with us prior to booking. A professional cleaning fee may apply to ensure the house is pristine for the next guest.` },
+            { id: "wifi", num: "04", title: "Connectivity", text: `${siteCopy.wifi}. While we provide high-speed access, the thick stone walls may limit signal on outdoor terraces.` },
+            { id: "quiet-hours", num: "05", title: "Quiet Hours", text: `Quiet hours are observed from ${siteCopy.quietHours}. We ask that you respect our local neighbors by keeping terrace noise and music to a minimum after 23:00.` },
+            { id: "smoking", num: "06", title: "Smoking", text: "In accordance with health and fire safety regulations, smoking is strictly prohibited inside the properties. It is permitted on outdoor terraces; please ensure all materials are extinguished safely due to summer fire risks." },
+            { id: "cancellation", num: "07", title: "Cancellation", text: siteCopy.cancellationPolicy }
+          ].map(policy => (
+            <section id={policy.id} class="scroll-mt-32 pt-12 border-t border-stone-100">
+              <div class="flex items-center gap-4 mb-6">
+                 <span class="text-[10px] font-bold text-stone-300 tracking-widest uppercase">{policy.num}</span>
+                 <h2 class="font-serif text-2xl text-stone-950">{policy.title}</h2>
+              </div>
+              <p class="text-stone-600 font-light leading-relaxed">{policy.text}</p>
+            </section>
+          ))}
+
+        </div>
+
+        {/* FINAL FOOTER NOTES */}
+        <footer class="mt-24 pt-12 border-t border-stone-100 text-center">
+          <p class="text-stone-400 text-sm font-light mb-8 italic">
+            Questions regarding these terms?
           </p>
-        </section>
-
-        <section id="pets" aria-labelledby="pets-heading" class="scroll-mt-20">
-          <h2 id="pets-heading" class="font-serif text-2xl text-body-text mb-4 pb-3 border-b border-stone-200">
-            Pets
-          </h2>
-          <p class="text-sm text-stone-600 leading-relaxed">
-            {siteCopy.pets}. Please contact us before booking to confirm availability and to discuss any specific requirements. A cleaning fee may apply. Pets must not be left unattended in the property or on the terrace.
-          </p>
-        </section>
-
-        <section id="wifi" aria-labelledby="wifi-heading" class="scroll-mt-20">
-          <h2 id="wifi-heading" class="font-serif text-2xl text-body-text mb-4 pb-3 border-b border-stone-200">
-            Wi-Fi
-          </h2>
-          <p class="text-sm text-stone-600 leading-relaxed">
-            {siteCopy.wifi}. Coverage is generally good indoors; stone wall construction may reduce signal on terraces in some properties. We cannot guarantee specific speeds or uptime.
-          </p>
-        </section>
-
-        <section id="quiet-hours" aria-labelledby="quiet-heading" class="scroll-mt-20">
-          <h2 id="quiet-heading" class="font-serif text-2xl text-body-text mb-4 pb-3 border-b border-stone-200">
-            Quiet Hours
-          </h2>
-          <p class="text-sm text-stone-600 leading-relaxed">
-            Quiet hours are from <strong class="font-medium text-body-text">{siteCopy.quietHours}</strong>. The properties are in working villages with permanent residents. Please keep noise to a minimum during these hours, particularly on terraces. Music systems and outdoor speakers should not be used after 23:00.
-          </p>
-        </section>
-
-        <section id="smoking" aria-labelledby="smoking-heading" class="scroll-mt-20">
-          <h2 id="smoking-heading" class="font-serif text-2xl text-body-text mb-4 pb-3 border-b border-stone-200">
-            Smoking
-          </h2>
-          <p class="text-sm text-stone-600 leading-relaxed">
-            Smoking is not permitted inside any of the properties. Smoking is allowed on outdoor terraces. Please dispose of cigarette ends responsibly — fire risk is high in the summer months.
-          </p>
-        </section>
-
-        <section id="cancellation" aria-labelledby="cancellation-heading" class="scroll-mt-20">
-          <h2 id="cancellation-heading" class="font-serif text-2xl text-body-text mb-4 pb-3 border-b border-stone-200">
-            Cancellation
-          </h2>
-          <p class="text-sm text-stone-600 leading-relaxed">
-            {siteCopy.cancellationPolicy}
-          </p>
-        </section>
-
-      </div>
-
-      <div class="mt-12 pt-8 border-t border-stone-200">
-        <p class="text-sm text-muted">
-          If you have questions about any of these policies before booking, please <a href="/en/contact/" class="underline hover:text-body-text transition-colors duration-150">contact us</a>.
-        </p>
+          <a href="/en/contact/" class="btn-cta bg-transparent border-stone-200 text-stone-950 hover:bg-stone-50 px-12 py-5">
+            Contact Guest Relations
+          </a>
+        </footer>
       </div>
 
     </div>
   </div>
 
 </Base>
+
+<style>
+  /* Smooth scrolling for anchor links */
+  html {
+    scroll-behavior: smooth;
+  }
+</style>

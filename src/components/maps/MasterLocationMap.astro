@@ -1,17 +1,46 @@
 ---
 import LeafletMap from './LeafletMap.astro';
 import { locations } from '../../data/locations';
+import inventory from '../../inventory/inventory.json';
+import type { InventoryUnit, SiteCopy } from '../../types';
+import siteCopyData from '../../data/siteCopy.json';
 
-// Use all properties that have coordinates defined
-const allLocs = locations.filter(l => l.lat && l.lng);
+const units = inventory as InventoryUnit[];
+const siteCopy = siteCopyData as SiteCopy;
 
+/** * 1. ASSET RESOLUTION
+ * This finds every image in your /src/assets/images/ folder. 
+ * Astro will optimize these (WebP, resizing) automatically.
+ */
+const allImages = import.meta.glob('/src/assets/images/**/*.{webp,jpg,jpeg,png}', { eager: true });
+
+// 2. DATA MERGING
+// We combine the map coordinates with the actual names/labels from your inventory
+const allLocs = locations.filter(l => l.lat && l.lng).map(loc => {
+  const unit = units.find(u => u.slug === loc.slug);
+  
+  // Find the hero image in the assets folder for this specific slug
+  const propertyFolder = `/src/assets/images/${loc.slug}/`;
+  const propertyImages = Object.keys(allImages).filter(key => key.includes(propertyFolder));
+  
+  // Get the optimized URL (the .src of the hashed file)
+  const assetMatch = allImages[propertyImages.find(k => k.toLowerCase().includes('hero')) || propertyImages[0]];
+  const optimizedHero = (assetMatch as any)?.default;
+
+  return {
+    ...loc,
+    title: unit?.name || loc.title,
+    type: unit?.type || loc.type,
+    locationLabel: unit ? `${unit.location}, ${unit.area}` : loc.locationLabel,
+    // Use optimized path, fallback to static path, then to placeholder
+    finalImage: optimizedHero?.src || loc.image || "/images/brand/placeholder.webp" 
+  };
+});
+
+// 3. MARKER PREP
+// This goes into the actual Leaflet component to draw the pins
 const markers = allLocs.map(loc => {
-  let url = '';
-  if (loc.type === 'villa') {
-    url = `/en/villa/${loc.slug}/`;
-  } else if (loc.type === 'house' || (loc as any).type === 'home') {
-    url = `/en/houses/${loc.slug}/`;
-  }
+  const url = loc.type === 'villa' ? `/en/villa/${loc.slug}/` : `/en/houses/${loc.slug}/`;
   return {
     id: loc.id,
     lat: loc.lat!,
@@ -20,59 +49,60 @@ const markers = allLocs.map(loc => {
     url: url,
     type: loc.type,
     group: loc.group,
-    image: loc.image,
-    subtitle: loc.subtitle,
+    image: loc.finalImage,
+    subtitle: loc.locationLabel,
     distanceTag: loc.distanceTag
   };
 });
 ---
-<div class="master-location-map relative flex flex-col lg:flex-row gap-6 p-6 md:p-10 rounded-3xl overflow-hidden min-h-[700px]">
+
+<div class="master-location-map relative flex flex-col lg:flex-row gap-8 p-4 md:p-8 bg-white rounded-[2.5rem] shadow-card border border-stone-200 overflow-hidden min-h-[750px]">
   
-  <!-- Ambient Background Image -->
+  {/* Ambient Background Transition Layer */}
   <div id="map-ambient-bg" 
-       class="absolute inset-0 z-[-1] opacity-0 transition-all duration-1000 ease-in-out bg-cover bg-center scale-105"
-       style="background-image: url('/images/brand/home-hero-spinalonga-2400.webp');">
-    <div class="absolute inset-0 bg-stone-50/80"></div>
+       class="absolute inset-0 z-0 opacity-0 transition-all duration-1000 ease-in-out bg-cover bg-center pointer-events-none">
+    <div class="absolute inset-0 bg-stone-50/90 backdrop-blur-sm"></div>
   </div>
 
-  <!-- Sidebar List & Filters -->
-  <div class="w-full lg:w-1/3 flex flex-col gap-4 z-10">
-    <div class="filters flex flex-wrap gap-2">
-      <button class="filter-btn active px-3 py-1.5 rounded-full border border-stone-300 text-xs font-medium bg-stone-800 text-white" data-filter="all">All</button>
-      <button class="filter-btn px-3 py-1.5 rounded-full border border-stone-300 text-xs font-medium hover:bg-stone-100 text-stone-700 transition-colors" data-filter="house">Houses</button>
-      <button class="filter-btn px-3 py-1.5 rounded-full border border-stone-300 text-xs font-medium hover:bg-stone-100 text-stone-700 transition-colors" data-filter="villa">Villa</button>
-      <button class="filter-btn px-3 py-1.5 rounded-full border border-stone-300 text-xs font-medium hover:bg-stone-100 text-stone-700 transition-colors" data-filter="mavrikiano">Mavrikiano</button>
-      <button class="filter-btn px-3 py-1.5 rounded-full border border-stone-300 text-xs font-medium hover:bg-stone-100 text-stone-700 transition-colors" data-filter="vrouchas">Vrouchas</button>
-    </div>
+  {/* Sidebar: Filters & List */}
+  <div class="w-full lg:w-1/3 flex flex-col gap-6 z-10">
+    <header>
+      <h3 class="font-serif text-3xl text-body-text mb-4">Explore the Area</h3>
+      <div class="filters flex flex-wrap gap-2">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="house">Houses</button>
+        <button class="filter-btn" data-filter="villa">Villa</button>
+        <button class="filter-btn" data-filter="mavrikiano">Mavrikiano</button>
+        <button class="filter-btn" data-filter="vrouchas">Vrouchas</button>
+      </div>
+    </header>
 
-    <div class="location-list overflow-y-auto pr-2" style="max-height: 550px;">
-      <div class="flex flex-col gap-3">
+    <div class="location-list overflow-y-auto pr-2 custom-scrollbar" style="max-height: 520px;">
+      <div class="flex flex-col gap-4">
         {allLocs.map(loc => (
-          <div class="location-card group/card relative bg-white border border-stone-200 rounded-lg p-4 cursor-pointer hover:border-stone-400 hover:shadow-md transition-all overflow-hidden" 
+          <div class="location-card group/card relative bg-white border border-stone-100 rounded-2xl p-5 cursor-pointer hover:border-primary/30 hover:shadow-xl transition-all duration-500 overflow-hidden" 
                data-id={loc.id} 
                data-type={loc.type} 
                data-group={loc.group}
-               data-image={loc.image}>
+               data-image={loc.finalImage}>
             
-            {/* Ambient Card Background */}
-            {loc.image && (
-              <div class="absolute inset-0 z-0 opacity-[0.20] group-hover/card:opacity-[0.40] transition-opacity duration-500 bg-cover bg-center pointer-events-none"
-                   style={`background-image: url('${loc.image}')`}>
-              </div>
-            )}
+            {/* Visual background hint on hover */}
+            <div class="absolute inset-0 z-0 opacity-0 group-hover/card:opacity-10 transition-opacity duration-700 bg-cover bg-center"
+                 style={`background-image: url('${loc.finalImage}')`}>
+            </div>
 
             <div class="relative z-10">
-              <h3 class="font-serif text-lg text-body-text">{loc.title}</h3>
-              <p class="text-xs text-stone-500 mb-2">{loc.locationLabel}</p>
-              <div class="flex justify-between items-center mt-3">
-                <span class="text-[10px] uppercase font-bold tracking-wider text-stone-500 bg-stone-100/50 px-2 py-1 rounded">{loc.type}</span>
-                <div class="flex flex-col items-end gap-1.5 z-10 relative">
-                  {loc.googleMapsUrl && (
-                    <a href={loc.googleMapsUrl} target="_blank" rel="noopener noreferrer" class="text-[11px] font-medium text-stone-600 hover:text-stone-900 underline">View on map</a>
-                  )}
-                  {(loc.type === 'house' || (loc as any).type === 'home' || loc.type === 'villa') && (
-                    <a href={loc.type === 'villa' ? `/en/villa/${loc.slug}/` : `/en/houses/${loc.slug}/`} class="text-[11px] font-medium text-stone-600 hover:text-stone-900 underline">View details</a>
-                  )}
+              <div class="flex justify-between items-start mb-1">
+                <h4 class="font-serif text-xl text-body-text group-hover/card:text-primary transition-colors">{loc.title}</h4>
+                <span class="text-[9px] uppercase tracking-widest font-bold text-stone-400 bg-stone-50 px-2 py-0.5 rounded-full">{loc.type}</span>
+              </div>
+              <p class="text-[11px] text-muted uppercase tracking-wider mb-4">{loc.locationLabel}</p>
+              
+              <div class="flex justify-between items-center pt-3 border-t border-stone-50">
+                <span class="text-[10px] font-medium text-stone-400 italic">{loc.distanceTag}</span>
+                <div class="flex gap-4">
+                  <a href={loc.googleMapsUrl} target="_blank" class="text-[10px] font-bold uppercase tracking-widest text-stone-400 hover:text-primary transition-colors">Map</a>
+                  <a href={loc.type === 'villa' ? `/en/villa/${loc.slug}/` : `/en/houses/${loc.slug}/`} class="text-[10px] font-bold uppercase tracking-widest text-primary">Details</a>
                 </div>
               </div>
             </div>
@@ -82,16 +112,30 @@ const markers = allLocs.map(loc => {
     </div>
   </div>
 
-  <!-- Map -->
-  <div class="w-full lg:w-2/3 border border-stone-200 rounded-xl overflow-hidden shadow-lg bg-white z-10">
-    <LeafletMap markers={markers} height="600px" mapId="master-map" />
+  {/* Interactive Map Column */}
+  <div class="w-full lg:w-2/3 rounded-3xl overflow-hidden shadow-2xl bg-stone-100 z-10 border border-stone-200">
+    <LeafletMap markers={markers} height="650px" mapId="master-map" />
   </div>
 </div>
 
+<style>
+  .filter-btn {
+    @apply px-4 py-2 rounded-full border border-stone-200 text-[10px] font-bold uppercase tracking-widest text-stone-500 transition-all hover:bg-stone-50 hover:border-stone-400;
+  }
+  .filter-btn.active {
+    @apply bg-stone-900 border-stone-900 text-white shadow-lg;
+  }
+  .location-card.is-active {
+    @apply border-primary ring-1 ring-primary/20 bg-stone-50/50 shadow-inner;
+  }
+  .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+  .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+  .custom-scrollbar::-webkit-scrollbar-thumb { background: #e6e1d8; border-radius: 10px; }
+</style>
+
 <script>
-  // Handle interactive filters and map connection
   document.addEventListener('astro:page-load', () => {
-    // Wait for Leaflet init to complete
+    // Small delay to ensure Leaflet is fully ready
     setTimeout(() => {
       const mapContainer = document.getElementById('master-map');
       const map = (window as any)['leaflet_map_master-map'];
@@ -102,129 +146,15 @@ const markers = allLocs.map(loc => {
       const cards = document.querySelectorAll('.location-card');
       const markersData = JSON.parse(mapContainer?.getAttribute('data-markers') || '[]');
 
-      // Function to update ambient background
       const updateBackground = (imageUrl: string) => {
         if (!imageUrl) {
           bgContainer.style.opacity = '0';
           return;
         }
-        
-        // Use a temporary image to avoid flickering during load
         const tempImg = new Image();
         tempImg.onload = () => {
           bgContainer.style.backgroundImage = `url('${imageUrl}')`;
-          bgContainer.style.opacity = '0.15';
-          bgContainer.style.transform = 'scale(1)';
+          bgContainer.style.opacity = '1';
         };
         tempImg.src = imageUrl;
       };
-
-      // Listen for marker focus events from the map
-      mapContainer?.addEventListener('marker-focused', (e: any) => {
-        const { id, image } = e.detail;
-        
-        // Highlight corresponding card
-        cards.forEach(card => {
-          if (card.getAttribute('data-id') === id) {
-             card.classList.add('border-stone-500', 'bg-stone-50', 'ring-1', 'ring-stone-500/20');
-             card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-          } else {
-             card.classList.remove('border-stone-500', 'bg-stone-50', 'ring-1', 'ring-stone-500/20');
-          }
-        });
-
-        if (image) updateBackground(image);
-      });
-
-      // Handle card clicks
-      cards.forEach(card => {
-        card.addEventListener('click', (e) => {
-          // Ignore clicks on links inside the card
-          if ((e.target as HTMLElement).tagName.toLowerCase() === 'a') return;
-
-          const id = card.getAttribute('data-id');
-          const image = card.getAttribute('data-image');
-          const marker = markersData.find((m: any) => m.id === id);
-          
-          if (marker) {
-            // Update styling
-            cards.forEach(c => {
-               c.classList.remove('border-stone-500', 'bg-stone-50', 'ring-1', 'ring-stone-500/20');
-            });
-            card.classList.add('border-stone-500', 'bg-stone-50', 'ring-1', 'ring-stone-500/20');
-            
-            // Fly map to selected marker
-            map.flyTo([marker.lat, marker.lng], 18, { duration: 1.2 });
-            
-            // Auto-open associated Leaflet popup
-            const layers = (window as any)['leaflet_layers_master-map'];
-            if (layers && layers[id]) {
-              layers[id].openPopup();
-            }
-
-            if (image) updateBackground(image);
-          }
-        });
-      });
-
-      // Handle filtering
-      filterBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-          // Toggle basic classes
-          filterBtns.forEach(b => {
-             b.classList.remove('active', 'bg-stone-800', 'text-white');
-             b.classList.add('hover:bg-stone-100', 'text-stone-700');
-          });
-          btn.classList.add('active', 'bg-stone-800', 'text-white');
-          btn.classList.remove('hover:bg-stone-100', 'text-stone-700');
-
-          const filterMode = btn.getAttribute('data-filter');
-          
-          let visibleIds: string[] = [];
-          
-          cards.forEach(card => {
-            const type = card.getAttribute('data-type');
-            const group = card.getAttribute('data-group');
-            
-            let shouldShow = false;
-            if (filterMode === 'all') shouldShow = true;
-            else if (filterMode === 'house') shouldShow = type === 'house' || type === 'home';
-            else if (filterMode === 'villa') shouldShow = type === 'villa';
-            else if (filterMode === 'mavrikiano') shouldShow = group === 'mavrikiano';
-            else if (filterMode === 'vrouchas') shouldShow = group === 'vrouchas';
-
-            if (shouldShow) {
-              (card as HTMLElement).style.display = 'block';
-              visibleIds.push(card.getAttribute('data-id') as string);
-            } else {
-              (card as HTMLElement).style.display = 'none';
-            }
-          });
-
-          if (visibleIds.length === 0) return;
-
-          // Adjust bounds via Leaflet based on shown cards
-          // @ts-ignore
-          const L = window.L;
-          if (L) {
-            const bounds = L.latLngBounds([]);
-            markersData.forEach((m: any) => {
-              if (visibleIds.includes(m.id)) {
-                bounds.extend([m.lat, m.lng]);
-              }
-            });
-
-            if (visibleIds.length === 1) {
-              map.flyTo(bounds.getCenter(), 14);
-            } else {
-              map.fitBounds(bounds, { padding: [30, 30] });
-            }
-          }
-          
-          // Reset background on filter change
-          bgContainer.style.opacity = '0';
-        });
-      });
-    }, 500);
-  });
-</script>

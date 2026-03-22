@@ -11,7 +11,7 @@
   "pets": "Small pets ≤5 kg accepted on request",
   "checkIn": "From 15:00",
   "checkOut": "Until 11:00",
-  "quietHours": "23:00 – 08:00",
+  "quietHours": "15:00 - 17:00 / 23:00 – 08:00",
   "cancellationPolicy": "Please refer to your booking confirmation for cancellation terms.",
   "heroHeadline": "Ten stone houses and a hilltop villa in the villages above Elounda.",
   "heroSubline": "Quiet, traditional, direct.",
@@ -21,5 +21,12 @@
   "metaDescriptionFaq": "Frequently asked questions about Elounda Traditional Homes — access, pools, pets, Wi-Fi, parking, and more.",
   "metaDescriptionPolicies": "House rules, access information, pet policy, check-in times, and cancellation terms for Elounda Traditional Homes.",
   "metaDescriptionAbout": "About Elounda Traditional Homes — a family-run collection of restored stone houses in Mavrikiano, Elounda, Crete.",
-  "metaDescriptionContact": "Contact Elounda Traditional Homes — get in touch with questions or booking enquiries."
+  "metaDescriptionContact": "Contact Elounda Traditional Homes — get in touch with questions or booking enquiries.",
+  
+  "arrival": {
+    "hostName": "Mrs. Olga",
+    "meetingPoint": "Private Parking",
+    "instructions": "We personally meet our guests at the parking area to assist with luggage and guide you to your home.",
+    "earlyArrival": "Early arrivals are welcome to drop luggage at the parking area while we prepare your house."
+  }
 }

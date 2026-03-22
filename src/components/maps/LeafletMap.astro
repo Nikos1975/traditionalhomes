@@ -22,76 +22,120 @@ interface Props {
 const { markers, zoom = 15, center, height = '400px', interactive = true, mapId = 'map' } = Astro.props;
 ---
 
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 
 <style is:global>
-  /* Custom Leaflet Popup Styling */
+  /* 1. CLEAN POPUP DESIGN */
   .leaflet-popup-content-wrapper {
     padding: 0;
     overflow: hidden;
-    border-radius: 12px;
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    border-radius: 20px;
+    box-shadow: 0 20px 25px -5px rgba(44, 36, 25, 0.15);
+    border: 1px solid #E6E1D8; /* stone-300 */
   }
+  
   .leaflet-popup-content {
     margin: 0 !important;
-    width: 240px !important;
+    width: 260px !important;
   }
+
   .custom-popup {
     display: flex;
     flex-direction: column;
+    background: #FFFFFF;
   }
+
+  .popup-img-container {
+    position: relative;
+    width: 100%;
+    height: 140px;
+    overflow: hidden;
+  }
+
   .popup-img {
     width: 100%;
-    height: 120px;
+    height: 100%;
     object-fit: cover;
-    background-color: #f5f5f4;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
   }
+
+  .custom-popup:hover .popup-img {
+    transform: scale(1.08);
+  }
+
   .popup-info {
-    padding: 12px;
+    padding: 16px;
   }
+
   .popup-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: #1c1917;
-    margin: 0 0 2px 0;
-    line-height: 1.2;
-  }
-  .popup-subtitle {
-    font-family: 'Work Sans', sans-serif;
-    font-size: 0.7rem;
-    color: #78716c;
-    text-transform: uppercase;
-    letter-spacing: 0.025em;
+    font-family: "Cormorant Garamond", serif;
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: #2C2419; /* body-text */
     margin: 0 0 4px 0;
+    line-height: 1.1;
   }
-  .popup-distance {
-    font-family: 'Work Sans', sans-serif;
+
+  .popup-subtitle {
+    font-family: "Work Sans", sans-serif;
+    font-size: 0.65rem;
+    color: #6B5F50; /* muted */
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin: 0 0 12px 0;
+  }
+
+  .popup-btn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background: #B44B2A; /* primary */
+    color: white !important;
+    text-align: center;
+    font-family: "Work Sans", sans-serif;
     font-size: 0.7rem;
-    color: #a8a29e;
-    margin: 0 0 8px 0;
+    font-bold: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    text-decoration: none !important;
+    border-radius: 8px;
+    transition: background 0.3s ease;
+  }
+
+  .popup-btn:hover {
+    background: #9A3F23; /* primary-hover */
+  }
+
+  /* 2. CUSTOM SVG PIN STYLING */
+  .custom-marker-pin {
     display: flex;
     align-items: center;
-    gap: 4px;
+    justify-content: center;
   }
-  .popup-link {
-    display: inline-block;
-    font-family: 'Work Sans', sans-serif;
-    font-size: 0.75rem;
-    font-weight: 600;
-    color: #615a52;
-    text-decoration: underline;
-    text-underline-offset: 2px;
+
+  .pin-circle {
+    width: 32px;
+    height: 32px;
+    background: #B44B2A;
+    border: 3px solid white;
+    border-radius: 50%;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
   }
-  .popup-link:hover {
-    color: #1c1917;
+
+  .marker-active .pin-circle {
+    transform: scale(1.3);
+    background: #2C2419;
+    border-color: #B44B2A;
   }
-  .leaflet-popup-tip {
-    box-shadow: 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+
+  /* 3. MAP OVERLAYS */
+  .leaflet-container {
+    background: #F7F4EE !important; /* body-bg */
   }
 </style>
 
-<div id={mapId} class="leaflet-map-container z-0 rounded-xl overflow-hidden" style={`height: ${height}; width: 100%;`} 
+<div id={mapId} class="leaflet-map-container z-0 rounded-3xl" style={`height: ${height}; width: 100%;`} 
      data-markers={JSON.stringify(markers)} 
      data-zoom={zoom} 
      data-center={JSON.stringify(center)} 
@@ -99,116 +143,104 @@ const { markers, zoom = 15, center, height = '400px', interactive = true, mapId 
 </div>
 
 <script>
-  import 'leaflet/dist/leaflet.css'; // Vite needs this for bundling properly sometimes, but we keep the CDN link above as fallback
-</script>
-<script>
   import L from 'leaflet';
-
-  // Fix missing marker icons in Leaflet with webpack/vite
-  delete (L.Icon.Default.prototype as any)._getIconUrl;
-  L.Icon.Default.mergeOptions({
-    iconRetinaUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png',
-    iconUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png',
-    shadowUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png',
-  });
 
   const mapElements = document.querySelectorAll('.leaflet-map-container');
 
   mapElements.forEach((el) => {
-    if ((el as any)._leaflet_id) return; // Prevent re-initialization
+    if ((el as any)._leaflet_id) return;
 
     const markersData = JSON.parse(el.getAttribute('data-markers') || '[]');
     const zoom = parseInt(el.getAttribute('data-zoom') || '15', 10);
     const centerAttr = el.getAttribute('data-center');
     const interactive = el.getAttribute('data-interactive') === 'true';
 
-    let center: [number, number] = [35.2668, 25.719]; // Default to Mavrikiano
+    let center: [number, number] = [35.2668, 25.719];
     
     if (centerAttr && centerAttr !== 'undefined') {
       try { center = JSON.parse(centerAttr); } catch(e){}
     } else if (markersData.length > 0) {
-      // Auto-center based on first marker if center not provided
       center = [markersData[0].lat, markersData[0].lng];
     }
 
     const map = L.map(el as HTMLElement, {
       center: center,
       zoom: zoom,
-      scrollWheelZoom: false, // usually want disabled to avoid accidental scroll
-      dragging: interactive,
-      zoomControl: interactive,
-      doubleClickZoom: interactive
+      scrollWheelZoom: false,
+      zoomControl: false, // We'll move it to the right for a cleaner look
+      attributionControl: false
     });
 
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a>'
+    if (interactive) {
+      L.control.zoom({ position: 'bottomright' }).addTo(map);
+    }
+
+    // PREMIUM TILE LAYER: CartoDB Positron (Muted & Elegant)
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+      maxZoom: 20
     }).addTo(map);
+
+    // CUSTOM SVG ICON FACTORY
+    const createCustomIcon = () => L.divIcon({
+      className: 'custom-marker-pin',
+      html: `<div class="pin-circle"></div>`,
+      iconSize: [32, 32],
+      iconAnchor: [16, 16]
+    });
 
     const bounds = L.latLngBounds([]);
     const layers: Record<string, any> = {};
-    const usedPositions: string[] = [];
 
     markersData.forEach((marker: any) => {
       if (marker.lat && marker.lng) {
-        // Resolve identical coordinates by applying a tiny offset
-        let finalLat = marker.lat;
-        let finalLng = marker.lng;
-        const posKey = `${finalLat.toFixed(6)},${finalLng.toFixed(6)}`;
-        
-        if (usedPositions.includes(posKey)) {
-          finalLng += 0.00004; // Visual offset for overlapping pins (e.g. Erato/Clio)
-        }
-        usedPositions.push(`${finalLat.toFixed(6)},${finalLng.toFixed(6)}`);
+        const m = L.marker([marker.lat, marker.lng], {
+          icon: createCustomIcon()
+        }).addTo(map);
 
-        const m = L.marker([finalLat, finalLng]).addTo(map);
         layers[marker.id] = m;
 
-        if (marker.title) {
-          const popupHtml = `
-            <div class="custom-popup">
-              ${marker.image ? `<img src="${marker.image}" alt="${marker.title}" class="popup-img" />` : ''}
-              <div class="popup-info">
-                <h3 class="popup-title">${marker.title}</h3>
-                ${marker.subtitle ? `<p class="popup-subtitle">${marker.subtitle}</p>` : ''}
-                ${marker.distanceTag ? `<p class="popup-distance">${marker.distanceTag}</p>` : ''}
-                ${marker.url ? `<a href="${marker.url}" class="popup-link">View details</a>` : ''}
+        const popupHtml = `
+          <div class="custom-popup">
+            ${marker.image ? `
+              <div class="popup-img-container">
+                <img src="${marker.image}" alt="${marker.title}" class="popup-img" />
+              </div>` : ''}
+            <div class="popup-info">
+              <p class="popup-subtitle">${marker.subtitle || 'Traditional Home'}</p>
+              <h3 class="popup-title">${marker.title}</h3>
+              <div class="mt-4">
+                <a href="${marker.url}" class="popup-btn">View Discovery</a>
               </div>
             </div>
-          `;
-          
-          m.bindPopup(popupHtml);
+          </div>
+        `;
+        
+        m.bindPopup(popupHtml, {
+          closeButton: false,
+          offset: L.point(0, -10)
+        });
 
-          m.on('popupopen', () => {
-            el.dispatchEvent(new CustomEvent('marker-focused', { 
-              detail: { 
-                id: marker.id,
-                image: marker.image,
-                title: marker.title
-              } 
-            }));
-          });
-        }
+        // Event: Highlight Sidebar on Popup Open
+        m.on('popupopen', () => {
+          (m as any).getElement().classList.add('marker-active');
+          el.dispatchEvent(new CustomEvent('marker-focused', { 
+            detail: { id: marker.id, image: marker.image } 
+          }));
+        });
 
-        bounds.extend([finalLat, finalLng]);
+        m.on('popupclose', () => {
+          (m as any).getElement().classList.remove('marker-active');
+        });
+
+        bounds.extend([marker.lat, marker.lng]);
       }
     });
 
     if (markersData.length > 1 && !centerAttr) {
-       map.fitBounds(bounds, { padding: [30, 30] });
+      map.fitBounds(bounds, { padding: [50, 50] });
     }
 
-    // Deep link focusing logic
-    const urlParams = new URLSearchParams(window.location.search);
-    const targetId = urlParams.get('id');
-    if (targetId && layers[targetId]) {
-      const targetMarker = layers[targetId];
-      setTimeout(() => {
-        map.setView(targetMarker.getLatLng(), 18);
-        targetMarker.openPopup();
-      }, 500);
-    }
-
-    // Expose map to window for external controls
+    // Expose for Master Map logic
     (window as any)[`leaflet_map_${el.id}`] = map;
     (window as any)[`leaflet_layers_${el.id}`] = layers;
   });

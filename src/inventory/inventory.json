@@ -22,11 +22,11 @@
       "Internal stairs to upper level"
     ],
     "amenities": [
-      "Air conditioning",
-      "Full kitchen + outdoor kitchenette",
-      "Sea-view veranda (1st floor)",
-      "Outdoor dining",
-      "Wi-Fi"
+      "Air Conditioning & Climate Control",
+      "Fully Equipped Kitchen & Outdoor Kitchenette",
+      "Furnished Sea-View Veranda",
+      "Al-Fresco Dining Area",
+      "High-Speed Wi-Fi"
     ],
     "access_detail": null,
     "booking_id": "HARGYR",
@@ -63,10 +63,10 @@
       "Internal stairs to upper level"
     ],
     "amenities": [
-      "Air conditioning",
-      "Kitchen",
-      "Sea-view terrace",
-      "Wi-Fi"
+      "Air Conditioning & Climate Control",
+      "Fully Equipped Kitchen",
+      "Private Sea-View Balcony",
+      "High-Speed Wi-Fi"
     ],
     "access_detail": null,
     "booking_id": "HLEONI",
@@ -105,11 +105,11 @@
       "Bathroom accessed via the courtyard area"
     ],
     "amenities": [
-      "Air conditioning",
-      "Kitchen + outdoor kitchenette",
-      "Sea-view veranda (1st floor)",
-      "Outdoor dining",
-      "Wi-Fi"
+      "Air Conditioning & Climate Control",
+      "Fully Equipped Kitchen & Outdoor Kitchenette",
+      "Expansive Sea-View Veranda",
+      "Al-Fresco Dining Area",
+      "High-Speed Wi-Fi"
     ],
     "access_detail": null,
     "booking_id": "HMARGA",
@@ -148,11 +148,11 @@
       "Pool is shared with House Penelope"
     ],
     "amenities": [
-      "Air conditioning",
-      "Fully equipped kitchen",
-      "Shared pool with sun loungers",
-      "Outdoor dining",
-      "Wi-Fi"
+      "Air Conditioning & Climate Control",
+      "Fully Equipped Kitchen",
+      "Shared Swimming Pool with Sun Loungers",
+      "Al-Fresco Dining Area",
+      "High-Speed Wi-Fi"
     ],
     "access_detail": null,
     "booking_id": "HDEMET",
@@ -191,11 +191,11 @@
       "Pool is shared with House Demetra"
     ],
     "amenities": [
-      "Air conditioning",
-      "External kitchen at the veranda",
-      "Shared pool with sun loungers",
-      "Outdoor dining",
-      "Wi-Fi"
+      "Air Conditioning & Climate Control",
+      "Fully Equipped Outdoor Veranda Kitchen",
+      "Shared Swimming Pool with Sun Loungers",
+      "Al-Fresco Dining Area",
+      "High-Speed Wi-Fi"
     ],
     "access_detail": null,
     "booking_id": "HPENEL",
@@ -232,11 +232,11 @@
       "Private pool"
     ],
     "amenities": [
-      "Air conditioning",
-      "Fully equipped kitchen",
-      "Private pool",
-      "Garden terrace",
-      "Wi-Fi"
+      "Air Conditioning & Climate Control",
+      "Fully Equipped Kitchen",
+      "Private Swimming Pool",
+      "Sun-Drenched Garden Terrace",
+      "High-Speed Wi-Fi"
     ],
     "access_detail": "Entrance reached via stairs down (not step-free).",
     "booking_id": "HERCLI",
@@ -273,11 +273,11 @@
       "First floor above House Erato (internal stairs)"
     ],
     "amenities": [
-      "Air conditioning",
-      "Fully equipped kitchen",
-      "Garden terrace",
-      "Outdoor seating",
-      "Wi-Fi"
+      "Air Conditioning & Climate Control",
+      "Fully Equipped Kitchen",
+      "Private Garden Balcony",
+      "Comfortable Outdoor Seating",
+      "High-Speed Wi-Fi"
     ],
     "access_detail": null,
     "booking_id": "HCLIO",
@@ -314,10 +314,10 @@
       "Loft accessed by staircase"
     ],
     "amenities": [
-      "Air conditioning",
-      "Kitchenette + summer kitchen / BBQ",
-      "Courtyard terrace",
-      "Wi-Fi"
+      "Air Conditioning & Climate Control",
+      "Indoor Kitchenette & Full Summer BBQ Kitchen",
+      "Private Walled Courtyard Terrace",
+      "High-Speed Wi-Fi"
     ],
     "access_detail": null,
     "booking_id": "HEFTER",
@@ -354,10 +354,10 @@
       "Upper-floor unit (stairs) above House Efterpi"
     ],
     "amenities": [
-      "Air conditioning",
-      "Kitchen",
-      "Stone terrace",
-      "Wi-Fi"
+      "Air Conditioning & Climate Control",
+      "Fully Equipped Kitchen",
+      "Private Stone Balcony",
+      "High-Speed Wi-Fi"
     ],
     "access_detail": null,
     "booking_id": "HKALLI",
@@ -395,12 +395,12 @@
       "Private dripped pool"
     ],
     "amenities": [
-      "Air conditioning",
-      "Kitchen",
-      "Private dripped pool",
-      "Sea-view terrace",
-      "Outdoor dining",
-      "Wi-Fi"
+      "Air Conditioning & Climate Control",
+      "Fully Equipped Kitchen",
+      "Private Courtyard Dipping Pool",
+      "Panoramic Sea-View Terrace",
+      "Al-Fresco Dining Area",
+      "High-Speed Wi-Fi"
     ],
     "access_detail": null,
     "booking_id": "HMONAS",
@@ -436,21 +436,16 @@
       "Steep approach road — suitable for standard passenger cars"
     ],
     "amenities": [
-      "Air conditioning (all rooms)",
-      "Fully equipped kitchen + summer kitchen / BBQ",
-      "Large private pool (9 m × 4 m)",
-      "Panoramic pool terrace",
-      "Sun loungers",
-      "Al-fresco dining terrace",
-      "Washing machine and dryer",
-      "Smart TV",
-      "Coffee machine (espresso)",
-      "Hair dryer",
-      "Wi-Fi",
-      "Garden",
-      "Creatan garden",
-      "Sea view",
-      "Private pool"
+      "Climate Control Throughout",
+      "Gourmet Kitchen & Outdoor Summer BBQ",
+      "Expansive Private Pool (9m x 4m)",
+      "Panoramic Poolside Terrace with Sun Loungers",
+      "Al-Fresco Dining Area",
+      "In-Suite Laundry (Washer & Dryer)",
+      "Smart TV Entertainment",
+      "Espresso Machine",
+      "High-Speed Wi-Fi",
+      "Lush Traditional Cretan Garden"
     ],
     "access_detail": "Hillside village location in Vrouchas. Several steps from parking to entrance. Upper-floor bedrooms via internal stairs. Steep approach road — suitable for standard passenger cars.",
     "booking_id": "ASP3SV",

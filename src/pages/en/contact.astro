@@ -4,71 +4,77 @@ import siteCopy from '../../data/siteCopy.json';
 ---
 
 <Base
-  title="Contact | Elounda Traditional Homes"
+  title={`Contact & Inquiries | ${siteCopy.siteName}`}
   description={siteCopy.metaDescriptionContact}
   canonicalUrl="https://traditional-homes.gr/en/contact/"
 >
 
-  <div class="site-max site-pad py-12 md:py-16">
+  <div class="site-max site-pad py-16 md:py-24">
 
-    <nav class="text-xs text-muted mb-6" aria-label="Breadcrumb">
-      <ol class="flex items-center gap-1.5" role="list">
-        <li><a href="/en/" class="hover:text-body-text transition-colors duration-150">Home</a></li>
-        <li aria-hidden="true">›</li>
-        <li class="text-body-text font-medium" aria-current="page">Contact</li>
+    {/* BREADCRUMB */}
+    <nav class="text-[10px] uppercase tracking-[0.3em] text-stone-400 mb-8 font-bold" aria-label="Breadcrumb">
+      <ol class="flex items-center gap-2" role="list">
+        <li><a href="/en/" class="hover:text-stone-900 transition-colors">Home</a></li>
+        <li aria-hidden="true" class="text-stone-200">/</li>
+        <li class="text-stone-900" aria-current="page">Contact</li>
       </ol>
     </nav>
 
-    <div class="grid grid-cols-1 lg:grid-cols-5 gap-12">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-start">
 
-      <div class="lg:col-span-3">
-        <h1 class="font-serif text-4xl md:text-5xl text-body-text mb-4">Contact</h1>
-        <p class="section-sub mb-8">
-          Questions about a specific property, a group booking, or anything else — use the form below and we'll respond as soon as possible.
-        </p>
+      {/* LEFT: FORM SECTION */}
+      <div class="lg:col-span-7">
+        <header class="mb-12">
+          <h1 class="font-serif text-5xl md:text-7xl text-stone-950 mb-6 leading-tight tracking-tight">
+            Get in <span class="italic text-stone-400">Touch</span>
+          </h1>
+          <p class="text-xl text-stone-500 font-light leading-relaxed max-w-xl">
+            Questions about a specific property or a large group booking? Use the form below and we will respond as soon as possible.
+          </p>
+        </header>
 
         <form
-          class="space-y-5"
+          class="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-700"
           name="contact"
           method="POST"
           action="/en/contact/?sent=1"
           aria-label="Contact form"
         >
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-            <div>
-              <label for="name" class="block text-sm font-medium text-body-text mb-1.5">Name</label>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+            <div class="group">
+              <label for="name" class="block text-[10px] uppercase tracking-[0.2em] font-bold text-stone-400 mb-2 group-focus-within:text-stone-950 transition-colors">Name</label>
               <input
                 type="text"
                 id="name"
                 name="name"
                 required
                 autocomplete="name"
-                class="w-full border border-stone-300 rounded-lg px-3.5 py-2.5 text-sm text-body-text bg-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors duration-150"
+                class="w-full bg-transparent border-b border-stone-200 py-3 focus:outline-none focus:border-stone-950 transition-colors placeholder-stone-300 font-light"
                 placeholder="Your name"
               />
             </div>
-            <div>
-              <label for="email" class="block text-sm font-medium text-body-text mb-1.5">Email</label>
+            <div class="group">
+              <label for="email" class="block text-[10px] uppercase tracking-[0.2em] font-bold text-stone-400 mb-2 group-focus-within:text-stone-950 transition-colors">Email</label>
               <input
                 type="email"
                 id="email"
                 name="email"
                 required
                 autocomplete="email"
-                class="w-full border border-stone-300 rounded-lg px-3.5 py-2.5 text-sm text-body-text bg-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors duration-150"
+                class="w-full bg-transparent border-b border-stone-200 py-3 focus:outline-none focus:border-stone-950 transition-colors placeholder-stone-300 font-light"
                 placeholder="you@example.com"
               />
             </div>
           </div>
 
-          <div>
-            <label for="property" class="block text-sm font-medium text-body-text mb-1.5">Property (optional)</label>
+          <div class="group">
+            <label for="property" class="block text-[10px] uppercase tracking-[0.2em] font-bold text-stone-400 mb-2 group-focus-within:text-stone-950 transition-colors">Property (Optional)</label>
             <select
               id="property"
               name="property"
-              class="w-full border border-stone-300 rounded-lg px-3.5 py-2.5 text-sm text-body-text bg-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors duration-150"
+              class="w-full bg-transparent border-b border-stone-200 py-3 focus:outline-none focus:border-stone-950 transition-colors font-light appearance-none text-stone-600 cursor-pointer"
             >
-              <option value="">— General enquiry —</option>
+              <option value="">— General Enquiry —</option>
               <option value="argyro">House Argyro</option>
               <option value="leonidas">House Leonidas</option>
               <option value="margarita">House Margarita</option>
@@ -80,58 +86,64 @@ import siteCopy from '../../data/siteCopy.json';
               <option value="kalliopi">House Kalliopi</option>
               <option value="monastiri">House Monastiri</option>
               <option value="almond-tree-villa">Almond Tree Villa (Vrouchas)</option>
-              <option value="multiple">Multiple properties</option>
+              <option value="multiple">Multiple Properties</option>
             </select>
           </div>
 
-          <div>
-            <label for="message" class="block text-sm font-medium text-body-text mb-1.5">Message</label>
+          <div class="group">
+            <label for="message" class="block text-[10px] uppercase tracking-[0.2em] font-bold text-stone-400 mb-2 group-focus-within:text-stone-950 transition-colors">Message</label>
             <textarea
               id="message"
               name="message"
               rows={5}
               required
-              class="w-full border border-stone-300 rounded-lg px-3.5 py-2.5 text-sm text-body-text bg-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors duration-150 resize-y"
+              class="w-full bg-transparent border-b border-stone-200 py-3 focus:outline-none focus:border-stone-950 transition-colors placeholder-stone-300 font-light resize-none"
               placeholder="Your question or message…"
             ></textarea>
           </div>
 
-          <div>
-            <button type="submit" class="btn-cta w-full sm:w-auto text-sm px-8">
-              Send message
+          <div class="pt-4">
+            <button type="submit" class="btn-cta bg-stone-950 text-white border-stone-950 hover:bg-primary hover:border-primary px-12 py-4 shadow-premium transition-all duration-300">
+              Send Message
             </button>
           </div>
 
-          <p class="text-xs text-muted">
-            We aim to respond within one business day. For urgent booking matters, please also check availability directly in the <a href={siteCopy.bookingEngineUrl} target="_blank" rel="noopener noreferrer" class="underline hover:text-body-text transition-colors duration-150">booking system</a>.
+          <p class="text-[11px] text-stone-400 leading-relaxed font-medium italic">
+            We aim to respond within one business day. For immediate availability, please use our 
+            <a href={siteCopy.bookingEngineUrl} target="_blank" rel="noopener noreferrer" class="text-stone-950 underline underline-offset-2 hover:text-primary transition-colors">online system</a>.
           </p>
         </form>
       </div>
 
-      <aside class="lg:col-span-2">
-        <div class="bg-white rounded-xl border border-stone-200 p-6 shadow-card mb-6">
-          <h2 class="font-sans font-semibold text-body-text mb-4">Before contacting</h2>
-          <ul class="space-y-3 text-sm text-stone-600">
-            <li class="flex items-start gap-2">
-              <svg class="flex-shrink-0 mt-0.5 text-muted" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-              <span>For availability and pricing, use the <a href={siteCopy.bookingEngineUrl} target="_blank" rel="noopener noreferrer" class="underline hover:text-body-text transition-colors duration-150">booking system</a> directly — it has live availability.</span>
+      {/* RIGHT: ASIDE INFO */}
+      <aside class="lg:col-span-5 space-y-12 lg:sticky lg:top-32">
+        
+        {/* HELP BOX */}
+        <div class="bg-stone-50 rounded-[2rem] border border-stone-100 p-8 shadow-sm">
+          <h2 class="font-serif text-2xl text-stone-950 mb-6">Before You Write</h2>
+          <ul class="space-y-6 text-sm text-stone-600">
+            <li class="flex items-start gap-4">
+              <svg class="flex-shrink-0 w-5 h-5 text-stone-300 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+              <span>For live availability and pricing, our <a href={siteCopy.bookingEngineUrl} class="text-stone-950 font-bold underline underline-offset-4">Booking System</a> is always up to date.</span>
             </li>
-            <li class="flex items-start gap-2">
-              <svg class="flex-shrink-0 mt-0.5 text-muted" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-              <span>Many questions are answered on the <a href="/en/faq/" class="underline hover:text-body-text transition-colors duration-150">FAQ page</a>.</span>
+            <li class="flex items-start gap-4">
+              <svg class="flex-shrink-0 w-5 h-5 text-stone-300 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3M12 17h.01"/></svg>
+              <span>Quick answers regarding Wi-Fi, pools, and check-in can be found on our <a href="/en/faq/" class="text-stone-950 font-bold underline underline-offset-4">FAQ page</a>.</span>
             </li>
-            <li class="flex items-start gap-2">
-              <svg class="flex-shrink-0 mt-0.5 text-muted" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg>
-              <span>Access and house rules are on the <a href="/en/policies/" class="underline hover:text-body-text transition-colors duration-150">Policies page</a>.</span>
+            <li class="flex items-start gap-4">
+              <svg class="flex-shrink-0 w-5 h-5 text-stone-300 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+              <span>Detailed mobility information and house rules are listed on our <a href="/en/policies/" class="text-stone-950 font-bold underline underline-offset-4">Policies page</a>.</span>
             </li>
           </ul>
         </div>
 
-        <div class="bg-stone-200 rounded-xl p-6">
-          <h2 class="font-sans font-semibold text-body-text mb-3 text-sm uppercase tracking-wider">Group bookings</h2>
-          <p class="text-sm text-stone-600 leading-relaxed">
-            If you need multiple properties for the same dates (family gatherings, friend groups), contact us directly. We can confirm simultaneous availability across houses and assist with coordination.
+        {/* GROUP BOOKING CARD */}
+        <div class="bg-stone-950 text-stone-400 rounded-[2rem] p-8 shadow-2xl">
+          <h2 class="text-white font-serif text-2xl mb-4">Group Gatherings</h2>
+          <p class="text-sm leading-relaxed mb-6 font-light">
+            Planning a retreat or a large family gathering? We can assist in coordinating simultaneous bookings across multiple houses in Mavrikiano.
           </p>
+          <div class="w-12 h-1 bg-primary/30 rounded-full"></div>
         </div>
       </aside>
 
@@ -141,11 +153,30 @@ import siteCopy from '../../data/siteCopy.json';
 </Base>
 
 <script>
+  // Preservation of your original submission logic
   const params = new URLSearchParams(window.location.search);
   if (params.get('sent') === '1') {
     const form = document.querySelector('form[name="contact"]');
     if (form) {
-      form.innerHTML = '<div class="bg-success/10 border border-success/30 rounded-lg p-6 text-success"><p class="font-medium mb-1">Message sent</p><p class="text-sm">Thank you — we\'ll be in touch shortly.</p></div>';
+      form.innerHTML = `
+        <div class="bg-stone-50 border border-stone-200 rounded-[2rem] p-10 text-center animate-in zoom-in-95 duration-500">
+          <div class="w-16 h-16 bg-primary/10 text-primary rounded-full flex items-center justify-center mx-auto mb-6">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          </div>
+          <h2 class="font-serif text-3xl text-stone-950 mb-2">Message Received</h2>
+          <p class="text-stone-500 font-light italic">Thank you for reaching out. We will get back to you shortly.</p>
+        </div>
+      `;
     }
   }
 </script>
+
+<style>
+  /* Custom select styling for a cleaner look */
+  select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23d6d3d1'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0px center;
+    background-size: 1.2em;
+  }
+</style>

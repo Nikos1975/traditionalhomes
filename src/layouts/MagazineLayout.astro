@@ -1,0 +1,111 @@
+---
+// 1. Get the frontmatter data from the Markdown file
+const { frontmatter } = Astro.props;
+---
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>{frontmatter.title} | National Geographic Style</title>
+
+        <style is:global>
+            /* 2. DECLARE YOUR DOWNLOADED FONTS */
+            /* Replace 'YourSerifFont.woff2' with your actual filename */
+            @font-face {
+                font-family: "MagSerif";
+                src: url("/fonts/YourSerifFont.woff2") format("woff2");
+                font-weight: normal;
+                font-style: normal;
+                font-display: swap;
+            }
+
+            @font-face {
+                font-family: "MagSans";
+                src: url("/fonts/YourSansFont.woff2") format("woff2");
+                font-weight: bold;
+                font-style: normal;
+                font-display: swap;
+            }
+
+            /* 3. NATIONAL GEOGRAPHIC STYLING */
+            body {
+                background-color: #f9f8f6; /* Limestone White */
+                color: #2d2a26; /* Deep Ash */
+                margin: 0;
+                padding: 0;
+            }
+
+            /* The Drop Cap (The large first letter) */
+            .prose p:first-of-type::first-letter {
+                font-family: "MagSerif", serif;
+                font-size: 5rem;
+                font-weight: bold;
+                float: left;
+                margin-right: 0.75rem;
+                line-height: 1;
+                color: #ffcc00; /* NatGeo Yellow */
+                margin-top: 0.5rem;
+            }
+
+            /* Responsive Container */
+            .container {
+                max-width: 800px;
+                margin: 0 auto;
+                padding: 4rem 1.5rem;
+            }
+
+            .serif-text {
+                font-family: "MagSerif", serif;
+                line-height: 1.8;
+            }
+            .sans-text {
+                font-family: "MagSans", sans-serif;
+                letter-spacing: 0.05em;
+            }
+        </style>
+    </head>
+
+    <body>
+        <article class="container">
+            <header style="margin-bottom: 3rem;">
+                <span
+                    class="sans-text"
+                    style="color: #ffcc00; font-weight: bold; text-transform: uppercase; font-size: 0.8rem;"
+                >
+                    {frontmatter.region}
+                </span>
+
+                <h1
+                    class="serif-text"
+                    style="font-size: 3.5rem; margin-top: 1rem; color: #1e3a5f; line-height: 1.1;"
+                >
+                    {frontmatter.title}
+                </h1>
+
+                <p
+                    class="serif-text"
+                    style="font-size: 1.4rem; font-style: italic; color: #738271; margin-top: 1rem;"
+                >
+                    {frontmatter.subtitle}
+                </p>
+
+                <div
+                    style="margin-top: 2rem; border-top: 1px solid #e5e1d7; padding-top: 1rem; font-size: 0.9rem;"
+                    class="sans-text"
+                >
+                    By {frontmatter.author} — {
+                        new Date(frontmatter.date).toLocaleDateString("en-US", {
+                            month: "long",
+                            year: "numeric",
+                        })
+                    }
+                </div>
+            </header>
+
+            <div class="prose serif-text" style="font-size: 1.15rem;">
+                <slot />
+            </div>
+        </article>
+    </body>
+</html>

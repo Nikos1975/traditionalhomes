@@ -14,198 +14,211 @@ const villa = units.find((u) => u.type === 'villa');
 ---
 
 <Base
-  title="Elounda Traditional Homes | Stone Houses & Villa in Crete"
+  title={`${siteCopy.siteName} | Authentic Stone Houses & Villa in Crete`}
   description={siteCopy.metaDescriptionHome}
   canonicalUrl="https://traditional-homes.gr/en/"
 >
 
-  <section class="relative overflow-hidden bg-stone-800" aria-label="Hero">
-    <div class="absolute inset-0 bg-gradient-to-b from-stone-900/50 via-stone-900/20 to-stone-900/60 z-10"></div>
-    <div
-      class="absolute inset-0 bg-center bg-cover"
-      style="background-image: url('/images/brand/home-hero-spinalonga-2400.webp');"
-      role="img"
-      aria-label="View of Spinalonga island from the hillside properties in Elounda, Crete"
-    ></div>
+  {/* 1. EDITORIAL HERO SECTION */}
+  <section class="relative h-[85vh] min-h-[600px] w-full overflow-hidden flex items-center bg-stone-900" aria-label="Hero">
+    <div class="absolute inset-0 z-0">
+      <div 
+        class="w-full h-full bg-center bg-cover scale-105 animate-slow-zoom opacity-70"
+        style="background-image: url('/images/brand/home-hero-spinalonga-2400.webp');"
+        role="img"
+        aria-label="View of Spinalonga island from the hillside properties"
+      ></div>
+      <div class="absolute inset-0 bg-gradient-to-r from-stone-950/80 via-stone-950/20 to-transparent"></div>
+    </div>
 
-    <div class="relative z-20 site-max site-pad py-24 md:py-36 lg:py-48 flex flex-col items-start">
-      <p class="font-sans text-sm font-medium text-white/70 uppercase tracking-widest mb-4">
-        Mavrikiano &amp; Vrouchas · Elounda, Crete
-      </p>
-      <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl text-white max-w-2xl leading-tight mb-5">
-        {siteCopy.heroHeadline}
-      </h1>
-      <p class="font-sans text-lg text-white/80 max-w-lg leading-relaxed mb-8">
-        {siteCopy.heroSubline}
-      </p>
-      <div class="flex flex-wrap gap-3">
-        <a href="/en/houses/" class="btn-outline bg-white text-body-text border-white hover:bg-stone-100 hover:border-stone-100 text-sm">
-          View Houses &amp; Villa
-        </a>
-        <a
-          href={siteCopy.bookingEngineUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="btn-cta text-sm"
-        >
-          Check Availability
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
-          </svg>
-        </a>
+    <div class="relative z-10 site-max site-pad w-full">
+      <div class="max-w-3xl animate-in fade-in slide-in-from-left-8 duration-1000">
+        <p class="text-[10px] md:text-xs uppercase tracking-[0.5em] text-stone-300 font-bold mb-6">
+          Est. 1994 · Elounda, Crete
+        </p>
+        <h1 class="font-serif text-5xl md:text-7xl lg:text-8xl text-white mb-8 leading-[1.1] tracking-tight">
+          The Art of <br/> <span class="italic font-light text-stone-200">Village Living</span>
+        </h1>
+        <p class="font-serif italic text-xl md:text-2xl text-stone-300 max-w-xl leading-relaxed mb-10 font-light">
+          {siteCopy.heroSubline}
+        </p>
+        <div class="flex flex-wrap gap-4">
+          <a href="/en/houses/" class="btn-cta bg-white text-stone-950 border-white hover:bg-primary hover:text-white hover:border-primary px-8 py-4">
+            Explore the Collection
+          </a>
+          <a
+            href={siteCopy.bookingEngineUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-cta bg-transparent border-white/30 text-white hover:bg-white/10 px-8 py-4"
+          >
+            Check Availability
+          </a>
+        </div>
       </div>
+    </div>
+
+    {/* Scroll Indicator */}
+    <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 opacity-40 animate-bounce">
+      <span class="text-[9px] uppercase tracking-[0.3em] text-white font-bold">Explore</span>
+      <div class="w-px h-10 bg-gradient-to-b from-white to-transparent"></div>
     </div>
   </section>
 
-  <section class="site-max site-pad py-16 md:py-24" aria-label="Houses and Villa overview">
-    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
-      <div>
-        <h2 class="section-heading">Ten houses. One villa.</h2>
-        <p class="section-sub max-w-xl">
-          All properties are traditional stone houses restored for comfortable stays. Located in Mavrikiano village (houses) and Vrouchas (villa), both within the greater Elounda area.
+  {/* 2. THE COLLECTION OVERVIEW */}
+  <section class="site-max site-pad py-20 md:py-32" aria-label="Houses and Villa overview">
+    <header class="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-20">
+      <div class="max-w-2xl">
+        <h2 class="font-serif text-4xl md:text-6xl text-stone-950 mb-6 leading-tight">Ten houses. <span class="italic text-stone-400">One villa.</span></h2>
+        <p class="text-xl text-stone-500 font-light leading-relaxed italic">
+          Meticulously restored stone architecture nestled in the historic hillsides of Mavrikiano and Vrouchas.
         </p>
       </div>
-      <a href="/en/houses/" class="btn-outline text-sm flex-shrink-0">Browse all properties</a>
+      <a href="/en/houses/" class="text-stone-900 font-bold text-xs uppercase tracking-widest border-b-2 border-stone-200 hover:border-stone-950 transition-all pb-1 mb-2">
+        Browse the Portfolio
+      </a>
+    </header>
+
+    {/* VILLAGE ACCESS CALLOUT */}
+    <div class="mb-16 p-8 bg-stone-50 rounded-[2.5rem] border border-stone-100 flex items-start gap-6 shadow-sm">
+      <div class="w-12 h-12 rounded-full bg-white flex items-center justify-center text-stone-400 flex-shrink-0 shadow-sm border border-stone-100">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      </div>
+      <p class="text-sm text-stone-600 leading-relaxed max-w-3xl">
+        <strong class="font-bold text-stone-950 uppercase tracking-widest text-[10px] block mb-1">A Note on Village Terrain</strong>
+        {siteCopy.accessNoteShort} <a href={siteCopy.accessAnchorUrl} class="text-stone-950 font-bold underline underline-offset-4 hover:text-primary transition-colors">View full access details</a>.
+      </p>
     </div>
 
-    <div class="access-note mb-8 flex items-start gap-2">
-      <svg class="flex-shrink-0 mt-0.5" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
-      </svg>
-      <span>
-        {siteCopy.accessNoteShort}&nbsp;
-        <a href={siteCopy.accessAnchorUrl} class="underline hover:text-body-text transition-colors duration-150">Full access details.</a>
-      </span>
-    </div>
-
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+    {/* THE GRID */}
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-12 mb-16">
       {houses.map((unit, index) => (
-        <div class="reveal">
-          <UnitCard unit={unit} priority={index < 3} />
-        </div>
+        <UnitCard unit={unit} priority={index < 3} />
       ))}
     </div>
 
+    {/* FEATURED VILLA SECTION */}
     {villa && (
-      <div class="border-t border-stone-200 pt-8 mt-4">
-        <h3 class="font-serif text-2xl text-body-text mb-6">The Villa</h3>
-        <div class="max-w-sm reveal">
-          <UnitCard unit={villa} />
+      <div class="mt-20 pt-20 border-t border-stone-100">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div class="lg:col-span-4">
+            <span class="text-[10px] uppercase tracking-[0.3em] font-bold text-primary mb-4 block">Signature Property</span>
+            <h3 class="font-serif text-4xl md:text-5xl text-stone-950 mb-6 leading-tight">The Villa</h3>
+            <p class="text-stone-500 font-light text-lg leading-relaxed mb-8">
+              A private hillside sanctuary in Vrouchas, designed for unparalleled privacy and sweeping views of the Aegean.
+            </p>
+            <a href={`/en/villa/${villa.slug}/`} class="btn-cta">Explore the Villa</a>
+          </div>
+          <div class="lg:col-span-8">
+            <UnitCard unit={villa} />
+          </div>
         </div>
       </div>
     )}
-
-    <div class="mt-8 text-center">
-      <a href="/en/houses/" class="btn-outline text-sm">
-        View all 11 properties
-      </a>
-    </div>
   </section>
 
-  <section class="bg-stone-200 border-y border-stone-300" aria-label="Location teaser">
-    <div class="site-max site-pad py-16 md:py-20 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
-      <div class="reveal">
-        <p class="text-xs font-medium uppercase tracking-widest text-muted mb-3">Location</p>
-        <h2 class="font-serif text-3xl md:text-4xl text-body-text mb-4">
-          Above Elounda Bay
+  {/* 3. LOCATION & LIFESTYLE */}
+  <section class="bg-stone-950 text-stone-400 overflow-hidden" aria-label="Location teaser">
+    <div class="site-max site-pad py-24 md:py-32 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+      <div class="order-2 lg:order-1 relative">
+         <div class="aspect-square rounded-[3rem] overflow-hidden shadow-2xl relative z-10">
+            <MapPreview />
+         </div>
+         {/* Decorative element */}
+         <div class="absolute -top-10 -left-10 w-40 h-40 bg-primary/10 rounded-full blur-3xl"></div>
+      </div>
+
+      <div class="order-1 lg:order-2">
+        <p class="text-[10px] font-bold uppercase tracking-[0.4em] text-primary mb-6">The Setting</p>
+        <h2 class="font-serif text-4xl md:text-6xl text-white mb-8 leading-tight tracking-tight">
+          High Above <br/> <span class="italic text-stone-500">Elounda Bay</span>
         </h2>
-        <p class="text-stone-600 leading-relaxed mb-6">
-          Mavrikiano and Vrouchas sit on the hillside above Elounda town on the northeast coast of Crete. The sea is visible from most properties. The centre of Elounda is a short drive down the hill.
+        <p class="text-lg text-stone-400 font-light leading-relaxed mb-10">
+          Our houses sit in the quiet enclaves of Mavrikiano and Vrouchas, where the scent of wild thyme meets the sea breeze. While the vibrant centre of Elounda is just a 5-minute drive away, life here moves at a different pace.
         </p>
-        <div class="flex flex-col gap-2 text-sm text-stone-700 mb-6">
-          <div class="flex items-center gap-2">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="text-muted flex-shrink-0"><circle cx="12" cy="10" r="3"/><path d="M12 2a8 8 0 0 0-8 8c0 5.25 8 12 8 12s8-6.75 8-12a8 8 0 0 0-8-8z"/></svg>
-            <span>Elounda town — 5 min drive</span>
-          </div>
-          <div class="flex items-center gap-2">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="text-muted flex-shrink-0"><circle cx="12" cy="10" r="3"/><path d="M12 2a8 8 0 0 0-8 8c0 5.25 8 12 8 12s8-6.75 8-12a8 8 0 0 0-8-8z"/></svg>
-            <span>Heraklion airport (HER) — approx 70 km</span>
-          </div>
-          <div class="flex items-center gap-2">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="text-muted flex-shrink-0"><circle cx="12" cy="10" r="3"/><path d="M12 2a8 8 0 0 0-8 8c0 5.25 8 12 8 12s8-6.75 8-12a8 8 0 0 0-8-8z"/></svg>
-            <span>Sitia airport (JSH) — approx 40 km</span>
-          </div>
+        
+        <ul class="space-y-6 mb-12 border-t border-stone-800 pt-10">
+          {[
+            { label: 'Elounda town', time: '5 min drive' },
+            { label: 'Heraklion Airport (HER)', time: '70 km' },
+            { label: 'Sitia Airport (JSH)', time: '40 km' }
+          ].map(item => (
+            <li class="flex items-center justify-between text-sm">
+              <span class="text-stone-100 font-medium tracking-wide">{item.label}</span>
+              <span class="text-stone-500 font-light uppercase tracking-widest text-[10px]">{item.time}</span>
+            </li>
+          ))}
+        </ul>
+
+        <div class="flex flex-wrap gap-4">
+          <a href="/en/location/" class="btn-cta border-stone-700 text-white hover:bg-white hover:text-stone-950">Location & Travel</a>
+          <a href="/en/guide/mavrikiano/" class="btn-cta bg-primary border-primary text-white hover:bg-amber-600">Local Guide</a>
         </div>
-        <div class="flex flex-wrap gap-3">
-          <a href="/en/location/" class="btn-outline text-sm">Location &amp; travel</a>
-          <a href="/en/guide/mavrikiano/" class="btn-outline border-amber-700 text-amber-900 hover:bg-amber-700 hover:text-white transition-colors duration-200 text-sm">Mavrikiano Guide</a>
-          <a href="/en/guide/vrouchas/" class="btn-outline border-amber-700 text-amber-900 hover:bg-amber-700 hover:text-white transition-colors duration-200 text-sm">Vrouchas Guide</a>
-        </div>
-      </div>
-      <div class="reveal">
-        <MapPreview />
       </div>
     </div>
   </section>
 
-  <section class="site-max site-pad py-16 md:py-24" aria-label="FAQ teaser and about">
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-
-      <div class="reveal">
-        <div class="w-10 h-10 rounded-full bg-stone-200 flex items-center justify-center mb-4">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" class="stroke-accent-blue" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+  {/* 4. UTILITY GRID (FAQ / ABOUT / POLICIES) */}
+  <section class="site-max site-pad py-24 md:py-32">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-16">
+      {[
+        { 
+          title: 'Frequently Asked', 
+          desc: 'Details on Wi-Fi, village access, pet policies, and shared pool arrangements.', 
+          link: '/en/faq/', 
+          label: 'Read FAQ' 
+        },
+        { 
+          title: 'Our Story', 
+          desc: 'A family-run legacy of stone restoration and traditional Cretan hospitality since 1994.', 
+          link: '/en/about/', 
+          label: 'About us' 
+        },
+        { 
+          title: 'Policies', 
+          desc: 'Straightforward information on check-in, quiet hours, and house rules.', 
+          link: '/en/policies/', 
+          label: 'View policies' 
+        }
+      ].map(item => (
+        <div class="group">
+          <h3 class="font-serif text-2xl text-stone-950 mb-4 group-hover:text-primary transition-colors">{item.title}</h3>
+          <p class="text-stone-500 font-light leading-relaxed mb-6 text-sm">{item.desc}</p>
+          <a href={item.link} class="text-[10px] uppercase tracking-[0.2em] font-bold text-stone-950 border-b border-stone-200 hover:border-stone-950 transition-all pb-1">
+            {item.label}
+          </a>
         </div>
-        <h3 class="font-serif text-xl text-body-text mb-2">Frequently asked</h3>
-        <p class="text-sm text-stone-600 leading-relaxed mb-4">
-          Answers on Wi-Fi, access, pets, parking, shared pools, check-in times, and more.
-        </p>
-        <a href="/en/faq/" class="text-sm text-accent-blue hover:text-accent-blue/70 font-medium transition-colors duration-150 underline underline-offset-2">
-          Read the FAQ
-        </a>
-      </div>
-
-      <div class="reveal">
-        <div class="w-10 h-10 rounded-full bg-stone-200 flex items-center justify-center mb-4">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#6B5F50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-        </div>
-        <h3 class="font-serif text-xl text-body-text mb-2">About these homes</h3>
-        <p class="text-sm text-stone-600 leading-relaxed mb-4">
-          A family-run collection of restored stone houses. The aim is simple stays in traditional architecture, without the resort experience.
-        </p>
-        <a href="/en/about/" class="text-sm text-accent-blue hover:text-accent-blue/70 font-medium transition-colors duration-150 underline underline-offset-2">
-          About us
-        </a>
-      </div>
-
-      <div class="reveal">
-        <div class="w-10 h-10 rounded-full bg-stone-200 flex items-center justify-center mb-4">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#6B5F50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-        </div>
-        <h3 class="font-serif text-xl text-body-text mb-2">Policies &amp; house rules</h3>
-        <p class="text-sm text-stone-600 leading-relaxed mb-4">
-          Check-in/out times, access information, pet policy, and quiet hours. Clear and straightforward.
-        </p>
-        <a href="/en/policies/" class="text-sm text-accent-blue hover:text-accent-blue/70 font-medium transition-colors duration-150 underline underline-offset-2">
-          View policies
-        </a>
-      </div>
-
+      ))}
     </div>
   </section>
 
-  <section class="bg-footer-bg" aria-label="Final CTA">
-    <div class="site-max site-pad py-16 md:py-20 text-center">
-      <h2 class="font-serif text-3xl md:text-4xl text-white mb-4">Ready to book?</h2>
-      <p class="text-footer-text/70 text-base max-w-md mx-auto mb-8">
-        Bookings are handled through our availability system. Select a property and check dates directly.
+  {/* 5. FINAL MASTHEAD CTA */}
+  <section class="bg-stone-50 border-t border-stone-100">
+    <div class="site-max site-pad py-24 md:py-32 text-center">
+      <h2 class="font-serif text-5xl md:text-7xl text-stone-950 mb-8 leading-tight tracking-tight">Begin your <span class="italic text-stone-400">journey.</span></h2>
+      <p class="text-stone-500 text-lg md:text-xl font-light max-w-xl mx-auto mb-12">
+        Bookings are managed through our secure availability system. Select your property and dates to proceed.
       </p>
-      <div class="flex flex-wrap gap-3 justify-center">
-        <a href="/en/houses/" class="btn-outline border-white/30 text-white hover:bg-white/10 hover:border-white/50 text-sm">
-          Browse properties
-        </a>
-        <a
-          href={siteCopy.bookingEngineUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="btn-cta text-sm"
-        >
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href={siteCopy.bookingEngineUrl} target="_blank" class="btn-cta bg-stone-950 text-white px-12 py-5 shadow-premium">
           Check Availability
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
-          </svg>
+        </a>
+        <a href="/en/houses/" class="btn-cta bg-transparent border-stone-200 text-stone-950 hover:bg-stone-100 px-12 py-5">
+          View All Properties
         </a>
       </div>
     </div>
   </section>
 
 </Base>
+
+<style>
+  .animate-slow-zoom {
+    animation: slowZoom 25s infinite alternate ease-in-out;
+  }
+  
+  @keyframes slowZoom {
+    from { transform: scale(1); }
+    to { transform: scale(1.15); }
+  }
+</style>

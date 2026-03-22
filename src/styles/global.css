@@ -60,14 +60,16 @@
   }
 
   body {
-    @apply bg-stone-100 text-body-text font-sans;
+    /* Upgraded to stone-50 for a cleaner "magazine page" feel */
+    @apply bg-stone-50 text-body-text font-sans;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility; /* Makes serif fonts look much sharper */
   }
 
   h1, h2, h3 {
     font-family: var(--font-serif);
-    font-weight: 500;
+    font-weight: 400; /* Dropped to 400 so the serif looks more elegant and less chunky */
     line-height: 1.1;
     text-wrap: balance;
     letter-spacing: -0.01em;
@@ -84,12 +86,12 @@
   }
 
   a {
-    @apply transition-colors duration-150;
+    @apply transition-colors duration-300; /* Slowed down slightly for a more luxurious feel */
   }
 
   :focus-visible {
     @apply outline-2 outline-offset-2 outline-primary;
-    border-radius: 2px;
+    border-radius: 4px;
   }
 
   img {
@@ -98,73 +100,61 @@
 }
 
 @layer components {
+  /* Upgraded Buttons to match the new House layout UI */
   .btn-primary, .btn-cta {
-    @apply inline-flex items-center justify-center gap-2 bg-primary text-white font-sans font-medium text-sm px-5 py-3 rounded transition-colors duration-150;
+    @apply inline-flex items-center justify-center gap-2 bg-primary text-white font-sans font-bold text-[11px] uppercase tracking-[0.2em] px-8 py-4 rounded-xl transition-all duration-300 shadow-md;
   }
   .btn-primary:hover, .btn-cta:hover {
-    @apply bg-primary-hover;
+    @apply bg-stone-900 shadow-lg -translate-y-[1px];
   }
 
   .btn-outline {
-    @apply inline-flex items-center justify-center gap-2 border border-stone-400 text-body-text font-sans font-medium text-sm px-5 py-3 rounded transition-colors duration-150;
+    @apply inline-flex items-center justify-center gap-2 border border-stone-300 text-body-text font-sans font-bold text-[11px] uppercase tracking-[0.2em] px-8 py-4 rounded-xl transition-all duration-300;
   }
   .btn-outline:hover {
-    @apply border-stone-600 bg-stone-200;
+    @apply border-stone-900 bg-stone-50 text-stone-900;
   }
 
+  /* Keeping your existing badges and utilities */
   .badge {
     @apply inline-flex items-center gap-1 text-xs font-medium px-2 py-0.5 rounded-full;
   }
-
-  .badge-pool {
-    @apply badge bg-stone-200 text-accent-blue border border-stone-300;
-  }
-
-  .badge-shared-pool {
-    @apply badge bg-amber-50 text-amber-800 border border-amber-200;
-  }
-
-  .badge-stairs {
-    @apply badge bg-stone-200 text-stone-700;
-  }
-
-  .badge-no-pool {
-    @apply badge bg-stone-200 text-stone-600;
-  }
+  .badge-pool { @apply badge bg-stone-200 text-accent-blue border border-stone-300; }
+  .badge-shared-pool { @apply badge bg-amber-50 text-amber-800 border border-amber-200; }
+  .badge-stairs { @apply badge bg-stone-200 text-stone-700; }
+  .badge-no-pool { @apply badge bg-stone-200 text-stone-600; }
 
   .section-heading {
-    @apply font-serif text-3xl md:text-4xl text-body-text;
+    @apply font-serif text-4xl md:text-5xl text-body-text;
   }
 
   .section-sub {
-    @apply text-muted text-base mt-3;
+    @apply text-muted text-base mt-4 italic font-light;
     line-height: 1.6;
   }
 
   .constraint-block {
-    @apply bg-amber-50 border border-amber-200 rounded-lg px-4 py-3 text-sm text-amber-900;
+    @apply bg-amber-50 border border-amber-200 rounded-[1.5rem] px-6 py-5 text-sm text-amber-900 italic;
   }
 
   .access-note {
-    @apply bg-stone-200 border border-stone-300 rounded px-3 py-2 text-sm text-stone-700;
+    @apply bg-stone-100 border border-stone-200 rounded-2xl px-5 py-4 text-sm text-stone-700;
   }
 
-  /* Glassmorphism utility */
   .glass {
     @apply bg-white/70 backdrop-blur-md border-b border-white/20;
   }
 
-  /* Refined Shadows */
   .shadow-premium {
     box-shadow: 
-      0 2px 4px -1px rgba(0, 0, 0, 0.06), 
-      0 4px 6px -1px rgba(0, 0, 0, 0.08);
+      0 4px 20px -2px rgba(0, 0, 0, 0.05), 
+      0 4px 6px -1px rgba(0, 0, 0, 0.02);
   }
 
   .shadow-premium-hover {
     box-shadow: 
-      0 10px 15px -3px rgba(0, 0, 0, 0.1), 
-      0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      0 20px 25px -5px rgba(0, 0, 0, 0.1), 
+      0 8px 10px -6px rgba(0, 0, 0, 0.05);
   }
 }
 

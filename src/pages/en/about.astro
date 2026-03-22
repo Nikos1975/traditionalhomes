@@ -4,63 +4,95 @@ import siteCopy from '../../data/siteCopy.json';
 ---
 
 <Base
-  title="About | Elounda Traditional Homes"
+  title={`Our Story | ${siteCopy.siteName}`}
   description={siteCopy.metaDescriptionAbout}
   canonicalUrl="https://traditional-homes.gr/en/about/"
 >
 
-  <div class="site-max site-pad py-12 md:py-16">
-
-    <nav class="text-xs text-muted mb-6" aria-label="Breadcrumb">
-      <ol class="flex items-center gap-1.5" role="list">
-        <li><a href="/en/" class="hover:text-body-text transition-colors duration-150">Home</a></li>
-        <li aria-hidden="true">›</li>
-        <li class="text-body-text font-medium" aria-current="page">About</li>
+  <div class="site-max site-pad py-16 md:py-24">
+    
+    {/* BREADCRUMB */}
+    <nav class="text-[10px] uppercase tracking-[0.4em] text-stone-400 mb-12 font-bold" aria-label="Breadcrumb">
+      <ol class="flex items-center gap-2" role="list">
+        <li><a href="/en/" class="hover:text-stone-900 transition-colors">Home</a></li>
+        <li aria-hidden="true" class="text-stone-200">/</li>
+        <li class="text-stone-900" aria-current="page">Our Story</li>
       </ol>
     </nav>
 
-    <div class="max-w-2xl">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24">
+      
+      {/* LEFT: TEXT CONTENT */}
+      <div class="lg:col-span-7">
+        <header class="mb-12">
+          <h1 class="font-serif text-5xl md:text-7xl text-stone-950 mb-8 leading-tight tracking-tight">
+            Preserving <br/> <span class="italic text-stone-400">Cretan Heritage</span>
+          </h1>
+          <p class="text-2xl text-stone-600 font-light leading-relaxed font-serif italic">
+            "A family-run legacy of stone restoration, designed for those who seek the quiet rhythms of village life."
+          </p>
+        </header>
 
-      <h1 class="font-serif text-4xl md:text-5xl text-body-text mb-6">About</h1>
+        <div class="space-y-8 text-stone-600 leading-relaxed font-light text-lg">
+          <p>
+            Elounda Traditional Homes is more than a collection of properties; it is a long-term project in architectural preservation. Since 1994, our family has worked to breathe new life into the historic ruins of Mavrikiano and Vrouchas.
+          </p>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-10 py-6">
+            <div class="border-l border-stone-200 pl-6">
+              <h3 class="text-stone-950 font-bold uppercase tracking-widest text-[10px] mb-2">The Architecture</h3>
+              <p class="text-sm">We maintain original stone construction and traditional layouts, ensuring the soul of the home remains intact while adding modern comforts.</p>
+            </div>
+            <div class="border-l border-stone-200 pl-6">
+              <h3 class="text-stone-950 font-bold uppercase tracking-widest text-[10px] mb-2">The Experience</h3>
+              <p class="text-sm">Our aim is a straightforward experience: stay in a real village, away from resort infrastructure, where the sea is your backdrop.</p>
+            </div>
+          </div>
 
-      <div class="space-y-5 text-stone-600 leading-relaxed">
-        <p>
-          Elounda Traditional Homes is a family-run collection of traditional stone houses and one hillside villa in the villages of Mavrikiano and Vrouchas, above Elounda on the northeast coast of Crete.
-        </p>
-        <p>
-          The ten houses in Mavrikiano have been individually restored over several years, keeping the original stone construction and traditional architectural character while adding the practical comfort needed for a proper stay — functional kitchens, reliable hot water, proper beds, and fast Wi-Fi.
-        </p>
-        <p>
-          The aim is a straightforward experience: stay in a traditional house, in a real village, in a part of Crete that gets quieter and more beautiful the higher you go. There is no reception, no pool bar, and no resort infrastructure. The sea, restaurants, and the Spinalonga ferry are a few minutes' drive down the hill.
-        </p>
-        <p>
-          Villa Almyra in Vrouchas is the larger property in the collection — a four-bedroom villa on the hillside above Mavrikiano, with a long panoramic view over Elounda Bay and the Mirabello Gulf.
-        </p>
-      </div>
+          <p>
+            The ten houses in Mavrikiano have been individually restored over several years. We focused on keeping the original stone walls and traditional wood beams while integrating high-speed Wi-Fi, functional kitchens, and premium bedding.
+          </p>
 
-      <div class="mt-10 pt-8 border-t border-stone-200">
-        <h2 class="font-serif text-2xl text-body-text mb-4">Contact</h2>
-        <p class="text-sm text-stone-600 mb-4">
-          For booking enquiries or questions about specific properties, use the contact page or book directly through the availability system.
-        </p>
-        <div class="flex flex-wrap gap-3">
-          <a href="/en/contact/" class="btn-outline text-sm">Contact us</a>
-          <a
-            href={siteCopy.bookingEngineUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="btn-cta text-sm"
-          >
-            Check Availability
-          </a>
+          <p>
+            Our signature property, <strong class="text-stone-950 font-medium">Villa Almyra</strong> in Vrouchas, represents the pinnacle of our collection. It offers a four-bedroom sanctuary on the hillside with panoramic views over Mirabello Bay and the historic island of Spinalonga.
+          </p>
+        </div>
+
+        {/* CTAS */}
+        <div class="mt-16 pt-12 border-t border-stone-100">
+          <div class="flex flex-wrap gap-4">
+            <a href="/en/houses/" class="btn-cta bg-stone-950 text-white px-10 py-4">Explore the Houses</a>
+            <a href="/en/contact/" class="btn-cta bg-transparent border-stone-200 text-stone-950 hover:bg-stone-50 px-10 py-4">Get in Touch</a>
+          </div>
         </div>
       </div>
 
-      <div class="mt-8 pt-6 border-t border-stone-200">
-        <p class="text-sm text-stone-500">
-          traditional-homes.gr &nbsp;·&nbsp; Mavrikiano &amp; Vrouchas, Elounda, Crete
-        </p>
-      </div>
+      {/* RIGHT: EDITORIAL IMAGERY & QUICK INFO */}
+      <aside class="lg:col-span-5 space-y-12">
+        <div class="relative group">
+          <div class="aspect-[3/4] rounded-[3rem] overflow-hidden shadow-2xl">
+            <img 
+              src="/images/brand/about-detail.webp" 
+              alt="Close up of traditional Cretan stone work" 
+              class="w-full h-full object-cover grayscale-[20%] group-hover:scale-105 transition-transform duration-1000"
+            />
+          </div>
+          <div class="absolute -bottom-6 -right-6 bg-primary p-8 rounded-2xl shadow-xl hidden md:block">
+            <p class="text-white font-serif text-3xl">30+</p>
+            <p class="text-white/80 text-[10px] uppercase tracking-widest font-bold">Years of Hospitality</p>
+          </div>
+        </div>
+
+        <div class="bg-stone-50 rounded-[2.5rem] p-10 border border-stone-100">
+          <h2 class="font-serif text-2xl text-stone-950 mb-6 font-medium">The Location</h2>
+          <p class="text-sm text-stone-500 leading-relaxed mb-6 font-light">
+            Our properties are split between two distinct areas: the historic village of <span class="text-stone-900 font-medium">Mavrikiano</span> (houses) and the tranquil heights of <span class="text-stone-900 font-medium">Vrouchas</span> (villa).
+          </p>
+          <p class="text-[10px] text-stone-400 font-bold uppercase tracking-widest">
+            Mavrikiano & Vrouchas, Elounda, Crete
+          </p>
+        </div>
+      </aside>
 
     </div>
   </div>

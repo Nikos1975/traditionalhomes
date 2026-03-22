@@ -1,0 +1,18 @@
+---
+import { getCollection } from "astro:content";
+
+// 1. Tell Astro which files to look for in the 'blog' folder
+export async function getStaticPaths() {
+  const blogEntries = await getCollection("blog");
+  return blogEntries.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+// 2. Grab the specific post data based on the URL
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+---
+
+<Content />

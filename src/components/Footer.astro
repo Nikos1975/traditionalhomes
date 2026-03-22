@@ -3,60 +3,76 @@ const currentYear = new Date().getFullYear();
 const bookingUrl = 'http://traditionalhomes.reserve-online.net/';
 ---
 
-<footer class="bg-footer-bg text-footer-text">
-  <div class="site-max site-pad py-12 md:py-16">
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8">
+<footer class="bg-stone-950 text-stone-400 relative overflow-hidden">
+  <div class="site-max site-pad py-16 lg:py-24 relative z-10">
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-8">
 
-      <div>
-        <div class="mb-4">
-          <p class="font-serif text-lg text-white leading-tight">Elounda Traditional Homes</p>
-          <p class="text-sm text-footer-text/70 mt-1">Mavrikiano &amp; Vrouchas &middot; Crete</p>
+      {/* BRAND COLUMN (Takes up more space) */}
+      <div class="md:col-span-5 lg:col-span-4 pr-4">
+        <div class="mb-6 flex flex-col items-start gap-4">
+          <img 
+            src="/images/brand/eh-mark.svg" 
+            alt="Elounda Traditional Homes Mark" 
+            width="40" 
+            height="40" 
+            class="w-10 h-10 opacity-50"
+          />
+          <div>
+            <p class="font-serif text-3xl text-stone-50 leading-tight tracking-wide">Elounda Traditional Homes</p>
+            <p class="text-[10px] uppercase tracking-[0.3em] font-bold text-stone-500 mt-2">Mavrikiano & Vrouchas · Crete</p>
+          </div>
         </div>
-        <p class="text-sm text-footer-text/70 leading-relaxed">
-          A family-run collection of restored stone houses in the villages above Elounda, northeast Crete.
+        <p class="text-sm text-stone-400 leading-relaxed font-light max-w-sm">
+          A family-run collection of meticulously restored stone houses and villas nestled in the historic villages above Elounda.
         </p>
-        <p class="text-sm text-footer-text/50 mt-3">traditional-homes.gr</p>
       </div>
 
-      <div>
-        <h3 class="font-sans font-semibold text-white text-sm uppercase tracking-wider mb-4">Properties</h3>
-        <ul class="space-y-2 text-sm">
-          <li><a href="/en/houses/" class="text-footer-text/70 hover:text-white transition-colors duration-150">All Stone Houses</a></li>
-          <li><a href="/en/villa/almond-tree-villa/" class="text-footer-text/70 hover:text-white transition-colors duration-150">Almond Tree Villa — Vrouchas</a></li>
-          <li>
+      {/* SPACER FOR GRID ALIGNMENT */}
+      <div class="hidden lg:block lg:col-span-2"></div>
+
+      {/* PROPERTIES COLUMN */}
+      <div class="md:col-span-3 lg:col-span-3">
+        <h3 class="font-sans font-bold text-stone-50 text-[10px] uppercase tracking-[0.2em] mb-6">The Collection</h3>
+        <ul class="space-y-4 text-sm font-light">
+          <li><a href="/en/houses/" class="hover:text-stone-50 transition-colors duration-300">All Stone Houses</a></li>
+          <li><a href="/en/villa/almond-tree-villa/" class="hover:text-stone-50 transition-colors duration-300">Almond Tree Villa</a></li>
+          <li class="pt-2">
             <a
               href={bookingUrl}
               target="_blank"
               rel="noopener noreferrer"
-              class="text-footer-text/70 hover:text-white transition-colors duration-150"
+              class="inline-flex items-center gap-2 text-[10px] uppercase tracking-[0.2em] font-bold text-stone-50 hover:text-primary transition-colors duration-300"
             >
-              Check Availability ↗
+              Check Availability
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
             </a>
           </li>
         </ul>
       </div>
 
-      <div>
-        <h3 class="font-sans font-semibold text-white text-sm uppercase tracking-wider mb-4">Information</h3>
-        <ul class="space-y-2 text-sm">
-          <li><a href="/en/location/" class="text-footer-text/70 hover:text-white transition-colors duration-150">Location &amp; Getting Here</a></li>
-          <li><a href="/en/faq/" class="text-footer-text/70 hover:text-white transition-colors duration-150">FAQ</a></li>
-          <li><a href="/en/policies/" class="text-footer-text/70 hover:text-white transition-colors duration-150">Policies &amp; House Rules</a></li>
-          <li><a href="/en/about/" class="text-footer-text/70 hover:text-white transition-colors duration-150">About</a></li>
-          <li><a href="/en/contact/" class="text-footer-text/70 hover:text-white transition-colors duration-150">Contact</a></li>
+      {/* INFORMATION COLUMN */}
+      <div class="md:col-span-4 lg:col-span-3">
+        <h3 class="font-sans font-bold text-stone-50 text-[10px] uppercase tracking-[0.2em] mb-6">Information</h3>
+        <ul class="space-y-4 text-sm font-light">
+          <li><a href="/en/location/" class="hover:text-stone-50 transition-colors duration-300">Location & Arrival</a></li>
+          <li><a href="/en/faq/" class="hover:text-stone-50 transition-colors duration-300">Questions & Answers</a></li>
+          <li><a href="/en/policies/" class="hover:text-stone-50 transition-colors duration-300">House Policies</a></li>
+          <li><a href="/en/about/" class="hover:text-stone-50 transition-colors duration-300">Our Story</a></li>
+          <li><a href="/en/contact/" class="hover:text-stone-50 transition-colors duration-300">Contact Us</a></li>
         </ul>
       </div>
 
     </div>
 
-    <div class="border-t border-white/10 mt-10 pt-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-      <p class="text-xs text-footer-text/40">
+    {/* BOTTOM BAR */}
+    <div class="border-t border-stone-800 mt-16 pt-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+      <p class="text-[11px] text-stone-500 font-light tracking-wide">
         &copy; {currentYear} Elounda Traditional Homes. All rights reserved.
       </p>
-      <nav class="flex gap-4 text-xs" aria-label="Legal">
-        <a href="/en/policies/" class="text-footer-text/40 hover:text-footer-text/70 transition-colors duration-150">Policies</a>
-        <a href="/en/policies/#access" class="text-footer-text/40 hover:text-footer-text/70 transition-colors duration-150">Accessibility</a>
-        <a href="/en/contact/" class="text-footer-text/40 hover:text-footer-text/70 transition-colors duration-150">Contact</a>
+      <nav class="flex gap-6 text-[11px] font-light tracking-wide" aria-label="Legal navigation">
+        <a href="/en/policies/" class="text-stone-500 hover:text-stone-300 transition-colors duration-300">Policies</a>
+        <a href="/en/policies/#access" class="text-stone-500 hover:text-stone-300 transition-colors duration-300">Accessibility</a>
+        <a href="https://traditional-homes.gr" class="text-stone-500 hover:text-stone-300 transition-colors duration-300">traditional-homes.gr</a>
       </nav>
     </div>
   </div>

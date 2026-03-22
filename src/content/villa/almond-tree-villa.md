@@ -1,147 +1,17 @@
 ---
 slug: "almond-tree-villa"
-type: "villa"
-
-title: "Almond Tree Villa — Private Pool Villa in Vrouchas, Elounda"
-name: "Almond Tree Villa"
-
-location: "Vrouchas, Elounda, Crete"
-area: "Elounda"
-
-sleeps_max: 10
-bedrooms: 5
-bathrooms: 2
-
-pool: "private"
-pool_notes: "Private pool 9 m × 4 m"
-
-floors: 3
-internal_stairs: true
-
-view: "Panoramic views over the Cretan Sea, olive groves, mountains, and garden"
-
-parking: "Free street parking approximately 30 meters from the entrance"
-
-wifi: true
-pets: "Small pets (≤5 kg) on request"
-
-hard_constraints:
-  - "Not step-free — several steps from parking to entrance"
-  - "Split-level villa with internal stairs"
-  - "Steep approach road — suitable for standard passenger cars"
-
-amenities:
-  - "Air conditioning (upper rooms)"
-  - "Naturally cool ground-floor bedroom (no AC)"
-  - "Fully equipped kitchen"
-  - "Summer kitchen / BBQ"
-  - "Private pool (9 m × 4 m)"
-  - "Panoramic pool terrace"
-  - "Sun loungers"
-  - "Al-fresco dining area"
-  - "Smart TV"
-  - "Espresso coffee machine"
-  - "Wi-Fi"
-  - "Garden"
-  - "Sea view"
-
-access_detail: "Hillside location in Vrouchas. Several steps from parking to entrance. Internal stairs between floors. Steep approach road suitable for standard passenger cars."
-
-booking_id: "ASP3SV"
-availability_url: "https://traditionalhomes.reserve-online.net/?room=ASP3SV"
-
-featured_image_alt: "Almond Tree Villa with private pool terrace overlooking Elounda Bay"
-
-location_relations:
-  near: null
-  above: "Mavrikiano (approx. 10 min drive)"
-  below: null
+title: "Almond Tree Villa"
+summary: "A standalone rural sanctuary in Vrouchas, offering sweeping views across the Aegean Sea, vast olive groves, and total privacy."
 ---
 
-## Overview
+### A Peaceful Hillside Retreat
+Set apart from the Mavrikiano collection, Almond Tree Villa rests in the tranquil heights of Vrouchas. This standalone sanctuary is designed for guests who desire absolute peace, sweeping natural landscapes, and a deeper immersion into the rural beauty of eastern Crete. Surrounded by vast olive groves and offering elevated, unobstructed views across the Aegean Sea, the villa provides a magnificent sense of space, seclusion, and exclusivity.
 
-Almond Tree Villa is a private multi-level villa in the hillside village of Vrouchas, above Elounda. Designed for larger groups, it accommodates up to 10 guests and combines a spacious interior with outdoor living centered around a private pool and garden.
+### The Interior Narrative
+The interior of the villa reflects a seamless blend of traditional Cretan architecture and refined modern luxury. Accommodating up to [10] guests across [5] bedrooms, the expansive layout provides an airy, light-filled environment designed for absolute comfort. Natural stone, handcrafted woodwork, and a highly considered design ensure the home remains a cool, restful haven, perfectly suited for families or groups seeking a premium private escape.
 
-The elevated position offers open views across Elounda Bay, olive groves, and the surrounding mountains, while maintaining distance from the busier coastal areas.
+### Mediterranean Outdoor Living
+The sprawling outdoor spaces are the true highlight of Almond Tree Villa. [If there is a pool: A magnificent private swimming pool anchors the main terrace, inviting refreshing midday dips.] Sun-drenched verandas and shaded dining areas gaze out over the endless blue of the Aegean and the rugged coastline. It is an idyllic, entirely private setting for slow, lingering breakfasts or long evening meals under the stars, accompanied only by the sound of the wind through the olive branches.
 
----
-
-## The Space
-
-The villa is arranged across three levels, allowing separation between sleeping and shared areas.
-
-- Sleeps up to 10 guests  
-- 5 bedrooms  
-- 2 bathrooms  
-- Multiple indoor and outdoor living areas  
-
-The layout is suited to families or groups who want shared time together while retaining privacy across different floors.
-
----
-
-## Outdoor Living
-
-Outdoor space is central to the experience.
-
-- Private pool (9 m × 4 m)  
-- Panoramic terrace with open views  
-- Sun loungers  
-- Garden with local vegetation  
-- Al-fresco dining area  
-- Summer kitchen and BBQ  
-
----
-
-## Interior & Amenities
-
-- Air conditioning in upper rooms  
-- Ground-floor master bedroom without AC, naturally cooled by thick stone walls  
-- Fully equipped main kitchen  
-- Additional summer kitchen / BBQ  
-- Smart TV  
-- Espresso coffee machine  
-- Wi-Fi  
-- Hair dryer  
-
-The villa’s traditional stone construction helps maintain stable indoor temperatures, especially on the ground floor.
-
----
-
-## Location
-
-The villa is located in Vrouchas, a hillside village above Elounda.
-
-- Approximately 10-minute drive to Elounda  
-- Elevated, quieter setting  
-- Views across Mirabello Bay  
-
-A car is recommended for access to beaches, restaurants, and nearby areas.
-
----
-
-## Access & Practical Notes
-
-- Street parking approximately 30 meters from the entrance  
-- Several steps from parking to the villa  
-- Internal stairs between all levels  
-- Steep approach road  
-
-The villa is not step-free and may not be suitable for guests with reduced mobility.
-
----
-
-## Suitability
-
-Best suited for:
-
-- Families or groups up to 10 guests  
-- Guests prioritizing privacy and outdoor space  
-- Longer stays  
-
-Less suited for:
-
-- Guests requiring step-free access  
-- Guests expecting air conditioning in every bedroom  
-- Groups expecting multiple bathrooms relative to occupancy  
-
----
+### The Vrouchas & Plaka Setting
+While the villa feels wonderfully remote and untouched, the vibrant coastline is just a short journey away. A scenic five-minute drive winds down the hillside directly to the shoreline of Plaka. Here, guests can enjoy pristine pebble beaches, traditional waterfront tavernas with fresh seafood, and immediate boat access to the island of Spinalonga. It is the perfect, harmonious balance of rural isolation and coastal elegance.

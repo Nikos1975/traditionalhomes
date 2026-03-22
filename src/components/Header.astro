@@ -13,45 +13,47 @@ const bookingUrl = 'http://traditionalhomes.reserve-online.net/';
 ---
 
 <header
-  class="fixed top-0 left-0 right-0 z-40 border-b border-transparent transition-all duration-300"
+  class="fixed top-0 left-0 right-0 z-40 border-b border-transparent transition-all duration-500 bg-white/0"
   id="main-header"
-  style="height: var(--header-h, 64px);"
+  style="height: var(--header-h, 88px);" 
 >
   <div class="site-max site-pad h-full flex items-center justify-between gap-4">
 
+    {/* BRANDING / MASTHEAD */}
     <a
       href="/en/"
-      class="flex items-center gap-3 group flex-shrink-0"
+      class="flex items-center gap-4 group flex-shrink-0"
       aria-label="Elounda Traditional Homes — home"
     >
       <img 
         src="/images/brand/eh-mark.svg" 
         alt="" 
-        width="40" 
-        height="40" 
-        class="w-10 h-10 transition-transform duration-300 group-hover:scale-105"
+        width="48" 
+        height="48" 
+        class="w-12 h-12 transition-transform duration-700 ease-out group-hover:scale-110"
       />
       <div class="flex flex-col leading-none">
-        <span class="font-serif text-lg text-body-text group-hover:text-stone-600 transition-colors duration-150 tracking-tight">
+        <span class="font-serif text-2xl text-stone-900 group-hover:text-primary transition-colors duration-300 tracking-tight">
           Elounda Traditional Homes
         </span>
-        <span class="font-sans text-[10px] uppercase text-muted mt-0.5 tracking-widest">
-          Mavrikiano &amp; Vrouchas &middot; Crete
+        <span class="font-sans text-[9px] uppercase text-stone-400 mt-1.5 tracking-[0.3em] font-bold">
+          Mavrikiano & Vrouchas · Crete
         </span>
       </div>
     </a>
 
-    <nav class="hidden lg:flex items-center gap-1" aria-label="Main navigation">
+    {/* DESKTOP NAVIGATION */}
+    <nav class="hidden xl:flex items-center gap-2" aria-label="Main navigation">
       {navLinks.map(({ label, href }) => {
         const isActive = currentPath === href || currentPath.startsWith(href.replace(/\/$/, '') + '/');
         return (
           <a
             href={href}
             class:list={[
-              'font-sans text-sm px-3 py-1.5 rounded transition-colors duration-150',
+              'font-sans text-[11px] uppercase tracking-[0.2em] px-4 py-2 rounded-full transition-all duration-300 font-bold',
               isActive
-                ? 'text-body-text font-medium bg-stone-200'
-                : 'text-muted hover:text-body-text hover:bg-stone-100'
+                ? 'text-stone-900 bg-stone-100/80 shadow-sm'
+                : 'text-stone-500 hover:text-stone-900 hover:bg-stone-50'
             ]}
             aria-current={isActive ? 'page' : undefined}
           >
@@ -61,60 +63,59 @@ const bookingUrl = 'http://traditionalhomes.reserve-online.net/';
       })}
     </nav>
 
-    <div class="flex items-center gap-3">
+    {/* CTA & MOBILE TOGGLE */}
+    <div class="flex items-center gap-4">
       <a
         href={bookingUrl}
         target="_blank"
         rel="noopener noreferrer"
-        class="btn-cta text-xs sm:text-sm hidden sm:inline-flex"
+        class="btn-cta hidden md:inline-flex"
       >
-        Check Availability
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
-        </svg>
+        Check Dates
       </a>
 
       <button
         id="menu-open"
-        class="lg:hidden flex items-center justify-center w-10 h-10 rounded text-stone-700 hover:bg-stone-200 transition-colors duration-150"
+        class="xl:hidden flex items-center justify-center w-12 h-12 rounded-full bg-stone-100 text-stone-700 hover:bg-stone-200 hover:text-stone-900 transition-colors duration-300"
         aria-label="Open navigation menu"
         aria-expanded="false"
         aria-controls="mobile-menu"
       >
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="4" y1="8" x2="20" y2="8"/><line x1="4" y1="16" x2="20" y2="16"/>
         </svg>
       </button>
     </div>
   </div>
 </header>
 
+{/* MOBILE NAVIGATION DRAWER */}
 <div
   id="mobile-menu"
   role="dialog"
   aria-label="Navigation menu"
   aria-modal="true"
-  class="fixed inset-0 z-50 lg:hidden hidden"
+  class="fixed inset-0 z-50 xl:hidden hidden"
 >
-  <div id="menu-backdrop" class="absolute inset-0 bg-black/40" aria-hidden="true"></div>
+  <div id="menu-backdrop" class="absolute inset-0 bg-stone-900/60 backdrop-blur-sm transition-opacity" aria-hidden="true"></div>
   <nav
-    class="absolute top-0 right-0 h-full w-72 max-w-full bg-header-bg flex flex-col shadow-xl"
+    class="absolute top-0 right-0 h-full w-[85vw] max-w-sm bg-stone-50 flex flex-col shadow-2xl transition-transform duration-500"
     aria-label="Mobile navigation"
   >
-    <div class="flex items-center justify-between px-5 h-16 border-b border-header-border flex-shrink-0">
-      <span class="font-serif text-base text-body-text">Menu</span>
+    <div class="flex items-center justify-between px-6 h-[88px] border-b border-stone-200 flex-shrink-0">
+      <span class="font-serif text-2xl text-stone-900">Menu</span>
       <button
         id="menu-close"
-        class="flex items-center justify-center w-9 h-9 rounded text-stone-600 hover:bg-stone-200 transition-colors duration-150"
+        class="flex items-center justify-center w-10 h-10 rounded-full bg-stone-200 text-stone-600 hover:bg-stone-300 transition-colors duration-300"
         aria-label="Close navigation menu"
       >
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
         </svg>
       </button>
     </div>
 
-    <ul class="flex-1 overflow-y-auto py-4 px-3 space-y-0.5" role="list">
+    <ul class="flex-1 overflow-y-auto py-8 px-6 space-y-2" role="list">
       {navLinks.map(({ label, href }) => {
         const isActive = currentPath === href || currentPath.startsWith(href.replace(/\/$/, '') + '/');
         return (
@@ -122,10 +123,10 @@ const bookingUrl = 'http://traditionalhomes.reserve-online.net/';
             <a
               href={href}
               class:list={[
-                'flex items-center font-sans text-base px-4 py-3 rounded transition-colors duration-150',
+                'block font-serif text-3xl px-4 py-3 rounded-xl transition-all duration-300',
                 isActive
-                  ? 'text-body-text font-medium bg-stone-200'
-                  : 'text-stone-700 hover:text-body-text hover:bg-stone-100'
+                  ? 'text-primary bg-stone-100'
+                  : 'text-stone-500 hover:text-stone-900 hover:bg-stone-100'
               ]}
               aria-current={isActive ? 'page' : undefined}
             >
@@ -136,43 +137,45 @@ const bookingUrl = 'http://traditionalhomes.reserve-online.net/';
       })}
     </ul>
 
-    <div class="p-4 border-t border-header-border flex-shrink-0">
+    <div class="p-6 border-t border-stone-200 flex-shrink-0 bg-white">
       <a
         href={bookingUrl}
         target="_blank"
         rel="noopener noreferrer"
-        class="btn-cta w-full text-sm"
+        class="btn-cta w-full justify-center"
       >
-        Check Availability
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
-        </svg>
+        Check Dates
       </a>
     </div>
   </nav>
 </div>
 
-<div style="height: var(--header-h, 64px);" aria-hidden="true"></div>
+{/* Spacer to prevent content from hiding under the fixed header */}
+<div style="height: var(--header-h, 88px);" aria-hidden="true"></div>
 
 <script>
   const openBtn = document.getElementById('menu-open') as HTMLButtonElement | null;
   const closeBtn = document.getElementById('menu-close') as HTMLButtonElement | null;
   const backdrop = document.getElementById('menu-backdrop');
   const menu = document.getElementById('mobile-menu');
+  const header = document.getElementById('main-header');
 
   function openMenu() {
     if (!menu || !openBtn) return;
     menu.classList.remove('hidden');
-    openBtn.setAttribute('aria-expanded', 'true');
-    document.body.style.overflow = 'hidden';
-    closeBtn?.focus();
+    // Tiny delay to allow display:block to apply before animating opacity/transform (if you add CSS animations later)
+    setTimeout(() => {
+      openBtn.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+      closeBtn?.focus();
+    }, 10);
   }
 
   function closeMenu() {
     if (!menu || !openBtn) return;
-    menu.classList.add('hidden');
     openBtn.setAttribute('aria-expanded', 'false');
     document.body.style.overflow = '';
+    menu.classList.add('hidden');
     openBtn.focus();
   }
 
@@ -186,17 +189,19 @@ const bookingUrl = 'http://traditionalhomes.reserve-online.net/';
     }
   });
 
-  const header = document.getElementById('main-header');
+  // Upgraded Scroll Logic
   function handleScroll() {
     if (!header) return;
     if (window.scrollY > 20) {
-      header.classList.add('glass');
-      header.classList.replace('border-transparent', 'border-white/20');
+      header.classList.add('bg-white/90', 'backdrop-blur-md', 'shadow-sm');
+      header.classList.remove('bg-white/0');
+      header.classList.replace('border-transparent', 'border-stone-200');
     } else {
-      header.classList.remove('glass');
-      header.classList.replace('border-white/20', 'border-transparent');
+      header.classList.remove('bg-white/90', 'backdrop-blur-md', 'shadow-sm');
+      header.classList.add('bg-white/0');
+      header.classList.replace('border-stone-200', 'border-transparent');
     }
   }
   window.addEventListener('scroll', handleScroll, { passive: true });
-  handleScroll();
+  handleScroll(); // Check on load
 </script>

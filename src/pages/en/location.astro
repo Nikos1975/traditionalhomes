@@ -1,121 +1,189 @@
 ---
 import Base from '../../layouts/Base.astro';
-import siteCopy from '../../data/siteCopy.json';
+import siteCopyData from '../../data/siteCopy.json';
 import MasterLocationMap from '../../components/maps/MasterLocationMap.astro';
+import inventory from '../../inventory/inventory.json';
+import { locations } from '../../data/locations';
+import type { InventoryUnit, SiteCopy } from '../../types';
+
+const units = inventory as InventoryUnit[];
+const siteCopy = siteCopyData as SiteCopy;
+
+// Map Data Integration
+const mapMarkers = locations.map(loc => {
+  const unit = units.find(u => u.slug === loc.slug);
+  return {
+    ...loc,
+    name: unit?.name || loc.name,
+    type: unit?.type || 'home'
+  };
+});
+
+const pageTitle = `Location — Mavrikiano & Vrouchas, Elounda | ${siteCopy.siteName}`;
 ---
 
 <Base
-  title="Location — Mavrikiano & Vrouchas, Elounda | Elounda Traditional Homes"
+  title={pageTitle}
   description={siteCopy.metaDescriptionLocation}
   canonicalUrl="https://traditional-homes.gr/en/location/"
 >
 
-  <div class="site-max site-pad py-12 md:py-16">
+  <div class="site-max site-pad py-16 md:py-24">
 
-    <nav class="text-xs text-muted mb-6" aria-label="Breadcrumb">
-      <ol class="flex items-center gap-1.5" role="list">
-        <li><a href="/en/" class="hover:text-body-text transition-colors duration-150">Home</a></li>
-        <li aria-hidden="true">›</li>
-        <li class="text-body-text font-medium" aria-current="page">Location</li>
+    {/* BREADCRUMB */}
+    <nav class="text-[10px] uppercase tracking-[0.4em] text-stone-400 mb-12 font-bold" aria-label="Breadcrumb">
+      <ol class="flex items-center gap-2" role="list">
+        <li><a href="/en/" class="hover:text-stone-900 transition-colors">Home</a></li>
+        <li aria-hidden="true" class="text-stone-200">/</li>
+        <li class="text-stone-900" aria-current="page">Location</li>
       </ol>
     </nav>
 
-    <div class="max-w-3xl">
-      <h1 class="font-serif text-4xl md:text-5xl text-body-text mb-4">Location</h1>
-      <p class="section-sub mb-10">
-        Two villages on the hillside above Elounda, northeast Crete.
+    <header class="max-w-4xl mb-20">
+      <h1 class="font-serif text-5xl md:text-8xl text-stone-950 mb-8 leading-tight tracking-tight">
+        The <span class="italic text-stone-400">Setting</span>
+      </h1>
+      <p class="text-2xl text-stone-500 font-light leading-relaxed font-serif italic max-w-2xl">
+        Two historic villages perched on the hillside above the sapphire waters of Elounda Bay, Northeast Crete.
       </p>
-    </div>
+    </header>
 
-    <div class="grid grid-cols-1 lg:grid-cols-5 gap-10 mb-14">
-      <div class="lg:col-span-3 space-y-8">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 mb-32">
+      
+      {/* MAIN CONTENT */}
+      <div class="lg:col-span-7 space-y-20">
 
-        <section aria-labelledby="mavrikiano-heading">
-          <h2 id="mavrikiano-heading" class="font-serif text-2xl text-body-text mb-3">Mavrikiano</h2>
-          <p class="text-stone-600 leading-relaxed mb-4">
-            A small traditional village perched on the hillside above Elounda town. The ten stone houses are located here, spread along the village lanes. The village is quiet, with no tourist infrastructure of its own — restaurants, shops, and beaches are a short drive down to Elounda.
-          </p>
-          <p class="text-stone-600 leading-relaxed mb-4">
-            Most of the houses have open views toward Elounda Bay and the island of Spinalonga, with the Mirabello Gulf beyond.
-          </p>
-          <p class="text-stone-600 leading-relaxed">
-            To discover the best local beaches, historical sites, and a recommended day-trip itinerary, read our comprehensive <a href="/en/guide/mavrikiano/" class="underline hover:text-amber-800 transition-colors font-medium">Mavrikiano Area Guide &rarr;</a>
-          </p>
+        <section id="mavrikiano" aria-labelledby="mavrikiano-heading">
+          <div class="flex items-center gap-4 mb-6">
+             <span class="text-[10px] font-bold text-primary tracking-widest uppercase">Village 01</span>
+             <h2 id="mavrikiano-heading" class="font-serif text-4xl text-stone-950">Mavrikiano</h2>
+          </div>
+          <div class="prose prose-stone text-stone-600 font-light text-lg leading-relaxed space-y-6">
+            <p>
+              A historic hamlet nestled on the slope above Elounda town. Our ten stone houses are integrated into the existing village fabric, connected by winding stone paths and quiet lanes. Mavrikiano remains a sanctuary of authenticity—no hotels, no shops, just the quiet rhythm of Cretan life.
+            </p>
+            <p>
+              The harbor, restaurants, and local markets are a 3-minute drive (or a 15-minute downhill walk) away.
+            </p>
+            <a href="/en/guide/mavrikiano/" class="inline-flex items-center gap-2 text-stone-950 font-bold text-xs uppercase tracking-[0.2em] border-b border-stone-200 hover:border-primary transition-all pb-1 group">
+              Explore the Mavrikiano Guide
+              <svg class="group-hover:translate-x-1 transition-transform" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </a>
+          </div>
         </section>
 
-        <section aria-labelledby="vrouchas-heading">
-          <h2 id="vrouchas-heading" class="font-serif text-2xl text-body-text mb-3">Vrouchas</h2>
-          <p class="text-stone-600 leading-relaxed mb-4">
-            Located above Spinalonga, Vrouchas is a peaceful hillside village offering elevated, uninterrupted views across the Aegean Sea, the magnificent Cretan mountains, and sweeping olive groves. <a href="/en/houses/almond-tree-villa/" class="underline hover:text-amber-800 transition-colors font-medium">Almond Tree Villa</a> sits within this quiet terrain, commanding a vantage point that requires a car for access. A five-minute drive (4.2 km) descends to the shoreline of Plaka, a coastal settlement of pristine pebble beaches and traditional waterfront tavernas where boats depart for the island fortress.
-          </p>
-          <p class="text-stone-600 leading-relaxed">
-            For recommended day-trip itineraries, detailed boat schedules, and navigating the local terrain, explore our <a href="/en/guide/vrouchas/" class="underline hover:text-amber-800 transition-colors font-medium">Vrouchas & Plaka Area Guide &rarr;</a>
-          </p>
+        <section id="vrouchas" aria-labelledby="vrouchas-heading" class="pt-16 border-t border-stone-100">
+          <div class="flex items-center gap-4 mb-6">
+             <span class="text-[10px] font-bold text-primary tracking-widest uppercase">Village 02</span>
+             <h2 id="vrouchas-heading" class="font-serif text-4xl text-stone-950">Vrouchas</h2>
+          </div>
+          <div class="prose prose-stone text-stone-600 font-light text-lg leading-relaxed space-y-6">
+            <p>
+              Located further north and higher in elevation, Vrouchas offers a rugged, panoramic landscape. It overlooks the historic island of Spinalonga and the sweeping Mirabello Gulf.
+            </p>
+            <p>
+              <a href="/en/houses/almond-tree-villa/" class="text-stone-950 font-medium underline underline-offset-4 decoration-stone-200">Almond Tree Villa</a> sits here in complete privacy. A five-minute drive takes you down to the fishing village of Plaka and its renowned waterfront tavernas.
+            </p>
+          </div>
         </section>
 
-        <section aria-labelledby="distances-heading">
-          <h2 id="distances-heading" class="font-serif text-2xl text-body-text mb-3">Distances</h2>
+        <section id="distances" aria-labelledby="distances-heading" class="pt-16 border-t border-stone-100">
+          <h2 id="distances-heading" class="font-serif text-3xl text-stone-950 mb-10">Driving Distances</h2>
           
-          <h3 class="font-sans font-semibold text-sm uppercase tracking-wider text-stone-800 mt-6 mb-3">From Mavrikiano Houses</h3>
-          <div class="space-y-3 text-sm mb-8">
-            {[
-              { label: 'Center of Elounda (Schisma)', value: '3 min drive / 10 min walk' },
-              { label: 'Plaka village & Spinalonga boats', value: '7 min drive (4.1 km)' },
-              { label: 'Sunken City of Olous', value: '5 min drive (1.8 km)' },
-              { label: 'Agios Nikolaos town', value: '19 min drive (11.8 km)' },
-              { label: 'Heraklion Airport (HER)', value: '1 hr 2 min drive (67.9 km)' },
-            ].map(({ label, value }) => (
-              <div class="flex items-baseline justify-between py-2.5 border-b border-stone-200 gap-4">
-                <span class="text-stone-700">{label}</span>
-                <span class="text-muted text-right flex-shrink-0">{value}</span>
+          <div class="grid sm:grid-cols-2 gap-12">
+            <div>
+              <h3 class="text-[10px] uppercase tracking-[0.3em] text-primary font-bold mb-6">From Mavrikiano Houses</h3>
+              <div class="space-y-4">
+                {[
+                  { label: 'Elounda Harbor', value: '3 min' },
+                  { label: 'Plaka & Spinalonga', value: '7 min' },
+                  { label: 'Agios Nikolaos', value: '19 min' },
+                  { label: 'Heraklion Airport', value: '62 min' },
+                ].map(({ label, value }) => (
+                  <div class="flex justify-between items-baseline py-2 border-b border-stone-50 text-sm">
+                    <span class="text-stone-400 font-light">{label}</span>
+                    <span class="font-serif text-lg text-stone-900">{value}</span>
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
+            </div>
 
-          <h3 class="font-sans font-semibold text-sm uppercase tracking-wider text-stone-800 mb-3">From Vrouchas Villa</h3>
-          <div class="space-y-3 text-sm">
-            {[
-              { label: 'Plaka village & Spinalonga boats', value: '5 min drive (4.2 km)' },
-              { label: 'Center of Elounda (Schisma)', value: '12 min drive (9 km)' },
-              { label: 'Sunken City of Olous', value: '15 min drive (10.5 km)' },
-              { label: 'Agios Nikolaos town', value: '25 min drive (20.1 km)' },
-              { label: 'Heraklion Airport (HER)', value: '1 hr 15 min drive (63.2 km)' },
-            ].map(({ label, value }) => (
-              <div class="flex items-baseline justify-between py-2.5 border-b border-stone-200 gap-4">
-                <span class="text-stone-700">{label}</span>
-                <span class="text-muted text-right flex-shrink-0">{value}</span>
+            <div>
+              <h3 class="text-[10px] uppercase tracking-[0.3em] text-primary font-bold mb-6">From Vrouchas Villa</h3>
+              <div class="space-y-4">
+                {[
+                  { label: 'Plaka Shoreline', value: '5 min' },
+                  { label: 'Elounda Center', value: '12 min' },
+                  { label: 'Agios Nikolaos', value: '25 min' },
+                  { label: 'Heraklion Airport', value: '75 min' },
+                ].map(({ label, value }) => (
+                  <div class="flex justify-between items-baseline py-2 border-b border-stone-50 text-sm">
+                    <span class="text-stone-400 font-light">{label}</span>
+                    <span class="font-serif text-lg text-stone-900">{value}</span>
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
-
-          <p class="text-xs text-muted mt-5">Times are approximate road distances. We do not guarantee specific journey times.</p>
-          <p class="text-xs text-muted mt-1">For detailed walking and driving times to local restaurants, beaches, and landmarks, please refer to our <a href="/en/guide/mavrikiano/" class="underline hover:text-amber-800 transition-colors">Area Guides</a>.</p>
-        </section>
-
-        <section aria-labelledby="getting-here-heading">
-          <h2 id="getting-here-heading" class="font-serif text-2xl text-body-text mb-3">Getting here</h2>
-          <div class="space-y-4 text-stone-600 leading-relaxed text-sm">
-            <div>
-              <p class="font-medium text-body-text mb-1">By car (recommended)</p>
-              <p>A rental car is the most practical option. The E75 and regional roads connect Heraklion and Sitia airports to the Elounda area. Detailed directions and GPS coordinates are sent with your booking confirmation.</p>
-            </div>
-            <div>
-              <p class="font-medium text-body-text mb-1">By bus</p>
-              <p>KTEL buses run between Heraklion and Agios Nikolaos; local buses connect Agios Nikolaos and Elounda. The Elounda bus stop is at the bottom of the hill — a taxi or walk uphill is needed from there.</p>
-            </div>
-            <div>
-              <p class="font-medium text-body-text mb-1">Taxis</p>
-              <p>Taxis are available from both airports and from Agios Nikolaos. We can provide local taxi contact information on request.</p>
             </div>
           </div>
         </section>
-
       </div>
+
+      {/* SIDEBAR */}
+      <aside class="lg:col-span-5 space-y-12 lg:sticky lg:top-32">
+        
+        {/* House Quick-List */}
+        <div class="bg-stone-50 rounded-[3rem] p-10 border border-stone-100 shadow-sm">
+          <h3 class="font-serif text-2xl text-stone-950 mb-8">The Collection</h3>
+          <ul class="space-y-6">
+            {units.map((unit) => (
+              <li>
+                <a href={`/en/houses/${unit.slug}/`} class="group flex justify-between items-center py-1">
+                  <div>
+                    <span class="block text-sm font-bold text-stone-900 group-hover:text-primary transition-colors">{unit.name}</span>
+                    <span class="block text-[9px] uppercase tracking-[0.2em] text-stone-400 font-bold mt-1">{unit.location}</span>
+                  </div>
+                  <div class="w-8 h-8 rounded-full border border-stone-200 flex items-center justify-center group-hover:bg-primary group-hover:border-primary transition-all">
+                    <svg class="text-stone-400 group-hover:text-white transition-colors" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                  </div>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* ARRIVAL BLOCK */}
+        <div class="bg-stone-950 text-white rounded-[3rem] p-10 shadow-2xl relative overflow-hidden group">
+          <div class="relative z-10">
+            <h4 class="font-serif text-2xl mb-4 italic">A Personal Welcome</h4>
+            <p class="text-sm text-stone-400 leading-relaxed mb-8 font-light">
+              Navigating traditional villages can be a challenge. We personally meet all guests at our designated parking area. <strong>{siteCopy.arrival.hostName}</strong> will guide you to your home and assist with your arrival.
+            </p>
+            <a href="/en/contact/" class="inline-block w-full py-4 bg-primary text-white text-center rounded-2xl text-[10px] font-bold uppercase tracking-[0.3em] hover:bg-white hover:text-stone-950 transition-all duration-300">
+              Contact Guest Relations
+            </a>
+          </div>
+          <div class="absolute -bottom-10 -right-10 w-40 h-40 bg-primary/10 rounded-full blur-3xl group-hover:bg-primary/20 transition-all"></div>
+        </div>
+
+      </aside>
     </div>
 
-    <section id="map-section" aria-labelledby="interactive-map-heading" class="mt-8 border-t border-stone-200 pt-12">
-      <h2 id="interactive-map-heading" class="font-serif text-3xl text-body-text mb-6">Interactive Map</h2>
-      <MasterLocationMap />
+    {/* MAP SECTION */}
+    <section id="map-section" class="pt-24 border-t border-stone-100">
+      <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+        <div>
+          <h2 class="font-serif text-4xl md:text-6xl text-stone-950 mb-4 tracking-tight">Village <span class="italic text-stone-400">Map</span></h2>
+          <p class="text-stone-500 font-light italic">Interactive view of our properties across the Elounda hillside.</p>
+        </div>
+        <div class="px-6 py-2 rounded-full border border-stone-100 bg-stone-50 text-[10px] font-bold uppercase tracking-[0.2em] text-stone-400 flex items-center gap-3">
+          <span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+          {units.length} Properties Mapped
+        </div>
+      </div>
+      
+      <div class="rounded-[4rem] overflow-hidden shadow-premium border border-stone-200 min-h-[700px] relative bg-stone-100">
+        <MasterLocationMap locations={mapMarkers} />
+      </div>
     </section>
 
   </div>

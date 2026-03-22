@@ -5,16 +5,20 @@ import GroupCard from '../../../components/GroupCard.astro';
 import FilterBar from '../../../components/FilterBar.astro';
 import inventory from '../../../inventory/inventory.json';
 import groupsData from '../../../inventory/groups.json';
-import siteCopy from '../../../data/siteCopy.json';
-import type { InventoryUnit } from '../../../types';
-import type { ListingItem } from '../../../utils/filters';
+import siteCopyData from '../../../data/siteCopy.json';
 import { validateInventory } from '../../../utils/validateInventory';
+import type { InventoryUnit, SiteCopy } from '../../../types';
+import type { ListingItem } from '../../../utils/filters';
 
+// 1. DATA VALIDATION & TYPE CASTING
 const units = inventory as InventoryUnit[];
 validateInventory(units);
+const siteCopy = siteCopyData as SiteCopy;
+
 const houses = units.filter((u) => u.type === 'home');
 const villa = units.find((u) => u.type === 'villa');
 
+// 2. FILTERING LOGIC
 const allItems: ListingItem[] = [
   ...units.map((unit) => ({
     id: unit.slug,
@@ -34,47 +38,71 @@ const totalCount = allItems.length;
 ---
 
 <Base
-  title="Stone Houses in Mavrikiano, Elounda | Elounda Traditional Homes"
+  title={`The Collection | Stone Houses & Villa in Elounda | ${siteCopy.siteName}`}
   description={siteCopy.metaDescriptionHouses}
   canonicalUrl="https://traditional-homes.gr/en/houses/"
 >
 
-  <div class="site-max site-pad py-12 md:py-16">
+  <div class="site-max site-pad py-16 md:py-24">
 
-    <div class="mb-10">
-      <nav class="text-xs text-muted mb-4" aria-label="Breadcrumb">
-        <ol class="flex items-center gap-1.5" role="list">
-          <li><a href="/en/" class="hover:text-body-text transition-colors duration-150">Home</a></li>
-          <li aria-hidden="true">›</li>
-          <li class="text-body-text font-medium" aria-current="page">Houses &amp; Villa</li>
+    {/* BREADCRUMBS & HEADER */}
+    <header class="mb-20 text-center md:text-left">
+      <nav class="text-[10px] uppercase tracking-[0.4em] text-stone-400 mb-8 font-bold" aria-label="Breadcrumb">
+        <ol class="flex items-center justify-center md:justify-start gap-3" role="list">
+          <li><a href="/en/" class="hover:text-stone-900 transition-colors">Home</a></li>
+          <li aria-hidden="true" class="text-stone-200">/</li>
+          <li class="text-stone-900" aria-current="page">The Collection</li>
         </ol>
       </nav>
-      <h1 class="font-serif text-4xl md:text-5xl text-body-text mb-4">Houses &amp; Villa</h1>
-      <p class="text-stone-600 max-w-2xl leading-relaxed">
-        {houses.length} traditional stone houses in Mavrikiano village and {villa ? 'one hillside villa' : 'a villa'} in Vrouchas — all within the Elounda area of northeast Crete. We also carefully configure bundled properties for larger groups staying together.
+      
+      <h1 class="font-serif text-6xl md:text-8xl text-stone-900 mb-8 leading-[1.1] tracking-tight">
+        The Collection
+      </h1>
+      
+      <p class="text-stone-500 max-w-2xl text-xl leading-relaxed font-serif italic">
+        Discover {houses.length} meticulously restored stone houses in the village of Mavrikiano and {villa ? 'our signature hillside villa' : 'a villa'} in Vrouchas. 
+        Curated spaces for the discerning traveler seeking the soul of Crete.
       </p>
+    </header>
+
+    {/* EDITORIAL ACCESS NOTE */}
+    <div class="mb-20 p-8 md:p-10 bg-stone-50 rounded-[2.5rem] border border-stone-100 flex flex-col md:flex-row items-center md:items-start gap-8 shadow-sm">
+      <div class="w-16 h-16 rounded-full bg-white flex items-center justify-center text-stone-400 flex-shrink-0 shadow-premium border border-stone-50">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
+        </svg>
+      </div>
+      <div class="text-center md:text-left">
+        <span class="inline-block px-3 py-1 bg-stone-200 text-stone-600 text-[9px] font-bold uppercase tracking-[0.2em] rounded-full mb-4">Village Note</span>
+        <p class="text-lg text-stone-700 leading-relaxed font-light mb-3">
+          {siteCopy.accessNoteFull} 
+        </p>
+        <a href={siteCopy.accessAnchorUrl} class="text-stone-900 font-bold text-sm uppercase tracking-widest border-b-2 border-stone-200 hover:border-stone-900 transition-all pb-1">
+          Read Accessibility Guide
+        </a>
+      </div>
     </div>
 
-    <div class="access-note mb-8 flex items-start gap-2">
-      <svg class="flex-shrink-0 mt-0.5" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
-      </svg>
-      <span>
-        <strong class="font-medium">Access note:</strong> {siteCopy.accessNoteFull}&nbsp;
-        <a href={siteCopy.accessAnchorUrl} class="underline hover:text-body-text transition-colors duration-150">Full access information.</a>
-        Unit-specific details are shown on each property page.
-      </span>
+    {/* INTERACTIVE FILTER BAR */}
+    {/* Added top-24 to offset our taller premium header */}
+    <div class="mb-16 sticky top-24 z-30 pointer-events-none">
+      <div class="pointer-events-auto">
+        <FilterBar items={allItems} />
+      </div>
     </div>
 
-    <FilterBar items={allItems} />
-
+    {/* THE PROPERTY GRID */}
     <div
-      class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
-      aria-label={`All ${totalCount} properties`}
+      id="listing-grid"
+      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-14"
+      aria-label={`List of all ${totalCount} properties`}
     >
+      {/* Individual Units */}
       {units.map((unit, index) => (
         <UnitCard unit={unit} priority={index < 3} />
       ))}
+      
+      {/* Group/Bundled Units */}
       {groupsData.map((group, index) => (
         <GroupCard group={group as ListingItem} priority={index < 3} />
       ))}
@@ -83,3 +111,20 @@ const totalCount = allItems.length;
   </div>
 
 </Base>
+
+<style is:global>
+  /* Ensure the grid feels smooth during filtering */
+  #listing-grid {
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Fade in animation for the whole page */
+  main {
+    animation: fadeIn 0.8s ease-out;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>
