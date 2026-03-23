@@ -1,0 +1,68 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog'))
+  .filter(p => !p.data.draft)
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+
+<Base
+  title="Blog | Elounda Traditional Homes"
+  description="Stories, travel guides, and updates from Elounda Traditional Homes in Crete."
+  canonicalUrl="https://traditional-homes.gr/blog/"
+>
+  <div class="site-max site-pad py-16 md:py-24">
+
+    <nav class="text-[10px] uppercase tracking-[0.4em] text-stone-400 mb-12 font-bold" aria-label="Breadcrumb">
+      <ol class="flex items-center gap-2" role="list">
+        <li><a href="/en/" class="hover:text-stone-900 transition-colors">Home</a></li>
+        <li aria-hidden="true" class="text-stone-200">/</li>
+        <li class="text-stone-900" aria-current="page">Blog</li>
+      </ol>
+    </nav>
+
+    <header class="mb-16">
+      <h1 class="font-serif text-5xl md:text-7xl text-stone-900 mb-6 leading-tight tracking-tight">Blog</h1>
+      <p class="text-stone-500 max-w-2xl text-xl leading-relaxed font-serif italic">
+        Stories, seasonal updates, and travel notes from our corner of Crete.
+      </p>
+    </header>
+
+    {posts.length === 0 ? (
+      <p class="text-stone-400 text-lg">No posts yet — check back soon.</p>
+    ) : (
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+        {posts.map(post => (
+          <a href={`/blog/${post.id}/`} class="group block bg-white rounded-2xl border border-stone-100 overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+            <div class="p-8">
+              <div class="flex items-center gap-3 mb-3">
+                <time datetime={post.data.pubDate.toISOString()} class="text-[10px] uppercase tracking-[0.3em] text-stone-400 font-bold">
+                  {post.data.pubDate.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}
+                </time>
+                {post.data.category && (
+                  <span class="text-[10px] uppercase tracking-[0.2em] text-primary font-bold">{post.data.category}</span>
+                )}
+              </div>
+              <h2 class="font-serif text-2xl text-stone-900 mt-1 mb-2 leading-snug group-hover:text-primary transition-colors">
+                {post.data.title}
+              </h2>
+              {post.data.subtitle && (
+                <p class="text-stone-400 text-sm italic mb-2">{post.data.subtitle}</p>
+              )}
+              <p class="text-stone-500 text-sm leading-relaxed line-clamp-3">{post.data.description}</p>
+              {post.data.tags.length > 0 && (
+                <div class="flex flex-wrap gap-1.5 mt-4">
+                  {post.data.tags.map(tag => (
+                    <span class="text-[9px] uppercase tracking-[0.15em] text-stone-400 bg-stone-50 px-2 py-0.5 rounded-full">{tag}</span>
+                  ))}
+                </div>
+              )}
+            </div>
+          </a>
+        ))}
+      </div>
+    )}
+
+  </div>
+</Base>

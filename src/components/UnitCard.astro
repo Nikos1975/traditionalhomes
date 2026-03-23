@@ -1,6 +1,6 @@
 ---
-import { Image } from 'astro:assets';
-import type { InventoryUnit } from '../types';
+import { Image } from "astro:assets";
+import type { InventoryUnit } from "../types";
 
 interface Props {
   unit: InventoryUnit;
@@ -10,20 +10,36 @@ interface Props {
 const { unit, priority = false } = Astro.props;
 
 // 1. PATH LOGIC (Matches your localized folder structure)
-const unitPagePath = unit.type === 'villa' 
-  ? `/en/villa/${unit.slug}/` 
-  : `/en/houses/${unit.slug}/`;
+const unitPagePath =
+  unit.type === "villa"
+    ? `/en/villa/${unit.slug}/`
+    : `/en/houses/${unit.slug}/`;
 
 // 2. IMAGE AUTOMATION
-const allImages = import.meta.glob('/src/assets/images/**/*.{webp,jpg,jpeg,png}', { eager: true });
-const propertyFolder = `/src/assets/images/${unit.slug}/`;
+const allImages = import.meta.glob(
+  "/src/assets/images/**/*.{webp,jpg,jpeg,png}",
+  { eager: true },
+);
+const propertyFolder =
+  unit.type === "villa"
+    ? `/src/assets/images/villa/`
+    : `/src/assets/images/houses/${unit.slug}/`;
 
 // Find the hero image or fallback to the first one in the folder
-const propertyImages = Object.keys(allImages).filter(key => key.includes(propertyFolder));
-const featuredImgAsset = (allImages[propertyImages.find(key => key.toLowerCase().includes('hero')) || propertyImages[0]] as any)?.default;
+const propertyImages = Object.keys(allImages).filter((key) =>
+  key.includes(propertyFolder),
+);
+const featuredImgAsset = (
+  allImages[
+    propertyImages.find((key) => key.toLowerCase().includes("hero")) ||
+      propertyImages[0]
+  ] as any
+)?.default;
 
 // 3. UI HELPERS
-const isSeaView = unit.view.toLowerCase().includes('sea') || unit.view.toLowerCase().includes('bay');
+const isSeaView =
+  unit.view.toLowerCase().includes("sea") ||
+  unit.view.toLowerCase().includes("bay");
 ---
 
 <article
@@ -31,81 +47,167 @@ const isSeaView = unit.view.toLowerCase().includes('sea') || unit.view.toLowerCa
   data-id={unit.slug}
 >
   {/* OPTIMIZED IMAGE SECTION */}
-  <a href={unitPagePath} class="block relative overflow-hidden bg-stone-900 aspect-[4/3]" tabindex="-1" aria-hidden="true">
-    {featuredImgAsset ? (
-      <Image
-        src={featuredImgAsset}
-        alt={unit.name}
-        width={600}
-        height={450}
-        loading={priority ? 'eager' : 'lazy'}
-        class="w-full h-full object-cover opacity-90 transition-transform duration-[10s] ease-out group-hover:scale-105"
-      />
-    ) : (
-      <div class="w-full h-full flex items-center justify-center text-stone-400 text-[10px] uppercase tracking-[0.2em] font-bold">
-        Photo Coming Soon
-      </div>
-    )}
+  <a
+    href={unitPagePath}
+    class="block relative overflow-hidden bg-stone-900 aspect-[4/3]"
+    tabindex="-1"
+    aria-hidden="true"
+  >
+    {
+      featuredImgAsset ? (
+        <Image
+          src={featuredImgAsset}
+          alt={unit.name}
+          width={600}
+          height={450}
+          loading={priority ? "eager" : "lazy"}
+          class="w-full h-full object-cover opacity-90 transition-transform duration-[10s] ease-out group-hover:scale-105"
+        />
+      ) : (
+        <div class="w-full h-full flex items-center justify-center text-stone-400 text-[10px] uppercase tracking-[0.2em] font-bold">
+          Photo Coming Soon
+        </div>
+      )
+    }
 
     {/* PREMIUM POOL BADGE */}
-    {unit.pool !== 'none' && (
-      <span class:list={['absolute top-4 left-4 px-3 py-1.5 rounded-full text-[9px] font-bold uppercase tracking-[0.2em] flex items-center gap-2 shadow-md backdrop-blur-md transition-colors', 
-        unit.pool === 'shared' ? 'bg-stone-900/80 text-white' : 'bg-white/95 text-primary']}>
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 12h20M2 12c0-5.5 4.5-10 10-10s10 4.5 10 10M2 12c0 5.5 4.5 10 10 10s10-4.5 10-10"/></svg>
-        {unit.pool === 'private' ? (unit.slug === 'monastiri' ? 'Private Dripping Pool' : 'Private Pool') : 'Shared Pool'}
-      </span>
-    )}
+    {
+      unit.pool !== "none" && (
+        <span
+          class:list={[
+            "absolute top-4 left-4 px-3 py-1.5 rounded-full text-[9px] font-bold uppercase tracking-[0.2em] flex items-center gap-2 shadow-md backdrop-blur-md transition-colors",
+            unit.pool === "shared"
+              ? "bg-stone-900/80 text-white"
+              : "bg-white/95 text-primary",
+          ]}
+        >
+          <svg
+            width="12"
+            height="12"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+          >
+            <path d="M2 12h20M2 12c0-5.5 4.5-10 10-10s10 4.5 10 10M2 12c0 5.5 4.5 10 10 10s10-4.5 10-10" />
+          </svg>
+          {unit.pool === "private"
+            ? unit.slug === "monastiri"
+              ? "Private Dripping Pool"
+              : "Private Pool"
+            : "Shared Pool"}
+        </span>
+      )
+    }
   </a>
 
   <div class="flex flex-col flex-1 p-8">
-    
     {/* HEADER */}
     <div class="flex items-start justify-between gap-4 mb-6">
       <div>
-        <p class="text-[9px] uppercase tracking-[0.3em] text-stone-400 mb-2 font-bold">{unit.location} · {unit.area}</p>
-        <a href={unitPagePath} class="font-serif text-3xl text-body-text group-hover:text-primary transition-colors leading-tight block">
+        <p
+          class="text-[9px] uppercase tracking-[0.3em] text-stone-400 mb-2 font-bold"
+        >
+          {unit.location} · {unit.area}
+        </p>
+        <a
+          href={unitPagePath}
+          class="font-serif text-3xl text-body-text group-hover:text-primary transition-colors leading-tight block"
+        >
           {unit.name}
         </a>
       </div>
-      {unit.type === 'villa' && (
-        <span class="px-3 py-1 bg-stone-100 text-stone-600 border border-stone-200 text-[9px] uppercase font-bold tracking-[0.2em] rounded-full">Villa</span>
-      )}
+      {
+        unit.type === "villa" && (
+          <span class="px-3 py-1 bg-stone-100 text-stone-600 border border-stone-200 text-[9px] uppercase font-bold tracking-[0.2em] rounded-full">
+            Villa
+          </span>
+        )
+      }
     </div>
 
     {/* SPECS GRID */}
     <div class="grid grid-cols-2 gap-y-4 mb-8">
       <span class="flex items-center gap-3 text-xs text-stone-500 font-light">
-        <svg class="text-stone-400" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-        Up to {unit.sleeps_max} Guests
+        <svg
+          class="text-stone-400"
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.5"
+          ><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle
+            cx="12"
+            cy="7"
+            r="4"></circle></svg
+        >
+        Up to {unit.sleeps} Guests
       </span>
       <span class="flex items-center gap-3 text-xs text-stone-500 font-light">
-        <svg class="text-stone-400" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 4v16"/><path d="M2 8h18a2 2 0 0 1 2 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/></svg>
-        {unit.bedrooms} {unit.bedrooms === 1 ? 'Bedroom' : 'Bedrooms'}
+        <svg
+          class="text-stone-400"
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.5"
+          ><path d="M2 4v16"></path><path d="M2 8h18a2 2 0 0 1 2 2v10"
+          ></path><path d="M2 17h20"></path><path d="M6 8v9"></path></svg
+        >
+        {unit.bedrooms}
+        {unit.bedrooms === 1 ? "Bedroom" : "Bedrooms"}
       </span>
-      {isSeaView && (
-        <span class="flex items-center gap-3 text-xs text-primary font-medium col-span-2">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-          Direct Sea View
-        </span>
-      )}
+      {
+        isSeaView && (
+          <span class="flex items-center gap-3 text-xs text-primary font-medium col-span-2">
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+            >
+              <>
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                <circle cx="12" cy="12" r="3" />
+              </>
+            </svg>
+            Direct Sea View
+          </span>
+        )
+      }
     </div>
 
     {/* ACCESS ALERT (Editorial Note Style) */}
-    {unit.access_detail && (
-      <div class="mb-8 p-4 bg-amber-50/50 border border-amber-100 rounded-2xl">
-        <p class="text-[11px] text-amber-900/80 leading-relaxed italic">
-          <strong>Editor's Note:</strong> {unit.access_detail}
-        </p>
-      </div>
-    )}
+    {
+      unit.accessDetail && (
+        <div class="mb-8 p-4 bg-amber-50/50 border border-amber-100 rounded-2xl">
+          <p class="text-[11px] text-amber-900/80 leading-relaxed italic">
+            <strong>Editor's Note:</strong> {unit.accessDetail}
+          </p>
+        </div>
+      )
+    }
 
     {/* ACTION BUTTONS */}
     <div class="mt-auto pt-6 border-t border-stone-100 flex gap-3">
-      <a href={unitPagePath} class="btn-outline flex-1 py-3 px-0 text-center rounded-xl bg-white shadow-sm hover:shadow-md transition-shadow">
+      <a
+        href={unitPagePath}
+        class="btn-outline flex-1 py-3 px-0 text-center rounded-xl bg-white shadow-sm hover:shadow-md transition-shadow"
+      >
         Details
       </a>
       <a
-        href={unit.availability_url}
+        href={unit.availabilityUrl}
         target="_blank"
         rel="noopener"
-        class="btn-cta flex-1 py
+        class="btn-cta flex-1 py-3 px-0 text-center rounded-xl bg-stone-900 text-white hover:bg-primary shadow-sm hover:shadow-md transition-shadow"
+      >
+        Book Now
+      </a>
+    </div>
+  </div>
+</article>

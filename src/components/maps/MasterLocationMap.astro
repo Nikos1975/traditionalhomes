@@ -2,11 +2,9 @@
 import LeafletMap from './LeafletMap.astro';
 import { locations } from '../../data/locations';
 import inventory from '../../inventory/inventory.json';
-import type { InventoryUnit, SiteCopy } from '../../types';
-import siteCopyData from '../../data/siteCopy.json';
+import type { InventoryUnit } from '../../types';
 
 const units = inventory as InventoryUnit[];
-const siteCopy = siteCopyData as SiteCopy;
 
 /** * 1. ASSET RESOLUTION
  * This finds every image in your /src/assets/images/ folder. 
@@ -30,7 +28,7 @@ const allLocs = locations.filter(l => l.lat && l.lng).map(loc => {
   return {
     ...loc,
     title: unit?.name || loc.title,
-    type: unit?.type || loc.type,
+    type: unit?.type ?? loc.type,
     locationLabel: unit ? `${unit.location}, ${unit.area}` : loc.locationLabel,
     // Use optimized path, fallback to static path, then to placeholder
     finalImage: optimizedHero?.src || loc.image || "/images/brand/placeholder.webp" 
@@ -61,7 +59,7 @@ const markers = allLocs.map(loc => {
   {/* Ambient Background Transition Layer */}
   <div id="map-ambient-bg" 
        class="absolute inset-0 z-0 opacity-0 transition-all duration-1000 ease-in-out bg-cover bg-center pointer-events-none">
-    <div class="absolute inset-0 bg-stone-50/90 backdrop-blur-sm"></div>
+    <div class="absolute inset-0 bg-white/70"></div>
   </div>
 
   {/* Sidebar: Filters & List */}
@@ -135,22 +133,21 @@ const markers = allLocs.map(loc => {
 
 <script>
   document.addEventListener('astro:page-load', () => {
-    // Small delay to ensure Leaflet is fully ready
+    // Small delay to ensure Leaflet has finished its own astro:page-load handler
     setTimeout(() => {
       const mapContainer = document.getElementById('master-map');
-      const map = (window as any)['leaflet_map_master-map'];
+      const map    = (window as any)['leaflet_map_master-map'];
+      const layers = (window as any)['leaflet_layers_master-map'] as Record<string, any>;
       const bgContainer = document.getElementById('map-ambient-bg');
       if (!map || !bgContainer) return;
 
-      const filterBtns = document.querySelectorAll('.filter-btn');
-      const cards = document.querySelectorAll('.location-card');
-      const markersData = JSON.parse(mapContainer?.getAttribute('data-markers') || '[]');
+      const filterBtns  = document.querySelectorAll('.filter-btn');
+      const cards        = document.querySelectorAll('.location-card');
+      const markersData: any[] = JSON.parse(mapContainer?.getAttribute('data-markers') || '[]');
 
+      // ── Ambient background ──────────────────────────────────────────────────
       const updateBackground = (imageUrl: string) => {
-        if (!imageUrl) {
-          bgContainer.style.opacity = '0';
-          return;
-        }
+        if (!imageUrl) { bgContainer.style.opacity = '0'; return; }
         const tempImg = new Image();
         tempImg.onload = () => {
           bgContainer.style.backgroundImage = `url('${imageUrl}')`;
@@ -158,3 +155,93 @@ const markers = allLocs.map(loc => {
         };
         tempImg.src = imageUrl;
       };
+
+      // ── Sync map pins + fit bounds to a set of marker IDs ──────────────────
+      // Called whenever the active filter changes.
+      // - Shows/hides individual Leaflet layers to match the visible card list.
+      // - fitBounds on the resulting visible set (or flyTo for a single marker).
+      const syncMapToIds = (visibleIds: string[]) => {
+        if (!layers) return;
+
+        markersData.forEach(m => {
+          const layer = layers[m.id];
+          if (!layer) return;
+          if (visibleIds.includes(m.id)) {
+            if (!map.hasLayer(layer)) layer.addTo(map);
+          } else {
+            if (map.hasLayer(layer)) map.removeLayer(layer);
+          }
+        });
+
+        const visibleMarkers = markersData.filter(m => visibleIds.includes(m.id));
+        if (visibleMarkers.length > 1) {
+          map.fitBounds(
+            visibleMarkers.map((m: any) => [m.lat, m.lng] as [number, number]),
+            { padding: [60, 60] }
+          );
+        } else if (visibleMarkers.length === 1) {
+          map.flyTo([visibleMarkers[0].lat, visibleMarkers[0].lng], 19, { duration: 1 });
+        }
+      };
+
+      // ── Card click: activate card + fly map to that property ───────────────
+      const activateCard = (card: Element) => {
+        cards.forEach(c => c.classList.remove('is-active'));
+        card.classList.add('is-active');
+        updateBackground(card.getAttribute('data-image') || '');
+
+        const id = card.getAttribute('data-id');
+        const markerData = markersData.find(m => m.id === id);
+        if (markerData) {
+          // Zoom tight: individual property, not area overview
+          map.flyTo([markerData.lat, markerData.lng], 19, { duration: 1 });
+          // Open the popup once the fly animation finishes (matches 1s duration)
+          const layer = layers?.[id!];
+          if (layer) setTimeout(() => layer.openPopup(), 1050);
+        }
+      };
+
+      cards.forEach(card => card.addEventListener('click', () => activateCard(card)));
+
+      // ── Filter chip click ───────────────────────────────────────────────────
+      // Updates card list visibility, then syncs map pins + bounds to match.
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          filterBtns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+
+          const filter = btn.getAttribute('data-filter');
+
+          // Step 1: show/hide cards
+          cards.forEach(card => {
+            const el   = card as HTMLElement;
+            const type  = card.getAttribute('data-type');
+            const group = card.getAttribute('data-group');
+            el.style.display =
+              filter === 'all' || type === filter || group === filter ? '' : 'none';
+          });
+
+          // Step 2: collect the now-visible marker IDs and sync the map
+          const visibleIds = Array.from(cards)
+            .filter(c => (c as HTMLElement).style.display !== 'none')
+            .map(c => c.getAttribute('data-id')!)
+            .filter(Boolean);
+
+          syncMapToIds(visibleIds);
+        });
+      });
+
+      // ── URL param: ?id=slug  (e.g. /en/location/?id=argyro) ────────────────
+      const params    = new URLSearchParams(window.location.search);
+      const initialId = params.get('id');
+      if (initialId) {
+        const target = Array.from(cards).find(c => c.getAttribute('data-id') === initialId);
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          activateCard(target);
+        }
+      }
+
+    }, 350);  // slightly after LeafletMap's own astro:page-load (which also uses setTimeout)
+  });
+</script>

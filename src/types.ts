@@ -1,28 +1,28 @@
 export interface InventoryUnit {
   slug: string;
-  type: 'home' | 'villa';
+  type: 'house' | 'villa';
   name: string;
   location: string;
   area: string;
-  sleeps_max: number;
+  sleeps: number;
   bedrooms: number;
   bathrooms: number;
   pool: 'private' | 'shared' | 'none';
-  pool_notes: string | null;
-  shared_pool_with: string[] | null;
+  poolNotes: string | null;
+  sharedPoolWith: string[] | null;
   floors: number;
-  internal_stairs: boolean;
+  internalStairs: boolean;
   view: string;
   parking: string;
   wifi: boolean;
   pets: string;
-  hard_constraints: string[];
+  hardConstraints: string[];
   amenities: string[];
-  access_detail: string | null;
-  booking_id: string | null;
-  availability_url: string;
-  featured_image_alt: string;
-  location_relations: {
+  accessDetail: string | null;
+  bookingId: string | null;
+  availabilityUrl: string;
+  featuredImageAlt: string;
+  locationRelations: {
     near: string[] | null;
     above: string | null;
     below: string | null;
@@ -61,4 +61,10 @@ export interface SiteCopy {
   metaDescriptionPolicies: string;
   metaDescriptionAbout: string;
   metaDescriptionContact: string;
+  arrival: {
+    hostName: string;
+    meetingPoint: string;
+    instructions: string;
+    earlyArrival: string;
+  };
 }

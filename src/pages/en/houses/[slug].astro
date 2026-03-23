@@ -1,23 +1,22 @@
 ---
 import Base from '../../../layouts/Base.astro';
-import GalleryA from '../../../components/GalleryA.astro';
+import HouseGallery from '../../../components/gallery/HouseGallery.astro';
 import AtAGlance from '../../../components/AtAGlance.astro';
 import SinglePinMap from '../../../components/maps/SinglePinMap.astro';
 import inventory from '../../../inventory/inventory.json';
 import { validateInventory } from '../../../utils/validateInventory';
 import siteCopyData from '../../../data/siteCopy.json';
 import { locations, parkingOnly } from '../../../data/locations';
-import { getArrivalInstructions } from '../../../utils/arrival';
 import { getEntry, render } from 'astro:content';
-import { Image } from 'astro:assets';
-import type { InventoryUnit, SiteCopy } from '../../../types';
+import galleryData from '../../../data/gallery.json';
+import { sortGalleryImages } from '../../../utils/sortGalleryImages';
+import type { InventoryUnit, SiteCopy, GalleryImage } from '../../../types';
 
 export async function getStaticPaths() {
   const units = inventory as InventoryUnit[];
   validateInventory(units);
-  // We include all 'home' types. If your Villa uses the same layout, include it here.
   return units
-    .filter((u) => u.type === 'home' || u.slug === 'almond-tree-villa') 
+    .filter((u) => u.type === 'house')
     .map((unit) => ({ params: { slug: unit.slug }, props: { unit } }));
 }
 
@@ -26,192 +25,313 @@ const { slug } = Astro.params;
 const units = inventory as InventoryUnit[];
 const siteCopy = siteCopyData as SiteCopy;
 
-// 1. DYNAMIC IMAGE LOADING
-const allImages = import.meta.glob('/src/assets/images/**/*.{webp,jpg,jpeg,png}', { eager: true });
-const propertyFolder = `/src/assets/images/${slug}/`;
-const propertyImages = Object.keys(allImages)
-  .filter(key => key.includes(propertyFolder))
-  .map(key => (allImages[key] as any).default);
+// GALLERY & HERO
+const rawGallery = (galleryData as Record<string, GalleryImage[]>)[slug] ?? [];
+const gallery    = sortGalleryImages(rawGallery);
+const heroEntry  = gallery[0];
+const heroSrc    = heroEntry
+  ? heroEntry.src.replace('/1024/', '/1600/').replace('-1024.webp', '-1600.webp')
+  : '';
+const ogImage = `/images/houses/${slug}/og.jpg`;
 
-const heroImage = propertyImages.find(img => img.src.toLowerCase().includes('hero')) || propertyImages[0];
-const ogImage = propertyImages.find(img => img.src.toLowerCase().includes('og'))?.src;
-
-// 2. DATA RELATIONS & ARRIVAL
-const nearUnits = unit.location_relations?.near
-  ?.map((s) => units.find((u) => u.slug === s))
+// RELATIONS
+const nearUnits = (unit.locationRelations?.near ?? [])
+  .map((s) => units.find((u) => u.slug === s))
   .filter(Boolean) as InventoryUnit[];
 
-const locData = locations.find(l => l.slug === slug);
+const locData = locations.find((l) => l.slug === slug);
 const parkingLoc = parkingOnly[0];
-const arrivalInfo = locData && parkingLoc 
-  ? getArrivalInstructions(locData.googleMapsUrl, parkingLoc.googleMapsUrl) 
-  : null;
 
-// 3. CONTENT
+// CONTENT
 const entry = await getEntry('houses', slug);
 const Content = entry ? (await render(entry)).Content : null;
 
+// HELPERS
+const isSeaView = unit.view.toLowerCase().includes('sea') || unit.view.toLowerCase().includes('bay');
+const poolLabel = unit.pool === 'private' ? 'Private pool' : unit.pool === 'shared' ? 'Shared pool' : 'No pool';
+
 const pageTitle = `${unit.name} — ${unit.location} | Elounda Traditional Homes`;
+const pageDescription = `${unit.name} in ${unit.location} — sleeps ${unit.sleeps}, ${unit.bedrooms} bedrooms${unit.pool !== 'none' ? `, ${poolLabel.toLowerCase()}` : ''}. Traditional Cretan home in Elounda.`;
 ---
 
 <Base
   title={pageTitle}
-  description={unit.access_detail}
+  description={pageDescription}
   canonicalUrl={`https://traditional-homes.gr/en/houses/${slug}/`}
   ogImage={ogImage}
 >
-  {/* SECTION 1: PREMIUM HERO */}
-  <header class="relative h-[65vh] min-h-[500px] overflow-hidden bg-stone-900">
-    <div class="absolute inset-0 bg-black/30 z-10"></div>
-    {heroImage && (
-      <Image 
-        src={heroImage} 
-        alt={unit.name}
-        width={1920}
-        height={1080}
-        class="absolute inset-0 w-full h-full object-cover opacity-90 transition-transform duration-[10s] ease-out hover:scale-105"
-        loading="eager"
-      />
+  {/* Preload the gallery hero image so the browser fetches it early,
+      before it encounters the <img> later in the DOM. */}
+  {heroEntry && (
+    <link
+      slot="head"
+      rel="preload"
+      as="image"
+      href={heroEntry.src}
+      imagesrcset={heroEntry.srcset}
+      imagesizes="(min-width:1280px) 900px, (min-width:1024px) 66vw, 100vw"
+    />
+  )}
+
+  {/* ── 1. HERO ───────────────────────────────────── */}
+  <header class="relative overflow-hidden bg-stone-900" style="height: 62vh; min-height: 420px; max-height: 780px;">
+    <div class="absolute inset-0 bg-gradient-to-b from-stone-900/30 via-transparent to-stone-900/70 z-10"></div>
+    {heroSrc && (
+      <div
+        class="absolute inset-0 bg-center bg-cover"
+        style={`background-image: url('${heroSrc}');`}
+        role="img"
+        aria-label={`Hero photo of ${unit.name}`}
+      ></div>
     )}
-    <div class="relative z-20 site-max site-pad h-full flex flex-col justify-end pb-12 text-white">
-      <nav class="text-[10px] uppercase tracking-[0.4em] mb-6 opacity-80" aria-label="Breadcrumb">
-        <a href="/en/" class="hover:underline">Home</a> / 
-        <a href="/en/houses/" class="hover:underline mx-2">Houses</a> / 
-        <span class="font-bold">{unit.name}</span>
+    <div class="relative z-20 site-max site-pad h-full flex flex-col justify-end pb-10 md:pb-14">
+      <nav class="text-[10px] uppercase tracking-[0.35em] mb-5 text-white/70" aria-label="Breadcrumb">
+        <a href="/en/" class="hover:text-white transition-colors">Home</a>
+        <span class="mx-2 opacity-50">/</span>
+        <a href="/en/houses/" class="hover:text-white transition-colors">Houses</a>
+        <span class="mx-2 opacity-50">/</span>
+        <span class="text-white/90">{unit.name}</span>
       </nav>
-      <h1 class="font-serif text-5xl md:text-7xl mb-4 leading-tight">{unit.name}</h1>
-      <p class="font-sans text-xs md:text-sm uppercase tracking-[0.3em] font-light italic opacity-90">
-        {unit.location} — {unit.area}, Crete
+      <h1 class="font-serif text-4xl md:text-6xl lg:text-7xl text-white leading-tight mb-3 drop-shadow-md">
+        {unit.name}
+      </h1>
+      <p class="text-white/80 text-sm md:text-base font-light tracking-wide">
+        {unit.location} &mdash; {unit.area}, Crete
       </p>
     </div>
   </header>
 
-  <main class="site-max site-pad py-12 md:py-20">
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
-      
-      {/* LEFT COLUMN: THE STORY & DETAILS */}
-      <div class="lg:col-span-8 space-y-16">
-        
-        {/* GALLERY COMPONENT */}
-        <section aria-label="Property Gallery">
-          <GalleryA images={propertyImages} unitName={unit.name} />
+  {/* ── 2. ESSENTIAL FACTS BAR ───────────────────── */}
+  <div class="bg-white border-b border-stone-100 shadow-sm sticky top-0 z-30">
+    <div class="site-max site-pad py-4 flex items-center gap-6 md:gap-10 overflow-x-auto text-xs md:text-sm text-stone-600 font-medium whitespace-nowrap">
+
+      <span class="flex items-center gap-2">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" class="text-stone-400 shrink-0">
+          <path d="M2 4v16"/><path d="M2 8h18a2 2 0 0 1 2 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/>
+        </svg>
+        {unit.bedrooms} {unit.bedrooms === 1 ? 'Bedroom' : 'Bedrooms'}
+      </span>
+
+      <span class="flex items-center gap-2">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" class="text-stone-400 shrink-0">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+        </svg>
+        Sleeps {unit.sleeps}
+      </span>
+
+      {unit.pool !== 'none' && (
+        <span class="flex items-center gap-2">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" class="text-stone-400 shrink-0">
+            <path d="M2 12h20M2 12c0-5.5 4.5-10 10-10s10 4.5 10 10M2 12c0 5.5 4.5 10 10 10s10-4.5 10-10"/>
+          </svg>
+          {poolLabel}
+        </span>
+      )}
+
+      {isSeaView && (
+        <span class="flex items-center gap-2 text-sky-700 font-semibold">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" class="shrink-0">
+            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
+          </svg>
+          Sea view
+        </span>
+      )}
+
+      <span class="flex items-center gap-2 ml-auto shrink-0">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" class="text-stone-400 shrink-0">
+          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
+        </svg>
+        {unit.location}
+      </span>
+    </div>
+  </div>
+
+  {/* ── 3. MAIN CONTENT ──────────────────────────── */}
+  <main class="site-max site-pad py-12 md:py-16">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+
+      {/* LEFT — content column */}
+      <div class="lg:col-span-8 space-y-14">
+
+        {/* 3a. Gallery */}
+        <section aria-label="Property photos">
+          <HouseGallery images={gallery} unitName={unit.name} />
         </section>
 
-        {/* BEFORE YOU BOOK (THE AMBER BLOCK) */}
-        <section class="bg-amber-50/40 border border-amber-100 rounded-2xl p-8">
-          <h2 class="font-serif text-2xl text-amber-900 mb-6 flex items-center gap-3 italic">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-            Essential Information
-          </h2>
-          <ul class="space-y-3">
-            {unit.hard_constraints.map((c) => (
-              <li class="flex items-start gap-3 text-sm text-amber-900/80 leading-relaxed italic">
-                <span class="mt-2 w-1.5 h-1.5 rounded-full bg-amber-400 flex-shrink-0"></span>
-                <span>{c}</span>
-              </li>
-            ))}
-          </ul>
-        </section>
-
-        {/* AT A GLANCE SECTION */}
-        <section class="border-y border-stone-100 py-10">
+        {/* 3b. At a Glance */}
+        <section aria-label="At a glance" class="border-t border-stone-100 pt-12">
+          <h2 class="font-serif text-2xl text-body-text mb-8">At a Glance</h2>
           <AtAGlance unit={unit} />
         </section>
 
-        {/* HOUSE STORY (MDX CONTENT) */}
-        <section class="prose prose-stone prose-lg max-w-none text-stone-700 leading-relaxed font-light">
-          {Content ? <Content /> : <p>Detailed description coming soon.</p>}
-        </section>
+        {/* 3c. Description / zones */}
+        {Content && (
+          <section class="border-t border-stone-100 pt-12" aria-label="About this house">
+            <div class="prose prose-stone prose-lg max-w-none text-stone-700 leading-relaxed font-light
+              prose-headings:font-serif prose-headings:font-normal prose-headings:text-body-text
+              prose-h2:text-2xl prose-h3:text-xl prose-h3:mt-8
+              prose-p:leading-relaxed prose-li:leading-relaxed">
+              <Content />
+            </div>
+          </section>
+        )}
 
-        {/* AMENITIES */}
-        <section aria-label="Amenities" class="pt-10 border-t border-stone-100">
-          <h3 class="font-serif text-3xl text-body-text mb-8">Included Amenities</h3>
-          <ul class="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-8">
+        {/* 3d. Amenities */}
+        <section class="border-t border-stone-100 pt-12" aria-label="Amenities">
+          <h2 class="font-serif text-2xl text-body-text mb-8">What's included</h2>
+          <ul class="grid grid-cols-1 sm:grid-cols-2 gap-y-3 gap-x-8">
             {unit.amenities.map((amenity) => (
               <li class="flex items-center gap-3 text-sm text-stone-600 border-b border-stone-50 pb-3">
-                <svg class="text-primary/60" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                <svg class="text-primary/70 shrink-0" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"/>
+                </svg>
                 {amenity}
               </li>
             ))}
           </ul>
         </section>
 
-        {/* LOCATION & ARRIVAL MAP */}
+        {/* 3e. Location & Map */}
         {locData && (
-          <section class="space-y-8 pt-10 border-t border-stone-100">
-            <h3 class="font-serif text-3xl text-body-text">Location & Access</h3>
-            <div class="grid md:grid-cols-2 gap-8">
-               <div class="p-8 bg-stone-900 text-white rounded-[2rem] shadow-xl">
-                  <h4 class="font-serif text-xl mb-4 text-primary">Arrival Instructions</h4>
-                  <p class="text-sm opacity-80 leading-relaxed mb-8">
-                    Your host, <strong class="text-white">{siteCopy.arrival.hostName}</strong>, will meet you at the {siteCopy.arrival.meetingPoint}.
-                  </p>
-                  <div class="space-y-6 text-[11px] uppercase tracking-[0.2em] font-bold">
-                    <a href={parkingLoc?.googleMapsUrl} target="_blank" class="flex items-center gap-4 hover:text-primary transition-colors group">
-                      <span class="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center group-hover:border-primary">1</span>
-                      Private Parking
+          <section class="border-t border-stone-100 pt-12 space-y-6" aria-label="Location and arrival">
+            <h2 class="font-serif text-2xl text-body-text">Location & Arrival</h2>
+
+            <div class="grid md:grid-cols-2 gap-6">
+              {/* Arrival card */}
+              <div class="bg-stone-900 text-white rounded-2xl p-6 space-y-5">
+                <h3 class="font-serif text-lg text-primary">How to arrive</h3>
+                <p class="text-sm text-white/70 leading-relaxed">
+                  {siteCopy.arrival.instructions}
+                </p>
+                <div class="space-y-3 text-[11px] uppercase tracking-widest font-bold">
+                  {parkingLoc?.googleMapsUrl && (
+                    <a href={parkingLoc.googleMapsUrl} target="_blank" rel="noopener" class="flex items-center gap-3 hover:text-primary transition-colors group">
+                      <span class="w-7 h-7 rounded-full border border-white/20 flex items-center justify-center group-hover:border-primary text-xs">1</span>
+                      Private parking
                     </a>
-                    <a href={locData.googleMapsUrl} target="_blank" class="flex items-center gap-4 hover:text-primary transition-colors group">
-                      <span class="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center group-hover:border-primary">2</span>
-                      House Entrance
-                    </a>
-                  </div>
-               </div>
-               <div class="rounded-[2rem] overflow-hidden border border-stone-200 shadow-sm min-h-[300px]">
-                  <SinglePinMap location={locData} />
-               </div>
+                  )}
+                  <a href={locData.googleMapsUrl} target="_blank" rel="noopener" class="flex items-center gap-3 hover:text-primary transition-colors group">
+                    <span class="w-7 h-7 rounded-full border border-white/20 flex items-center justify-center group-hover:border-primary text-xs">2</span>
+                    House entrance
+                  </a>
+                </div>
+              </div>
+
+              {/* Map */}
+              <div class="rounded-2xl overflow-hidden border border-stone-200 min-h-[240px]">
+                <SinglePinMap location={locData} />
+              </div>
             </div>
+
+            <a
+              href={locData.googleMapsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn-outline inline-flex items-center gap-2 text-sm"
+            >
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
+              </svg>
+              Open in Google Maps
+            </a>
           </section>
         )}
+
       </div>
 
-      {/* RIGHT COLUMN: STICKY BOOKING SIDEBAR */}
-      <aside class="lg:col-span-4 lg:sticky lg:top-12 space-y-8">
-        
-        {/* BOOKING ENGINE CARD */}
-        <div class="bg-white rounded-[2.5rem] border border-stone-200 p-10 shadow-card">
-          <h3 class="font-serif text-3xl text-body-text mb-6">Experience {unit.name}</h3>
-          
-          <div class="space-y-4 mb-10 text-[10px] uppercase tracking-widest font-bold text-stone-500">
-            <div class="flex justify-between py-3 border-b border-stone-50">
-              <span>Capacity</span>
-              <span class="text-body-text">Up to {unit.sleeps_max} guests</span>
+      {/* RIGHT — sticky sidebar */}
+      <aside class="lg:col-span-4 lg:sticky lg:top-20 space-y-6">
+
+        {/* Booking card */}
+        <div class="bg-white rounded-2xl border border-stone-200 p-7 shadow-card">
+          <p class="font-serif text-2xl text-body-text mb-1">{unit.name}</p>
+          <p class="text-xs text-muted mb-6 uppercase tracking-wider">{unit.location} &middot; Sleeps {unit.sleeps}</p>
+
+          <div class="space-y-0 mb-6 divide-y divide-stone-100 text-sm">
+            <div class="flex justify-between py-2.5">
+              <span class="text-muted">Bedrooms</span>
+              <span class="font-medium">{unit.bedrooms}</span>
             </div>
-            <div class="flex justify-between py-3 border-b border-stone-50">
-              <span>Pool</span>
-              <span class="text-body-text capitalize">{unit.pool} Pool</span>
+            <div class="flex justify-between py-2.5">
+              <span class="text-muted">Pool</span>
+              <span class="font-medium capitalize">{poolLabel}</span>
+            </div>
+            <div class="flex justify-between py-2.5">
+              <span class="text-muted">Wi-Fi</span>
+              <span class="font-medium text-success">Included</span>
+            </div>
+            <div class="flex justify-between py-2.5">
+              <span class="text-muted">Pets</span>
+              <span class="font-medium">{unit.pets}</span>
             </div>
           </div>
 
-          <a href={unit.availability_url} target="_blank" class="btn-cta w-full py-5 text-center block rounded-2xl shadow-lg mb-4">
+          <a
+            href={unit.availabilityUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-cta w-full py-4 text-center block rounded-xl shadow-md mb-3"
+          >
             Check Availability
           </a>
-          <a href="/en/contact/" class="btn-outline w-full py-5 text-center block rounded-2xl text-[10px] uppercase tracking-[0.2em] font-bold">
+          <a href="/en/contact/" class="btn-outline w-full py-3 text-center block rounded-xl text-xs uppercase tracking-wider font-bold">
             Ask a Question
           </a>
         </div>
 
-        {/* NEARBY PROPERTIES */}
+        {/* Before you book */}
+        {unit.hardConstraints.length > 0 && (
+          <div class="bg-amber-50 border border-amber-100 rounded-2xl p-6">
+            <h3 class="font-medium text-amber-900 mb-3 flex items-center gap-2 text-sm">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+                <line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>
+              </svg>
+              Before you book
+            </h3>
+            <ul class="space-y-2">
+              {unit.hardConstraints.map((c) => (
+                <li class="flex items-start gap-2 text-xs text-amber-900/80 leading-relaxed">
+                  <span class="mt-1.5 w-1 h-1 rounded-full bg-amber-400 flex-shrink-0"></span>
+                  {c}
+                </li>
+              ))}
+            </ul>
+            {unit.accessDetail && (
+              <p class="mt-4 pt-4 border-t border-amber-200 text-xs text-amber-800/70 italic leading-relaxed">
+                {unit.accessDetail}
+              </p>
+            )}
+          </div>
+        )}
+
+        {/* Nearby properties */}
         {nearUnits.length > 0 && (
-          <div class="p-8 bg-stone-100/50 rounded-[2.5rem] border border-stone-200/60">
-            <h4 class="text-[10px] uppercase tracking-widest text-muted font-bold mb-6">Neighboring Houses</h4>
-            <div class="space-y-4">
+          <div class="p-6 bg-stone-50 rounded-2xl border border-stone-200">
+            <h4 class="text-[10px] uppercase tracking-widest text-muted font-bold mb-4">Neighbouring Houses</h4>
+            <div class="space-y-3">
               {nearUnits.map((near) => (
-                <a href={`/en/houses/${near.slug}/`} class="group block bg-white p-5 rounded-2xl border border-stone-200 hover:border-primary transition-all shadow-sm">
-                  <span class="block font-serif text-lg text-body-text group-hover:text-primary transition-colors">{near.name}</span>
-                  <span class="block text-[9px] uppercase tracking-widest text-muted mt-1">
-                    Sleeps {near.sleeps_max} • {near.pool} pool
-                  </span>
+                <a
+                  href={`/en/houses/${near.slug}/`}
+                  class="group flex items-center justify-between bg-white p-4 rounded-xl border border-stone-200 hover:border-primary transition-all shadow-sm"
+                >
+                  <div>
+                    <span class="block font-serif text-base text-body-text group-hover:text-primary transition-colors">{near.name}</span>
+                    <span class="block text-[10px] uppercase tracking-widest text-muted mt-0.5">
+                      Sleeps {near.sleeps} &middot; {near.pool} pool
+                    </span>
+                  </div>
+                  <svg class="text-stone-300 group-hover:text-primary group-hover:translate-x-0.5 transition-all" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="9 18 15 12 9 6"/>
+                  </svg>
                 </a>
               ))}
             </div>
-            <p class="text-[10px] text-muted italic mt-6 leading-relaxed">
-              Ideal for groups looking to book neighboring properties in Mavrikiano.
-            </p>
           </div>
         )}
-      </aside>
 
+      </aside>
     </div>
   </main>
+
 </Base>

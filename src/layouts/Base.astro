@@ -59,6 +59,9 @@ const canonical = canonicalUrl ?? new URL(Astro.url.pathname, siteUrl).href;
     <link rel="preload" href="/fonts/work-sans/regular.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/fonts/cormorant-garamond/regular.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/fonts/cormorant-garamond/500.woff2" as="font" type="font/woff2" crossorigin />
+
+    <!-- Page-specific head content (preloads, meta, etc.) -->
+    <slot name="head" />
   </head>
   <body>
     <Header />

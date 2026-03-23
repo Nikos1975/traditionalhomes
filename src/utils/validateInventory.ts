@@ -4,7 +4,7 @@ const EXPECTED_HOUSES = 10;
 const EXPECTED_VILLA_BOOKING_ID = 'ASP3SV';
 
 export function validateInventory(units: InventoryUnit[]): void {
-  const houses = units.filter((u) => u.type === 'home');
+  const houses = units.filter((u) => u.type === 'house');
   const villas = units.filter((u) => u.type === 'villa');
   const errors: string[] = [];
 
@@ -18,15 +18,15 @@ export function validateInventory(units: InventoryUnit[]): void {
 
   if (villas.length < 1) {
     errors.push(
-      `[inventory] No villa found. Add a villa entry with booking_id: "${EXPECTED_VILLA_BOOKING_ID}" to src/inventory/inventory.json.`
+      `[inventory] No villa found. Add a villa entry with bookingId: "${EXPECTED_VILLA_BOOKING_ID}" to src/inventory/inventory.json.`
     );
   } else {
-    const villa = villas.find((v) => v.booking_id === EXPECTED_VILLA_BOOKING_ID);
+    const villa = villas.find((v) => v.bookingId === EXPECTED_VILLA_BOOKING_ID);
     if (!villa) {
       errors.push(
-        `[inventory] Villa with booking_id "${EXPECTED_VILLA_BOOKING_ID}" is missing. ` +
-        `Found villa(s): ${villas.map((v) => `${v.slug} (booking_id: ${v.booking_id ?? 'null'})`).join(', ')}. ` +
-        `Set booking_id: "${EXPECTED_VILLA_BOOKING_ID}" on the correct villa entry in src/inventory/inventory.json.`
+        `[inventory] Villa with bookingId "${EXPECTED_VILLA_BOOKING_ID}" is missing. ` +
+        `Found villa(s): ${villas.map((v) => `${v.slug} (bookingId: ${v.bookingId ?? 'null'})`).join(', ')}. ` +
+        `Set bookingId: "${EXPECTED_VILLA_BOOKING_ID}" on the correct villa entry in src/inventory/inventory.json.`
       );
     }
   }

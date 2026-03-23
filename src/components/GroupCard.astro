@@ -11,18 +11,26 @@ interface Props {
 
 const { group, priority = false } = Astro.props;
 
-// 1. DYNAMIC IMAGE LOADING (Antigravity Logic)
+// 1. DYNAMIC IMAGE LOADING
 const allImages = import.meta.glob('/src/assets/images/**/*.{webp,jpg,jpeg,png}', { eager: true });
-const firstMemberSlug = group.members?.[0];
-const propertyFolder = `/src/assets/images/${firstMemberSlug}/`;
 
-const memberImages = Object.keys(allImages).filter(key => key.includes(propertyFolder));
-const featuredImgAsset = (allImages[memberImages.find(key => key.toLowerCase().includes('hero')) || memberImages[0]] as any)?.default;
+const getHeroAsset = (slug: string | undefined) => {
+  if (!slug) return null;
+  const folder = `/src/assets/images/houses/${slug}/`;
+  const imgs = Object.keys(allImages).filter(k => k.includes(folder));
+  return (allImages[imgs.find(k => k.toLowerCase().includes('hero')) || imgs[0]] as any)?.default ?? null;
+};
+
+const firstMemberSlug  = group.members?.[0];
+const secondMemberSlug = group.members?.[1];
+const imgA = getHeroAsset(firstMemberSlug);
+const imgB = getHeroAsset(secondMemberSlug);
 
 // 2. DATA MAPPING
 const units = inventory as InventoryUnit[];
-// Swapped the "+" for an "&" for a more editorial look (e.g., "House Demetra & House Penelope")
 const memberNames = group.members?.map(m => units.find(u => u.slug === m)?.name ?? m).join(' & ');
+const nameA = units.find(u => u.slug === firstMemberSlug)?.name ?? firstMemberSlug ?? '';
+const nameB = units.find(u => u.slug === secondMemberSlug)?.name ?? secondMemberSlug ?? '';
 const detailPath = firstMemberSlug ? `/en/houses/${firstMemberSlug}/` : '#';
 ---
 
@@ -30,23 +38,55 @@ const detailPath = firstMemberSlug ? `/en/houses/${firstMemberSlug}/` : '#';
   class="group bg-white rounded-[2rem] overflow-hidden border border-stone-100 shadow-premium hover:shadow-premium-hover hover:-translate-y-1 transition-all duration-500 flex flex-col"
   data-id={group.id}
 >
-  {/* IMAGE SECTION */}
+  {/* IMAGE SECTION — diagonal split */}
   <div class="block relative overflow-hidden bg-stone-900 aspect-[4/3]">
-    {featuredImgAsset ? (
-      <Image
-        src={featuredImgAsset}
-        alt={group.name}
-        width={600}
-        height={450}
-        loading={priority ? 'eager' : 'lazy'}
-        class="w-full h-full object-cover opacity-90 transition-transform duration-[10s] ease-out group-hover:scale-105"
-      />
-    ) : (
-      <div class="w-full h-full flex items-center justify-center text-stone-400 text-[10px] uppercase tracking-[0.2em] font-bold">
-        Photo Unavailable
-      </div>
-    )}
-    
+
+    {/* Left photo (member A) */}
+    <div class="absolute inset-0" style="clip-path: polygon(0 0, 62% 0, 38% 100%, 0 100%);">
+      {imgA ? (
+        <Image
+          src={imgA}
+          alt={nameA}
+          width={600}
+          height={450}
+          loading={priority ? 'eager' : 'lazy'}
+          class="w-full h-full object-cover opacity-95 transition-transform duration-[10s] ease-out group-hover:scale-105"
+        />
+      ) : (
+        <div class="w-full h-full bg-stone-800" />
+      )}
+    </div>
+
+    {/* Right photo (member B) */}
+    <div class="absolute inset-0" style="clip-path: polygon(62% 0, 100% 0, 100% 100%, 38% 100%);">
+      {imgB ? (
+        <Image
+          src={imgB}
+          alt={nameB}
+          width={600}
+          height={450}
+          loading={priority ? 'eager' : 'lazy'}
+          class="w-full h-full object-cover opacity-95 transition-transform duration-[10s] ease-out group-hover:scale-105"
+        />
+      ) : (
+        <div class="w-full h-full bg-stone-700" />
+      )}
+    </div>
+
+    {/* Diagonal divider line */}
+    <div
+      class="absolute inset-0 pointer-events-none"
+      style="background: linear-gradient(to bottom, rgba(255,255,255,0.55) 0%, rgba(255,255,255,0.55) 100%); width: 2px; left: 50%; transform: rotate(-14deg) scaleY(1.4); transform-origin: center;"
+    ></div>
+
+    {/* House name labels */}
+    <span class="absolute bottom-3 left-3 px-2 py-1 bg-stone-900/65 text-white text-[9px] font-bold uppercase tracking-[0.15em] rounded-full backdrop-blur-sm shadow">
+      {nameA}
+    </span>
+    <span class="absolute bottom-3 right-3 px-2 py-1 bg-stone-900/65 text-white text-[9px] font-bold uppercase tracking-[0.15em] rounded-full backdrop-blur-sm shadow">
+      {nameB}
+    </span>
+
     {/* PREMIUM ESTATE BADGE */}
     <span class="absolute top-4 right-4 px-3 py-1.5 bg-stone-900/80 text-white text-[9px] uppercase font-bold tracking-[0.2em] rounded-full shadow-md backdrop-blur-md">
       Private Estate

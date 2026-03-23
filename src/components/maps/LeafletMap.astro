@@ -145,103 +145,110 @@ const { markers, zoom = 15, center, height = '400px', interactive = true, mapId 
 <script>
   import L from 'leaflet';
 
-  const mapElements = document.querySelectorAll('.leaflet-map-container');
+  function initMaps() {
+    document.querySelectorAll<HTMLElement>('.leaflet-map-container').forEach((el) => {
+      // Guard: skip if Leaflet already owns this element (e.g. hot-reload double-fire)
+      if ((el as any)._leaflet_id) return;
 
-  mapElements.forEach((el) => {
-    if ((el as any)._leaflet_id) return;
+      const markersData: any[] = JSON.parse(el.getAttribute('data-markers') || '[]');
+      const zoom        = parseInt(el.getAttribute('data-zoom') || '15', 10);
+      const centerAttr  = el.getAttribute('data-center');   // may be "undefined" (string)
+      const interactive = el.getAttribute('data-interactive') === 'true';
 
-    const markersData = JSON.parse(el.getAttribute('data-markers') || '[]');
-    const zoom = parseInt(el.getAttribute('data-zoom') || '15', 10);
-    const centerAttr = el.getAttribute('data-center');
-    const interactive = el.getAttribute('data-interactive') === 'true';
+      // Treat the string "undefined" (from JSON.stringify(undefined)) as absent
+      const hasCenterProp = centerAttr !== null && centerAttr !== 'undefined';
 
-    let center: [number, number] = [35.2668, 25.719];
-    
-    if (centerAttr && centerAttr !== 'undefined') {
-      try { center = JSON.parse(centerAttr); } catch(e){}
-    } else if (markersData.length > 0) {
-      center = [markersData[0].lat, markersData[0].lng];
-    }
+      let center: [number, number] = [35.2668, 25.719]; // Elounda fallback
+      if (hasCenterProp) {
+        try { center = JSON.parse(centerAttr!); } catch (_) {}
+      } else if (markersData.length > 0) {
+        center = [markersData[0].lat, markersData[0].lng];
+      }
 
-    const map = L.map(el as HTMLElement, {
-      center: center,
-      zoom: zoom,
-      scrollWheelZoom: false,
-      zoomControl: false, // We'll move it to the right for a cleaner look
-      attributionControl: false
-    });
+      const map = L.map(el, {
+        center,
+        zoom,
+        scrollWheelZoom: false,
+        zoomControl: false,
+        attributionControl: false,
+      });
 
-    if (interactive) {
-      L.control.zoom({ position: 'bottomright' }).addTo(map);
-    }
+      if (interactive) {
+        L.control.zoom({ position: 'bottomright' }).addTo(map);
+      }
 
-    // PREMIUM TILE LAYER: CartoDB Positron (Muted & Elegant)
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-      maxZoom: 20
-    }).addTo(map);
+      L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+        maxZoom: 20,
+      }).addTo(map);
 
-    // CUSTOM SVG ICON FACTORY
-    const createCustomIcon = () => L.divIcon({
-      className: 'custom-marker-pin',
-      html: `<div class="pin-circle"></div>`,
-      iconSize: [32, 32],
-      iconAnchor: [16, 16]
-    });
+      const createCustomIcon = () => L.divIcon({
+        className: 'custom-marker-pin',
+        html: `<div class="pin-circle"></div>`,
+        iconSize: [32, 32],
+        iconAnchor: [16, 16],
+      });
 
-    const bounds = L.latLngBounds([]);
-    const layers: Record<string, any> = {};
+      const bounds = L.latLngBounds([]);
+      const layers: Record<string, L.Marker> = {};
 
-    markersData.forEach((marker: any) => {
-      if (marker.lat && marker.lng) {
-        const m = L.marker([marker.lat, marker.lng], {
-          icon: createCustomIcon()
-        }).addTo(map);
+      markersData.forEach((marker) => {
+        if (!marker.lat || !marker.lng) return;
 
+        const m = L.marker([marker.lat, marker.lng], { icon: createCustomIcon() }).addTo(map);
         layers[marker.id] = m;
 
         const popupHtml = `
           <div class="custom-popup">
             ${marker.image ? `
               <div class="popup-img-container">
-                <img src="${marker.image}" alt="${marker.title}" class="popup-img" />
+                <img src="${marker.image}" alt="${marker.title}" class="popup-img" loading="lazy" />
               </div>` : ''}
             <div class="popup-info">
               <p class="popup-subtitle">${marker.subtitle || 'Traditional Home'}</p>
               <h3 class="popup-title">${marker.title}</h3>
               <div class="mt-4">
-                <a href="${marker.url}" class="popup-btn">View Discovery</a>
+                <a href="${marker.url}" class="popup-btn">View Details</a>
               </div>
             </div>
-          </div>
-        `;
-        
-        m.bindPopup(popupHtml, {
-          closeButton: false,
-          offset: L.point(0, -10)
-        });
+          </div>`;
 
-        // Event: Highlight Sidebar on Popup Open
+        m.bindPopup(popupHtml, { closeButton: false, offset: L.point(0, -10) });
+
         m.on('popupopen', () => {
-          (m as any).getElement().classList.add('marker-active');
-          el.dispatchEvent(new CustomEvent('marker-focused', { 
-            detail: { id: marker.id, image: marker.image } 
+          (m as any).getElement()?.classList.add('marker-active');
+          el.dispatchEvent(new CustomEvent('marker-focused', {
+            detail: { id: marker.id, image: marker.image },
           }));
         });
-
         m.on('popupclose', () => {
-          (m as any).getElement().classList.remove('marker-active');
+          (m as any).getElement()?.classList.remove('marker-active');
         });
 
         bounds.extend([marker.lat, marker.lng]);
+      });
+
+      // ── Zoom logic ──────────────────────────────────────────────────────────
+      // Single-marker (house page): stays at the zoom prop (16 from SinglePinMap).
+      // Multi-marker (location page): fitBounds only when no explicit center was given.
+      if (markersData.length > 1 && !hasCenterProp) {
+        map.fitBounds(bounds, { padding: [50, 50] });
       }
+
+      // ── invalidateSize ──────────────────────────────────────────────────────
+      // After a View Transition the container exists in DOM but Leaflet doesn't
+      // know its pixel dimensions yet. A short delay lets the browser finish
+      // layout before we force a tile recalculation.
+      setTimeout(() => map.invalidateSize(), 150);
+
+      // Expose for MasterLocationMap sidebar logic
+      (window as any)[`leaflet_map_${el.id}`]    = map;
+      (window as any)[`leaflet_layers_${el.id}`] = layers;
     });
+  }
 
-    if (markersData.length > 1 && !centerAttr) {
-      map.fitBounds(bounds, { padding: [50, 50] });
-    }
-
-    // Expose for Master Map logic
-    (window as any)[`leaflet_map_${el.id}`] = map;
-    (window as any)[`leaflet_layers_${el.id}`] = layers;
-  });
+  // astro:page-load fires on first load AND after every View Transition swap.
+  // This is the correct hook when <ViewTransitions /> is active — a plain
+  // module script only runs once (on the first full page load) and is silently
+  // skipped on subsequent client-side navigations.
+  document.addEventListener('astro:page-load', initMaps);
 </script>

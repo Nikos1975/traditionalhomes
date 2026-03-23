@@ -1,4 +1,4 @@
-export type ItemType = "home" | "group" | "villa";
+export type ItemType = "house" | "group" | "villa";
 export type PoolType = "private" | "shared" | "none" | null;
 export type GroupPoolAccess = "private" | "exclusive_shared" | "shared" | "none" | null;
 export type CapacityMode = "none" | "exact" | "min";
@@ -38,7 +38,7 @@ export const initialFilters: FilterState = {
 
 export function matchesView(item: ListingItem, view: FilterState["view"]): boolean {
     if (view === "all") return true;
-    if (view === "homes") return item.type === "home" || item.type === "villa";
+    if (view === "homes") return item.type === "house" || item.type === "villa";
     if (view === "groups") return item.type === "group";
     return true;
 }
@@ -65,7 +65,7 @@ export function matchesPool(item: ListingItem, poolFilter: FilterState["pool"]):
     if (poolFilter == null) return true;
 
     // homes + villa
-    if (item.type === "home" || item.type === "villa") {
+    if (item.type === "house" || item.type === "villa") {
         return item.pool === poolFilter;
     }
 

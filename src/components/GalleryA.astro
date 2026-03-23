@@ -1,205 +1,260 @@
 ---
-import { Image } from 'astro:assets';
-import type { GalleryImage } from '../types'; 
-
 interface Props {
-  images: any[]; 
+  images: any[];
   unitName: string;
 }
 
 const { images, unitName } = Astro.props;
 
-// 1. Separate featured and thumbnails
-const featured = images.find((img) => img.src.toLowerCase().includes('hero') || img.src.toLowerCase().includes('featured')) ?? images[0];
-const thumbs = images.filter((img) => img !== featured);
+const featured =
+  images.find((img) => img.isFeatured) ??
+  images.find((img) => img.src.toLowerCase().includes('hero')) ??
+  images[0];
 
-// 2. Unfragmented Array: Combine them so the lightbox can swipe through EVERY photo
-const allGalleryImages = featured ? [featured, ...thumbs] : thumbs;
+const rest = images.filter((img) => img !== featured);
+const allImages = featured ? [featured, ...rest] : rest;
+const thumbs = rest.slice(0, 5);
+const totalCount = allImages.length;
 
-// Prepare the JSON for the client-side script
-const galleryData = allGalleryImages.map((img, i) => ({
+const galleryItems = allImages.map((img, i) => ({
   src: img.src,
-  alt: i === 0 ? `Main view of ${unitName}` : `${unitName} - Photo ${i}`
+  srcset: img.srcset ?? '',
+  alt: img.alt ?? (i === 0 ? `Main view of ${unitName}` : `${unitName} — Photo ${i + 1}`),
 }));
 ---
 
-<section class="mb-16" aria-label={`Photos of ${unitName}`}>
-  
-  {/* FEATURED IMAGE CONTAINER */}
-  <button 
-    class="group block relative w-full overflow-hidden rounded-[2rem] bg-stone-900 shadow-premium cursor-pointer outline-none focus-visible:ring-4 focus-visible:ring-stone-400 transition-shadow"
-    style="aspect-ratio: 16/9; max-height: 70vh;"
-    data-lightbox-trigger
-    data-index="0"
-    aria-label={`Open main photo of ${unitName} in fullscreen`}
+{/* ── DESKTOP GALLERY (md+) ────────────────────── */}
+<section class="mb-12 hidden md:block" aria-label={`Photos of ${unitName}`}>
+
+  {/* Hero */}
+  <button
+    class="group block relative w-full overflow-hidden rounded-2xl bg-stone-200 cursor-pointer"
+    style="aspect-ratio: 16/9; max-height: 65vh;"
+    data-lb-open="0"
+    aria-label={`View photos of ${unitName}`}
   >
     {featured ? (
-      <Image
-        src={featured}
+      <img
+        src={featured.src}
+        srcset={featured.srcset}
+        sizes="(min-width:1024px) 66vw, 100vw"
         alt={`Main view of ${unitName}`}
-        width={1280}
-        height={720}
-        widths={[640, 1024, 1280, 1600]}
-        sizes="(min-width: 1024px) 66vw, 100vw"
-        class="w-full h-full object-cover opacity-95 transition-transform duration-[10s] ease-out group-hover:scale-105"
+        class="w-full h-full object-cover transition-transform duration-[10s] ease-out group-hover:scale-105"
         loading="eager"
         fetchpriority="high"
         decoding="async"
-        data-main-hero
       />
     ) : (
-      <div class="w-full h-full flex flex-col items-center justify-center bg-stone-100 text-stone-400">
-        <p class="text-[10px] uppercase tracking-[0.2em] font-bold">Photo coming soon</p>
+      <div class="w-full h-full flex items-center justify-center bg-stone-100 text-stone-400 text-xs uppercase tracking-widest">
+        Photo coming soon
       </div>
     )}
     <div class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-500"></div>
   </button>
 
-  {/* THUMBNAILS GRID */}
-  {thumbs.length > 0 && (
-    <div class="mt-6 grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 gap-4" role="list" aria-label="Photo thumbnails">
+  {/* Thumbnail strip */}
+  {allImages.length > 1 && (
+    <div class="mt-3 flex items-stretch gap-2">
       {thumbs.map((img, i) => (
         <button
           type="button"
-          class="group relative overflow-hidden rounded-[1.25rem] bg-stone-900 aspect-square cursor-pointer border-[3px] border-transparent hover:border-stone-300 focus:border-stone-900 focus:outline-none transition-all duration-300 shadow-sm hover:shadow-md"
-          aria-label={`View photo ${i + 1} of ${unitName}`}
-          data-lightbox-trigger
-          data-index={featured ? i + 1 : i} 
-          role="listitem"
+          class="group relative flex-1 overflow-hidden rounded-xl bg-stone-200 cursor-pointer border-2 border-transparent hover:border-stone-400 focus:border-stone-700 focus:outline-none transition-all duration-200"
+          style="aspect-ratio: 4/3;"
+          data-lb-open={i + 1}
+          aria-label={`View photo ${i + 2} of ${unitName}`}
         >
-          <Image
-            src={img}
-            alt={`${unitName} detail ${i + 1}`}
-            width={200}
-            height={200}
-            class="w-full h-full object-cover opacity-90 transition-transform duration-[5s] ease-out group-hover:scale-110"
+          <img
+            src={img.src}
+            srcset={img.srcset}
+            sizes="15vw"
+            alt={`${unitName} — photo ${i + 2}`}
+            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
             loading="lazy"
             decoding="async"
           />
-          <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300"></div>
-          <span class="sr-only">Open image {i + 1} in lightbox</span>
+          <div class="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors duration-300"></div>
         </button>
       ))}
+
+      {totalCount > 1 && (
+        <button
+          type="button"
+          class="flex-shrink-0 flex flex-col items-center justify-center gap-2 px-6 rounded-xl bg-stone-900 text-white hover:bg-stone-700 transition-colors cursor-pointer"
+          data-lb-open="0"
+          aria-label={`View all ${totalCount} photos`}
+        >
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/>
+            <rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/>
+          </svg>
+          <span class="text-[10px] font-bold uppercase tracking-widest whitespace-nowrap">All {totalCount}<br/>photos</span>
+        </button>
+      )}
     </div>
   )}
 </section>
 
-{/* Hidden Data for the Script */}
-<script type="application/json" id="gallery-data" set:html={JSON.stringify(galleryData)}></script>
+{/* ── MOBILE GALLERY (<md) ─────────────────────── */}
+<section class="mb-8 md:hidden" aria-label={`Photos of ${unitName}`}>
+  <div
+    class="flex overflow-x-auto gap-3 pb-1 rounded-2xl"
+    style="scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none;"
+    id="mobile-track"
+  >
+    {allImages.slice(0, 10).map((img, i) => (
+      <div
+        class="shrink-0 w-full relative overflow-hidden rounded-2xl bg-stone-200 cursor-pointer"
+        style="aspect-ratio: 4/3; scroll-snap-align: start;"
+        data-lb-open={i}
+        role="button"
+        tabindex="0"
+        aria-label={`View photo ${i + 1}`}
+      >
+        <img
+          src={img.src}
+          srcset={img.srcset}
+          sizes="100vw"
+          alt={img.alt}
+          class="w-full h-full object-cover"
+          loading={i === 0 ? 'eager' : 'lazy'}
+          decoding="async"
+        />
+      </div>
+    ))}
+  </div>
 
-{/* FULL-FEATURED EDITORIAL LIGHTBOX */}
+  {totalCount > 1 && (
+    <button
+      type="button"
+      class="mt-3 w-full flex items-center justify-center gap-2 py-3 bg-stone-900 text-white rounded-xl text-[11px] uppercase tracking-widest font-bold hover:bg-stone-700 transition-colors cursor-pointer"
+      data-lb-open="0"
+      aria-label={`View all ${totalCount} photos`}
+    >
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/>
+        <rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/>
+      </svg>
+      View all {totalCount} photos
+    </button>
+  )}
+</section>
+
+{/* ── LIGHTBOX ─────────────────────────────────── */}
 <dialog
-  id="gallery-lightbox"
-  class="fixed inset-0 w-full h-full max-w-none max-h-none m-0 border-none p-0 bg-stone-950/95 backdrop:bg-stone-950/95 overflow-hidden text-white"
-  aria-label="Photo viewer"
+  id="gallery-lb"
+  class="fixed inset-0 w-full h-full max-w-none max-h-none m-0 p-0 border-none bg-stone-950/98 text-white overflow-hidden"
   aria-modal="true"
+  aria-label={`${unitName} photo viewer`}
 >
-  <div class="relative w-full h-full flex flex-col items-center justify-center p-6">
-    
-    {/* Navigation UI */}
-    <div class="absolute top-6 right-6 flex items-center gap-6 z-50">
-      <span id="lightbox-counter" class="text-sm font-serif italic tracking-widest text-white/70"></span>
-      <button id="lightbox-close" class="p-3 hover:bg-white/10 rounded-full transition-colors outline-none focus-visible:ring-2 focus-visible:ring-white/50" aria-label="Close viewer">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  <div class="w-full h-full flex flex-col">
+
+    {/* Top bar */}
+    <div class="flex items-center justify-between px-5 py-3 shrink-0 border-b border-white/10">
+      <span id="lb-counter" class="font-serif text-sm tracking-widest text-white/60 tabular-nums"></span>
+      <button
+        id="lb-close"
+        class="w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+        aria-label="Close photo viewer"
+      >
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
       </button>
     </div>
 
-    <button id="lightbox-prev" class="absolute left-6 top-1/2 -translate-y-1/2 z-50 p-4 hover:bg-white/10 rounded-full transition-all hidden md:flex outline-none focus-visible:ring-2 focus-visible:ring-white/50" aria-label="Previous">
-      <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
-    </button>
+    {/* Image + arrows */}
+    <div class="relative flex-1 flex items-center justify-center min-h-0 px-20">
 
-    <button id="lightbox-next" class="absolute right-6 top-1/2 -translate-y-1/2 z-50 p-4 hover:bg-white/10 rounded-full transition-all hidden md:flex outline-none focus-visible:ring-2 focus-visible:ring-white/50" aria-label="Next">
-      <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-    </button>
+      {/* PREV — white pill, always visible */}
+      <button
+        id="lb-prev"
+        class="absolute left-4 z-20 w-12 h-12 flex items-center justify-center rounded-full bg-white text-stone-900 shadow-2xl hover:scale-105 active:scale-95 transition-transform"
+        aria-label="Previous photo"
+      >
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="15 18 9 12 15 6"/>
+        </svg>
+      </button>
 
-    {/* Image Display */}
-    <figure class="flex flex-col items-center gap-6 w-full max-w-7xl animate-in fade-in zoom-in duration-500">
-      <div class="relative w-full flex justify-center">
-        <img
-          id="lightbox-img"
-          src=""
-          alt=""
-          class="max-h-[80vh] max-w-full rounded-lg shadow-2xl object-contain select-none"
-        />
-      </div>
-      <figcaption id="lightbox-caption" class="font-serif text-xl md:text-2xl font-light text-white/90 text-center max-w-2xl leading-relaxed tracking-wide"></figcaption>
-    </figure>
+      <img
+        id="lb-img"
+        src=""
+        alt=""
+        class="max-h-full max-w-full object-contain select-none rounded-md shadow-2xl"
+      />
+
+      {/* NEXT — white pill, always visible */}
+      <button
+        id="lb-next"
+        class="absolute right-4 z-20 w-12 h-12 flex items-center justify-center rounded-full bg-white text-stone-900 shadow-2xl hover:scale-105 active:scale-95 transition-transform"
+        aria-label="Next photo"
+      >
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="9 18 15 12 9 6"/>
+        </svg>
+      </button>
+    </div>
+
+    {/* Caption */}
+    <p id="lb-caption" class="text-center text-sm text-white/40 py-3 px-8 shrink-0 font-serif italic truncate"></p>
   </div>
 </dialog>
 
-<script>
-  const dataElement = document.getElementById('gallery-data');
-  const galleryImages = JSON.parse(dataElement?.textContent || '[]');
-  
-  const lightbox = document.getElementById('gallery-lightbox') as HTMLDialogElement;
-  const lbImg = document.getElementById('lightbox-img') as HTMLImageElement;
-  const lbCaption = document.getElementById('lightbox-caption');
-  const lbCounter = document.getElementById('lightbox-counter');
-  
-  const triggers = document.querySelectorAll('[data-lightbox-trigger]');
-  const closeBtn = document.getElementById('lightbox-close');
-  const prevBtn = document.getElementById('lightbox-prev');
-  const nextBtn = document.getElementById('lightbox-next');
+<script is:inline define:vars={{ galleryItems }}>
+  var lb = document.getElementById('gallery-lb');
+  var lbImg = document.getElementById('lb-img');
+  var lbCaption = document.getElementById('lb-caption');
+  var lbCounter = document.getElementById('lb-counter');
+  var idx = 0;
 
-  let currentIndex = 0;
-
-  function updateLightbox(index: number) {
-    if (!lbImg || !lbCaption || !lbCounter || galleryImages.length === 0) return;
-    
-    // Handle wrap-around
-    currentIndex = (index + galleryImages.length) % galleryImages.length;
-    const current = galleryImages[currentIndex];
-    
-    lbImg.src = current.src;
-    lbImg.alt = current.alt;
-    lbCaption.textContent = current.alt;
-    lbCounter.textContent = `${currentIndex + 1} / ${galleryImages.length}`;
+  function show(newIdx) {
+    if (!lb || !lbImg || galleryItems.length === 0) return;
+    idx = (newIdx + galleryItems.length) % galleryItems.length;
+    var item = galleryItems[idx];
+    lbImg.src = item.src;
+    lbImg.srcset = item.srcset || '';
+    lbImg.alt = item.alt;
+    if (lbCaption) lbCaption.textContent = item.alt;
+    if (lbCounter) lbCounter.textContent = (idx + 1) + ' / ' + galleryItems.length;
   }
 
-  // Event Listeners (Updated to read data-index)
-  triggers.forEach((trigger) => {
-    trigger.addEventListener('click', (e) => {
-      const btn = e.currentTarget as HTMLElement;
-      const index = parseInt(btn.getAttribute('data-index') || '0', 10);
-      updateLightbox(index);
-      lightbox?.showModal();
-      document.body.style.overflow = 'hidden'; // Prevent background scrolling
+  function openLb(startIdx) {
+    show(startIdx);
+    lb.showModal();
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLb() {
+    lb.close();
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll('[data-lb-open]').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      openLb(parseInt(btn.getAttribute('data-lb-open') || '0', 10));
+    });
+    btn.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' || e.key === ' ') openLb(parseInt(btn.getAttribute('data-lb-open') || '0', 10));
     });
   });
 
-  const close = () => { 
-    lightbox?.close(); 
-    document.body.style.overflow = ''; 
-  };
-  
-  closeBtn?.addEventListener('click', close);
-  prevBtn?.addEventListener('click', (e) => { e.stopPropagation(); updateLightbox(currentIndex - 1); });
-  nextBtn?.addEventListener('click', (e) => { e.stopPropagation(); updateLightbox(currentIndex + 1); });
+  document.getElementById('lb-close').addEventListener('click', closeLb);
+  document.getElementById('lb-prev').addEventListener('click', function(e) { e.stopPropagation(); show(idx - 1); });
+  document.getElementById('lb-next').addEventListener('click', function(e) { e.stopPropagation(); show(idx + 1); });
 
-  // Backdrop close
-  lightbox?.addEventListener('click', (e) => { if (e.target === lightbox) close(); });
+  lb.addEventListener('click', function(e) { if (e.target === lb) closeLb(); });
 
-  // Keyboard
-  document.addEventListener('keydown', (e) => {
-    if (!lightbox?.open) return;
-    if (e.key === 'Escape') close();
-    if (e.key === 'ArrowLeft') updateLightbox(currentIndex - 1);
-    if (e.key === 'ArrowRight') updateLightbox(currentIndex + 1);
+  document.addEventListener('keydown', function(e) {
+    if (!lb.open) return;
+    if (e.key === 'Escape') closeLb();
+    if (e.key === 'ArrowLeft') show(idx - 1);
+    if (e.key === 'ArrowRight') show(idx + 1);
   });
 
-  // Advanced Touch Handling (Swipe support)
-  let touchStartX = 0;
-  let touchEndX = 0;
-
-  lightbox?.addEventListener('touchstart', (e) => {
-    touchStartX = e.changedTouches[0].clientX;
-  }, { passive: true });
-
-  lightbox?.addEventListener('touchend', (e) => {
-    touchEndX = e.changedTouches[0].clientX;
-    const swipeDistance = touchEndX - touchStartX;
-    if (Math.abs(swipeDistance) > 80) {
-      swipeDistance > 0 ? updateLightbox(currentIndex - 1) : updateLightbox(currentIndex + 1);
-    }
+  var touchX = 0;
+  lb.addEventListener('touchstart', function(e) { touchX = e.changedTouches[0].clientX; }, { passive: true });
+  lb.addEventListener('touchend', function(e) {
+    var dx = e.changedTouches[0].clientX - touchX;
+    if (Math.abs(dx) > 60) { dx > 0 ? show(idx - 1) : show(idx + 1); }
   }, { passive: true });
 </script>

@@ -45,7 +45,7 @@ const ogImagePath = path.join(process.cwd(), 'public', 'images', 'villa', slug, 
 const ogImage = fs.existsSync(ogImagePath) ? `/images/villa/${slug}/og.jpg` : undefined;
 
 const pageTitle = `${unit.name} — ${unit.location}, Elounda | Elounda Traditional Homes`;
-const pageDescription = `${unit.name} in ${unit.location} — sleeps ${unit.sleeps_max}, ${unit.bedrooms} bedrooms, private pool. Panoramic views over Elounda Bay and the Mirabello Gulf, Crete.`;
+const pageDescription = `${unit.name} in ${unit.location} — sleeps ${unit.sleeps}, ${unit.bedrooms} bedrooms, private pool. Panoramic views over Elounda Bay and the Mirabello Gulf, Crete.`;
 
 const locData = locations.find(l => l.slug === slug);
 const parkingLoc = parkingOnly[0];
@@ -121,7 +121,7 @@ const { Content } = await render(entry);
               Before you book
             </p>
             <ul class="space-y-1.5 text-sm">
-              {unit.hard_constraints.map((c) => (
+              {unit.hardConstraints.map((c) => (
                 <li class="flex items-start gap-2">
                   <span class="mt-1.5 flex-shrink-0 w-1 h-1 rounded-full bg-amber-700"></span>
                   <span>{c}</span>
@@ -129,10 +129,10 @@ const { Content } = await render(entry);
               ))}
             </ul>
           </div>
-          {unit.access_detail && (
+          {unit.accessDetail && (
             <div class="mt-3 bg-stone-200 border border-stone-300 rounded px-4 py-3 text-sm text-stone-700">
               <p class="font-medium mb-1">Access detail</p>
-              <p>{unit.access_detail}</p>
+              <p>{unit.accessDetail}</p>
             </div>
           )}
         </div>
@@ -155,11 +155,11 @@ const { Content } = await render(entry);
           </ul>
         </section>
 
-        {unit.location_relations?.above && (
+        {unit.locationRelations?.above && (
           <div class="mb-8 p-4 bg-stone-200 border border-stone-300 rounded-lg text-sm text-stone-700">
             <p class="font-medium mb-1">Location note</p>
             <p>
-              The village of Vrouchas sits above the houses in Mavrikiano. {unit.location_relations.above} from here.
+              The village of Vrouchas sits above the houses in Mavrikiano. {unit.locationRelations.above} from here.
               <a href="/en/location/" class="underline hover:text-body-text ml-1 transition-colors duration-150">Location details</a>
             </p>
           </div>
@@ -203,7 +203,7 @@ const { Content } = await render(entry);
       <aside class="lg:sticky lg:top-20 lg:self-start">
         <div class="bg-white rounded-xl border border-stone-200 p-6 shadow-card">
           <p class="font-serif text-xl text-body-text mb-1">{unit.name}</p>
-          <p class="text-sm text-muted mb-5">{unit.location} · Sleeps {unit.sleeps_max}</p>
+          <p class="text-sm text-muted mb-5">{unit.location} · Sleeps {unit.sleeps}</p>
 
           <div class="flex flex-col gap-2 mb-6 text-sm">
             <div class="flex justify-between py-2 border-b border-stone-100">
@@ -225,7 +225,7 @@ const { Content } = await render(entry);
           </div>
 
           <a
-            href={unit.availability_url}
+            href={unit.availabilityUrl}
             target="_blank"
             rel="noopener noreferrer"
             class="btn-cta w-full text-sm mb-3"

@@ -9,7 +9,7 @@ import { validateInventory } from '../../utils/validateInventory';
 
 const units = inventory as InventoryUnit[];
 validateInventory(units);
-const houses = units.filter(u => u.type === 'home');
+const houses = units.filter(u => u.type === 'house');
 const villa = units.find((u) => u.type === 'villa');
 ---
 

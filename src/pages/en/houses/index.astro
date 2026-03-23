@@ -15,20 +15,20 @@ const units = inventory as InventoryUnit[];
 validateInventory(units);
 const siteCopy = siteCopyData as SiteCopy;
 
-const houses = units.filter((u) => u.type === 'home');
+const houses = units.filter((u) => u.type === 'house');
 const villa = units.find((u) => u.type === 'villa');
 
 // 2. FILTERING LOGIC
 const allItems: ListingItem[] = [
   ...units.map((unit) => ({
     id: unit.slug,
-    type: unit.type as 'home' | 'villa',
+    type: unit.type as 'house' | 'villa',
     name: unit.name,
-    sleepsMax: unit.sleeps_max,
+    sleepsMax: unit.sleeps,
     bedrooms: unit.bedrooms,
     seaView: unit.view.toLowerCase().includes('sea') || unit.view.toLowerCase().includes('bay'),
     pool: unit.pool,
-    internalStairs: unit.internal_stairs,
+    internalStairs: unit.internalStairs,
     entryLevel: null,
   })),
   ...(groupsData as ListingItem[])

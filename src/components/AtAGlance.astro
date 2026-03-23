@@ -28,7 +28,7 @@ const poolLabel =
         </div>
         <div>
           <span class="block text-[10px] text-muted uppercase tracking-[0.1em] mb-0.5">Sleeps</span>
-          <span class="block text-xl font-serif text-body-text leading-none">{unit.sleeps_max} Guests</span>
+          <span class="block text-xl font-serif text-body-text leading-none">{unit.sleeps} Guests</span>
         </div>
       </div>
 
@@ -83,7 +83,7 @@ const poolLabel =
         </div>
         <div>
           <span class="block text-[10px] text-muted uppercase tracking-[0.1em] mb-0.5">Access</span>
-          <span class="block text-xl font-serif text-body-text leading-none">{unit.internal_stairs ? 'Stairs' : 'Step-free'}</span>
+          <span class="block text-xl font-serif text-body-text leading-none">{unit.internalStairs ? 'Stairs' : 'Step-free'}</span>
         </div>
       </div>
     </div>
@@ -126,14 +126,14 @@ const poolLabel =
   </div>
 
   {/* Shared Pool Upsell Notice */}
-  {unit.pool === 'shared' && unit.shared_pool_with && (
+  {unit.pool === 'shared' && unit.sharedPoolWith && (
     <div class="mt-8 p-6 bg-stone-100/50 border border-stone-200/60 rounded-[1.5rem] flex items-start gap-4 shadow-sm">
       <div class="w-8 h-8 rounded-full bg-white border border-stone-200 flex items-center justify-center flex-shrink-0 text-primary">
          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
       </div>
       <p class="text-sm text-stone-600 leading-relaxed font-light pt-1">
         This property's swimming pool is shared exclusively with 
-        {unit.shared_pool_with.map((slug, index) => (
+        {unit.sharedPoolWith.map((slug, index) => (
           <span>
             {index > 0 ? ' and ' : ' '}
             <a href={`/en/houses/${slug}/`} class="font-medium text-body-text underline hover:text-primary transition-colors capitalize">
