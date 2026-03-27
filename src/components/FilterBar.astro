@@ -54,204 +54,213 @@ const { items } = Astro.props;
 <script>
   import { applyFilters, initialFilters, type FilterState, type ListingItem } from '../utils/filters';
 
-  const dataScript = document.getElementById('filter-data');
-  const items: ListingItem[] = dataScript ? JSON.parse(dataScript.textContent || '[]') : [];
+  function initFilterBar() {
+    const dataScript = document.getElementById('filter-data');
+    if (!dataScript) return;
+    const root = dataScript.closest('.mb-8') as HTMLElement | null;
+    if (!root || root.dataset.filterInit === '1') return;
+    root.dataset.filterInit = '1';
 
-  const domCards = new Map<string, HTMLElement>();
-  items.forEach(item => {
-    const el = document.querySelector(`[data-id="${item.id}"]`) as HTMLElement;
-    if (el) domCards.set(item.id, el);
-  });
-
-  let state: FilterState = { ...initialFilters, view: 'all' };
-
-  // Sync state with URL on load
-  function syncFromUrl() {
-    const params = new URLSearchParams(window.location.search);
-    const view = params.get('view') as FilterState['view'];
-    if (view && ['all', 'homes', 'groups'].includes(view)) state.view = view;
-    
-    const sleeps = params.get('sleeps');
-    if (sleeps) {
-      if (sleeps.startsWith('min-')) {
-        state.capacityMode = 'min';
-        state.capacityValue = parseInt(sleeps.replace('min-', ''));
-      } else {
-        state.capacityMode = 'exact';
-        state.capacityValue = parseInt(sleeps);
-      }
-    }
-
-    const bed = params.get('bed');
-    if (bed) state.bedroomsMin = parseInt(bed);
-
-    if (params.get('pool')) state.pool = params.get('pool') as FilterState['pool'];
-    if (params.get('sea') === '1') state.seaView = true;
-  }
-
-  function syncToUrl() {
-    const params = new URLSearchParams();
-    if (state.view !== 'all') params.set('view', state.view);
-    
-    if (state.capacityMode !== 'none') {
-      const val = state.capacityMode === 'min' ? `min-${state.capacityValue}` : `${state.capacityValue}`;
-      params.set('sleeps', val);
-    }
-    
-    if (state.bedroomsMin) params.set('bed', state.bedroomsMin.toString());
-    if (state.pool) params.set('pool', state.pool);
-    if (state.seaView) params.set('sea', '1');
-
-    const newUrl = params.toString() ? `${window.location.pathname}?${params.toString()}` : window.location.pathname;
-    window.history.replaceState({}, '', newUrl);
-  }
-
-  const countEl = document.getElementById('filter-count');
-  const tabs = document.querySelectorAll('.view-tab');
-  const chips = document.querySelectorAll('.filter-chip');
-
-  function render(updateUrl = true) {
-    const matched = applyFilters(items, state);
-    const matchedIds = new Set(matched.map(m => m.id));
-
-    let visibleCount = 0;
-    domCards.forEach((el, id) => {
-      if (matchedIds.has(id)) {
-        el.style.display = '';
-        visibleCount++;
-      } else {
-        el.style.display = 'none';
-      }
+    const items: ListingItem[] = JSON.parse(dataScript.textContent || '[]');
+    const domCards = new Map<string, HTMLElement>();
+    items.forEach(item => {
+      const el = document.querySelector(`[data-id="${item.id}"]`) as HTMLElement | null;
+      if (el) domCards.set(item.id, el);
     });
 
-    if (countEl) {
-      const isDefault = 
-        state.capacityMode === 'none' && 
-        state.bedroomsMin === null && 
-        state.seaView === false && 
-        state.pool === null;
+    let state: FilterState = { ...initialFilters, view: 'all' };
 
-      if (isDefault && state.view === 'all') {
-        countEl.classList.add('hidden');
-      } else {
-        countEl.textContent = `${visibleCount} ${visibleCount === 1 ? 'property' : 'properties'} match`;
-        countEl.classList.remove('hidden');
+    function syncFromUrl() {
+      const params = new URLSearchParams(window.location.search);
+      const view = params.get('view') as FilterState['view'];
+      if (view && ['all', 'homes', 'groups'].includes(view)) state.view = view;
+
+      const sleeps = params.get('sleeps');
+      if (sleeps) {
+        if (sleeps.startsWith('min-')) {
+          state.capacityMode = 'min';
+          state.capacityValue = parseInt(sleeps.replace('min-', ''));
+        } else {
+          state.capacityMode = 'exact';
+          state.capacityValue = parseInt(sleeps);
+        }
       }
+
+      const bed = params.get('bed');
+      if (bed) state.bedroomsMin = parseInt(bed);
+
+      if (params.get('pool')) state.pool = params.get('pool') as FilterState['pool'];
+      if (params.get('sea') === '1') state.seaView = true;
     }
 
-    // Update active tab styles
+    function syncToUrl() {
+      const params = new URLSearchParams();
+      if (state.view !== 'all') params.set('view', state.view);
+
+      if (state.capacityMode !== 'none') {
+        const val = state.capacityMode === 'min' ? `min-${state.capacityValue}` : `${state.capacityValue}`;
+        params.set('sleeps', val);
+      }
+
+      if (state.bedroomsMin) params.set('bed', state.bedroomsMin.toString());
+      if (state.pool) params.set('pool', state.pool);
+      if (state.seaView) params.set('sea', '1');
+
+      const newUrl = params.toString() ? `${window.location.pathname}?${params.toString()}` : window.location.pathname;
+      window.history.replaceState({}, '', newUrl);
+    }
+
+    const countEl = root.querySelector('#filter-count');
+    const tabs = root.querySelectorAll('.view-tab');
+    const chips = root.querySelectorAll('.filter-chip');
+
+    function render(updateUrl = true) {
+      const matched = applyFilters(items, state);
+      const matchedIds = new Set(matched.map(m => m.id));
+
+      let visibleCount = 0;
+      domCards.forEach((el, id) => {
+        if (matchedIds.has(id)) {
+          el.style.display = '';
+          visibleCount++;
+        } else {
+          el.style.display = 'none';
+        }
+      });
+
+      if (countEl) {
+        const isDefault =
+          state.capacityMode === 'none' &&
+          state.bedroomsMin === null &&
+          state.seaView === false &&
+          state.pool === null;
+
+        if (isDefault && state.view === 'all') {
+          countEl.classList.add('hidden');
+        } else {
+          countEl.textContent = `${visibleCount} ${visibleCount === 1 ? 'property' : 'properties'} match`;
+          countEl.classList.remove('hidden');
+        }
+      }
+
+      tabs.forEach(tab => {
+        const isSelected = (tab as HTMLElement).dataset.view === state.view;
+        tab.setAttribute('aria-selected', isSelected.toString());
+        if (isSelected) {
+          tab.classList.add('border-stone-800', 'text-primary', 'font-semibold');
+          tab.classList.remove('border-transparent', 'text-stone-500', 'font-medium');
+        } else {
+          tab.classList.add('border-transparent', 'text-stone-500', 'font-medium');
+          tab.classList.remove('border-stone-800', 'text-primary', 'font-semibold');
+        }
+      });
+
+      chips.forEach(chip => {
+        const action = (chip as HTMLElement).dataset.action;
+        let isActive = false;
+
+        if (action === 'all') {
+          isActive = state.capacityMode === 'none' && state.bedroomsMin === null && !state.seaView && state.pool === null;
+        } else if (action === 'sleeps-3') {
+          isActive = state.capacityMode === 'exact' && state.capacityValue === 3;
+        } else if (action === 'sleeps-4') {
+          isActive = state.capacityMode === 'min' && state.capacityValue === 4;
+        } else if (action === 'sleeps-6') {
+          isActive = state.capacityMode === 'min' && state.capacityValue === 6;
+        } else if (action === 'sleeps-8') {
+          isActive = state.capacityMode === 'min' && state.capacityValue === 8;
+        } else if (action === 'sea-view') {
+          isActive = state.seaView;
+        } else if (action === 'private-pool') {
+          isActive = state.pool === 'private';
+        } else if (action === 'shared-pool') {
+          isActive = state.pool === 'shared';
+        } else if (action === 'no-pool') {
+          isActive = state.pool === 'none';
+        } else if (action === 'bed-2') {
+          isActive = state.bedroomsMin === 2;
+        } else if (action === 'bed-3') {
+          isActive = state.bedroomsMin === 3;
+        }
+
+        chip.setAttribute('aria-pressed', isActive.toString());
+        if (isActive) {
+          chip.classList.add('active');
+        } else {
+          chip.classList.remove('active');
+        }
+      });
+
+      if (updateUrl) syncToUrl();
+    }
+
     tabs.forEach(tab => {
-      const isSelected = (tab as HTMLElement).dataset.view === state.view;
-      tab.setAttribute('aria-selected', isSelected.toString());
-      if (isSelected) {
-        tab.classList.add('border-stone-800', 'text-primary', 'font-semibold');
-        tab.classList.remove('border-transparent', 'text-stone-500', 'font-medium');
-      } else {
-        tab.classList.add('border-transparent', 'text-stone-500', 'font-medium');
-        tab.classList.remove('border-stone-800', 'text-primary', 'font-semibold');
-      }
+      tab.addEventListener('click', (e) => {
+        const v = (e.currentTarget as HTMLElement).dataset.view as FilterState['view'];
+        state = { ...initialFilters, view: v };
+        render();
+      });
     });
 
-    // Update active chip styles
     chips.forEach(chip => {
-      const action = (chip as HTMLElement).dataset.action;
-      let isActive = false;
-      
-      if (action === 'all') {
-        isActive = state.capacityMode === 'none' && state.bedroomsMin === null && !state.seaView && state.pool === null;
-      } else if (action === 'sleeps-3') {
-        isActive = state.capacityMode === 'exact' && state.capacityValue === 3;
-      } else if (action === 'sleeps-4') {
-        isActive = state.capacityMode === 'min' && state.capacityValue === 4;
-      } else if (action === 'sleeps-6') {
-        isActive = state.capacityMode === 'min' && state.capacityValue === 6;
-      } else if (action === 'sleeps-8') {
-        isActive = state.capacityMode === 'min' && state.capacityValue === 8;
-      } else if (action === 'sea-view') {
-        isActive = state.seaView;
-      } else if (action === 'private-pool') {
-        isActive = state.pool === 'private';
-      } else if (action === 'shared-pool') {
-        isActive = state.pool === 'shared';
-      } else if (action === 'no-pool') {
-        isActive = state.pool === 'none';
-      } else if (action === 'bed-2') {
-        isActive = state.bedroomsMin === 2;
-      } else if (action === 'bed-3') {
-        isActive = state.bedroomsMin === 3;
-      }
+      chip.addEventListener('click', (e) => {
+        const btn = e.currentTarget as HTMLElement;
+        const action = btn.dataset.action;
 
-      chip.setAttribute('aria-pressed', isActive.toString());
-      if (isActive) {
-        chip.classList.add('active');
-      } else {
-        chip.classList.remove('active');
-      }
+        if (action === 'all') {
+          state = { ...initialFilters, view: state.view };
+        } else if (action === 'sleeps-3') {
+          state.capacityMode = state.capacityMode === 'exact' && state.capacityValue === 3 ? 'none' : 'exact';
+          state.capacityValue = state.capacityMode === 'exact' ? 3 : null;
+        } else if (action === 'sleeps-4') {
+          state.capacityMode = state.capacityMode === 'min' && state.capacityValue === 4 ? 'none' : 'min';
+          state.capacityValue = state.capacityMode === 'min' ? 4 : null;
+        } else if (action === 'sleeps-6') {
+          state.capacityMode = state.capacityMode === 'min' && state.capacityValue === 6 ? 'none' : 'min';
+          state.capacityValue = state.capacityMode === 'min' ? 6 : null;
+        } else if (action === 'sleeps-8') {
+          state.capacityMode = state.capacityMode === 'min' && state.capacityValue === 8 ? 'none' : 'min';
+          state.capacityValue = state.capacityMode === 'min' ? 8 : null;
+        } else if (action === 'sea-view') {
+          state.seaView = !state.seaView;
+        } else if (action === 'private-pool') {
+          state.pool = state.pool === 'private' ? null : 'private';
+        } else if (action === 'shared-pool') {
+          state.pool = state.pool === 'shared' ? null : 'shared';
+        } else if (action === 'no-pool') {
+          state.pool = state.pool === 'none' ? null : 'none';
+        } else if (action === 'bed-2') {
+          state.bedroomsMin = state.bedroomsMin === 2 ? null : 2;
+        } else if (action === 'bed-3') {
+          state.bedroomsMin = state.bedroomsMin === 3 ? null : 3;
+        }
+
+        render();
+      });
     });
 
-    if (updateUrl) syncToUrl();
-  }
-
-  // Bind tabs
-  tabs.forEach(tab => {
-    tab.addEventListener('click', (e) => {
-      const v = (e.currentTarget as HTMLElement).dataset.view as FilterState['view'];
-      state = { ...initialFilters, view: v };
+    root.querySelector('[data-action="clear"]')?.addEventListener('click', () => {
+      state = { ...initialFilters, view: state.view };
       render();
     });
-  });
 
-  // Bind chips
-  chips.forEach(chip => {
-    chip.addEventListener('click', (e) => {
-      const btn = e.currentTarget as HTMLElement;
-      const action = btn.dataset.action;
-      
-      if (action === 'all') {
-        state = { ...initialFilters, view: state.view };
-      } else if (action === 'sleeps-3') {
-        state.capacityMode = state.capacityMode === 'exact' && state.capacityValue === 3 ? 'none' : 'exact';
-        state.capacityValue = state.capacityMode === 'exact' ? 3 : null;
-      } else if (action === 'sleeps-4') {
-        state.capacityMode = state.capacityMode === 'min' && state.capacityValue === 4 ? 'none' : 'min';
-        state.capacityValue = state.capacityMode === 'min' ? 4 : null;
-      } else if (action === 'sleeps-6') {
-        state.capacityMode = state.capacityMode === 'min' && state.capacityValue === 6 ? 'none' : 'min';
-        state.capacityValue = state.capacityMode === 'min' ? 6 : null;
-      } else if (action === 'sleeps-8') {
-        state.capacityMode = state.capacityMode === 'min' && state.capacityValue === 8 ? 'none' : 'min';
-        state.capacityValue = state.capacityMode === 'min' ? 8 : null;
-      } else if (action === 'sea-view') {
-        state.seaView = !state.seaView;
-      } else if (action === 'private-pool') {
-        state.pool = state.pool === 'private' ? null : 'private';
-      } else if (action === 'shared-pool') {
-        state.pool = state.pool === 'shared' ? null : 'shared';
-      } else if (action === 'no-pool') {
-        state.pool = state.pool === 'none' ? null : 'none';
-      } else if (action === 'bed-2') {
-        state.bedroomsMin = state.bedroomsMin === 2 ? null : 2;
-      } else if (action === 'bed-3') {
-        state.bedroomsMin = state.bedroomsMin === 3 ? null : 3;
-      }
-      
-      render();
-    });
-  });
+    const prevPopState = (window as any).__housesFilterPopState;
+    if (prevPopState) window.removeEventListener('popstate', prevPopState);
+    const onPopState = () => {
+      syncFromUrl();
+      render(false);
+    };
+    (window as any).__housesFilterPopState = onPopState;
+    window.addEventListener('popstate', onPopState);
 
-  // Bind clear
-  document.querySelector('[data-action="clear"]')?.addEventListener('click', () => {
-    state = { ...initialFilters, view: state.view };
-    render();
-  });
-
-  // Handle back/forward buttons
-  window.addEventListener('popstate', () => {
     syncFromUrl();
     render(false);
-  });
+  }
 
-  // Initial render
-  syncFromUrl();
-  render(false);
+  document.addEventListener('astro:page-load', initFilterBar);
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initFilterBar, { once: true });
+  } else {
+    initFilterBar();
+  }
 </script>
