@@ -4,8 +4,8 @@
         "type": "group",
         "name": "Erato + Clio",
         "sleepsMax": 8,
-        "bedrooms": 2,
-        "seaView": true,
+        "bedrooms": 3,
+        "seaView": false,
         "pool": null,
         "poolAccess": "private",
         "members": [
@@ -20,7 +20,7 @@
         "name": "Penelope + Demetra",
         "sleepsMax": 10,
         "bedrooms": 3,
-        "seaView": true,
+        "seaView": false,
         "pool": null,
         "poolAccess": "exclusive_shared",
         "members": [
