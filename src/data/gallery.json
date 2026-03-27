@@ -981,16 +981,16 @@
       "src": "/images/houses/kalliopi/1024/kalliopi-exterior-facade-02-645.webp",
       "srcset": "/images/houses/kalliopi/480/kalliopi-exterior-facade-02-302.webp 480w, /images/houses/kalliopi/768/kalliopi-exterior-facade-02-484.webp 768w, /images/houses/kalliopi/1024/kalliopi-exterior-facade-02-645.webp 1024w, /images/houses/kalliopi/1600/kalliopi-exterior-facade-02-1008.webp 1600w",
       "alt": "Kalliopi exterior facade 02",
-      "isFeatured": true,
+      "isFeatured": false,
       "tags": [
         "exterior"
       ]
     },
     {
-      "src": "/images/houses/kalliopi/1024/kalliopi-hero-exterior-facade-01-706.webp",
+      "src": "/images/houses/kalliopi/1600/kalliopi-hero-exterior-facade-01-1103.webp",
       "srcset": "/images/houses/kalliopi/480/kalliopi-hero-exterior-facade-01-331.webp 480w, /images/houses/kalliopi/768/kalliopi-hero-exterior-facade-01-529.webp 768w, /images/houses/kalliopi/1024/kalliopi-hero-exterior-facade-01-706.webp 1024w, /images/houses/kalliopi/1600/kalliopi-hero-exterior-facade-01-1103.webp 1600w, /images/houses/kalliopi/2400/kalliopi-hero-exterior-facade-01-1655.webp 2400w",
       "alt": "Kalliopi hero exterior facade 01",
-      "isFeatured": true,
+      "isFeatured": false,
       "tags": [
         "exterior"
       ]
@@ -999,7 +999,7 @@
       "src": "/images/houses/kalliopi/1024/kalliopi-entrance-courtyard-01-1024.webp",
       "srcset": "/images/houses/kalliopi/480/kalliopi-entrance-courtyard-01-480.webp 480w, /images/houses/kalliopi/768/kalliopi-entrance-courtyard-01-768.webp 768w, /images/houses/kalliopi/1024/kalliopi-entrance-courtyard-01-1024.webp 1024w, /images/houses/kalliopi/1600/kalliopi-entrance-courtyard-01-1600.webp 1600w",
       "alt": "Kalliopi entrance courtyard 01",
-      "isFeatured": false,
+      "isFeatured": true,
       "tags": [
         "outdoor"
       ]
@@ -1121,7 +1121,7 @@
       "src": "/images/houses/leonidas/1024/leonidas-exterior-facade-01-1024.webp",
       "srcset": "/images/houses/leonidas/480/leonidas-exterior-facade-01-480.webp 480w, /images/houses/leonidas/768/leonidas-exterior-facade-01-768.webp 768w, /images/houses/leonidas/1024/leonidas-exterior-facade-01-1024.webp 1024w, /images/houses/leonidas/1600/leonidas-exterior-facade-01-1600.webp 1600w",
       "alt": "Leonidas exterior facade 01",
-      "isFeatured": true,
+      "isFeatured": false,
       "tags": [
         "exterior"
       ]
@@ -1233,7 +1233,7 @@
       "src": "/images/houses/margarita/1024/margarita-exterior-approach-01-1024.webp",
       "srcset": "/images/houses/margarita/480/margarita-exterior-approach-01-480.webp 480w, /images/houses/margarita/768/margarita-exterior-approach-01-768.webp 768w, /images/houses/margarita/1024/margarita-exterior-approach-01-1024.webp 1024w, /images/houses/margarita/1600/margarita-exterior-approach-01-1600.webp 1600w",
       "alt": "Margarita exterior approach 01",
-      "isFeatured": true,
+      "isFeatured": false,
       "tags": [
         "exterior"
       ]
@@ -1401,7 +1401,7 @@
       "src": "/images/houses/monastiri/1024/monastiri-exterior-approach-01-685.webp",
       "srcset": "/images/houses/monastiri/480/monastiri-exterior-approach-01-321.webp 480w, /images/houses/monastiri/768/monastiri-exterior-approach-01-514.webp 768w, /images/houses/monastiri/1024/monastiri-exterior-approach-01-685.webp 1024w, /images/houses/monastiri/1600/monastiri-exterior-approach-01-1071.webp 1600w",
       "alt": "Monastiri exterior approach 01",
-      "isFeatured": true,
+      "isFeatured": false,
       "tags": [
         "exterior"
       ]
@@ -1410,7 +1410,7 @@
       "src": "/images/houses/monastiri/1024/monastiri-exterior-facade-02-1024.webp",
       "srcset": "/images/houses/monastiri/480/monastiri-exterior-facade-02-480.webp 480w, /images/houses/monastiri/768/monastiri-exterior-facade-02-768.webp 768w, /images/houses/monastiri/1024/monastiri-exterior-facade-02-1024.webp 1024w, /images/houses/monastiri/1600/monastiri-exterior-facade-02-1600.webp 1600w",
       "alt": "Monastiri exterior facade 02",
-      "isFeatured": true,
+      "isFeatured": false,
       "tags": [
         "exterior"
       ]

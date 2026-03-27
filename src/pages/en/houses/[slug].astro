@@ -33,6 +33,7 @@ const heroEntry  = gallery[0];
 const heroSrc    = heroEntry
   ? heroEntry.src.replace('/1024/', '/1600/').replace('-1024.webp', '-1600.webp')
   : '';
+const heroPosition = (slug === 'kalliopi' || slug === 'argyro') ? 'center 35%' : 'center';
 const ogImage = `/images/houses/${slug}/og.jpg`;
 
 // RELATIONS
@@ -93,7 +94,7 @@ const pageDescription = `${unit.name} in ${unit.location} — sleeps ${unit.slee
     {heroSrc && (
       <div
         class="absolute inset-0 bg-center bg-cover"
-        style={`background-image: url('${heroSrc}');`}
+        style={`background-image: url('${heroSrc}'); background-position: ${heroPosition};`}
         role="img"
         aria-label={`Hero photo of ${unit.name}`}
       ></div>
