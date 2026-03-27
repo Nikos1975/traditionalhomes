@@ -9,6 +9,7 @@ import siteCopyData from '../../../data/siteCopy.json';
 import { locations, parkingOnly } from '../../../data/locations';
 import { getEntry, render } from 'astro:content';
 import galleryData from '../../../data/gallery.json';
+import suggestedPairingsData from '../../../inventory/suggested-pairings.json';
 import { sortGalleryImages } from '../../../utils/sortGalleryImages';
 import type { InventoryUnit, SiteCopy, GalleryImage } from '../../../types';
 
@@ -41,6 +42,19 @@ const nearUnits = (unit.locationRelations?.near ?? [])
 
 const locData = locations.find((l) => l.slug === slug);
 const parkingLoc = parkingOnly[0];
+
+type SuggestedPairing = {
+  id: string;
+  name: string;
+  members: string[];
+  displayOn: string[];
+  kind: 'nearby_pairing' | 'nearby_cluster';
+  summary: string;
+  reasons: string[];
+};
+
+const suggestedPairings = (suggestedPairingsData as SuggestedPairing[])
+  .filter((pairing) => pairing.displayOn.includes(slug));
 
 // CONTENT
 const entry = await getEntry('houses', slug);
@@ -328,6 +342,46 @@ const pageDescription = `${unit.name} in ${unit.location} — sleeps ${unit.slee
               ))}
             </div>
           </div>
+        )}
+
+        {/* Suggested recommendation-only combinations */}
+        {suggestedPairings.length > 0 && (
+          <section class="p-6 bg-stone-50 rounded-2xl border border-stone-200" aria-label="Suggested nearby combinations">
+            <h4 class="text-[10px] uppercase tracking-widest text-muted font-bold mb-4">
+              Traveling together? Suggested nearby combinations
+            </h4>
+            <div class="space-y-4">
+              {suggestedPairings.map((pairing) => {
+                const memberNames = pairing.members
+                  .map((memberSlug) => units.find((u) => u.slug === memberSlug)?.name ?? memberSlug)
+                  .join(' + ');
+                return (
+                  <article class="bg-white p-4 rounded-xl border border-stone-200 shadow-sm">
+                    <p class="font-serif text-base text-body-text">{pairing.name}</p>
+                    <p class="text-xs text-stone-600 mt-1 leading-relaxed">{pairing.summary}</p>
+                    <p class="text-[11px] text-stone-500 mt-2">
+                      Includes: {memberNames}
+                    </p>
+                    <div class="mt-3 flex flex-wrap gap-2">
+                      {pairing.members.map((memberSlug) => {
+                        if (memberSlug === slug) return null;
+                        const memberUnit = units.find((u) => u.slug === memberSlug);
+                        const memberLabel = memberUnit?.name ?? memberSlug;
+                        return (
+                          <a
+                            href={`/en/houses/${memberSlug}/`}
+                            class="inline-flex items-center px-3 py-1.5 text-[11px] font-medium text-stone-700 bg-stone-50 border border-stone-200 rounded-full hover:border-primary hover:text-primary transition-colors"
+                          >
+                            View {memberLabel}
+                          </a>
+                        );
+                      })}
+                    </div>
+                  </article>
+                );
+              })}
+            </div>
+          </section>
         )}
 
       </aside>

@@ -1,0 +1,53 @@
+[
+  {
+    "id": "pair-argyro-leonidas",
+    "name": "Argyro + Leonidas",
+    "members": ["argyro", "leonidas"],
+    "displayOn": ["argyro", "leonidas"],
+    "kind": "nearby_pairing",
+    "summary": "A nearby combination suitable for larger families or friends travelling together.",
+    "reasons": [
+      "Nearby homes",
+      "Works well for larger groups",
+      "Not a formal combined inventory product"
+    ]
+  },
+  {
+    "id": "pair-leonidas-margarita",
+    "name": "Leonidas + Margarita",
+    "members": ["leonidas", "margarita"],
+    "displayOn": ["leonidas", "margarita"],
+    "kind": "nearby_pairing",
+    "summary": "A suggested combination for guests who want two separate homes in close proximity.",
+    "reasons": [
+      "Nearby homes",
+      "Suitable for flexible group stays",
+      "Recommendation only"
+    ]
+  },
+  {
+    "id": "pair-argyro-margarita",
+    "name": "Argyro + Margarita",
+    "members": ["argyro", "margarita"],
+    "displayOn": ["argyro", "margarita"],
+    "kind": "nearby_pairing",
+    "summary": "A nearby two-home option for extended families or friends.",
+    "reasons": [
+      "Nearby homes",
+      "Recommendation only"
+    ]
+  },
+  {
+    "id": "cluster-mavrikiano-core",
+    "name": "Argyro + Leonidas + Margarita",
+    "members": ["argyro", "leonidas", "margarita"],
+    "displayOn": ["argyro", "leonidas", "margarita"],
+    "kind": "nearby_cluster",
+    "summary": "A suggested three-home cluster in close proximity for larger groups.",
+    "reasons": [
+      "Nearby homes",
+      "Flexible cluster option",
+      "Not a formal grouped inventory product"
+    ]
+  }
+]
