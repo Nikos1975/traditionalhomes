@@ -14,7 +14,7 @@ const mapMarkers = locations.map(loc => {
   const unit = units.find(u => u.slug === loc.slug);
   return {
     ...loc,
-    name: unit?.name || loc.name,
+    name: unit?.name || loc.title,
     type: unit?.type || 'house'
   };
 });

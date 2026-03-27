@@ -21,7 +21,7 @@ inventory.forEach(item => {
     if (item.slug === 'almond-tree-villa') {
         let ams = new Set(item.amenities);
         ams.add('Garden');
-        ams.add('Creatan garden');
+        ams.add('Cretan garden');
         ams.add('Sea view');
         ams.add('Large private pool (9 m × 4 m)');
         ams.add('Private pool');
