@@ -27,3 +27,9 @@ dist-ssr/
 .eslintcache
 *.tsbuildinfo
 coverage/
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
+!.env.example
