@@ -31,7 +31,8 @@ const units = inventory as InventoryUnit[];
 const memberNames = group.members?.map(m => units.find(u => u.slug === m)?.name ?? m).join(' & ');
 const nameA = units.find(u => u.slug === firstMemberSlug)?.name ?? firstMemberSlug ?? '';
 const nameB = units.find(u => u.slug === secondMemberSlug)?.name ?? secondMemberSlug ?? '';
-const detailPath = firstMemberSlug ? `/en/houses/${firstMemberSlug}/` : '#';
+const detailPathA = firstMemberSlug ? `/en/houses/${firstMemberSlug}/` : '#';
+const detailPathB = secondMemberSlug ? `/en/houses/${secondMemberSlug}/` : '#';
 ---
 
 <article
@@ -73,10 +74,10 @@ const detailPath = firstMemberSlug ? `/en/houses/${firstMemberSlug}/` : '#';
       )}
     </div>
 
-    {/* Diagonal divider line */}
+    {/* Diagonal divider line aligned to the same split seam */}
     <div
       class="absolute inset-0 pointer-events-none"
-      style="background: linear-gradient(to bottom, rgba(255,255,255,0.55) 0%, rgba(255,255,255,0.55) 100%); width: 2px; left: 50%; transform: rotate(-14deg) scaleY(1.4); transform-origin: center;"
+      style="background: rgba(255,255,255,0.55); clip-path: polygon(61.5% 0, 62.5% 0, 38.5% 100%, 37.5% 100%);"
     ></div>
 
     {/* House name labels */}
@@ -139,15 +140,18 @@ const detailPath = firstMemberSlug ? `/en/houses/${firstMemberSlug}/` : '#';
     </div>
 
     {/* ACTIONS */}
-    <div class="pt-6 border-t border-stone-100 flex gap-3">
-      <a href={detailPath} class="btn-outline flex-1 py-3 px-0 text-center rounded-xl bg-white shadow-sm hover:shadow-md transition-shadow">
-        View Estate
+    <div class="pt-6 border-t border-stone-100 grid grid-cols-1 sm:grid-cols-3 gap-3">
+      <a href={detailPathA} class="btn-outline py-3 px-0 text-center rounded-xl bg-white shadow-sm hover:shadow-md transition-shadow">
+        View {nameA}
+      </a>
+      <a href={detailPathB} class="btn-outline py-3 px-0 text-center rounded-xl bg-white shadow-sm hover:shadow-md transition-shadow">
+        View {nameB}
       </a>
       <a 
         href="https://traditionalhomes.reserve-online.net/" 
         target="_blank" 
         rel="noopener" 
-        class="btn-cta flex-1 py-3 px-0 text-center rounded-xl shadow-md"
+        class="btn-cta py-3 px-0 text-center rounded-xl shadow-md"
       >
         Check Dates
       </a>
