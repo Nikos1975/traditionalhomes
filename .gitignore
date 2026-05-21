@@ -10,6 +10,9 @@ lerna-debug.log*
 node_modules/
 dist/
 dist-ssr/
+dist_old_*/
+dist_locked_*/
+node_modules/.vite_locked_*/
 *.local
 
 .vscode/*
