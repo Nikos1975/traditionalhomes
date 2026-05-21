@@ -1,0 +1,9 @@
+.agents/
+AGENTS.md
+CLAUDE.md
+docs/agent-handoff-notes.md
+docs/commit-plan/
+docs/content-audit-property-pages-checklist.md
+docs/superpowers/
+src/components/AGENTS.md
+src/inventory/AGENTS.md

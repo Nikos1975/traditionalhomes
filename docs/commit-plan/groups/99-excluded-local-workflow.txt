@@ -1,0 +1,5 @@
+.agent/
+.ai/memory/conventions.md
+.ai/memory/conventions.md.tmp.4907.1775928805346
+.claude/
+.codex/
