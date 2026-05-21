@@ -12,6 +12,7 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props;
 const { Content } = await render(entry);
+const description = entry.data.description ?? entry.data.subtitle ?? entry.data.title;
 
 const pubDateFormatted = entry.data.pubDate.toLocaleDateString('en-GB', {
   day: 'numeric', month: 'long', year: 'numeric',
@@ -20,7 +21,7 @@ const pubDateFormatted = entry.data.pubDate.toLocaleDateString('en-GB', {
 
 <Base
   title={`${entry.data.title} | Elounda Traditional Homes`}
-  description={entry.data.description}
+  description={description}
   canonicalUrl={`https://traditional-homes.gr/blog/${entry.id}/`}
   ogImage={entry.data.image}
 >

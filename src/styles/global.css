@@ -105,7 +105,21 @@
     @apply inline-flex items-center justify-center gap-2 bg-primary text-white font-sans font-bold text-[11px] uppercase tracking-[0.2em] px-8 py-4 rounded-xl transition-all duration-300 shadow-md;
   }
   .btn-primary:hover, .btn-cta:hover {
-    @apply bg-stone-900 shadow-lg -translate-y-[1px];
+    @apply bg-accent-sage text-stone-900 shadow-lg -translate-y-[1px];
+  }
+
+  .booking-cta {
+    @apply bg-primary text-white border-primary;
+  }
+  .booking-cta:hover {
+    @apply bg-accent-sage text-stone-900 border-accent-sage;
+  }
+
+  .gallery-view-all-cta {
+    @apply bg-accent-sage text-stone-900 transition-colors cursor-pointer;
+  }
+  .gallery-view-all-cta:hover {
+    @apply bg-stone-200 text-accent-sage;
   }
 
   .btn-outline {
@@ -217,17 +231,17 @@ dialog[data-lightbox][open] {
   width: 3.25rem;
   height: 3.25rem;
   border-radius: 9999px;
-  background: #0F2A33;
-  color: #fff;
+  background: #98BCB4;
+  color: #2C2419;
   border: none;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 16px rgba(15, 42, 51, 0.35);
+  box-shadow: 0 4px 16px rgba(44, 36, 25, 0.18);
   transition: background 0.15s;
 }
 
 #chat-trigger:hover {
-  background: #1a3d4a;
+  background: #86AAA1;
 }
