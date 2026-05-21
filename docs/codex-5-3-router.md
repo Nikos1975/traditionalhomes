@@ -2,6 +2,50 @@
 
 Use this file when GPT-5.5 is coordinating and Codex 5.3 is executing implementation tasks.
 
+## Required Methodology
+
+Use the `Superpowers` Codex plugin from `obra/superpowers` for the working method whenever the task matches an available Superpowers skill.
+
+Source reference:
+
+```text
+https://github.com/obra/superpowers/tree/main/.codex-plugin
+```
+
+The plugin is available in the Codex app as `Superpowers`. Project instructions still take priority:
+
+1. User instructions and project rules in `AGENTS.md`, `CLAUDE.md`, and `docs/agent-handoff-notes.md`.
+2. Project skills under `.agents/skills/`.
+3. Superpowers process skills.
+4. Default Codex behavior.
+
+### GPT-5.5 Coordinator Use
+
+- Use Superpowers skills for process control: brainstorming for unclear feature requests, writing plans for multi-step work, systematic debugging for failures, verification before completion before claiming success, and clean review discipline before handoff.
+- Keep GPT-5.5 responsible for decisions, routing, content quality, scope control, and final review.
+- Send Codex 5.3 one bounded task packet at a time with exact allowed files and verification commands.
+- Do not let Superpowers broaden the scope beyond the current project task or override the static-first, minimal-change rules.
+
+### Codex 5.3 Executor Use
+
+- Use the relevant Superpowers skill inside the execution packet when the task needs it.
+- Keep implementation bounded to the allowed files.
+- Run the required project verification, then report results in the router format.
+- For visual UI, map, or mobile-navigation checks, use `agent-browser` when available.
+
+### Efficiency Scripts
+
+Use repo-local scripts when they answer the question faster than rereading many files:
+
+```powershell
+python scripts\audit_blog_metadata.py
+python scripts\audit_public_markdown.py
+python scripts\audit_brand_language.py
+python scripts\blog_index_summary.py
+```
+
+Treat `audit_brand_language.py` as a review signal. It may intentionally return findings for existing content that needs editorial judgment.
+
 ## Roles
 
 **Coordinator: GPT-5.5**

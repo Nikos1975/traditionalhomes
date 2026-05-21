@@ -35,6 +35,118 @@ When pausing or finishing a substantial task, add a dated note below with:
 
 ## Notes
 
+### 2026-05-21 - Booking CTA green-first treatment
+
+- Goal: reverse booking CTA colors and align the blog drop cap with the green system color.
+- Files changed:
+  - `src/styles/global.css`
+  - `src/pages/blog/[...slug].astro`
+  - `src/pages/en/contact.astro`
+  - `src/components/Footer.astro`
+  - `docs/agent-handoff-notes.md`
+- What changed:
+  - `booking-cta` buttons now use sage green by default and rust/orange on hover.
+  - Blog article drop cap now uses sage green.
+  - Contact form submit button no longer uses `booking-cta`, so it is not treated as a booking/date action.
+  - Footer `Check Availability` text link now starts in sage and hovers to rust.
+- Verified:
+  - `npm run typecheck` passed with 0 errors, 0 warnings, 0 hints.
+  - `npm run build` passed and generated 28 pages.
+  - `agent-browser` opened `/blog/elounda-guide/`, `/en/`, and `/en/houses/` successfully from local preview.
+  - `python scripts/audit_public_markdown.py` passed.
+  - `python scripts/audit_blog_metadata.py` passed.
+- Remaining:
+  - None for this color pass.
+- Blockers:
+  - None.
+
+### 2026-05-21 - Blog article drop cap
+
+- Goal: restore the old magazine-style first-letter treatment inside the current blog article template.
+- Files changed:
+  - `src/pages/blog/[...slug].astro`
+  - `docs/agent-handoff-notes.md`
+- What changed:
+  - Added a blog-only drop cap on the first article paragraph using the active Cormorant Garamond font and site primary color.
+  - Confirmed downloaded fonts are active through `src/styles/global.css` and `Base.astro`; legacy `MagazineLayout.astro` still references placeholder font paths and remains unused.
+- Verified:
+  - `npm run typecheck` passed with 0 errors, 0 warnings, 0 hints.
+  - `npm run build` passed and generated 28 pages.
+  - `agent-browser batch --bail "open http://127.0.0.1:4322/blog/elounda-guide/" "get url" "close"` passed.
+  - Static preview HTML includes the `blog-article` class, drop-cap CSS, and Cormorant font asset references.
+- Remaining:
+  - Visual review at `http://127.0.0.1:4322/blog/elounda-guide/`.
+- Blockers:
+  - None.
+
+### 2026-05-21 - Superpowers coordination rule
+
+- Goal: document use of `obra/superpowers` with GPT-5.5 coordination and Codex 5.3 execution.
+- Files changed:
+  - `docs/codex-5-3-router.md`
+  - `docs/agent-handoff-notes.md`
+- What changed:
+  - Added the `obra/superpowers` `.codex-plugin` reference to the router.
+  - Defined priority order: project/user rules first, project skills second, Superpowers process skills third.
+  - Added guidance for GPT-5.5 as coordinator, Codex 5.3 as bounded executor, `agent-browser` for visual checks, and Python scripts for compact audits.
+- Verified:
+  - `python scripts/audit_public_markdown.py` passed.
+  - `python scripts/blog_index_summary.py` passed.
+  - `agent-browser --version` returned `0.27.0`.
+- Remaining:
+  - None.
+- Blockers:
+  - None.
+
+### 2026-05-21 - Agent browser and content audit scripts
+
+- Goal: support the GPT-5.5 coordinator / Codex 5.3 executor workflow with browser tooling and compact repo-local audits.
+- Files changed:
+  - `scripts/audit_blog_metadata.py`
+  - `scripts/audit_public_markdown.py`
+  - `scripts/audit_brand_language.py`
+  - `scripts/blog_index_summary.py`
+  - `docs/agent-handoff-notes.md`
+- What changed:
+  - Updated global `agent-browser` CLI to `0.27.0`, installed Chrome for Testing, and installed the `vercel-labs/agent-browser@agent-browser` skill into the user-level skills folder.
+  - Installed the closest available ULTRA-style skill, `intellectronica/agent-skills@ultrathink`, into the user-level skills folder.
+  - Added dependency-free Python scripts for blog metadata, public markdown placement, brand-language review, and compact blog index summaries.
+- Verified:
+  - `agent-browser batch --bail "open about:blank" "get url" "close"` passed.
+  - `python scripts/audit_blog_metadata.py` passed.
+  - `python scripts/audit_public_markdown.py` passed.
+  - `python scripts/blog_index_summary.py` passed.
+  - `python scripts/audit_brand_language.py` ran and flagged existing review items, mostly in the older Mavrikiano guide.
+- Remaining:
+  - Restart Codex to pick up newly installed user-level skills in future sessions.
+  - Optional future cleanup: revise the flagged older Mavrikiano guide language.
+- Blockers:
+  - None.
+
+### 2026-05-21 - Blog structure and SEO
+
+- Goal: improve the blog index for a larger post set without adding client-side filtering.
+- Files changed:
+  - `src/pages/blog/index.astro`
+  - `src/pages/blog/[...slug].astro`
+  - `src/content/blog/welcome-to-elounda.md`
+  - `src/content/blog/Mavrikiano-Distances-And-Guide.md`
+  - `docs/agent-handoff-notes.md`
+- What changed:
+  - Added static category grouping and category anchor links to the blog index.
+  - Made card metadata show date, region, tags, and category consistently.
+  - Added fallback category display on individual blog pages.
+  - Added missing category, region, tags, and image metadata to two older posts.
+- Verified:
+  - `npm run typecheck` passed with 0 errors, 0 warnings, 0 hints. Astro printed duplicate-id loader notices for two existing blog slugs during content sync, but diagnostics passed and build did not repeat them.
+  - `npm run build` passed and generated 28 pages.
+  - `rg --files src/pages | rg "\.md$"` returned no markdown under `src/pages`.
+  - Local dev-server HTML checks confirmed `/blog/` includes Location Guide, History, Updates, and region metadata; `/blog/mavrikiano-distances-and-guide/` includes the revised title, category, and region.
+- Remaining:
+  - Optional browser visual review if the browser tool or Playwright is available later.
+- Blockers:
+  - In-app browser tooling was not exposed in this session, and Playwright is not installed in the repo.
+
 ### 2026-05-21 - New session coordinator handoff
 
 - Goal: preserve state before continuing in a new session with GPT-5.5 coordinating Codex 5.3 execution.

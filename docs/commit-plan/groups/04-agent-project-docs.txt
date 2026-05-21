@@ -1,9 +1,6 @@
-.agents/
-AGENTS.md
 CLAUDE.md
 docs/agent-handoff-notes.md
-docs/commit-plan/
-docs/content-audit-property-pages-checklist.md
-docs/superpowers/
-src/components/AGENTS.md
-src/inventory/AGENTS.md
+docs/commit-plan/clean-commit-plan.md
+docs/commit-plan/groups/02-ui-map-behavior.txt
+docs/commit-plan/groups/04-agent-project-docs.txt
+docs/commit-plan/groups/98-review-needed.txt

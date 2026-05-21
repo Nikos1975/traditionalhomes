@@ -1,14 +1,14 @@
 # Clean Commit Plan
 
-Generated: 2026-05-21 11:23:54
+Generated: 2026-05-21 16:49:19
 
 ## Summary
 
 - `01-product-content-data`: 0 path(s)
 - `02-ui-map-behavior`: 0 path(s)
 - `03-build-deploy-tooling`: 0 path(s)
-- `04-agent-project-docs`: 9 path(s)
-- `98-review-needed`: 1 path(s)
+- `04-agent-project-docs`: 6 path(s)
+- `98-review-needed`: 6 path(s)
 - `99-excluded-local-workflow`: 5 path(s)
 
 ## Recommended Commit Order
@@ -69,19 +69,21 @@ npm run typecheck
 
 ## 04-agent-project-docs
 
-- `.agents/`
-- `AGENTS.md`
 - `CLAUDE.md`
 - `docs/agent-handoff-notes.md`
-- `docs/commit-plan/`
-- `docs/content-audit-property-pages-checklist.md`
-- `docs/superpowers/`
-- `src/components/AGENTS.md`
-- `src/inventory/AGENTS.md`
+- `docs/commit-plan/clean-commit-plan.md`
+- `docs/commit-plan/groups/02-ui-map-behavior.txt`
+- `docs/commit-plan/groups/04-agent-project-docs.txt`
+- `docs/commit-plan/groups/98-review-needed.txt`
 
 ## 98-review-needed
 
+- `docs/codex-5-3-router.md`
 - `package-lock.json`
+- `scripts/audit_blog_metadata.py`
+- `scripts/audit_brand_language.py`
+- `scripts/audit_public_markdown.py`
+- `scripts/blog_index_summary.py`
 
 ## 99-excluded-local-workflow
 

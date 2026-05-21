@@ -1,1 +1,6 @@
+docs/codex-5-3-router.md
 package-lock.json
+scripts/audit_blog_metadata.py
+scripts/audit_brand_language.py
+scripts/audit_public_markdown.py
+scripts/blog_index_summary.py
