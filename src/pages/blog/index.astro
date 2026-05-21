@@ -5,6 +5,20 @@ import { getCollection } from 'astro:content';
 const posts = (await getCollection('blog'))
   .filter(p => !p.data.draft)
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const formatDate = (date: Date) => date.toLocaleDateString('en-GB', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+});
+
+const categoryLabel = (category?: string) => category ?? 'Updates';
+const categorySlug = (category: string) => category.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+const categories = Array.from(new Set(posts.map(post => categoryLabel(post.data.category))));
+const postsByCategory = categories.map(category => ({
+  category,
+  posts: posts.filter(post => categoryLabel(post.data.category) === category),
+}));
 ---
 
 <Base
@@ -22,44 +36,71 @@ const posts = (await getCollection('blog'))
       </ol>
     </nav>
 
-    <header class="mb-16">
+    <header class="mb-12">
       <h1 class="font-serif text-5xl md:text-7xl text-stone-900 mb-6 leading-tight tracking-tight">Blog</h1>
       <p class="text-stone-500 max-w-2xl text-xl leading-relaxed font-serif italic">
-        Stories, seasonal updates, and travel notes from our corner of Crete.
+        Notes on Elounda, village stays, local history, and practical travel context for this part of eastern Crete.
       </p>
     </header>
 
     {posts.length === 0 ? (
-      <p class="text-stone-400 text-lg">No posts yet — check back soon.</p>
+      <p class="text-stone-400 text-lg">No posts yet. Check back soon.</p>
     ) : (
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-        {posts.map(post => (
-          <a href={`/blog/${post.id}/`} class="group block bg-white rounded-2xl border border-stone-100 overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
-            <div class="p-8">
-              <div class="flex items-center gap-3 mb-3">
-                <time datetime={post.data.pubDate.toISOString()} class="text-[10px] uppercase tracking-[0.3em] text-stone-400 font-bold">
-                  {post.data.pubDate.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}
-                </time>
-                {post.data.category && (
-                  <span class="text-[10px] uppercase tracking-[0.2em] text-primary font-bold">{post.data.category}</span>
-                )}
+      <div class="space-y-16">
+        <nav class="flex flex-wrap gap-3" aria-label="Blog categories">
+          {postsByCategory.map(({ category, posts: categoryPosts }) => (
+            <a href={`#${categorySlug(category)}`} class="inline-flex items-center gap-2 rounded-full border border-stone-200 bg-white px-4 py-2 text-[10px] font-bold uppercase tracking-[0.2em] text-stone-500 hover:border-primary hover:text-primary transition-colors">
+              <span>{category}</span>
+              <span class="text-stone-300">{categoryPosts.length}</span>
+            </a>
+          ))}
+        </nav>
+
+        {postsByCategory.map(({ category, posts: categoryPosts }) => (
+          <section id={categorySlug(category)} aria-labelledby={`${categorySlug(category)}-heading`} class="scroll-mt-28">
+            <div class="mb-8 flex flex-col gap-3 border-t border-stone-200 pt-8 sm:flex-row sm:items-end sm:justify-between">
+              <div>
+                <p class="mb-3 text-[10px] font-bold uppercase tracking-[0.3em] text-primary">Category</p>
+                <h2 id={`${categorySlug(category)}-heading`} class="font-serif text-3xl md:text-4xl text-stone-900 leading-tight">{category}</h2>
               </div>
-              <h2 class="font-serif text-2xl text-stone-900 mt-1 mb-2 leading-snug group-hover:text-primary transition-colors">
-                {post.data.title}
-              </h2>
-              {post.data.subtitle && (
-                <p class="text-stone-400 text-sm italic mb-2">{post.data.subtitle}</p>
-              )}
-              <p class="text-stone-500 text-sm leading-relaxed line-clamp-3">{post.data.description}</p>
-              {post.data.tags.length > 0 && (
-                <div class="flex flex-wrap gap-1.5 mt-4">
-                  {post.data.tags.map(tag => (
-                    <span class="text-[9px] uppercase tracking-[0.15em] text-stone-400 bg-stone-50 px-2 py-0.5 rounded-full">{tag}</span>
-                  ))}
-                </div>
-              )}
+              <p class="text-sm text-stone-400">{categoryPosts.length} {categoryPosts.length === 1 ? 'article' : 'articles'}</p>
             </div>
-          </a>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+              {categoryPosts.map(post => (
+                <a href={`/blog/${post.id}/`} class="group flex h-full flex-col bg-white rounded-lg border border-stone-200 overflow-hidden shadow-sm hover:shadow-card-hover hover:-translate-y-0.5 transition-all duration-300">
+                  <div class="flex h-full flex-col p-6">
+                    <div class="mb-5 flex flex-wrap gap-x-3 gap-y-2 text-[10px] uppercase tracking-[0.2em] text-stone-400">
+                      <time datetime={post.data.pubDate.toISOString()} class="font-bold">
+                        {formatDate(post.data.pubDate)}
+                      </time>
+                      {post.data.region && (
+                        <span>{post.data.region}</span>
+                      )}
+                    </div>
+
+                    <h3 class="font-serif text-2xl text-stone-900 mb-3 leading-snug group-hover:text-primary transition-colors">
+                      {post.data.title}
+                    </h3>
+
+                    {post.data.subtitle && (
+                      <p class="text-stone-400 text-sm italic mb-3">{post.data.subtitle}</p>
+                    )}
+
+                    <p class="text-stone-500 text-sm leading-relaxed">{post.data.description}</p>
+
+                    {post.data.tags.length > 0 && (
+                      <div class="mt-auto flex flex-wrap gap-1.5 pt-6">
+                        {post.data.tags.slice(0, 4).map(tag => (
+                          <span class="text-[9px] uppercase tracking-[0.15em] text-stone-500 bg-stone-50 px-2 py-1 rounded-full">{tag}</span>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                </a>
+              ))}
+            </div>
+          </section>
         ))}
       </div>
     )}

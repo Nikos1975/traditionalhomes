@@ -14,15 +14,23 @@ interface MarkerData {
   lat: number;
   lng: number;
   title: string;
+  url: string;
+  subtitle: string;
 }
 
 let markers: MarkerData[] = [];
 if (location && location.lat && location.lng) {
+  const propertyUrl = location.type === 'villa'
+    ? `/en/villa/${location.slug}/`
+    : `/en/houses/${location.slug}/`;
+
   markers.push({
     id: location.id,
     lat: location.lat,
     lng: location.lng,
-    title: location.title
+    title: location.title,
+    url: propertyUrl,
+    subtitle: location.locationLabel
   });
 }
 ---

@@ -50,7 +50,7 @@ const villa = units.find((u) => u.type === 'villa');
             href={siteCopy.bookingEngineUrl}
             target="_blank"
             rel="noopener noreferrer"
-            class="btn-cta bg-transparent border-white/30 text-white hover:bg-white/10 px-8 py-4"
+            class="btn-cta booking-cta px-8 py-4"
           >
             Check Availability
           </a>
@@ -78,17 +78,6 @@ const villa = units.find((u) => u.type === 'villa');
         Browse the Portfolio
       </a>
     </header>
-
-    {/* VILLAGE ACCESS CALLOUT */}
-    <div class="mb-16 p-8 bg-stone-50 rounded-[2.5rem] border border-stone-100 flex items-start gap-6 shadow-sm">
-      <div class="w-12 h-12 rounded-full bg-white flex items-center justify-center text-stone-400 flex-shrink-0 shadow-sm border border-stone-100">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-      </div>
-      <p class="text-sm text-stone-600 leading-relaxed max-w-3xl">
-        <strong class="font-bold text-stone-950 uppercase tracking-widest text-[10px] block mb-1">A Note on Village Terrain</strong>
-        {siteCopy.accessNoteShort} <a href={siteCopy.accessAnchorUrl} class="text-stone-950 font-bold underline underline-offset-4 hover:text-primary transition-colors">View full access details</a>.
-      </p>
-    </div>
 
     {/* THE GRID */}
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-12 mb-16">
@@ -200,7 +189,7 @@ const villa = units.find((u) => u.type === 'villa');
         Bookings are managed through our secure availability system. Select your property and dates to proceed.
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href={siteCopy.bookingEngineUrl} target="_blank" class="btn-cta bg-stone-950 text-white px-12 py-5 shadow-premium">
+        <a href={siteCopy.bookingEngineUrl} target="_blank" class="btn-cta booking-cta px-12 py-5 shadow-premium">
           Check Availability
         </a>
         <a href="/en/houses/" class="btn-cta bg-transparent border-stone-200 text-stone-950 hover:bg-stone-100 px-12 py-5">

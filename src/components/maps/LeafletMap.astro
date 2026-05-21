@@ -206,9 +206,9 @@ const { markers, zoom = 15, center, height = '400px', interactive = true, mapId 
             <div class="popup-info">
               <p class="popup-subtitle">${marker.subtitle || 'Traditional Home'}</p>
               <h3 class="popup-title">${marker.title}</h3>
-              <div class="mt-4">
+              ${marker.url ? `<div class="mt-4">
                 <a href="${marker.url}" class="popup-btn">View Details</a>
-              </div>
+              </div>` : ''}
             </div>
           </div>`;
 
@@ -246,9 +246,12 @@ const { markers, zoom = 15, center, height = '400px', interactive = true, mapId 
     });
   }
 
-  // astro:page-load fires on first load AND after every View Transition swap.
-  // This is the correct hook when <ViewTransitions /> is active — a plain
-  // module script only runs once (on the first full page load) and is silently
-  // skipped on subsequent client-side navigations.
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initMaps, { once: true });
+  } else {
+    initMaps();
+  }
+
+  // Keep map setup compatible if Astro client-side navigation is enabled later.
   document.addEventListener('astro:page-load', initMaps);
 </script>

@@ -8,5 +8,6 @@
       "@components/*": ["src/components/*"],
       "@layouts/*": ["src/layouts/*"]
     }
-  }
+  },
+  "exclude": ["dist", "dist_old_*", "dist_locked_*", "node_modules"]
 }

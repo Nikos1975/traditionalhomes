@@ -1,17 +1,17 @@
 ---
 slug: "erato"
 title: "House Erato"
-summary: "A tranquil stone retreat in Mavrikiano, distinguished by its private swimming pool, sun-drenched terrace, and peaceful views of the Mirabello mountains."
+summary: "A 55 m2 one-bedroom stone house in Mavrikiano for up to four guests, with a private pool, terrace, and mountain views."
 ---
 
-### A Private Village Haven
-House Erato offers a rare and coveted luxury within the historic lanes of Mavrikiano: a completely private, self-contained oasis. Designed for couples, small families, or close friends seeking a restorative escape, this traditional Cretan home swaps the bustling energy of the coast for a deeply tranquil, inward-looking atmosphere. It is a place where authentic island architecture meets the exclusive comfort of your own secluded grounds.
+### A Village House With Private Pool
+House Erato is a one-bedroom stone house in Mavrikiano with its own private pool. It accommodates up to four guests and suits couples, small families, or close friends who want a compact house with outdoor space for most of the day.
 
-### The Interior Narrative
-Spanning a comfortable 60 square metres, the interior spaces are a masterclass in balancing heritage with modern ease. The layout—featuring a primary enclosed bedroom alongside flexible, open-plan living and sleeping areas—feels like a genuine village home rather than a standard holiday rental. Thick stone walls, natural timber accents, and a considered, airy design ensure the house remains a cool and restful sanctuary during the peak of the Mediterranean summer.
+### The Interior Layout
+The 55 m2 house has one bedroom, one bathroom, living space, and a fully equipped kitchen. It is arranged over two floors with internal stairs. The open-plan living area gives some flexibility for extra sleeping arrangements within the four-guest capacity.
 
-### Mediterranean Outdoor Living
-The true essence of Erato is experienced outdoors. The interior seamlessly opens onto a private pool terrace, inviting slow, sun-drenched mornings and refreshing afternoon dips. Framed by views of ancient olive groves and the dramatic peaks of the surrounding mountains, the outdoor spaces include a shaded dining area and a built-in barbecue. It is an idyllic setting designed for spending the entire day outside, shifting effortlessly from morning coffee to atmospheric evening dinners under the stars.
+### Pool Terrace
+The private pool terrace is the main reason to choose Erato. It includes outdoor seating, a shaded dining area, and a built-in barbecue, with views toward the mountains and olive groves.
 
-### The Mavrikiano Setting
-While Erato feels like a hidden mountain retreat, the vibrant life of the coast is never far away. A scenic 10-minute stroll down the hillside brings you to Elounda’s pristine beaches, bustling harbor, and waterfront tavernas. Furthermore, Erato offers exceptional versatility for larger groups: when booked in tandem with House Clio directly above, the two properties unite to form a remarkable private estate for up to eight guests, transforming the pool into your own exclusive shared amenity.
+### Access And Pairing
+Free private parking is about 10 m away. The entrance is reached by stairs down, so the house is not step-free. House Clio sits above Erato and can be considered for larger groups who want nearby houses.

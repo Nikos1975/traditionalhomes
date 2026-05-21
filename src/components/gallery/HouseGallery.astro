@@ -143,8 +143,7 @@ const galleryItems = images.map((img, i) => ({
       <button
         type="button"
         class="shrink-0 flex flex-col items-center justify-center gap-1.5 px-5
-               rounded-xl bg-stone-900 text-white hover:bg-stone-700
-               transition-colors cursor-pointer"
+               rounded-xl gallery-view-all-cta"
         data-lb={uid}
         data-lb-idx="0"
         aria-label={`View all ${total} photos of ${unitName}`}
@@ -241,9 +240,8 @@ const galleryItems = images.map((img, i) => ({
     <button
       type="button"
       class="mt-2 w-full flex items-center justify-center gap-2 py-3
-             bg-stone-900 text-white rounded-xl
-             text-[11px] font-bold uppercase tracking-widest
-             hover:bg-stone-700 transition-colors cursor-pointer"
+             gallery-view-all-cta rounded-xl
+             text-[11px] font-bold uppercase tracking-widest"
       data-lb={uid}
       data-lb-idx="0"
       aria-label={`View all ${total} photos`}

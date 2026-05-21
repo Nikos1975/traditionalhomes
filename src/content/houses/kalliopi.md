@@ -1,17 +1,17 @@
 ---
 slug: "kalliopi"
 title: "House Kalliopi"
-summary: "An elevated stone residence in Mavrikiano, featuring handcrafted Cretan character, an intimate balcony, and sweeping views over village rooftops and olive groves."
+summary: "A 55 m2 upper-floor one-bedroom stone house in Mavrikiano for up to four guests, with a private balcony and mountain views."
 ---
 
-### An Elevated Village Perspective
-Perched gracefully on the upper floor of a historic traditional property, House Kalliopi offers a beautifully outward-looking village experience. Leaving the bustle of the waterfront behind, this home invites guests into the slower, more melodic rhythm of the hillside. It is a space defined by authentic Cretan craftsmanship, appealing to travelers who seek a quiet, character-rich sanctuary with a genuine connection to local life.
+### An Upper-Floor Village House
+House Kalliopi sits above House Efterpi in Mavrikiano. It accommodates up to four guests and suits couples or small parties who want an upper-floor house with mountain views and a small private balcony.
 
-### The Interior Narrative
-Spanning a comfortable 60 square metres, the interior is shaped by exposed stone, natural timber, and a warm, inviting layout. The home accommodates up to four guests, featuring a romantic double bed tucked into a private architectural alcove, alongside flexible sleeping arrangements in the main living area. Anchored by a traditional fireplace and a fully equipped kitchen, the space seamlessly blends historic charm with the practical modern comforts required for both short retreats and lingering, slow-paced visits.
+### The Interior Layout
+The 55 m2 house has one bedroom, one bathroom, living space, and a fully equipped kitchen. Sleeping arrangements include a double bed in an alcove and additional flexible sleeping space in the living area. The house is on an upper floor, so stairs are part of access.
 
-### Mediterranean Outdoor Living
-The defining feature of Kalliopi is its intimate, private balcony. Rather than a sprawling, multi-zone terrace, this space offers a cozy, focused outdoor experience. It is an idyllic, sunlit perch designed perfectly for slow morning coffees or quiet evening meals, gazing out over a patchwork of terracotta village rooftops, the silver canopies of ancient olive groves, and the shifting light on the surrounding Mirabello mountains.
+### Balcony And View
+The private balcony is compact and looks across village rooftops, olive groves, and the surrounding mountains. It is best for sitting outside rather than hosting a larger meal.
 
-### The Mavrikiano Setting
-While securely nestled in the peaceful upper village, Kalliopi remains effortlessly connected to the vibrant coast. A scenic 10-minute stroll down the historic pathways brings you directly to Elounda’s pristine beaches, bustling harbor, and waterfront tavernas. For extended families or larger groups of friends, Kalliopi’s location is highly strategic: when booked alongside House Efterpi directly below, the two homes unite to form a beautiful, multi-level estate accommodating up to nine guests while preserving distinct, private quarters for everyone.
+### Access And Pairing
+Free private parking is about 50 m away. The house is not step-free, and guests should expect stairs to reach the upper-floor unit. Kalliopi can be considered with House Efterpi below for larger groups that want nearby but separate houses.

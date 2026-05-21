@@ -70,7 +70,7 @@ const bookingUrl = 'http://traditionalhomes.reserve-online.net/';
         href={bookingUrl}
         target="_blank"
         rel="noopener noreferrer"
-        class="btn-cta hidden md:inline-flex"
+        class="btn-cta booking-cta hidden md:inline-flex"
       >
         Check Dates
       </a>
@@ -143,7 +143,7 @@ const bookingUrl = 'http://traditionalhomes.reserve-online.net/';
         href={bookingUrl}
         target="_blank"
         rel="noopener noreferrer"
-        class="btn-cta w-full justify-center"
+        class="btn-cta booking-cta w-full justify-center"
       >
         Check Dates
       </a>
@@ -155,54 +155,65 @@ const bookingUrl = 'http://traditionalhomes.reserve-online.net/';
 <div style="height: var(--header-h, 88px);" aria-hidden="true"></div>
 
 <script>
-  const openBtn = document.getElementById('menu-open') as HTMLButtonElement | null;
-  const closeBtn = document.getElementById('menu-close') as HTMLButtonElement | null;
-  const backdrop = document.getElementById('menu-backdrop');
-  const menu = document.getElementById('mobile-menu');
-  const header = document.getElementById('main-header');
+  function initHeader() {
+    const openBtn = document.getElementById('menu-open') as HTMLButtonElement | null;
+    const closeBtn = document.getElementById('menu-close') as HTMLButtonElement | null;
+    const backdrop = document.getElementById('menu-backdrop');
+    const menu = document.getElementById('mobile-menu');
+    const header = document.getElementById('main-header');
 
-  function openMenu() {
-    if (!menu || !openBtn) return;
-    menu.classList.remove('hidden');
-    // Tiny delay to allow display:block to apply before animating opacity/transform (if you add CSS animations later)
-    setTimeout(() => {
-      openBtn.setAttribute('aria-expanded', 'true');
-      document.body.style.overflow = 'hidden';
-      closeBtn?.focus();
-    }, 10);
+    if (!openBtn || openBtn.dataset.menuInitialized === 'true') return;
+    openBtn.dataset.menuInitialized = 'true';
+
+    function openMenu() {
+      if (!menu || !openBtn) return;
+      menu.classList.remove('hidden');
+      setTimeout(() => {
+        openBtn.setAttribute('aria-expanded', 'true');
+        document.body.style.overflow = 'hidden';
+        closeBtn?.focus();
+      }, 10);
+    }
+
+    function closeMenu() {
+      if (!menu || !openBtn) return;
+      openBtn.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+      menu.classList.add('hidden');
+      openBtn.focus();
+    }
+
+    function handleScroll() {
+      if (!header) return;
+      if (window.scrollY > 20) {
+        header.classList.add('bg-white/90', 'backdrop-blur-md', 'shadow-sm');
+        header.classList.remove('bg-white/0');
+        header.classList.replace('border-transparent', 'border-stone-200');
+      } else {
+        header.classList.remove('bg-white/90', 'backdrop-blur-md', 'shadow-sm');
+        header.classList.add('bg-white/0');
+        header.classList.replace('border-stone-200', 'border-transparent');
+      }
+    }
+
+    openBtn.addEventListener('click', openMenu);
+    closeBtn?.addEventListener('click', closeMenu);
+    backdrop?.addEventListener('click', closeMenu);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
   }
-
-  function closeMenu() {
-    if (!menu || !openBtn) return;
-    openBtn.setAttribute('aria-expanded', 'false');
-    document.body.style.overflow = '';
-    menu.classList.add('hidden');
-    openBtn.focus();
-  }
-
-  openBtn?.addEventListener('click', openMenu);
-  closeBtn?.addEventListener('click', closeMenu);
-  backdrop?.addEventListener('click', closeMenu);
 
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && !menu?.classList.contains('hidden')) {
-      closeMenu();
+    const menu = document.getElementById('mobile-menu');
+    const openBtn = document.getElementById('menu-open') as HTMLButtonElement | null;
+    if (e.key === 'Escape' && menu && !menu.classList.contains('hidden')) {
+      openBtn?.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+      menu.classList.add('hidden');
+      openBtn?.focus();
     }
   });
 
-  // Upgraded Scroll Logic
-  function handleScroll() {
-    if (!header) return;
-    if (window.scrollY > 20) {
-      header.classList.add('bg-white/90', 'backdrop-blur-md', 'shadow-sm');
-      header.classList.remove('bg-white/0');
-      header.classList.replace('border-transparent', 'border-stone-200');
-    } else {
-      header.classList.remove('bg-white/90', 'backdrop-blur-md', 'shadow-sm');
-      header.classList.add('bg-white/0');
-      header.classList.replace('border-stone-200', 'border-transparent');
-    }
-  }
-  window.addEventListener('scroll', handleScroll, { passive: true });
-  handleScroll(); // Check on load
+  document.addEventListener('astro:page-load', initHeader);
+  initHeader();
 </script>

@@ -1,17 +1,17 @@
 ---
 slug: "demetra"
 title: "House Demetra"
-summary: "A grounded, traditional stone retreat in Mavrikiano, offering direct access to a shared swimming pool and peaceful views of the surrounding olive groves."
+summary: "A 50 m2 one-bedroom stone house in Mavrikiano for up to four guests, with direct access to a shared pool and mountain views."
 ---
 
-### A Grounded Village Sanctuary
-House Demetra offers a profoundly grounding experience within the hillside village of Mavrikiano. Situated on the lower level of a traditional stone property, this home is designed for guests who seek a quiet, enclosed sanctuary. Surrounded by the gentle rustle of ancient olive groves and the dramatic silhouette of the Mirabello mountains, Demetra trades the sweeping sea vistas of the upper village for a deeply restorative, earthy calm.
+### A Lower-Level Village House
+House Demetra sits on the lower level of a traditional stone property in Mavrikiano. It suits couples, small families, or friends who want a simple house close to the shared pool. The outlook is toward the mountains and surrounding village landscape rather than the sea.
 
-### The Interior Narrative
-The interior spaces reflect the authentic texture of historic Cretan architecture. Thick stone walls naturally insulate the living areas, keeping the house refreshingly cool against the Mediterranean summer heat, while handcrafted timber details add warmth to the space. Accommodating up to four guests across two comfortable bedrooms, the layout is highly practical, seamlessly blending historic village charm with the modern comforts required for a relaxed, effortless stay.
+### The Interior Layout
+The 50 m2 house accommodates up to four guests with one bedroom, one bathroom, a living area, and a fully equipped kitchen. The layout is on one floor, with no internal stairs. Stone walls and timber details give the interior its village character while keeping the plan easy to use.
 
-### Mediterranean Outdoor Living
-The defining feature of Demetra is its immediate, fluid relationship with the outdoors. Step directly from your door to the inviting waters of a shared swimming pool—a rare and wonderful amenity in this historic village. Alongside the pool, a private veranda and courtyard-style seating area provide a shaded, fragrant haven for morning coffees, quiet afternoon reading, or alfresco evening meals, perfectly capturing the slow rhythm of island life.
+### Shared Pool And Outdoor Space
+Demetra shares its swimming pool with House Penelope. The pool, sun loungers, and outdoor seating are close to the house, so the outdoor space works well for relaxed days at home. The veranda and courtyard-style seating area give guests a shaded place to eat or sit outside.
 
-### The Mavrikiano Setting
-Despite its secluded, quiet atmosphere, the house remains intimately connected to the coast. A scenic 10-minute walk down the village paths brings you directly to the vibrant beaches, waterfront tavernas, and harbor of Elounda. For larger families or groups of friends, Demetra’s location is highly strategic: when booked together with House Penelope above, it creates a magnificent multi-level estate for up to ten guests, granting your group exclusive use of the entire pool and barbecue area while maintaining distinct, private quarters.
+### Access And Pairing
+Parking is about 40 m away. The house is not step-free; expect at least one step from the path to the entrance. For larger groups, Demetra can be considered together with House Penelope, which sits nearby and also shares the pool.

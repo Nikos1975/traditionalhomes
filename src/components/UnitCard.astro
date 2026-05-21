@@ -40,6 +40,7 @@ const featuredImgAsset = (
 const isSeaView =
   unit.view.toLowerCase().includes("sea") ||
   unit.view.toLowerCase().includes("bay");
+const isMountainView = unit.view.toLowerCase().includes("mountain");
 ---
 
 <article
@@ -179,6 +180,23 @@ const isSeaView =
           </span>
         )
       }
+      {
+        isMountainView && (
+          <span class="flex items-center gap-3 text-xs text-stone-600 font-medium col-span-2">
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+            >
+              <path d="M3 20l7-12 4 6 3-4 4 10H3z" />
+            </svg>
+            Mountain View
+          </span>
+        )
+      }
     </div>
 
     {/* ACCESS ALERT (Editorial Note Style) */}
@@ -204,7 +222,7 @@ const isSeaView =
         href={unit.availabilityUrl}
         target="_blank"
         rel="noopener"
-        class="btn-cta flex-1 py-3 px-0 text-center rounded-xl bg-stone-900 text-white hover:bg-primary shadow-sm hover:shadow-md transition-shadow"
+        class="btn-cta booking-cta flex-1 py-3 px-0 text-center rounded-xl shadow-sm hover:shadow-md transition-shadow"
       >
         Book Now
       </a>

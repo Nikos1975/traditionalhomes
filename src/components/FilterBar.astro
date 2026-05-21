@@ -36,7 +36,7 @@ const { items } = Astro.props;
 
   <p id="filter-count" class="text-sm text-muted mt-2 hidden" aria-live="polite" aria-atomic="true"></p>
 
-  <script id="filter-data" type="application/json" set:html={JSON.stringify(items)}></script>
+  <script id="filter-data" type="application/json" is:inline set:html={JSON.stringify(items)}></script>
 </div>
 
 <style>

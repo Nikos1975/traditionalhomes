@@ -213,20 +213,20 @@ const pageDescription = `${unit.name} in ${unit.location} — sleeps ${unit.slee
 
             <div class="grid md:grid-cols-2 gap-6">
               {/* Arrival card */}
-              <div class="bg-stone-900 text-white rounded-2xl p-6 space-y-5">
-                <h3 class="font-serif text-lg text-primary">How to arrive</h3>
-                <p class="text-sm text-white/70 leading-relaxed">
+              <div class="bg-accent-sage-soft text-stone-800 border border-accent-sage/60 rounded-2xl p-6 space-y-5">
+                <h3 class="font-serif text-lg text-stone-950">How to arrive</h3>
+                <p class="text-sm text-stone-700 leading-relaxed">
                   {siteCopy.arrival.instructions}
                 </p>
-                <div class="space-y-3 text-[11px] uppercase tracking-widest font-bold">
+                <div class="space-y-3 text-[11px] uppercase tracking-widest font-bold text-stone-800">
                   {parkingLoc?.googleMapsUrl && (
-                    <a href={parkingLoc.googleMapsUrl} target="_blank" rel="noopener" class="flex items-center gap-3 hover:text-primary transition-colors group">
-                      <span class="w-7 h-7 rounded-full border border-white/20 flex items-center justify-center group-hover:border-primary text-xs">1</span>
+                    <a href={parkingLoc.googleMapsUrl} target="_blank" rel="noopener" class="flex items-center gap-3 hover:text-stone-950 transition-colors group">
+                      <span class="w-7 h-7 rounded-full border border-accent-sage flex items-center justify-center group-hover:bg-accent-sage text-xs">1</span>
                       Private parking
                     </a>
                   )}
-                  <a href={locData.googleMapsUrl} target="_blank" rel="noopener" class="flex items-center gap-3 hover:text-primary transition-colors group">
-                    <span class="w-7 h-7 rounded-full border border-white/20 flex items-center justify-center group-hover:border-primary text-xs">2</span>
+                  <a href={locData.googleMapsUrl} target="_blank" rel="noopener" class="flex items-center gap-3 hover:text-stone-950 transition-colors group">
+                    <span class="w-7 h-7 rounded-full border border-accent-sage flex items-center justify-center group-hover:bg-accent-sage text-xs">2</span>
                     House entrance
                   </a>
                 </div>
@@ -285,7 +285,7 @@ const pageDescription = `${unit.name} in ${unit.location} — sleeps ${unit.slee
             href={unit.availabilityUrl}
             target="_blank"
             rel="noopener noreferrer"
-            class="btn-cta w-full py-4 text-center block rounded-xl shadow-md mb-3"
+            class="btn-cta booking-cta w-full py-4 text-center block rounded-xl shadow-md mb-3"
           >
             Check Availability
           </a>

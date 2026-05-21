@@ -118,10 +118,10 @@ const markers = allLocs.map(loc => {
 
 <style>
   .filter-btn {
-    @apply px-4 py-2 rounded-full border border-stone-200 text-[10px] font-bold uppercase tracking-widest text-stone-500 transition-all hover:bg-stone-50 hover:border-stone-400;
+    @apply px-4 py-2 rounded-full border border-stone-200 text-[10px] font-bold uppercase tracking-widest text-stone-500 transition-all hover:bg-accent-sage-soft hover:border-accent-sage hover:text-stone-900;
   }
   .filter-btn.active {
-    @apply bg-stone-900 border-stone-900 text-white shadow-lg;
+    @apply bg-accent-sage border-accent-sage text-stone-900 shadow-lg;
   }
   .location-card.is-active {
     @apply border-primary ring-1 ring-primary/20 bg-stone-50/50 shadow-inner;
@@ -132,7 +132,10 @@ const markers = allLocs.map(loc => {
 </style>
 
 <script>
-  document.addEventListener('astro:page-load', () => {
+  function initMasterLocationMap() {
+    const root = document.querySelector('.master-location-map');
+    if (!root || (root as HTMLElement).dataset.mapControlsReady === 'true') return;
+
     // Small delay to ensure Leaflet has finished its own astro:page-load handler
     setTimeout(() => {
       const mapContainer = document.getElementById('master-map');
@@ -140,6 +143,7 @@ const markers = allLocs.map(loc => {
       const layers = (window as any)['leaflet_layers_master-map'] as Record<string, any>;
       const bgContainer = document.getElementById('map-ambient-bg');
       if (!map || !bgContainer) return;
+      (root as HTMLElement).dataset.mapControlsReady = 'true';
 
       const filterBtns  = document.querySelectorAll('.filter-btn');
       const cards        = document.querySelectorAll('.location-card');
@@ -243,5 +247,14 @@ const markers = allLocs.map(loc => {
       }
 
     }, 350);  // slightly after LeafletMap's own astro:page-load (which also uses setTimeout)
-  });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initMasterLocationMap, { once: true });
+  } else {
+    initMasterLocationMap();
+  }
+
+  // Keep sidebar/filter setup compatible if Astro client-side navigation is enabled later.
+  document.addEventListener('astro:page-load', initMasterLocationMap);
 </script>
