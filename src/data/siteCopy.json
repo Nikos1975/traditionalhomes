@@ -1,6 +1,8 @@
 {
   "accessNoteShort": "Good to know: Not step-free. See access details.",
   "accessNoteFull": "Access: Village terrain. Not step-free. Expect at least one step from the path/parking to the entrance.",
+  "accessNoteCollectionTitle": "Good to know before booking",
+  "accessNoteCollectionBody": "Our homes are in traditional hillside villages with uneven paths and steps. They are not step-free, and most entrances involve at least one step from the path or parking area.",
   "accessAnchorUrl": "/en/policies/#access",
   "bookingEngineUrl": "https://traditionalhomes.reserve-online.net/",
   "siteName": "Elounda Traditional Homes",

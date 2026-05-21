@@ -1,17 +1,17 @@
 ---
 slug: "penelope"
 title: "House Penelope"
-summary: "An elevated stone residence in Mavrikiano, featuring a charming mezzanine, a fully equipped outdoor kitchen, and shared pool access amidst olive grove views."
+summary: "A 65 m2 two-bedroom upper-level stone house in Mavrikiano for up to six guests, with an outdoor kitchen and shared pool access."
 ---
 
-### An Elevated Countryside Retreat
-Perched gracefully on the upper level of a traditional Cretan property, House Penelope offers a tranquil vantage point over the silver canopies of ancient olive groves and the rugged Mirabello mountains. Designed for families or groups of friends who desire a peaceful village setting, this home trades the bustling energy of the waterfront for a deeply rooted, authentic countryside atmosphere, while still providing the luxury of shared pool access.
+### An Upper-Level Village House
+House Penelope sits above House Demetra in Mavrikiano and looks toward the mountains and olive groves. It accommodates up to six guests across two bedrooms and is suited to families or friends who want shared pool access and a practical outdoor kitchen.
 
-### The Interior Narrative
-Spanning 70 square metres, the interior exudes a warm, informal character that immediately feels like home. The layout accommodates up to six guests and features a standout architectural detail: a traditional timber mezzanine sleeping area that adds beautiful vertical character to the living space. Blending historic stone masonry with thoughtful modern comforts, the interior provides a comfortable, airy sanctuary to retreat to after a long day under the Mediterranean sun.
+### The Interior Layout
+The 65 m2 house has two bedrooms, one bathroom, living space, and a fully equipped kitchen. It is arranged over two floors with internal stairs, including a timber mezzanine sleeping area that adds extra vertical separation within the house.
 
-### Mediterranean Outdoor Living
-The true rhythm of life at Penelope flows naturally outward. A private, shaded veranda serves as the heart of the home, complete with a fully equipped outdoor kitchen. This unique feature elevates the alfresco experience, making it effortless to prepare long, lazy breakfasts or atmospheric evening meals in the open air. Just steps below, guests enjoy access to a shared swimming pool and barbecue area, offering the perfect space to cool off and unwind.
+### Outdoor Kitchen And Shared Pool
+The shaded veranda includes an outdoor kitchen, giving guests a useful place to prepare meals and sit outside. The swimming pool and barbecue area are shared with House Demetra, so guests should expect shared use rather than a private pool.
 
-### The Mavrikiano Setting
-Though defined by its secluded, natural surroundings, Penelope is highly connected to the coast. A scenic 10-minute walk down the village pathways brings you directly to Elounda’s pristine beaches, harbor, and vibrant tavernas. For larger gatherings, Penelope's location is remarkably strategic: when booked alongside House Demetra directly below, the two homes unite to form a magnificent, multi-level estate for up to ten guests, granting your group exclusive use of the entire property and pool area.
+### Access And Pairing
+Free private parking is about 40 m away. The house is not step-free, and guests should expect at least one step from the path to the entrance plus internal stairs. Penelope can be considered with House Demetra for larger groups that want nearby houses around the same shared pool.

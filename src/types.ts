@@ -4,6 +4,7 @@ export interface InventoryUnit {
   name: string;
   location: string;
   area: string;
+  areaSqm: number;
   sleeps: number;
   bedrooms: number;
   bathrooms: number;
@@ -40,6 +41,8 @@ export interface GalleryImage {
 export interface SiteCopy {
   accessNoteShort: string;
   accessNoteFull: string;
+  accessNoteCollectionTitle: string;
+  accessNoteCollectionBody: string;
   accessAnchorUrl: string;
   bookingEngineUrl: string;
   siteName: string;

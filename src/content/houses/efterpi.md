@@ -1,17 +1,17 @@
 ---
 slug: "efterpi"
 title: "House Efterpi"
-summary: "A historic, courtyard-focused stone residence in Mavrikiano, steeped in 15th-century heritage and featuring a private outdoor summer kitchen."
+summary: "A 55 m2 one-bedroom stone house in Mavrikiano for up to five guests, with a private courtyard, loft sleeping area, and summer kitchen."
 ---
 
-### A Sanctuary of Historic Proportions
-Built upon the sacred grounds of a 15th-century church, House Efterpi possesses a profound and palpable history. During its careful restoration, ancient artifacts were uncovered, leaving the residence with a deeply rooted cultural presence that transcends a standard holiday stay. This ground-floor stone home intentionally trades sweeping panoramas for an inward, sheltered calm, offering a rare and authentic connection to the ancient rhythms of Cretan village life.
+### A Courtyard House In Mavrikiano
+House Efterpi is a courtyard-focused stone house in Mavrikiano. It accommodates up to five guests and suits travellers who prefer a sheltered outdoor space over a broad view. The house is paired in location with House Kalliopi above.
 
-### The Interior Narrative
-Spanning a comfortable 65 square metres, the interior feels wonderfully personal, warm, and lived-in. The layout accommodates up to five guests, featuring an open-plan sleeping area on the main floor and a character-filled loft bedroom tucked seamlessly into the architecture. Handcrafted details, exposed timber, and thick stone masonry not only honor the building's legacy but provide a naturally cool, restorative haven from the midday Mediterranean heat.
+### The Interior Layout
+The 55 m2 house has one bedroom, one bathroom, living space, and a fully equipped kitchen. A loft sleeping area is reached by staircase, so it is important for guests to be comfortable with stairs. Stonework and exposed timber give the rooms their traditional character.
 
-### Mediterranean Outdoor Living
-The true soul of Efterpi resides in its walled, private courtyard. This secluded outdoor space acts as a magnificent open-air living room, completely shielded from the outside world. It boasts a fully equipped summer kitchen, a built-in barbecue, and a beautiful marble dining table. It is an idyllic, shaded retreat specifically designed for slow morning coffees, long afternoon reads, and atmospheric evening meals under the Cretan sky.
+### Courtyard And Summer Kitchen
+The private courtyard is the main outdoor area. It includes a summer kitchen, barbecue, and dining table, making it useful for meals at home and quiet time outside.
 
-### The Mavrikiano Setting
-While securely hidden away in the quiet hillside of Mavrikiano, the vibrant life of the coast is just moments away. A scenic 10-minute stroll down the village paths leads directly to Elounda’s pristine beaches, bustling harbor, and waterfront tavernas. For extended families or groups of friends, Efterpi pairs flawlessly with House Kalliopi directly above. Booking both residences creates a spacious, multi-level private estate that perfectly balances shared gatherings with independent, private living.
+### Access And Pairing
+Free private parking is about 50 m away. The house is not step-free, and the loft is accessed by staircase. Efterpi can be considered with House Kalliopi above for larger groups that want nearby but separate houses.
