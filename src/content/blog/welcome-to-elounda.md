@@ -1,7 +1,15 @@
 ---
 title: "Welcome to Elounda Traditional Homes"
-description: "Discover our collection of meticulously restored stone houses in the historic villages of Mavrikiano and Vrouchas, overlooking Elounda Bay."
+description: "An introduction to the restored stone houses in Mavrikiano and Vrouchas, above Elounda Bay."
 pubDate: 2026-03-23
+category: "Updates"
+region: "Elounda, Lasithi, Eastern Crete"
+tags:
+  - elounda
+  - mavrikiano
+  - vrouchas
+image: "/images/og-default.jpg"
+imageAlt: "Elounda Traditional Homes in eastern Crete"
 ---
 
 ### A Living Heritage

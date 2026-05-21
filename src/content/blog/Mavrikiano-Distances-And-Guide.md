@@ -1,7 +1,16 @@
 ---
-title: "Mavrikiano Distances & Guide"
-description: "A complete guide to nearby attractions and distances from Mavrikiano, Crete."
+title: "Mavrikiano Distances and Area Guide"
+description: "Practical driving and walking notes for Elounda, Plaka, Spinalonga, Olous, and nearby beaches from Mavrikiano."
 pubDate: 2026-03-23
+category: "Location Guide"
+region: "Mavrikiano, Elounda, Eastern Crete"
+tags:
+  - mavrikiano
+  - elounda
+  - distances
+  - spinalonga
+image: "/images/location-map.jpg"
+imageAlt: "Map context for Mavrikiano, Elounda, and Mirabello Bay"
 ---
 # Mavrikiano & Mirabello Bay Exploration Guide
 

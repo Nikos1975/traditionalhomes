@@ -109,10 +109,10 @@
   }
 
   .booking-cta {
-    @apply bg-primary text-white border-primary;
+    @apply bg-accent-sage text-stone-900 border-accent-sage;
   }
   .booking-cta:hover {
-    @apply bg-accent-sage text-stone-900 border-accent-sage;
+    @apply bg-primary text-white border-primary;
   }
 
   .gallery-view-all-cta {
