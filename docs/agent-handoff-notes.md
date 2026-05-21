@@ -35,6 +35,105 @@ When pausing or finishing a substantial task, add a dated note below with:
 
 ## Notes
 
+### 2026-05-21 - New session blog handoff checkpoint
+
+- Goal: preserve current blog/content state before continuing in a fresh session.
+- Current branch:
+  - `codex/property-content-ui-map-version`
+- Draft PR:
+  - `https://github.com/Nikos1975/traditionalhomes/pull/2`
+- Current blog state:
+  - Blog now has 7 posts: 3 History, 3 Location Guide, 1 Updates.
+  - The Elounda history pillar article is now `A Short Chronological History of Elounda`.
+  - The user's chronological draft was adapted into the pillar article while removing luxury framing, dramatic phrasing, and unsupported claims.
+  - Local blog images were added under `public/images/blog/` and used in the history, wartime memory, and visitor-economy articles.
+  - Research files under `docs/research/**` were used as context only and were not edited.
+- Product/content files currently changed or added:
+  - `public/images/blog/elounda-history/ancient-olous-sunken-remains.jfif`
+  - `public/images/blog/elounda-wartime-memory/spinalonga-venetian-fortifications.jfif`
+  - `public/images/blog/elounda-visitor-economy/elounda-bay-resort-development.jfif`
+  - `src/content/blog/Mavrikiano-Distances-And-Guide.md`
+  - `src/content/blog/elounda-history-through-its-shoreline.md`
+  - `src/content/blog/elounda-visitor-economy.md`
+  - `src/content/blog/elounda-wartime-memory.md`
+  - `src/content/blog/elounda-salt-pans-and-poros-windmills.md`
+  - `docs/agent-handoff-notes.md`
+- Known dirty files to leave alone unless explicitly requested:
+  - `.ai/memory/conventions.md`
+  - `.agent/`
+  - `.ai/memory/conventions.md.tmp.4907.1775928805346`
+  - `.claude/`
+  - `.codex/`
+  - `CLAUDE.md`
+  - `package-lock.json`
+- Latest verification:
+  - `python scripts/audit_blog_metadata.py` passed.
+  - `python scripts/audit_public_markdown.py` passed.
+  - `python scripts/audit_brand_language.py` does not flag the touched/new blog articles; remaining matches are existing items in `elounda-guide.md`, `kalliopi.md`, and `leonidas.md`.
+  - `npm run typecheck` passed with 0 errors, 0 warnings, 0 hints; content sync may print duplicate-id loader notices after edits.
+  - `npm run build` passed and generated 29 pages.
+  - `agent-browser` confirmed local blog images render on the intended article pages.
+- Next useful action:
+  - Review the blog visually again after any new copy edits.
+  - Optional: remove duplicate Markdown `#` headings from older untouched posts such as `elounda-guide.md` and `elounda-visitor-economy.md`.
+  - Optional: decide whether to stage/commit only the blog/product files, excluding local workflow files and `package-lock.json`.
+- Blockers:
+  - None.
+
+### 2026-05-21 - Source-backed Elounda history blog articles
+
+- Goal: turn the Elounda history and wartime research into humble, factual blog articles with relevant internet photos and citations.
+- Files changed:
+  - `public/images/blog/elounda-history/ancient-olous-sunken-remains.jfif`
+  - `public/images/blog/elounda-wartime-memory/spinalonga-venetian-fortifications.jfif`
+  - `public/images/blog/elounda-visitor-economy/elounda-bay-resort-development.jfif`
+  - `src/content/blog/elounda-history-through-its-shoreline.md`
+  - `src/content/blog/elounda-visitor-economy.md`
+  - `src/content/blog/elounda-wartime-memory.md`
+  - `src/content/blog/elounda-salt-pans-and-poros-windmills.md`
+  - `docs/agent-handoff-notes.md`
+- What changed:
+  - Revised the shoreline history article as the pillar history piece, with official Ministry/Ephorate sources and Wikimedia image credits.
+  - Revised the wartime memory article to keep the Battle of Crete and Spinalonga war-years material restrained and source-backed.
+  - Added a focused article on Elounda salt pans and the Poros windmills.
+  - Added user-provided local Getty-sourced images to the shoreline history, wartime memory, and visitor-economy articles, with captions/credits.
+  - Adapted the user's chronological Elounda history draft into the pillar article structure while removing luxury framing, dramatic phrasing, and unsupported claims.
+  - Removed Markdown `#` headings from the revised/new articles so the template page title remains the only main heading.
+- Verified:
+  - `python scripts/audit_blog_metadata.py` passed.
+  - `python scripts/audit_public_markdown.py` passed.
+  - `python scripts/audit_brand_language.py` did not flag the revised/new history articles or the visitor-economy image edit; remaining matches are existing review items in `elounda-guide.md`, `kalliopi.md`, and `leonidas.md`.
+  - `npm run typecheck` passed with 0 errors, 0 warnings, 0 hints; content sync printed duplicate-id loader notices for the two rewritten article files.
+  - `npm run build` passed and generated 29 pages.
+  - `agent-browser` confirmed the updated local images render on the shoreline history, wartime memory, and visitor-economy article pages.
+- Remaining:
+  - Consider a later pass to remove duplicate Markdown `#` headings from older untouched blog posts.
+- Blockers:
+  - None.
+
+### 2026-05-21 - Blog visual review and Mavrikiano guide cleanup
+
+- Goal: visually review the blog routes and clean up the older Mavrikiano guide language flagged by the brand audit.
+- Files changed:
+  - `src/content/blog/Mavrikiano-Distances-And-Guide.md`
+  - `docs/agent-handoff-notes.md`
+- What changed:
+  - Reviewed `/blog/`, `/blog/elounda-guide/`, and `/blog/mavrikiano-distances-and-guide/` with `agent-browser` against the local preview server.
+  - Replaced the visible draft-style table label with `Practical Notes`.
+  - Rewrote the Mavrikiano guide's promotional descriptions, itinerary notes, packing notes, and final Spinalonga note in a calmer, practical style.
+  - Kept existing route links and distance/time values.
+- Verified:
+  - `python scripts/audit_blog_metadata.py` passed.
+  - `python scripts/audit_public_markdown.py` passed.
+  - `python scripts/audit_brand_language.py` no longer flags the Mavrikiano guide; remaining matches are existing review items in other blog/property content.
+  - `npm run typecheck` passed.
+  - `npm run build` passed.
+  - `agent-browser` confirmed the updated Mavrikiano table renders from local preview.
+- Remaining:
+  - Article pages still render a template title plus Markdown `#` headings; consider a separate blog-content/template pass if duplicate H1s should be removed across all posts.
+- Blockers:
+  - Initial dev-server attempt hit a Windows `.astro/data-store.json` EPERM cache rename lock; existing preview on port 4322 was used for browser checks.
+
 ### 2026-05-21 - Booking CTA green-first treatment
 
 - Goal: reverse booking CTA colors and align the blog drop cap with the green system color.
