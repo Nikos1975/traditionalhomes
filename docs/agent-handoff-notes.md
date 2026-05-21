@@ -35,6 +35,31 @@ When pausing or finishing a substantial task, add a dated note below with:
 
 ## Notes
 
+### 2026-05-21 - New session coordinator handoff
+
+- Goal: preserve state before continuing in a new session with GPT-5.5 coordinating Codex 5.3 execution.
+- Current state:
+  - Active branch: `codex/property-content-ui-map-version`.
+  - Draft PR: `https://github.com/Nikos1975/traditionalhomes/pull/2`.
+  - PR already includes property content/data fixes, UI/map fixes, build/deploy tooling, project agent docs, Elounda blog research folders, three new/revised blog posts, and the blog research skill.
+  - Added coordinator router at `docs/codex-5-3-router.md`.
+- Next useful action:
+  - In the new session, read `AGENTS.md`, `CLAUDE.md`, `docs/agent-handoff-notes.md`, and `docs/codex-5-3-router.md`.
+  - Use the router to send one task packet at a time to Codex 5.3.
+  - Recommended next work: Phase 2 blog structure and SEO for `src/pages/blog/index.astro` and `src/pages/blog/[...slug].astro`.
+- Verification:
+  - Latest blog/content verification before this handoff: `npm run typecheck` passed with 0 errors, 0 warnings, 0 hints; `npm run build` passed and generated 28 pages.
+- Remaining dirty files to keep excluded unless explicitly requested:
+  - `.ai/memory/conventions.md`
+  - `package-lock.json`
+  - `.agent/`
+  - `.ai/memory/conventions.md.tmp.4907.1775928805346`
+  - `.claude/`
+  - `.codex/`
+  - `CLAUDE.md`
+- Blockers:
+  - None for continuation. Official skill validation still cannot run in local Python because `yaml` is missing.
+
 ### 2026-05-21 - Elounda blog research articles
 
 - Goal: create Phase 1 Elounda blog articles from organized research.
