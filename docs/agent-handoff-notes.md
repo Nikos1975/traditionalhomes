@@ -35,6 +35,30 @@ When pausing or finishing a substantial task, add a dated note below with:
 
 ## Notes
 
+### 2026-05-21 - Elounda blog research articles
+
+- Goal: create Phase 1 Elounda blog articles from organized research.
+- Files changed:
+  - `.agents/skills/blog-research-article/SKILL.md`
+  - `src/content/blog/elounda-history-through-its-shoreline.md`
+  - `src/content/blog/elounda-visitor-economy.md`
+  - `src/content/blog/elounda-wartime-memory.md`
+  - `docs/superpowers/plans/2026-05-21-elounda-blog-content-phase-1.md`
+- What changed:
+  - Added `.agents/skills/blog-research-article/SKILL.md` for reusable research-to-blog workflows.
+  - Added a checklist implementation plan for the Elounda blog research phase.
+  - Revised the shoreline history article to be more specific and restrained.
+  - Added visitor-economy and wartime-memory articles using conservative, low-risk claims.
+- Verified:
+  - Tone scans found no issue except one intentional factual use of "high-end hospitality" to describe public image.
+  - `rg --files src/pages | rg "\.md$"` found no markdown under `src/pages`.
+  - `npm run typecheck` passed with 0 errors, 0 warnings, 0 hints.
+  - `npm run build` passed and generated the new blog routes.
+- Remaining:
+  - Phase 2 blog index/category improvements.
+- Blockers:
+  - Official skill validator could not run because the local Python environment is missing `yaml`.
+
 ### 2026-05-21 - Product content group staged
 
 - Goal: continue clean commit preparation from the generated commit plan.
