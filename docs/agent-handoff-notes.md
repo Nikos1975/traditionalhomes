@@ -35,6 +35,434 @@ When pausing or finishing a substantial task, add a dated note below with:
 
 ## Notes
 
+### 2026-05-22 - Elounda guide style test copies
+
+- Goal: create three live local test copies of the Elounda guide article for paragraph separator/style comparison.
+- Files changed:
+  - `src/content/blog/elounda-guide-style-1.md`
+  - `src/content/blog/elounda-guide-style-2.md`
+  - `src/content/blog/elounda-guide-style-3.md`
+  - `src/pages/blog/[...slug].astro`
+  - `src/pages/blog/index.astro`
+  - `docs/agent-handoff-notes.md`
+- What changed:
+  - Added live local test routes `/blog/elounda-guide-style-1/`, `/blog/elounda-guide-style-2/`, and `/blog/elounda-guide-style-3/` using the same article content as `/blog/elounda-guide/`.
+  - Style 1 hides visible `hr` separators and uses whitespace only.
+  - Style 2 uses full-width light section rules.
+  - Style 3 uses a short editorial rule with a small dot marker.
+  - Marked the three style test routes `noindex` and excluded them from `/blog/`.
+- Verified:
+  - Static red/green setup check failed before the copies existed and passed after the copy/style setup.
+  - `npm run typecheck` passed with 0 errors, 0 warnings, 0 hints.
+  - `npm run build` passed and generated 33 pages.
+  - Static output check confirmed all three test pages generated, have `noindex`, include their variant classes, and are absent from the blog index.
+  - `python scripts/audit_public_markdown.py` passed.
+- Remaining:
+  - Visually compare the three local URLs and choose which treatment to keep or refine.
+- Blockers:
+  - None.
+
+### 2026-05-22 - Elounda guide location-style hero spacing
+
+- Goal: match the `/blog/elounda-guide/` hero subtitle spacing and measure to the `/en/location/` hero introduction without changing colors.
+- Files changed:
+  - `src/pages/blog/[...slug].astro`
+  - `docs/agent-handoff-notes.md`
+- What changed:
+  - Added explicit green-variant header spacing of `5rem`.
+  - Set the guide subtitle to the location hero measure: 24 px font size, `1.625` line-height, and `42rem` max width.
+  - Preserved the existing title, subtitle, and tag colors.
+- Verified:
+  - Static red/green check failed before the CSS rules and passed after the update.
+  - `npm run typecheck` passed with 0 errors, 0 warnings, 0 hints.
+  - `npm run build` passed.
+  - Browser CDP check confirmed subtitle color remains `rgb(154, 143, 126)`, font size is 24 px, line-height is 39 px, max width is 672 px, header bottom margin is 80 px, and no horizontal overflow.
+- Remaining:
+  - None.
+- Blockers:
+  - None.
+
+### 2026-05-22 - Elounda guide left-aligned article block
+
+- Goal: move the `/blog/elounda-guide/` article block to the left instead of centering it.
+- Files changed:
+  - `src/pages/blog/[...slug].astro`
+  - `docs/agent-handoff-notes.md`
+- What changed:
+  - Removed `mx-auto` from the green guide variant article wrapper while keeping other standard blog posts centered.
+- Verified:
+  - Static red/green check failed before the class-logic change and passed after the update.
+  - `npm run typecheck` passed with 0 errors, 0 warnings, 0 hints.
+  - `npm run build` passed.
+  - Browser CDP check confirmed the guide wrapper class is `max-w-3xl blog-location-variant blog-location-green-variant` with no `mx-auto` and no horizontal overflow.
+- Remaining:
+  - None.
+- Blockers:
+  - None.
+
+### 2026-05-22 - Elounda guide tag visibility
+
+- Goal: make the `/blog/elounda-guide/` tag labels visible after the green variant color changes.
+- Files changed:
+  - `src/pages/blog/[...slug].astro`
+  - `docs/agent-handoff-notes.md`
+- What changed:
+  - Added a `blog-post-tags` hook and set green variant tag text to `rgb(107, 95, 80)`.
+- Verified:
+  - Static red/green check failed before the rule and passed after the update.
+  - `npm run typecheck` passed with 0 errors, 0 warnings, 0 hints.
+  - `npm run build` passed.
+  - Browser CDP check at 390 px confirmed all six guide tags render as `rgb(107, 95, 80)` with no horizontal overflow.
+- Remaining:
+  - None.
+- Blockers:
+  - None.
+
+### 2026-05-22 - Elounda guide one-line title and subtitle color
+
+- Goal: keep the `/blog/elounda-guide/` title on one line and set the subtitle to the stone accent color.
+- Files changed:
+  - `src/pages/blog/[...slug].astro`
+  - `docs/agent-handoff-notes.md`
+- What changed:
+  - Added a `blog-title-single-line` hook for the green blog variant title with fixed breakpoint font sizes and `white-space: nowrap`.
+  - Set the green variant subtitle color to `rgb(154, 143, 126)`.
+- Verified:
+  - Static check confirmed the guide title hook, subtitle color rule, and no-wrap rule are present.
+  - `npm run typecheck` passed with 0 errors, 0 warnings, 0 hints.
+  - `npm run build` passed.
+  - Browser CDP checks at 390 px and desktop confirmed the title is one line, subtitle color is `rgb(154, 143, 126)`, and `scrollWidth` equals viewport width.
+- Remaining:
+  - None.
+- Blockers:
+  - None.
+
+### 2026-05-22 - Elounda guide title accent split
+
+- Goal: adjust the `/blog/elounda-guide/` title so longer titles begin the italic colored accent from the third word.
+- Files changed:
+  - `src/pages/blog/[...slug].astro`
+  - `docs/agent-handoff-notes.md`
+- What changed:
+  - Changed the green blog title accent for `Where the Sea Holds Memory` from `the Sea Holds Memory` to `Sea Holds Memory`, leaving `Where the` in the normal title style.
+- Verified:
+  - Static red/green check failed before the change and passed after the template update.
+  - `npm run typecheck` passed with 0 errors, 0 warnings, 0 hints.
+  - `npm run build` passed.
+  - Static output check confirmed the built title renders `Where the` before a `blog-title-accent-v2` span containing `Sea Holds Memory`.
+- Remaining:
+  - None.
+- Blockers:
+  - None.
+
+### 2026-05-22 - Blog and location visual review
+
+- Goal: visually review the two styled blog articles and the location page on desktop and mobile.
+- Files changed:
+  - `src/components/Header.astro`
+  - `src/pages/blog/[...slug].astro`
+  - `docs/agent-handoff-notes.md`
+- What changed:
+  - Tightened the mobile header masthead so it fits alongside the menu button without horizontal overflow.
+  - Allowed long blog breadcrumbs and italic title accents to wrap cleanly on narrow screens.
+- Verified:
+  - Browser screenshots checked `/blog/elounda-visitor-economy/`, `/blog/elounda-guide/`, and `/en/location/` at desktop and 390 px mobile widths.
+  - CDP metrics showed `scrollWidth` equals viewport width on all three target pages at 390 px.
+  - Location map popup was opened on desktop and mobile; `Book Now` appears in the popup.
+  - `python scripts/audit_public_markdown.py` passed.
+  - `npm run typecheck` passed with 0 errors, 0 warnings, 0 hints.
+  - `npm run build` passed.
+- Remaining:
+  - None for this visual review pass.
+- Blockers:
+  - None.
+
+### 2026-05-22 - Blog article location-style variants
+
+- Goal: create two blog article visual variants based on the `/en/location/` page style.
+- Files changed:
+  - `src/pages/blog/[...slug].astro`
+  - `src/content/blog/elounda-visitor-economy.md`
+  - `src/content/blog/elounda-guide.md`
+  - `docs/agent-handoff-notes.md`
+- What changed:
+  - Added route-specific article styling for `/blog/elounda-visitor-economy/` to use location-page scale, spacing, typography, and muted color rhythm.
+  - Added a second route-specific variant for `/blog/elounda-guide/` that swaps the stone-400 accent treatment toward the location-page light green.
+  - Changed the article drop cap to use the serif title treatment in dark text.
+  - Updated the title treatment to keep a dual-color title effect. Version 1 italicizes the final word with `Cormorant Garamond`, weight 300, `rgb(154, 143, 126)`, 24 px / 39 px. Version 2 keeps `Where` normal and italicizes `the Sea Holds Memory` in `rgb(152, 188, 180)`.
+  - Set the Version 2 subtitle `A journey through Elounda and the stone villages of eastern Crete` to 24 px / 39 px.
+  - Removed duplicated body H1 titles from the two target markdown articles; titles now come from frontmatter and the blog article template.
+  - Removed the duplicated markdown subtitle from `elounda-guide.md` because the subtitle already comes from frontmatter.
+- Verified:
+  - `python scripts/audit_public_markdown.py` passed.
+  - Target article body-H1 duplicate check passed.
+  - `npm run typecheck` passed with 0 errors, 0 warnings, 0 hints.
+  - `npm run build` passed and generated 30 pages.
+  - Static output check confirmed each target page has one `<h1>`, visitor economy has `blog-location-variant`, and elounda guide has `blog-location-variant blog-location-green-variant`.
+  - Static output check confirmed visitor economy has `blog-title-accent-v1`, elounda guide has `blog-title-accent-v2`, and each target page still has one `<h1>`.
+  - Static source check confirmed Version 2 title accent starts at `the Sea Holds Memory`, and subtitle sizing is 24 px / 39 px.
+- Remaining:
+  - Visual browser review recommended on the two target URLs.
+- Blockers:
+  - None.
+
+### 2026-05-22 - Location map popup Book Now buttons
+
+- Goal: add direct booking actions to property popups on `/en/location/`.
+- Files changed:
+  - `src/components/maps/LeafletMap.astro`
+  - `src/components/maps/MasterLocationMap.astro`
+  - `docs/agent-handoff-notes.md`
+- What changed:
+  - Added optional `bookingUrl` to Leaflet marker data.
+  - Passed each mapped inventory unit's `availabilityUrl` into the marker data.
+  - Rendered a sage `Book Now` popup button under `View Details` when a marker has a booking URL.
+- Verified:
+  - One-off red/green Node check confirmed marker data and popup rendering include `bookingUrl` / `Book Now`.
+  - `npm run typecheck` passed with 0 errors, 0 warnings, 0 hints.
+  - `npm run build` passed and generated 30 pages.
+  - Static build output confirms `/en/location/` marker JSON includes booking URLs such as `https://traditionalhomes.reserve-online.net/?room=HARGYR` and `?room=ASP3SV`, and the compiled Leaflet popup script renders `Book Now`.
+- Remaining:
+  - Browser automation could not be completed because the bundled Playwright package failed to load `playwright-core`; visually confirm in the running browser.
+- Blockers:
+  - None for code/build.
+
+### 2026-05-22 - WebHotelier mobile caption visibility
+
+- Goal: make mobile captions/labels above WebHotelier booking options visible.
+- Files changed:
+  - `docs/integrations/webhotelier/webhotelier/traditional-homes-webhotelier-theme.css`
+  - `docs/integrations/webhotelier/webhotelier/traditional-homes-webhotelier-mobile.css`
+  - `docs/agent-handoff-notes.md`
+- What changed:
+  - Added explicit mobile styling for labels, captions, field captions, and legends inside the booking search panels.
+  - Updated the standalone mobile CSS panels to use the same lighter site-like background treatment as the combined theme.
+  - Added mobile side gutters, inner padding, `box-sizing`, and full-width input/select/textarea rules so the check-in field does not sit against the left edge.
+  - Tightened responsive behavior by centering booking/search boxes with calculated mobile width and auto margins.
+  - Added stronger mobile button color rules so WebHotelier's blue mobile defaults are overridden by the site sage/rust palette.
+  - Added broader mobile button selectors for WebHotelier classes/IDs containing button, btn, book, reserve, reservation, continue, or search.
+  - Added scoped mobile float/width resets inside booking search panels so form controls do not keep desktop column spacing on small screens.
+  - Removed the broad `[class*="search"]` color override because it also matched search panel containers and caused a tall green mobile search box.
+  - Kept search color overrides only on clickable `a`, `button`, and `input` elements, and added row/column padding resets for mobile spacing.
+- Verified:
+  - CSS brace check passed for the combined theme and standalone mobile CSS.
+  - Scan found no `display: none`, `visibility: hidden`, `pointer-events: none`, or `opacity: 0`.
+- Remaining:
+  - Paste into WebHotelier and confirm against the live mobile booking markup.
+  - Change the visible `Villa/Apartments` wording to `Houses & Villa` in WebHotelier language/template settings, or capture the exact rendered HTML selector for a CSS-only visual override.
+- Blockers:
+  - CSS cannot safely change real select option text without an exact markup selector or WebHotelier template setting.
+
+### 2026-05-22 - Cloudflare go-live roadmap
+
+- Goal: document the final pre-live sequence before uploading or promoting the site on Cloudflare.
+- Files changed:
+  - `docs/releases/2026-05-22-cloudflare-go-live-roadmap.md`
+  - `docs/agent-handoff-notes.md`
+- What changed:
+  - Added a staged go-live roadmap with WebHotelier calendar coordination as the required blocker before Cloudflare upload or promotion.
+  - Documented final scope freeze, verification commands, route smoke tests, clean commit rules, Cloudflare preview checks, and post-live checks.
+- Verified:
+  - `python scripts/audit_public_markdown.py` passed.
+- Remaining:
+  - Complete WebHotelier calendar coordination and record the decision before final Cloudflare deployment.
+- Blockers:
+  - WebHotelier calendar/property mapping decisions are not yet recorded.
+
+### 2026-05-22 - WebHotelier booking funnel strategy
+
+- Goal: add the booking funnel strategy to the Cloudflare go-live roadmap.
+- Files changed:
+  - `docs/releases/2026-05-22-cloudflare-go-live-roadmap.md`
+  - `docs/agent-handoff-notes.md`
+- What changed:
+  - Documented the Intelligent Handoff approach: site-styled date/guest selection builds a direct WebHotelier URL with `checkin`, `nights`, `adults`, and `room` parameters.
+  - Recorded that WebHotelier remains the transaction engine and the public static site must not call authenticated REST booking or availability endpoints directly.
+  - Added GA4 cross-domain tracking and event ownership checks for `view_item`, `select_item`, `begin_checkout`, and `purchase`.
+  - Marked collection-page live availability fallback as a later secure/server-side phase unless WebHotelier provides a safe public mechanism.
+- Verified:
+  - Pending lightweight markdown/public-route audit after this note.
+- Remaining:
+  - Confirm exact WebHotelier direct-link parameter names, room-code mapping, alternative-property behavior, and GA4/GTM support on WebHotelier pages.
+- Blockers:
+  - WebHotelier booking/calendar configuration and analytics ownership are not yet confirmed.
+
+### 2026-05-22 - Phase 1 WebHotelier handoff implementation
+
+- Goal: implement the approved Intelligent Handoff booking flow without authenticated API calls.
+- Files changed:
+  - `src/components/booking/BookingHandoffForm.astro`
+  - `src/pages/en/index.astro`
+  - `src/pages/en/houses/index.astro`
+  - `src/pages/en/houses/[slug].astro`
+  - `src/pages/en/villa/[slug].astro`
+  - `src/components/Header.astro`
+  - `src/components/Footer.astro`
+  - `docs/releases/2026-05-22-cloudflare-go-live-roadmap.md`
+  - `docs/agent-handoff-notes.md`
+- What changed:
+  - Added a reusable form-based WebHotelier handoff component.
+  - Property and villa sidebars now submit `checkin`, `nights`, `adults`, and the unit `bookingId` as `room`.
+  - Homepage and collection search forms submit `checkin`, `nights`, and `adults` without a room code.
+  - Added `dataLayer` pushes for `view_item` on property forms and `select_item` on availability form submit.
+  - Changed header and footer booking links from `http` to `https`.
+- Verified:
+  - `python scripts/audit_public_markdown.py` passed.
+  - `npm run typecheck` passed with 0 errors, 0 warnings, 0 hints.
+  - `npm run build` passed and generated 30 pages.
+  - Browser check on `/en/houses/argyro/` generated `https://traditionalhomes.reserve-online.net/?checkin=2026-07-10&nights=5&adults=3&room=HARGYR` and confirmed `view_item` was pushed.
+  - Browser check on `/en/houses/` generated `https://traditionalhomes.reserve-online.net/?checkin=2026-08-01&nights=4&adults=2` without a room code and confirmed `select_item` can be pushed.
+  - Mobile browser check confirmed the Argyro sidebar form fits the booking card without page-breaking overflow.
+- Remaining:
+  - Confirm with WebHotelier that these direct-link parameters are accepted exactly as implemented.
+  - Confirm GA4 cross-domain linking and WebHotelier-side `begin_checkout` / `purchase` support.
+- Blockers:
+  - Do not promote to Cloudflare production until WebHotelier parameter mapping and analytics ownership are confirmed.
+
+### 2026-05-22 - Mobile sticky booking CTA
+
+- Goal: add a persistent mobile-first booking footer for high-intent mobile users.
+- Files changed:
+  - `src/layouts/Base.astro`
+  - `src/styles/global.css`
+  - `docs/agent-handoff-notes.md`
+- What changed:
+  - Added a mobile-only sticky booking bar with arrival date, nights, adults, and submit controls.
+  - The sticky bar reads the current page's existing `data-booking-handoff` form, so property pages inherit the correct WebHotelier `room` code.
+  - Generic pages submit dates, nights, and adults without a room code.
+  - Mobile chat button is lifted above the sticky booking bar.
+- Verified:
+  - `npm run typecheck` passed with 0 errors, 0 warnings, 0 hints.
+  - `npm run build` passed and generated 30 pages.
+  - Browser mobile check on `/en/houses/argyro/` confirmed the sticky bar generated `https://traditionalhomes.reserve-online.net/?checkin=2026-07-10&nights=5&adults=3&room=HARGYR`.
+  - Browser mobile check confirmed the sticky bar and chat trigger do not overlap at 390 px.
+  - Browser desktop check confirmed the sticky bar is hidden at 1280 px.
+- Remaining:
+  - Confirm WebHotelier accepts the direct-link parameters exactly as implemented.
+- Blockers:
+  - Same WebHotelier parameter and analytics confirmation gate as the wider booking handoff.
+
+### 2026-05-22 - Booking fallback search
+
+- Goal: give guests a clear path to other houses if the selected property is unavailable.
+- Files changed:
+  - `src/components/booking/BookingHandoffForm.astro`
+  - `docs/agent-handoff-notes.md`
+- What changed:
+  - Added a secondary `Search all available houses` submit action to room-specific booking forms.
+  - The primary submit keeps the selected property `room` code.
+  - The fallback submit preserves `checkin`, `nights`, and `adults` but disables the `room` field so WebHotelier receives a collection-wide search.
+  - Updated the helper copy to mention alternatives in WebHotelier.
+- Verified:
+  - `python scripts/audit_public_markdown.py` passed.
+  - `npm run typecheck` passed with 0 errors, 0 warnings, 0 hints.
+  - `npm run build` passed and generated 30 pages.
+  - Browser check on `/en/houses/argyro/` confirmed primary URL includes `room=HARGYR`.
+  - Browser check on `/en/houses/argyro/` confirmed fallback URL preserves the same dates and guests but omits `room`.
+- Remaining:
+  - Confirm WebHotelier automatically shows alternative available houses when a room-specific search is unavailable.
+- Blockers:
+  - WebHotelier alternative-property behavior still needs confirmation before go-live.
+
+### 2026-05-22 - WebHotelier visual theme CSS
+
+- Goal: provide paste-ready WebHotelier CSS so the hosted booking flow feels closer to the main site.
+- Files changed:
+  - `docs/integrations/webhotelier/webhotelier/README.md`
+  - `docs/integrations/webhotelier/webhotelier/traditional-homes-webhotelier-theme.css`
+  - `docs/integrations/webhotelier/webhotelier/traditional-homes-webhotelier-mobile.css`
+  - `docs/agent-handoff-notes.md`
+- What changed:
+  - Replaced the generic WebHotelier README with project-specific integration notes.
+  - Added a desktop/shared WebHotelier theme using the site's stone, sage, and rust palette.
+  - Added a mobile append CSS file that keeps controls visible and improves touch sizing.
+  - Kept the CSS limited to visual styling; no native WebHotelier booking functionality is hidden or removed.
+  - Revised the theme files to parser-safe legacy CSS after WebHotelier reported `CssSyntaxError: Unknown word`; removed CSS variables, `fit-content`, keyframes, and grouped selector blocks around important booking elements.
+- Verified:
+  - `python scripts/audit_public_markdown.py` passed.
+  - CSS brace check passed for desktop/shared and mobile WebHotelier CSS files.
+  - CSS scan found no CSS variables, `fit-content`, keyframes, `display: none`, `visibility: hidden`, `pointer-events: none`, or `opacity: 0` rules in the WebHotelier theme files.
+- Remaining:
+  - Paste CSS into WebHotelier's custom CSS fields and visually inspect on desktop and mobile.
+  - Confirm final background image URL; current CSS uses the WebHotelier CDN image from the provided template.
+- Blockers:
+  - WebHotelier template output must be visually reviewed after CSS is applied in their system.
+
+### 2026-05-22 - New session handoff after blog timeline UI work
+
+- Current branch: `codex/property-content-ui-map-version`.
+- Draft PR: `https://github.com/Nikos1975/traditionalhomes/pull/2`.
+- Current blog state:
+  - Blog has 8 posts: 3 History, 4 Location Guide, 1 Updates.
+  - New article title: `Key Phases in Elounda's Hotel Development`.
+  - New article route: `/blog/key-phases-in-elounda-hotel-development/`.
+  - Old route `/blog/elounda-hotel-clusters-timeline/` is no longer generated.
+- Product/content files changed or added in this latest blog pass:
+  - `src/content/blog/key-phases-in-elounda-hotel-development.md`
+  - `src/components/blog/EloundaHotelTimeline.astro`
+  - `src/pages/blog/[...slug].astro`
+  - `src/pages/blog/index.astro`
+  - `docs/agent-handoff-notes.md`
+- What changed:
+  - Added the new Elounda hotel development article using the user's local HTML research files as context only.
+  - Added a left-side anchor-linked timeline component for that article only.
+  - Renamed the article slug and component from `hotel-clusters` wording to the clearer `key-phases-in-elounda-hotel-development` / `EloundaHotelTimeline`.
+  - Added blog-card hover image reveal using each post's `image` metadata.
+  - Rounded blog article images, enlarged the first-letter treatment, and matched blog image hover behavior to the photo gallery: slow scale inside a clipped rounded frame with a subtle dark overlay.
+  - Homepage index was intentionally not changed.
+- Latest verification:
+  - `python scripts/audit_blog_metadata.py` passed.
+  - `python scripts/audit_public_markdown.py` passed.
+  - `python scripts/audit_brand_language.py` still reports only existing unrelated `best` matches in `elounda-guide.md`, `kalliopi.md`, and `leonidas.md`.
+  - `npm run typecheck` passed with 0 errors, 0 warnings, 0 hints.
+  - `npm run build` passed and generated 30 pages.
+  - Browser check confirmed the new route renders with the new title and the timeline appears beside the article on desktop.
+  - Mobile browser check at 390 px confirmed the timeline, article text, and images render without page-breaking overflow; only a small pre-existing header width measurement was detected.
+- Known dirty or local files to leave alone unless explicitly requested:
+  - `.ai/memory/conventions.md`
+  - `.ai/memory/conventions.md.tmp.4907.1775928805346`
+  - `.agent/`
+  - `.claude/`
+  - `.codex/`
+  - `CLAUDE.md`
+  - `package-lock.json`
+  - `docs/commit-plan/**`
+  - `docs/integrations/webhotelier/**`
+  - `docs/research/elounda/**/*.html`
+- Next useful action:
+  - If committing, stage only the intended product/content files and keep local workflow/private files excluded.
+- Blockers:
+  - None.
+
+### 2026-05-22 - Elounda hotel development timeline article
+
+- Goal: add a factual, restrained article on the key phases in Elounda hotel development.
+- Files changed:
+  - `src/components/blog/EloundaHotelTimeline.astro`
+  - `src/content/blog/key-phases-in-elounda-hotel-development.md`
+  - `src/pages/blog/[...slug].astro`
+  - `src/pages/blog/index.astro`
+  - `docs/agent-handoff-notes.md`
+- What changed:
+  - Used the user's local HTML research files under `docs/research/elounda/**` as context without editing them.
+  - Added a new Location Guide article covering central Elounda, Plaka/Spinalonga-facing resorts, international brand affiliations, asset repositioning, and mixed-use development.
+  - Added a left-side, anchor-linked vertical timeline for the Elounda hotel development article using an Astro component.
+  - Rounded blog-post body images, enlarged the first-letter treatment on the first article paragraph, and matched the photo-gallery hover effect with a slow image scale and subtle overlay.
+  - Added the same subtle blog-card image reveal effect used by the location map cards, using each blog post's `image` metadata.
+  - Avoided promotional framing and kept unsupported claims out of the article.
+- Verified:
+  - `python scripts/audit_blog_metadata.py` passed.
+  - `python scripts/audit_public_markdown.py` passed.
+  - `python scripts/audit_brand_language.py` did not flag the new hotel development article after source-label cleanup; remaining matches are existing items in `elounda-guide.md`, `kalliopi.md`, and `leonidas.md`.
+  - `npm run typecheck` passed with 0 errors, 0 warnings, 0 hints.
+  - `npm run build` passed and generated 30 pages.
+  - Browser check confirmed the timeline appears beside the article on desktop and its links jump to the matching article headings.
+  - Mobile browser check at 390 px confirmed the timeline, article text, and images render without page-breaking overflow; only a small pre-existing header width measurement was detected.
+- Remaining:
+  - None for the hotel development article pass.
+- Blockers:
+  - None.
+
 ### 2026-05-21 - New session blog handoff checkpoint
 
 - Goal: preserve current blog/content state before continuing in a fresh session.
@@ -464,6 +892,23 @@ When pausing or finishing a substantial task, add a dated note below with:
   - `rg` confirmed no old `sqm`, `square metres`, `square-metre`, or `m²` wording remains in property content/inventory.
   - `npm run typecheck` passed with 0 errors, 0 warnings, 0 hints.
   - `npm run build` passed cleanly on rerun.
+- Blockers:
+  - None.
+
+### 2026-05-22 - WebHotelier CSS fast theme
+
+- Goal: provide a paste-ready WebHotelier custom CSS theme that resembles the main site without affecting booking functionality.
+- Files changed:
+  - `docs/integrations/webhotelier/webhotelier/traditional-homes-webhotelier-theme.css`
+  - `docs/agent-handoff-notes.md`
+- What changed:
+  - Replaced the older expanded WebHotelier stylesheet with a variable-based fast theme using the site stone, rust, sage, blue, border, and typography language.
+  - Kept selectors limited to visible styling for page, header, panels, form fields, buttons, labels, rates, tables, and mobile layout.
+- Verified:
+  - Brace-balance check passed.
+  - Checked for `display: none`, `visibility: hidden`, `pointer-events: none`, and `opacity: 0`; none found.
+- Remaining:
+  - Paste into WebHotelier and visually confirm against the live booking markup.
 - Blockers:
   - None.
 

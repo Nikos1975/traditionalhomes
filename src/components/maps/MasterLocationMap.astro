@@ -39,12 +39,14 @@ const allLocs = locations.filter(l => l.lat && l.lng).map(loc => {
 // This goes into the actual Leaflet component to draw the pins
 const markers = allLocs.map(loc => {
   const url = loc.type === 'villa' ? `/en/villa/${loc.slug}/` : `/en/houses/${loc.slug}/`;
+  const unit = units.find(u => u.slug === loc.slug);
   return {
     id: loc.id,
     lat: loc.lat!,
     lng: loc.lng!,
     title: loc.title,
     url: url,
+    bookingUrl: unit?.availabilityUrl,
     type: loc.type,
     group: loc.group,
     image: loc.finalImage,

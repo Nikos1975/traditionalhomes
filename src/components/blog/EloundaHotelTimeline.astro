@@ -1,0 +1,58 @@
+---
+const items = [
+  {
+    year: '1957',
+    phase: 'After Spinalonga',
+    href: '#1957-1960s-after-spinalonga-closed',
+    markerClass: 'bg-stone-900 text-white',
+    dotClass: 'bg-white',
+  },
+  {
+    year: '1971-1977',
+    phase: 'First cluster',
+    href: '#1971-1977-the-first-resort-logic-around-elounda',
+    markerClass: 'bg-stone-700 text-white',
+    dotClass: 'bg-white',
+  },
+  {
+    year: '1982-1992',
+    phase: 'Expansion',
+    href: '#1982-1992-the-kokotos-cluster-expands',
+    markerClass: 'bg-accent-sage text-stone-950',
+    dotClass: 'bg-stone-950',
+  },
+  {
+    year: '2003-2015',
+    phase: 'Plaka and brands',
+    href: '#2003-2004-plaka-and-the-spinalonga-view-become-a-second-cluster',
+    markerClass: 'bg-stone-500 text-white',
+    dotClass: 'bg-white',
+  },
+  {
+    year: '2022-2030',
+    phase: 'Repositioning',
+    href: '#2022-repositioning-existing-hotel-assets',
+    markerClass: 'bg-primary text-white',
+    dotClass: 'bg-white',
+  },
+];
+---
+
+<nav class="elounda-hotel-timeline relative overflow-hidden rounded-[2rem] border border-stone-200 bg-stone-50 p-5 shadow-sm md:p-6" aria-label="Elounda hotel development timeline">
+  <div class="absolute inset-0 opacity-45" style="background-image: radial-gradient(#d6d3d1 1px, transparent 1px); background-size: 18px 18px;" aria-hidden="true"></div>
+  <div class="relative z-10">
+    <div class="relative space-y-3 pl-8">
+      <div class="absolute bottom-4 left-[0.6875rem] top-4 w-px bg-stone-300" aria-hidden="true"></div>
+
+      {items.map((item) => (
+        <a href={item.href} class="group relative block rounded-xl border border-transparent bg-white/65 px-3 py-3 transition-all duration-300 hover:border-accent-sage hover:bg-white hover:shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-sage">
+          <span class={`absolute -left-8 top-3 flex h-6 w-6 items-center justify-center rounded-full ring-4 ring-stone-50 transition-transform duration-300 group-hover:scale-110 ${item.markerClass}`}>
+            <span class={`h-1.5 w-1.5 rounded-full ${item.dotClass}`}></span>
+          </span>
+          <span class="block whitespace-nowrap font-serif text-xl leading-tight text-stone-950">{item.year}</span>
+          <span class="mt-1 block text-[9px] font-bold uppercase leading-relaxed tracking-[0.16em] text-stone-400 group-hover:text-primary">{item.phase}</span>
+        </a>
+      ))}
+    </div>
+  </div>
+</nav>

@@ -2,6 +2,7 @@
 import Base from '../../../layouts/Base.astro';
 import HouseGallery from '../../../components/gallery/HouseGallery.astro';
 import AtAGlance from '../../../components/AtAGlance.astro';
+import BookingHandoffForm from '../../../components/booking/BookingHandoffForm.astro';
 import SinglePinMap from '../../../components/maps/SinglePinMap.astro';
 import inventory from '../../../inventory/inventory.json';
 import { validateInventory } from '../../../utils/validateInventory';
@@ -281,14 +282,16 @@ const pageDescription = `${unit.name} in ${unit.location} — sleeps ${unit.slee
             </div>
           </div>
 
-          <a
-            href={unit.availabilityUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="btn-cta booking-cta w-full py-4 text-center block rounded-xl shadow-md mb-3"
-          >
-            Check Availability
-          </a>
+          <BookingHandoffForm
+            bookingBaseUrl={siteCopy.bookingEngineUrl}
+            roomCode={unit.bookingId}
+            itemName={unit.name}
+            maxAdults={unit.sleeps}
+            title="Check this house"
+            description="Choose dates and continue to live availability for this property."
+            framed={false}
+            trackView
+          />
           <a href="/en/contact/" class="btn-outline w-full py-3 text-center block rounded-xl text-xs uppercase tracking-wider font-bold">
             Ask a Question
           </a>

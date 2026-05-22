@@ -1,0 +1,515 @@
+/*
+  Elounda Traditional Homes - WebHotelier theme
+  Use in WebHotelier custom CSS / append CSS fields.
+
+  Rules:
+  - CSS only.
+  - Do not hide, remove, or disable native WebHotelier booking functionality.
+  - Keep booking controls, rates, cancellation labels, totals, and book buttons visible.
+*/
+
+:root {
+  --eth-text: #2c2419;
+  --eth-muted: #6b5f50;
+  --eth-page: #f7f4ee;
+  --eth-panel: #ffffff;
+  --eth-field: #fffdf9;
+  --eth-line: #e6e1d8;
+  --eth-line-strong: #c8bfb0;
+  --eth-rust: #b44b2a;
+  --eth-rust-hover: #9a3f23;
+  --eth-sage: #98bcb4;
+  --eth-sage-soft: #e7f0ed;
+  --eth-blue: #0880a8;
+  --eth-shadow: 0 18px 48px rgba(44, 36, 25, 0.16);
+}
+
+html {
+  min-height: 100%;
+}
+
+body {
+  min-height: 100%;
+  background:
+    linear-gradient(rgba(247, 244, 238, 0.9), rgba(247, 244, 238, 0.84)),
+    url("https://cdn.webhotelier.net/photos/w=1920:h=1080:fit=inside/templates/10429/files/ALMOND_TREE_1_0005.jpeg") center / cover fixed no-repeat;
+  color: var(--eth-text);
+  font-family: "Work Sans", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+a {
+  color: var(--eth-blue);
+  transition: color 180ms ease, background-color 180ms ease, border-color 180ms ease;
+}
+
+a:hover {
+  color: var(--eth-rust);
+  text-decoration: none;
+}
+
+header {
+  display: flex;
+  width: auto;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.96);
+  border-bottom: 1px solid rgba(230, 225, 216, 0.9);
+  box-shadow: 0 1px 0 rgba(230, 225, 216, 0.9);
+}
+
+#header,
+#top-options {
+  background: none;
+}
+
+#header img {
+  height: 62px;
+  max-height: 62px;
+}
+
+#top-options {
+  flex: 0 1 auto;
+  min-width: 720px;
+  text-align: right;
+}
+
+#top-options li a {
+  color: var(--eth-text);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+#top-options li a:hover {
+  color: var(--eth-rust);
+  text-decoration: none;
+}
+
+#main,
+#content,
+#availability-search,
+#results,
+.availability-search,
+.booking-search,
+.results,
+.result,
+.room,
+.room-result,
+.rate {
+  border-color: var(--eth-line);
+}
+
+#availability-search,
+.availability-search,
+.booking-search,
+.result,
+.room,
+.room-result,
+.rate {
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid rgba(230, 225, 216, 0.95);
+  border-radius: 8px;
+  box-shadow: var(--eth-shadow);
+}
+
+input,
+select,
+textarea {
+  border-color: var(--eth-line-strong);
+  background-color: var(--eth-field);
+  color: var(--eth-text);
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--eth-sage);
+  box-shadow: 0 0 0 2px rgba(152, 188, 180, 0.28);
+  outline: none;
+}
+
+button,
+.button,
+a.button,
+button.prime,
+.prime,
+.btn,
+.book,
+.book-now,
+input[type="button"],
+input[type="submit"] {
+  border-color: var(--eth-sage);
+  background-color: var(--eth-sage);
+  color: var(--eth-text);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  transition: background-color 180ms ease, border-color 180ms ease, color 180ms ease, transform 180ms ease;
+}
+
+button:hover,
+.button:hover,
+a.button:hover,
+button.prime:hover,
+.prime:hover,
+.btn:hover,
+.book:hover,
+.book-now:hover,
+input[type="button"]:hover,
+input[type="submit"]:hover {
+  border-color: var(--eth-rust);
+  background-color: var(--eth-rust);
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.best-price,
+.best-price-guarantee,
+.badge,
+.label,
+.free-cancellation,
+.cancellation,
+.policy {
+  border-color: rgba(152, 188, 180, 0.7);
+  background-color: var(--eth-sage-soft);
+  color: var(--eth-text);
+}
+
+h1,
+h2,
+h3,
+.room h2,
+.room h3,
+.room-result h2,
+.room-result h3,
+.result h2,
+.result h3 {
+  color: var(--eth-text);
+  font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  font-weight: 400;
+  line-height: 1.1;
+}
+
+p,
+li,
+td {
+  color: var(--eth-text);
+}
+
+.muted,
+.description,
+.room-description,
+.rate-description,
+.note {
+  color: var(--eth-muted);
+}
+
+.price,
+.total,
+.stay-total,
+.grand-total,
+.amount {
+  color: var(--eth-text);
+  font-weight: 700;
+}
+
+table,
+th,
+td {
+  border-color: rgba(152, 188, 180, 0.45);
+}
+
+th,
+.calendar th,
+.availability-calendar th {
+  background: var(--eth-sage-soft);
+  color: var(--eth-text);
+}
+
+td,
+.calendar td,
+.availability-calendar td {
+  background: rgba(231, 240, 237, 0.45);
+}
+
+footer {
+  background: rgba(255, 255, 255, 0.96);
+  color: var(--eth-muted);
+}
+
+@media (max-width: 996px) {
+  body {
+    background:
+      linear-gradient(rgba(247, 244, 238, 0.94), rgba(247, 244, 238, 0.88)),
+      url("https://cdn.webhotelier.net/photos/w=1920:h=1080:fit=inside/templates/10429/files/ALMOND_TREE_1_0005.jpeg") center top / cover scroll no-repeat;
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+  header {
+    justify-content: center;
+    min-height: 72px;
+    padding: 8px 12px;
+  }
+
+  #header img {
+    height: 52px;
+    max-height: 52px;
+  }
+
+  #top-options {
+    min-width: 0;
+    max-width: 100%;
+    text-align: center;
+  }
+
+  #top-options li a {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+  }
+
+  #availability-search,
+  .availability-search,
+  .booking-search,
+  .result,
+  .room,
+  .room-result,
+  .rate {
+    box-sizing: border-box;
+    border-radius: 8px;
+    box-shadow: 0 10px 28px rgba(44, 36, 25, 0.12);
+  }
+
+  #availability-search,
+  .availability-search,
+  .booking-search {
+    width: calc(100% - 24px);
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 14px;
+  }
+
+  #main,
+  #content,
+  #results,
+  .results {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    overflow-x: hidden;
+  }
+
+  #availability-search *,
+  .availability-search *,
+  .booking-search * {
+    box-sizing: border-box;
+  }
+
+  #availability-search form,
+  #availability-search fieldset,
+  #availability-search ul,
+  #availability-search ol,
+  #availability-search li,
+  #availability-search p,
+  #availability-search div,
+  .availability-search form,
+  .availability-search fieldset,
+  .availability-search ul,
+  .availability-search ol,
+  .availability-search li,
+  .availability-search p,
+  .availability-search div,
+  .booking-search form,
+  .booking-search fieldset,
+  .booking-search ul,
+  .booking-search ol,
+  .booking-search li,
+  .booking-search p,
+  .booking-search div {
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  #availability-search .field,
+  #availability-search .form-field,
+  #availability-search .form-group,
+  #availability-search .form-row,
+  #availability-search .row,
+  #availability-search .column,
+  #availability-search .col,
+  #availability-search .control,
+  #availability-search .controls,
+  #availability-search .option,
+  #availability-search .select,
+  .availability-search .field,
+  .availability-search .form-field,
+  .availability-search .form-group,
+  .availability-search .form-row,
+  .availability-search .row,
+  .availability-search .column,
+  .availability-search .col,
+  .availability-search .control,
+  .availability-search .controls,
+  .availability-search .option,
+  .availability-search .select,
+  .booking-search .field,
+  .booking-search .form-field,
+  .booking-search .form-group,
+  .booking-search .form-row,
+  .booking-search .row,
+  .booking-search .column,
+  .booking-search .col,
+  .booking-search .control,
+  .booking-search .controls,
+  .booking-search .option,
+  .booking-search .select {
+    float: none !important;
+    clear: both;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  #availability-search label,
+  #availability-search .label,
+  #availability-search .caption,
+  #availability-search .field-caption,
+  #availability-search legend,
+  .availability-search label,
+  .availability-search .label,
+  .availability-search .caption,
+  .availability-search .field-caption,
+  .availability-search legend,
+  .booking-search label,
+  .booking-search .label,
+  .booking-search .caption,
+  .booking-search .field-caption,
+  .booking-search legend {
+    display: block;
+    position: relative;
+    z-index: 1;
+    margin: 0 0 6px;
+    background: transparent;
+    color: var(--eth-muted);
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  input,
+  select,
+  textarea {
+    width: 100%;
+    max-width: 100%;
+    min-height: 42px;
+    font-size: 16px;
+  }
+
+  #availability-search input,
+  #availability-search select,
+  #availability-search textarea,
+  .availability-search input,
+  .availability-search select,
+  .availability-search textarea,
+  .booking-search input,
+  .booking-search select,
+  .booking-search textarea {
+    display: block;
+    float: none !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  button,
+  .button,
+  a.button,
+  button.prime,
+  .prime,
+  .btn,
+  .book,
+  .book-now,
+  input[type="button"],
+  input[type="submit"] {
+    border-color: var(--eth-sage) !important;
+    background-color: var(--eth-sage) !important;
+    color: var(--eth-text) !important;
+    min-height: 44px;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+  }
+
+  a[class*="button"],
+  a[class*="btn"],
+  a[class*="book"],
+  a[class*="search"],
+  button[class*="button"],
+  button[class*="btn"],
+  button[class*="book"],
+  button[class*="search"],
+  input[class*="button"],
+  input[class*="btn"],
+  input[class*="book"],
+  input[class*="search"],
+  [id*="button"],
+  [id*="btn"],
+  [id*="book"],
+  [class*="reserve"],
+  [class*="reservation"],
+  [class*="continue"] {
+    border-color: var(--eth-sage) !important;
+    background: var(--eth-sage) !important;
+    background-color: var(--eth-sage) !important;
+    color: var(--eth-text) !important;
+  }
+
+  button:hover,
+  .button:hover,
+  a.button:hover,
+  button.prime:hover,
+  .prime:hover,
+  .btn:hover,
+  .book:hover,
+  .book-now:hover,
+  input[type="button"]:hover,
+  input[type="submit"]:hover {
+    border-color: var(--eth-rust) !important;
+    background-color: var(--eth-rust) !important;
+    color: #ffffff !important;
+  }
+
+  a[class*="button"]:hover,
+  a[class*="btn"]:hover,
+  a[class*="book"]:hover,
+  a[class*="search"]:hover,
+  button[class*="button"]:hover,
+  button[class*="btn"]:hover,
+  button[class*="book"]:hover,
+  button[class*="search"]:hover,
+  input[class*="button"]:hover,
+  input[class*="btn"]:hover,
+  input[class*="book"]:hover,
+  input[class*="search"]:hover,
+  [id*="button"]:hover,
+  [id*="btn"]:hover,
+  [id*="book"]:hover,
+  [class*="reserve"]:hover,
+  [class*="reservation"]:hover,
+  [class*="continue"]:hover {
+    border-color: var(--eth-rust) !important;
+    background: var(--eth-rust) !important;
+    background-color: var(--eth-rust) !important;
+    color: #ffffff !important;
+  }
+}

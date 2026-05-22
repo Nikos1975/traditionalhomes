@@ -3,6 +3,7 @@ import Base from '../../../layouts/Base.astro';
 import UnitCard from '../../../components/UnitCard.astro';
 import GroupCard from '../../../components/GroupCard.astro';
 import FilterBar from '../../../components/FilterBar.astro';
+import BookingHandoffForm from '../../../components/booking/BookingHandoffForm.astro';
 import inventory from '../../../inventory/inventory.json';
 import groupsData from '../../../inventory/groups.json';
 import siteCopyData from '../../../data/siteCopy.json';
@@ -64,6 +65,18 @@ const totalCount = allItems.length;
         Curated spaces for the discerning traveler seeking the soul of Crete.
       </p>
     </header>
+
+    <section class="mb-14" aria-label="Search availability">
+      <BookingHandoffForm
+        bookingBaseUrl={siteCopy.bookingEngineUrl}
+        itemName="Elounda Traditional Homes Collection"
+        maxAdults={10}
+        title="Search the collection"
+        description="Choose dates and guests to continue to live availability in WebHotelier."
+        submitLabel="Search Availability"
+        compact
+      />
+    </section>
 
     {/* INTERACTIVE FILTER BAR */}
     {/* Added top-24 to offset our taller premium header */}

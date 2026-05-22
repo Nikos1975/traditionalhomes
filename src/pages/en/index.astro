@@ -1,6 +1,7 @@
 ---
 import Base from '../../layouts/Base.astro';
 import UnitCard from '../../components/UnitCard.astro';
+import BookingHandoffForm from '../../components/booking/BookingHandoffForm.astro';
 import MapPreview from '../../components/maps/MapPreview.astro';
 import inventory from '../../inventory/inventory.json';
 import siteCopy from '../../data/siteCopy.json';
@@ -188,10 +189,18 @@ const villa = units.find((u) => u.type === 'villa');
       <p class="text-stone-500 text-lg md:text-xl font-light max-w-xl mx-auto mb-12">
         Bookings are managed through our secure availability system. Select your property and dates to proceed.
       </p>
+      <div class="max-w-3xl mx-auto mb-8 text-left">
+        <BookingHandoffForm
+          bookingBaseUrl={siteCopy.bookingEngineUrl}
+          itemName="Elounda Traditional Homes"
+          maxAdults={10}
+          title="Check dates"
+          description="Search the collection, then choose the property that fits your stay in WebHotelier."
+          submitLabel="Search Availability"
+          compact
+        />
+      </div>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href={siteCopy.bookingEngineUrl} target="_blank" class="btn-cta booking-cta px-12 py-5 shadow-premium">
-          Check Availability
-        </a>
         <a href="/en/houses/" class="btn-cta bg-transparent border-stone-200 text-stone-950 hover:bg-stone-100 px-12 py-5">
           View All Properties
         </a>

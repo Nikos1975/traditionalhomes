@@ -1,5 +1,6 @@
 ---
 title: "Where the Sea Holds Memory"
+testVariant: "elounda-guide-style-2"
 subtitle: "A journey through Elounda and the stone villages of eastern Crete"
 description: >
   A long-form destination essay on Elounda, Crete — its sunken ancient city,

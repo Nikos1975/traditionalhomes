@@ -13,8 +13,6 @@ image: "/images/blog/elounda-visitor-economy/elounda-bay-resort-development.jfif
 imageAlt: "Modern resort development overlooking Elounda Bay"
 ---
 
-# How Elounda's Visitor Economy Changed
-
 Elounda's modern visitor economy did not appear by chance. It grew from a particular geography: sheltered water, views across Mirabello Bay, proximity to Spinalonga, and villages set close enough to the coast to remain connected with it.
 
 That setting made Elounda legible to visitors before large hotels changed its public image. The bay gives the area a natural orientation. Roads, harbors, boat routes, and viewpoints all follow the shape of the water.

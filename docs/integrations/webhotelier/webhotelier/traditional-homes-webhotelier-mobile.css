@@ -1,0 +1,429 @@
+@media (max-width: 768px) {
+  body {
+    background:
+      linear-gradient(rgba(247, 244, 238, 0.94), rgba(247, 244, 238, 0.88)),
+      url("https://cdn.webhotelier.net/photos/w=1920:h=1080:fit=inside/templates/10429/files/ALMOND_TREE_1_0005.jpeg") center top / cover scroll no-repeat;
+    color: #2c2419;
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+  header {
+    align-items: center;
+    justify-content: center;
+    min-height: 72px;
+    padding: 8px 12px;
+  }
+
+  #header img {
+    height: 52px;
+    max-height: 52px;
+  }
+
+  #top-options {
+    min-width: 0;
+    max-width: 100%;
+    text-align: center;
+  }
+
+  #top-options li a {
+    font-size: 11px;
+    letter-spacing: 0.08em;
+  }
+
+  #availability-search {
+    background: rgba(255, 255, 255, 0.97);
+    border: 1px solid rgba(230, 225, 216, 0.95);
+    border-radius: 8px;
+    box-sizing: border-box;
+    width: calc(100% - 24px);
+    max-width: 560px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 14px;
+    box-shadow: 0 10px 28px rgba(44, 36, 25, 0.12);
+  }
+
+  .availability-search {
+    background: rgba(255, 255, 255, 0.97);
+    border: 1px solid rgba(230, 225, 216, 0.95);
+    border-radius: 8px;
+    box-sizing: border-box;
+    width: calc(100% - 24px);
+    max-width: 560px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 14px;
+    box-shadow: 0 10px 28px rgba(44, 36, 25, 0.12);
+  }
+
+  .booking-search {
+    background: rgba(255, 255, 255, 0.97);
+    border: 1px solid rgba(230, 225, 216, 0.95);
+    border-radius: 8px;
+    box-sizing: border-box;
+    width: calc(100% - 24px);
+    max-width: 560px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 14px;
+    box-shadow: 0 10px 28px rgba(44, 36, 25, 0.12);
+  }
+
+  #main,
+  #content,
+  #results,
+  .results {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    overflow-x: hidden;
+  }
+
+  #availability-search *,
+  .availability-search *,
+  .booking-search * {
+    box-sizing: border-box;
+  }
+
+  #availability-search form,
+  #availability-search fieldset,
+  #availability-search ul,
+  #availability-search ol,
+  #availability-search li,
+  #availability-search p,
+  #availability-search div,
+  .availability-search form,
+  .availability-search fieldset,
+  .availability-search ul,
+  .availability-search ol,
+  .availability-search li,
+  .availability-search p,
+  .availability-search div,
+  .booking-search form,
+  .booking-search fieldset,
+  .booking-search ul,
+  .booking-search ol,
+  .booking-search li,
+  .booking-search p,
+  .booking-search div {
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  #availability-search .field,
+  #availability-search .form-field,
+  #availability-search .form-group,
+  #availability-search .form-row,
+  #availability-search .row,
+  #availability-search .column,
+  #availability-search .col,
+  #availability-search .control,
+  #availability-search .controls,
+  #availability-search .option,
+  #availability-search .select,
+  .availability-search .field,
+  .availability-search .form-field,
+  .availability-search .form-group,
+  .availability-search .form-row,
+  .availability-search .row,
+  .availability-search .column,
+  .availability-search .col,
+  .availability-search .control,
+  .availability-search .controls,
+  .availability-search .option,
+  .availability-search .select,
+  .booking-search .field,
+  .booking-search .form-field,
+  .booking-search .form-group,
+  .booking-search .form-row,
+  .booking-search .row,
+  .booking-search .column,
+  .booking-search .col,
+  .booking-search .control,
+  .booking-search .controls,
+  .booking-search .option,
+  .booking-search .select {
+    float: none !important;
+    clear: both;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  #availability-search label,
+  #availability-search .label,
+  #availability-search .caption,
+  #availability-search .field-caption,
+  #availability-search legend,
+  .availability-search label,
+  .availability-search .label,
+  .availability-search .caption,
+  .availability-search .field-caption,
+  .availability-search legend,
+  .booking-search label,
+  .booking-search .label,
+  .booking-search .caption,
+  .booking-search .field-caption,
+  .booking-search legend {
+    display: block;
+    position: relative;
+    z-index: 1;
+    margin: 0 0 6px;
+    background: transparent;
+    color: #453a2d;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .room {
+    background: rgba(255, 255, 255, 0.97);
+    border-radius: 8px;
+    box-shadow: 0 10px 28px rgba(44, 36, 25, 0.12);
+  }
+
+  .room-result {
+    background: rgba(255, 255, 255, 0.97);
+    border-radius: 8px;
+    box-shadow: 0 10px 28px rgba(44, 36, 25, 0.12);
+  }
+
+  .rate {
+    background: rgba(255, 255, 255, 0.97);
+    border-radius: 8px;
+    box-shadow: 0 10px 28px rgba(44, 36, 25, 0.12);
+  }
+
+  .result {
+    background: rgba(255, 255, 255, 0.97);
+    border-radius: 8px;
+    box-shadow: 0 10px 28px rgba(44, 36, 25, 0.12);
+  }
+
+  input {
+    width: 100%;
+    max-width: 100%;
+    min-height: 42px;
+    background-color: #fffdf9;
+    color: #2c2419;
+    font-size: 16px;
+  }
+
+  select {
+    width: 100%;
+    max-width: 100%;
+    min-height: 42px;
+    background-color: #fffdf9;
+    color: #2c2419;
+    font-size: 16px;
+  }
+
+  textarea {
+    width: 100%;
+    max-width: 100%;
+    min-height: 42px;
+    background-color: #fffdf9;
+    color: #2c2419;
+    font-size: 16px;
+  }
+
+  #availability-search input,
+  #availability-search select,
+  #availability-search textarea,
+  .availability-search input,
+  .availability-search select,
+  .availability-search textarea,
+  .booking-search input,
+  .booking-search select,
+  .booking-search textarea {
+    display: block;
+    float: none !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  button {
+    border-color: #98bcb4 !important;
+    background-color: #98bcb4 !important;
+    color: #2c2419 !important;
+    min-height: 44px;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+  }
+
+  .button {
+    border-color: #98bcb4 !important;
+    background-color: #98bcb4 !important;
+    color: #2c2419 !important;
+    min-height: 44px;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+  }
+
+  a.button {
+    border-color: #98bcb4 !important;
+    background-color: #98bcb4 !important;
+    color: #2c2419 !important;
+    min-height: 44px;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+  }
+
+  button.prime {
+    border-color: #98bcb4 !important;
+    background-color: #98bcb4 !important;
+    color: #2c2419 !important;
+    min-height: 44px;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+  }
+
+  .prime {
+    border-color: #98bcb4 !important;
+    background-color: #98bcb4 !important;
+    color: #2c2419 !important;
+    min-height: 44px;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+  }
+
+  .btn {
+    border-color: #98bcb4 !important;
+    background-color: #98bcb4 !important;
+    color: #2c2419 !important;
+    min-height: 44px;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+  }
+
+  .book {
+    border-color: #98bcb4 !important;
+    background-color: #98bcb4 !important;
+    color: #2c2419 !important;
+    min-height: 44px;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+  }
+
+  .book-now {
+    border-color: #98bcb4 !important;
+    background-color: #98bcb4 !important;
+    color: #2c2419 !important;
+    min-height: 44px;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+  }
+
+  input[type="button"],
+  input[type="submit"] {
+    border-color: #98bcb4 !important;
+    background-color: #98bcb4 !important;
+    color: #2c2419 !important;
+    min-height: 44px;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  a[class*="button"],
+  a[class*="btn"],
+  a[class*="book"],
+  a[class*="search"],
+  button[class*="button"],
+  button[class*="btn"],
+  button[class*="book"],
+  button[class*="search"],
+  input[class*="button"],
+  input[class*="btn"],
+  input[class*="book"],
+  input[class*="search"],
+  [id*="button"],
+  [id*="btn"],
+  [id*="book"],
+  [class*="reserve"],
+  [class*="reservation"],
+  [class*="continue"] {
+    border-color: #98bcb4 !important;
+    background: #98bcb4 !important;
+    background-color: #98bcb4 !important;
+    color: #2c2419 !important;
+  }
+
+  button:hover,
+  .button:hover,
+  a.button:hover,
+  button.prime:hover,
+  .prime:hover,
+  .btn:hover,
+  .book:hover,
+  .book-now:hover,
+  input[type="button"]:hover,
+  input[type="submit"]:hover {
+    border-color: #b44b2a !important;
+    background-color: #b44b2a !important;
+    color: #ffffff !important;
+  }
+
+  a[class*="button"]:hover,
+  a[class*="btn"]:hover,
+  a[class*="book"]:hover,
+  a[class*="search"]:hover,
+  button[class*="button"]:hover,
+  button[class*="btn"]:hover,
+  button[class*="book"]:hover,
+  button[class*="search"]:hover,
+  input[class*="button"]:hover,
+  input[class*="btn"]:hover,
+  input[class*="book"]:hover,
+  input[class*="search"]:hover,
+  [id*="button"]:hover,
+  [id*="btn"]:hover,
+  [id*="book"]:hover,
+  [class*="reserve"]:hover,
+  [class*="reservation"]:hover,
+  [class*="continue"]:hover {
+    border-color: #b44b2a !important;
+    background: #b44b2a !important;
+    background-color: #b44b2a !important;
+    color: #ffffff !important;
+  }
+
+  .room h2 {
+    font-size: 22px;
+    line-height: 1.15;
+  }
+
+  .room h3 {
+    font-size: 22px;
+    line-height: 1.15;
+  }
+
+  .room-result h2 {
+    font-size: 22px;
+    line-height: 1.15;
+  }
+
+  .room-result h3 {
+    font-size: 22px;
+    line-height: 1.15;
+  }
+
+  .result h2 {
+    font-size: 22px;
+    line-height: 1.15;
+  }
+
+  .result h3 {
+    font-size: 22px;
+    line-height: 1.15;
+  }
+}

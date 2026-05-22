@@ -3,7 +3,7 @@ import Base from '../../layouts/Base.astro';
 import { getCollection } from 'astro:content';
 
 const posts = (await getCollection('blog'))
-  .filter(p => !p.data.draft)
+  .filter(p => !p.data.draft && !p.id.startsWith('elounda-guide-style-'))
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
 const formatDate = (date: Date) => date.toLocaleDateString('en-GB', {
@@ -68,8 +68,15 @@ const postsByCategory = categories.map(category => ({
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
               {categoryPosts.map(post => (
-                <a href={`/blog/${post.id}/`} class="group flex h-full flex-col bg-white rounded-lg border border-stone-200 overflow-hidden shadow-sm hover:shadow-card-hover hover:-translate-y-0.5 transition-all duration-300">
-                  <div class="flex h-full flex-col p-6">
+                <a href={`/blog/${post.id}/`} class="group/card relative flex h-full flex-col bg-white rounded-lg border border-stone-200 overflow-hidden shadow-sm hover:shadow-card-hover hover:-translate-y-0.5 hover:border-primary/30 transition-all duration-300">
+                  {post.data.image && (
+                    <div
+                      class="absolute inset-0 z-0 opacity-0 group-hover/card:opacity-10 transition-opacity duration-700 bg-cover bg-center"
+                      style={`background-image: url('${post.data.image}')`}
+                      aria-hidden="true"
+                    ></div>
+                  )}
+                  <div class="relative z-10 flex h-full flex-col p-6">
                     <div class="mb-5 flex flex-wrap gap-x-3 gap-y-2 text-[10px] uppercase tracking-[0.2em] text-stone-400">
                       <time datetime={post.data.pubDate.toISOString()} class="font-bold">
                         {formatDate(post.data.pubDate)}
@@ -79,7 +86,7 @@ const postsByCategory = categories.map(category => ({
                       )}
                     </div>
 
-                    <h3 class="font-serif text-2xl text-stone-900 mb-3 leading-snug group-hover:text-primary transition-colors">
+                    <h3 class="font-serif text-2xl text-stone-900 mb-3 leading-snug group-hover/card:text-primary transition-colors">
                       {post.data.title}
                     </h3>
 

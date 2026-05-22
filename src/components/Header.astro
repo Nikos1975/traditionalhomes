@@ -10,7 +10,7 @@ const navLinks = [
 ];
 
 const currentPath = Astro.url.pathname;
-const bookingUrl = 'http://traditionalhomes.reserve-online.net/';
+const bookingUrl = 'https://traditionalhomes.reserve-online.net/';
 ---
 
 <header
@@ -23,7 +23,7 @@ const bookingUrl = 'http://traditionalhomes.reserve-online.net/';
     {/* BRANDING / MASTHEAD */}
     <a
       href="/en/"
-      class="flex items-center gap-4 group flex-shrink-0"
+      class="group flex min-w-0 flex-shrink items-center gap-3 sm:gap-4"
       aria-label="Elounda Traditional Homes — home"
     >
       <img 
@@ -31,13 +31,13 @@ const bookingUrl = 'http://traditionalhomes.reserve-online.net/';
         alt="" 
         width="48" 
         height="48" 
-        class="w-12 h-12 transition-transform duration-700 ease-out group-hover:scale-110"
+        class="h-10 w-10 flex-shrink-0 transition-transform duration-700 ease-out group-hover:scale-110 sm:h-12 sm:w-12"
       />
-      <div class="flex flex-col leading-none">
-        <span class="font-serif text-2xl text-stone-900 group-hover:text-primary transition-colors duration-300 tracking-tight">
+      <div class="flex min-w-0 flex-col leading-none">
+        <span class="truncate font-serif text-xl tracking-tight text-stone-900 transition-colors duration-300 group-hover:text-primary sm:text-2xl">
           Elounda Traditional Homes
         </span>
-        <span class="font-sans text-[9px] uppercase text-stone-400 mt-1.5 tracking-[0.3em] font-bold">
+        <span class="mt-1.5 truncate font-sans text-[8px] font-bold uppercase tracking-[0.22em] text-stone-400 sm:text-[9px] sm:tracking-[0.3em]">
           Mavrikiano & Vrouchas · Crete
         </span>
       </div>
@@ -65,7 +65,7 @@ const bookingUrl = 'http://traditionalhomes.reserve-online.net/';
     </nav>
 
     {/* CTA & MOBILE TOGGLE */}
-    <div class="flex items-center gap-4">
+    <div class="flex flex-shrink-0 items-center gap-4">
       <a
         href={bookingUrl}
         target="_blank"

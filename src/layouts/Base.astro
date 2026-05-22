@@ -68,6 +68,31 @@ const canonical = canonicalUrl ?? new URL(Astro.url.pathname, siteUrl).href;
     </main>
     <Footer />
 
+    <form
+      id="mobile-booking-bar"
+      class="mobile-booking-bar"
+      action="https://traditionalhomes.reserve-online.net/"
+      method="get"
+      target="_blank"
+      data-mobile-booking-bar
+      aria-label="Quick availability search"
+    >
+      <label>
+        <span>Arrival</span>
+        <input type="date" name="checkin" data-mobile-checkin />
+      </label>
+      <label>
+        <span>Nights</span>
+        <input type="number" name="nights" min="1" max="60" value="7" inputmode="numeric" />
+      </label>
+      <label>
+        <span>Adults</span>
+        <input type="number" name="adults" min="1" max="10" value="2" inputmode="numeric" data-mobile-adults />
+      </label>
+      <input type="hidden" name="room" value="" data-mobile-room />
+      <button type="submit">Check</button>
+    </form>
+
     <button
       id="chat-trigger"
       aria-label="Open chat"
@@ -107,6 +132,63 @@ const canonical = canonicalUrl ?? new URL(Astro.url.pathname, siteUrl).href;
           reveals.forEach((el) => obs.observe(el));
         }
       });
+
+      const mobileBookingBar = document.querySelector<HTMLFormElement>('[data-mobile-booking-bar]');
+      const pageBookingForm = document.querySelector<HTMLFormElement>('[data-booking-handoff]');
+
+      if (mobileBookingBar && mobileBookingBar.dataset.initialized !== 'true') {
+        mobileBookingBar.dataset.initialized = 'true';
+
+        const today = new Date();
+        const todayValue = new Date(today.getTime() - today.getTimezoneOffset() * 60000)
+          .toISOString()
+          .slice(0, 10);
+        const checkin = mobileBookingBar.querySelector<HTMLInputElement>('[data-mobile-checkin]');
+        const adults = mobileBookingBar.querySelector<HTMLInputElement>('[data-mobile-adults]');
+        const room = mobileBookingBar.querySelector<HTMLInputElement>('[data-mobile-room]');
+
+        if (checkin) checkin.min = todayValue;
+
+        if (pageBookingForm) {
+          mobileBookingBar.action = pageBookingForm.action;
+
+          const roomCode = pageBookingForm.dataset.roomCode || '';
+          const maxAdults = pageBookingForm.querySelector<HTMLInputElement>('input[name="adults"]')?.max;
+
+          if (room) {
+            room.value = roomCode;
+            room.disabled = !roomCode;
+          }
+
+          if (adults && maxAdults) {
+            adults.max = maxAdults;
+          }
+        } else if (room) {
+          room.disabled = true;
+        }
+
+        mobileBookingBar.addEventListener('submit', () => {
+          const analyticsWindow = window as Window & {
+            dataLayer?: Array<Record<string, unknown>>;
+          };
+          const itemName = pageBookingForm?.dataset.itemName || 'Elounda Traditional Homes';
+          const roomCode = pageBookingForm?.dataset.roomCode || undefined;
+
+          analyticsWindow.dataLayer = analyticsWindow.dataLayer || [];
+          analyticsWindow.dataLayer.push({
+            event: 'select_item',
+            ecommerce: {
+              items: [
+                {
+                  item_id: roomCode,
+                  item_name: itemName,
+                  item_category: 'Accommodation',
+                },
+              ],
+            },
+          });
+        });
+      }
     </script>
   </body>
 </html>
