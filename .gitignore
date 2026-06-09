@@ -30,3 +30,20 @@ node_modules/.vite_locked_*/
 .eslintcache
 *.tsbuildinfo
 coverage/
+
+# local agent/tooling state
+.agent/
+.claude/
+.codex/
+.superpowers/
+.ai/memory/*.tmp.*
+
+# generated source-local caches
+src/.astro/
+src/node_modules/
+
+# local check outputs
+check_err.txt
+check_err_utf8.txt
+# open-design 
+open-design/
