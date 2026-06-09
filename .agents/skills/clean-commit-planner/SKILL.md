@@ -50,3 +50,8 @@ git commit -m "Update property content and inventory facts"
 - Treat `package-lock.json` as review-needed if `package.json` did not change.
 - For renamed deploy files, verify the deletion and new filename together before staging.
 - Run `npm run build` and `npm run typecheck` one at a time after each product-facing commit group.
+- Windows EPERM policy:
+  - If build fails only because of `EPERM` on `dist/` or `node_modules/.vite`, treat it as an environment lock, not a source error.
+  - For docs-only commits, commit may proceed after exact staged-file verification.
+  - For source/component/content/package commits, clear `dist/` and `.vite`, then rerun build before committing.
+  - Never edit source files to fix `EPERM`.
