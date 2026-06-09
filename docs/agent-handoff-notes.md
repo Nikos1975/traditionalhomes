@@ -35,6 +35,23 @@ When pausing or finishing a substantial task, add a dated note below with:
 
 ## Notes
 
+### 2026-05-25 - Blog and houses listing design research
+
+- Goal: create standalone HTML design mockups for blog article pages, blog index, and houses listing — all using brand tokens and brand voice. No Astro source files were modified.
+- Files created in `docs/research/elounda/blog/`:
+  - Blog article variants: `v4b3-refined.html` (meta strip #E7F0ED sage-soft), `v4b4-refined.html` (meta #FFFBEB warm cream), `v4b5-refined.html` (meta #B44B2A terracotta, white text). All have caption centered below photo, article title vertically centered (middle-left) using `top:50%; transform:translateY(-50%)`.
+  - Blog index: `blog-index-v1-magazine.html` (featured article + 3-col card grid), `blog-index-v2-list.html` (no images, horizontal rule rows), `blog-index-v3-categories.html` (sticky sidebar + per-category sections), `blog-index-v4-mosaic.html` (80vh hero photo + CSS grid mosaic tiles), `blog-index-v5-timeline.html` (year markers + reverse-chronological rows with thumbnails).
+  - Houses listing: `houses-v1-list.html` (directory table, column headers), `houses-v2-grid.html` (3-col square-corner card grid, flat badges), `houses-v3-editorial.html` (sticky 280px sidebar + wide horizontal property entries).
+- All mockups use real photos from `http://localhost:4321/en/images/houses/` and `http://localhost:4321/en/images/villa/`, real article/property links, brand tokens (--bg, --fg, --accent, --sage, etc.), Cormorant Garamond + Work Sans.
+- Known image quirk: Clio hero filename has a space — encoded as `clio-hero-interior-balcony-view-01%20-1024.webp`. Kalliopi hero is 706px (no 1024 version exists).
+- Design critiques given:
+  - Current /blog/ index: generic SaaS-style cards, no featured article, no visible photos on load, no visual hierarchy.
+  - Current /en/houses/: copy violates brand voice ("discerning traveler", "soul of Crete", "meticulously restored"), cards are Airbnb-style (rounded-[2rem], backdrop-blur-md), "Book Now" is urgency language, BookingHandoffForm appears before the property grid.
+- Recommendations: blog-index-v2 or v3 for the blog; houses-v3 (editorial sidebar + horizontal entries) for the houses listing.
+- Next action: decide which houses listing design to implement, then make targeted changes to `src/pages/en/houses/index.astro` and `src/components/UnitCard.astro` — keeping the Astro data pipeline (inventory.json, FilterBar, GroupCard, groups.json) intact but replacing visual design and copy.
+- No build verification needed (no source changes were made this session).
+- Blockers: None.
+
 ### 2026-05-22 - Elounda guide style test copies
 
 - Goal: create three live local test copies of the Elounda guide article for paragraph separator/style comparison.

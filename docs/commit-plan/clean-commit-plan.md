@@ -1,14 +1,14 @@
 # Clean Commit Plan
 
-Generated: 2026-05-21 16:49:19
+Generated: 2026-05-22 20:43:45
 
 ## Summary
 
 - `01-product-content-data`: 0 path(s)
-- `02-ui-map-behavior`: 0 path(s)
+- `02-ui-map-behavior`: 14 path(s)
 - `03-build-deploy-tooling`: 0 path(s)
 - `04-agent-project-docs`: 6 path(s)
-- `98-review-needed`: 6 path(s)
+- `98-review-needed`: 13 path(s)
 - `99-excluded-local-workflow`: 5 path(s)
 
 ## Recommended Commit Order
@@ -61,7 +61,20 @@ npm run typecheck
 
 ## 02-ui-map-behavior
 
-- None
+- `src/components/blog/`
+- `src/components/booking/`
+- `src/components/Footer.astro`
+- `src/components/Header.astro`
+- `src/components/maps/LeafletMap.astro`
+- `src/components/maps/MasterLocationMap.astro`
+- `src/layouts/Base.astro`
+- `src/pages/blog/[...slug].astro`
+- `src/pages/blog/index.astro`
+- `src/pages/en/houses/[slug].astro`
+- `src/pages/en/houses/index.astro`
+- `src/pages/en/index.astro`
+- `src/pages/en/villa/[slug].astro`
+- `src/styles/global.css`
 
 ## 03-build-deploy-tooling
 
@@ -72,18 +85,25 @@ npm run typecheck
 - `CLAUDE.md`
 - `docs/agent-handoff-notes.md`
 - `docs/commit-plan/clean-commit-plan.md`
-- `docs/commit-plan/groups/02-ui-map-behavior.txt`
 - `docs/commit-plan/groups/04-agent-project-docs.txt`
 - `docs/commit-plan/groups/98-review-needed.txt`
+- `docs/superpowers/plans/2026-05-22-webhotelier-responsive-css-finalization.md`
 
 ## 98-review-needed
 
-- `docs/codex-5-3-router.md`
+- `.superpowers/`
+- `docs/integrations/`
+- `docs/releases/2026-05-22-cloudflare-go-live-roadmap.md`
+- `docs/research/elounda/elounda-luxury-tourism-evolution/EloundasLuxuryTourismEvolution.html`
+- `docs/research/elounda/elounda-rich-historical-tapestry/EloundasRichHistoricalTapestryUnveiled.html`
+- `docs/research/elounda/elounda-wartime-history-and-stories/EloundasWartimeHistoryandStories.html`
 - `package-lock.json`
-- `scripts/audit_blog_metadata.py`
-- `scripts/audit_brand_language.py`
-- `scripts/audit_public_markdown.py`
-- `scripts/blog_index_summary.py`
+- `src/content/blog/elounda-guide.md`
+- `src/content/blog/elounda-guide-style-1.md`
+- `src/content/blog/elounda-guide-style-2.md`
+- `src/content/blog/elounda-guide-style-3.md`
+- `src/content/blog/elounda-visitor-economy.md`
+- `src/content/blog/key-phases-in-elounda-hotel-development.md`
 
 ## 99-excluded-local-workflow
 
