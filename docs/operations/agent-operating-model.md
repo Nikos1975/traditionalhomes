@@ -37,6 +37,16 @@ When available, agents should use Superpowers Ultra or an equivalent token-minim
 
 Token minimization is an efficiency layer only. It must not skip required instructions, required skill reads, staged-file verification, build checks, or stop conditions.
 
+### Plan Mode / planning workflow policy
+
+Plan Mode, writing-plans, or an equivalent planning workflow should be used for multi-step, ambiguous, cross-file, architectural, debugging, content-production, or commit-planning tasks.
+
+Do not over-plan exact-scope tasks. For one-line edits, simple image path fixes, already-classified docs-only commits, and direct user-approved exact-path commits, agents should execute directly while still following required reads, staged-file checks, build rules, and stop conditions.
+
+If a concrete Superpowers Plan Mode tool is available in the environment, agents may use it as an efficiency layer. If it is not available, agents should apply the same behavior manually: plan briefly, read only targeted files, avoid repeated rediscovery, and keep output concise and action-focused.
+
+Planning and token minimization must not override repo-local instructions, file scope, build requirements, commit rules, or stop conditions.
+
 ## 2. Always-read vs task-triggered files
 
 | File or folder | Read always? | Read when? | Purpose |
