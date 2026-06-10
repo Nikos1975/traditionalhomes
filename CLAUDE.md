@@ -12,6 +12,7 @@
 - Avoid unnecessary dependencies
 - Use structured content, not hardcoded text
 - Maintain performance and SEO
+- See `docs/operations/agent-operating-model.md` and `docs/operations/repeated-failures-playbook.md` for process rules and known failure handling.
 - Prefer minimal changes before broad refactors
 - Separate environment/cache issues from real code/content issues
 - Do not start consolidation refactors unless explicitly asked

@@ -7,6 +7,8 @@ description: Use when reviewing a dirty git working tree, separating product cha
 
 Use this skill before staging broad or mixed changes.
 
+See `docs/operations/agent-operating-model.md` and `docs/operations/repeated-failures-playbook.md` for repo process rules and known failure handling.
+
 ## Core Rule
 
 Never use `git add .` for a broad working tree. Classify first, then stage one reviewed group at a time.
