@@ -16,7 +16,7 @@
     "floors": 2,
     "internalStairs": true,
     "view": "Sea view from 1st-floor veranda",
-    "parking": "Free private parking nearby (~80 m)",
+    "parking": "Shared private guest parking nearby (~80 m); free village parking if full",
     "wifi": true,
     "pets": "Small pets (≤5 kg) on request",
     "hardConstraints": [
@@ -61,7 +61,7 @@
     "floors": 2,
     "internalStairs": true,
     "view": "Sea view",
-    "parking": "Free private parking nearby (~70 m)",
+    "parking": "Shared private guest parking nearby (~70 m); free village parking if full",
     "wifi": true,
     "pets": "Small pets (≤5 kg) on request",
     "hardConstraints": [
@@ -106,7 +106,7 @@
     "floors": 2,
     "internalStairs": true,
     "view": "Sea view from 1st-floor veranda",
-    "parking": "Free private parking nearby (~70 m)",
+    "parking": "Shared private guest parking nearby (~70 m); free village parking if full",
     "wifi": true,
     "pets": "Small pets (≤5 kg) on request",
     "hardConstraints": [
@@ -158,7 +158,7 @@
     "floors": 1,
     "internalStairs": false,
     "view": "Mountain view",
-    "parking": "Free private parking nearby (~40 m)",
+    "parking": "Shared private guest parking nearby (~40 m); free village parking if full",
     "wifi": true,
     "pets": "Small pets (≤5 kg) on request",
     "hardConstraints": [
@@ -205,7 +205,7 @@
     "floors": 2,
     "internalStairs": true,
     "view": "Mountain / olive grove view",
-    "parking": "Free private parking nearby (~40 m)",
+    "parking": "Shared private guest parking nearby (~40 m); free village parking if full",
     "wifi": true,
     "pets": "Small pets (≤5 kg) on request",
     "hardConstraints": [
@@ -250,23 +250,24 @@
     "floors": 2,
     "internalStairs": true,
     "view": "Mountain / olive grove",
-    "parking": "Free private parking nearby (~10 m)",
+    "parking": "Shared private guest parking nearby (~10 m); free village parking if full",
     "wifi": true,
     "pets": "Small pets (≤5 kg) on request",
     "hardConstraints": [
       "Entrance reached via stairs down — not step-free",
-      "Private pool"
+      "Private pool — children must be supervised"
     ],
     "amenities": [
-      "Air Conditioning & Climate Control",
-      "Fully Equipped Kitchen",
-      "Private Swimming Pool",
-      "Sun-Drenched Garden Terrace",
-      "High-Speed Wi-Fi"
+      "Air conditioning",
+      "Small kitchen",
+      "Private swimming pool",
+      "Private pool terrace",
+      "Built-in barbecue",
+      "Wi-Fi included"
     ],
-    "kitchen": "Fully equipped kitchen",
+    "kitchen": "Small kitchen",
     "kitchenNotes": null,
-    "accessDetail": "Entrance reached via stairs down (not step-free).",
+    "accessDetail": null,
     "bookingId": "HERCLI",
     "availabilityUrl": "https://traditionalhomes.reserve-online.net/?room=HERCLI",
     "featuredImageAlt": "House Erato — sunken garden entrance in Mavrikiano village lane",
@@ -290,26 +291,27 @@
     "bedrooms": 1,
     "bathrooms": 1,
     "pool": "none",
-    "poolNotes": null,
+    "poolNotes": "Pool view only; pool access is only relevant when booked together with House Erato.",
     "sharedPoolWith": [],
     "floors": 2,
     "internalStairs": true,
-    "view": "Mountain / olive grove view",
-    "parking": "Free private parking nearby (~10 m)",
+    "view": "Pool view / mountain / olive grove",
+    "parking": "Shared private guest parking nearby (~10 m); free village parking if full",
     "wifi": true,
     "pets": "Small pets (≤5 kg) on request",
     "hardConstraints": [
       "Not step-free — at least one step from path to entrance",
-      "First floor above House Erato (internal stairs)"
+      "Above House Erato; internal stairs inside",
+      "Pool view only — no pool access when booked separately"
     ],
     "amenities": [
-      "Air Conditioning & Climate Control",
-      "Fully Equipped Kitchen",
-      "Private Garden Balcony",
-      "Comfortable Outdoor Seating",
-      "High-Speed Wi-Fi"
+      "Air conditioning",
+      "Small kitchen",
+      "Balcony",
+      "Shower",
+      "Wi-Fi included"
     ],
-    "kitchen": "Fully equipped kitchen",
+    "kitchen": "Small kitchen",
     "kitchenNotes": null,
     "accessDetail": null,
     "bookingId": "HCLIO",
@@ -340,7 +342,7 @@
     "floors": 2,
     "internalStairs": true,
     "view": "Courtyard / village view",
-    "parking": "Free private parking nearby (~50 m)",
+    "parking": "Shared private guest parking nearby (~50 m); free village parking if full",
     "wifi": true,
     "pets": "Small pets (≤5 kg) on request",
     "hardConstraints": [
@@ -384,7 +386,7 @@
     "floors": 2,
     "internalStairs": true,
     "view": "Mountain view",
-    "parking": "Free private parking nearby (~50 m)",
+    "parking": "Shared private guest parking nearby (~50 m); free village parking if full",
     "wifi": true,
     "pets": "Small pets (≤5 kg) on request",
     "hardConstraints": [
@@ -428,7 +430,7 @@
     "floors": 2,
     "internalStairs": true,
     "view": "Sea view",
-    "parking": "Free private parking nearby (~70 m)",
+    "parking": "Shared private guest parking nearby (~70 m); free village parking if full",
     "wifi": true,
     "pets": "Small pets (≤5 kg) on request",
     "hardConstraints": [

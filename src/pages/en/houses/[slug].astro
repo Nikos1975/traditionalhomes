@@ -64,7 +64,26 @@ const Content = entry ? (await render(entry)).Content : null;
 
 // HELPERS
 const isSeaView = unit.view.toLowerCase().includes('sea') || unit.view.toLowerCase().includes('bay');
-const poolLabel = unit.pool === 'private' ? 'Private pool' : unit.pool === 'shared' ? 'Shared pool' : 'No pool';
+const poolLabel = unit.slug === 'clio'
+  ? 'Pool view only'
+  : unit.pool === 'private'
+    ? 'Private pool'
+    : unit.pool === 'shared'
+      ? 'Shared pool'
+      : 'No pool';
+const getNearbyMeta = (near: InventoryUnit) => {
+  const details = [`Sleeps ${near.sleeps}`];
+
+  if (unit.slug === 'erato' && near.slug === 'clio') {
+    details.push('Pool view only');
+  } else if (near.pool === 'private') {
+    details.push('Private pool');
+  } else if (near.pool === 'shared') {
+    details.push('Shared pool');
+  }
+
+  return details.join(' · ');
+};
 
 const pageTitle = `${unit.name} — ${unit.location} | Elounda Traditional Homes`;
 const pageDescription = `${unit.name} in ${unit.location} — sleeps ${unit.sleeps}, ${unit.bedrooms} bedrooms${unit.pool !== 'none' ? `, ${poolLabel.toLowerCase()}` : ''}. Traditional Cretan home in Elounda.`;
@@ -223,7 +242,7 @@ const pageDescription = `${unit.name} in ${unit.location} — sleeps ${unit.slee
                   {parkingLoc?.googleMapsUrl && (
                     <a href={parkingLoc.googleMapsUrl} target="_blank" rel="noopener" class="flex items-center gap-3 hover:text-stone-950 transition-colors group">
                       <span class="w-7 h-7 rounded-full border border-accent-sage flex items-center justify-center group-hover:bg-accent-sage text-xs">1</span>
-                      Private parking
+                      Shared guest parking
                     </a>
                   )}
                   <a href={locData.googleMapsUrl} target="_blank" rel="noopener" class="flex items-center gap-3 hover:text-stone-950 transition-colors group">
@@ -270,7 +289,7 @@ const pageDescription = `${unit.name} in ${unit.location} — sleeps ${unit.slee
             </div>
             <div class="flex justify-between py-2.5">
               <span class="text-muted">Pool</span>
-              <span class="font-medium capitalize">{poolLabel}</span>
+              <span class="font-medium">{poolLabel}</span>
             </div>
             <div class="flex justify-between py-2.5">
               <span class="text-muted">Wi-Fi</span>
@@ -287,7 +306,7 @@ const pageDescription = `${unit.name} in ${unit.location} — sleeps ${unit.slee
             roomCode={unit.bookingId}
             itemName={unit.name}
             maxAdults={unit.sleeps}
-            title="Check this house"
+            title={unit.slug === 'erato' || unit.slug === 'clio' ? 'Check dates' : 'Check this house'}
             description="Choose dates and continue to live availability for this property."
             framed={false}
             trackView
@@ -336,7 +355,7 @@ const pageDescription = `${unit.name} in ${unit.location} — sleeps ${unit.slee
                   <div>
                     <span class="block font-serif text-base text-body-text group-hover:text-primary transition-colors">{near.name}</span>
                     <span class="block text-[10px] uppercase tracking-widest text-muted mt-0.5">
-                      Sleeps {near.sleeps} &middot; {near.pool} pool
+                      {getNearbyMeta(near)}
                     </span>
                   </div>
                   <svg class="text-stone-300 group-hover:text-primary group-hover:translate-x-0.5 transition-all" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">

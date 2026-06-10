@@ -29,6 +29,29 @@ const formatParking = (str: string) => {
   if (!str) return '';
   return str.charAt(0).toUpperCase() + str.slice(1);
 };
+
+const formatBathroom = (unit: InventoryUnit) => {
+  if (unit.slug === 'clio') return 'Shower room';
+  if (unit.slug === 'erato') return '1 bathroom';
+  return `${unit.bathrooms} ${unit.bathrooms === 1 ? 'Bath' : 'Baths'}`;
+};
+
+const formatLayout = (unit: InventoryUnit) => {
+  if (unit.slug === 'clio' || unit.slug === 'erato') return 'Connected levels with ontas';
+  return unit.floors === 1 ? 'Ground floor' : 'Ground floor + first floor';
+};
+
+const formatAccess = (unit: InventoryUnit) => {
+  if (unit.slug === 'clio') return 'Entrance step + internal stairs';
+  if (!unit.internalStairs) return 'Step-free';
+  const hasStairsDownEntrance = unit.hardConstraints.some((constraint) =>
+    constraint.toLowerCase().includes('stairs down')
+  );
+
+  return hasStairsDownEntrance
+    ? 'Internal stairs; entrance via stairs down'
+    : 'Internal stairs';
+};
 ---
 
 <section class="mb-12">
@@ -80,7 +103,7 @@ const formatParking = (str: string) => {
         </div>
         <div>
           <span class="block text-[10px] text-muted uppercase tracking-[0.05em] font-medium mb-0.5">Bathroom</span>
-          <span class="block text-xl font-serif text-body-text leading-none">{unit.bathrooms} {unit.bathrooms === 1 ? 'Bath' : 'Baths'}</span>
+          <span class="block text-xl font-serif text-body-text leading-none">{formatBathroom(unit)}</span>
         </div>
       </div>
 
@@ -92,7 +115,7 @@ const formatParking = (str: string) => {
         <div>
           <span class="block text-[10px] text-muted uppercase tracking-[0.05em] font-medium mb-0.5">Layout</span>
           <span class="block text-xl font-serif text-body-text leading-none">
-            {unit.floors === 1 ? 'Ground floor' : 'Ground floor + first floor'}
+            {formatLayout(unit)}
           </span>
         </div>
       </div>
@@ -120,8 +143,8 @@ const formatParking = (str: string) => {
         </div>
         <div>
           <span class="block text-[10px] text-muted uppercase tracking-[0.05em] font-medium mb-0.5">Access</span>
-          <span class="block text-xl font-serif text-body-text leading-none">
-            {unit.internalStairs ? 'Internal stairs' : 'Step-free'}
+          <span class="block text-xl font-serif text-body-text leading-tight">
+            {formatAccess(unit)}
           </span>
         </div>
       </div>
