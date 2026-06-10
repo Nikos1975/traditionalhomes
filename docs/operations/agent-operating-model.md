@@ -20,6 +20,23 @@ This document explains how agents should work in this repo before editing, stagi
 
 If instructions appear to conflict, follow `CLAUDE.md` first, then the relevant architecture document, then the relevant skill or editorial prompt for the task.
 
+### External / generic workflows and Superpowers Ultra
+
+Repo-local instructions and repo-local skills take precedence over external, generic, environment-level, Superpowers, or Obra-style workflows.
+
+External process skills may be used as background methodology, but they must not override this repo's file scope, build rules, commit rules, media rules, source-of-truth rules, or copy/factual-claim rules.
+
+When available, agents should use Superpowers Ultra or an equivalent token-minimizing workflow as the default execution mode. This means:
+
+- Prefer targeted reads over broad file dumps.
+- Summarize long files instead of repeating them.
+- Avoid re-reading unchanged instructions unnecessarily within the same task.
+- Use existing repo-local skills and docs instead of rediscovering rules.
+- Keep final responses concise and action-oriented.
+- Avoid repeating known failure analysis unless the failure changed.
+
+Token minimization is an efficiency layer only. It must not skip required instructions, required skill reads, staged-file verification, build checks, or stop conditions.
+
 ## 2. Always-read vs task-triggered files
 
 | File or folder | Read always? | Read when? | Purpose |
