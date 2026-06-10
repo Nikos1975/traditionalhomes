@@ -1,7 +1,7 @@
 ---
 slug: "argyro"
 title: "House Argyro"
-summary: "An 85 m2 two-bedroom stone house in Mavrikiano for up to four guests, with a sea-view veranda, courtyard kitchen, and private parking nearby."
+summary: "An 85 m2 two-bedroom stone house in Mavrikiano for up to four guests, with a sea-view veranda, courtyard kitchen, and shared guest parking nearby."
 ---
 
 # House Argyro
@@ -24,7 +24,7 @@ The sea-view veranda is the main outdoor living space of the house. The outdoor 
 
 ## Location
 
-House Argyro sits in Mavrikiano, around a 10-minute walk from Elounda’s beach, harbor, tavernas, and shops. Its elevated position gives it a quieter atmosphere while keeping the waterfront close at hand. Free private parking is available nearby, approximately 80 metres from the house. :contentReference[oaicite:9]{index=9} :contentReference[oaicite:10]{index=10}
+House Argyro sits in Mavrikiano, around a 10-minute walk from Elounda’s beach, harbor, tavernas, and shops. Its elevated position gives it a quieter atmosphere while keeping the waterfront close at hand. Shared private guest parking is nearby, approximately 80 metres from the house, with space for up to 5 cars in total; if the shared parking area is full, guests can usually park for free around the village. :contentReference[oaicite:9]{index=9} :contentReference[oaicite:10]{index=10}
 
 ## Suitability
 

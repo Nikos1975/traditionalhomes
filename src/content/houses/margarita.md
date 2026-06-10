@@ -55,7 +55,7 @@ It is not well suited to guests who require step-free access, or to those who wa
 - **Courtyard Bathroom:** The bathroom is accessed via the courtyard area—not from inside the house. Guests should be aware of this before booking.
 - **Stairs and Access:** The house has internal stairs between the ground floor and first floor. It is not step-free; there is also at least one step from the path to the entrance. The veranda is secure, but children should be supervised.
 - **Air Conditioning:** Air conditioning is provided on the ground floor. The stone construction helps with natural temperature control.
-- **Parking:** Free private parking is available approximately 70 m from the house (subject to availability).
+- **Parking:** Shared private guest parking is available approximately 70 m from the house, with space for up to 5 cars in total; if the shared parking area is full, guests can usually park for free around the village.
 
 ---
 

@@ -191,7 +191,7 @@ export const locations: LocationItem[] = [
         id: "private-car-parking",
         type: "parking",
         group: "mavrikiano",
-        title: "Private Car Parking",
+        title: "Shared Guest Parking",
         slug: "private-car-parking",
         locationLabel: "Mavrikiano, Elounda",
         lat: 35.2670833,

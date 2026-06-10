@@ -14,4 +14,4 @@ The 50 m2 house has one bedroom, one bathroom, living space, and a fully equippe
 The private balcony is compact and raised, with a sea view toward Elounda Bay. It works best as a quiet place for morning coffee or an evening drink rather than as a large outdoor dining terrace.
 
 ### Access And Setting
-Free private parking is about 70 m away. The house is not step-free, and guests should expect at least one step from the path to the entrance plus internal stairs inside.
+Shared private guest parking is about 70 m away, with space for up to 5 cars in total; if the shared parking area is full, guests can usually park for free around the village. The house is not step-free, and guests should expect at least one step from the path to the entrance plus internal stairs inside.

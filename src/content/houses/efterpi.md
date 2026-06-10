@@ -14,4 +14,4 @@ The 55 m2 house has one bedroom, one bathroom, living space, and a fully equippe
 The private courtyard is the main outdoor area. It includes a summer kitchen, barbecue, and dining table, making it useful for meals at home and quiet time outside.
 
 ### Access And Pairing
-Free private parking is about 50 m away. The house is not step-free, and the loft is accessed by staircase. Efterpi can be considered with House Kalliopi above for larger groups that want nearby but separate houses.
+Shared private guest parking is about 50 m away, with space for up to 5 cars in total; if the shared parking area is full, guests can usually park for free around the village. The house is not step-free, and the loft is accessed by staircase. Efterpi can be considered with House Kalliopi above for larger groups that want nearby but separate houses.

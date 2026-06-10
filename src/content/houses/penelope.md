@@ -14,4 +14,4 @@ The 65 m2 house has two bedrooms, one bathroom, living space, and a fully equipp
 The shaded veranda includes an outdoor kitchen, giving guests a useful place to prepare meals and sit outside. The swimming pool and barbecue area are shared with House Demetra, so guests should expect shared use rather than a private pool.
 
 ### Access And Pairing
-Free private parking is about 40 m away. The house is not step-free, and guests should expect at least one step from the path to the entrance plus internal stairs. Penelope can be considered with House Demetra for larger groups that want nearby houses around the same shared pool.
+Shared private guest parking is about 40 m away, with space for up to 5 cars in total; if the shared parking area is full, guests can usually park for free around the village. The house is not step-free, and guests should expect at least one step from the path to the entrance plus internal stairs. Penelope can be considered with House Demetra for larger groups that want nearby houses around the same shared pool.

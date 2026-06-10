@@ -14,4 +14,4 @@ The 120 m2 house is arranged over multiple levels with internal stairs. Three be
 The lower courtyard includes a private dipping pool for cooling off. Upper balconies open toward Elounda and the Mirabello Gulf, giving the house its main sea-view outdoor spaces.
 
 ### Access And Setting
-Free private parking is about 70 m away. The house is not step-free, and guests should expect at least one step from the path to the entrance plus internal stairs across the multi-level layout.
+Shared private guest parking is about 70 m away, with space for up to 5 cars in total; if the shared parking area is full, guests can usually park for free around the village. The house is not step-free, and guests should expect at least one step from the path to the entrance plus internal stairs across the multi-level layout.

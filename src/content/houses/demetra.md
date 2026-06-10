@@ -14,4 +14,4 @@ The 50 m2 house accommodates up to four guests with one bedroom, one bathroom, a
 Demetra shares its swimming pool with House Penelope. The pool, sun loungers, and outdoor seating are close to the house, so the outdoor space works well for relaxed days at home. The veranda and courtyard-style seating area give guests a shaded place to eat or sit outside.
 
 ### Access And Pairing
-Parking is about 40 m away. The house is not step-free; expect at least one step from the path to the entrance. For larger groups, Demetra can be considered together with House Penelope, which sits nearby and also shares the pool.
+Shared private guest parking is about 40 m away, with space for up to 5 cars in total; if the shared parking area is full, guests can usually park for free around the village. The house is not step-free; expect at least one step from the path to the entrance. For larger groups, Demetra can be considered together with House Penelope, which sits nearby and also shares the pool.

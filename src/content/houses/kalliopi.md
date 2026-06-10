@@ -14,4 +14,4 @@ The 55 m2 house has one bedroom, one bathroom, living space, and a fully equippe
 The private balcony is compact and looks across village rooftops, olive groves, and the surrounding mountains. It is best for sitting outside rather than hosting a larger meal.
 
 ### Access And Pairing
-Free private parking is about 50 m away. The house is not step-free, and guests should expect stairs to reach the upper-floor unit. Kalliopi can be considered with House Efterpi below for larger groups that want nearby but separate houses.
+Shared private guest parking is about 50 m away, with space for up to 5 cars in total; if the shared parking area is full, guests can usually park for free around the village. The house is not step-free, and guests should expect stairs to reach the upper-floor unit. Kalliopi can be considered with House Efterpi below for larger groups that want nearby but separate houses.
