@@ -10,8 +10,7 @@ import { validateInventory } from '../../../utils/validateInventory';
 import galleryData from '../../../data/gallery.json';
 import siteCopy from '../../../data/siteCopy.json';
 import SinglePinMap from '../../../components/maps/SinglePinMap.astro';
-import { locations, parkingOnly } from '../../../data/locations';
-import { getArrivalInstructions } from '../../../utils/arrival';
+import { locations } from '../../../data/locations';
 import { getEntry, render } from 'astro:content';
 import type { InventoryUnit, GalleryImage } from '../../../types';
 
@@ -49,10 +48,6 @@ const pageTitle = `${unit.name} — ${unit.location}, Elounda | Elounda Traditio
 const pageDescription = `${unit.name} in ${unit.location} — sleeps ${unit.sleeps}, ${unit.bedrooms} bedrooms, private pool. Panoramic views over Elounda Bay and the Mirabello Gulf, Crete.`;
 
 const locData = locations.find(l => l.slug === slug);
-const parkingLoc = parkingOnly[0];
-const arrivalInfo = locData && parkingLoc 
-  ? getArrivalInstructions(locData.googleMapsUrl, parkingLoc.googleMapsUrl)
-  : null;
 
 const entry = await getEntry('villa', slug);
 if (!entry) {
@@ -153,20 +148,19 @@ const { Content } = await render(entry);
                 Open in Google Maps
               </a>
 
-              {arrivalInfo && (
+              {locData && (
                 <div class="bg-accent-sage-soft border border-accent-sage/60 rounded-2xl p-6 text-sm text-stone-700 space-y-3 mt-4">
                   <h3 class="font-serif text-lg text-stone-950 mb-2">Arrival instructions</h3>
                   <p class="flex items-start gap-2">
                     <span class="w-7 h-7 rounded-full border border-accent-sage flex items-center justify-center text-xs font-bold flex-shrink-0">1</span>
-                    <span>Arrive at the private parking first — <a href={parkingLoc?.googleMapsUrl} target="_blank" class="underline hover:text-body-text transition-colors">View parking map</a></span>
+                    <span>Use the villa map for arrival — <a href={locData.googleMapsUrl} target="_blank" class="underline hover:text-body-text transition-colors">View villa map</a></span>
                   </p>
                   <p class="flex items-start gap-2">
                     <span class="w-7 h-7 rounded-full border border-accent-sage flex items-center justify-center text-xs font-bold flex-shrink-0">2</span>
                     <span>Alternative: You may drop luggage briefly near the villa. — <a href={locData.googleMapsUrl} target="_blank" class="underline hover:text-body-text transition-colors">View villa map</a></span>
                   </p>
                   <p class="text-stone-500 mt-2 leading-relaxed">
-                    We usually meet guests at the parking and guide them personally to the villa (Mrs Olga).<br/>
-                    {arrivalInfo.earlyArrival}
+                    We usually meet guests near the villa and guide them personally on arrival (Mrs Olga).
                   </p>
                 </div>
               )}
