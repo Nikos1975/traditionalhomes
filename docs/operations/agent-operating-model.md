@@ -93,6 +93,16 @@ Use `npm run dev` when visual/browser review is needed, especially for frontend 
 
 Browser review is required after significant frontend changes and useful after image/path changes that affect visible pages. It is not required for docs-only process changes.
 
+### Browser and visual review
+
+This repo does not currently include Playwright, Playwright config, e2e tests, or npm visual-test scripts. Do not claim Playwright coverage unless those files are added later.
+
+When visual review is needed, start the Astro dev server with `npm run dev` and use the available `agent-browser` CLI when present, for example to open local URLs and confirm pages load. If `agent-browser` is unavailable or the issue depends on visual judgment, ask Nikos for targeted screenshots.
+
+Use browser review for visible UI, responsive layout, image rendering, map behavior, navigation, and page-specific visual checks. Use file/build inspection for exact path fixes, docs-only changes, and non-visual source changes.
+
+Do not install Playwright or add browser-test scripts unless Nikos explicitly asks.
+
 Git commands are allowed for inspection, explicit-path staging, committing requested scopes, and status/history checks. Do not push unless Nikos explicitly asks.
 
 PowerShell cleanup commands are allowed only for generated output or caches when needed, such as `dist/` and `node_modules/.vite/`. Do not delete source, content, public assets, or docs as cleanup.
