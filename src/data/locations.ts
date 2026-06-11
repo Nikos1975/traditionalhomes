@@ -214,7 +214,7 @@ export const locations: LocationItem[] = [
         lng: 25.734394108452083,
         googleMapsUrl: "https://goo.gl/maps/xNj5fxp2RWKeokaAA",
         image: "/images/villa/almond-tree-villa/480/almond-tree-villa-hero-outdoor-dining-terrace-02-480.webp",
-        subtitle: "Luxury Villa • Private Pool • Sleeps 10",
+        subtitle: "Traditional Villa • Private Pool • Sleeps 10",
         distanceTag: "🚗 5 min drive to Plaka beach",
         needsVerification: false,
         coordinateSource: "direct",

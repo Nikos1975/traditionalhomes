@@ -33,15 +33,18 @@ const formatParking = (str: string) => {
 const formatBathroom = (unit: InventoryUnit) => {
   if (unit.slug === 'clio') return 'Shower room';
   if (unit.slug === 'erato') return '1 bathroom';
+  if (unit.slug === 'almond-tree-villa') return '2 bathrooms';
   return `${unit.bathrooms} ${unit.bathrooms === 1 ? 'Bath' : 'Baths'}`;
 };
 
 const formatLayout = (unit: InventoryUnit) => {
+  if (unit.slug === 'almond-tree-villa') return 'Split-level traditional villa';
   if (unit.slug === 'clio' || unit.slug === 'erato') return 'Connected levels with ontas';
   return unit.floors === 1 ? 'Ground floor' : 'Ground floor + first floor';
 };
 
 const formatAccess = (unit: InventoryUnit) => {
+  if (unit.slug === 'almond-tree-villa') return 'Internal stairs and stepped levels';
   if (unit.slug === 'clio') return 'Entrance step + internal stairs';
   if (!unit.internalStairs) return 'Step-free';
   const hasStairsDownEntrance = unit.hardConstraints.some((constraint) =>
@@ -59,9 +62,11 @@ const formatAccess = (unit: InventoryUnit) => {
   {/* The 2-Column Grid */}
   <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
     
-    {/* Group 1: House Basics */}
+    {/* Group 1: Property Basics */}
     <div class="bg-stone-200/30 rounded-[2rem] p-6 md:p-7 border border-stone-200/80 flex flex-col gap-4 transition-all hover:bg-stone-200/50">
-      <h3 class="text-[10px] uppercase tracking-[0.15em] text-stone-400 font-medium mb-1">House Basics</h3>
+      <h3 class="text-[10px] uppercase tracking-[0.15em] text-stone-400 font-medium mb-1">
+        {unit.type === 'villa' ? 'Villa Basics' : 'House Basics'}
+      </h3>
       
       {/* Sleeps */}
       <div class="flex items-center gap-4">
@@ -102,7 +107,9 @@ const formatAccess = (unit: InventoryUnit) => {
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6 6.5 3.5a1.5 1.5 0 0 0-2.12 0l-.88.88a1.5 1.5 0 0 0 0 2.12L6 9M2 13h20M2 13c0 5.5 4.5 10 10 10s10-4.5 10-10M2 13c0-3.5 3-6 10-6"/></svg>
         </div>
         <div>
-          <span class="block text-[10px] text-muted uppercase tracking-[0.05em] font-medium mb-0.5">Bathroom</span>
+          <span class="block text-[10px] text-muted uppercase tracking-[0.05em] font-medium mb-0.5">
+            {unit.bathrooms === 1 ? 'Bathroom' : 'Bathrooms'}
+          </span>
           <span class="block text-xl font-serif text-body-text leading-none">{formatBathroom(unit)}</span>
         </div>
       </div>

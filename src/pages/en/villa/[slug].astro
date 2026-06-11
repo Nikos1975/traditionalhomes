@@ -2,7 +2,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import Base from '../../../layouts/Base.astro';
-import GalleryA from '../../../components/GalleryA.astro';
+import HouseGallery from '../../../components/gallery/HouseGallery.astro';
 import AtAGlance from '../../../components/AtAGlance.astro';
 import BookingHandoffForm from '../../../components/booking/BookingHandoffForm.astro';
 import inventory from '../../../inventory/inventory.json';
@@ -12,6 +12,7 @@ import siteCopy from '../../../data/siteCopy.json';
 import SinglePinMap from '../../../components/maps/SinglePinMap.astro';
 import { locations } from '../../../data/locations';
 import { getEntry, render } from 'astro:content';
+import { sortGalleryImages } from '../../../utils/sortGalleryImages';
 import type { InventoryUnit, GalleryImage } from '../../../types';
 
 export async function getStaticPaths() {
@@ -30,22 +31,18 @@ if (!unit) {
   return Astro.redirect('/en/houses/', 302);
 }
 
-const gallery = (galleryData as Record<string, GalleryImage[]>)[slug] ?? [];
-
-const heroDir = path.join(process.cwd(), 'public', 'images', 'villa', slug, '2400');
-let heroImage = '';
-if (fs.existsSync(heroDir)) {
-  const files = fs.readdirSync(heroDir).filter(f => f.includes('2400') && f.endsWith('.webp'));
-  if (files.length > 0) {
-    heroImage = `/images/villa/${slug}/2400/${files[0]}`;
-  }
-}
+const rawGallery = (galleryData as Record<string, GalleryImage[]>)[slug] ?? [];
+const gallery = sortGalleryImages(rawGallery);
+const heroEntry = gallery[0];
+const heroImage = heroEntry
+  ? heroEntry.src.replace('/1024/', '/1600/').replace('-1024.webp', '-1600.webp')
+  : '';
 
 const ogImagePath = path.join(process.cwd(), 'public', 'images', 'villa', slug, 'og.jpg');
 const ogImage = fs.existsSync(ogImagePath) ? `/images/villa/${slug}/og.jpg` : undefined;
 
-const pageTitle = `${unit.name} — ${unit.location}, Elounda | Elounda Traditional Homes`;
-const pageDescription = `${unit.name} in ${unit.location} — sleeps ${unit.sleeps}, ${unit.bedrooms} bedrooms, private pool. Panoramic views over Elounda Bay and the Mirabello Gulf, Crete.`;
+const pageTitle = `${unit.name} - ${unit.location} | Elounda Traditional Homes`;
+const pageDescription = `${unit.name} in ${unit.location} - sleeps ${unit.sleeps}, five sleeping rooms, two bathrooms, and a private 9 m x 4 m pool. Views toward the Cretan Sea, olive groves, garden, pool, and mountains.`;
 
 const locData = locations.find(l => l.slug === slug);
 
@@ -54,6 +51,13 @@ if (!entry) {
   return Astro.redirect('/en/houses/', 302);
 }
 const { Content } = await render(entry);
+
+const isSeaView = unit.view.toLowerCase().includes('sea') || unit.view.toLowerCase().includes('bay');
+const poolLabel = unit.pool === 'private'
+  ? 'Private pool'
+  : unit.pool === 'shared'
+    ? 'Shared pool'
+    : 'No pool';
 ---
 
 <Base
@@ -62,66 +66,118 @@ const { Content } = await render(entry);
   canonicalUrl={`https://traditional-homes.gr/en/villa/${slug}/`}
   ogImage={ogImage}
 >
+  {heroEntry && (
+    <link
+      slot="head"
+      rel="preload"
+      as="image"
+      href={heroEntry.src}
+      imagesrcset={heroEntry.srcset}
+      imagesizes="(min-width:1280px) 900px, (min-width:1024px) 66vw, 100vw"
+    />
+  )}
 
-  {heroImage && (
-    <section class="relative overflow-hidden bg-stone-800" aria-label="Hero" style="height: 60vh; min-height: 400px; max-height: 800px;">
-      <div class="absolute inset-0 bg-gradient-to-b from-stone-900/40 via-transparent to-stone-900/60 z-10"></div>
+  <header class="relative overflow-hidden bg-stone-900" style="height: 62vh; min-height: 420px; max-height: 780px;">
+    <div class="absolute inset-0 bg-gradient-to-b from-stone-900/30 via-transparent to-stone-900/70 z-10"></div>
+    {heroImage && (
       <div
         class="absolute inset-0 bg-center bg-cover"
         style={`background-image: url('${heroImage}');`}
         role="img"
         aria-label={`Hero image of ${unit.name}`}
       ></div>
-      <div class="relative z-20 site-max site-pad h-full flex flex-col justify-end pb-8 md:pb-12">
-        <div class="flex items-center gap-3 mb-2">
-          <h1 class="font-serif text-4xl md:text-5xl lg:text-6xl text-white drop-shadow-md">{unit.name}</h1>
-          <span class="badge bg-accent-sage text-stone-900 mt-1 shadow-sm border border-accent-sage">Villa</span>
-        </div>
-        <p class="text-white/90 text-lg drop-shadow-md">{unit.location}, {unit.area}, Crete</p>
-      </div>
-    </section>
-  )}
+    )}
+    <div class="relative z-20 site-max site-pad h-full flex flex-col justify-end pb-10 md:pb-14">
+      <nav class="text-[10px] uppercase tracking-[0.35em] mb-5 text-white/70" aria-label="Breadcrumb">
+        <a href="/en/" class="hover:text-white transition-colors">Home</a>
+        <span class="mx-2 opacity-50">/</span>
+        <a href="/en/villa/" class="hover:text-white transition-colors">Villa</a>
+        <span class="mx-2 opacity-50">/</span>
+        <span class="text-white/90">{unit.name}</span>
+      </nav>
+      <h1 class="font-serif text-4xl md:text-6xl lg:text-7xl text-white leading-tight mb-3 drop-shadow-md">
+        {unit.name}
+      </h1>
+      <p class="text-white/80 text-sm md:text-base font-light tracking-wide">
+        {unit.location}, Crete
+      </p>
+    </div>
+  </header>
 
-  <div class="site-max site-pad py-10 md:py-14">
+  <div class="bg-white border-b border-stone-100 shadow-sm sticky top-0 z-30">
+    <div class="site-max site-pad py-4 flex items-center gap-6 md:gap-10 overflow-x-auto text-xs md:text-sm text-stone-600 font-medium whitespace-nowrap">
+      <span class="flex items-center gap-2">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" class="text-stone-400 shrink-0">
+          <path d="M2 4v16"/><path d="M2 8h18a2 2 0 0 1 2 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/>
+        </svg>
+        {unit.bedrooms} {unit.bedrooms === 1 ? 'Bedroom' : 'Bedrooms'}
+      </span>
 
-    <nav class="text-xs text-muted mb-6" aria-label="Breadcrumb">
-      <ol class="flex items-center gap-1.5" role="list">
-        <li><a href="/en/" class="hover:text-body-text transition-colors duration-150">Home</a></li>
-        <li aria-hidden="true">›</li>
-        <li><a href="/en/houses/" class="hover:text-body-text transition-colors duration-150">Houses &amp; Villa</a></li>
-        <li aria-hidden="true">›</li>
-        <li class="text-body-text font-medium" aria-current="page">{unit.name}</li>
-      </ol>
-    </nav>
+      <span class="flex items-center gap-2">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" class="text-stone-400 shrink-0">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+        </svg>
+        Sleeps {unit.sleeps}
+      </span>
 
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
+      {unit.pool !== 'none' && (
+        <span class="flex items-center gap-2">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" class="text-stone-400 shrink-0">
+            <path d="M2 12h20M2 12c0-5.5 4.5-10 10-10s10 4.5 10 10M2 12c0 5.5 4.5 10 10 10s10-4.5 10-10"/>
+          </svg>
+          {poolLabel}
+        </span>
+      )}
 
-      <div class="lg:col-span-2">
+      {isSeaView && (
+        <span class="flex items-center gap-2 text-sky-700 font-semibold">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" class="shrink-0">
+            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
+          </svg>
+          Sea view
+        </span>
+      )}
 
-        {!heroImage && (
-          <div class="mb-6">
-            <div class="flex items-center gap-3 mb-1">
-              <h1 class="font-serif text-4xl md:text-5xl text-body-text">{unit.name}</h1>
-              <span class="badge bg-accent-sage text-stone-900 mt-1">Villa</span>
-            </div>
-            <p class="text-muted">{unit.location}, {unit.area}, Crete</p>
+      <span class="flex items-center gap-2 ml-auto shrink-0">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" class="text-stone-400 shrink-0">
+          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
+        </svg>
+        {unit.location}
+      </span>
+    </div>
+  </div>
+
+  <main class="site-max site-pad py-12 md:py-16">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+
+      <div class="lg:col-span-8 space-y-14">
+
+        <section aria-label="Property photos">
+          <HouseGallery images={gallery} unitName={unit.name} />
+        </section>
+
+        <section aria-label="At a glance" class="border-t border-stone-100 pt-12">
+          <h2 class="font-serif text-2xl text-body-text mb-8">At a Glance</h2>
+          <AtAGlance unit={unit} />
+        </section>
+
+        <section class="border-t border-stone-100 pt-12" aria-label="About this villa">
+          <div class="prose prose-stone prose-lg max-w-none text-stone-700 leading-relaxed font-light
+            prose-headings:font-serif prose-headings:font-normal prose-headings:text-body-text
+            prose-h2:text-2xl prose-h3:text-xl prose-h3:mt-8
+            prose-p:leading-relaxed prose-li:leading-relaxed">
+            <Content />
           </div>
-        )}
+        </section>
 
-        <GalleryA images={gallery} unitName={unit.name} />
-
-        <AtAGlance unit={unit} />
-
-        <div class="prose prose-stone max-w-none mb-10 text-stone-700 leading-relaxed">
-          <Content />
-        </div>
-
-        <section class="mb-8" aria-label="Amenities">
-          <h2 class="font-sans font-semibold text-sm uppercase tracking-wider text-muted mb-4">What's included</h2>
-          <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+        <section class="border-t border-stone-100 pt-12" aria-label="Amenities">
+          <h2 class="font-serif text-2xl text-body-text mb-8">What's included</h2>
+          <ul class="grid grid-cols-1 sm:grid-cols-2 gap-y-3 gap-x-8">
             {unit.amenities.map((amenity) => (
-              <li class="flex items-center gap-2 text-sm text-stone-700">
-                <svg class="flex-shrink-0 text-success" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              <li class="flex items-center gap-3 text-sm text-stone-600 border-b border-stone-50 pb-3">
+                <svg class="text-primary/70 shrink-0" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"/>
+                </svg>
                 {amenity}
               </li>
             ))}
@@ -129,50 +185,56 @@ const { Content } = await render(entry);
         </section>
 
         {unit.locationRelations?.above && (
-          <div class="mb-8 p-4 bg-stone-200 border border-stone-300 rounded-lg text-sm text-stone-700">
-            <p class="font-medium mb-1">Location note</p>
-            <p>
-              The village of Vrouchas sits above the houses in Mavrikiano. {unit.locationRelations.above} from here.
-              <a href="/en/location/" class="underline hover:text-body-text ml-1 transition-colors duration-150">Location details</a>
-            </p>
-          </div>
+          <section class="border-t border-stone-100 pt-12" aria-label="Location note">
+            <div class="bg-stone-100 border border-stone-200 rounded-2xl p-6 text-sm text-stone-700">
+              <p class="font-medium mb-1">Location note</p>
+              <p>
+                The village of Vrouchas sits above the houses in Mavrikiano. {unit.locationRelations.above} from here.
+                <a href="/en/location/" class="underline hover:text-body-text ml-1 transition-colors duration-150">Location details</a>
+              </p>
+            </div>
+          </section>
         )}
 
         {locData && (
-          <section class="mb-8 border-t border-stone-200 pt-8" aria-label="Location Map">
-            <h2 class="font-sans font-semibold text-sm uppercase tracking-wider text-muted mb-4">Location</h2>
-            
-            <div class="mb-6">
-              <a href={locData.googleMapsUrl} target="_blank" rel="noopener noreferrer" class="btn-outline text-sm mb-6 inline-flex items-center gap-2">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-                Open in Google Maps
-              </a>
+          <section class="border-t border-stone-100 pt-12 space-y-6" aria-label="Location and arrival">
+            <h2 class="font-serif text-2xl text-body-text">Location & Arrival</h2>
 
-              {locData && (
-                <div class="bg-accent-sage-soft border border-accent-sage/60 rounded-2xl p-6 text-sm text-stone-700 space-y-3 mt-4">
-                  <h3 class="font-serif text-lg text-stone-950 mb-2">Arrival instructions</h3>
-                  <p class="flex items-start gap-2">
+            <div class="grid md:grid-cols-2 gap-6">
+              <div class="bg-accent-sage-soft text-stone-800 border border-accent-sage/60 rounded-2xl p-6 space-y-5">
+                <h3 class="font-serif text-lg text-stone-950">How to arrive</h3>
+                <div class="space-y-3 text-sm text-stone-700 leading-relaxed">
+                  <p class="flex items-start gap-3">
                     <span class="w-7 h-7 rounded-full border border-accent-sage flex items-center justify-center text-xs font-bold flex-shrink-0">1</span>
-                    <span>Use the villa map for arrival — <a href={locData.googleMapsUrl} target="_blank" class="underline hover:text-body-text transition-colors">View villa map</a></span>
+                    <span>Use the villa map for arrival. <a href={locData.googleMapsUrl} target="_blank" class="underline hover:text-body-text transition-colors">View villa map</a></span>
                   </p>
-                  <p class="flex items-start gap-2">
+                  <p class="flex items-start gap-3">
                     <span class="w-7 h-7 rounded-full border border-accent-sage flex items-center justify-center text-xs font-bold flex-shrink-0">2</span>
-                    <span>Alternative: You may drop luggage briefly near the villa. — <a href={locData.googleMapsUrl} target="_blank" class="underline hover:text-body-text transition-colors">View villa map</a></span>
-                  </p>
-                  <p class="text-stone-500 mt-2 leading-relaxed">
-                    We usually meet guests near the villa and guide them personally on arrival (Mrs Olga).
+                    <span>Alternative: You may drop luggage briefly near the villa. <a href={locData.googleMapsUrl} target="_blank" class="underline hover:text-body-text transition-colors">View villa map</a></span>
                   </p>
                 </div>
-              )}
+                <p class="text-sm text-stone-600 leading-relaxed">
+                  We usually meet guests near the villa and guide them personally on arrival (Mrs Olga).
+                </p>
+              </div>
+
+              <div class="rounded-2xl overflow-hidden border border-stone-200 min-h-[240px]">
+                <SinglePinMap location={locData} />
+              </div>
             </div>
 
-            <SinglePinMap location={locData} />
+            <a href={locData.googleMapsUrl} target="_blank" rel="noopener noreferrer" class="btn-outline inline-flex items-center gap-2 text-sm">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
+              </svg>
+              Open in Google Maps
+            </a>
           </section>
         )}
 
       </div>
 
-      <aside class="lg:sticky lg:top-20 lg:self-start">
+      <aside class="lg:col-span-4 lg:sticky lg:top-20 space-y-6">
         <div class="bg-white rounded-2xl border border-stone-200 p-7 shadow-card">
           <p class="font-serif text-2xl text-body-text mb-1">{unit.name}</p>
           <p class="text-xs text-muted mb-6 uppercase tracking-wider">{unit.location} · Sleeps {unit.sleeps}</p>
@@ -184,15 +246,15 @@ const { Content } = await render(entry);
             </div>
             <div class="flex justify-between py-2.5">
               <span class="text-muted">Pool</span>
-              <span class="font-medium text-accent-blue">Private</span>
+              <span class="font-medium">{poolLabel}</span>
             </div>
             <div class="flex justify-between py-2.5">
               <span class="text-muted">Wi-Fi</span>
-              <span class="font-medium text-success">Free</span>
+              <span class="font-medium text-success">Included</span>
             </div>
             <div class="flex justify-between py-2.5">
               <span class="text-muted">Pets</span>
-              <span class="font-medium">≤5 kg on request</span>
+              <span class="font-medium">{unit.pets}</span>
             </div>
           </div>
 
@@ -201,52 +263,46 @@ const { Content } = await render(entry);
             roomCode={unit.bookingId}
             itemName={unit.name}
             maxAdults={unit.sleeps}
-            title="Check this villa"
+            title="Check dates"
             description="Choose dates and continue to live availability for this property."
             framed={false}
             trackView
           />
           <a href="/en/contact/" class="btn-outline w-full py-3 text-center block rounded-xl text-xs uppercase tracking-wider font-bold">
-            Ask a question
+            Ask a Question
           </a>
+        </div>
 
-          <div class="mt-5 pt-4 border-t border-stone-100 text-xs text-muted text-center leading-relaxed">
-            Bookings via our availability system.
-            <a href="/en/policies/" class="underline hover:text-body-text transition-colors duration-150 ml-1">View policies</a>
+        {unit.hardConstraints.length > 0 && (
+          <div class="bg-amber-50 border border-amber-100 rounded-2xl p-6">
+            <h3 class="font-medium text-amber-900 mb-3 flex items-center gap-2 text-sm">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+                <line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>
+              </svg>
+              Before you book
+            </h3>
+            <ul class="space-y-2">
+              {unit.hardConstraints.map((c) => (
+                <li class="flex items-start gap-2 text-xs text-amber-900/80 leading-relaxed">
+                  <span class="mt-1.5 w-1 h-1 rounded-full bg-amber-400 flex-shrink-0"></span>
+                  {c}
+                </li>
+              ))}
+            </ul>
+            {unit.accessDetail && (
+              <p class="mt-4 pt-4 border-t border-amber-200 text-xs text-amber-800/70 italic leading-relaxed">
+                {unit.accessDetail}
+              </p>
+            )}
           </div>
-        </div>
-
-        <div class="mt-4 bg-amber-50 border border-amber-100 rounded-2xl p-6">
-          <h3 class="font-medium text-amber-900 mb-3 flex items-center gap-2 text-sm">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
-              <line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>
-            </svg>
-            Before you book
-          </h3>
-          <ul class="space-y-2">
-            {unit.hardConstraints.map((c) => (
-              <li class="flex items-start gap-2 text-xs text-amber-900/80 leading-relaxed">
-                <span class="mt-1.5 w-1 h-1 rounded-full bg-amber-400 flex-shrink-0"></span>
-                {c}
-              </li>
-            ))}
-          </ul>
-          {unit.accessDetail && (
-            <p class="mt-4 pt-4 border-t border-amber-200 text-xs text-amber-800/70 italic leading-relaxed">
-              {unit.accessDetail}
-            </p>
-          )}
-          <a href={siteCopy.accessAnchorUrl} class="underline hover:text-amber-700 transition-colors duration-150 mt-3 inline-block text-xs text-amber-900">
-            Full access details
-          </a>
-        </div>
+        )}
 
         {locData?.group === 'vrouchas' && (
-          <a href="/en/guide/vrouchas/" class="mt-4 flex items-center justify-between p-4 rounded-xl border border-stone-200 bg-white hover:border-sky-300 hover:shadow-md transition-all group">
+          <a href="/en/guide/vrouchas/" class="flex items-center justify-between p-4 rounded-xl border border-stone-200 bg-white hover:border-sky-300 hover:shadow-md transition-all group">
             <div class="flex flex-col">
               <span class="font-serif text-sky-900 text-base mb-0.5">Vrouchas Area Guide</span>
-              <span class="text-xs text-stone-500">Discover Plaka & Spinalonga access</span>
+              <span class="text-xs text-stone-500">Practical area details</span>
             </div>
             <svg class="text-sky-700 opacity-50 group-hover:opacity-100 group-hover:translate-x-1 transition-all" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
           </a>
@@ -254,6 +310,6 @@ const { Content } = await render(entry);
       </aside>
 
     </div>
-  </div>
+  </main>
 
 </Base>
