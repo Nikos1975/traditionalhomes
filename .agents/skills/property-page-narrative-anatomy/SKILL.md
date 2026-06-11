@@ -1,332 +1,192 @@
-\# Property Page Narrative Anatomy Skill
+# Property Page Narrative Anatomy Skill
 
-
-
-\## Purpose
-
-
+## Purpose
 
 Use this skill whenever creating, auditing, or rewriting a property detail page for Elounda Traditional Homes of Crete.
 
-
-
 A property page must be more than fact-correct. It must follow the same narrative anatomy so that houses and villas feel like one website system.
 
-
-
-\## Reference Page
-
-
+## Reference Page
 
 Use House Argyro as the current reference anatomy.
 
-
-
 Argyro body structure:
-
-
 
 ```markdown
 
-\# House Argyro
-
-
+# House Argyro
 
 Intro paragraph.
 
+**Value line**
 
+## House Layout
 
-\*\*Value line\*\*
+## Inside the House
 
+## Outdoor Living
 
+## Location
 
-\## House Layout
+## Suitability
 
-
-
-\## Inside the House
-
-
-
-\## Outdoor Living
-
-
-
-\## Location
-
-
-
-\## Suitability
-
-
-
-\## Practical Note
+## Practical Note
 
 ```
 
-
-
-\## Standard Anatomy For Any Property Page
-
-
+## Standard Anatomy For Any Property Page
 
 Every property body should follow this order:
 
+1. `# Property Name`
 
+2. Intro paragraph
 
-1\. `# Property Name`
+3. Bold value line
 
-2\. Intro paragraph
+4. Layout section
 
-3\. Bold value line
+5. Inside section
 
-4\. Layout section
+6. Outdoor Living section
 
-5\. Inside section
+7. Location section
 
-6\. Outdoor Living section
+8. Suitability section
 
-7\. Location section
+9. Practical Note section
 
-8\. Suitability section
-
-9\. Practical Note section
-
-
-
-\## House Version
-
-
+## House Version
 
 Use:
 
-
-
 ```markdown
 
-\# House \[Name]
-
-
+# House [Name]
 
 Intro paragraph.
 
+**m² · Sleeps X · bedrooms · layout · key outdoor feature · key view/setting**
 
+## House Layout
 
-\*\*m² · Sleeps X · bedrooms · layout · key outdoor feature · key view/setting\*\*
+## Inside the House
 
+## Outdoor Living
 
+## Location
 
-\## House Layout
+## Suitability
 
-
-
-\## Inside the House
-
-
-
-\## Outdoor Living
-
-
-
-\## Location
-
-
-
-\## Suitability
-
-
-
-\## Practical Note
+## Practical Note
 
 ```
 
-
-
-\## Villa Version
-
-
+## Villa Version
 
 Use:
 
-
-
 ```markdown
 
-\# \[Villa Name]
-
-
+# [Villa Name]
 
 Intro paragraph.
 
+**m² · Sleeps X · sleeping rooms · bathrooms · private pool · key outdoor feature · key view**
 
+## Villa Layout
 
-\*\*m² · Sleeps X · sleeping rooms · bathrooms · private pool · key outdoor feature · key view\*\*
+## Inside the Villa
 
+## Outdoor Living
 
+## Location
 
-\## Villa Layout
+## Suitability
 
-
-
-\## Inside the Villa
-
-
-
-\## Outdoor Living
-
-
-
-\## Location
-
-
-
-\## Suitability
-
-
-
-\## Practical Note
+## Practical Note
 
 ```
 
+## Section Rules
 
-
-\## Section Rules
-
-
-
-\### Body H1
-
-
+### Body H1
 
 The body content should begin with a visible markdown H1 title.
 
-
-
 Do not start directly with an H2 such as:
-
-
 
 ```markdown
 
-\## A Traditional Villa In Vrouchas
+## A Traditional Villa In Vrouchas
 
 ```
-
-
 
 That makes the page visually weaker and breaks the shared property-page structure.
 
-
-
-\### Intro Paragraph
-
-
+### Intro Paragraph
 
 The intro should explain:
 
+* what the property is
 
+* where it is
 
-\* what the property is
+* who it suits
 
-\* where it is
-
-\* who it suits
-
-\* the main living pattern of the stay
-
-
+* the main living pattern of the stay
 
 Good pattern:
 
-
-
 ```text
 
-\[Property name] is a traditional \[house/villa] in \[village], above Elounda, with space for \[guest count]. It suits \[guest type] who want \[main use pattern].
+[Property name] is a traditional [house/villa] in [village], above Elounda, with space for [guest count]. It suits [guest type] who want [main use pattern].
 
 ```
 
-
-
-\### Bold Value Line
-
-
+### Bold Value Line
 
 The second block should be a bold factual line.
 
-
-
 Example for a house:
-
-
 
 ```markdown
 
-\*\*85 m² · Sleeps 4 · 2 bedrooms · Multi-level layout · Sea-view veranda · Private courtyard\*\*
+**85 m² · Sleeps 4 · 2 bedrooms · Multi-level layout · Sea-view veranda · Private courtyard**
 
 ```
-
-
 
 Example for Almond Tree Villa:
 
-
-
 ```markdown
 
-\*\*230 m² · Sleeps 10 · 5 sleeping rooms · 2 bathrooms · Private pool 9 m x 4 m · Reed-shaded balconies · Cretan Sea views\*\*
+**230 m² · Sleeps 10 · 5 sleeping rooms · 2 bathrooms · Private pool 9 m x 4 m · Reed-shaded balconies · Cretan Sea views**
 
 ```
 
-
-
-\### Layout Section
-
-
+### Layout Section
 
 Explain how the property is arranged.
 
-
-
 This is the structural orientation section. It should help guests understand levels, sleeping areas, stairs, bathrooms, and how rooms connect.
 
-
-
-\### Inside Section
-
-
+### Inside Section
 
 Explain interior feeling and practical use.
 
-
-
 Include real materials and features: stone, wood, fireplaces, built-in sitting areas, kitchens, tables, and room character.
-
-
 
 Do not repeat the full floor plan here.
 
-
-
-\### Outdoor Living Section
-
-
+### Outdoor Living Section
 
 Explain how outdoor spaces are used.
 
-
-
 Mention terraces, pool, veranda, courtyard, outdoor kitchen, barbecue, sunbeds, garden, and shade only if confirmed.
 
-
-
-\### Location Section
-
-
+### Location Section
 
 Explain the village/area and practical access.
-
-
 
 For Mavrikiano houses, use Mavrikiano facts.
 
@@ -334,191 +194,138 @@ For Almond Tree Villa, use Vrouchas facts.
 
 Do not mix the two.
 
-
-
-\### Suitability Section
-
-
+### Suitability Section
 
 Answer: “Who will love this property?”
 
-
-
 This section should be human, but factual.
-
-
 
 Good wording:
 
+* suited to couples
 
+* suited to families
 
-\* suited to couples
+* suited to groups who want one private base
 
-\* suited to families
+* suited to guests who value traditional architecture
 
-\* suited to groups who want one private base
-
-\* suited to guests who value traditional architecture
-
-\* suited to guests comfortable with stairs or village layouts
-
-
+* suited to guests comfortable with stairs or village layouts
 
 Avoid fake sales language:
 
+* perfect
 
+* magical
 
-\* perfect
+* escape
 
-\* magical
+* sanctuary
 
-\* escape
+* hidden gem
 
-\* sanctuary
+* unforgettable
 
-\* hidden gem
+* luxury
 
-\* unforgettable
+* unparalleled
 
-\* luxury
+* book now
 
-\* unparalleled
-
-\* book now
-
-
-
-\### Practical Note Section
-
-
+### Practical Note Section
 
 Use bullets for constraints.
 
-
-
 Examples:
 
+* Not step-free
 
+* Internal stairs
 
-\* Not step-free
+* Several steps from parking to entrance
 
-\* Internal stairs
+* Children must be supervised around the private pool
 
-\* Several steps from parking to entrance
+* Best suited to guests comfortable with a traditional multi-level layout
 
-\* Children must be supervised around the private pool
-
-\* Best suited to guests comfortable with a traditional multi-level layout
-
-
-
-\## Typography / Layout Rule
-
-
+## Typography / Layout Rule
 
 Use the house detail page typography and spacing system as the global property-page standard.
 
-
-
 Property pages should share:
 
+* hero H1 rhythm
 
+* body markdown H1 rhythm
 
-\* hero H1 rhythm
+* H2 section scale
 
-\* body markdown H1 rhythm
+* paragraph size and line-height
 
-\* H2 section scale
+* section spacing
 
-\* paragraph size and line-height
+* 8-column body / 4-column sidebar layout where applicable
 
-\* section spacing
+* shared At a Glance card logic
 
-\* 8-column body / 4-column sidebar layout where applicable
-
-\* shared At a Glance card logic
-
-\* shared booking sidebar rhythm
-
-
+* shared booking sidebar rhythm
 
 Villa pages may use `Villa Basics`.
 
 House pages may use `House Basics`.
 
-
-
-\## Almond Tree Villa Specific Rules
-
-
+## Almond Tree Villa Specific Rules
 
 For Almond Tree Villa, use:
 
+* Vrouchas, Elounda
 
+* Cretan Sea
 
-\* Vrouchas, Elounda
+* Sleeps 10
 
-\* Cretan Sea
+* 230 m²
 
-\* Sleeps 10
+* 5 sleeping rooms
 
-\* 230 m²
+* 2 bathrooms
 
-\* 5 sleeping rooms
+* Private pool, 9 m x 4 m
 
-\* 2 bathrooms
+* Reed-shaded balconies
 
-\* Private pool, 9 m x 4 m
-
-\* Reed-shaded balconies
-
-\* Olive groves, garden, pool, mountains
-
-
+* Olive groves, garden, pool, mountains
 
 Do not use for Almond view copy:
 
+* Mirabello Gulf
 
+* Elounda Bay
 
-\* Mirabello Gulf
-
-\* Elounda Bay
-
-\* Spinalonga
-
-
+* Spinalonga
 
 Do not use Mavrikiano shared parking wording for Almond.
 
-
-
-\## Quality Checklist
-
-
+## Quality Checklist
 
 Before accepting any property page rewrite, check:
 
+* Does the body start with markdown H1?
 
+* Is there a bold value line?
 
-\* Does the body start with markdown H1?
+* Are the section headings aligned with the standard anatomy?
 
-\* Is there a bold value line?
+* Is there a Suitability section?
 
-\* Are the section headings aligned with the standard anatomy?
+* Is there a Practical Note section?
 
-\* Is there a Suitability section?
+* Are constraints clear?
 
-\* Is there a Practical Note section?
+* Are unsupported claims removed?
 
-\* Are constraints clear?
+* Is the tone factual and human, not inflated?
 
-\* Are unsupported claims removed?
+* Does the page match house-page visual rhythm?
 
-\* Is the tone factual and human, not inflated?
-
-\* Does the page match house-page visual rhythm?
-
-\* Are property-specific facts not mixed between Mavrikiano and Vrouchas?
-
-
-
+* Are property-specific facts not mixed between Mavrikiano and Vrouchas?
