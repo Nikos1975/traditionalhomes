@@ -73,7 +73,7 @@ This is not just another hotel. The published material describes hotels, residen
 
 In 2026, Hospitality Net and Tornos reported the opening of INNSiDE by Melia Elounda, developed with Zeus Hotels on the former Elounda Ilion site. This fits the same pattern of reuse and repositioning: an existing hotel site is renovated and brought into a larger international brand system.
 
-Blue Palace is also part of the next phase. Rosewood lists Rosewood Blue Palace as a forthcoming property, while the research files and cited hotel-industry sources place the reopening plan in 2027. This keeps the Plaka-Spinalonga cluster active, but under a new operating frame.
+Blue Palace is also part of the next phase. Rosewood lists Rosewood Blue Palace as a forthcoming property, while the research files and referenced hotel-industry sources place the reopening plan in 2027. This keeps the Plaka-Spinalonga cluster active, but under a new operating frame.
 
 ## What the Timeline Shows
 
