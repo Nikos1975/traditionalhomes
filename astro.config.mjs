@@ -14,4 +14,9 @@ export default defineConfig({
   trailingSlash: 'always',
   build: { format: 'directory' },
   site: 'https://traditional-homes.gr',
+  vite: {
+    optimizeDeps: {
+      include: ['leaflet'],
+    },
+  },
 });
