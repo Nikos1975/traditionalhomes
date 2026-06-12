@@ -11,7 +11,7 @@ House Monastiri is a larger stone house in Mavrikiano with three bedrooms, two b
 The 120 m2 house is arranged over multiple levels with internal stairs. Three bedrooms and two bathrooms give the group more separation than the smaller houses. A fully equipped kitchen and living room support shared time indoors, while stone walls and timber details keep the traditional character of the building visible.
 
 ### Dipping Pool And Balconies
-The lower courtyard includes a private dipping pool for cooling off. Upper balconies open toward Elounda and the Mirabello Gulf, giving the house its main sea-view outdoor spaces.
+The lower courtyard includes a private dipping pool for cooling off. Upper balconies open toward Elounda Gulf, giving the house its main sea-view outdoor spaces.
 
 ### Access And Setting
 Shared private guest parking is about 70 m away, with space for up to 5 cars in total; if the shared parking area is full, guests can usually park for free around the village. The house is not step-free, and guests should expect at least one step from the path to the entrance plus internal stairs across the multi-level layout.

@@ -58,6 +58,13 @@ const poolLabel = unit.pool === 'private'
   : unit.pool === 'shared'
     ? 'Shared pool'
     : 'No pool';
+const sidebarView = unit.view;
+const sidebarOutdoorSpace = unit.slug === 'almond-tree-villa'
+  ? 'Private pool terrace'
+  : 'Outdoor area';
+const positivePool = unit.pool !== 'none';
+const positiveText = 'font-medium text-success';
+const neutralText = 'font-medium text-stone-500';
 ---
 
 <Base
@@ -244,9 +251,17 @@ const poolLabel = unit.pool === 'private'
               <span class="text-muted">Bedrooms</span>
               <span class="font-medium">{unit.bedrooms}</span>
             </div>
+            <div class="flex justify-between gap-4 py-2.5">
+              <span class="text-muted">View</span>
+              <span class={positiveText + ' text-right'}>{sidebarView}</span>
+            </div>
+            <div class="flex justify-between gap-4 py-2.5">
+              <span class="text-muted">Outdoor Space</span>
+              <span class={positiveText + ' text-right'}>{sidebarOutdoorSpace}</span>
+            </div>
             <div class="flex justify-between py-2.5">
               <span class="text-muted">Pool</span>
-              <span class="font-medium">{poolLabel}</span>
+              <span class={positivePool ? positiveText : neutralText}>{poolLabel}</span>
             </div>
             <div class="flex justify-between py-2.5">
               <span class="text-muted">Wi-Fi</span>

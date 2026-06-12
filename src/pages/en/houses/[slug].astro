@@ -66,16 +66,52 @@ const Content = entry ? (await render(entry)).Content : null;
 const isSeaView = unit.view.toLowerCase().includes('sea') || unit.view.toLowerCase().includes('bay');
 const poolLabel = unit.slug === 'clio'
   ? 'Pool view only'
+  : unit.slug === 'monastiri'
+    ? 'Private dipping pool'
   : unit.pool === 'private'
     ? 'Private pool'
     : unit.pool === 'shared'
       ? 'Shared pool'
       : 'No pool';
+const sidebarViewBySlug: Record<string, string> = {
+  argyro: 'Direct sea view from master bedroom',
+  leonidas: 'Direct sea view from master bedroom',
+  margarita: 'Sea-view veranda',
+  clio: 'Pool, mountain and olive-grove view',
+  efterpi: 'Private courtyard / village setting',
+  monastiri: 'Elounda Gulf view from balconies',
+};
+const sidebarOutdoorBySlug: Record<string, string> = {
+  argyro: 'Sea-view veranda',
+  leonidas: 'Sea-view balcony',
+  margarita: '35 m² veranda with outdoor mini kitchen',
+  demetra: 'Private terrace with shared BBQ area',
+  penelope: 'Veranda with outdoor kitchen',
+  erato: 'Private pool terrace',
+  clio: 'Private balcony',
+  efterpi: 'Private walled courtyard with BBQ and outdoor mini kitchen',
+  kalliopi: 'Private balcony with mountain view',
+  monastiri: 'Sea-view balconies and lower courtyard',
+};
+const sidebarAccessBySlug: Record<string, string> = {
+  clio: 'About 10 m from parking',
+};
+const sidebarView = sidebarViewBySlug[unit.slug] ?? unit.view;
+const sidebarOutdoorSpace = sidebarOutdoorBySlug[unit.slug] ?? 'Village setting';
+const sidebarAccess = sidebarAccessBySlug[unit.slug];
+const positivePool = unit.pool !== 'none';
+const positiveText = 'font-medium text-success';
+const neutralText = 'font-medium text-stone-500';
+const displayLocation = unit.location === 'Mavrikiano Elounda'
+  ? 'Mavrikiano, Elounda'
+  : unit.location;
 const getNearbyMeta = (near: InventoryUnit) => {
   const details = [`Sleeps ${near.sleeps}`];
 
   if (unit.slug === 'erato' && near.slug === 'clio') {
     details.push('Pool view only');
+  } else if (near.slug === 'monastiri') {
+    details.push('Private dipping pool');
   } else if (near.pool === 'private') {
     details.push('Private pool');
   } else if (near.pool === 'shared') {
@@ -131,7 +167,7 @@ const pageDescription = `${unit.name} in ${unit.location} — sleeps ${unit.slee
         {unit.name}
       </h1>
       <p class="text-white/80 text-sm md:text-base font-light tracking-wide">
-        {unit.location} &mdash; {unit.area}, Crete
+        {displayLocation} &mdash; {unit.area}, Crete
       </p>
     </div>
   </header>
@@ -176,7 +212,7 @@ const pageDescription = `${unit.name} in ${unit.location} — sleeps ${unit.slee
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" class="text-stone-400 shrink-0">
           <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
         </svg>
-        {unit.location}
+        {displayLocation}
       </span>
     </div>
   </div>
@@ -280,16 +316,30 @@ const pageDescription = `${unit.name} in ${unit.location} — sleeps ${unit.slee
         {/* Booking card */}
         <div class="bg-white rounded-2xl border border-stone-200 p-7 shadow-card">
           <p class="font-serif text-2xl text-body-text mb-1">{unit.name}</p>
-          <p class="text-xs text-muted mb-6 uppercase tracking-wider">{unit.location} &middot; Sleeps {unit.sleeps}</p>
+          <p class="text-xs text-muted mb-6 uppercase tracking-wider">{displayLocation} &middot; Sleeps {unit.sleeps}</p>
 
           <div class="space-y-0 mb-6 divide-y divide-stone-100 text-sm">
             <div class="flex justify-between py-2.5">
               <span class="text-muted">Bedrooms</span>
               <span class="font-medium">{unit.bedrooms}</span>
             </div>
+            <div class="flex justify-between gap-4 py-2.5">
+              <span class="text-muted">View</span>
+              <span class={positiveText + ' text-right'}>{sidebarView}</span>
+            </div>
+            <div class="flex justify-between gap-4 py-2.5">
+              <span class="text-muted">Outdoor Space</span>
+              <span class={positiveText + ' text-right'}>{sidebarOutdoorSpace}</span>
+            </div>
+            {sidebarAccess && (
+              <div class="flex justify-between gap-4 py-2.5">
+                <span class="text-muted">Access</span>
+                <span class={positiveText + ' text-right'}>{sidebarAccess}</span>
+              </div>
+            )}
             <div class="flex justify-between py-2.5">
               <span class="text-muted">Pool</span>
-              <span class="font-medium">{poolLabel}</span>
+              <span class={positivePool ? positiveText : neutralText}>{poolLabel}</span>
             </div>
             <div class="flex justify-between py-2.5">
               <span class="text-muted">Wi-Fi</span>
