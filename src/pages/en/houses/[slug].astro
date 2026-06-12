@@ -65,7 +65,7 @@ const Content = entry ? (await render(entry)).Content : null;
 // HELPERS
 const isSeaView = unit.view.toLowerCase().includes('sea') || unit.view.toLowerCase().includes('bay');
 const poolLabel = unit.slug === 'clio'
-  ? 'Pool view only'
+  ? 'No pool access when booked separately'
   : unit.slug === 'monastiri'
     ? 'Private dipping pool'
   : unit.pool === 'private'
@@ -77,7 +77,7 @@ const sidebarViewBySlug: Record<string, string> = {
   argyro: 'Direct sea view from master bedroom',
   leonidas: 'Direct sea view from master bedroom',
   margarita: 'Sea-view veranda',
-  clio: 'Pool, mountain and olive-grove view',
+  clio: 'Pool area, mountain and olive-grove view',
   efterpi: 'Private courtyard / village setting',
   monastiri: 'Elounda Gulf view from balconies',
 };

@@ -53,14 +53,18 @@ if (!entry) {
 const { Content } = await render(entry);
 
 const isSeaView = unit.view.toLowerCase().includes('sea') || unit.view.toLowerCase().includes('bay');
-const poolLabel = unit.pool === 'private'
-  ? 'Private pool'
+const poolLabel = unit.slug === 'almond-tree-villa'
+  ? 'Private 9 m × 4 m pool'
+  : unit.pool === 'private'
+    ? 'Private pool'
   : unit.pool === 'shared'
     ? 'Shared pool'
     : 'No pool';
-const sidebarView = unit.view;
+const sidebarView = unit.slug === 'almond-tree-villa'
+  ? 'Cretan Sea, garden and mountain views'
+  : unit.view;
 const sidebarOutdoorSpace = unit.slug === 'almond-tree-villa'
-  ? 'Private pool terrace'
+  ? 'Private pool terrace, reed-shaded balconies and garden'
   : 'Outdoor area';
 const positivePool = unit.pool !== 'none';
 const positiveText = 'font-medium text-success';
@@ -250,6 +254,10 @@ const neutralText = 'font-medium text-stone-500';
             <div class="flex justify-between py-2.5">
               <span class="text-muted">Bedrooms</span>
               <span class="font-medium">{unit.bedrooms}</span>
+            </div>
+            <div class="flex justify-between py-2.5">
+              <span class="text-muted">Bathrooms</span>
+              <span class="font-medium">{unit.bathrooms}</span>
             </div>
             <div class="flex justify-between gap-4 py-2.5">
               <span class="text-muted">View</span>
