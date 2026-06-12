@@ -41,6 +41,10 @@ const isSeaView =
   unit.view.toLowerCase().includes("sea") ||
   unit.view.toLowerCase().includes("bay");
 const isMountainView = unit.view.toLowerCase().includes("mountain");
+const displayLocation =
+  unit.village === "Mavrikiano" && unit.area === "Elounda"
+    ? "Mavrikiano, Elounda"
+    : unit.location;
 ---
 
 <article
@@ -94,7 +98,7 @@ const isMountainView = unit.view.toLowerCase().includes("mountain");
           </svg>
           {unit.pool === "private"
             ? unit.slug === "monastiri"
-              ? "Private Dripping Pool"
+              ? "Private Dipping Pool"
               : "Private Pool"
             : "Shared Pool"}
         </span>
@@ -109,7 +113,7 @@ const isMountainView = unit.view.toLowerCase().includes("mountain");
         <p
           class="text-[9px] uppercase tracking-[0.3em] text-stone-400 mb-2 font-bold"
         >
-          {unit.location} · {unit.area}
+          {displayLocation}
         </p>
         <a
           href={unitPagePath}
