@@ -19,7 +19,7 @@ export type ListingItem = {
 };
 
 export type FilterState = {
-    view: "homes" | "groups" | "all";
+    view: "all" | "houses" | "villa" | "groups";
     capacityMode: CapacityMode;
     capacityValue: number | null;
     bedroomsMin: number | null;
@@ -37,8 +37,9 @@ export const initialFilters: FilterState = {
 };
 
 export function matchesView(item: ListingItem, view: FilterState["view"]): boolean {
-    if (view === "all") return true;
-    if (view === "homes") return item.type === "house" || item.type === "villa";
+    if (view === "all") return item.type === "house" || item.type === "villa";
+    if (view === "houses") return item.type === "house";
+    if (view === "villa") return item.type === "villa";
     if (view === "groups") return item.type === "group";
     return true;
 }
@@ -64,7 +65,7 @@ export function matchesSeaView(item: ListingItem, required: boolean): boolean {
 export function matchesPool(item: ListingItem, poolFilter: FilterState["pool"]): boolean {
     if (poolFilter == null) return true;
 
-    // homes + villa
+    // individual stays
     if (item.type === "house" || item.type === "villa") {
         return item.pool === poolFilter;
     }
