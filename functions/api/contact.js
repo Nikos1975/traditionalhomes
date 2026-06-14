@@ -1,5 +1,6 @@
-const CONTACT_RECIPIENT = 'eloundavilla@gmail.com';
 const REQUIRED_FIELD_ERROR = 'Please complete your name, email, and message.';
+const CLOUDFLARE_EMAIL_API_BASE =
+  'https://api.cloudflare.com/client/v4/accounts';
 
 const jsonResponse = (body, status = 200, headers = {}) =>
   new Response(JSON.stringify(body), {
@@ -27,7 +28,7 @@ const escapeHtml = (value) =>
     .replace(/"/g, '&quot;')
     .replace(/'/g, '&#39;');
 
-const buildEmail = ({ name, email, property, message }, fromEmail) => {
+const buildEmail = ({ name, email, property, message }, { fromEmail, toEmail }) => {
   const safeName = stripHeaderValue(name);
   const safeEmail = stripHeaderValue(email);
   const propertyLine = property || 'General enquiry';
@@ -49,19 +50,66 @@ const buildEmail = ({ name, email, property, message }, fromEmail) => {
   `;
 
   return {
-    to: CONTACT_RECIPIENT,
+    to: toEmail,
     from: {
-      email: fromEmail,
+      address: fromEmail,
       name: 'Traditional Homes Contact Form',
     },
-    replyTo: safeEmail,
+    reply_to: safeEmail,
     subject: `Website contact form${subjectProperty} from ${safeName}`,
     text,
     html,
   };
 };
 
-export async function handleContactRequest(request, env) {
+const getEmailConfig = (env) => {
+  const toEmail = env?.CONTACT_EMAIL_TO?.trim();
+  const fromEmail = env?.CONTACT_EMAIL_FROM?.trim();
+  const accountId = env?.CLOUDFLARE_ACCOUNT_ID?.trim();
+  const apiToken = env?.CLOUDFLARE_EMAIL_API_TOKEN?.trim();
+
+  if (
+    !toEmail ||
+    !fromEmail ||
+    !accountId ||
+    !apiToken ||
+    !isValidEmail(toEmail) ||
+    !isValidEmail(fromEmail)
+  ) {
+    return null;
+  }
+
+  return { toEmail, fromEmail, accountId, apiToken };
+};
+
+const sendContactEmail = async (submission, config, fetchImpl) => {
+  const url = `${CLOUDFLARE_EMAIL_API_BASE}/${encodeURIComponent(
+    config.accountId,
+  )}/email/sending/send`;
+  const response = await fetchImpl(url, {
+    method: 'POST',
+    headers: {
+      authorization: `Bearer ${config.apiToken}`,
+      'content-type': 'application/json',
+    },
+    body: JSON.stringify(buildEmail(submission, config)),
+  });
+  const result = await response.json().catch(() => null);
+
+  if (!response.ok || result?.success === false) {
+    const firstError = Array.isArray(result?.errors)
+      ? result.errors[0]
+      : undefined;
+    console.error('Contact email REST send failed', {
+      status: response.status,
+      code: firstError?.code,
+      message: firstError?.message,
+    });
+    throw new Error('Cloudflare Email Service REST send failed');
+  }
+};
+
+export async function handleContactRequest(request, env, fetchImpl = fetch) {
   if (request.method !== 'POST') {
     return jsonResponse(
       { error: 'Method not allowed.' },
@@ -97,22 +145,19 @@ export async function handleContactRequest(request, env) {
     return jsonResponse({ error: 'Please enter a valid email address.' }, 400);
   }
 
-  if (!env?.EMAIL || typeof env.EMAIL.send !== 'function') {
+  const config = getEmailConfig(env);
+  if (!config) {
     return jsonResponse({ error: 'Email service is not configured.' }, 500);
   }
 
-  const fromEmail = env.CONTACT_EMAIL_FROM?.trim();
-  if (!fromEmail || !isValidEmail(fromEmail)) {
-    return jsonResponse({ error: 'Email sender is not configured.' }, 500);
-  }
-
   try {
-    await env.EMAIL.send(buildEmail(submission, fromEmail));
+    await sendContactEmail(submission, config, fetchImpl);
   } catch (error) {
-    console.error('Contact email send failed', {
-      code: error?.code,
-      message: error?.message,
-    });
+    if (error?.message !== 'Cloudflare Email Service REST send failed') {
+      console.error('Contact email REST request failed', {
+        message: error?.message,
+      });
+    }
     return jsonResponse({ error: 'Unable to send this message.' }, 502);
   }
 

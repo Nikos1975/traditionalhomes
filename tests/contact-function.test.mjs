@@ -3,6 +3,13 @@ import { describe, it } from 'node:test';
 
 import { handleContactRequest } from '../functions/api/contact.js';
 
+const validEnv = {
+  CONTACT_EMAIL_TO: 'eloundavilla@gmail.com',
+  CONTACT_EMAIL_FROM: 'contact@traditional-homes.gr',
+  CLOUDFLARE_ACCOUNT_ID: 'account-id',
+  CLOUDFLARE_EMAIL_API_TOKEN: 'secret-token',
+};
+
 const makeFormRequest = (fields) => {
   const formData = new FormData();
 
@@ -14,6 +21,17 @@ const makeFormRequest = (fields) => {
     method: 'POST',
     body: formData,
   });
+};
+
+const withMutedConsoleError = async (callback) => {
+  const originalConsoleError = console.error;
+  console.error = () => {};
+
+  try {
+    return await callback();
+  } finally {
+    console.error = originalConsoleError;
+  }
 };
 
 describe('contact Pages Function', () => {
@@ -36,7 +54,7 @@ describe('contact Pages Function', () => {
         email: '',
         message: 'Hello',
       }),
-      { EMAIL: { send: async () => ({ messageId: 'not-used' }) } },
+      validEnv,
     );
     const body = await response.json();
 
@@ -45,7 +63,7 @@ describe('contact Pages Function', () => {
   });
 
   it('rejects honeypot submissions without sending email', async () => {
-    let sendCount = 0;
+    let fetchCount = 0;
     const response = await handleContactRequest(
       makeFormRequest({
         name: 'Spam',
@@ -53,23 +71,40 @@ describe('contact Pages Function', () => {
         message: 'Hello',
         website: 'https://example.com',
       }),
-      {
-        EMAIL: {
-          send: async () => {
-            sendCount += 1;
-          },
-        },
+      validEnv,
+      async () => {
+        fetchCount += 1;
+        return new Response('{}');
       },
     );
     const body = await response.json();
 
     assert.equal(response.status, 400);
     assert.equal(body.error, 'Unable to send this message.');
-    assert.equal(sendCount, 0);
+    assert.equal(fetchCount, 0);
   });
 
-  it('sends valid messages to the configured inbox', async () => {
-    let sentMessage;
+  it('rejects valid submissions when REST API configuration is missing', async () => {
+    const response = await handleContactRequest(
+      makeFormRequest({
+        name: 'Nikos',
+        email: 'nikos@example.com',
+        message: 'Please send availability details.',
+      }),
+      {
+        CONTACT_EMAIL_TO: 'eloundavilla@gmail.com',
+        CONTACT_EMAIL_FROM: 'contact@traditional-homes.gr',
+      },
+    );
+    const body = await response.json();
+
+    assert.equal(response.status, 500);
+    assert.equal(body.error, 'Email service is not configured.');
+  });
+
+  it('sends valid messages through the Cloudflare Email Service REST API', async () => {
+    let fetchUrl;
+    let fetchOptions;
     const response = await handleContactRequest(
       makeFormRequest({
         name: 'Nikos',
@@ -77,27 +112,99 @@ describe('contact Pages Function', () => {
         property: 'almond-tree-villa',
         message: 'Please send availability details.',
       }),
+      validEnv,
+      async (url, options) => {
+        fetchUrl = url;
+        fetchOptions = options;
+        return Response.json({
+          success: true,
+          errors: [],
+          messages: [],
+          result: {
+            delivered: ['eloundavilla@gmail.com'],
+            permanent_bounces: [],
+            queued: [],
+          },
+        });
+      },
+    );
+    const body = await response.json();
+    const sentMessage = JSON.parse(fetchOptions.body);
+
+    assert.equal(response.status, 200);
+    assert.deepEqual(body, { ok: true });
+    assert.equal(
+      fetchUrl,
+      'https://api.cloudflare.com/client/v4/accounts/account-id/email/sending/send',
+    );
+    assert.equal(fetchOptions.method, 'POST');
+    assert.equal(
+      fetchOptions.headers.authorization,
+      'Bearer secret-token',
+    );
+    assert.equal(fetchOptions.headers['content-type'], 'application/json');
+    assert.equal(sentMessage.to, 'eloundavilla@gmail.com');
+    assert.deepEqual(sentMessage.from, {
+      address: 'contact@traditional-homes.gr',
+      name: 'Traditional Homes Contact Form',
+    });
+    assert.equal(sentMessage.reply_to, 'nikos@example.com');
+    assert.match(sentMessage.subject, /almond-tree-villa/);
+    assert.match(sentMessage.text, /Please send availability details\./);
+  });
+
+  it('returns an error when the Cloudflare REST API rejects the send', async () => {
+    const response = await withMutedConsoleError(() =>
+      handleContactRequest(
+        makeFormRequest({
+          name: 'Nikos',
+          email: 'nikos@example.com',
+          message: 'Please send availability details.',
+        }),
+        validEnv,
+        async () =>
+          Response.json(
+            {
+              success: false,
+              errors: [
+                {
+                  code: 10102,
+                  message: 'email.sending.error.authentication.forbidden',
+                },
+              ],
+              messages: [],
+              result: null,
+            },
+            { status: 403 },
+          ),
+      ),
+    );
+    const body = await response.json();
+
+    assert.equal(response.status, 502);
+    assert.equal(body.error, 'Unable to send this message.');
+  });
+
+  it('does not use an EMAIL send_email binding', async () => {
+    const response = await handleContactRequest(
+      makeFormRequest({
+        name: 'Nikos',
+        email: 'nikos@example.com',
+        message: 'Please send availability details.',
+      }),
       {
-        CONTACT_EMAIL_FROM: 'contact@traditional-homes.gr',
         EMAIL: {
-          send: async (message) => {
-            sentMessage = message;
-            return { messageId: 'message-1' };
+          send: async () => {
+            throw new Error('EMAIL binding should not be used');
           },
         },
+        ...validEnv,
       },
+      async () => Response.json({ success: true, result: { delivered: [] } }),
     );
     const body = await response.json();
 
     assert.equal(response.status, 200);
     assert.deepEqual(body, { ok: true });
-    assert.equal(sentMessage.to, 'eloundavilla@gmail.com');
-    assert.deepEqual(sentMessage.from, {
-      email: 'contact@traditional-homes.gr',
-      name: 'Traditional Homes Contact Form',
-    });
-    assert.equal(sentMessage.replyTo, 'nikos@example.com');
-    assert.match(sentMessage.subject, /almond-tree-villa/);
-    assert.match(sentMessage.text, /Please send availability details\./);
   });
 });
