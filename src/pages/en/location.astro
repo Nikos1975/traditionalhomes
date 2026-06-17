@@ -137,12 +137,12 @@ const pageTitle = `Location — Mavrikiano & Vrouchas, Elounda | ${siteCopy.site
           <ul class="space-y-6">
             {units.map((unit) => (
               <li>
-                <a href={`/en/houses/${unit.slug}/`} class="group flex justify-between items-center py-1">
-                  <div>
+                <a href={`/en/houses/${unit.slug}/`} class="group inline-flex max-w-full items-center gap-4 py-1 pr-2">
+                  <div class="min-w-0">
                     <span class="block text-sm font-bold text-stone-900 group-hover:text-primary transition-colors">{unit.name}</span>
                     <span class="block text-[9px] uppercase tracking-[0.2em] text-stone-400 font-bold mt-1">{unit.location}</span>
                   </div>
-                  <div class="w-8 h-8 rounded-full border border-stone-200 flex items-center justify-center group-hover:bg-primary group-hover:border-primary transition-all">
+                  <div class="w-8 h-8 shrink-0 rounded-full border border-stone-200 flex items-center justify-center group-hover:bg-primary group-hover:border-primary transition-all">
                     <svg class="text-stone-400 group-hover:text-white transition-colors" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="9 18 15 12 9 6"></polyline></svg>
                   </div>
                 </a>
