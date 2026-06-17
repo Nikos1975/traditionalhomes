@@ -134,8 +134,7 @@ const chooseStayOptions = [
                 <>
                   <a href={item.href} class="font-medium text-stone-900 underline underline-offset-4 decoration-stone-300 hover:decoration-stone-900">
                     {item.label}
-                  </a>
-                  {index < option.names.length - 1 && ', '}
+                  </a>{index < option.names.length - 1 && ', '}
                 </>
               ))}
             </p>
