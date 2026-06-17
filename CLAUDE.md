@@ -5,6 +5,8 @@
 - Tailwind CSS
 - Content-driven structure
 - No heavy JS
+- For repo structure, see docs/architecture/repo-wireframe.md.
+- For the Mermaid source, see docs/architecture/repo-wireframe.mmd.
 
 # Working rules
 
@@ -21,6 +23,21 @@
 - When work is multi-step, paused, or important for future agents, update `docs/agent-handoff-notes.md` with what changed, what was verified, what remains, and any blockers
 - Keep handoff notes short and factual; do not duplicate every diff
 
+## Documentation update rules
+
+When adding, removing, renaming, or significantly changing a website section, route, component, content collection, data file, API function, or user-facing flow, update the relevant documentation in the same task.
+
+Minimum documentation updates:
+
+* Update `docs/agent-handoff-notes.md` with what changed, what was verified, and what remains.
+* Update `docs/architecture/repo-wireframe.md` and `docs/architecture/repo-wireframe.mmd` if the repo structure, route structure, main flows, or component relationships changed.
+* Update any relevant operational docs under `docs/operations/` if the change affects build, deploy, debugging, or known failure handling.
+* If a new public page/route is added, document its purpose, route path, source files, and any data dependencies.
+
+Do not update architecture documentation for tiny copy edits or cosmetic-only changes unless the change affects structure or future agent understanding.
+
+Before finishing, report whether documentation was updated or why no documentation update was needed.
+
 # Build/debug workflow
 
 1. First classify the issue:
@@ -36,7 +53,7 @@
 
 - Keep product code changes separate from local workflow/tooling files
 - Do not commit temporary artifacts such as dist_old_* or cache leftovers
-- Do not commit .claude/, CLAUDE.md, or .ai/ unless explicitly requested
+- Do not commit .claude/, temporary AI scratch files, or local agent outputs unless explicitly requested. CLAUDE.md and AGENTS.md are committed project instruction files.
 
 # Brand voice
 

@@ -2,6 +2,8 @@
 
 Use `CLAUDE.md` as the canonical project instruction file.
 
+When structural routes, sections, components, data flows, or user-facing flows change, follow the documentation update rules in `CLAUDE.md`.
+
 See `docs/operations/agent-operating-model.md` and `docs/operations/repeated-failures-playbook.md` for process rules and known failure handling.
 
 For editorial work:
