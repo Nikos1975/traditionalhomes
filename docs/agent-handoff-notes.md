@@ -35,6 +35,25 @@ When pausing or finishing a substantial task, add a dated note below with:
 
 ## Notes
 
+### 2026-06-17 - Location collection metadata
+
+- Goal: improve the `/en/location/` collection list and update one Mavrikiano distance sentence.
+- Files changed:
+  - `src/pages/en/location.astro`
+  - `docs/agent-handoff-notes.md`
+- What changed:
+  - Changed the Mavrikiano sentence from a 3-minute drive to a 10-minute drive.
+  - Reworked the Location page collection list into quiet property clusters with muted metadata badges for village, view, floor, pool, standalone, and villa distinctions.
+- Verified:
+  - `npm test` was not run because no `test` script exists in `package.json`.
+  - `npm run build` was blocked by a known Windows generated-cache `EPERM` lock under `node_modules/.vite`.
+  - `npm run dev -- --host 127.0.0.1 --port 4331` was blocked by a generated Astro content-store `EPERM` lock under `.astro`.
+  - Browser verification was blocked because the local dev server could not start.
+- Remaining:
+  - Re-run build and browser verification after the Windows generated-output/cache locks are released.
+- Blockers:
+  - Windows `EPERM` locks on generated cache/output files only; no source-code fix should be made for these locks.
+
 ### 2026-05-25 - Blog and houses listing design research
 
 - Goal: create standalone HTML design mockups for blog article pages, blog index, and houses listing — all using brand tokens and brand voice. No Astro source files were modified.
