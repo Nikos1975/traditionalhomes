@@ -66,7 +66,7 @@ It is not well suited to guests who require step-free access, or to those who wa
 - Air Conditioning & Climate Control (ground floor)
 - Main Kitchen (oven, stovetop, fridge, Nespresso & filter coffee machines, toaster, kettle)
 - Outdoor Kitchenette / Summer Kitchen
-- High-Speed Wi-Fi
+- Wi-Fi Included
 - Flat-screen TV
 - Safety deposit box
 - Traditional fireplace

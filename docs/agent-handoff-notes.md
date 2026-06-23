@@ -35,6 +35,22 @@ When pausing or finishing a substantial task, add a dated note below with:
 
 ## Notes
 
+### 2026-06-23 - Wi-Fi amenity wording cleanup
+
+- Goal: replace the stronger Wi-Fi speed claim in amenity labels with the safer "Wi-Fi Included" wording across property "What's included" sections.
+- Files changed:
+  - `src/inventory/inventory.json`
+  - `src/content/houses/margarita.md`
+  - `docs/agent-handoff-notes.md`
+- Verified:
+  - Repo search found no remaining old Wi-Fi speed label in property content, villa content, inventory, components, or data paths checked.
+  - Browser checks on `/en/houses/monastiri/`, `/en/houses/penelope/`, and `/en/houses/leonidas/` showed `Wi-Fi Included` and not the old Wi-Fi speed label.
+- Blocker:
+  - `npm run build` remains blocked by the known Windows Vite cache `EPERM` lock at `node_modules/.vite/deps/astro___aria-query.js`.
+- Remaining:
+  - Re-run build after releasing the Vite cache lock.
+  - No architecture documentation update is needed because no route, page structure, or component relationship changed.
+
 ### 2026-06-23 - Margarita arrival and courtyard correction
 
 - Goal: update House Margarita copy so the arrival point, arched gate, open courtyard, and first-floor veranda are described accurately.
