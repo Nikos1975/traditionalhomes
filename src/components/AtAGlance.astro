@@ -40,12 +40,19 @@ const formatBathroom = (unit: InventoryUnit) => {
 const formatLayout = (unit: InventoryUnit) => {
   if (unit.slug === 'almond-tree-villa') return 'Split-level traditional villa';
   if (unit.slug === 'clio' || unit.slug === 'erato') return 'Connected levels with ontas';
+  if (unit.slug === 'penelope') return 'Main level + ontas';
+  if (unit.slug === 'efterpi') return 'Courtyard level + ontas';
+  if (unit.slug === 'kalliopi') return 'First-floor house above Efterpi + ontas';
+  if (unit.slug === 'monastiri') return 'Multi-level house with internal stairs';
   return unit.floors === 1 ? 'Ground floor' : 'Ground floor + first floor';
 };
 
 const formatAccess = (unit: InventoryUnit) => {
   if (unit.slug === 'almond-tree-villa') return 'Internal stairs and stepped levels';
   if (unit.slug === 'clio') return 'Entrance step + internal stairs';
+  if (unit.slug === 'efterpi') return 'Steps down to courtyard; internal stair to ontas';
+  if (unit.slug === 'kalliopi') return 'Stone stairs to balcony entrance';
+  if (unit.slug === 'monastiri') return 'Courtyard entrance + internal stairs';
   if (!unit.internalStairs) return 'Step-free';
   const hasStairsDownEntrance = unit.hardConstraints.some((constraint) =>
     constraint.toLowerCase().includes('stairs down')
