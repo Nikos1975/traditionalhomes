@@ -35,25 +35,29 @@ When pausing or finishing a substantial task, add a dated note below with:
 
 ## Notes
 
-### 2026-06-23 - Penelope interior layout correction
+### 2026-06-23 - Mavrikiano property-content corrections
 
-- Goal: correct House Penelope copy so it does not describe the house as a full two-floor layout.
-- Files changed:
+- Goal: document commit `c64d1fd` (`fix: correct Mavrikiano house details`) covering House Efterpi, House Kalliopi, House Monastiri, and House Penelope.
+- Files changed in that correction set:
+  - `src/content/houses/efterpi.md`
+  - `src/content/houses/kalliopi.md`
+  - `src/content/houses/monastiri.md`
   - `src/content/houses/penelope.md`
   - `src/inventory/inventory.json`
   - `src/components/AtAGlance.astro`
-  - `docs/agent-handoff-notes.md`
+  - `src/pages/en/houses/[slug].astro`
 - What changed:
-  - Rewrote the Penelope interior section around a main living space plus ontas, with entrance sequence, living area, fireplace, shower room, wooden stair, wooden beds, separate bedroom, balcony, outdoor kitchen, shared pool, and access notes.
-  - Corrected Penelope inventory `floors` from `2` to `1` while keeping `internalStairs: true`.
-  - Added a Penelope-specific At-a-Glance layout label: `Main level + ontas`.
+  - Corrected the Mavrikiano house copy around layout, access, outdoor space, parking wording, and visible property facts.
+  - Corrected Penelope from a full two-floor description to a main living space plus ontas, with wooden beds rather than built-in stone beds.
+  - Updated Monastiri as a multi-level sea-view house with internal stairs, private courtyard, dipping pool, balconies, and nearby shared parking.
+  - Kept Monastiri wording to the safe church fact: beside or near the small church of Profitis Ilias. Do not add unsupported monastery-history claims or the 1950 date.
+  - Aligned `inventory.json` and visible At a Glance data with the corrected property facts.
+  - Adjusted `AtAGlance.astro` and the house detail page only for corrected visible labels/data; no routes, page structure, or data-flow architecture changed.
 - Verified:
-  - Source search found no Penelope references to "arranged over two floors", "two-floor house", "built-in stone sleeping", or "stone bed".
-  - `npm run build` blocked by Windows EPERM cache lock: `node_modules/.vite/deps/astro___aria-query.js`.
-  - Existing `http://127.0.0.1:4321/en/houses/penelope/` server rendered the corrected main-level/ontas copy and no full-two-floor wording; booking links remained external with `target="_blank"` and `rel="noopener noreferrer"`.
-  - A fresh dev server on port 4322 was blocked by Windows EPERM lock on `.astro/data-store.json`.
+  - `npm run build` was blocked by the known Windows Vite cache `EPERM` lock at `node_modules/.vite/deps/astro___aria-query.js`, not by a source error.
 - Remaining:
-  - Re-run build and fresh local browser verification after clearing Windows filesystem/cache locks.
+  - Re-run build after clearing or releasing the Windows Vite cache lock.
+  - No architecture documentation update was needed for this copy/data-label correction set.
 
 ### 2026-06-17 - Location collection metadata
 
