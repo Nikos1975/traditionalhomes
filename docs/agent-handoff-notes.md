@@ -35,6 +35,20 @@ When pausing or finishing a substantial task, add a dated note below with:
 
 ## Notes
 
+### 2026-06-23 - Almond Tree Villa access wording correction
+
+- Goal: correct Almond Tree Villa access wording in the visible "Before you book" and practical notes.
+- Files changed:
+  - `src/inventory/inventory.json`
+  - `src/content/villa/almond-tree-villa.md`
+  - `docs/agent-handoff-notes.md`
+- What changed:
+  - Removed the inaccurate steep road warning for Almond Tree Villa.
+  - Kept factual access notes for several steps from parking, split-level layout, internal stairs, and stepped levels.
+- Remaining:
+  - Re-run build after releasing any Windows Vite cache lock if it blocks verification.
+  - No architecture documentation update is needed because no route, page structure, or component relationship changed.
+
 ### 2026-06-23 - Wi-Fi amenity wording cleanup
 
 - Goal: replace the stronger Wi-Fi speed claim in amenity labels with the safer "Wi-Fi Included" wording across property "What's included" sections.

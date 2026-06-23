@@ -42,8 +42,7 @@ It is not the right choice for guests who need step-free access or a simple sing
 
 ## Practical Note
 
-- Not step-free
-- Internal stairs and stepped levels inside the villa
-- Several steps from parking to the entrance
-- Steep approach road, suitable for standard passenger cars
+- Not step-free — there are several steps from parking to the entrance.
+- Split-level villa — bedrooms and living areas are connected by internal stairs and stepped levels.
+- Hillside village setting in Vrouchas, Elounda. The villa is best suited to guests who are comfortable with steps and internal stairs.
 - Private pool: children must be supervised

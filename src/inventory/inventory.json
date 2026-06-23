@@ -481,9 +481,8 @@
     "wifi": true,
     "pets": "Small pets (≤5 kg) on request",
     "hardConstraints": [
-      "Not step-free — several steps from parking to entrance",
-      "Split-level villa with internal stairs",
-      "Steep approach road — suitable for standard passenger cars"
+      "Not step-free — there are several steps from parking to the entrance.",
+      "Split-level villa — bedrooms and living areas are connected by internal stairs and stepped levels."
     ],
     "amenities": [
       "Air conditioning",
@@ -499,7 +498,7 @@
     ],
     "kitchen": "Main kitchen, outdoor kitchen and barbecue",
     "kitchenNotes": "Main kitchen, outdoor kitchen and barbecue.",
-    "accessDetail": "Hillside village location in Vrouchas, Elounda. Several steps from parking to entrance. Upper bedrooms via internal stairs and stepped levels. Steep approach road — suitable for standard passenger cars.",
+    "accessDetail": "Hillside village setting in Vrouchas, Elounda. The villa is best suited to guests who are comfortable with steps and internal stairs.",
     "bookingId": "ASP3SV",
     "availabilityUrl": "https://traditionalhomes.reserve-online.net/?room=ASP3SV",
     "featuredImageAlt": "Almond Tree Villa - pool terrace and garden in Vrouchas",
