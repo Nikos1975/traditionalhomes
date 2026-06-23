@@ -35,6 +35,61 @@ When pausing or finishing a substantial task, add a dated note below with:
 
 ## Notes
 
+### 2026-06-23 - Margarita arrival and courtyard correction
+
+- Goal: update House Margarita copy so the arrival point, arched gate, open courtyard, and first-floor veranda are described accurately.
+- Files changed:
+  - `src/content/houses/margarita.md`
+  - `src/inventory/inventory.json`
+  - `src/components/AtAGlance.astro`
+  - `docs/agent-handoff-notes.md`
+- What changed:
+  - Revised the overview to place House Margarita in Mavrikiano, above Schisma, Elounda, a few metres beyond House Leonidas, with the main gate on the right beneath an arch.
+  - Reworked the layout and outdoor sections to describe the open stone courtyard as entry/access to the main kitchen and bathroom, not a shaded sitting area.
+  - Kept the first-floor sea-view veranda as the primary outdoor living and dining space.
+  - Updated Margarita inventory constraints and At a Glance access label to mention courtyard entry and internal stairs.
+- Remaining:
+  - Re-run build and browser verification after releasing Windows cache locks if they block verification.
+  - No architecture documentation update is needed because no route or page structure changed.
+
+### 2026-06-23 - Penelope access and veranda route correction
+
+- Goal: update House Penelope copy so guests can understand the route from shared parking to the road, gate, shared pool/barbecue area, covered veranda, external mini kitchen, and house entrance.
+- Files changed:
+  - `src/content/houses/penelope.md`
+  - `src/inventory/inventory.json`
+  - `src/components/AtAGlance.astro`
+  - `docs/agent-handoff-notes.md`
+- What changed:
+  - Rewrote the outdoor kitchen/shared pool and access sections to describe the parking route, about 10 metres of uphill village road, gate, shared pool/barbecue area, steps to the tiled-roof veranda, and internal wooden stairs to the ontas.
+  - Updated Penelope inventory constraints and At a Glance access label to reflect external steps plus internal stairs to the ontas.
+  - Replaced the shared-pool notice wording that implied a "private estate" with a more precise note about one group using both houses around the same shared pool area.
+- Remaining:
+  - Re-run build and browser verification after releasing Windows cache locks.
+  - No architecture documentation update is needed because no route or page structure changed.
+
+### 2026-06-23 - Leonidas layout copy correction
+
+- Goal: update House Leonidas copy so guests can visualize the entrance, fireplace, bathroom, small kitchen, ontas, main bedroom, and balcony sequence.
+- Files changed:
+  - `src/content/houses/leonidas.md`
+  - `src/inventory/inventory.json`
+  - `src/components/AtAGlance.astro`
+  - `src/components/booking/BookingHandoffForm.astro`
+  - `docs/agent-handoff-notes.md`
+- What changed:
+  - Replaced generic two-floor wording with a spatial walkthrough from the village steps and entrance through the living space, internal wooden stair, ontas, main bedroom, and sea-view balcony.
+  - Updated Leonidas inventory and At a Glance labels to describe a main living space plus ontas, internal wooden stairs, and a small kitchen area.
+  - Added `rel="noopener noreferrer"` to the existing booking handoff form that already opens in a new tab.
+- Verified:
+  - Source checks confirmed the old "arranged over two floors" wording is gone from `src/content/houses/leonidas.md` and the requested balcony details are present.
+  - `npm run build` was blocked by the known Windows Vite cache `EPERM` lock at `node_modules/.vite/deps/astro___aria-query.js`, not by a source error.
+  - A fresh dev server on port 4322 was blocked by an Astro generated-cache `EPERM` lock on `.astro/data-store.json`.
+  - Existing port 4321 browser checks showed the new At a Glance label and no horizontal overflow, but the markdown body was stale because the content cache could not refresh.
+- Remaining:
+  - Re-run build and fresh browser verification after releasing Windows cache locks.
+  - No architecture documentation update is needed because no route or page structure changed.
+
 ### 2026-06-23 - Mavrikiano property-content corrections
 
 - Goal: document commit `c64d1fd` (`fix: correct Mavrikiano house details`) covering House Efterpi, House Kalliopi, House Monastiri, and House Penelope.

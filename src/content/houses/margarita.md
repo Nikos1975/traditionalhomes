@@ -6,17 +6,19 @@ summary: "A 120 m² two-bedroom stone house in Mavrikiano for up to six guests, 
 
 ## Overview
 
-House Margarita is a traditional stone house in the hillside village of Mavrikiano, above Elounda. The house covers 120 m² across the ground floor and first floor. It features a ground-level courtyard, a stone-built interior, and a first-floor veranda looking over Elounda Bay. The layout accommodates up to six guests with separated sleeping areas.
+House Margarita is a traditional stone house in Mavrikiano, above Schisma, Elounda. It sits a few metres beyond House Leonidas, with its main gate on the right beneath an arch. The house covers 120 m² across the ground floor and first floor, with a ground-level stone courtyard and a first-floor veranda looking toward Elounda Bay.
+
+It accommodates up to six guests and works well for families or friends who want separated sleeping areas, a sea-view veranda, and a village setting close to the other sea-view houses.
 
 ---
 
 ## House Layout
 
-Entry is through a main gate into an open stone courtyard. The main kitchen is at courtyard level, on the left as you enter. The bathroom is also accessed from this courtyard area. An arched door leads from the courtyard into the interior of the house.
+Entry is through the arched main gate into an open stone courtyard. The main kitchen is at courtyard level, on the left as guests enter. The bathroom is also accessed from this courtyard area. An arched door leads from the courtyard into the interior of the house.
 
-Inside, the ground-floor living room features a stone-built fireplace and traditional seating. A stone arch opens through to a dining area and the first sleeping area—a double bed set into this open-plan room. One step up from here, a second double bed occupies a mid-level space where the natural rock of the hillside is exposed through the walls.
+Inside, the ground-floor living room has a stone-built fireplace and traditional seating. A stone arch opens through to a dining area and the first sleeping area, where a double bed is set within the open-plan room. One step up from here, a second double bed occupies a mid-level space where the natural rock of the hillside is exposed through the walls.
 
-A stone staircase leads from the ground floor to the first floor, where a bedroom with two single beds is positioned with direct access to the sea-view veranda. The outdoor kitchenette is also on this level.
+A stone staircase leads from the ground floor to the first floor. On this level, a bedroom with two single beds has direct access to the sea-view veranda. The outdoor kitchenette is also on this level, making the veranda the main outdoor living and dining space.
 
 ---
 
@@ -30,9 +32,9 @@ The living room includes a stone fireplace for cooler evenings. The stone walls 
 
 ## Outdoor Living
 
-The first-floor veranda is the primary outdoor space. It faces toward Elounda Bay, offering a wide view across the water and surrounding hills. An outdoor summer kitchen on this level makes it practical to dine and prepare food outside without returning to the ground-floor kitchen. A dining area on the veranda offers a space to sit and gather.
+The first-floor veranda is the primary outdoor space. It faces toward Elounda Bay, with a wide view across the water and surrounding hills. The outdoor kitchenette on this level makes it practical to prepare food and dine outside without returning to the ground-floor kitchen.
 
-At ground level, the enclosed stone courtyard provides a shaded entry and access to the main kitchen and bathroom.
+At ground level, the open stone courtyard provides entry to the house and access to the main kitchen and bathroom. It should be understood as an entry courtyard, not as the main outdoor sitting area.
 
 ---
 

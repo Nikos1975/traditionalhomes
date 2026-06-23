@@ -17,7 +17,13 @@ Ahead from the entrance is the shower room. On the left, a wooden internal stair
 To the right of the shower room, a separate bedroom is divided from the living area by a door. This bedroom has access to a private balcony with views toward the shared pool, the Cretan landscape, olive trees, and carob trees. The room also includes wooden beds, with a small kitchen set to the left.
 
 ### Outdoor Kitchen And Shared Pool
-The shaded veranda includes an outdoor kitchen, giving guests a useful place to prepare meals and sit outside. The swimming pool and barbecue area are shared with House Demetra, so guests should expect shared use rather than a private pool.
+Before entering the house, guests pass through the shared pool and barbecue area used with House Demetra. From there, a short flight of steps leads up to Penelope's covered veranda, where there is an external mini kitchen, a dining table, and a shaded seating area beneath a tiled roof.
+
+This outdoor area is useful for simple meals and time outside before or after using the shared pool. The swimming pool and barbecue area are shared with House Demetra, so guests should expect shared use rather than a private pool.
 
 ### Access And Pairing
-Shared private guest parking is about 40 m away, with space for up to five cars in total; if the shared parking area is full, guests can usually park for free around the village. The house is not step-free, and guests should expect at least one step from the path to the entrance plus internal stairs to the ontas. Penelope can be considered with House Demetra for larger groups that want nearby houses around the same shared pool.
+From the shared private parking area, guests leave the parking from the upper side by a stair and join a small cement village road. After walking uphill for about 10 metres, they pass through a gate and follow steps down toward the shared swimming pool area.
+
+The route continues past the barbecue area and then up a further set of steps to Penelope's external mini kitchen, dining table, and covered veranda. From the veranda, the entrance opens into the house.
+
+The house is not step-free. Guests should expect stairs from the parking route to the pool area, further steps up to the veranda, and internal wooden stairs to the ontas. Penelope can be considered with House Demetra for larger groups that want nearby houses around the same shared pool.

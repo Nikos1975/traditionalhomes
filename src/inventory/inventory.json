@@ -58,23 +58,23 @@
     "pool": "none",
     "poolNotes": null,
     "sharedPoolWith": [],
-    "floors": 2,
+    "floors": 1,
     "internalStairs": true,
     "view": "Sea view",
     "parking": "Shared private guest parking nearby (~70 m); free village parking if full",
     "wifi": true,
     "pets": "Small pets (≤5 kg) on request",
     "hardConstraints": [
-      "Not step-free — at least one step from path to entrance",
-      "Internal stairs to upper level"
+      "Not step-free — stone steps from village path to entrance",
+      "Internal wooden stairs to ontas and bedroom"
     ],
     "amenities": [
       "Air Conditioning & Climate Control",
-      "Fully Equipped Kitchen",
+      "Small Kitchen Area",
       "Private Sea-View Balcony",
       "High-Speed Wi-Fi"
     ],
-    "kitchen": "Fully equipped kitchen",
+    "kitchen": "Small kitchen area beneath internal wooden stair",
     "kitchenNotes": null,
     "accessDetail": null,
     "bookingId": "HLEONI",
@@ -110,8 +110,8 @@
     "wifi": true,
     "pets": "Small pets (≤5 kg) on request",
     "hardConstraints": [
-      "Not step-free — at least one step from path to entrance",
-      "Internal stairs to upper level",
+      "Not step-free — arched courtyard entry and internal stairs",
+      "Internal stairs from ground floor to first floor",
       "Bathroom accessed via the courtyard area"
     ],
     "amenities": [
@@ -209,8 +209,9 @@
     "wifi": true,
     "pets": "Small pets (≤5 kg) on request",
     "hardConstraints": [
-      "Not step-free — at least one step from path to entrance",
-      "Pool is shared with House Demetra"
+      "Not step-free — stairs from parking route to pool area and veranda",
+      "Internal wooden stairs to ontas",
+      "Pool and barbecue area are shared with House Demetra"
     ],
     "amenities": [
       "Air Conditioning & Climate Control",
