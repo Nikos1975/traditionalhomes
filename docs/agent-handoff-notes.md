@@ -35,6 +35,18 @@ When pausing or finishing a substantial task, add a dated note below with:
 
 ## Notes
 
+### 2026-06-24 - Blog test-page robots metadata
+
+- Goal: remove conflicting robots metadata from directly routable blog style-test pages.
+- Files changed:
+  - `src/layouts/Base.astro`
+  - `docs/agent-handoff-notes.md`
+- What changed:
+  - `Base.astro` now emits one robots meta tag. Pages passed `noindex` receive `noindex`; normal pages keep the existing `index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1` policy.
+  - The blog style-test pages remain controlled by the existing `noindex={isEloundaGuideTest}` route logic and remain excluded from `/blog/`.
+- Remaining:
+  - Architecture docs were not updated because no route structure, content collection, component relationship, or user-facing flow changed.
+
 ### 2026-06-23 - Almond Tree Villa access wording correction
 
 - Goal: correct Almond Tree Villa access wording in the visible "Before you book" and practical notes.

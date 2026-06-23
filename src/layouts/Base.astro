@@ -21,12 +21,15 @@ const {
 
 const siteUrl = 'https://traditional-homes.gr';
 const canonical = canonicalUrl ?? new URL(Astro.url.pathname, siteUrl).href;
+const robotsContent = noindex
+  ? 'noindex'
+  : 'index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1';
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
-    <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
+    <meta name="robots" content={robotsContent} />
     <link rel="sitemap" href="/sitemap-index.xml" />
     <meta property="og:image:alt" content={title} />
     <meta name="theme-color" content="#B44B2A" />
@@ -34,7 +37,6 @@ const canonical = canonicalUrl ?? new URL(Astro.url.pathname, siteUrl).href;
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    {noindex && <meta name="robots" content="noindex" />}
     <link rel="canonical" href={canonical} />
 
     <meta property="og:type" content="website" />
