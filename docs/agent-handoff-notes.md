@@ -35,6 +35,28 @@ When pausing or finishing a substantial task, add a dated note below with:
 
 ## Notes
 
+### 2026-06-25 - Published blog internal cross-links
+
+- Goal: add careful internal cross-links between existing published blog articles only.
+- Files changed:
+  - `src/content/blog/welcome-to-elounda.md`
+  - `src/content/blog/Mavrikiano-Distances-And-Guide.md`
+  - `src/content/blog/key-phases-in-elounda-hotel-development.md`
+  - `src/content/blog/elounda-wartime-memory.md`
+  - `src/content/blog/elounda-visitor-economy.md`
+  - `src/content/blog/elounda-salt-pans-and-poros-windmills.md`
+  - `src/content/blog/elounda-history-through-its-shoreline.md`
+  - `src/content/blog/elounda-guide.md`
+- What changed:
+  - Added contextual links only to published `/blog/` articles documented in `docs/architecture/blog-content-index.md`.
+  - Did not link to `elounda-guide-style-1`, `elounda-guide-style-2`, or `elounda-guide-style-3`.
+- Verified:
+  - `npx astro build --outDir dist-codex-verify` passed and the temporary output directory was removed.
+  - Generated `/blog/` contained all 8 published posts and no hidden style variant links.
+  - `/blog/elounda-guide-style-1/` still rendered with `robots: noindex` in the verification build.
+- Blocker:
+  - Standard `npm run build` is blocked by a Windows `EPERM` lock on the existing untracked `dist\blog\elounda-guide\index.html`, even after stopping stale Astro dev/preview processes.
+
 ### 2026-06-24 - Elounda guide Argyro veranda lead image
 
 - Goal: use an existing Argyro veranda sea-view image as the Elounda guide blog lead image without changing routes, slugs, layout, or article body text.
