@@ -1,14 +1,14 @@
 ---
 slug: "almond-tree-villa"
 title: "Almond Tree Villa"
-summary: "A 230 m2 traditional villa in Vrouchas, Elounda, with five sleeping rooms, two bathrooms, a private 9 m x 4 m pool, and views toward the Cretan Sea, olive groves, garden, pool, and mountains."
+summary: "Traditional Cretan villa with private pool in Vrouchas, above Plaka and Elounda. Sleeps 10, with 5 bedrooms, 2 bathrooms, a private 9 m × 4 m pool, reed-shaded balconies, and sea views."
 ---
 
 # Almond Tree Villa
 
-Almond Tree Villa is a traditional five-bedroom villa in Vrouchas, above Elounda, with space for up to 10 guests. It suits families or groups who want one base for the whole stay, with room to cook, sit around the table, use the pool, and step out to the reed-shaded balconies during the day.
+Almond Tree Villa is a traditional five-bedroom Cretan villa in Vrouchas, above Plaka and Elounda, with space for up to 10 guests. It suits families or groups who want one base for the whole stay, with room to cook, sit around the table, use the pool, and step out to the reed-shaded balconies during the day.
 
-**230 m² · Sleeps 10 · 5 sleeping rooms · 2 bathrooms · Private pool, 9 m x 4 m · Reed-shaded balconies · Cretan Sea views**
+**230 m² · Sleeps 10 · 5 bedrooms · 2 bathrooms · Private pool, 9 m × 4 m · Reed-shaded balconies · Sea views**
 
 ## Villa Layout
 
@@ -24,15 +24,15 @@ The two upper double bedrooms look toward the Cretan Sea, olive groves, garden, 
 
 ## Outdoor Living
 
-The private pool measures 9 m x 4 m and sits within the garden area. Around it there is space for sunbeds, outdoor meals, and time at the villa between drives to Plaka, Elounda, and the coast.
+The private pool measures 9 m × 4 m and sits within the garden area. Around it there is space for sunbeds, outdoor meals, and time at the villa between drives to Plaka, Elounda, and the coast.
 
 The outdoor kitchen and barbecue make group meals easier. The garden, pool area, and reed-shaded balconies are the main outdoor spaces, with views toward the Cretan Sea, olive groves, mountains, and the village setting of Vrouchas.
 
 ## Location
 
-Almond Tree Villa is in Vrouchas, a hillside village above Elounda. The setting is quieter than the coast, with Plaka, Elounda, and the shoreline reached by car.
+Almond Tree Villa is in Vrouchas, a hillside village above Plaka and Elounda. The setting is quieter than the coast, with Plaka, Elounda, and the shoreline reached by car.
 
-Street parking is about 30 m away. There are several steps from the parking area to the entrance, so arrival should use the villa-specific map and instructions.
+Free public road parking is available about 30 metres from the house. The route to the villa includes village terrain and steps, so arrival should use the villa-specific map and instructions.
 
 ## Suitability
 
@@ -40,9 +40,10 @@ Almond Tree Villa suits families or groups who want to stay together in one trad
 
 It is not the right choice for guests who need step-free access or a simple single-level layout. The villa has internal stairs, stepped levels, and several steps from parking to the entrance.
 
-## Practical Note
+## Before you book
 
-- Not step-free — there are several steps from parking to the entrance.
+- Parking and access — free public road parking is available about 30 metres from the house; the route to the villa includes village terrain and steps.
+- Not step-free — there are several steps from the access point to the entrance.
 - Split-level villa — bedrooms and living areas are connected by internal stairs and stepped levels.
-- Hillside village setting in Vrouchas, Elounda. The villa is best suited to guests who are comfortable with steps and internal stairs.
-- Private pool: children must be supervised
+- Hillside village setting in Vrouchas, Elounda. The villa is best suited to guests who are comfortable with steps, village paths, and internal stairs.
+- Private pool — children must be supervised.

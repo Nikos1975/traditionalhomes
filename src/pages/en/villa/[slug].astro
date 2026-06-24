@@ -42,7 +42,7 @@ const ogImagePath = path.join(process.cwd(), 'public', 'images', 'villa', slug, 
 const ogImage = fs.existsSync(ogImagePath) ? `/images/villa/${slug}/og.jpg` : undefined;
 
 const pageTitle = `${unit.name} - ${unit.location} | Elounda Traditional Homes`;
-const pageDescription = `${unit.name} in ${unit.location} - sleeps ${unit.sleeps}, five sleeping rooms, two bathrooms, and a private 9 m x 4 m pool. Views toward the Cretan Sea, olive groves, garden, pool, and mountains.`;
+const pageDescription = `${unit.name} is a traditional Cretan villa with private pool in Vrouchas, above Plaka and Elounda. Sleeps ${unit.sleeps}, with 5 bedrooms, 2 bathrooms, and a private 9 m × 4 m pool.`;
 
 const locData = locations.find(l => l.slug === slug);
 
