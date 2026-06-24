@@ -25,7 +25,7 @@ into the air of mid-morning. In Mavrikiano, the tiered hamlet that climbs the
 hillside above the Gulf of Elounda, the day begins with the rhythmic percussion
 of a single-cylinder diesel engine. It is a kaiki — a traditional wooden fishing
 boat — trailing a white wake across the cobalt expanse of Mirabello Bay. From a
-stone veranda elevated some three hundred feet above the water, the sound is
+stone veranda set roughly 25–32 metres above the water, the sound is
 skeletal and thin, carried upward by a thermal breeze that smells of salt and
 ripening figs. Below, the turquoise shallows of the coast transition abruptly
 into a bruised purple where the seafloor drops away: a reminder that this
@@ -109,7 +109,7 @@ understanding of what happened inside it has deepened.
 
 The ascent from the harbour to Mavrikiano is steep but brief: a ten-minute
 walk upward through a labyrinth of stairs and inclined alleys. At roughly
-twenty-five metres of elevation, the village exists in a different register
+25–32 metres of elevation, the village exists in a different register
 from the coast below. It is a small place — a handful of lanes, stone walls,
 old houses whose origins are visible in the quality of the masonry,
 thick-coursed and the colour of dry honey. The rhythm here is pedestrian.
