@@ -15,8 +15,10 @@ tags:
   - spinalonga
   - mirabello
   - travel
-image: "/images/location-map.jpg"
+image: "/images/houses/argyro/1600/argyro-veranda-dining-sea-view-03-1600.webp"
 imageAlt: "View across Mirabello Bay from the stone verandas of Mavrikiano, eastern Crete"
+imageCaption: "View across Mirabello Bay from the stone verandas of Mavrikiano, eastern Crete"
+imageCredit: "Elounda Traditional Homes of Crete."
 ---
 
 The light in eastern Crete does not simply illuminate the landscape; it arrives
