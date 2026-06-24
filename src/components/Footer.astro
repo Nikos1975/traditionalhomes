@@ -13,9 +13,9 @@ const bookingUrl = 'https://traditionalhomes.reserve-online.net/';
           <img 
             src="/images/brand/eh-mark.svg" 
             alt="Elounda Traditional Homes Mark" 
-            width="40" 
-            height="40" 
-            class="w-10 h-10 opacity-50"
+            width="48"
+            height="48"
+            class="h-12 w-12 opacity-60"
           />
           <div>
             <p class="font-serif text-3xl text-stone-50 leading-tight tracking-wide">Elounda Traditional Homes</p>
@@ -55,6 +55,7 @@ const bookingUrl = 'https://traditionalhomes.reserve-online.net/';
         <h3 class="font-sans font-bold text-stone-50 text-[10px] uppercase tracking-[0.2em] mb-6">Information</h3>
         <ul class="space-y-4 text-sm font-light">
           <li><a href="/en/location/" class="hover:text-stone-50 transition-colors duration-300">Location & Arrival</a></li>
+          <li><a href="/blog/" class="hover:text-stone-50 transition-colors duration-300">Blog</a></li>
           <li><a href="/en/faq/" class="hover:text-stone-50 transition-colors duration-300">Questions & Answers</a></li>
           <li><a href="/en/policies/" class="hover:text-stone-50 transition-colors duration-300">House Policies</a></li>
           <li><a href="/en/about/" class="hover:text-stone-50 transition-colors duration-300">Our Story</a></li>
@@ -65,14 +66,14 @@ const bookingUrl = 'https://traditionalhomes.reserve-online.net/';
     </div>
 
     {/* BOTTOM BAR */}
-    <div class="border-t border-stone-800 mt-16 pt-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-      <p class="text-[11px] text-stone-500 font-light tracking-wide">
+    <div class="border-t border-stone-800 mt-16 pt-8 flex flex-col gap-5 md:flex-row md:items-center md:justify-between md:gap-8">
+      <p class="text-[11px] text-stone-400/80 font-light tracking-wide">
         &copy; {currentYear} Elounda Traditional Homes. All rights reserved.
       </p>
-      <nav class="flex gap-6 text-[11px] font-light tracking-wide" aria-label="Legal navigation">
-        <a href="/en/policies/" class="text-stone-500 hover:text-stone-300 transition-colors duration-300">Policies</a>
-        <a href="/en/policies/#access" class="text-stone-500 hover:text-stone-300 transition-colors duration-300">Accessibility</a>
-        <a href="https://traditional-homes.gr" class="text-stone-500 hover:text-stone-300 transition-colors duration-300">traditional-homes.gr</a>
+      <nav class="flex flex-wrap items-center gap-x-6 gap-y-3 text-[11px] font-light tracking-wide md:justify-end" aria-label="Legal navigation">
+        <a href="/en/policies/" class="text-stone-400/85 hover:text-stone-200 transition-colors duration-300">Policies</a>
+        <a href="/en/policies/#access" class="text-stone-400/85 hover:text-stone-200 transition-colors duration-300">Accessibility</a>
+        <a href="https://traditional-homes.gr" class="whitespace-nowrap text-stone-400 hover:text-stone-200 transition-colors duration-300">traditional-homes.gr</a>
       </nav>
     </div>
   </div>
