@@ -45,7 +45,7 @@ The same official account says that these efforts were interrupted by the Italia
 
 A respectful visit starts with orientation, not performance. Look across the bay from Elounda. Follow the road north to Plaka. If visiting Spinalonga, read the official material on site and keep the island's medical and social history separate from broader wartime memory.
 
-The [Mavrikiano Distances and Area Guide](/blog/mavrikiano-distances-and-guide/) helps with boat, road, and walking orientation around Spinalonga. The [Elounda location guide](/en/location/) helps with present-day orientation. The [Vrouchas guide](/en/guide/vrouchas/) gives useful context for the upland side of the area.
+The [Mavrikiano Distances and Area Guide](/blog/mavrikiano-distances-and-guide/) helps with boat, road, and walking orientation around Spinalonga. For a broader essay on Elounda, Mavrikiano, Olous, and the island, read [Where the Sea Holds Memory](/blog/elounda-guide/). The [Vrouchas guide](/en/guide/vrouchas/) gives useful context for the upland side of the area.
 
 Elounda's wartime memory is strongest when it stays close to what can be known: the bay, the island, the roads, and the lives affected by events larger than the village itself.
 

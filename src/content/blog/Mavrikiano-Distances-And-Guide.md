@@ -33,7 +33,6 @@ imageCredit: "Photo by Milada Vigerova."
 ## Recommended Day-Trip Itinerary: The Mirabello Circuit
 
 This sequence keeps travel simple and places more exposed stops earlier in the day.
-For the shoreline history behind the salt pans, Olous, and Spinalonga, read [A Short Chronological History of Elounda](/blog/elounda-history-through-its-shoreline/).
 
 * **08:30 AM | Departure to Plaka:** Leave Mavrikiano for Plaka.
 * **09:00 AM | Spinalonga Visit:** Take one of the early boats from Plaka and allow around 1.5 to 2 hours on site.
@@ -91,4 +90,6 @@ A slightly longer, scenic route across the bay.
 
 > **Planning note:** Taking an early boat from Plaka (around 8:30 AM to 9:00 AM) can mean cooler conditions and shorter queues.
 
-For a quieter historical frame before visiting the island, see [Elounda, Spinalonga, and Wartime Memory](/blog/elounda-wartime-memory/).
+## Related Reading
+
+For broader context, read [Where the Sea Holds Memory](/blog/elounda-guide/), [A Short Chronological History of Elounda](/blog/elounda-history-through-its-shoreline/), [Elounda Salt Pans and the Poros Windmills](/blog/elounda-salt-pans-and-poros-windmills/), and [Elounda, Spinalonga, and Wartime Memory](/blog/elounda-wartime-memory/).

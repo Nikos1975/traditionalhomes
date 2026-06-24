@@ -44,18 +44,17 @@ When pausing or finishing a substantial task, add a dated note below with:
   - `src/content/blog/key-phases-in-elounda-hotel-development.md`
   - `src/content/blog/elounda-wartime-memory.md`
   - `src/content/blog/elounda-visitor-economy.md`
-  - `src/content/blog/elounda-salt-pans-and-poros-windmills.md`
-  - `src/content/blog/elounda-history-through-its-shoreline.md`
-  - `src/content/blog/elounda-guide.md`
+  - `docs/agent-handoff-notes.md`
 - What changed:
   - Added contextual links only to published `/blog/` articles documented in `docs/architecture/blog-content-index.md`.
+  - Added a short related-reading section to the Mavrikiano distances article.
   - Did not link to `elounda-guide-style-1`, `elounda-guide-style-2`, or `elounda-guide-style-3`.
 - Verified:
-  - `npx astro build --outDir dist-codex-verify` passed and the temporary output directory was removed.
-  - Generated `/blog/` contained all 8 published posts and no hidden style variant links.
-  - `/blog/elounda-guide-style-1/` still rendered with `robots: noindex` in the verification build.
+  - Source checks found 8 published blog files and 3 hidden `elounda-guide-style-*` variants.
+  - All unique article-body `/blog/` links resolve to known published blog content files.
+  - `src/pages/blog/[...slug].astro` still sets `noindex` for `elounda-guide-style-*` routes.
 - Blocker:
-  - Standard `npm run build` is blocked by a Windows `EPERM` lock on the existing untracked `dist\blog\elounda-guide\index.html`, even after stopping stale Astro dev/preview processes.
+  - `npm run build` is blocked by a Windows `EPERM` lock in `node_modules\.vite\deps\astro___aria-query.js.map`.
 
 ### 2026-06-24 - Elounda guide Argyro veranda lead image
 
