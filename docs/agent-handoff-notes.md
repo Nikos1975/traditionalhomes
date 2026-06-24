@@ -35,6 +35,123 @@ When pausing or finishing a substantial task, add a dated note below with:
 
 ## Notes
 
+### 2026-06-24 - Elounda history and Salt Pans image updates
+
+- Goal: keep the Salt Pans-suitable image on the Salt Pans article and process the Evangelos Mpikakis Unsplash image as the new Elounda history lead image.
+- Files changed:
+  - `src/content.config.ts`
+  - `src/pages/blog/[...slug].astro`
+  - `src/content/blog/elounda-history-through-its-shoreline.md`
+  - `src/content/blog/elounda-salt-pans-and-poros-windmills.md`
+  - `public/images/blog/elounda-salt-pans/elounda-salt-pans-poros-windmills.jfif`
+  - `src/assets/blog-source/elounda-history-through-its-shoreline/elounda-gulf.jpg`
+  - `public/images/blog/elounda-history-through-its-shoreline/elounda-gulf-480.webp`
+  - `public/images/blog/elounda-history-through-its-shoreline/elounda-gulf-768.webp`
+  - `public/images/blog/elounda-history-through-its-shoreline/elounda-gulf-1200.webp`
+  - `public/images/blog/elounda-history-through-its-shoreline/elounda-gulf-1600.webp`
+  - `public/images/blog/elounda-history-through-its-shoreline/elounda-gulf-2400.webp`
+  - `docs/agent-handoff-notes.md`
+- What changed:
+  - Salt Pans keeps the reassigned local image at `/images/blog/elounda-salt-pans/elounda-salt-pans-poros-windmills.jfif`.
+  - The Salt Pans lead image visible credit uses the original local caption source: "Source: WhitcombeRD / Getty Images."
+  - The History article now uses `/images/blog/elounda-history-through-its-shoreline/elounda-gulf-1600.webp` with alt text "View across the Gulf of Elounda."
+  - The source file used was `C:\Users\Nikos\Downloads\evangelos-mpikakis-hmp9alkCaQw-unsplash.jpg`.
+  - Added supported `imageCaption`, `imageCredit`, and `imageCreditUrl` blog frontmatter fields and rendered lead-image captions/credits under article lead images.
+  - Author credit: "Photo by Evangelos Mpikakis on Unsplash." is now visible under the History lead image.
+- Remaining:
+  - Confirm exact source URLs for the WhitcombeRD / Getty Images source and the Evangelos Mpikakis Unsplash profile before adding `imageCreditUrl`.
+
+### 2026-06-24 - Reassigned Elounda history image to Salt Pans
+
+- Goal: use the image previously assigned to the Elounda history article for the Salt Pans and Poros Windmills article.
+- Files changed:
+  - `src/content/blog/elounda-history-through-its-shoreline.md`
+  - `src/content/blog/elounda-salt-pans-and-poros-windmills.md`
+  - `public/images/blog/elounda-salt-pans/elounda-salt-pans-poros-windmills.jfif`
+  - `docs/agent-handoff-notes.md`
+- What changed:
+  - Copied the existing local image from the history image folder into the Salt Pans image folder.
+  - Updated the Salt Pans frontmatter `image` and `imageAlt`.
+  - Removed the History article image frontmatter and the matching inline image figure so it no longer shows the reassigned Salt Pans image.
+- Remaining:
+  - Find or process a better dedicated image for the History article before adding a new lead image there.
+
+### 2026-06-24 - Blog image pipeline CLI command convention
+
+- Goal: make the blog image pipeline command clearer on Windows/npm without touching blog visual files or article body text.
+- Files changed:
+  - `scripts/process-blog-image.mjs`
+  - `docs/architecture/blog-image-pipeline.md`
+  - `.agents/skills/blog-image-pipeline/SKILL.md`
+  - `docs/agent-handoff-notes.md`
+- What changed:
+  - The pipeline parser now tolerates the normal npm form and the extra-`--` fallback form.
+  - Documentation now shows the preferred command and notes the Windows/npm fallback when npm strips option names or intercepts help.
+  - The printed frontmatter snippet uses the current `image` and `imageAlt` fields, not `heroImage`.
+- Remaining:
+  - Re-run command checks after any future npm/package-manager changes.
+
+### 2026-06-24 - Mavrikiano Distances blog image
+
+- Goal: process the local Mavrikiano/Spinalonga image through the blog image pipeline and connect it to the Mavrikiano Distances blog post without changing article body text, route, slug, or visibility behavior.
+- Files changed:
+  - `src/content/blog/Mavrikiano-Distances-And-Guide.md`
+  - `src/assets/blog-source/mavrikiano-distances-and-guide/hero.jpg`
+  - `public/images/blog/mavrikiano-distances-and-guide/hero-480.webp`
+  - `public/images/blog/mavrikiano-distances-and-guide/hero-768.webp`
+  - `public/images/blog/mavrikiano-distances-and-guide/hero-1200.webp`
+  - `public/images/blog/mavrikiano-distances-and-guide/hero-1600.webp`
+  - `public/images/blog/mavrikiano-distances-and-guide/hero-2400.webp`
+  - `docs/agent-handoff-notes.md`
+- What changed:
+  - Source image `C:\Users\Nikos\Downloads\elounda-mavrikiano-spinalonga.jpg` was copied into the blog source folder and generated into five WebP sizes.
+  - Updated the post frontmatter `image`, `imageAlt`, `imageCaption`, and `imageCredit` fields to use the new `hero-1600.webp` image, factual caption text, and visible photographer credit: "Photo by Milada Vigerova."
+  - Normalized the generated folder casing to lowercase after the pipeline matched the mixed-case markdown filename.
+- Verified:
+  - `npm run build` passed, with the existing duplicate-id warning for the mixed-case Mavrikiano blog filename.
+  - `npx astro dev --host 127.0.0.1 --port 4331` was blocked by the known `.astro/data-store.json` Windows `EPERM` cache lock, while the already-running 4331 server was stale.
+  - Browser verification used `astro preview` on `http://127.0.0.1:4334/` and confirmed the article lead image, `/blog/` carousel/card image, 8 listed posts, hidden style variants, `noindex` on a style variant route, and preserved card hover image layers.
+
+### 2026-06-24 - Blog cascading featured hero
+
+- Goal: convert the `/blog/` static featured article hero into a lightweight cascading carousel using existing blog frontmatter images only.
+- Files changed:
+  - `src/pages/blog/index.astro`
+  - `docs/agent-handoff-notes.md`
+- What changed:
+  - Replaced the single image-left/content-right hero with a multi-article image-led hero using the preferred featured blog posts that already have local images.
+  - Added previous/next controls, thumbnail article selectors, a `1 / 5` counter, arrow-key handling, and reduced-motion-safe transitions.
+  - Did not add autoplay, dependencies, routes, slug changes, article content changes, or image pipeline changes.
+- Verified:
+  - `npm run build` passed.
+  - Dev server ran on `http://127.0.0.1:4333/` because ports 4331 and 4332 were already in use.
+  - Browser checks confirmed five featured slides, working keyboard controls, working thumbnail selection, local image URLs, 8 listed posts, hidden style variants, preserved card hover image layers, and no horizontal overflow at 390 px.
+
+### 2026-06-24 - Blog image pipeline and featured hero panel refinement
+
+- Goal: add an automated blog image resizing pipeline and soften the `/blog/` featured hero panel without changing blog content, routes, slugs, or visibility behavior.
+- Files changed:
+  - `package.json`
+  - `scripts/process-blog-image.mjs`
+  - `docs/architecture/blog-image-pipeline.md`
+  - `.agents/skills/blog-image-pipeline/SKILL.md`
+  - `src/pages/blog/index.astro`
+  - `docs/agent-handoff-notes.md`
+- What changed:
+  - Added `npm run blog:image` for copying one source image into `src/assets/blog-source/{post-slug}/` and generating non-upscaled WebP sizes in `public/images/blog/{post-slug}/`.
+  - Documented accepted source types, recommended source dimensions, generated sizes, folder conventions, command examples, and manual alt/caption requirements.
+  - Added a project skill requiring future blog image work to use the pipeline and update handoff notes when image conventions change.
+  - Replaced the `/blog/` featured hero's black content panel with a light stone editorial panel using dark stone text, primary terracotta label/link accents, and subtle stone borders.
+  - Increased `/blog/` top padding from `py-16 md:py-24` to `pb-16 pt-20 md:pb-24 md:pt-28` so the title area sits more comfortably below the sticky header.
+  - Kept drop caps, blog card hover-image behavior, featured hero structure, test variants, `noindex`, and `/blog/` filtering unchanged.
+- Verification notes:
+  - `sharp` was already present in `package.json` and `package-lock.json`; no dependency was added.
+  - `node --check scripts/process-blog-image.mjs` passed.
+  - `npm run blog:image -- --help` is intercepted by this Windows/npm setup and prints npm's own help. `npm run blog:image -- -- --help` reaches the script and prints the pipeline help.
+  - Test run used `public/images/brand/home-hero-spinalonga.jpg` with slug `elounda-wartime-memory` and name `codex-pipeline-test`, generated all five WebP sizes, verified a 1600 WebP had no EXIF/ICC metadata, then removed the test artifacts.
+  - Skill validation was blocked because the local Python environment is missing `yaml`.
+  - No blog-content-index architecture update was needed because content mapping, route behavior, published/hidden behavior, and noindex behavior did not change.
+
 ### 2026-06-24 - Blog article layout refinement
 
 - Goal: refine blog article page structure and aesthetics without rewriting article content or changing slugs/routes.
@@ -42,6 +159,8 @@ When pausing or finishing a substantial task, add a dated note below with:
   - `src/pages/blog/[...slug].astro`
   - `docs/agent-handoff-notes.md`
 - What changed:
+  - Added a static, image-led featured article hero to `/blog/`, using the existing local image for `elounda-history-through-its-shoreline`.
+  - Added a wider frontmatter-driven lead image treatment to article pages when an existing `image` field is available, with captions from existing `imageAlt` metadata.
   - Reworked article pages into a calmer editorial layout with breadcrumb, readable metadata, restrained title/dek treatment, a wider 736 px desktop article column, documentary image/caption styling, optional h2-based "In this article" navigation, simple related reading, and Back to Blog.
   - Kept the standard article drop-cap treatment, but refined its size and mobile behavior so it reads as an editorial accent without overpowering the first paragraph.
   - Kept existing blog index card hover-image behavior untouched.
