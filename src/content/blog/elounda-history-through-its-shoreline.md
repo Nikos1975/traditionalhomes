@@ -11,18 +11,15 @@ tags:
   - olous
   - spinalonga
   - lasithi
-image: "/images/blog/elounda-history/ancient-olous-sunken-remains.jfif"
-imageAlt: "The sunken remains of Ancient Olous near Elounda"
+image: "/images/blog/elounda-history-through-its-shoreline/elounda-gulf-1600.webp"
+imageAlt: "View across the Gulf of Elounda."
+imageCaption: "The Gulf of Elounda."
+imageCredit: "Photo by Evangelos Mpikakis on Unsplash."
 ---
 
 Elounda is easiest to understand from the waterline. The harbor, the shallow lagoon, the road toward the causeway, and the view north to Spinalonga show how geography shaped settlement, work, defense, illness, recovery, and modern travel around Mirabello Bay.
 
 This is not a history that needs decoration. Much of it is visible in plain form: stone, water, salt flats, old routes, and the distance between the shore and the island.
-
-<figure>
-  <img src="/images/blog/elounda-history/ancient-olous-sunken-remains.jfif" alt="The sunken remains of Ancient Olous near Elounda" loading="lazy" />
-  <figcaption>The sunken remains of Ancient Olous. Source: WhitcombeRD / Getty Images.</figcaption>
-</figure>
 
 ## 1. Ancient Olous and the Shallow Water
 

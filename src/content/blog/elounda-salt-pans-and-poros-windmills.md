@@ -11,8 +11,10 @@ tags:
   - salt-pans
   - windmills
   - poros
-image: "/images/location-map.jpg"
-imageAlt: "Map context for Elounda, Poros, and the lagoon"
+image: "/images/blog/elounda-salt-pans/elounda-salt-pans-poros-windmills.jfif"
+imageAlt: "View across the Elounda salt pans and the Poros windmills area."
+imageCaption: "The Elounda salt pans and Poros windmills area."
+imageCredit: "Source: WhitcombeRD / Getty Images."
 ---
 
 The road from Elounda toward the Kolokytha side passes through one of the most useful places for understanding the area. There is water on both sides, the old salt-pan landscape is close by, and the Poros windmills stand near the canal.

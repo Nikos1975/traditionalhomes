@@ -14,6 +14,9 @@ const { entry } = Astro.props;
 const { Content, headings } = await render(entry);
 const description = entry.data.description ?? entry.data.subtitle ?? entry.data.title;
 const category = entry.data.category ?? 'Updates';
+const leadImageCaption = entry.data.imageCaption ?? entry.data.imageAlt;
+const leadImageCredit = entry.data.imageCredit;
+const leadImageCreditUrl = entry.data.imageCreditUrl;
 const isEloundaGuideTest = entry.id.startsWith('elounda-guide-style-');
 const hasMarkdownSubtitle = entry.id === 'elounda-guide' || isEloundaGuideTest;
 const guideStyleVariant = isEloundaGuideTest ? entry.id.replace('elounda-guide-', '') : null;
@@ -100,6 +103,36 @@ const relatedPosts = (await getCollection('blog'))
         )}
       </header>
 
+      {entry.data.image && (
+        <figure class="blog-lead-image mb-12">
+          <div class="overflow-hidden rounded-xl border border-stone-200 bg-stone-100">
+            <img
+              src={entry.data.image}
+              alt={entry.data.imageAlt ?? ''}
+              loading="eager"
+              class="h-full w-full object-cover"
+            />
+          </div>
+          {(leadImageCaption || leadImageCredit) && (
+            <figcaption class="mt-3 text-sm leading-relaxed text-stone-500">
+              {leadImageCaption && <span>{leadImageCaption}</span>}
+              {leadImageCredit && (
+                <>
+                  {leadImageCaption && ' '}
+                  {leadImageCreditUrl ? (
+                    <a href={leadImageCreditUrl} class="text-stone-600 underline decoration-stone-300 underline-offset-2 hover:text-stone-900" rel="noopener noreferrer" target="_blank">
+                      {leadImageCredit}
+                    </a>
+                  ) : (
+                    <span>{leadImageCredit}</span>
+                  )}
+                </>
+              )}
+            </figcaption>
+          )}
+        </figure>
+      )}
+
       {showToc && (
         <nav class="mb-12 border-y border-stone-200 py-5" aria-labelledby="article-toc-heading">
           <h2 id="article-toc-heading" class="mb-3 text-sm font-semibold text-stone-900">In this article</h2>
@@ -163,6 +196,18 @@ const relatedPosts = (await getCollection('blog'))
   .blog-article :global(> h1:first-child + p:has(> em:only-child)),
   .blog-article :global(> h1:first-child + p:has(> em:only-child) + hr) {
     display: none;
+  }
+
+  .blog-lead-image {
+    width: min(calc(100vw - 2rem), 64rem);
+    margin-left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .blog-lead-image img {
+    aspect-ratio: 16 / 9;
+    display: block;
+    max-height: 34rem;
   }
 
   .blog-article :global(p:first-of-type::first-letter) {
