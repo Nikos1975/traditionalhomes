@@ -35,6 +35,31 @@ When pausing or finishing a substantial task, add a dated note below with:
 
 ## Notes
 
+### 2026-06-24 - Blog article layout refinement
+
+- Goal: refine blog article page structure and aesthetics without rewriting article content or changing slugs/routes.
+- Files changed:
+  - `src/pages/blog/[...slug].astro`
+  - `docs/agent-handoff-notes.md`
+- What changed:
+  - Reworked article pages into a calmer editorial layout with breadcrumb, readable metadata, restrained title/dek treatment, a wider 736 px desktop article column, documentary image/caption styling, optional h2-based "In this article" navigation, simple related reading, and Back to Blog.
+  - Kept the standard article drop-cap treatment, but refined its size and mobile behavior so it reads as an editorial accent without overpowering the first paragraph.
+  - Kept existing blog index card hover-image behavior untouched.
+  - Replaced the decorative hotel timeline/sidebar presentation with the quieter h2-based article navigation.
+  - Restored subtle in-article figure hover behavior with a smaller radius and lighter overlay.
+  - Related reading uses published, non-draft posts and excludes `elounda-guide-style-*` test variants.
+  - Blog route generation, `/blog/` index filtering, style-test direct routes, and style-test `noindex` behavior were preserved.
+- Verified:
+  - `npm run build` was blocked by the known Windows Vite cache `EPERM` lock at `node_modules/.vite/deps/astro___aria-query.js`, not by a source error.
+  - Dev server started on `http://127.0.0.1:4332/` because port 4331 was already in use.
+  - Browser checks covered `/blog/`, `/blog/key-phases-in-elounda-hotel-development/`, `/blog/elounda-wartime-memory/`, `/blog/elounda-guide/`, and `/blog/elounda-guide-style-1/`.
+  - Browser checks confirmed the blog index has no style-variant links, normal articles remain indexable, the style variant remains `noindex`, article width is 736 px on desktop, drop caps remain active, and related reading excludes style variants.
+  - Browser DOM/source checks confirmed blog cards still include the hover image layer and `group-hover/card:opacity-10` behavior; the headless hover command did not alter computed opacity, but the route source and live DOM retain the behavior.
+  - Mobile browser check at 390 px confirmed the refined drop cap stays inside the article column with no horizontal overflow.
+- Remaining:
+  - Re-run `npm run build` after the Windows Vite cache lock is released.
+  - No blog-content-index architecture docs update was needed because content mapping, slugs, routes, index inclusion, and noindex behavior did not change.
+
 ### 2026-06-24 - Blog content index and indexing skill
 
 - Goal: add a Graphify-style blog content map and a project skill for keeping it current.
