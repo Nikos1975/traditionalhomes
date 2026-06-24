@@ -35,6 +35,17 @@ When pausing or finishing a substantial task, add a dated note below with:
 
 ## Notes
 
+### 2026-06-24 - Elounda guide Argyro veranda lead image
+
+- Goal: use an existing Argyro veranda sea-view image as the Elounda guide blog lead image without changing routes, slugs, layout, or article body text.
+- Files changed:
+  - `src/content/blog/elounda-guide.md`
+  - `docs/agent-handoff-notes.md`
+- What changed:
+  - Elounda guide blog lead image changed to reuse `/images/houses/argyro/1600/argyro-veranda-dining-sea-view-03-1600.webp`.
+  - Image alt/caption wording: "View across Mirabello Bay from the stone verandas of Mavrikiano, eastern Crete".
+  - Visible source/credit: "Elounda Traditional Homes of Crete."
+
 ### 2026-06-24 - Elounda guide Mavrikiano elevation correction
 
 - Goal: correct Mavrikiano elevation wording in the Elounda guide article only.
