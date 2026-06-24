@@ -35,6 +35,18 @@ When pausing or finishing a substantial task, add a dated note below with:
 
 ## Notes
 
+### 2026-06-24 - Blog content index and indexing skill
+
+- Goal: add a Graphify-style blog content map and a project skill for keeping it current.
+- Files changed:
+  - `.agents/skills/blog-content-index/SKILL.md`
+  - `docs/architecture/blog-content-index.md`
+  - `docs/architecture/blog-content-index.mmd`
+  - `docs/agent-handoff-notes.md`
+- What changed:
+  - Added blog content index documentation for `/blog/`, current listed posts, hidden noindex style variants, and guide files outside the blog collection.
+  - Added a blog indexing skill requiring future blog, guide/blog boundary, route logic, slug, draft/noindex/testVariant, and `/blog/` visibility changes to update the index docs and handoff notes.
+
 ### 2026-06-24 - Blog test-page robots metadata
 
 - Goal: remove conflicting robots metadata from directly routable blog style-test pages.

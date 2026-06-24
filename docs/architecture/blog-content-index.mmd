@@ -1,0 +1,43 @@
+flowchart TD
+  BlogRoute["/blog/"]
+  NoEnBlog["/en/blog/ does not exist"]
+
+  IndexRoute["src/pages/blog/index.astro"]
+  SlugRoute["src/pages/blog/[...slug].astro"]
+  BlogContent["src/content/blog/"]
+
+  Listed["Published posts listed on /blog/"]
+  HiddenTests["Hidden noindex test variants"]
+  Guides["Guide content outside blog"]
+
+  BlogRoute --> IndexRoute
+  BlogRoute --> SlugRoute
+  IndexRoute --> BlogContent
+  SlugRoute --> BlogContent
+  BlogRoute -.-> NoEnBlog
+
+  BlogContent --> Listed
+  BlogContent --> HiddenTests
+
+  Listed --> Welcome["welcome-to-elounda.md"]
+  Listed --> MavrikianoDistances["Mavrikiano-Distances-And-Guide.md"]
+  Listed --> History["elounda-history-through-its-shoreline.md"]
+  Listed --> SaltPans["elounda-salt-pans-and-poros-windmills.md"]
+  Listed --> VisitorEconomy["elounda-visitor-economy.md"]
+  Listed --> Wartime["elounda-wartime-memory.md"]
+  Listed --> HotelDevelopment["key-phases-in-elounda-hotel-development.md"]
+  Listed --> EloundaGuide["elounda-guide.md"]
+
+  HiddenTests --> StyleOne["elounda-guide-style-1.md"]
+  HiddenTests --> StyleTwo["elounda-guide-style-2.md"]
+  HiddenTests --> StyleThree["elounda-guide-style-3.md"]
+
+  Guides --> MavrikianoGuide["src/guides/Mavrikiano-Guide.md"]
+  Guides --> VrouchasGuide["src/guides/Vrouchas-Guide.md"]
+
+  IndexRule["index.astro excludes elounda-guide-style-*"]
+  SlugRule["[...slug].astro routes non-draft posts directly"]
+  IndexRoute -.-> IndexRule
+  IndexRule -.-> HiddenTests
+  SlugRoute -.-> SlugRule
+  SlugRule -.-> HiddenTests
