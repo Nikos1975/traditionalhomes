@@ -162,41 +162,48 @@ const postsByCategory = categories.map(category => ({
               <p class="text-sm text-stone-400">{categoryPosts.length} {categoryPosts.length === 1 ? 'article' : 'articles'}</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+            <div class="grid grid-cols-1 items-stretch gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-8">
               {categoryPosts.map(post => (
-                <a href={`/blog/${post.id}/`} class="group/card relative flex h-full flex-col bg-white rounded-lg border border-stone-200 overflow-hidden shadow-sm hover:shadow-card-hover hover:-translate-y-0.5 hover:border-primary/30 transition-all duration-300">
+                <a href={`/blog/${post.id}/`} class="group/card blog-card relative flex h-full min-h-[21rem] flex-col overflow-hidden rounded-lg border border-stone-200/90 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-stone-300 hover:shadow-card-hover focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/35">
                   {post.data.image && (
                     <div
-                      class="absolute inset-0 z-0 opacity-0 group-hover/card:opacity-10 transition-opacity duration-700 bg-cover bg-center"
+                      class="absolute inset-0 z-[1] bg-cover bg-center opacity-0 transition-opacity duration-700 group-hover/card:opacity-[0.11]"
                       style={`background-image: url('${post.data.image}')`}
                       aria-hidden="true"
                     ></div>
                   )}
-                  <div class="relative z-10 flex h-full flex-col p-6">
-                    <div class="mb-5 flex flex-wrap gap-x-3 gap-y-2 text-[10px] uppercase tracking-[0.2em] text-stone-400">
-                      <time datetime={post.data.pubDate.toISOString()} class="font-bold">
-                        {formatDate(post.data.pubDate)}
-                      </time>
+                  <div class="absolute inset-0 z-0 bg-gradient-to-br from-white via-white/95 to-stone-50/90 transition-colors duration-300 group-hover/card:from-white/95 group-hover/card:via-stone-50/92 group-hover/card:to-stone-100/86" aria-hidden="true"></div>
+                  <div class="relative z-10 flex h-full flex-col p-6 sm:p-7">
+                    <div class="mb-6 flex items-start justify-between gap-4 text-[10px] uppercase tracking-[0.18em]">
+                      <div class="min-w-0 space-y-1.5">
+                        <time datetime={post.data.pubDate.toISOString()} class="block font-bold text-stone-500">
+                          {formatDate(post.data.pubDate)}
+                        </time>
+                        <span class="block h-px w-8 bg-primary/25 transition-all duration-300 group-hover/card:w-12 group-hover/card:bg-primary/45" aria-hidden="true"></span>
+                      </div>
                       {post.data.region && (
-                        <span>{post.data.region}</span>
+                        <span class="max-w-[45%] text-right font-semibold leading-relaxed text-stone-400">{post.data.region}</span>
                       )}
                     </div>
 
-                    <h3 class="font-serif text-2xl text-stone-900 mb-3 leading-snug group-hover/card:text-primary transition-colors">
+                    <h3 class="mb-3 font-serif text-[1.55rem] leading-[1.16] text-stone-950 transition-colors group-hover/card:text-primary md:text-[1.7rem]">
                       {post.data.title}
                     </h3>
 
                     {post.data.subtitle && (
-                      <p class="text-stone-400 text-sm italic mb-3">{post.data.subtitle}</p>
+                      <p class="mb-4 text-sm italic leading-relaxed text-stone-500">{post.data.subtitle}</p>
                     )}
 
-                    <p class="text-stone-500 text-sm leading-relaxed">{post.data.description}</p>
+                    <p class="text-sm leading-7 text-stone-600">{post.data.description}</p>
 
                     {post.data.tags.length > 0 && (
-                      <div class="mt-auto flex flex-wrap gap-1.5 pt-6">
-                        {post.data.tags.slice(0, 4).map(tag => (
-                          <span class="text-[9px] uppercase tracking-[0.15em] text-stone-500 bg-stone-50 px-2 py-1 rounded-full">{tag}</span>
+                      <div class="mt-auto flex flex-wrap gap-1.5 pt-7">
+                        {post.data.tags.slice(0, 3).map(tag => (
+                          <span class="rounded-full border border-stone-200/80 bg-stone-50/80 px-2.5 py-1 text-[9px] font-semibold uppercase tracking-[0.14em] text-stone-500 transition-colors group-hover/card:border-stone-300 group-hover/card:bg-white/85">{tag}</span>
                         ))}
+                        {post.data.tags.length > 3 && (
+                          <span class="rounded-full border border-transparent px-2 py-1 text-[9px] font-semibold uppercase tracking-[0.14em] text-stone-400">+{post.data.tags.length - 3}</span>
+                        )}
                       </div>
                     )}
                   </div>
