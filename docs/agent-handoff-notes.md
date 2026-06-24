@@ -35,6 +35,21 @@ When pausing or finishing a substantial task, add a dated note below with:
 
 ## Notes
 
+### 2026-06-25 - Almond Tree Villa before-booking access note
+
+- Goal: clarify the Almond Tree Villa "Before you book" notice without changing the villa route or page design.
+- Files changed:
+  - `src/inventory/inventory.json`
+  - `docs/agent-handoff-notes.md`
+- What changed:
+  - Added the nearby free public road parking note, village terrain/steps wording, access-point step wording, and village-path suitability wording to the data-driven sidebar notice.
+- Verified:
+  - Local preview of `/en/villa/almond-tree-villa/` on port 4321 returned 200 and showed the updated sidebar notice text.
+- Remaining:
+  - None expected.
+- Blockers:
+  - `npm run build` is blocked by a Windows Vite cache `EPERM` lock unlinking `node_modules\.vite\deps\astro___aria-query.js`.
+
 ### 2026-06-25 - Visitor economy and hotel development duplicate image cleanup
 
 - Goal: keep repeated article images as lead images only and remove duplicate inline figures.
