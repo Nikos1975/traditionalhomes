@@ -35,6 +35,39 @@ When pausing or finishing a substantial task, add a dated note below with:
 
 ## Notes
 
+### 2026-06-25 - Visitor economy duplicate image cleanup
+
+- Goal: keep the Elounda visitor economy image as the lead image only and remove the repeated inline figure.
+- Files changed:
+  - `src/content/blog/elounda-visitor-economy.md`
+  - `docs/agent-handoff-notes.md`
+- What changed:
+  - Removed the inline figure using `/images/blog/elounda-visitor-economy/elounda-bay-resort-development.jfif`.
+  - Added frontmatter caption: "Modern resort development overlooking Elounda Bay."
+  - Added frontmatter credit: "Source: PanosKarapanagiotis / Getty Images."
+- Verified:
+  - Local server check on `/blog/elounda-visitor-economy/` found one article image for the lead image path, visible caption, and visible credit.
+  - Local server check on `/blog/` found 8 published posts and no hidden style variant links.
+  - `/blog/elounda-guide-style-1/` still rendered `robots: noindex`.
+- Blocker:
+  - `npm run build` is blocked by a Windows `EPERM` lock in `node_modules\.vite\deps\astro___aria-query.js.map`.
+
+### 2026-06-25 - Footer detail refinement
+
+- Goal: lightly refine the existing dark editorial footer without redesigning it.
+- Files changed:
+  - `src/components/Footer.astro`
+  - `docs/agent-handoff-notes.md`
+- What changed:
+  - Increased the footer brand mark from 40 px to 48 px and slightly raised its opacity.
+  - Added a Blog link to the footer information navigation.
+  - Improved bottom-row readability with clearer copyright/link contrast, cleaner wrapping, and a non-wrapping domain link.
+  - Kept the dark footer design, domain text, and chat button behavior unchanged.
+- Verified:
+  - Local server checks on `/en/`, `/blog/`, and `/en/houses/argyro/` confirmed the dark footer, larger logo class, Blog link, domain text, no inactive social links, and unchanged chat trigger.
+- Blocker:
+  - `npm run build` is blocked by a Windows `EPERM` lock in `node_modules\.vite\deps\astro___aria-query.js.map`.
+
 ### 2026-06-25 - Welcome blog Mavrikiano-Elounda lead image
 
 - Goal: process the owned local `mavrikiano-elounda` image for the welcome blog article.
