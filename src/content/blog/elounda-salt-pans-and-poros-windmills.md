@@ -54,7 +54,7 @@ Most windmills are associated with higher ground. These are different because th
 
 Walk slowly near the canal and look at the relationship between water, road, and low land. The interest is not in a single monument. It is in the way several practical features sit together: salt pans, windmills, canal, bridge, lagoon, and the route toward Spinalonga.
 
-For the wider historical context, read [Elounda History Through Its Shoreline](/blog/elounda-history-through-its-shoreline/). For present-day orientation, use the [Elounda location guide](/en/location/).
+For the wider historical context, read [Elounda History Through Its Shoreline](/blog/elounda-history-through-its-shoreline/). For present-day route planning around Mavrikiano, Olous, and Spinalonga, use the [Mavrikiano Distances and Area Guide](/blog/mavrikiano-distances-and-guide/).
 
 The salt pans and windmills show an Elounda built through use. That is the part worth keeping visible.
 
