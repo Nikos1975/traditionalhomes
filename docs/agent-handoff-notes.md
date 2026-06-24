@@ -35,6 +35,30 @@ When pausing or finishing a substantial task, add a dated note below with:
 
 ## Notes
 
+### 2026-06-25 - Welcome blog Mavrikiano-Elounda lead image
+
+- Goal: process the owned local `mavrikiano-elounda` image for the welcome blog article.
+- Files changed:
+  - `src/content/blog/welcome-to-elounda.md`
+  - `src/assets/blog-source/welcome-to-elounda/mavrikiano-elounda.jpg`
+  - `public/images/blog/welcome-to-elounda/mavrikiano-elounda-480.webp`
+  - `public/images/blog/welcome-to-elounda/mavrikiano-elounda-768.webp`
+  - `public/images/blog/welcome-to-elounda/mavrikiano-elounda-1200.webp`
+  - `docs/agent-handoff-notes.md`
+- What changed:
+  - Processed `C:\Users\Nikos\Downloads\mavrikiano-elounda.jpg` through `npm run blog:image`.
+  - Updated the article lead image to `/images/blog/welcome-to-elounda/mavrikiano-elounda-1200.webp`.
+  - Caption: "Mavrikiano village above Elounda Bay."
+  - Credit: "Elounda Traditional Homes of Crete."
+- Remaining:
+  - The source image is 1400 px wide, so the pipeline generated up to 1200 px only; no 1600 or 2400 WebP was generated.
+- Verified:
+  - Local server checks on `/blog/welcome-to-elounda/` found the new image path, alt text, caption, and credit.
+  - Local server check on `/blog/` found 8 published posts, no hidden style variant links, and the new welcome image.
+  - `/blog/elounda-guide-style-1/` still rendered `robots: noindex`.
+- Blocker:
+  - `npm run build` is blocked by a Windows `EPERM` lock in `node_modules\.vite\deps\astro___aria-query.js.map`.
+
 ### 2026-06-25 - Published blog internal cross-links
 
 - Goal: add careful internal cross-links between existing published blog articles only.
