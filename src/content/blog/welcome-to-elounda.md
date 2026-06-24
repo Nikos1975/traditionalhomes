@@ -8,8 +8,10 @@ tags:
   - elounda
   - mavrikiano
   - vrouchas
-image: "/images/og-default.jpg"
-imageAlt: "Elounda Traditional Homes in eastern Crete"
+image: "/images/blog/welcome-to-elounda/mavrikiano-elounda-1200.webp"
+imageAlt: "Aerial view of Mavrikiano village above Elounda Bay, with traditional stone houses and the sea beyond."
+imageCaption: "Mavrikiano village above Elounda Bay."
+imageCredit: "Elounda Traditional Homes of Crete."
 ---
 
 ### A Living Heritage
