@@ -35,6 +35,15 @@ When pausing or finishing a substantial task, add a dated note below with:
 
 ## Notes
 
+### 2026-06-24 - Elounda guide Mavrikiano elevation correction
+
+- Goal: correct Mavrikiano elevation wording in the Elounda guide article only.
+- Files changed:
+  - `src/content/blog/elounda-guide.md`
+  - `docs/agent-handoff-notes.md`
+- What changed:
+  - Corrected Mavrikiano elevation in `elounda-guide.md` from 300 feet / 25 metres to 25–32 metres.
+
 ### 2026-06-24 - Blog article grid card refinement
 
 - Goal: refine `/blog/` article grid cards without changing the featured hero carousel, blog routes, article content, ordering, or hidden style-variant behavior.
