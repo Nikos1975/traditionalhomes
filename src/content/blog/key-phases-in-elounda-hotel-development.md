@@ -12,16 +12,13 @@ tags:
   - mirabello
 image: "/images/blog/elounda-visitor-economy/elounda-bay-resort-development.jfif"
 imageAlt: "Modern resort development overlooking Elounda Bay"
+imageCaption: "Hotel development overlooking Elounda Bay."
+imageCredit: "Source: PanosKarapanagiotis / Getty Images."
 ---
 
 Elounda's hotel development is easier to understand as a series of clusters rather than a single line of growth. The coast south of the village, the slopes near Plaka, and the larger Mirabello Bay setting each attracted different forms of hotel investment.
 
 The pattern is not separate from the older landscape. The same geography that shaped fishing, salt work, boat routes, and views toward Spinalonga also shaped where hotels were built. For the wider place setting behind those routes and views, read [Where the Sea Holds Memory](/blog/elounda-guide/).
-
-<figure>
-  <img src="/images/blog/elounda-visitor-economy/elounda-bay-resort-development.jfif" alt="Modern resort development overlooking Elounda Bay" loading="lazy" />
-  <figcaption>Hotel development overlooking Elounda Bay. Source: PanosKarapanagiotis / Getty Images.</figcaption>
-</figure>
 
 ## 1957-1960s: After Spinalonga Closed
 
