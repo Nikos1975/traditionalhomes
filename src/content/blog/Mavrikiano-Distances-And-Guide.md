@@ -9,8 +9,8 @@ tags:
   - elounda
   - distances
   - spinalonga
-image: "/images/location-map.jpg"
-imageAlt: "Map context for Mavrikiano, Elounda, and Mirabello Bay"
+image: "/images/blog/mavrikiano-distances-and-guide/hero-1600.webp"
+imageAlt: "View from Mavrikiano toward Elounda Bay and Spinalonga."
 ---
 # Mavrikiano & Mirabello Bay Exploration Guide
 
