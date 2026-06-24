@@ -35,6 +35,26 @@ When pausing or finishing a substantial task, add a dated note below with:
 
 ## Notes
 
+### 2026-06-25 - Almond Tree Villa wording refinement
+
+- Goal: refine Almond Tree Villa page text while keeping the villa name, route, and page design unchanged.
+- Files changed:
+  - `src/content/villa/almond-tree-villa.md`
+  - `src/inventory/inventory.json`
+  - `src/pages/en/villa/[slug].astro`
+  - `docs/agent-handoff-notes.md`
+- What changed:
+  - Refined Almond Tree Villa wording for the intro, compact facts, meta description, and before-booking notes.
+  - Clarified parking/access as free public road parking about 30 metres from the house.
+  - Kept Almond Tree Villa as the main name.
+- Verified:
+  - Inventory JSON parse check passed.
+  - Local preview of `/en/villa/almond-tree-villa/` on port 4321 rendered the updated name, location line, meta description, compact facts, pool-size symbol, parking/access notice, and warning text.
+- Remaining:
+  - None expected.
+- Blockers:
+  - `npm run build` is blocked by a Windows Vite cache `EPERM` lock unlinking `node_modules\.vite\deps\astro___axobject-query.js`.
+
 ### 2026-06-25 - Almond Tree Villa before-booking access note
 
 - Goal: clarify the Almond Tree Villa "Before you book" notice without changing the villa route or page design.
