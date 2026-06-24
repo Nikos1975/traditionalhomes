@@ -35,6 +35,20 @@ When pausing or finishing a substantial task, add a dated note below with:
 
 ## Notes
 
+### 2026-06-24 - Blog article grid card refinement
+
+- Goal: refine `/blog/` article grid cards without changing the featured hero carousel, blog routes, article content, ordering, or hidden style-variant behavior.
+- Files changed:
+  - `src/pages/blog/index.astro`
+  - `docs/agent-handoff-notes.md`
+- What changed:
+  - Improved article card padding, metadata hierarchy, title scale, bottom tag alignment, and hover treatment.
+  - Kept tags visible, limited visible tag chips to three plus a count when more tags exist, and preserved the existing hover image reveal for posts with images.
+- Verified:
+  - `npm run build` passed.
+  - Browser checks on `http://127.0.0.1:4331/blog/` confirmed 8 listed posts, category sections, visible tags, working hover image reveal, no broken images, unchanged hero carousel counts, no horizontal overflow at 1440 px, 90% zoom approximation, and 390 px mobile.
+  - `elounda-guide-style-1` remained directly accessible at `/blog/elounda-guide-style-1/` with `robots: noindex`, and hidden style variants remained absent from `/blog/`.
+
 ### 2026-06-24 - Elounda history and Salt Pans image updates
 
 - Goal: keep the Salt Pans-suitable image on the Salt Pans article and process the Evangelos Mpikakis Unsplash image as the new Elounda history lead image.
