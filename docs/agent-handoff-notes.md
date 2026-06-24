@@ -35,18 +35,21 @@ When pausing or finishing a substantial task, add a dated note below with:
 
 ## Notes
 
-### 2026-06-25 - Visitor economy duplicate image cleanup
+### 2026-06-25 - Visitor economy and hotel development duplicate image cleanup
 
-- Goal: keep the Elounda visitor economy image as the lead image only and remove the repeated inline figure.
+- Goal: keep repeated article images as lead images only and remove duplicate inline figures.
 - Files changed:
   - `src/content/blog/elounda-visitor-economy.md`
+  - `src/content/blog/key-phases-in-elounda-hotel-development.md`
   - `docs/agent-handoff-notes.md`
 - What changed:
-  - Removed the inline figure using `/images/blog/elounda-visitor-economy/elounda-bay-resort-development.jfif`.
-  - Added frontmatter caption: "Modern resort development overlooking Elounda Bay."
-  - Added frontmatter credit: "Source: PanosKarapanagiotis / Getty Images."
+  - Removed duplicate inline figures using `/images/blog/elounda-visitor-economy/elounda-bay-resort-development.jfif` from the visitor economy and hotel development posts.
+  - Added visitor economy frontmatter caption: "Modern resort development overlooking Elounda Bay."
+  - Added hotel development frontmatter caption: "Hotel development overlooking Elounda Bay."
+  - Kept PanosKarapanagiotis / Getty Images credit in lead-image frontmatter for both posts.
 - Verified:
   - Local server check on `/blog/elounda-visitor-economy/` found one article image for the lead image path, visible caption, and visible credit.
+  - Local server check on `/blog/key-phases-in-elounda-hotel-development/` found one article image for the lead image path, visible caption, and visible credit.
   - Local server check on `/blog/` found 8 published posts and no hidden style variant links.
   - `/blog/elounda-guide-style-1/` still rendered `robots: noindex`.
 - Blocker:
