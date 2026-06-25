@@ -35,6 +35,28 @@ When pausing or finishing a substantial task, add a dated note below with:
 
 ## Notes
 
+### 2026-06-25 - Old-site URL inventory and redirect preparation
+
+- Goal: prepare controlled old-site URL inventory and redirect map files for the transition from the old Joomla site to the new Astro site.
+- Files changed:
+  - `docs/seo/old-site-url-inventory.csv`
+  - `docs/seo/redirect-map.csv`
+  - `public/_redirects`
+  - `docs/agent-handoff-notes.md`
+- What changed:
+  - Added an old-site URL inventory for discovered `traditional-homes.gr` legacy URLs. This is not a sitemap.
+  - Added a redirect map with confidence levels and a flag for whether each mapping is included in `public/_redirects`.
+  - Replaced the broad `/index.php/en/*` redirect with exact high-confidence 301 redirects only.
+  - Recorded that the old `sitemap.xml` is unusable for this task because it points to `boutiquevillaszante.gr`.
+- Verified:
+  - CSV validation passed: 39 inventory rows and 39 redirect-map rows, with every inventory URL represented in the redirect map.
+  - Redirect validation passed: no broad `/index.php/en/*` wildcard remains, and every legacy `public/_redirects` entry is marked `high` confidence and `yes` in the redirect map.
+  - `git diff --check` passed.
+- Remaining:
+  - Review medium/low-confidence entries, especially `/index.php/en/apartments`, `/index.php/en/links`, `/index.php/en/links/2-uncategorised`, and the legacy PDF.
+- Blockers:
+  - `npm run build` is blocked by the known Windows Vite cache `EPERM` lock unlinking `node_modules\.vite\deps\astro___aria-query.js.map`, even after clearing `node_modules\.vite` once.
+
 ### 2026-06-25 - Almond Tree Villa laundry amenity correction
 
 - Goal: remove an unsupported Almond Tree Villa laundry amenity claim.
