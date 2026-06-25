@@ -35,6 +35,22 @@ When pausing or finishing a substantial task, add a dated note below with:
 
 ## Notes
 
+### 2026-06-25 - Almond Tree Villa laundry amenity correction
+
+- Goal: remove an unsupported Almond Tree Villa laundry amenity claim.
+- Files changed:
+  - `src/inventory/inventory.json`
+  - `docs/agent-handoff-notes.md`
+- What changed:
+  - Removed `Laundry facilities` from Almond Tree Villa because the villa does not have them.
+- Verified:
+  - Inventory JSON parse check passed.
+  - Local preview of `/en/villa/almond-tree-villa/` on port 4321 returned 200 and the rendered amenities list no longer included laundry, washing-machine, or washer wording.
+- Remaining:
+  - None expected.
+- Blockers:
+  - `npm run build` is blocked by a Windows Vite cache `EPERM` lock unlinking `node_modules\.vite\deps\astro___aria-query.js`.
+
 ### 2026-06-25 - Almond Tree Villa wording refinement
 
 - Goal: refine Almond Tree Villa page text while keeping the villa name, route, and page design unchanged.
