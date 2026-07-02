@@ -3,8 +3,33 @@ import Base from '../../layouts/Base.astro';
 import { getCollection } from 'astro:content';
 
 const posts = (await getCollection('blog'))
-  .filter(p => !p.data.draft)
+  .filter(p => !p.data.draft && !p.id.startsWith('elounda-guide-style-'))
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const formatDate = (date: Date) => date.toLocaleDateString('en-GB', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+});
+
+const categoryLabel = (category?: string) => category ?? 'Updates';
+const categorySlug = (category: string) => category.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+const preferredFeaturedIds = [
+  'elounda-history-through-its-shoreline',
+  'elounda-salt-pans-and-poros-windmills',
+  'elounda-wartime-memory',
+  'key-phases-in-elounda-hotel-development',
+  'Mavrikiano-Distances-And-Guide',
+];
+const featuredPosts = preferredFeaturedIds
+  .map(id => posts.find(post => post.id.toLowerCase() === id.toLowerCase() && post.data.image?.startsWith('/')))
+  .filter((post): post is typeof posts[number] => Boolean(post))
+  .slice(0, 5);
+const categories = Array.from(new Set(posts.map(post => categoryLabel(post.data.category))));
+const postsByCategory = categories.map(category => ({
+  category,
+  posts: posts.filter(post => categoryLabel(post.data.category) === category),
+}));
 ---
 
 <Base
@@ -12,7 +37,7 @@ const posts = (await getCollection('blog'))
   description="Stories, travel guides, and updates from Elounda Traditional Homes in Crete."
   canonicalUrl="https://traditional-homes.gr/blog/"
 >
-  <div class="site-max site-pad py-16 md:py-24">
+  <div class="site-max site-pad pb-16 pt-20 md:pb-24 md:pt-28">
 
     <nav class="text-[10px] uppercase tracking-[0.4em] text-stone-400 mb-12 font-bold" aria-label="Breadcrumb">
       <ol class="flex items-center gap-2" role="list">
@@ -22,47 +47,295 @@ const posts = (await getCollection('blog'))
       </ol>
     </nav>
 
-    <header class="mb-16">
+    <header class="mb-12">
       <h1 class="font-serif text-5xl md:text-7xl text-stone-900 mb-6 leading-tight tracking-tight">Blog</h1>
       <p class="text-stone-500 max-w-2xl text-xl leading-relaxed font-serif italic">
-        Stories, seasonal updates, and travel notes from our corner of Crete.
+        Notes on Elounda, village stays, local history, and practical travel context for this part of eastern Crete.
       </p>
     </header>
 
     {posts.length === 0 ? (
-      <p class="text-stone-400 text-lg">No posts yet — check back soon.</p>
+      <p class="text-stone-400 text-lg">No posts yet. Check back soon.</p>
     ) : (
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-        {posts.map(post => (
-          <a href={`/blog/${post.id}/`} class="group block bg-white rounded-2xl border border-stone-100 overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
-            <div class="p-8">
-              <div class="flex items-center gap-3 mb-3">
-                <time datetime={post.data.pubDate.toISOString()} class="text-[10px] uppercase tracking-[0.3em] text-stone-400 font-bold">
-                  {post.data.pubDate.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}
-                </time>
-                {post.data.category && (
-                  <span class="text-[10px] uppercase tracking-[0.2em] text-primary font-bold">{post.data.category}</span>
+      <div class="space-y-16">
+        {featuredPosts.length > 0 && (
+          <section class="blog-featured-hero" aria-labelledby="featured-article-heading" data-blog-hero>
+            <div class="relative overflow-hidden rounded-xl border border-stone-200 bg-stone-100 shadow-sm">
+              <div class="blog-featured-stage relative min-h-[34rem] overflow-hidden bg-stone-200 md:min-h-[38rem]">
+                {featuredPosts.map((post, index) => (
+                  <article
+                    class="blog-featured-slide absolute inset-0"
+                    data-blog-slide
+                    aria-hidden={index === 0 ? 'false' : 'true'}
+                  >
+                    <a href={`/blog/${post.id}/`} class="group/hero block h-full">
+                      <img
+                        src={post.data.image}
+                        alt={post.data.imageAlt ?? ''}
+                        loading={index === 0 ? 'eager' : 'lazy'}
+                        class="absolute inset-0 h-full w-full object-cover transition-transform duration-[1200ms] ease-out motion-safe:group-hover/hero:scale-[1.025]"
+                      />
+                      <div class="absolute inset-0 bg-gradient-to-t from-stone-950/55 via-stone-900/18 to-transparent" aria-hidden="true"></div>
+                      <div class="absolute inset-x-0 bottom-0 z-10 p-6 text-white sm:p-8 lg:p-12">
+                        <div class="max-w-3xl">
+                          <div class="mb-5 flex flex-wrap items-center gap-x-3 gap-y-2 text-xs text-white/75">
+                            <time datetime={post.data.pubDate.toISOString()}>{formatDate(post.data.pubDate)}</time>
+                            <span aria-hidden="true" class="text-white/40">/</span>
+                            <span>{categoryLabel(post.data.category)}</span>
+                          </div>
+                          <p class="mb-4 w-fit rounded-full bg-stone-50/85 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.24em] text-primary shadow-sm backdrop-blur-sm">
+                            Featured Article
+                          </p>
+                          <h2 id={index === 0 ? 'featured-article-heading' : undefined} class="mb-5 font-serif text-4xl leading-tight text-white md:text-6xl">
+                            {post.data.title}
+                          </h2>
+                          <p class="max-w-2xl text-base leading-7 text-white/85 md:text-lg">{post.data.description}</p>
+                          <span class="mt-8 inline-flex w-fit items-center gap-2 border-b border-white/60 pb-1 text-sm font-medium text-white transition-colors group-hover/hero:border-white">
+                            Read article
+                            <span aria-hidden="true">&rarr;</span>
+                          </span>
+                        </div>
+                      </div>
+                    </a>
+                  </article>
+                ))}
+
+                <div class="absolute right-4 top-4 z-20 flex items-center gap-2 rounded-full border border-white/30 bg-stone-50/85 px-3 py-2 text-xs font-semibold text-stone-700 shadow-sm backdrop-blur-sm sm:right-6 sm:top-6">
+                  <span data-blog-counter>1 / {featuredPosts.length}</span>
+                </div>
+
+                {featuredPosts.length > 1 && (
+                  <div class="absolute bottom-5 right-5 z-20 flex items-center gap-2 sm:bottom-8 sm:right-8">
+                    <button type="button" class="blog-featured-control" data-blog-prev aria-label="Show previous featured article">
+                      <span aria-hidden="true">&larr;</span>
+                    </button>
+                    <button type="button" class="blog-featured-control" data-blog-next aria-label="Show next featured article">
+                      <span aria-hidden="true">&rarr;</span>
+                    </button>
+                  </div>
                 )}
               </div>
-              <h2 class="font-serif text-2xl text-stone-900 mt-1 mb-2 leading-snug group-hover:text-primary transition-colors">
-                {post.data.title}
-              </h2>
-              {post.data.subtitle && (
-                <p class="text-stone-400 text-sm italic mb-2">{post.data.subtitle}</p>
-              )}
-              <p class="text-stone-500 text-sm leading-relaxed line-clamp-3">{post.data.description}</p>
-              {post.data.tags.length > 0 && (
-                <div class="flex flex-wrap gap-1.5 mt-4">
-                  {post.data.tags.map(tag => (
-                    <span class="text-[9px] uppercase tracking-[0.15em] text-stone-400 bg-stone-50 px-2 py-0.5 rounded-full">{tag}</span>
+
+              {featuredPosts.length > 1 && (
+                <div class="grid gap-2 border-t border-stone-200 bg-stone-50 p-3 sm:grid-cols-2 lg:grid-cols-5" role="tablist" aria-label="Featured articles">
+                  {featuredPosts.map((post, index) => (
+                    <button
+                      type="button"
+                      class="blog-featured-thumb group/thumb grid grid-cols-[4.5rem_minmax(0,1fr)] items-center gap-3 rounded-lg border border-transparent p-2 text-left transition-colors hover:border-primary/40 hover:bg-white focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
+                      data-blog-thumb
+                      data-active={index === 0 ? 'true' : 'false'}
+                      aria-label={`Show featured article: ${post.data.title}`}
+                      aria-selected={index === 0 ? 'true' : 'false'}
+                      role="tab"
+                    >
+                      <span class="relative block aspect-[4/3] overflow-hidden rounded-md bg-stone-200">
+                        <img src={post.data.image} alt="" loading="lazy" class="h-full w-full object-cover transition-transform duration-500 group-hover/thumb:scale-105" />
+                      </span>
+                      <span class="min-w-0">
+                        <span class="mb-1 block text-[10px] font-bold uppercase tracking-[0.18em] text-primary">{String(index + 1).padStart(2, '0')}</span>
+                        <span class="line-clamp-2 block text-sm font-medium leading-snug text-stone-700">{post.data.title}</span>
+                      </span>
+                    </button>
                   ))}
                 </div>
               )}
             </div>
-          </a>
+          </section>
+        )}
+
+        <nav class="flex flex-wrap gap-3" aria-label="Blog categories">
+          {postsByCategory.map(({ category, posts: categoryPosts }) => (
+            <a href={`#${categorySlug(category)}`} class="inline-flex items-center gap-2 rounded-full border border-stone-200 bg-white px-4 py-2 text-[10px] font-bold uppercase tracking-[0.2em] text-stone-500 hover:border-primary hover:text-primary transition-colors">
+              <span>{category}</span>
+              <span class="text-stone-300">{categoryPosts.length}</span>
+            </a>
+          ))}
+        </nav>
+
+        {postsByCategory.map(({ category, posts: categoryPosts }) => (
+          <section id={categorySlug(category)} aria-labelledby={`${categorySlug(category)}-heading`} class="scroll-mt-28">
+            <div class="mb-8 flex flex-col gap-3 border-t border-stone-200 pt-8 sm:flex-row sm:items-end sm:justify-between">
+              <div>
+                <p class="mb-3 text-[10px] font-bold uppercase tracking-[0.3em] text-primary">Category</p>
+                <h2 id={`${categorySlug(category)}-heading`} class="font-serif text-3xl md:text-4xl text-stone-900 leading-tight">{category}</h2>
+              </div>
+              <p class="text-sm text-stone-400">{categoryPosts.length} {categoryPosts.length === 1 ? 'article' : 'articles'}</p>
+            </div>
+
+            <div class="grid grid-cols-1 items-stretch gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-8">
+              {categoryPosts.map(post => (
+                <a href={`/blog/${post.id}/`} class="group/card blog-card relative flex h-full min-h-[21rem] flex-col overflow-hidden rounded-lg border border-stone-200/90 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-stone-300 hover:shadow-card-hover focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/35">
+                  {post.data.image && (
+                    <div
+                      class="absolute inset-0 z-[1] bg-cover bg-center opacity-0 transition-opacity duration-700 group-hover/card:opacity-[0.11]"
+                      style={`background-image: url('${post.data.image}')`}
+                      aria-hidden="true"
+                    ></div>
+                  )}
+                  <div class="absolute inset-0 z-0 bg-gradient-to-br from-white via-white/95 to-stone-50/90 transition-colors duration-300 group-hover/card:from-white/95 group-hover/card:via-stone-50/92 group-hover/card:to-stone-100/86" aria-hidden="true"></div>
+                  <div class="relative z-10 flex h-full flex-col p-6 sm:p-7">
+                    <div class="mb-6 flex items-start justify-between gap-4 text-[10px] uppercase tracking-[0.18em]">
+                      <div class="min-w-0 space-y-1.5">
+                        <time datetime={post.data.pubDate.toISOString()} class="block font-bold text-stone-500">
+                          {formatDate(post.data.pubDate)}
+                        </time>
+                        <span class="block h-px w-8 bg-primary/25 transition-all duration-300 group-hover/card:w-12 group-hover/card:bg-primary/45" aria-hidden="true"></span>
+                      </div>
+                      {post.data.region && (
+                        <span class="max-w-[45%] text-right font-semibold leading-relaxed text-stone-400">{post.data.region}</span>
+                      )}
+                    </div>
+
+                    <h3 class="mb-3 font-serif text-[1.55rem] leading-[1.16] text-stone-950 transition-colors group-hover/card:text-primary md:text-[1.7rem]">
+                      {post.data.title}
+                    </h3>
+
+                    {post.data.subtitle && (
+                      <p class="mb-4 text-sm italic leading-relaxed text-stone-500">{post.data.subtitle}</p>
+                    )}
+
+                    <p class="text-sm leading-7 text-stone-600">{post.data.description}</p>
+
+                    {post.data.tags.length > 0 && (
+                      <div class="mt-auto flex flex-wrap gap-1.5 pt-7">
+                        {post.data.tags.slice(0, 3).map(tag => (
+                          <span class="rounded-full border border-stone-200/80 bg-stone-50/80 px-2.5 py-1 text-[9px] font-semibold uppercase tracking-[0.14em] text-stone-500 transition-colors group-hover/card:border-stone-300 group-hover/card:bg-white/85">{tag}</span>
+                        ))}
+                        {post.data.tags.length > 3 && (
+                          <span class="rounded-full border border-transparent px-2 py-1 text-[9px] font-semibold uppercase tracking-[0.14em] text-stone-400">+{post.data.tags.length - 3}</span>
+                        )}
+                      </div>
+                    )}
+                  </div>
+                </a>
+              ))}
+            </div>
+          </section>
         ))}
       </div>
     )}
 
   </div>
+
+<script>
+  const hero = document.querySelector('[data-blog-hero]');
+
+  if (hero instanceof HTMLElement) {
+    const slides = Array.from(hero.querySelectorAll('[data-blog-slide]'));
+    const thumbs = Array.from(hero.querySelectorAll('[data-blog-thumb]'));
+    const counter = hero.querySelector('[data-blog-counter]');
+    const previous = hero.querySelector('[data-blog-prev]');
+    const next = hero.querySelector('[data-blog-next]');
+    let activeIndex = 0;
+
+    const setActiveSlide = (nextIndex) => {
+      if (slides.length === 0) return;
+
+      activeIndex = (nextIndex + slides.length) % slides.length;
+
+      slides.forEach((slide, index) => {
+        slide.setAttribute('aria-hidden', index === activeIndex ? 'false' : 'true');
+      });
+
+      thumbs.forEach((thumb, index) => {
+        const isActive = index === activeIndex;
+        thumb.setAttribute('aria-selected', isActive ? 'true' : 'false');
+        thumb.setAttribute('data-active', isActive ? 'true' : 'false');
+      });
+
+      if (counter) {
+        counter.textContent = `${activeIndex + 1} / ${slides.length}`;
+      }
+    };
+
+    previous?.addEventListener('click', () => setActiveSlide(activeIndex - 1));
+    next?.addEventListener('click', () => setActiveSlide(activeIndex + 1));
+
+    thumbs.forEach((thumb, index) => {
+      thumb.addEventListener('click', () => setActiveSlide(index));
+    });
+
+    hero.addEventListener('keydown', event => {
+      if (event.key === 'ArrowLeft') {
+        event.preventDefault();
+        setActiveSlide(activeIndex - 1);
+      }
+
+      if (event.key === 'ArrowRight') {
+        event.preventDefault();
+        setActiveSlide(activeIndex + 1);
+      }
+    });
+  }
+</script>
+
+<style>
+  .blog-featured-slide {
+    opacity: 1;
+    transform: translateX(0);
+    transition:
+      opacity 320ms ease,
+      transform 320ms ease,
+      visibility 320ms ease;
+  }
+
+  .blog-featured-slide[aria-hidden="true"] {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(1.5rem);
+    visibility: hidden;
+  }
+
+  .blog-featured-control {
+    display: inline-flex;
+    width: 2.75rem;
+    height: 2.75rem;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgb(255 255 255 / 0.45);
+    border-radius: 9999px;
+    background: rgb(250 250 249 / 0.88);
+    color: #2c2419;
+    font-size: 1rem;
+    line-height: 1;
+    box-shadow: 0 12px 30px rgb(0 0 0 / 0.14);
+    transition:
+      background-color 180ms ease,
+      border-color 180ms ease,
+      color 180ms ease;
+  }
+
+  .blog-featured-control:hover,
+  .blog-featured-control:focus-visible {
+    border-color: rgb(180 75 42 / 0.5);
+    background: #ffffff;
+    color: #b44b2a;
+    outline: none;
+  }
+
+  .blog-featured-control:focus-visible {
+    box-shadow:
+      0 0 0 3px rgb(180 75 42 / 0.25),
+      0 12px 30px rgb(0 0 0 / 0.14);
+  }
+
+  .blog-featured-thumb[data-active="true"] {
+    border-color: rgb(180 75 42 / 0.45);
+    background: #ffffff;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .blog-featured-slide,
+    .blog-featured-control,
+    .blog-featured-thumb img {
+      transition: none;
+    }
+  }
+
+  @media (max-width: 520px) {
+    .blog-featured-stage {
+      min-height: 31rem;
+    }
+  }
+</style>
 </Base>

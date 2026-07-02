@@ -1,12 +1,6 @@
 ---
 // src/components/maps/MapPreview.astro
-// Lightweight static or minimal-JS preview of the map for the homepage
-
-import { locations } from '../../data/locations';
-
-// We just extract Mavrikiano and Vrouchas centers for visual reference without loading Leaflet
-const mavrikiano = locations.find(l => l.group === 'mavrikiano' && l.lat !== undefined);
-const vrouchas = locations.find(l => l.group === 'vrouchas' && l.lat !== undefined);
+// Lightweight static preview of the map for the homepage.
 ---
 <div class="map-preview relative rounded-xl overflow-hidden bg-stone-200 border border-stone-200 flex flex-col items-center justify-center h-[350px]">
   <!-- Placeholder Map Graphic (Static Image is optimal, using a styled div for now) -->
@@ -35,7 +29,7 @@ const vrouchas = locations.find(l => l.group === 'vrouchas' && l.lat !== undefin
   </div>
 
   <div class="absolute bottom-6 z-10">
-    <a href="/en/location/" class="btn-outline bg-white/90 backdrop-blur-sm border-stone-300 text-sm px-6 py-2.5 shadow-sm hover:bg-stone-800 hover:text-white hover:border-stone-800 transition-all">
+    <a href="/en/location/" class="btn-outline bg-white/90 backdrop-blur-sm border-stone-300 text-sm px-6 py-2.5 shadow-sm hover:bg-accent-sage hover:text-stone-900 hover:border-accent-sage transition-all">
       Explore interactive map
     </a>
   </div>

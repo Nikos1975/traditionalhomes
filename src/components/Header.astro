@@ -10,7 +10,7 @@ const navLinks = [
 ];
 
 const currentPath = Astro.url.pathname;
-const bookingUrl = 'http://traditionalhomes.reserve-online.net/';
+const bookingUrl = 'https://traditionalhomes.reserve-online.net/';
 ---
 
 <header
@@ -23,7 +23,7 @@ const bookingUrl = 'http://traditionalhomes.reserve-online.net/';
     {/* BRANDING / MASTHEAD */}
     <a
       href="/en/"
-      class="flex items-center gap-4 group flex-shrink-0"
+      class="group flex min-w-0 flex-shrink items-center gap-3 sm:gap-4"
       aria-label="Elounda Traditional Homes — home"
     >
       <img 
@@ -31,13 +31,13 @@ const bookingUrl = 'http://traditionalhomes.reserve-online.net/';
         alt="" 
         width="48" 
         height="48" 
-        class="w-12 h-12 transition-transform duration-700 ease-out group-hover:scale-110"
+        class="h-10 w-10 flex-shrink-0 transition-transform duration-700 ease-out group-hover:scale-110 sm:h-12 sm:w-12"
       />
-      <div class="flex flex-col leading-none">
-        <span class="font-serif text-2xl text-stone-900 group-hover:text-primary transition-colors duration-300 tracking-tight">
+      <div class="flex min-w-0 flex-col leading-none">
+        <span class="truncate font-serif text-xl tracking-tight text-stone-900 transition-colors duration-300 group-hover:text-primary sm:text-2xl">
           Elounda Traditional Homes
         </span>
-        <span class="font-sans text-[9px] uppercase text-stone-400 mt-1.5 tracking-[0.3em] font-bold">
+        <span class="mt-1.5 truncate font-sans text-[8px] font-bold uppercase tracking-[0.22em] text-stone-400 sm:text-[9px] sm:tracking-[0.3em]">
           Mavrikiano & Vrouchas · Crete
         </span>
       </div>
@@ -65,12 +65,12 @@ const bookingUrl = 'http://traditionalhomes.reserve-online.net/';
     </nav>
 
     {/* CTA & MOBILE TOGGLE */}
-    <div class="flex items-center gap-4">
+    <div class="flex flex-shrink-0 items-center gap-4">
       <a
         href={bookingUrl}
         target="_blank"
         rel="noopener noreferrer"
-        class="btn-cta hidden md:inline-flex"
+        class="btn-cta booking-cta hidden md:inline-flex"
       >
         Check Dates
       </a>
@@ -100,10 +100,10 @@ const bookingUrl = 'http://traditionalhomes.reserve-online.net/';
 >
   <div id="menu-backdrop" class="absolute inset-0 bg-stone-900/60 backdrop-blur-sm transition-opacity" aria-hidden="true"></div>
   <nav
-    class="absolute top-0 right-0 h-full w-[85vw] max-w-sm bg-stone-50 flex flex-col shadow-2xl transition-transform duration-500"
+    class="absolute right-3 top-[calc(var(--header-h,88px)+0.75rem)] flex max-h-[50vh] w-[min(calc(100vw-1.5rem),24rem)] flex-col overflow-hidden rounded-[2rem] border border-stone-200 bg-stone-50 shadow-2xl transition-transform duration-500 sm:right-6"
     aria-label="Mobile navigation"
   >
-    <div class="flex items-center justify-between px-6 h-[88px] border-b border-stone-200 flex-shrink-0">
+    <div class="flex h-16 flex-shrink-0 items-center justify-between border-b border-stone-200 px-5">
       <span class="font-serif text-2xl text-stone-900">Menu</span>
       <button
         id="menu-close"
@@ -116,7 +116,7 @@ const bookingUrl = 'http://traditionalhomes.reserve-online.net/';
       </button>
     </div>
 
-    <ul class="flex-1 overflow-y-auto py-8 px-6 space-y-2" role="list">
+    <ul class="min-h-0 flex-1 space-y-2 overflow-y-auto overscroll-contain px-4 py-4" role="list">
       {navLinks.map(({ label, href }) => {
         const isActive = currentPath === href || currentPath.startsWith(href.replace(/\/$/, '') + '/');
         return (
@@ -138,12 +138,12 @@ const bookingUrl = 'http://traditionalhomes.reserve-online.net/';
       })}
     </ul>
 
-    <div class="p-6 border-t border-stone-200 flex-shrink-0 bg-white">
+    <div class="flex-shrink-0 border-t border-stone-200 bg-white p-4">
       <a
         href={bookingUrl}
         target="_blank"
         rel="noopener noreferrer"
-        class="btn-cta w-full justify-center"
+        class="btn-cta booking-cta w-full justify-center"
       >
         Check Dates
       </a>
@@ -155,54 +155,65 @@ const bookingUrl = 'http://traditionalhomes.reserve-online.net/';
 <div style="height: var(--header-h, 88px);" aria-hidden="true"></div>
 
 <script>
-  const openBtn = document.getElementById('menu-open') as HTMLButtonElement | null;
-  const closeBtn = document.getElementById('menu-close') as HTMLButtonElement | null;
-  const backdrop = document.getElementById('menu-backdrop');
-  const menu = document.getElementById('mobile-menu');
-  const header = document.getElementById('main-header');
+  function initHeader() {
+    const openBtn = document.getElementById('menu-open') as HTMLButtonElement | null;
+    const closeBtn = document.getElementById('menu-close') as HTMLButtonElement | null;
+    const backdrop = document.getElementById('menu-backdrop');
+    const menu = document.getElementById('mobile-menu');
+    const header = document.getElementById('main-header');
 
-  function openMenu() {
-    if (!menu || !openBtn) return;
-    menu.classList.remove('hidden');
-    // Tiny delay to allow display:block to apply before animating opacity/transform (if you add CSS animations later)
-    setTimeout(() => {
-      openBtn.setAttribute('aria-expanded', 'true');
-      document.body.style.overflow = 'hidden';
-      closeBtn?.focus();
-    }, 10);
+    if (!openBtn || openBtn.dataset.menuInitialized === 'true') return;
+    openBtn.dataset.menuInitialized = 'true';
+
+    function openMenu() {
+      if (!menu || !openBtn) return;
+      menu.classList.remove('hidden');
+      setTimeout(() => {
+        openBtn.setAttribute('aria-expanded', 'true');
+        document.body.style.overflow = 'hidden';
+        closeBtn?.focus();
+      }, 10);
+    }
+
+    function closeMenu() {
+      if (!menu || !openBtn) return;
+      openBtn.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+      menu.classList.add('hidden');
+      openBtn.focus();
+    }
+
+    function handleScroll() {
+      if (!header) return;
+      if (window.scrollY > 20) {
+        header.classList.add('bg-white/90', 'backdrop-blur-md', 'shadow-sm');
+        header.classList.remove('bg-white/0');
+        header.classList.replace('border-transparent', 'border-stone-200');
+      } else {
+        header.classList.remove('bg-white/90', 'backdrop-blur-md', 'shadow-sm');
+        header.classList.add('bg-white/0');
+        header.classList.replace('border-stone-200', 'border-transparent');
+      }
+    }
+
+    openBtn.addEventListener('click', openMenu);
+    closeBtn?.addEventListener('click', closeMenu);
+    backdrop?.addEventListener('click', closeMenu);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
   }
-
-  function closeMenu() {
-    if (!menu || !openBtn) return;
-    openBtn.setAttribute('aria-expanded', 'false');
-    document.body.style.overflow = '';
-    menu.classList.add('hidden');
-    openBtn.focus();
-  }
-
-  openBtn?.addEventListener('click', openMenu);
-  closeBtn?.addEventListener('click', closeMenu);
-  backdrop?.addEventListener('click', closeMenu);
 
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && !menu?.classList.contains('hidden')) {
-      closeMenu();
+    const menu = document.getElementById('mobile-menu');
+    const openBtn = document.getElementById('menu-open') as HTMLButtonElement | null;
+    if (e.key === 'Escape' && menu && !menu.classList.contains('hidden')) {
+      openBtn?.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+      menu.classList.add('hidden');
+      openBtn?.focus();
     }
   });
 
-  // Upgraded Scroll Logic
-  function handleScroll() {
-    if (!header) return;
-    if (window.scrollY > 20) {
-      header.classList.add('bg-white/90', 'backdrop-blur-md', 'shadow-sm');
-      header.classList.remove('bg-white/0');
-      header.classList.replace('border-transparent', 'border-stone-200');
-    } else {
-      header.classList.remove('bg-white/90', 'backdrop-blur-md', 'shadow-sm');
-      header.classList.add('bg-white/0');
-      header.classList.replace('border-stone-200', 'border-transparent');
-    }
-  }
-  window.addEventListener('scroll', handleScroll, { passive: true });
-  handleScroll(); // Check on load
+  document.addEventListener('astro:page-load', initHeader);
+  initHeader();
 </script>

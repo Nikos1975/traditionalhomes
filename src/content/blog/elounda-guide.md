@@ -15,14 +15,10 @@ tags:
   - spinalonga
   - mirabello
   - travel
-image: "/images/location-map.jpg"
+image: "/images/houses/argyro/1600/argyro-veranda-dining-sea-view-03-1600.webp"
 imageAlt: "View across Mirabello Bay from the stone verandas of Mavrikiano, eastern Crete"
----
-
-# Where the Sea Holds Memory
-
-*A journey through Elounda and the stone villages of eastern Crete*
-
+imageCaption: "View across Mirabello Bay from the stone verandas of Mavrikiano, eastern Crete"
+imageCredit: "Elounda Traditional Homes of Crete."
 ---
 
 The light in eastern Crete does not simply illuminate the landscape; it arrives
@@ -31,7 +27,7 @@ into the air of mid-morning. In Mavrikiano, the tiered hamlet that climbs the
 hillside above the Gulf of Elounda, the day begins with the rhythmic percussion
 of a single-cylinder diesel engine. It is a kaiki — a traditional wooden fishing
 boat — trailing a white wake across the cobalt expanse of Mirabello Bay. From a
-stone veranda elevated some three hundred feet above the water, the sound is
+stone veranda set roughly 25–32 metres above the water, the sound is
 skeletal and thin, carried upward by a thermal breeze that smells of salt and
 ripening figs. Below, the turquoise shallows of the coast transition abruptly
 into a bruised purple where the seafloor drops away: a reminder that this
@@ -89,6 +85,10 @@ pans where the Republic of Venice once harvested white gold to ship back to
 the Adriatic. They mark a threshold: on one side, the open sea; on the other,
 the inner lagoon and the ruins sleeping beneath it.
 
+For a shorter factual chronology of Olous, the salt pans, and Spinalonga, read
+[A Short Chronological History of Elounda](/blog/elounda-history-through-its-shoreline/)
+and [Elounda Salt Pans and the Poros Windmills](/blog/elounda-salt-pans-and-poros-windmills/).
+
 ---
 
 Spinalonga is visible from almost everywhere in Elounda — a low mass of
@@ -111,11 +111,14 @@ glowing in the afternoon light, the walls more textured, the cypress trees more
 distinct against the fortifications. The fortress has not changed. Only the
 understanding of what happened inside it has deepened.
 
+For a careful note on the island's wartime context, see
+[Elounda, Spinalonga, and Wartime Memory](/blog/elounda-wartime-memory/).
+
 ---
 
 The ascent from the harbour to Mavrikiano is steep but brief: a ten-minute
 walk upward through a labyrinth of stairs and inclined alleys. At roughly
-twenty-five metres of elevation, the village exists in a different register
+25–32 metres of elevation, the village exists in a different register
 from the coast below. It is a small place — a handful of lanes, stone walls,
 old houses whose origins are visible in the quality of the masonry,
 thick-coursed and the colour of dry honey. The rhythm here is pedestrian.
@@ -135,6 +138,9 @@ cools and the light shifts, the sound of goat bells drifts down from the
 higher ridges, and the veranda becomes, in effect, the house's primary room.
 From it, the view across the lagoon and toward the Spinalonga peninsula
 requires no editing — the proportions are already right.
+
+For practical distances from Mavrikiano to Plaka, Spinalonga, Olous, and
+Kolokytha, use the [Mavrikiano Distances and Area Guide](/blog/mavrikiano-distances-and-guide/).
 
 In the early afternoon, the village falls into a profound, heavy silence. The
 only movement is the twitch of a curtain, the slow migration of a shadow across

@@ -1,17 +1,21 @@
 ---
 slug: "kalliopi"
 title: "House Kalliopi"
-summary: "An elevated stone residence in Mavrikiano, featuring handcrafted Cretan character, an intimate balcony, and sweeping views over village rooftops and olive groves."
+summary: "A 55 m2 first-floor one-bedroom stone house above House Efterpi in Mavrikiano for up to four guests, with a balcony, ontas, and views toward the inner village and mountains."
 ---
 
-### An Elevated Village Perspective
-Perched gracefully on the upper floor of a historic traditional property, House Kalliopi offers a beautifully outward-looking village experience. Leaving the bustle of the waterfront behind, this home invites guests into the slower, more melodic rhythm of the hillside. It is a space defined by authentic Cretan craftsmanship, appealing to travelers who seek a quiet, character-rich sanctuary with a genuine connection to local life.
+### An Upper-Floor Village House
+House Kalliopi is a first-floor stone house in Mavrikiano, positioned above House Efterpi and reached by its own private entrance. It accommodates up to four guests and suits couples or small parties who want a traditional village house with a balcony, internal stairs, and views toward the inner part of the village and the surrounding mountains.
 
-### The Interior Narrative
-Spanning a comfortable 60 square metres, the interior is shaped by exposed stone, natural timber, and a warm, inviting layout. The home accommodates up to four guests, featuring a romantic double bed tucked into a private architectural alcove, alongside flexible sleeping arrangements in the main living area. Anchored by a traditional fireplace and a fully equipped kitchen, the space seamlessly blends historic charm with the practical modern comforts required for both short retreats and lingering, slow-paced visits.
+### The Interior Layout
+The 55 m2 house is arranged around a compact traditional layout. From the village road, guests enter through a wooden gate and climb stone stairs to the balcony, where the private entrance to the house is located.
 
-### Mediterranean Outdoor Living
-The defining feature of Kalliopi is its intimate, private balcony. Rather than a sprawling, multi-zone terrace, this space offers a cozy, focused outdoor experience. It is an idyllic, sunlit perch designed perfectly for slow morning coffees or quiet evening meals, gazing out over a patchwork of terracotta village rooftops, the silver canopies of ancient olive groves, and the shifting light on the surrounding Mirabello mountains.
+On entering the house, the mini kitchen and wooden table are directly ahead, with a window on the left bringing natural light into the space. To the right is the living area with the fireplace and two built-in single stone beds.
 
-### The Mavrikiano Setting
-While securely nestled in the peaceful upper village, Kalliopi remains effortlessly connected to the vibrant coast. A scenic 10-minute stroll down the historic pathways brings you directly to Elounda’s pristine beaches, bustling harbor, and waterfront tavernas. For extended families or larger groups of friends, Kalliopi’s location is highly strategic: when booked alongside House Efterpi directly below, the two homes unite to form a beautiful, multi-level estate accommodating up to nine guests while preserving distinct, private quarters for everyone.
+An internal wooden stair leads up to the ontas, the traditional raised sleeping area, which forms the main bedroom area. The bathroom is below the ontas, on the same level as the living room.
+
+### Balcony And View
+The balcony looks toward the inner part of Mavrikiano village and the surrounding mountains. It is a small outdoor sitting area rather than a large dining terrace.
+
+### Access And Pairing
+Shared private guest parking is nearby, with space for up to 5 cars in total; if the shared parking area is full, guests can usually park for free around the village. The house is not step-free, and guests should expect stone stairs to reach the first-floor entrance. Kalliopi can be considered with House Efterpi below for larger groups that want nearby but separate houses.

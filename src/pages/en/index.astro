@@ -1,6 +1,7 @@
 ---
 import Base from '../../layouts/Base.astro';
 import UnitCard from '../../components/UnitCard.astro';
+import BookingHandoffForm from '../../components/booking/BookingHandoffForm.astro';
 import MapPreview from '../../components/maps/MapPreview.astro';
 import inventory from '../../inventory/inventory.json';
 import siteCopy from '../../data/siteCopy.json';
@@ -11,10 +12,45 @@ const units = inventory as InventoryUnit[];
 validateInventory(units);
 const houses = units.filter(u => u.type === 'house');
 const villa = units.find((u) => u.type === 'villa');
+const chooseStayOptions = [
+  {
+    title: 'Sea-view houses',
+    names: [
+      { label: 'Argyro', href: '/en/houses/argyro/' },
+      { label: 'Leonidas', href: '/en/houses/leonidas/' },
+      { label: 'Margarita', href: '/en/houses/margarita/' },
+      { label: 'Monastiri', href: '/en/houses/monastiri/' },
+    ],
+  },
+  {
+    title: 'Pool stays',
+    names: [
+      { label: 'Erato', href: '/en/houses/erato/' },
+      { label: 'Demetra', href: '/en/houses/demetra/' },
+      { label: 'Penelope', href: '/en/houses/penelope/' },
+      { label: 'Monastiri', href: '/en/houses/monastiri/' },
+      { label: 'Almond Tree Villa', href: '/en/villa/almond-tree-villa/' },
+    ],
+  },
+  {
+    title: 'Easy access',
+    names: [
+      { label: 'Clio, about 10 m from parking', href: '/en/houses/clio/' },
+    ],
+  },
+  {
+    title: 'Larger groups',
+    names: [
+      { label: 'Margarita', href: '/en/houses/margarita/' },
+      { label: 'Monastiri', href: '/en/houses/monastiri/' },
+      { label: 'Almond Tree Villa', href: '/en/villa/almond-tree-villa/' },
+    ],
+  },
+];
 ---
 
 <Base
-  title={`${siteCopy.siteName} | Authentic Stone Houses & Villa in Crete`}
+  title={`${siteCopy.siteName} | Traditional Stone Houses & Villa in Crete`}
   description={siteCopy.metaDescriptionHome}
   canonicalUrl="https://traditional-homes.gr/en/"
 >
@@ -26,7 +62,7 @@ const villa = units.find((u) => u.type === 'villa');
         class="w-full h-full bg-center bg-cover scale-105 animate-slow-zoom opacity-70"
         style="background-image: url('/images/brand/home-hero-spinalonga-2400.webp');"
         role="img"
-        aria-label="View of Spinalonga island from the hillside properties"
+        aria-label="View from the hillside properties above Elounda"
       ></div>
       <div class="absolute inset-0 bg-gradient-to-r from-stone-950/80 via-stone-950/20 to-transparent"></div>
     </div>
@@ -50,7 +86,7 @@ const villa = units.find((u) => u.type === 'villa');
             href={siteCopy.bookingEngineUrl}
             target="_blank"
             rel="noopener noreferrer"
-            class="btn-cta bg-transparent border-white/30 text-white hover:bg-white/10 px-8 py-4"
+            class="btn-cta booking-cta px-8 py-4"
           >
             Check Availability
           </a>
@@ -70,25 +106,42 @@ const villa = units.find((u) => u.type === 'villa');
     <header class="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-20">
       <div class="max-w-2xl">
         <h2 class="font-serif text-4xl md:text-6xl text-stone-950 mb-6 leading-tight">Ten houses. <span class="italic text-stone-400">One villa.</span></h2>
-        <p class="text-xl text-stone-500 font-light leading-relaxed italic">
-          Meticulously restored stone architecture nestled in the historic hillsides of Mavrikiano and Vrouchas.
+        <p class="text-xl text-stone-500 font-light leading-relaxed">
+          Ten traditional stone houses in Mavrikiano. One larger villa in Vrouchas. Choose by sea view, pool, outdoor space, access, and group size.
         </p>
       </div>
       <a href="/en/houses/" class="text-stone-900 font-bold text-xs uppercase tracking-widest border-b-2 border-stone-200 hover:border-stone-950 transition-all pb-1 mb-2">
-        Browse the Portfolio
+        Compare all stays
       </a>
     </header>
 
-    {/* VILLAGE ACCESS CALLOUT */}
-    <div class="mb-16 p-8 bg-stone-50 rounded-[2.5rem] border border-stone-100 flex items-start gap-6 shadow-sm">
-      <div class="w-12 h-12 rounded-full bg-white flex items-center justify-center text-stone-400 flex-shrink-0 shadow-sm border border-stone-100">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+    <section class="mb-16" aria-labelledby="choose-your-stay">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8">
+        <div>
+          <p class="text-[10px] uppercase tracking-[0.3em] font-bold text-primary mb-3">Choose your stay</p>
+          <h3 id="choose-your-stay" class="font-serif text-3xl md:text-4xl text-stone-950">Start with what matters most.</h3>
+        </div>
+        <a href="/en/houses/" class="text-stone-900 font-bold text-xs uppercase tracking-widest border-b-2 border-stone-200 hover:border-stone-950 transition-all pb-1">
+          Open filters
+        </a>
       </div>
-      <p class="text-sm text-stone-600 leading-relaxed max-w-3xl">
-        <strong class="font-bold text-stone-950 uppercase tracking-widest text-[10px] block mb-1">A Note on Village Terrain</strong>
-        {siteCopy.accessNoteShort} <a href={siteCopy.accessAnchorUrl} class="text-stone-950 font-bold underline underline-offset-4 hover:text-primary transition-colors">View full access details</a>.
-      </p>
-    </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        {chooseStayOptions.map((option) => (
+          <article class="border border-stone-200 bg-stone-50/70 rounded-2xl p-5">
+            <h4 class="font-serif text-xl text-stone-950 mb-3">{option.title}</h4>
+            <p class="text-sm text-stone-600 leading-relaxed">
+              {option.names.map((item, index) => (
+                <>
+                  <a href={item.href} class="font-medium text-stone-900 underline underline-offset-4 decoration-stone-300 hover:decoration-stone-900">
+                    {item.label}
+                  </a>{index < option.names.length - 1 && ', '}
+                </>
+              ))}
+            </p>
+          </article>
+        ))}
+      </div>
+    </section>
 
     {/* THE GRID */}
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-12 mb-16">
@@ -99,18 +152,35 @@ const villa = units.find((u) => u.type === 'villa');
 
     {/* FEATURED VILLA SECTION */}
     {villa && (
-      <div class="mt-20 pt-20 border-t border-stone-100">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          <div class="lg:col-span-4">
-            <span class="text-[10px] uppercase tracking-[0.3em] font-bold text-primary mb-4 block">Signature Property</span>
-            <h3 class="font-serif text-4xl md:text-5xl text-stone-950 mb-6 leading-tight">The Villa</h3>
-            <p class="text-stone-500 font-light text-lg leading-relaxed mb-8">
-              A private hillside sanctuary in Vrouchas, designed for unparalleled privacy and sweeping views of the Aegean.
-            </p>
-            <a href={`/en/villa/${villa.slug}/`} class="btn-cta">Explore the Villa</a>
+      <div class="mt-20 pt-20 border-t border-stone-100" aria-labelledby="almond-feature-title">
+        <div class="almond-feature-panel grid grid-cols-1 lg:grid-cols-12 gap-0 overflow-hidden rounded-[2rem] border border-stone-100 bg-white shadow-premium">
+          <div class="lg:col-span-7 min-h-[300px] md:min-h-[360px] lg:min-h-[460px]">
+            <img
+              src="/images/villa/1024/almond-tree-villa-garden-pool-wide-01-1024.webp"
+              alt="Almond Tree Villa garden and private pool in Vrouchas"
+              loading="lazy"
+              class="h-full w-full object-cover"
+            />
           </div>
-          <div class="lg:col-span-8">
-            <UnitCard unit={villa} />
+          <div class="lg:col-span-5 p-8 md:p-10 lg:p-12 flex flex-col justify-center bg-white text-body-text">
+            <span class="text-[10px] uppercase tracking-[0.3em] font-bold text-stone-400 mb-4 block">Private Villa · Vrouchas</span>
+            <h3 id="almond-feature-title" class="font-serif text-[30px] md:text-[36px] text-body-text mb-5 leading-tight">Almond Tree Villa in Vrouchas</h3>
+            <p class="almond-feature-body font-light text-base leading-[1.65] mb-8">
+              A larger 230 m² villa for up to 10 guests, with five sleeping rooms, two bathrooms, a private 9 m × 4 m pool, reed-shaded balconies, garden, and views toward the Cretan Sea, garden, pool, and mountains.
+            </p>
+            <div class="mt-auto pt-6 border-t border-stone-100 flex flex-col sm:flex-row gap-3">
+              <a href={`/en/villa/${villa.slug}/`} class="btn-outline flex-1 py-3 px-0 text-center rounded-xl bg-white shadow-sm hover:shadow-md transition-shadow">
+                View villa
+              </a>
+              <a
+                href={siteCopy.bookingEngineUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn-cta booking-cta flex-1 py-3 px-0 text-center rounded-xl shadow-sm hover:shadow-md transition-shadow"
+              >
+                Check dates
+              </a>
+            </div>
           </div>
         </div>
       </div>
@@ -131,17 +201,17 @@ const villa = units.find((u) => u.type === 'villa');
       <div class="order-1 lg:order-2">
         <p class="text-[10px] font-bold uppercase tracking-[0.4em] text-primary mb-6">The Setting</p>
         <h2 class="font-serif text-4xl md:text-6xl text-white mb-8 leading-tight tracking-tight">
-          High Above <br/> <span class="italic text-stone-500">Elounda Bay</span>
+          Mavrikiano <br/> <span class="italic text-stone-500">and Vrouchas</span>
         </h2>
         <p class="text-lg text-stone-400 font-light leading-relaxed mb-10">
-          Our houses sit in the quiet enclaves of Mavrikiano and Vrouchas, where the scent of wild thyme meets the sea breeze. While the vibrant centre of Elounda is just a 5-minute drive away, life here moves at a different pace.
+          The stone houses are in Mavrikiano, above Schisma, the harbour centre of Elounda. Almond Tree Villa is in Vrouchas, higher on the hillside and closer to Plaka. A car is recommended for beaches, tavernas, luggage, and evening meals.
         </p>
         
         <ul class="space-y-6 mb-12 border-t border-stone-800 pt-10">
           {[
-            { label: 'Elounda town', time: '5 min drive' },
-            { label: 'Heraklion Airport (HER)', time: '70 km' },
-            { label: 'Sitia Airport (JSH)', time: '40 km' }
+            { label: 'Schisma / Elounda harbour → Mavrikiano', time: '3 min drive' },
+            { label: 'Schisma / Elounda harbour → Heraklion Airport (HER)', time: '1 hr 8 min · 66.9 km' },
+            { label: 'Schisma / Elounda harbour → Sitia Airport (JSH)', time: '1 hr 23 min · 76.0 km' }
           ].map(item => (
             <li class="flex items-center justify-between text-sm">
               <span class="text-stone-100 font-medium tracking-wide">{item.label}</span>
@@ -195,14 +265,22 @@ const villa = units.find((u) => u.type === 'villa');
   {/* 5. FINAL MASTHEAD CTA */}
   <section class="bg-stone-50 border-t border-stone-100">
     <div class="site-max site-pad py-24 md:py-32 text-center">
-      <h2 class="font-serif text-5xl md:text-7xl text-stone-950 mb-8 leading-tight tracking-tight">Begin your <span class="italic text-stone-400">journey.</span></h2>
+      <h2 class="font-serif text-5xl md:text-7xl text-stone-950 mb-8 leading-tight tracking-tight">Check dates for your stay.</h2>
       <p class="text-stone-500 text-lg md:text-xl font-light max-w-xl mx-auto mb-12">
         Bookings are managed through our secure availability system. Select your property and dates to proceed.
       </p>
+      <div class="max-w-3xl mx-auto mb-8 text-left">
+        <BookingHandoffForm
+          bookingBaseUrl={siteCopy.bookingEngineUrl}
+          itemName="Elounda Traditional Homes"
+          maxAdults={10}
+          title="Check dates"
+          description="Search the collection, then choose the property that fits your stay in WebHotelier."
+          submitLabel="Search Availability"
+          compact
+        />
+      </div>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href={siteCopy.bookingEngineUrl} target="_blank" class="btn-cta bg-stone-950 text-white px-12 py-5 shadow-premium">
-          Check Availability
-        </a>
         <a href="/en/houses/" class="btn-cta bg-transparent border-stone-200 text-stone-950 hover:bg-stone-100 px-12 py-5">
           View All Properties
         </a>
@@ -213,6 +291,16 @@ const villa = units.find((u) => u.type === 'villa');
 </Base>
 
 <style>
+  .almond-feature-panel {
+    background: #FFFFFF;
+    border-color: #F7F4EE;
+    color: #2C2419;
+  }
+
+  .almond-feature-body {
+    color: #6B5F50;
+  }
+
   .animate-slow-zoom {
     animation: slowZoom 25s infinite alternate ease-in-out;
   }

@@ -1,17 +1,37 @@
 ---
 slug: "argyro"
 title: "House Argyro"
-summary: "A historic 1905 stone residence in Mavrikiano, offering an authentic village soul with panoramic views of the Mirabello Gulf."
+summary: "An 85 m2 two-bedroom stone house in Mavrikiano for up to four guests, with a sea-view veranda, courtyard kitchen, and shared guest parking nearby."
 ---
 
-### A Century of Cretan Heritage
-Built in 1905, House Argyro is more than a holiday rental; it is a preserved piece of Mavrikiano’s history. Meticulously restored to honor its original character, the thick stone walls provide a natural sanctuary that remains cool under the Cretan sun. This is a home for those who value the "slow living" philosophy of the Mediterranean.
+# House Argyro
 
-### The Interior Narrative
-Spanning 85 square metres across multiple levels, the interior layout creates a sense of discovery. The two bedrooms are positioned to capture the first light over the Aegean, while the living spaces feature natural timber and stone textures. It is a space where simple modern comforts—like high-quality linens and updated kitchenware—exist in harmony with century-old architecture.
+House Argyro is a traditional Cretan stone home in the hillside village of Mavrikiano, above Elounda Bay. Built in 1905 and shaped over generations, it combines preserved architectural character with a quieter village setting close to Elounda.
 
-### Mediterranean Outdoor Living
-Life at House Argyro centers around the sea-view veranda. It is the perfect vantage point to watch the fishing boats in Elounda Bay below. For those who enjoy alfresco cooking, the private courtyard features a secondary open kitchenette and barbecue area, shaded and quiet, ideal for long dinners under the stars.
+**85 m² · Sleeps 4 · 2 bedrooms · Multi-level layout · Sea-view veranda · Private courtyard**
 
-### The Mavrikiano Setting
-Perched in the quietest quarter of the village, the house offers a rare sense of privacy while being only a 10-minute walk (or 3-minute drive) from the waterfront tavernas of Elounda. Staying here allows you to bypass the resort crowds and experience the authentic rhythm of a traditional Cretan hillside settlement.
+## House Layout
+
+House Argyro unfolds across several levels in the traditional way of older Cretan homes. From the entrance level, guests arrive at the kitchen and bathroom. A level above is the living and dining area. Between these levels sits a semi-private sleeping area with two single beds beneath a stone arch. On the upper floor is the main double bedroom, which opens directly to the sea-view veranda.
+
+## Inside the House
+
+The interior combines stone textures, traditional woodwork, and original fireplaces with the practical requirements of a comfortable stay. The kitchen is fully equipped, and the house includes air conditioning, Wi-Fi, and everyday essentials without losing the character of an older Cretan home.
+
+## Outdoor Living
+
+The sea-view veranda is the main outdoor living space of the house. The outdoor kitchenette and barbecue are located here, making it the natural place for meals and time outside overlooking Elounda Bay. A separate private courtyard provides a second, more sheltered outdoor area.
+
+## Location
+
+House Argyro sits in Mavrikiano, around a 10-minute walk from Elounda’s beach, harbor, tavernas, and shops. Its elevated position gives it a quieter atmosphere while keeping the waterfront close at hand. Shared private guest parking is nearby, approximately 80 metres from the house, with space for up to 5 cars in total; if the shared parking area is full, guests can usually park for free around the village.
+
+## Suitability
+
+House Argyro is well suited to guests who value architectural character, outdoor living, and a traditional village setting over standardised accommodation. It works particularly well for couples and small families who are comfortable with a multi-level layout.
+
+## Practical Note
+
+- Not step-free
+- Internal stairs connect the levels of the house
+- Best suited to guests comfortable with a traditional multi-level layout

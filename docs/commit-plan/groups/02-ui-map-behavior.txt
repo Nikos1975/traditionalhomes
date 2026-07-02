@@ -1,0 +1,14 @@
+src/components/blog/
+src/components/booking/
+src/components/Footer.astro
+src/components/Header.astro
+src/components/maps/LeafletMap.astro
+src/components/maps/MasterLocationMap.astro
+src/layouts/Base.astro
+src/pages/blog/[...slug].astro
+src/pages/blog/index.astro
+src/pages/en/houses/[slug].astro
+src/pages/en/houses/index.astro
+src/pages/en/index.astro
+src/pages/en/villa/[slug].astro
+src/styles/global.css

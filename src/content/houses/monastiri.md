@@ -1,17 +1,29 @@
 ---
 slug: "monastiri"
 title: "House Monastiri"
-summary: "A historic, multi-level stone residence in Mavrikiano, distinguished by its private dipping pool, layered sea-view balconies, and rich architectural heritage."
+summary: "A 120 m² three-bedroom stone house in Mavrikiano for up to six guests, with two bathrooms, a private dipping pool, sea-view balconies, and a courtyard beside Profitis Ilias church."
 ---
 
-### A Legacy in Stone
-House Monastiri is not just a place to stay; it is a landmark of Mavrikiano’s history. Painstakingly reconstructed in 2003 using historical engravings as a guide, the home stands proudly on the original site of the Prophet Elias Monastery. This profound heritage gives the expansive 120-square-metre residence a rooted, monumental presence, offering guests a rare opportunity to live within the architectural legacy and spiritual calm of eastern Crete.
+### A Multi-Level Sea-View House
+House Monastiri is a larger stone house in Mavrikiano, located beside the small church of Profitis Ilias. It has three bedrooms, two bathrooms, a private dipping pool, several balconies, and space for up to six guests.
 
-### The Interior Narrative
-Unfolding elegantly across three distinct levels, the interior architecture is designed to balance shared moments with absolute privacy. The layout comfortably accommodates up to six guests, making it an exceptional choice for families or groups of friends. Featuring three private bedrooms, two bathrooms, a fully equipped kitchen, and a living room that opens directly to the outdoors, the vertical design creates natural separation while maintaining a warm, cohesive aesthetic through thick stone walls and traditional timber details.
+The house suits families or friends who want more separation between sleeping areas, sea-view balconies, and a private courtyard with outdoor space.
 
-### Mediterranean Outdoor Living
-The outdoor experience at Monastiri is beautifully layered, offering a journey of different atmospheres rather than a single terrace. At the lower level, a private stone courtyard houses a refreshing dipping pool—a secluded, shaded oasis perfect for cooling off during the midday heat. Above, elevated wraparound balconies open toward sweeping, panoramic views of Elounda and the Mirabello Gulf, providing a cinematic backdrop for morning coffees or atmospheric sunset dinners.
+### The Interior Layout
+The 120 m² house is arranged over multiple connected levels with internal stairs.
 
-### The Mavrikiano Setting
-Despite its grand, secluded atmosphere, Monastiri remains effortlessly connected to the vibrant life of the coast. A scenic 10-minute walk down the historic village pathways brings you directly to Elounda’s pristine beaches, bustling harbor, and waterfront tavernas. It stands as a majestic sanctuary perched above the bay—a culturally rich and tranquil base from which to explore Spinalonga, Plaka, and the wider Lasithi region.
+Guests enter through the main gate into the private courtyard. Directly ahead is the private dipping pool. On the right side of the courtyard are the barbecue area, a wooden table, and a corner sofa. From the courtyard, guests enter the house.
+
+On the entrance level, the first main bedroom is directly ahead. The first bathroom is on the right, and the internal stair is positioned centrally, leading to the upper levels.
+
+On the first upper level, there is a twin bedroom with two single beds on the right and another main bedroom straight ahead, positioned above the pool. Both bedrooms have their own balconies with sea views.
+
+On the top level, the kitchen area, living room, and second bathroom are arranged together. The kitchen area includes a monastery-style wooden table. The second bathroom has a shower. The living room opens to two additional balconies, giving this level the main shared sea-view outdoor spaces.
+
+### Dipping Pool And Balconies
+The private courtyard is the arrival and outdoor gathering area of Monastiri. It includes the dipping pool, barbecue area, wooden table, and corner sofa.
+
+The upper balconies are an important part of the house. The bedroom balconies give each upper sleeping area its own outdoor space, while the top-level balconies connect with the kitchen and living area and open toward Elounda Gulf.
+
+### Access And Setting
+Shared private guest parking is nearby, with space for up to 5 cars in total; if the shared parking area is full, guests can usually park for free around the village. The house is not step-free. Guests should expect steps from the village path, courtyard access, and internal stairs across the multi-level layout.

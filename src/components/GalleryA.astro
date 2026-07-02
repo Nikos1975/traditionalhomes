@@ -79,7 +79,7 @@ const galleryItems = allImages.map((img, i) => ({
       {totalCount > 1 && (
         <button
           type="button"
-          class="flex-shrink-0 flex flex-col items-center justify-center gap-2 px-6 rounded-xl bg-stone-900 text-white hover:bg-stone-700 transition-colors cursor-pointer"
+          class="flex-shrink-0 flex flex-col items-center justify-center gap-2 px-6 rounded-xl gallery-view-all-cta"
           data-lb-open="0"
           aria-label={`View all ${totalCount} photos`}
         >
@@ -126,7 +126,7 @@ const galleryItems = allImages.map((img, i) => ({
   {totalCount > 1 && (
     <button
       type="button"
-      class="mt-3 w-full flex items-center justify-center gap-2 py-3 bg-stone-900 text-white rounded-xl text-[11px] uppercase tracking-widest font-bold hover:bg-stone-700 transition-colors cursor-pointer"
+      class="mt-3 w-full flex items-center justify-center gap-2 py-3 gallery-view-all-cta rounded-xl text-[11px] uppercase tracking-widest font-bold"
       data-lb-open="0"
       aria-label={`View all ${totalCount} photos`}
     >

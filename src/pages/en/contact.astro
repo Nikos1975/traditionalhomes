@@ -37,9 +37,21 @@ import siteCopy from '../../data/siteCopy.json';
           class="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-700"
           name="contact"
           method="POST"
-          action="/en/contact/?sent=1"
+          action="/api/contact"
+          data-contact-form
           aria-label="Contact form"
         >
+          <div class="sr-only" aria-hidden="true">
+            <label for="website">Website</label>
+            <input
+              type="text"
+              id="website"
+              name="website"
+              tabindex="-1"
+              autocomplete="off"
+            />
+          </div>
+
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
             <div class="group">
               <label for="name" class="block text-[10px] uppercase tracking-[0.2em] font-bold text-stone-400 mb-2 group-focus-within:text-stone-950 transition-colors">Name</label>
@@ -103,10 +115,18 @@ import siteCopy from '../../data/siteCopy.json';
           </div>
 
           <div class="pt-4">
-            <button type="submit" class="btn-cta bg-stone-950 text-white border-stone-950 hover:bg-primary hover:border-primary px-12 py-4 shadow-premium transition-all duration-300">
+            <button type="submit" class="btn-cta px-12 py-4 shadow-premium transition-all duration-300">
               Send Message
             </button>
           </div>
+
+          <p
+            class="hidden text-sm text-red-700 bg-red-50 border border-red-100 rounded-xl px-4 py-3"
+            data-contact-error
+            role="alert"
+          >
+            Unable to send this message. Please try again.
+          </p>
 
           <p class="text-[11px] text-stone-400 leading-relaxed font-medium italic">
             We aim to respond within one business day. For immediate availability, please use our 
@@ -138,12 +158,12 @@ import siteCopy from '../../data/siteCopy.json';
         </div>
 
         {/* GROUP BOOKING CARD */}
-        <div class="bg-stone-950 text-stone-400 rounded-[2rem] p-8 shadow-2xl">
-          <h2 class="text-white font-serif text-2xl mb-4">Group Gatherings</h2>
+        <div class="bg-accent-sage-soft text-stone-700 border border-accent-sage/60 rounded-[2rem] p-8 shadow-premium">
+          <h2 class="text-stone-950 font-serif text-2xl mb-4">Group Gatherings</h2>
           <p class="text-sm leading-relaxed mb-6 font-light">
             Planning a retreat or a large family gathering? We can assist in coordinating simultaneous bookings across multiple houses in Mavrikiano.
           </p>
-          <div class="w-12 h-1 bg-primary/30 rounded-full"></div>
+          <div class="w-12 h-1 bg-accent-sage rounded-full"></div>
         </div>
       </aside>
 
@@ -153,21 +173,77 @@ import siteCopy from '../../data/siteCopy.json';
 </Base>
 
 <script>
-  // Preservation of your original submission logic
+  const form = document.querySelector('form[name="contact"]');
+  const successMarkup = `
+    <div class="bg-stone-50 border border-stone-200 rounded-[2rem] p-10 text-center animate-in zoom-in-95 duration-500">
+      <div class="w-16 h-16 bg-primary/10 text-primary rounded-full flex items-center justify-center mx-auto mb-6">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+      </div>
+      <h2 class="font-serif text-3xl text-stone-950 mb-2">Message Received</h2>
+      <p class="text-stone-500 font-light italic">Thank you for reaching out. We will get back to you shortly.</p>
+    </div>
+  `;
+  const showSuccess = () => {
+    if (form) {
+      form.innerHTML = successMarkup;
+    }
+  };
+
   const params = new URLSearchParams(window.location.search);
   if (params.get('sent') === '1') {
-    const form = document.querySelector('form[name="contact"]');
-    if (form) {
-      form.innerHTML = `
-        <div class="bg-stone-50 border border-stone-200 rounded-[2rem] p-10 text-center animate-in zoom-in-95 duration-500">
-          <div class="w-16 h-16 bg-primary/10 text-primary rounded-full flex items-center justify-center mx-auto mb-6">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-          </div>
-          <h2 class="font-serif text-3xl text-stone-950 mb-2">Message Received</h2>
-          <p class="text-stone-500 font-light italic">Thank you for reaching out. We will get back to you shortly.</p>
-        </div>
-      `;
-    }
+    showSuccess();
+  } else if (form instanceof HTMLFormElement) {
+    const errorMessage = form.querySelector('[data-contact-error]');
+    const submitButton = form.querySelector('button[type="submit"]');
+    const defaultButtonText = submitButton?.textContent ?? 'Send Message';
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+
+      if (errorMessage) {
+        errorMessage.classList.add('hidden');
+      }
+      if (submitButton) {
+        submitButton.setAttribute('disabled', 'true');
+        submitButton.textContent = 'Sending...';
+      }
+
+      try {
+        const response = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: {
+            accept: 'application/json',
+          },
+        });
+        const result = await response.json().catch(() => ({}));
+
+        if (!response.ok || !result.ok) {
+          throw new Error(result.error || 'Unable to send this message.');
+        }
+
+        window.history.replaceState({}, '', '/en/contact/?sent=1');
+        showSuccess();
+      } catch (error) {
+        if (errorMessage) {
+          errorMessage.textContent =
+            error instanceof Error
+              ? error.message
+              : 'Unable to send this message. Please try again.';
+          errorMessage.classList.remove('hidden');
+        }
+      } finally {
+        if (submitButton && form.isConnected) {
+          submitButton.removeAttribute('disabled');
+          submitButton.textContent = defaultButtonText;
+        }
+      }
+    });
   }
 </script>
 

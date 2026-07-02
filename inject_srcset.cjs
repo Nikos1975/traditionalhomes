@@ -53,8 +53,6 @@ for (const slug of Object.keys(gallery)) {
             // Try exact match or baseName + -size + .webp/.jpg
             const fileMatch = filesInSize.find(f => {
                 const fNoExt = f.replace(/\.(webp|jpg)$/, '');
-                const targetSuffix1 = `${baseName}-${size}`;
-                const targetSuffix2 = `${baseName}--${size}`;
                 return f.startsWith(baseName) && (fNoExt.endsWith(`-${size}`) || fNoExt.endsWith(`--${size}`) || fNoExt === baseName);
             });
 

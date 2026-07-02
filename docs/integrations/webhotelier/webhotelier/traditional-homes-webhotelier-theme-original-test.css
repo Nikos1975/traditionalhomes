@@ -1,0 +1,245 @@
+/*
+  Elounda Traditional Homes - WebHotelier theme
+  Original test version kept for comparison.
+
+  Rules:
+  - CSS only.
+  - Do not hide, remove, or disable native WebHotelier booking functionality.
+  - Keep booking controls, rates, cancellation labels, totals, and book buttons visible.
+*/
+
+:root {
+  --eth-stone: #2c2419;
+  --eth-stone-soft: #f8f5ef;
+  --eth-stone-line: #ded7cc;
+  --eth-muted: #6f675f;
+  --eth-sage: #98bcb4;
+  --eth-sage-soft: #e7f0ed;
+  --eth-rust: #b44b2a;
+  --eth-blue: #2f6f95;
+  --eth-white: #ffffff;
+  --eth-shadow: 0 18px 48px rgba(44, 36, 25, 0.18);
+}
+
+html {
+  min-height: 100%;
+}
+
+body {
+  min-height: 100%;
+  background:
+    linear-gradient(rgba(44, 36, 25, 0.18), rgba(44, 36, 25, 0.28)),
+    url("https://cdn.webhotelier.net/photos/w=1920:h=1080:fit=inside/templates/10429/files/ALMOND_TREE_1_0005.jpeg") center / cover fixed no-repeat;
+  color: var(--eth-stone);
+  font-family: "Work Sans", Arial, sans-serif;
+}
+
+a {
+  color: var(--eth-blue);
+  transition:
+    color 180ms ease,
+    background-color 180ms ease,
+    border-color 180ms ease;
+}
+
+a:hover {
+  color: var(--eth-rust);
+  text-decoration: none;
+}
+
+header {
+  display: flex;
+  width: auto;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.96);
+  border-bottom: 1px solid rgba(222, 215, 204, 0.75);
+  box-shadow: 0 10px 28px rgba(44, 36, 25, 0.08);
+}
+
+#header,
+#top-options {
+  background: none;
+}
+
+#header img {
+  height: 62px;
+  max-height: 62px;
+  animation: ethFadeIn 700ms ease-in-out;
+}
+
+#top-options {
+  flex: 0 1 fit-content;
+  min-width: 720px;
+  text-align: right;
+}
+
+#top-options li a {
+  color: var(--eth-stone);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+#top-options li a:hover {
+  color: var(--eth-rust);
+  text-decoration: none;
+}
+
+#main,
+#content,
+#availability-search,
+#results,
+.availability-search,
+.booking-search,
+.room,
+.room-result,
+.rate,
+.results,
+.result {
+  border-color: var(--eth-stone-line);
+}
+
+#availability-search,
+.availability-search,
+.booking-search {
+  background: rgba(255, 255, 255, 0.94);
+  border: 1px solid rgba(222, 215, 204, 0.9);
+  border-radius: 0;
+  box-shadow: var(--eth-shadow);
+}
+
+input,
+select,
+textarea {
+  border-color: #cfc7bb;
+  background-color: #fffdf9;
+  color: var(--eth-stone);
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--eth-sage);
+  box-shadow: 0 0 0 2px rgba(152, 188, 180, 0.28);
+  outline: none;
+}
+
+button,
+.button,
+a.button,
+button.prime,
+.prime,
+.btn,
+.book,
+.book-now {
+  border-color: var(--eth-sage);
+  background-color: var(--eth-sage);
+  color: var(--eth-stone);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition:
+    background-color 180ms ease,
+    border-color 180ms ease,
+    color 180ms ease,
+    transform 180ms ease;
+}
+
+button:hover,
+.button:hover,
+a.button:hover,
+button.prime:hover,
+.prime:hover,
+.btn:hover,
+.book:hover,
+.book-now:hover {
+  border-color: var(--eth-rust);
+  background-color: var(--eth-rust);
+  color: var(--eth-white);
+  transform: translateY(-1px);
+}
+
+.best-price,
+.best-price-guarantee,
+.badge,
+.label,
+.free-cancellation {
+  border-color: rgba(152, 188, 180, 0.7);
+  background-color: var(--eth-sage-soft);
+  color: var(--eth-stone);
+}
+
+.room,
+.room-result,
+.rate,
+.result {
+  background: rgba(255, 255, 255, 0.96);
+}
+
+.room h2,
+.room h3,
+.room-result h2,
+.room-result h3,
+.result h2,
+.result h3 {
+  color: var(--eth-stone);
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 400;
+}
+
+.price,
+.total,
+.stay-total {
+  color: var(--eth-stone);
+  font-weight: 700;
+}
+
+table,
+th,
+td {
+  border-color: rgba(152, 188, 180, 0.45);
+}
+
+th,
+.calendar th,
+.availability-calendar th {
+  background: var(--eth-sage-soft);
+  color: var(--eth-stone);
+}
+
+td,
+.calendar td,
+.availability-calendar td {
+  background: rgba(231, 240, 237, 0.55);
+}
+
+footer {
+  background: rgba(255, 255, 255, 0.96);
+  color: var(--eth-muted);
+}
+
+@keyframes ethFadeIn {
+  from {
+    transform: translateY(-4px);
+  }
+
+  to {
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 996px) {
+  body {
+    background-attachment: scroll;
+  }
+
+  header {
+    justify-content: space-around;
+  }
+
+  #top-options {
+    min-width: inherit;
+  }
+}

@@ -1,5 +1,6 @@
 ---
 import { Image } from "astro:assets";
+import siteCopy from "../data/siteCopy.json";
 import type { InventoryUnit } from "../types";
 
 interface Props {
@@ -37,9 +38,24 @@ const featuredImgAsset = (
 )?.default;
 
 // 3. UI HELPERS
-const isSeaView =
-  unit.view.toLowerCase().includes("sea") ||
-  unit.view.toLowerCase().includes("bay");
+const displayLocation =
+  unit.village === "Mavrikiano" && unit.area === "Elounda"
+    ? "Mavrikiano, Elounda"
+    : unit.location;
+const homepageFeatureLabels: Record<string, string> = {
+  argyro: "Direct Sea View",
+  leonidas: "Direct Sea View",
+  margarita: "Direct Sea View",
+  monastiri: "Direct Sea View · Private Pool",
+  demetra: "Shared Pool",
+  penelope: "Shared Pool",
+  erato: "Private Pool",
+  clio: "First Floor",
+  efterpi: "Ground Floor",
+  kalliopi: "First Floor",
+  "almond-tree-villa": "Private Villa · Vrouchas",
+};
+const homepageFeatureLabel = homepageFeatureLabels[unit.slug];
 ---
 
 <article
@@ -69,36 +85,6 @@ const isSeaView =
         </div>
       )
     }
-
-    {/* PREMIUM POOL BADGE */}
-    {
-      unit.pool !== "none" && (
-        <span
-          class:list={[
-            "absolute top-4 left-4 px-3 py-1.5 rounded-full text-[9px] font-bold uppercase tracking-[0.2em] flex items-center gap-2 shadow-md backdrop-blur-md transition-colors",
-            unit.pool === "shared"
-              ? "bg-stone-900/80 text-white"
-              : "bg-white/95 text-primary",
-          ]}
-        >
-          <svg
-            width="12"
-            height="12"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2.5"
-          >
-            <path d="M2 12h20M2 12c0-5.5 4.5-10 10-10s10 4.5 10 10M2 12c0 5.5 4.5 10 10 10s10-4.5 10-10" />
-          </svg>
-          {unit.pool === "private"
-            ? unit.slug === "monastiri"
-              ? "Private Dripping Pool"
-              : "Private Pool"
-            : "Shared Pool"}
-        </span>
-      )
-    }
   </a>
 
   <div class="flex flex-col flex-1 p-8">
@@ -108,7 +94,7 @@ const isSeaView =
         <p
           class="text-[9px] uppercase tracking-[0.3em] text-stone-400 mb-2 font-bold"
         >
-          {unit.location} · {unit.area}
+          {displayLocation}
         </p>
         <a
           href={unitPagePath}
@@ -159,26 +145,24 @@ const isSeaView =
         {unit.bedrooms}
         {unit.bedrooms === 1 ? "Bedroom" : "Bedrooms"}
       </span>
-      {
-        isSeaView && (
-          <span class="flex items-center gap-3 text-xs text-primary font-medium col-span-2">
-            <svg
-              width="16"
-              height="16"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.5"
-            >
-              <>
-                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
-                <circle cx="12" cy="12" r="3" />
-              </>
-            </svg>
-            Direct Sea View
-          </span>
-        )
-      }
+      {homepageFeatureLabel && (
+        <span class="col-span-2 flex items-center gap-3 text-xs font-medium text-stone-600">
+          <svg
+            class="text-stone-400"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+          >
+            <path d="M4 12h16"></path>
+            <path d="M4 18h16"></path>
+            <path d="M4 6h16"></path>
+          </svg>
+          {homepageFeatureLabel}
+        </span>
+      )}
     </div>
 
     {/* ACCESS ALERT (Editorial Note Style) */}
@@ -201,12 +185,12 @@ const isSeaView =
         Details
       </a>
       <a
-        href={unit.availabilityUrl}
+        href={siteCopy.bookingEngineUrl}
         target="_blank"
-        rel="noopener"
-        class="btn-cta flex-1 py-3 px-0 text-center rounded-xl bg-stone-900 text-white hover:bg-primary shadow-sm hover:shadow-md transition-shadow"
+        rel="noopener noreferrer"
+        class="btn-cta booking-cta flex-1 py-3 px-0 text-center rounded-xl shadow-sm hover:shadow-md transition-shadow"
       >
-        Book Now
+        Check dates
       </a>
     </div>
   </div>

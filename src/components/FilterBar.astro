@@ -11,7 +11,8 @@ const { items } = Astro.props;
 <div class="mb-8">
   <div class="flex items-center gap-6 mb-5 border-b border-stone-200" id="view-tabs" role="tablist">
     <button class="view-tab active pb-2 border-b-2 border-stone-800 text-primary font-semibold font-sans text-sm transition-colors" data-view="all" role="tab" aria-selected="true">All stays</button>
-    <button class="view-tab pb-2 border-b-2 border-transparent text-stone-500 hover:text-stone-700 font-medium font-sans text-sm transition-colors" data-view="homes" role="tab" aria-selected="false">Homes & Villa</button>
+    <button class="view-tab pb-2 border-b-2 border-transparent text-stone-500 hover:text-stone-700 font-medium font-sans text-sm transition-colors" data-view="houses" role="tab" aria-selected="false">Houses</button>
+    <button class="view-tab pb-2 border-b-2 border-transparent text-stone-500 hover:text-stone-700 font-medium font-sans text-sm transition-colors" data-view="villa" role="tab" aria-selected="false">Villa</button>
     <button class="view-tab pb-2 border-b-2 border-transparent text-stone-500 hover:text-stone-700 font-medium font-sans text-sm transition-colors" data-view="groups" role="tab" aria-selected="false">Group stays</button>
   </div>
 
@@ -36,7 +37,7 @@ const { items } = Astro.props;
 
   <p id="filter-count" class="text-sm text-muted mt-2 hidden" aria-live="polite" aria-atomic="true"></p>
 
-  <script id="filter-data" type="application/json" set:html={JSON.stringify(items)}></script>
+  <script id="filter-data" type="application/json" is:inline set:html={JSON.stringify(items)}></script>
 </div>
 
 <style>
@@ -73,7 +74,7 @@ const { items } = Astro.props;
     function syncFromUrl() {
       const params = new URLSearchParams(window.location.search);
       const view = params.get('view') as FilterState['view'];
-      if (view && ['all', 'homes', 'groups'].includes(view)) state.view = view;
+      if (view && ['all', 'houses', 'villa', 'groups'].includes(view)) state.view = view;
 
       const sleeps = params.get('sleeps');
       if (sleeps) {
@@ -129,18 +130,8 @@ const { items } = Astro.props;
       });
 
       if (countEl) {
-        const isDefault =
-          state.capacityMode === 'none' &&
-          state.bedroomsMin === null &&
-          state.seaView === false &&
-          state.pool === null;
-
-        if (isDefault && state.view === 'all') {
-          countEl.classList.add('hidden');
-        } else {
-          countEl.textContent = `${visibleCount} ${visibleCount === 1 ? 'property' : 'properties'} match`;
-          countEl.classList.remove('hidden');
-        }
+        countEl.textContent = `${visibleCount} ${visibleCount === 1 ? 'property matches' : 'properties match'}`;
+        countEl.classList.remove('hidden');
       }
 
       tabs.forEach(tab => {

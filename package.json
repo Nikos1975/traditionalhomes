@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
+    "blog:image": "node scripts/process-blog-image.mjs",
     "preview": "astro preview",
     "typecheck": "astro check",
     "format": "prettier . --write"

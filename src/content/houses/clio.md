@@ -1,17 +1,25 @@
 ---
 slug: "clio"
 title: "House Clio"
-summary: "An elevated, historically rich stone retreat in Mavrikiano, featuring curated antiques, a sunlit balcony, and sweeping views of the Mirabello mountains."
+summary: "A 55 m2 upper-level one-bedroom stone house in Mavrikiano for up to four guests, with a balcony and mountain views."
 ---
 
-### An Elevated Historic Haven
-Raised gracefully above the village lanes on the upper floor of a traditional Cretan property, House Clio offers a profoundly authentic village experience. Built upon the revered site of an ancient church, the residence is steeped in local heritage. It trades the bustling energy of the coast for a quieter, deeply cultural atmosphere, appealing to travelers who value historic character and the slow, grounded rhythm of eastern Crete over standard resort living.
+### A Traditional Stone House with Balcony above Erato
+House Clio is a one-bedroom traditional stone house in Mavrikiano, set above House Erato. It has a private balcony with views toward the pool area, mountains, and olive groves. Pool access is not included when Clio is booked separately.
 
-### The Interior Narrative
-The interior spaces are shaped by the natural materials and proportions of historic Mavrikiano. Accommodating up to four guests, the layout features a flexible, open-plan living and sleeping area. Handcrafted furnishings, exposed wooden beams, and thick stone walls create a warm, tactile environment. The space is anchored by a magnificent antique bed and curated local décor, reinforcing the home's storied past and creating a sanctuary designed for intimacy and quiet comfort.
+### The Interior Layout
+The 55 m² house is arranged over connected levels with internal stairs. On entering, there is a built-in single stone bed on the right, a small kitchen on the left, and another built-in single stone bed nearby.
 
-### Mediterranean Outdoor Living
-Life at Clio extends naturally onto a private, elevated balcony. Rather than looking toward the sea, this sunlit perch gazes out over a sea of silver olive groves and the dramatic peaks of the surrounding mountains. It is a tranquil, inspiring setting perfectly suited for slow morning coffees, lingering breakfasts, or simply listening to the gentle hum of the cicadas as the evening shadows lengthen across the valley.
+Ahead is the living area, centred around a fireplace. Built-in stone sitting areas sit to the left and right of the fireplace, with a round wooden table between them. The bathroom has a shower and is reached from the living room.
 
-### The Mavrikiano Setting
-While securely nestled in the peaceful hillside, Clio remains effortlessly connected to the coast. A scenic 10-minute stroll down the village pathways brings you directly to Elounda’s pristine beaches, bustling harbor, and waterfront tavernas. For larger groups or those seeking additional luxury, Clio is designed to pair perfectly with House Erato directly below. Booking these two homes together creates a magnificent private estate for up to eight guests, unlocking exclusive shared access to Erato’s swimming pool and expansive barbecue terrace.
+Above the main living space is the ontas — the traditional raised sleeping area — reached by an internal stair. This upper level forms the main bedroom area.
+
+### Balcony And Village Setting
+The balcony is Clio’s main outdoor sitting point, with views toward the pool area, mountains, and olive groves. Inside, the house keeps the traditional stone character of the Mavrikiano homes, with built-in sleeping areas, stone seating, and a quiet village atmosphere.
+
+### Access And Pairing
+Shared private guest parking is about 10 m away, with space for up to 5 cars in total for the Mavrikiano houses. If the shared parking area is full, guests can usually park for free around the village.
+
+The house is not step-free. Guests should expect at least one step from the path to the entrance and internal stairs inside the house.
+
+When Erato and Clio are booked together, the pool can function as part of the combined stay.

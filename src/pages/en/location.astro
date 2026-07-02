@@ -19,6 +19,86 @@ const mapMarkers = locations.map(loc => {
   };
 });
 
+const badgeStyles = {
+  sand: 'bg-[#f4eddf] border-[#e8dccb] text-stone-600',
+  terracotta: 'bg-[#f3e2d9] border-[#e7c9bc] text-[#8a4a35]',
+  sage: 'bg-accent-sage-soft border-accent-sage/50 text-stone-700',
+  stone: 'bg-white border-stone-200 text-stone-500',
+  blueGrey: 'bg-[#e8edf0] border-[#d7e0e4] text-slate-600',
+};
+
+type BadgeTone = keyof typeof badgeStyles;
+
+const collectionGroups = [
+  {
+    label: 'Sea-view standalone houses',
+    slugs: ['argyro', 'leonidas', 'margarita', 'monastiri'],
+  },
+  {
+    label: 'Paired houses',
+    slugs: ['efterpi', 'kalliopi'],
+  },
+  {
+    label: 'Shared-pool houses',
+    slugs: ['demetra', 'penelope'],
+  },
+  {
+    label: 'Private-pool / upper house pair',
+    slugs: ['erato', 'clio'],
+  },
+  {
+    label: 'Vrouchas villa',
+    slugs: ['almond-tree-villa'],
+  },
+];
+
+const collectionMetadata: Record<string, { label: string; tone: BadgeTone }[]> = {
+  argyro: [
+    { label: 'Sea view', tone: 'sand' },
+    { label: 'Standalone', tone: 'stone' },
+  ],
+  leonidas: [
+    { label: 'Sea view', tone: 'sand' },
+    { label: 'Standalone', tone: 'stone' },
+  ],
+  margarita: [
+    { label: 'Sea view', tone: 'sand' },
+    { label: 'Standalone', tone: 'stone' },
+  ],
+  monastiri: [
+    { label: 'Sea view', tone: 'sand' },
+    { label: 'Private pool', tone: 'terracotta' },
+  ],
+  efterpi: [
+    { label: 'Ground floor', tone: 'stone' },
+  ],
+  kalliopi: [
+    { label: 'First floor', tone: 'stone' },
+  ],
+  demetra: [
+    { label: 'Ground floor', tone: 'stone' },
+    { label: 'Shared pool', tone: 'sage' },
+  ],
+  penelope: [
+    { label: 'First floor', tone: 'stone' },
+    { label: 'Shared pool', tone: 'sage' },
+  ],
+  erato: [
+    { label: 'Ground floor', tone: 'stone' },
+    { label: 'Private pool', tone: 'terracotta' },
+  ],
+  clio: [
+    { label: 'First floor', tone: 'stone' },
+    { label: 'No pool', tone: 'stone' },
+  ],
+  'almond-tree-villa': [
+    { label: 'Vrouchas', tone: 'blueGrey' },
+    { label: 'Private villa', tone: 'blueGrey' },
+  ],
+};
+
+const unitBySlug = new Map(units.map((unit) => [unit.slug, unit]));
+
 const pageTitle = `Location — Mavrikiano & Vrouchas, Elounda | ${siteCopy.siteName}`;
 ---
 
@@ -44,7 +124,7 @@ const pageTitle = `Location — Mavrikiano & Vrouchas, Elounda | ${siteCopy.site
         The <span class="italic text-stone-400">Setting</span>
       </h1>
       <p class="text-2xl text-stone-500 font-light leading-relaxed font-serif italic max-w-2xl">
-        Two historic villages perched on the hillside above the sapphire waters of Elounda Bay, Northeast Crete.
+        Mavrikiano and Vrouchas sit on the hillside above Elounda, with village paths, sea views, parking details, and beaches close by car.
       </p>
     </header>
 
@@ -60,10 +140,10 @@ const pageTitle = `Location — Mavrikiano & Vrouchas, Elounda | ${siteCopy.site
           </div>
           <div class="prose prose-stone text-stone-600 font-light text-lg leading-relaxed space-y-6">
             <p>
-              A historic hamlet nestled on the slope above Elounda town. Our ten stone houses are integrated into the existing village fabric, connected by winding stone paths and quiet lanes. Mavrikiano remains a sanctuary of authenticity—no hotels, no shops, just the quiet rhythm of Cretan life.
+              Mavrikiano is a hillside village above Schisma, the harbour centre of Elounda. Our ten stone houses sit within the existing village fabric, connected by stone paths and quiet lanes.
             </p>
             <p>
-              The harbor, restaurants, and local markets are a 3-minute drive (or a 15-minute downhill walk) away.
+              The village has local places to eat and drink, including Kantouni, To Rakadiko tou Kamari, Despoina Tavern, and BeeRaki, while Elounda’s harbour, shops, local markets, and further tavernas are about a 3-minute drive away, or a 10-minute downhill walk for many guests.
             </p>
             <a href="/en/guide/mavrikiano/" class="inline-flex items-center gap-2 text-stone-950 font-bold text-xs uppercase tracking-[0.2em] border-b border-stone-200 hover:border-primary transition-all pb-1 group">
               Explore the Mavrikiano Guide
@@ -79,10 +159,13 @@ const pageTitle = `Location — Mavrikiano & Vrouchas, Elounda | ${siteCopy.site
           </div>
           <div class="prose prose-stone text-stone-600 font-light text-lg leading-relaxed space-y-6">
             <p>
-              Located further north and higher in elevation, Vrouchas offers a rugged, panoramic landscape. It overlooks the historic island of Spinalonga and the sweeping Mirabello Gulf.
+              Located further north and higher in elevation, Vrouchas has a quieter hillside setting with views toward the Cretan Sea, olive groves, and the surrounding mountains. In summer, the village often feels several degrees cooler than Plaka because of its elevation and exposure.
             </p>
             <p>
-              <a href="/en/villa/almond-tree-villa/" class="text-stone-950 font-medium underline underline-offset-4 decoration-stone-200">Almond Tree Villa</a> sits here in complete privacy. A five-minute drive takes you down to the fishing village of Plaka and its renowned waterfront tavernas.
+              Almond Tree Villa sits within the village. About 50 metres from the house, there is a small kafeneion run by Mr Xenos, a local photographer, and his French wife. Guests can stop there for raki, small meze dishes, and simple Cretan home cooking, with one or two dishes often prepared daily by Mr Xenos’s mother.
+            </p>
+            <p>
+              The surrounding landscape is part of the wilder northern side of Mirabello, close to protected Natura 2000 areas. A five-minute drive takes you down to the fishing village of Plaka and its waterfront tavernas.
             </p>
           </div>
         </section>
@@ -95,8 +178,8 @@ const pageTitle = `Location — Mavrikiano & Vrouchas, Elounda | ${siteCopy.site
               <h3 class="text-[10px] uppercase tracking-[0.3em] text-primary font-bold mb-6">From Mavrikiano Houses</h3>
               <div class="space-y-4">
                 {[
-                  { label: 'Elounda Harbor', value: '3 min' },
-                  { label: 'Plaka & Spinalonga', value: '7 min' },
+                  { label: 'Schisma / Elounda Harbour', value: '3 min' },
+                  { label: 'Plaka', value: '7 min' },
                   { label: 'Agios Nikolaos', value: '19 min' },
                   { label: 'Heraklion Airport', value: '62 min' },
                 ].map(({ label, value }) => (
@@ -113,7 +196,7 @@ const pageTitle = `Location — Mavrikiano & Vrouchas, Elounda | ${siteCopy.site
               <div class="space-y-4">
                 {[
                   { label: 'Plaka Shoreline', value: '5 min' },
-                  { label: 'Elounda Center', value: '12 min' },
+                  { label: 'Schisma / Elounda Harbour', value: '12 min' },
                   { label: 'Agios Nikolaos', value: '25 min' },
                   { label: 'Heraklion Airport', value: '75 min' },
                 ].map(({ label, value }) => (
@@ -134,35 +217,56 @@ const pageTitle = `Location — Mavrikiano & Vrouchas, Elounda | ${siteCopy.site
         {/* House Quick-List */}
         <div class="bg-stone-50 rounded-[3rem] p-10 border border-stone-100 shadow-sm">
           <h3 class="font-serif text-2xl text-stone-950 mb-8">The Collection</h3>
-          <ul class="space-y-6">
-            {units.map((unit) => (
-              <li>
-                <a href={`/en/houses/${unit.slug}/`} class="group flex justify-between items-center py-1">
-                  <div>
-                    <span class="block text-sm font-bold text-stone-900 group-hover:text-primary transition-colors">{unit.name}</span>
-                    <span class="block text-[9px] uppercase tracking-[0.2em] text-stone-400 font-bold mt-1">{unit.location}</span>
-                  </div>
-                  <div class="w-8 h-8 rounded-full border border-stone-200 flex items-center justify-center group-hover:bg-primary group-hover:border-primary transition-all">
-                    <svg class="text-stone-400 group-hover:text-white transition-colors" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="9 18 15 12 9 6"></polyline></svg>
-                  </div>
-                </a>
-              </li>
+          <div class="space-y-8">
+            {collectionGroups.map((group) => (
+              <section aria-label={group.label}>
+                <h4 class="mb-3 text-[9px] font-bold uppercase tracking-[0.24em] text-stone-400">{group.label}</h4>
+                <ul class="space-y-4">
+                  {group.slugs.map((slug) => {
+                    const unit = unitBySlug.get(slug);
+                    if (!unit) return null;
+
+                    const href = unit.type === 'villa'
+                      ? `/en/villa/${unit.slug}/`
+                      : `/en/houses/${unit.slug}/`;
+
+                    return (
+                      <li>
+                        <a href={href} class="group inline-flex max-w-full items-center gap-4 py-2 pr-2">
+                          <div class="min-w-0">
+                            <span class="block text-sm font-bold text-stone-900 group-hover:text-primary transition-colors">{unit.name}</span>
+                            <span class="mt-2 flex flex-wrap items-center gap-1.5">
+                              {collectionMetadata[unit.slug]?.map((badge) => (
+                                <span class={`rounded-full border px-2 py-0.5 text-[9px] font-bold uppercase tracking-[0.14em] ${badgeStyles[badge.tone]}`}>
+                                  {badge.label}
+                                </span>
+                              ))}
+                            </span>
+                          </div>
+                          <div class="w-8 h-8 shrink-0 rounded-full border border-stone-200 flex items-center justify-center group-hover:bg-primary group-hover:border-primary transition-all">
+                            <svg class="text-stone-400 group-hover:text-white transition-colors" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                          </div>
+                        </a>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </section>
             ))}
-          </ul>
+          </div>
         </div>
 
         {/* ARRIVAL BLOCK */}
-        <div class="bg-stone-950 text-white rounded-[3rem] p-10 shadow-2xl relative overflow-hidden group">
+        <div class="bg-accent-sage-soft text-stone-800 border border-accent-sage/60 rounded-[3rem] p-10 shadow-premium relative overflow-hidden group">
           <div class="relative z-10">
-            <h4 class="font-serif text-2xl mb-4 italic">A Personal Welcome</h4>
-            <p class="text-sm text-stone-400 leading-relaxed mb-8 font-light">
+            <h4 class="font-serif text-2xl mb-4 italic text-stone-950">A Personal Welcome</h4>
+            <p class="text-sm text-stone-700 leading-relaxed mb-8 font-light">
               Navigating traditional villages can be a challenge. We personally meet all guests at our designated parking area. <strong>{siteCopy.arrival.hostName}</strong> will guide you to your home and assist with your arrival.
             </p>
-            <a href="/en/contact/" class="inline-block w-full py-4 bg-primary text-white text-center rounded-2xl text-[10px] font-bold uppercase tracking-[0.3em] hover:bg-white hover:text-stone-950 transition-all duration-300">
+            <a href="/en/contact/" class="inline-block w-full py-4 bg-accent-sage text-stone-900 text-center rounded-2xl text-[10px] font-bold uppercase tracking-[0.3em] hover:bg-accent-sage-hover hover:text-stone-900 transition-all duration-300">
               Contact Guest Relations
             </a>
           </div>
-          <div class="absolute -bottom-10 -right-10 w-40 h-40 bg-primary/10 rounded-full blur-3xl group-hover:bg-primary/20 transition-all"></div>
         </div>
 
       </aside>

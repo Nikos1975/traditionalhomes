@@ -5,6 +5,7 @@ export interface MarkerData {
   lng: number;
   title: string;
   url?: string;
+  bookingUrl?: string;
   image?: string;
   subtitle?: string;
   distanceTag?: string;
@@ -104,6 +105,17 @@ const { markers, zoom = 15, center, height = '400px', interactive = true, mapId 
 
   .popup-btn:hover {
     background: #9A3F23; /* primary-hover */
+  }
+
+  .popup-book-btn {
+    margin-top: 8px;
+    background: #98BCB4;
+    color: #2C2419 !important;
+  }
+
+  .popup-book-btn:hover {
+    background: #86AAA1;
+    color: #2C2419 !important;
   }
 
   /* 2. CUSTOM SVG PIN STYLING */
@@ -206,9 +218,14 @@ const { markers, zoom = 15, center, height = '400px', interactive = true, mapId 
             <div class="popup-info">
               <p class="popup-subtitle">${marker.subtitle || 'Traditional Home'}</p>
               <h3 class="popup-title">${marker.title}</h3>
-              <div class="mt-4">
+              ${(marker.url || marker.bookingUrl) ? `<div class="mt-4">
+                ${marker.url ? `
                 <a href="${marker.url}" class="popup-btn">View Details</a>
-              </div>
+                ` : ''}
+                ${marker.bookingUrl ? `
+                <a href="${marker.bookingUrl}" class="popup-btn popup-book-btn" target="_blank" rel="noopener noreferrer">Book Now</a>
+                ` : ''}
+              </div>` : ''}
             </div>
           </div>`;
 
@@ -246,9 +263,12 @@ const { markers, zoom = 15, center, height = '400px', interactive = true, mapId 
     });
   }
 
-  // astro:page-load fires on first load AND after every View Transition swap.
-  // This is the correct hook when <ViewTransitions /> is active — a plain
-  // module script only runs once (on the first full page load) and is silently
-  // skipped on subsequent client-side navigations.
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initMaps, { once: true });
+  } else {
+    initMaps();
+  }
+
+  // Keep map setup compatible if Astro client-side navigation is enabled later.
   document.addEventListener('astro:page-load', initMaps);
 </script>

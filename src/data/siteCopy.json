@@ -1,6 +1,8 @@
 {
   "accessNoteShort": "Good to know: Not step-free. See access details.",
   "accessNoteFull": "Access: Village terrain. Not step-free. Expect at least one step from the path/parking to the entrance.",
+  "accessNoteCollectionTitle": "Good to know before booking",
+  "accessNoteCollectionBody": "Our homes are in traditional hillside villages with uneven paths and steps. They are not step-free, and most entrances involve at least one step from the path or parking area.",
   "accessAnchorUrl": "/en/policies/#access",
   "bookingEngineUrl": "https://traditionalhomes.reserve-online.net/",
   "siteName": "Elounda Traditional Homes",
@@ -25,7 +27,7 @@
   
   "arrival": {
     "hostName": "Mrs. Olga",
-    "meetingPoint": "Private Parking",
+    "meetingPoint": "Shared Guest Parking",
     "instructions": "We personally meet our guests at the parking area to assist with luggage and guide you to your home.",
     "earlyArrival": "Early arrivals are welcome to drop luggage at the parking area while we prepare your house."
   }

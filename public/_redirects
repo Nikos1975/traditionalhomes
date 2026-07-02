@@ -3,9 +3,26 @@
 # Root to /en/
 /                         /en/         301
 
-# Old index.php URLs
-/index.php/en/*           /en/:splat   301
-/index.php                /en/         301
+# Verified high-confidence old-site redirects.
+# Source inventory: docs/seo/old-site-url-inventory.csv
+# Review map: docs/seo/redirect-map.csv
+/index.php                /en/                          301
+/index.php/en             /en/                          301
+/index.php/en/            /en/                          301
+/index.php/en/about-us-2  /en/houses/                   301
+/index.php/en/about-us-2/argyro     /en/houses/argyro/     301
+/index.php/en/about-us-2/clio       /en/houses/clio/       301
+/index.php/en/about-us-2/dimitra    /en/houses/demetra/    301
+/index.php/en/about-us-2/efterpi    /en/houses/efterpi/    301
+/index.php/en/about-us-2/erato      /en/houses/erato/      301
+/index.php/en/about-us-2/kalliopi   /en/houses/kalliopi/   301
+/index.php/en/about-us-2/leonidas   /en/houses/leonidas/   301
+/index.php/en/about-us-2/margarita  /en/houses/margarita/  301
+/index.php/en/about-us-2/monastery  /en/houses/monastiri/  301
+/index.php/en/about-us-2/penelope   /en/houses/penelope/   301
+/index.php/en/almond-tree-villas    /en/villa/almond-tree-villa/  301
+/index.php/en/contact    /en/contact/                   301
+/index.php/en/elounda    /en/location/                  301
 
 # Trailing slash enforcement (handled by Astro build, but belt-and-braces)
 /en                       /en/         301

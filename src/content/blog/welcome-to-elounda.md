@@ -1,7 +1,17 @@
 ---
 title: "Welcome to Elounda Traditional Homes"
-description: "Discover our collection of meticulously restored stone houses in the historic villages of Mavrikiano and Vrouchas, overlooking Elounda Bay."
+description: "An introduction to the restored stone houses in Mavrikiano and Vrouchas, above Elounda Bay."
 pubDate: 2026-03-23
+category: "Updates"
+region: "Elounda, Lasithi, Eastern Crete"
+tags:
+  - elounda
+  - mavrikiano
+  - vrouchas
+image: "/images/blog/welcome-to-elounda/mavrikiano-elounda-1200.webp"
+imageAlt: "Aerial view of Mavrikiano village above Elounda Bay, with traditional stone houses and the sea beyond."
+imageCaption: "Mavrikiano village above Elounda Bay."
+imageCredit: "Elounda Traditional Homes of Crete."
 ---
 
 ### A Living Heritage
@@ -14,7 +24,7 @@ These are not purpose-built holiday rentals. Each house began as a genuine villa
 
 ### The Elounda Area
 
-The region offers far more than beaches (though there are plenty). Within minutes you can reach the Venetian fortress island of Spinalonga, the submerged ruins of ancient Olous, and the lively harbour town of Agios Nikolaos. Our area guides cover distances, itineraries, and practical tips for every property.
+The region offers far more than beaches (though there are plenty). Within minutes you can reach the Venetian fortress island of Spinalonga, the submerged ruins of ancient Olous, and the lively harbour town of Agios Nikolaos. For background, start with [Where the Sea Holds Memory](/blog/elounda-guide/), [A Short Chronological History of Elounda](/blog/elounda-history-through-its-shoreline/), and the [Mavrikiano Distances and Area Guide](/blog/mavrikiano-distances-and-guide/).
 
 ### Plan Your Stay
 

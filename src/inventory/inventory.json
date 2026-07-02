@@ -6,6 +6,7 @@
     "location": "Mavrikiano Elounda",
     "village": "Mavrikiano",
     "area": "Elounda",
+    "areaSqm": 85,
     "sleeps": 4,
     "bedrooms": 2,
     "bathrooms": 1,
@@ -15,7 +16,7 @@
     "floors": 2,
     "internalStairs": true,
     "view": "Sea view from 1st-floor veranda",
-    "parking": "Free private parking nearby (~80 m)",
+    "parking": "Shared private guest parking nearby (~80 m); free village parking if full",
     "wifi": true,
     "pets": "Small pets (≤5 kg) on request",
     "hardConstraints": [
@@ -27,7 +28,7 @@
       "Fully Equipped Kitchen & Outdoor Kitchenette",
       "Furnished Sea-View Veranda",
       "Al-Fresco Dining Area",
-      "High-Speed Wi-Fi"
+      "Wi-Fi Included"
     ],
     "kitchen": "Full kitchen + outdoor kitchenette",
     "kitchenNotes": "Main kitchen + kitchenette at the sea-view veranda.",
@@ -36,7 +37,9 @@
     "availabilityUrl": "https://traditionalhomes.reserve-online.net/?room=HARGYR",
     "featuredImageAlt": "House Argyro — traditional stone facade in Mavrikiano village",
     "locationRelations": {
-      "near": ["leonidas"],
+      "near": [
+        "leonidas"
+      ],
       "above": null,
       "below": null
     }
@@ -48,36 +51,40 @@
     "location": "Mavrikiano Elounda",
     "village": "Mavrikiano",
     "area": "Elounda",
+    "areaSqm": 50,
     "sleeps": 3,
     "bedrooms": 1,
     "bathrooms": 1,
     "pool": "none",
     "poolNotes": null,
     "sharedPoolWith": [],
-    "floors": 2,
+    "floors": 1,
     "internalStairs": true,
     "view": "Sea view",
-    "parking": "Free private parking nearby (~70 m)",
+    "parking": "Shared private guest parking nearby (~70 m); free village parking if full",
     "wifi": true,
     "pets": "Small pets (≤5 kg) on request",
     "hardConstraints": [
-      "Not step-free — at least one step from path to entrance",
-      "Internal stairs to upper level"
+      "Not step-free — stone steps from village path to entrance",
+      "Internal wooden stairs to ontas and bedroom"
     ],
     "amenities": [
       "Air Conditioning & Climate Control",
-      "Fully Equipped Kitchen",
+      "Small Kitchen Area",
       "Private Sea-View Balcony",
-      "High-Speed Wi-Fi"
+      "Wi-Fi Included"
     ],
-    "kitchen": "Fully equipped kitchen",
+    "kitchen": "Small kitchen area beneath internal wooden stair",
     "kitchenNotes": null,
     "accessDetail": null,
     "bookingId": "HLEONI",
     "availabilityUrl": "https://traditionalhomes.reserve-online.net/?room=HLEONI",
     "featuredImageAlt": "House Leonidas — stone house with sea view, Mavrikiano",
     "locationRelations": {
-      "near": ["argyro", "margarita"],
+      "near": [
+        "argyro",
+        "margarita"
+      ],
       "above": null,
       "below": null
     }
@@ -89,6 +96,7 @@
     "location": "Mavrikiano Elounda",
     "village": "Mavrikiano",
     "area": "Elounda",
+    "areaSqm": 120,
     "sleeps": 6,
     "bedrooms": 2,
     "bathrooms": 1,
@@ -98,12 +106,12 @@
     "floors": 2,
     "internalStairs": true,
     "view": "Sea view from 1st-floor veranda",
-    "parking": "Free private parking nearby (~70 m)",
+    "parking": "Shared private guest parking nearby (~70 m); free village parking if full",
     "wifi": true,
     "pets": "Small pets (≤5 kg) on request",
     "hardConstraints": [
-      "Not step-free — at least one step from path to entrance",
-      "Internal stairs to upper level",
+      "Not step-free — arched courtyard entry and internal stairs",
+      "Internal stairs from ground floor to first floor",
       "Bathroom accessed via the courtyard area"
     ],
     "amenities": [
@@ -111,7 +119,7 @@
       "Fully Equipped Kitchen & Outdoor Kitchenette",
       "Expansive Sea-View Veranda",
       "Al-Fresco Dining Area",
-      "High-Speed Wi-Fi"
+      "Wi-Fi Included"
     ],
     "kitchen": "Main kitchen + outdoor kitchenette",
     "kitchenNotes": "Main kitchen in the courtyard area + kitchenette at the sea-view veranda.",
@@ -120,30 +128,37 @@
     "availabilityUrl": "https://traditionalhomes.reserve-online.net/?room=HMARGA",
     "featuredImageAlt": "House Margarita — traditional stone house with sea view, Mavrikiano",
     "locationRelations": {
-      "near": ["leonidas"],
+      "near": [
+        "leonidas"
+      ],
       "above": null,
       "below": null
     }
   },
   {
     "slug": "demetra",
-    "aliases": ["dimitra"],
+    "aliases": [
+      "dimitra"
+    ],
     "type": "house",
     "name": "House Demetra",
     "aka": "House Dimitra",
     "location": "Mavrikiano Elounda",
     "village": "Mavrikiano",
     "area": "Elounda",
+    "areaSqm": 50,
     "sleeps": 4,
     "bedrooms": 1,
     "bathrooms": 1,
     "pool": "shared",
     "poolNotes": "Shared pool with House Penelope",
-    "sharedPoolWith": ["penelope"],
+    "sharedPoolWith": [
+      "penelope"
+    ],
     "floors": 1,
     "internalStairs": false,
     "view": "Mountain view",
-    "parking": "Free private parking nearby (~40 m)",
+    "parking": "Shared private guest parking nearby (~40 m); free village parking if full",
     "wifi": true,
     "pets": "Small pets (≤5 kg) on request",
     "hardConstraints": [
@@ -155,7 +170,7 @@
       "Fully Equipped Kitchen",
       "Shared Swimming Pool with Sun Loungers",
       "Al-Fresco Dining Area",
-      "High-Speed Wi-Fi"
+      "Wi-Fi Included"
     ],
     "kitchen": "Fully equipped kitchen",
     "kitchenNotes": null,
@@ -164,7 +179,9 @@
     "availabilityUrl": "https://traditionalhomes.reserve-online.net/?room=HDIMIT",
     "featuredImageAlt": "House Demetra — stone house with shared pool garden, Mavrikiano",
     "locationRelations": {
-      "near": ["penelope"],
+      "near": [
+        "penelope"
+      ],
       "above": null,
       "below": null
     }
@@ -176,28 +193,32 @@
     "location": "Mavrikiano Elounda",
     "village": "Mavrikiano",
     "area": "Elounda",
+    "areaSqm": 65,
     "sleeps": 6,
     "bedrooms": 2,
     "bathrooms": 1,
     "pool": "shared",
     "poolNotes": "Shared pool with House Demetra",
-    "sharedPoolWith": ["demetra"],
-    "floors": 2,
+    "sharedPoolWith": [
+      "demetra"
+    ],
+    "floors": 1,
     "internalStairs": true,
-    "view": "Olive grove view",
-    "parking": "Free private parking nearby (~40 m)",
+    "view": "Mountain / olive grove view",
+    "parking": "Shared private guest parking nearby (~40 m); free village parking if full",
     "wifi": true,
     "pets": "Small pets (≤5 kg) on request",
     "hardConstraints": [
-      "Not step-free — at least one step from path to entrance",
-      "Pool is shared with House Demetra"
+      "Not step-free — stairs from parking route to pool area and veranda",
+      "Internal wooden stairs to ontas",
+      "Pool and barbecue area are shared with House Demetra"
     ],
     "amenities": [
       "Air Conditioning & Climate Control",
       "Fully Equipped Outdoor Veranda Kitchen",
       "Shared Swimming Pool with Sun Loungers",
       "Al-Fresco Dining Area",
-      "High-Speed Wi-Fi"
+      "Wi-Fi Included"
     ],
     "kitchen": "Outdoor veranda kitchen",
     "kitchenNotes": "External kitchen at the veranda.",
@@ -206,7 +227,9 @@
     "availabilityUrl": "https://traditionalhomes.reserve-online.net/?room=HPENEL",
     "featuredImageAlt": "House Penelope — garden terrace with shared pool, Mavrikiano",
     "locationRelations": {
-      "near": ["demetra"],
+      "near": [
+        "demetra"
+      ],
       "above": null,
       "below": null
     }
@@ -218,6 +241,7 @@
     "location": "Mavrikiano Elounda",
     "village": "Mavrikiano",
     "area": "Elounda",
+    "areaSqm": 55,
     "sleeps": 4,
     "bedrooms": 1,
     "bathrooms": 1,
@@ -227,28 +251,31 @@
     "floors": 2,
     "internalStairs": true,
     "view": "Mountain / olive grove",
-    "parking": "Free private parking nearby (~10 m)",
+    "parking": "Shared private guest parking nearby (~10 m); free village parking if full",
     "wifi": true,
     "pets": "Small pets (≤5 kg) on request",
     "hardConstraints": [
       "Entrance reached via stairs down — not step-free",
-      "Private pool"
+      "Private pool — children must be supervised"
     ],
     "amenities": [
-      "Air Conditioning & Climate Control",
-      "Fully Equipped Kitchen",
-      "Private Swimming Pool",
-      "Sun-Drenched Garden Terrace",
-      "High-Speed Wi-Fi"
+      "Air conditioning",
+      "Small kitchen",
+      "Private swimming pool",
+      "Private pool terrace",
+      "Built-in barbecue",
+      "Wi-Fi included"
     ],
-    "kitchen": "Fully equipped kitchen",
+    "kitchen": "Small kitchen",
     "kitchenNotes": null,
-    "accessDetail": "Entrance reached via stairs down (not step-free).",
+    "accessDetail": null,
     "bookingId": "HERCLI",
     "availabilityUrl": "https://traditionalhomes.reserve-online.net/?room=HERCLI",
     "featuredImageAlt": "House Erato — sunken garden entrance in Mavrikiano village lane",
     "locationRelations": {
-      "near": ["clio"],
+      "near": [
+        "clio"
+      ],
       "above": null,
       "below": null
     }
@@ -260,37 +287,41 @@
     "location": "Mavrikiano Elounda",
     "village": "Mavrikiano",
     "area": "Elounda",
+    "areaSqm": 55,
     "sleeps": 4,
     "bedrooms": 1,
     "bathrooms": 1,
     "pool": "none",
-    "poolNotes": null,
+    "poolNotes": "Pool view only; pool access is only relevant when booked together with House Erato.",
     "sharedPoolWith": [],
     "floors": 2,
     "internalStairs": true,
-    "view": "Olive grove view",
-    "parking": "Free private parking nearby (~10 m)",
+    "view": "Pool view / mountain / olive grove",
+    "parking": "Shared private guest parking nearby (~10 m); free village parking if full",
     "wifi": true,
     "pets": "Small pets (≤5 kg) on request",
     "hardConstraints": [
       "Not step-free — at least one step from path to entrance",
-      "First floor above House Erato (internal stairs)"
+      "Above House Erato; internal stairs inside",
+      "Pool view only — no pool access when booked separately"
     ],
     "amenities": [
-      "Air Conditioning & Climate Control",
-      "Fully Equipped Kitchen",
-      "Private Garden Balcony",
-      "Comfortable Outdoor Seating",
-      "High-Speed Wi-Fi"
+      "Air conditioning",
+      "Small kitchen",
+      "Balcony",
+      "Shower",
+      "Wi-Fi included"
     ],
-    "kitchen": "Fully equipped kitchen",
+    "kitchen": "Small kitchen",
     "kitchenNotes": null,
     "accessDetail": null,
     "bookingId": "HCLIO",
     "availabilityUrl": "https://traditionalhomes.reserve-online.net/?room=HCLIO",
     "featuredImageAlt": "House Clio — traditional stone house with olive grove view, Mavrikiano",
     "locationRelations": {
-      "near": ["erato"],
+      "near": [
+        "erato"
+      ],
       "above": null,
       "below": null
     }
@@ -302,36 +333,39 @@
     "location": "Mavrikiano Elounda",
     "village": "Mavrikiano",
     "area": "Elounda",
+    "areaSqm": 55,
     "sleeps": 5,
     "bedrooms": 1,
     "bathrooms": 1,
     "pool": "none",
     "poolNotes": null,
     "sharedPoolWith": [],
-    "floors": 2,
+    "floors": 1,
     "internalStairs": true,
-    "view": "Courtyard / village view",
-    "parking": "Free private parking nearby (~50 m)",
+    "view": "Private courtyard / village setting",
+    "parking": "Shared private guest parking nearby; free village parking if full",
     "wifi": true,
     "pets": "Small pets (≤5 kg) on request",
     "hardConstraints": [
-      "Not step-free — at least one step from path to entrance",
-      "Loft accessed by staircase"
+      "Not step-free — steps down to courtyard",
+      "Ontas reached by internal wooden stair"
     ],
     "amenities": [
       "Air Conditioning & Climate Control",
-      "Indoor Kitchenette & Full Summer BBQ Kitchen",
-      "Private Walled Courtyard Terrace",
-      "High-Speed Wi-Fi"
+      "Indoor Kitchenette & Outdoor Kitchen with Barbecue",
+      "Private Courtyard",
+      "Wi-Fi Included"
     ],
-    "kitchen": "Kitchenette + summer kitchen/BBQ",
+    "kitchen": "Indoor kitchenette + outdoor kitchen and barbecue",
     "kitchenNotes": null,
     "accessDetail": null,
     "bookingId": "HEFTER",
     "availabilityUrl": "https://traditionalhomes.reserve-online.net/?room=HEFTER",
     "featuredImageAlt": "House Efterpi — courtyard stone house in Mavrikiano village",
     "locationRelations": {
-      "near": ["kalliopi"],
+      "near": [
+        "kalliopi"
+      ],
       "above": null,
       "below": null
     }
@@ -343,36 +377,39 @@
     "location": "Mavrikiano Elounda",
     "village": "Mavrikiano",
     "area": "Elounda",
+    "areaSqm": 55,
     "sleeps": 4,
     "bedrooms": 1,
     "bathrooms": 1,
     "pool": "none",
     "poolNotes": null,
     "sharedPoolWith": [],
-    "floors": 2,
+    "floors": 1,
     "internalStairs": true,
-    "view": "Mountain view",
-    "parking": "Free private parking nearby (~50 m)",
+    "view": "Inner village / mountain",
+    "parking": "Shared private guest parking nearby; free village parking if full",
     "wifi": true,
     "pets": "Small pets (≤5 kg) on request",
     "hardConstraints": [
-      "Not step-free — at least one step from path to entrance",
-      "Upper-floor unit (stairs) above House Efterpi"
+      "Not step-free — stone stairs to balcony entrance",
+      "First-floor house above House Efterpi; ontas accessed by internal wooden stair"
     ],
     "amenities": [
       "Air Conditioning & Climate Control",
-      "Fully Equipped Kitchen",
-      "Private Stone Balcony",
-      "High-Speed Wi-Fi"
+      "Mini Kitchen",
+      "Private Balcony",
+      "Wi-Fi Included"
     ],
-    "kitchen": "Fully equipped kitchen",
+    "kitchen": "Mini kitchen",
     "kitchenNotes": null,
     "accessDetail": null,
     "bookingId": "HKALLI",
     "availabilityUrl": "https://traditionalhomes.reserve-online.net/?room=HKALLI",
     "featuredImageAlt": "House Kalliopi — upper-floor stone house in Mavrikiano village",
     "locationRelations": {
-      "near": ["efterpi"],
+      "near": [
+        "efterpi"
+      ],
       "above": null,
       "below": null
     }
@@ -384,6 +421,7 @@
     "location": "Mavrikiano Elounda",
     "village": "Mavrikiano",
     "area": "Elounda",
+    "areaSqm": 120,
     "sleeps": 6,
     "bedrooms": 3,
     "bathrooms": 2,
@@ -392,24 +430,25 @@
     "sharedPoolWith": [],
     "floors": 2,
     "internalStairs": true,
-    "view": "Sea view",
-    "parking": "Free private parking nearby (~70 m)",
+    "view": "Sea view from upper balconies",
+    "parking": "Shared private guest parking nearby; free village parking if full",
     "wifi": true,
     "pets": "Small pets (≤5 kg) on request",
     "hardConstraints": [
-      "Not step-free — at least one step from path to entrance",
-      "Multi-level layout with internal stairs",
+      "Not step-free — courtyard entrance and internal stairs",
+      "Multi-level house with internal stairs",
       "Private dipping pool"
     ],
     "amenities": [
       "Air Conditioning & Climate Control",
-      "Fully Equipped Kitchen",
+      "Top-Level Kitchen Area",
       "Private Courtyard Dipping Pool",
-      "Panoramic Sea-View Terrace",
+      "Sea-View Balconies",
+      "Barbecue Area",
       "Al-Fresco Dining Area",
-      "High-Speed Wi-Fi"
+      "Wi-Fi Included"
     ],
-    "kitchen": "Fully equipped kitchen",
+    "kitchen": "Top-level kitchen area",
     "kitchenNotes": null,
     "accessDetail": null,
     "bookingId": "HMONAS",
@@ -425,9 +464,10 @@
     "slug": "almond-tree-villa",
     "type": "villa",
     "name": "Almond Tree Villa",
-    "location": "Elounda Vrouchas",
+    "location": "Vrouchas, Elounda",
     "village": "Vrouchas",
     "area": "Elounda",
+    "areaSqm": 230,
     "sleeps": 10,
     "bedrooms": 5,
     "bathrooms": 2,
@@ -436,36 +476,36 @@
     "sharedPoolWith": [],
     "floors": 2,
     "internalStairs": true,
-    "view": "Panoramic — Elounda Bay, Spinalonga, Mirabello Gulf, garden, pool",
+    "view": "Cretan Sea, olive groves, garden, pool, mountains",
     "parking": "Free street parking (~30 m)",
     "wifi": true,
     "pets": "Small pets (≤5 kg) on request",
     "hardConstraints": [
-      "Not step-free — several steps from parking to entrance",
-      "Split-level villa with internal stairs",
-      "Steep approach road — suitable for standard passenger cars"
+      "Parking and access — free public road parking is available about 30 metres from the house; the route to the villa includes village terrain and steps.",
+      "Not step-free — there are several steps from the access point to the entrance.",
+      "Split-level villa — bedrooms and living areas are connected by internal stairs and stepped levels.",
+      "Private pool — children must be supervised."
     ],
     "amenities": [
-      "Climate Control Throughout",
-      "Gourmet Kitchen & Outdoor Summer BBQ",
-      "Expansive Private Pool (9m x 4m)",
-      "Panoramic Poolside Terrace with Sun Loungers",
-      "Al-Fresco Dining Area",
-      "In-Suite Laundry (Washer & Dryer)",
-      "Smart TV Entertainment",
-      "Espresso Machine",
-      "High-Speed Wi-Fi",
-      "Lush Traditional Cretan Garden"
+      "Air conditioning",
+      "Main kitchen, outdoor kitchen and barbecue",
+      "Private pool, 9 m × 4 m",
+      "Pool terrace with sunbeds",
+      "Outdoor dining area",
+      "Smart TV",
+      "Espresso machine",
+      "Wi-Fi included",
+      "Cretan garden"
     ],
-    "kitchen": "Well-fitted kitchen + summer kitchen/BBQ",
-    "kitchenNotes": "Well-fitted kitchen + summer kitchen/BBQ.",
-    "accessDetail": "Hillside village location in Vrouchas. Several steps from parking to entrance. Upper-floor bedrooms via internal stairs. Steep approach road — suitable for standard passenger cars.",
+    "kitchen": "Main kitchen, outdoor kitchen and barbecue",
+    "kitchenNotes": "Main kitchen, outdoor kitchen and barbecue.",
+    "accessDetail": "Hillside village setting in Vrouchas, Elounda. The villa is best suited to guests who are comfortable with steps, village paths, and internal stairs.",
     "bookingId": "ASP3SV",
     "availabilityUrl": "https://traditionalhomes.reserve-online.net/?room=ASP3SV",
-    "featuredImageAlt": "Almond Tree Villa — panoramic pool terrace overlooking Elounda Bay, Vrouchas",
+    "featuredImageAlt": "Almond Tree Villa - pool terrace and garden in Vrouchas",
     "locationRelations": {
       "near": [],
-      "above": "Mavrikiano (10 min drive)",
+      "above": null,
       "below": null
     }
   }

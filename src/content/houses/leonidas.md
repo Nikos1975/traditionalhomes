@@ -1,17 +1,21 @@
 ---
 slug: "leonidas"
 title: "House Leonidas"
-summary: "An intimate, traditional stone retreat in Mavrikiano, featuring a signature sea-view bedroom and a private balcony overlooking the Mirabello Gulf."
+summary: "A compact 50 m2 one-bedroom stone house in Mavrikiano for up to three guests, with a sea view and private balcony."
 ---
 
-### An Intimate Village Retreat
-House Leonidas is a masterclass in intimate Cretan living. Spanning a cozy 50 square metres, this traditional stone home was crafted for couples, solo travelers, or small families who value character and a profound sense of place. Tucked into the quiet hillside of Mavrikiano, it offers a bespoke alternative to sprawling resorts—a warm, authentic haven where the pace slows and the views open up.
+### A Compact Village House
+House Leonidas is suited to couples, solo travellers, or a small party of up to three guests. It sits in Mavrikiano, close to House Margarita and House Argyro, which makes it useful when guests are travelling together but want separate sleeping space.
 
-### The Interior Narrative
-The true soul of Leonidas reveals itself in the upper sea-view bedroom. Here, days begin not with the noise of a bustling town, but with the soft morning light breaking over the waters of Elounda Bay. The interior architecture honors its village roots, combining thick Cretan masonry and traditional woodwork with a simple, comfortable layout that accommodates up to three guests, creating a feeling of absolute warmth and privacy.
+### The Interior Layout
+A few stone steps opposite To Rakadiko tou Kamari lead to House Leonidas. The entrance is reached on the right, beside a bougainvillea plant.
 
-### Mediterranean Outdoor Living
-A private, raised balcony extends the upper living space outdoors, serving as your exclusive vantage point over the coastline. Though more compact than a grand veranda, this balcony is perhaps the most romantic spot in the house—a quiet, elevated perch designed perfectly for a slow morning coffee or a glass of local wine as the evening settles over the Mediterranean.
+On entering the house, the fireplace is on the left, with a built-in stone sofa beside it. The bathroom is set further inside, to the upper right of the living space. Ahead is the kitchen table, while the small kitchen area sits to the right, tucked beneath the internal wooden stair.
 
-### The Mavrikiano Setting
-While Leonidas feels wonderfully secluded on the hillside, it remains effortlessly connected to the vibrant life of the coast. A scenic 10-minute stroll down the village paths brings you directly to Elounda’s pristine beaches, bustling harbor, and waterfront tavernas. Furthermore, its immediate proximity to House Margarita and House Argyro makes it a perfect independent sanctuary for guests who are traveling as part of a larger group but desire their own private retreat at the end of the day.
+The wooden stair leads first to the ontas, the traditional raised sleeping area, where there is one single bed. A step further up is the main bedroom, with direct views toward the sea.
+
+### Balcony And View
+From the main bedroom, guests step out to the private sea-view balcony. The balcony has a wooden table, barbecue, sink, and small fridge, making it useful for simple outdoor meals or an evening drink overlooking Elounda Bay.
+
+### Access And Setting
+Shared private guest parking is about 70 m away, with space for up to five cars in total; if the shared parking area is full, guests can usually park for free around the village. The house is not step-free, and guests should expect stone steps from the village path to the entrance plus internal wooden stairs inside.

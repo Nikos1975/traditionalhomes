@@ -1,0 +1,13 @@
+.superpowers/
+docs/integrations/
+docs/releases/2026-05-22-cloudflare-go-live-roadmap.md
+docs/research/elounda/elounda-luxury-tourism-evolution/EloundasLuxuryTourismEvolution.html
+docs/research/elounda/elounda-rich-historical-tapestry/EloundasRichHistoricalTapestryUnveiled.html
+docs/research/elounda/elounda-wartime-history-and-stories/EloundasWartimeHistoryandStories.html
+package-lock.json
+src/content/blog/elounda-guide.md
+src/content/blog/elounda-guide-style-1.md
+src/content/blog/elounda-guide-style-2.md
+src/content/blog/elounda-guide-style-3.md
+src/content/blog/elounda-visitor-economy.md
+src/content/blog/key-phases-in-elounda-hotel-development.md

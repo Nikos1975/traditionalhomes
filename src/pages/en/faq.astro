@@ -14,8 +14,23 @@ const faqs = [
     category: 'access',
   },
   {
-    q: 'Which houses share a pool?',
-    a: 'House Penelope and House Demetra share a pool. The pool is for the exclusive use of guests in those two houses only. House Erato, House Monastiri, and Almond Tree Villa each feature their own private pool. The remaining houses have no pool.',
+    q: 'Is luggage access easy?',
+    a: 'The properties are in traditional hillside villages, so luggage access varies by house. Some Mavrikiano houses involve a short walk from the parking area through village paths or steps. Almond Tree Villa has street parking about 30 m away, with several steps from the parking area to the entrance.<br><br>We send arrival details before check-in and guide guests where needed. If you are travelling with heavy luggage, a stroller, or mobility concerns, please check the individual property page or contact us before booking.',
+    category: 'access',
+  },
+  {
+    q: 'Which property is best for guests who want fewer stairs?',
+    a: 'House Demetra is the best option for guests who prefer a single-floor layout once inside the house. Please note that the village setting itself is not fully step-free, and access from the parking area may still include paths or steps.<br><br>Most other houses have internal stairs, split levels, balconies, or traditional stepped layouts. Each property page includes specific access notes.',
+    category: 'access',
+  },
+  {
+    q: 'Can children stay in the properties?',
+    a: 'Yes, children can stay, but families should choose the property carefully. Many houses have stairs, split levels, balconies, village paths, or pool access.<br><br>Children must be supervised around pools, balconies, stairs, and outdoor areas. Families with toddlers or very young children should check the access notes on each property page before booking.',
+    category: 'access',
+  },
+  {
+    q: 'Are the pools private or shared?',
+    a: 'House Erato, House Monastiri, and Almond Tree Villa each have a private pool. House Penelope and House Demetra share one pool, for the exclusive use of guests staying in those two houses. The remaining houses do not have a pool.',
     category: 'pools',
   },
   {
@@ -30,17 +45,37 @@ const faqs = [
   },
   {
     q: 'What are the check-in and check-out times?',
-    a: `Check-in is from ${siteCopy.checkIn}. Check-out is by ${siteCopy.checkOut}. Early check-in or late check-out may be possible on request, subject to availability.`,
+    a: 'Check-in is from 15:00. Check-out is by 11:00.',
     category: 'policies',
   },
   {
     q: 'Where are the houses exactly?',
-    a: 'The ten stone houses are in Mavrikiano village, on the hillside above Elounda. Villa Almyra is in Vrouchas, a few minutes further uphill. Exact GPS coordinates are provided with your booking confirmation.',
+    a: 'The stone houses are in Mavrikiano village, on the hillside above Schisma, the harbour centre of Elounda. Almond Tree Villa is in Vrouchas, further north and higher in elevation.<br><br>From the Mavrikiano houses, Schisma / Elounda harbour is about 3 minutes by car and Plaka is about 7 minutes by car. From Almond Tree Villa in Vrouchas, Plaka shoreline is about 5 minutes by car and Elounda centre / Schisma is about 12 minutes by car. Exact GPS coordinates are provided with your booking confirmation.',
+    category: 'location',
+  },
+  {
+    q: 'Which properties have sea views?',
+    a: 'House Argyro, House Margarita, House Leonidas, and House Monastiri have sea views from their setting, veranda, balcony, or bedroom areas. Almond Tree Villa in Vrouchas has views toward the Cretan Sea, olive groves, garden, pool, and mountains.<br><br>House Erato, House Clio, House Demetra, and House Penelope are more pool, mountain, or village-setting houses. House Efterpi and House Kalliopi are traditional village houses without the same sea-view positioning.<br><br>Please check each property page for the exact view, outdoor area, and layout before booking.',
+    category: 'location',
+  },
+  {
+    q: 'Do I need a car?',
+    a: 'A car is strongly recommended, especially for Almond Tree Villa in Vrouchas and for exploring Plaka, beaches, tavernas, and the coast.<br><br>The Mavrikiano houses are closer to Schisma, the harbour centre of Elounda. Many guests can walk downhill to Elounda, but the return walk is uphill and the village has slopes and steps. For comfort, luggage, beach trips, and evening meals, a car is usually the easiest option.',
+    category: 'location',
+  },
+  {
+    q: 'How far are shops, beaches, and tavernas?',
+    a: 'From the Mavrikiano houses, Elounda harbor is about 3 minutes by car, and Plaka is about 7 minutes by car. Some guests walk down to Elounda, but the return is uphill.<br><br>From Almond Tree Villa in Vrouchas, Plaka shoreline is about 5 minutes by car and Elounda center is about 12 minutes by car. Vrouchas is quieter and works best with a car.',
+    category: 'location',
+  },
+  {
+    q: 'How does arrival work?',
+    a: 'We send map details and arrival instructions before check-in.<br><br>For the Mavrikiano houses, guests usually meet at the shared parking area and are guided to the house. Almond Tree Villa uses its own villa-specific arrival instructions. We recommend following our map links rather than relying only on general navigation apps.',
     category: 'location',
   },
   {
     q: 'Is parking available?',
-    a: 'Most properties have private parking nearby or on site. Houses in the village centre use shared village parking within 50–80 metres of the entrance. Specific parking information is listed on each property page.',
+    a: 'For the Mavrikiano houses, shared private guest parking is available nearby, with space for up to 5 cars in total. If the shared parking area is full, guests can usually park for free around the village. Specific parking information is listed on each property page.',
     category: 'amenities',
   },
   {
@@ -82,7 +117,7 @@ const categories = [
         Frequently Asked <span class="italic text-stone-400">Questions</span>
       </h1>
       <p class="text-xl text-stone-500 font-light leading-relaxed max-w-2xl">
-        Practical information regarding the collection, village life, and our booking policies.
+        Practical information about access, pools, parking, Wi-Fi, pets, and booking policies.
       </p>
     </div>
 

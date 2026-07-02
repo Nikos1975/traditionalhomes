@@ -1,6 +1,8 @@
-const fs = require('fs');
-const path = require('path');
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const inventoryPath = path.join(__dirname, 'src', 'inventory', 'inventory.json');
 const inventory = JSON.parse(fs.readFileSync(inventoryPath, 'utf8'));
 
