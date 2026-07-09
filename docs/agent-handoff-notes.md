@@ -1413,6 +1413,36 @@ When pausing or finishing a substantial task, add a dated note below with:
 - Blockers:
   - None.
 
+### 2026-07-09 - Contact email destination
+
+- Goal: update the public guest inquiry address from the legacy Gmail destination to Google Workspace `info@traditional-homes.gr` and document the existing contact form behavior.
+- Files changed:
+  - `src/pages/en/contact.astro`
+  - `src/layouts/Base.astro`
+  - `tests/contact-function.test.mjs`
+  - `.env.example`
+  - `README.md`
+  - `docs/agent-handoff-notes.md`
+- What changed:
+  - Added visible `mailto:info@traditional-homes.gr` fallback links on the contact page and chat placeholder.
+  - Updated contact function tests so `CONTACT_EMAIL_TO` points at `info@traditional-homes.gr`.
+  - Added `.env.example` and README notes for the Cloudflare Pages Function runtime variables.
+- Contact form behavior:
+  - Frontend form posts to `/api/contact`.
+  - `functions/api/contact.js` sends via Cloudflare Email Service REST API using `CONTACT_EMAIL_TO`, `CONTACT_EMAIL_FROM`, `CLOUDFLARE_ACCOUNT_ID`, and `CLOUDFLARE_EMAIL_API_TOKEN`.
+  - A visible "Unable to send this message" response means the function reached the send path and either the Cloudflare REST request failed or the provider rejected the send; missing config returns "Email service is not configured."
+- Verified:
+  - `npm test` could not run because `package.json` does not define a `test` script.
+  - `node --test tests/contact-function.test.mjs` passed: 7 tests, 0 failures.
+  - `git diff --check` passed.
+  - Targeted `rg` search found no remaining `eloundavilla@gmail.com` references outside excluded generated/vendor content; `mailto:` references point to `info@traditional-homes.gr`.
+  - `npm run build` failed before site compilation in Astro/Vite cache cleanup: `TypeError: msg.includes is not a function` at `astro/dist/core/logger/vite.js`, using Node v22.11.0. Clearing `node_modules/.vite` once did not resolve it.
+- Remaining:
+  - Set or update Cloudflare Pages runtime variable `CONTACT_EMAIL_TO=info@traditional-homes.gr`.
+  - Confirm `CONTACT_EMAIL_FROM` is an allowed sender for Cloudflare Email Service.
+- Blockers:
+  - No real email was sent during this task.
+
 ### 2026-05-21 - Phase 2 property fixes
 
 - Goal: complete browser review, fix remaining UI friction, and keep a fact-confirmation list for future property work.

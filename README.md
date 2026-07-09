@@ -26,8 +26,25 @@ npm run typecheck  # Astro type check
    - **Framework preset:** Astro
    - **Build command:** `npm run build`
    - **Build output directory:** `dist`
-4. No environment variables are required for the static build.
+4. The static Astro build does not require environment variables.
+   The contact form Pages Function does require runtime variables; see Contact form below.
 5. The `public/_redirects` file is picked up automatically by Cloudflare Pages for redirect rules.
+
+### Contact form
+
+The contact page posts to `/api/contact`, handled by the Cloudflare Pages Function in `functions/api/contact.js`.
+The public guest inquiry destination is `info@traditional-homes.gr`.
+
+Set these runtime variables in Cloudflare Dashboard -> Workers & Pages -> Pages -> traditionalhomes -> Settings -> Variables and Secrets:
+
+```bash
+CONTACT_EMAIL_TO=info@traditional-homes.gr
+CONTACT_EMAIL_FROM=contact@traditional-homes.gr
+CLOUDFLARE_ACCOUNT_ID=<Cloudflare account id>
+CLOUDFLARE_EMAIL_API_TOKEN=<token allowed to send through Cloudflare Email Service>
+```
+
+Do not commit real `.env` files or API tokens.
 
 ---
 

@@ -1,6 +1,9 @@
 ---
 import Base from '../../layouts/Base.astro';
 import siteCopy from '../../data/siteCopy.json';
+
+const contactEmail = 'info@traditional-homes.gr';
+const contactMailto = `mailto:${contactEmail}`;
 ---
 
 <Base
@@ -131,6 +134,8 @@ import siteCopy from '../../data/siteCopy.json';
           <p class="text-[11px] text-stone-400 leading-relaxed font-medium italic">
             We aim to respond within one business day. For immediate availability, please use our 
             <a href={siteCopy.bookingEngineUrl} target="_blank" rel="noopener noreferrer" class="text-stone-950 underline underline-offset-2 hover:text-primary transition-colors">online system</a>.
+            If the form does not send, email us at
+            <a href={contactMailto} class="text-stone-950 underline underline-offset-2 hover:text-primary transition-colors">{contactEmail}</a>.
           </p>
         </form>
       </div>
@@ -142,6 +147,10 @@ import siteCopy from '../../data/siteCopy.json';
         <div class="bg-stone-50 rounded-[2rem] border border-stone-100 p-8 shadow-sm">
           <h2 class="font-serif text-2xl text-stone-950 mb-6">Before You Write</h2>
           <ul class="space-y-6 text-sm text-stone-600">
+            <li class="flex items-start gap-4">
+              <svg class="flex-shrink-0 w-5 h-5 text-stone-300 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+              <span>For direct email, write to <a href={contactMailto} class="text-stone-950 font-bold underline underline-offset-4">{contactEmail}</a>.</span>
+            </li>
             <li class="flex items-start gap-4">
               <svg class="flex-shrink-0 w-5 h-5 text-stone-300 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
               <span>For live availability and pricing, our <a href={siteCopy.bookingEngineUrl} class="text-stone-950 font-bold underline underline-offset-4">Booking System</a> is always up to date.</span>
@@ -231,10 +240,19 @@ import siteCopy from '../../data/siteCopy.json';
         showSuccess();
       } catch (error) {
         if (errorMessage) {
-          errorMessage.textContent =
+          const fallbackText =
             error instanceof Error
               ? error.message
               : 'Unable to send this message. Please try again.';
+          errorMessage.replaceChildren(
+            document.createTextNode(`${fallbackText} You can also email us at `),
+            Object.assign(document.createElement('a'), {
+              href: 'mailto:info@traditional-homes.gr',
+              textContent: 'info@traditional-homes.gr',
+              className: 'font-bold underline underline-offset-2',
+            }),
+            document.createTextNode('.'),
+          );
           errorMessage.classList.remove('hidden');
         }
       } finally {

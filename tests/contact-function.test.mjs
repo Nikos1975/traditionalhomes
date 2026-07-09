@@ -4,7 +4,7 @@ import { describe, it } from 'node:test';
 import { handleContactRequest } from '../functions/api/contact.js';
 
 const validEnv = {
-  CONTACT_EMAIL_TO: 'eloundavilla@gmail.com',
+  CONTACT_EMAIL_TO: 'info@traditional-homes.gr',
   CONTACT_EMAIL_FROM: 'contact@traditional-homes.gr',
   CLOUDFLARE_ACCOUNT_ID: 'account-id',
   CLOUDFLARE_EMAIL_API_TOKEN: 'secret-token',
@@ -92,7 +92,7 @@ describe('contact Pages Function', () => {
         message: 'Please send availability details.',
       }),
       {
-        CONTACT_EMAIL_TO: 'eloundavilla@gmail.com',
+        CONTACT_EMAIL_TO: 'info@traditional-homes.gr',
         CONTACT_EMAIL_FROM: 'contact@traditional-homes.gr',
       },
     );
@@ -121,7 +121,7 @@ describe('contact Pages Function', () => {
           errors: [],
           messages: [],
           result: {
-            delivered: ['eloundavilla@gmail.com'],
+            delivered: ['info@traditional-homes.gr'],
             permanent_bounces: [],
             queued: [],
           },
@@ -143,7 +143,7 @@ describe('contact Pages Function', () => {
       'Bearer secret-token',
     );
     assert.equal(fetchOptions.headers['content-type'], 'application/json');
-    assert.equal(sentMessage.to, 'eloundavilla@gmail.com');
+    assert.equal(sentMessage.to, 'info@traditional-homes.gr');
     assert.deepEqual(sentMessage.from, {
       address: 'contact@traditional-homes.gr',
       name: 'Traditional Homes Contact Form',
