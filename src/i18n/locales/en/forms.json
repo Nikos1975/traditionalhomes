@@ -1,0 +1,15 @@
+{
+  "booking": {
+    "quickSearchAriaLabel": "Quick availability search",
+    "arrival": "Arrival",
+    "nights": "Nights",
+    "adults": "Adults",
+    "check": "Check",
+    "checkDates": "Check Dates",
+    "checkAvailability": "Check Availability"
+  },
+  "contact": {
+    "openChatLabel": "Open chat",
+    "chatTitle": "Questions? Chat with us"
+  }
+}

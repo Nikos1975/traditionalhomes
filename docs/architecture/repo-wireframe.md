@@ -25,6 +25,7 @@ flowchart TD
   src --> components["components<br/>cards, maps, gallery, booking"]
   src --> content["content<br/>houses, villa, blog"]
   src --> inventory["inventory<br/>inventory.json, groups, pairings"]
+  src --> i18n["i18n<br/>locale config, routes, translations, SEO helpers"]
   src --> data["data<br/>siteCopy, gallery, locations"]
   src --> utils["utils<br/>validation, gallery sorting, filters, maps"]
   src --> styles["styles/global.css"]
@@ -34,6 +35,7 @@ flowchart TD
   base --> header["Header"]
   base --> footer["Footer"]
   base --> mobileBooking["Mobile booking bar"]
+  base --> i18n
 
   pages --> home["/en/"]
   pages --> collection["/en/houses/"]
@@ -70,6 +72,8 @@ flowchart TD
   functions --> apiContact
   apiContact --> cloudflareEmail["Cloudflare Email REST API"]
 
+  i18n --> enLocale["English locale JSON<br/>common, navigation, forms, seo"]
+
   public --> publicImages["images<br/>houses, villa, blog, about, brand"]
   public --> fonts["fonts/"]
   public --> favicons["favicons / manifest / redirects / headers"]
@@ -78,6 +82,8 @@ flowchart TD
 ## Notes For Agents
 
 - Treat `src/inventory/inventory.json` as the source of truth for property facts.
+- Treat `docs/i18n/00_I18N_MASTER_PLAN.md` as the control document before multilingual route, page, or translation work.
+- Stage 1 i18n foundation lives under `src/i18n/` and currently provides English-only shared UI strings and locale metadata.
 - Property and villa routes combine structured inventory, Markdown content, gallery data, location data, and shared components.
 - Public URL assets live under `public/`; imported image assets live under `src/assets/images/`.
 - The contact form posts to `/api/contact`, handled by `functions/api/contact.js`.

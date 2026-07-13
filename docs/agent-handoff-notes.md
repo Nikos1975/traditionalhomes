@@ -35,6 +35,39 @@ When pausing or finishing a substantial task, add a dated note below with:
 
 ## Notes
 
+### 2026-07-13 - Stage 1 i18n foundation
+
+- Goal: add English-only i18n helpers and shared Header/Footer locale wiring without changing public routes.
+- Files changed:
+  - `src/i18n/config.ts`
+  - `src/i18n/routes.ts`
+  - `src/i18n/translate.ts`
+  - `src/i18n/seo.ts`
+  - `src/i18n/locales/en/common.json`
+  - `src/i18n/locales/en/navigation.json`
+  - `src/i18n/locales/en/forms.json`
+  - `src/i18n/locales/en/seo.json`
+  - `src/layouts/Base.astro`
+  - `src/components/Header.astro`
+  - `src/components/Footer.astro`
+  - `tests/i18n-foundation.test.mjs`
+  - `docs/architecture/repo-wireframe.md`
+  - `docs/architecture/repo-wireframe.mmd`
+  - `docs/agent-handoff-notes.md`
+- What changed:
+  - Added locale metadata for `en`, `de`, `fr`, `ru`, `zh`, and `ar`, with English as default and Arabic marked RTL for future use.
+  - Added English JSON files for shared UI strings and SEO/form templates.
+  - Updated `Base.astro` to derive `html lang`, `dir`, and Open Graph locale from locale metadata, defaulting to English.
+  - Updated Header/Footer to read English labels and links from locale JSON while preserving current `/en/` and `/blog/` links.
+- Verified:
+  - `node --test tests/i18n-foundation.test.mjs` passed.
+  - `npm run typecheck` and `npm run build` both stopped before project diagnostics with the known Astro/Vite logger/cache failure: `TypeError: msg.includes is not a function` in `astro/dist/core/logger/vite.js` on Node v22.11.0.
+- Remaining:
+  - Re-run Astro typecheck/build after the local Astro/Vite cache/logger issue is cleared.
+  - Stage 2 should add no non-English routes until a reviewed implementation prompt approves it.
+- Blockers:
+  - Local Astro/Vite logger/cache failure blocks full build verification in this environment.
+
 ### 2026-07-13 - I18N documentation control folder
 
 - Goal: create permanent documentation and prompt controls for the planned multilingual implementation.

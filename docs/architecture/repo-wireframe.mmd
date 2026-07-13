@@ -14,6 +14,7 @@ flowchart TD
   src --> components["components<br/>cards, maps, gallery, booking"]
   src --> content["content<br/>houses, villa, blog"]
   src --> inventory["inventory<br/>inventory.json, groups, pairings"]
+  src --> i18n["i18n<br/>locale config, routes, translations, SEO helpers"]
   src --> data["data<br/>siteCopy, gallery, locations"]
   src --> utils["utils<br/>validation, gallery sorting, filters, maps"]
   src --> styles["styles/global.css"]
@@ -23,6 +24,7 @@ flowchart TD
   base --> header["Header"]
   base --> footer["Footer"]
   base --> mobileBooking["Mobile booking bar"]
+  base --> i18n
 
   pages --> home["/en/"]
   pages --> collection["/en/houses/"]
@@ -58,6 +60,8 @@ flowchart TD
   contact["/en/contact/"] --> apiContact["/api/contact"]
   functions --> apiContact
   apiContact --> cloudflareEmail["Cloudflare Email REST API"]
+
+  i18n --> enLocale["English locale JSON<br/>common, navigation, forms, seo"]
 
   public --> publicImages["images<br/>houses, villa, blog, about, brand"]
   public --> fonts["fonts/"]

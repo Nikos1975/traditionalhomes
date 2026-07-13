@@ -2,6 +2,8 @@
 import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import { defaultLocale, getLocaleMeta, type Locale } from '../i18n/config';
+import { getOgLocale } from '../i18n/seo';
 
 interface Props {
   title: string;
@@ -9,6 +11,7 @@ interface Props {
   canonicalUrl?: string;
   ogImage?: string;
   noindex?: boolean;
+  locale?: Locale;
 }
 
 const {
@@ -17,17 +20,20 @@ const {
   canonicalUrl,
   ogImage = '/images/og-default.jpg',
   noindex = false,
+  locale = defaultLocale,
 } = Astro.props;
 
 const siteUrl = 'https://traditional-homes.gr';
 const canonical = canonicalUrl ?? new URL(Astro.url.pathname, siteUrl).href;
+const localeMeta = getLocaleMeta(locale);
+const ogLocale = getOgLocale(locale);
 const robotsContent = noindex
   ? 'noindex'
   : 'index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1';
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={localeMeta.lang} dir={localeMeta.dir}>
   <head>
     <meta name="robots" content={robotsContent} />
     <link rel="sitemap" href="/sitemap-index.xml" />
@@ -45,7 +51,7 @@ const robotsContent = noindex
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={`${siteUrl}${ogImage}`} />
     <meta property="og:site_name" content="Elounda Traditional Homes" />
-    <meta property="og:locale" content="en_GB" />
+    <meta property="og:locale" content={ogLocale} />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
@@ -64,11 +70,11 @@ const robotsContent = noindex
     <slot name="head" />
   </head>
   <body>
-    <Header />
+    <Header locale={locale} />
     <main id="main-content">
       <slot />
     </main>
-    <Footer />
+    <Footer locale={locale} />
 
     <form
       id="mobile-booking-bar"

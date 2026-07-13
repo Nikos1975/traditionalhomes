@@ -1,0 +1,9 @@
+{
+  "siteName": "Elounda Traditional Homes",
+  "defaultOgImage": "/images/og-default.jpg",
+  "templates": {
+    "titleSuffix": "Elounda Traditional Homes",
+    "propertyTitle": "{name} | Elounda Traditional Homes",
+    "guideTitle": "{title} | Elounda Traditional Homes"
+  }
+}

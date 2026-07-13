@@ -1,4 +1,13 @@
 ---
+import { defaultLocale, type Locale } from '../i18n/config';
+import { getCommonCopy } from '../i18n/translate';
+
+interface Props {
+  locale?: Locale;
+}
+
+const { locale = defaultLocale } = Astro.props;
+const common = getCommonCopy(locale);
 const currentYear = new Date().getFullYear();
 const bookingUrl = 'https://traditionalhomes.reserve-online.net/';
 ---
@@ -12,18 +21,18 @@ const bookingUrl = 'https://traditionalhomes.reserve-online.net/';
         <div class="mb-6 flex flex-col items-start gap-4">
           <img 
             src="/images/brand/eh-mark.svg" 
-            alt="Elounda Traditional Homes Mark" 
+            alt={common.brand.markAlt}
             width="48"
             height="48"
             class="h-12 w-12 opacity-60"
           />
           <div>
-            <p class="font-serif text-3xl text-stone-50 leading-tight tracking-wide">Elounda Traditional Homes</p>
-            <p class="text-[10px] uppercase tracking-[0.3em] font-bold text-stone-500 mt-2">Mavrikiano & Vrouchas · Crete</p>
+            <p class="font-serif text-3xl text-stone-50 leading-tight tracking-wide">{common.brand.name}</p>
+            <p class="text-[10px] uppercase tracking-[0.3em] font-bold text-stone-500 mt-2">{common.brand.kicker}</p>
           </div>
         </div>
         <p class="text-sm text-stone-400 leading-relaxed font-light max-w-sm">
-          A family-run collection of traditional stone houses in Mavrikiano and one larger villa in Vrouchas, above Elounda.
+          {common.footer.description}
         </p>
       </div>
 
@@ -32,10 +41,11 @@ const bookingUrl = 'https://traditionalhomes.reserve-online.net/';
 
       {/* PROPERTIES COLUMN */}
       <div class="md:col-span-3 lg:col-span-3">
-        <h3 class="font-sans font-bold text-stone-50 text-[10px] uppercase tracking-[0.2em] mb-6">The Collection</h3>
+        <h3 class="font-sans font-bold text-stone-50 text-[10px] uppercase tracking-[0.2em] mb-6">{common.footer.collection.heading}</h3>
         <ul class="space-y-4 text-sm font-light">
-          <li><a href="/en/houses/" class="hover:text-stone-50 transition-colors duration-300">All Stone Houses</a></li>
-          <li><a href="/en/villa/almond-tree-villa/" class="hover:text-stone-50 transition-colors duration-300">Almond Tree Villa</a></li>
+          {common.footer.collection.links.map((link) => (
+            <li><a href={link.href} class="hover:text-stone-50 transition-colors duration-300">{link.label}</a></li>
+          ))}
           <li class="pt-2">
             <a
               href={bookingUrl}
@@ -43,7 +53,7 @@ const bookingUrl = 'https://traditionalhomes.reserve-online.net/';
               rel="noopener noreferrer"
               class="inline-flex items-center gap-2 text-[10px] uppercase tracking-[0.2em] font-bold text-accent-sage hover:text-primary transition-colors duration-300"
             >
-              Check Availability
+              {common.footer.collection.availabilityLabel}
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
             </a>
           </li>
@@ -52,14 +62,11 @@ const bookingUrl = 'https://traditionalhomes.reserve-online.net/';
 
       {/* INFORMATION COLUMN */}
       <div class="md:col-span-4 lg:col-span-3">
-        <h3 class="font-sans font-bold text-stone-50 text-[10px] uppercase tracking-[0.2em] mb-6">Information</h3>
+        <h3 class="font-sans font-bold text-stone-50 text-[10px] uppercase tracking-[0.2em] mb-6">{common.footer.information.heading}</h3>
         <ul class="space-y-4 text-sm font-light">
-          <li><a href="/en/location/" class="hover:text-stone-50 transition-colors duration-300">Location & Arrival</a></li>
-          <li><a href="/blog/" class="hover:text-stone-50 transition-colors duration-300">Blog</a></li>
-          <li><a href="/en/faq/" class="hover:text-stone-50 transition-colors duration-300">Questions & Answers</a></li>
-          <li><a href="/en/policies/" class="hover:text-stone-50 transition-colors duration-300">House Policies</a></li>
-          <li><a href="/en/about/" class="hover:text-stone-50 transition-colors duration-300">Our Story</a></li>
-          <li><a href="/en/contact/" class="hover:text-stone-50 transition-colors duration-300">Contact Us</a></li>
+          {common.footer.information.links.map((link) => (
+            <li><a href={link.href} class="hover:text-stone-50 transition-colors duration-300">{link.label}</a></li>
+          ))}
         </ul>
       </div>
 
@@ -68,12 +75,15 @@ const bookingUrl = 'https://traditionalhomes.reserve-online.net/';
     {/* BOTTOM BAR */}
     <div class="border-t border-stone-800 mt-16 pt-8 flex flex-col gap-5 md:flex-row md:items-center md:justify-between md:gap-8">
       <p class="text-[11px] text-stone-400/80 font-light tracking-wide">
-        &copy; {currentYear} Elounda Traditional Homes. All rights reserved.
+        &copy; {currentYear} {common.brand.name}. {common.footer.rights}
       </p>
-      <nav class="flex flex-wrap items-center gap-x-6 gap-y-3 text-[11px] font-light tracking-wide md:justify-end" aria-label="Legal navigation">
-        <a href="/en/policies/" class="text-stone-400/85 hover:text-stone-200 transition-colors duration-300">Policies</a>
-        <a href="/en/policies/#access" class="text-stone-400/85 hover:text-stone-200 transition-colors duration-300">Accessibility</a>
-        <a href="https://traditional-homes.gr" class="whitespace-nowrap text-stone-400 hover:text-stone-200 transition-colors duration-300">traditional-homes.gr</a>
+      <nav class="flex flex-wrap items-center gap-x-6 gap-y-3 text-[11px] font-light tracking-wide md:justify-end" aria-label={common.footer.legal.ariaLabel}>
+        {common.footer.legal.links.map((link) => (
+          <a href={link.href} class:list={[
+            'transition-colors duration-300',
+            link.href.startsWith('https://') ? 'whitespace-nowrap text-stone-400 hover:text-stone-200' : 'text-stone-400/85 hover:text-stone-200'
+          ]}>{link.label}</a>
+        ))}
       </nav>
     </div>
   </div>
