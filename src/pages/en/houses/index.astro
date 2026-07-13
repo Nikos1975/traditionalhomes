@@ -10,6 +10,9 @@ import siteCopyData from '../../../data/siteCopy.json';
 import { validateInventory } from '../../../utils/validateInventory';
 import type { InventoryUnit, SiteCopy } from '../../../types';
 import type { ListingItem } from '../../../utils/filters';
+import { defaultLocale } from '../../../i18n/config';
+import { localizedPath } from '../../../i18n/routes';
+import { localizedCanonical } from '../../../i18n/seo';
 
 // 1. DATA VALIDATION & TYPE CASTING
 const units = inventory as InventoryUnit[];
@@ -41,7 +44,7 @@ const totalCount = units.length;
 <Base
   title={`The Collection | Stone Houses & Villa in Elounda | ${siteCopy.siteName}`}
   description={siteCopy.metaDescriptionHouses}
-  canonicalUrl="https://traditional-homes.gr/en/houses/"
+  canonicalUrl={localizedCanonical(defaultLocale, localizedPath(defaultLocale, 'houses'))}
 >
 
   <div class="site-max site-pad py-16 md:py-24">
@@ -50,7 +53,7 @@ const totalCount = units.length;
     <header class="mb-20 text-center md:text-left">
       <nav class="text-[10px] uppercase tracking-[0.4em] text-stone-400 mb-8 font-bold" aria-label="Breadcrumb">
         <ol class="flex items-center justify-center md:justify-start gap-3" role="list">
-          <li><a href="/en/" class="hover:text-stone-900 transition-colors">Home</a></li>
+          <li><a href={localizedPath(defaultLocale)} class="hover:text-stone-900 transition-colors">Home</a></li>
           <li aria-hidden="true" class="text-stone-200">/</li>
           <li class="text-stone-900" aria-current="page">The Collection</li>
         </ol>

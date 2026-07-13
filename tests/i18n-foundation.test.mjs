@@ -138,4 +138,38 @@ describe('Stage 1 i18n foundation', () => {
     assert.match(files.blogIndex, /href=\{`\/blog\/\$\{post\.id\}\/`\}/);
     assert.match(files.blogPost, /href="\/blog\/"/);
   });
+
+  it('uses route and SEO helpers on static English pages without changing blog or contact endpoints', async () => {
+    const staticPages = {
+      home: await readText('src/pages/en/index.astro'),
+      about: await readText('src/pages/en/about.astro'),
+      contact: await readText('src/pages/en/contact.astro'),
+      faq: await readText('src/pages/en/faq.astro'),
+      policies: await readText('src/pages/en/policies.astro'),
+      housesIndex: await readText('src/pages/en/houses/index.astro'),
+      mavrikianoGuide: await readText('src/pages/en/guide/mavrikiano.astro'),
+      vrouchasGuide: await readText('src/pages/en/guide/vrouchas.astro'),
+    };
+
+    const hardcodedEnglishRoute =
+      /(?:href="\/en\/|['"`]\/en\/(?:houses|villa|location|guide|contact|faq|about|policies)\/|canonicalUrl="https:\/\/traditional-homes\.gr\/en\/)/;
+
+    for (const page of Object.values(staticPages)) {
+      assert.doesNotMatch(page, hardcodedEnglishRoute);
+    }
+
+    assert.match(staticPages.home, /localizedCanonical\(defaultLocale, localizedPath\(defaultLocale\)\)/);
+    assert.match(staticPages.home, /housePath\('argyro'\)/);
+    assert.match(staticPages.home, /villaPath\(villa\.slug\)/);
+    assert.match(staticPages.about, /localizedCanonical\(defaultLocale, localizedPath\(defaultLocale, 'about'\)\)/);
+    assert.match(staticPages.contact, /action="\/api\/contact"/);
+    assert.match(staticPages.contact, /contactSentPath = `\$\{localizedPath\(defaultLocale, 'contact'\)\}\?sent=1`/);
+    assert.match(staticPages.contact, /<script define:vars=\{\{ contactSentPath \}\}>/);
+    assert.match(staticPages.faq, /localizedPath\(defaultLocale, 'policies'\)\}\#access/);
+    assert.match(staticPages.housesIndex, /localizedCanonical\(defaultLocale, localizedPath\(defaultLocale, 'houses'\)\)/);
+    assert.match(staticPages.mavrikianoGuide, /guidePath\('mavrikiano'\)/);
+
+    const navigation = await readJson('src/i18n/locales/en/navigation.json');
+    assert.equal(navigation.main.find((link) => link.label === 'Blog')?.href, '/blog/');
+  });
 });

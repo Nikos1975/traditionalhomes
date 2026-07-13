@@ -1,15 +1,19 @@
 ---
 import Base from '../../layouts/Base.astro';
 import siteCopy from '../../data/siteCopy.json';
+import { defaultLocale } from '../../i18n/config';
+import { localizedPath } from '../../i18n/routes';
+import { localizedCanonical } from '../../i18n/seo';
 
 const contactEmail = 'info@traditional-homes.gr';
 const contactMailto = `mailto:${contactEmail}`;
+const contactSentPath = `${localizedPath(defaultLocale, 'contact')}?sent=1`;
 ---
 
 <Base
   title={`Contact & Inquiries | ${siteCopy.siteName}`}
   description={siteCopy.metaDescriptionContact}
-  canonicalUrl="https://traditional-homes.gr/en/contact/"
+  canonicalUrl={localizedCanonical(defaultLocale, localizedPath(defaultLocale, 'contact'))}
 >
 
   <div class="site-max site-pad py-16 md:py-24">
@@ -17,7 +21,7 @@ const contactMailto = `mailto:${contactEmail}`;
     {/* BREADCRUMB */}
     <nav class="text-[10px] uppercase tracking-[0.3em] text-stone-400 mb-8 font-bold" aria-label="Breadcrumb">
       <ol class="flex items-center gap-2" role="list">
-        <li><a href="/en/" class="hover:text-stone-900 transition-colors">Home</a></li>
+        <li><a href={localizedPath(defaultLocale)} class="hover:text-stone-900 transition-colors">Home</a></li>
         <li aria-hidden="true" class="text-stone-200">/</li>
         <li class="text-stone-900" aria-current="page">Contact</li>
       </ol>
@@ -157,11 +161,11 @@ const contactMailto = `mailto:${contactEmail}`;
             </li>
             <li class="flex items-start gap-4">
               <svg class="flex-shrink-0 w-5 h-5 text-stone-300 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3M12 17h.01"/></svg>
-              <span>Quick answers regarding Wi-Fi, pools, and check-in can be found on our <a href="/en/faq/" class="text-stone-950 font-bold underline underline-offset-4">FAQ page</a>.</span>
+              <span>Quick answers regarding Wi-Fi, pools, and check-in can be found on our <a href={localizedPath(defaultLocale, 'faq')} class="text-stone-950 font-bold underline underline-offset-4">FAQ page</a>.</span>
             </li>
             <li class="flex items-start gap-4">
               <svg class="flex-shrink-0 w-5 h-5 text-stone-300 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-              <span>Detailed mobility information and house rules are listed on our <a href="/en/policies/" class="text-stone-950 font-bold underline underline-offset-4">Policies page</a>.</span>
+              <span>Detailed mobility information and house rules are listed on our <a href={localizedPath(defaultLocale, 'policies')} class="text-stone-950 font-bold underline underline-offset-4">Policies page</a>.</span>
             </li>
           </ul>
         </div>
@@ -181,7 +185,7 @@ const contactMailto = `mailto:${contactEmail}`;
 
 </Base>
 
-<script>
+<script define:vars={{ contactSentPath }}>
   const form = document.querySelector('form[name="contact"]');
   const successMarkup = `
     <div class="bg-stone-50 border border-stone-200 rounded-[2rem] p-10 text-center animate-in zoom-in-95 duration-500">
@@ -236,7 +240,7 @@ const contactMailto = `mailto:${contactEmail}`;
           throw new Error(result.error || 'Unable to send this message.');
         }
 
-        window.history.replaceState({}, '', '/en/contact/?sent=1');
+        window.history.replaceState({}, '', contactSentPath);
         showSuccess();
       } catch (error) {
         if (errorMessage) {

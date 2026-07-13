@@ -1,6 +1,9 @@
 ---
 import Base from '../../../layouts/Base.astro';
 import * as Guide from '../../../guides/Vrouchas-Guide.md';
+import { defaultLocale } from '../../../i18n/config';
+import { guidePath, localizedPath } from '../../../i18n/routes';
+import { localizedCanonical } from '../../../i18n/seo';
 
 const { Content, frontmatter } = Guide;
 ---
@@ -8,13 +11,14 @@ const { Content, frontmatter } = Guide;
 <Base 
   title={`${frontmatter.title} | Elounda Traditional Homes`} 
   description={frontmatter.description}
+  canonicalUrl={localizedCanonical(defaultLocale, guidePath('vrouchas'))}
 >
   <div class="site-max site-pad py-12 md:py-20 min-h-[70vh]">
     <nav class="text-xs text-muted mb-8" aria-label="Breadcrumb">
       <ol class="flex items-center gap-1.5" role="list">
-        <li><a href="/en/" class="hover:text-body-text transition-colors duration-150">Home</a></li>
+        <li><a href={localizedPath(defaultLocale)} class="hover:text-body-text transition-colors duration-150">Home</a></li>
         <li aria-hidden="true">›</li>
-        <li><a href="/en/location/" class="hover:text-body-text transition-colors duration-150">Location</a></li>
+        <li><a href={localizedPath(defaultLocale, 'location')} class="hover:text-body-text transition-colors duration-150">Location</a></li>
         <li aria-hidden="true">›</li>
         <li class="text-body-text font-medium" aria-current="page">{frontmatter.title}</li>
       </ol>
@@ -35,11 +39,11 @@ const { Content, frontmatter } = Guide;
       </article>
 
       <div class="mt-16 pt-8 border-t border-stone-200 flex flex-col sm:flex-row gap-4 justify-between items-center">
-        <a href="/en/location/" class="btn-outline flex items-center justify-center gap-2 w-full sm:w-auto">
+        <a href={localizedPath(defaultLocale, 'location')} class="btn-outline flex items-center justify-center gap-2 w-full sm:w-auto">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
           Back to Interactive Map
         </a>
-        <a href="/en/houses/" class="btn-cta flex items-center justify-center gap-2 w-full sm:w-auto">
+        <a href={localizedPath(defaultLocale, 'houses')} class="btn-cta flex items-center justify-center gap-2 w-full sm:w-auto">
           View Properties
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
         </a>

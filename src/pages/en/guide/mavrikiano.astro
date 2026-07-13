@@ -1,6 +1,9 @@
 ---
 import Base from '../../../layouts/Base.astro';
 import * as Guide from '../../../guides/Mavrikiano-Guide.md';
+import { defaultLocale } from '../../../i18n/config';
+import { guidePath, localizedPath } from '../../../i18n/routes';
+import { localizedCanonical } from '../../../i18n/seo';
 
 const { Content, frontmatter } = Guide;
 
@@ -12,15 +15,16 @@ const pageDescription = frontmatter.description || "Practical information for yo
 <Base 
   title={pageTitle} 
   description={pageDescription}
+  canonicalUrl={localizedCanonical(defaultLocale, guidePath('mavrikiano'))}
 >
   <div class="site-max site-pad py-12 md:py-20 min-h-[70vh]">
     
     {/* BREADCRUMBS - High-end letter spacing */}
     <nav class="text-[10px] uppercase tracking-[0.3em] text-stone-400 mb-12" aria-label="Breadcrumb">
       <ol class="flex items-center gap-2" role="list">
-        <li><a href="/en/" class="hover:text-stone-900 transition-colors">Home</a></li>
+        <li><a href={localizedPath(defaultLocale)} class="hover:text-stone-900 transition-colors">Home</a></li>
         <li aria-hidden="true" class="text-stone-300">/</li>
-        <li><a href="/en/location/" class="hover:text-stone-900 transition-colors">Location</a></li>
+        <li><a href={localizedPath(defaultLocale, 'location')} class="hover:text-stone-900 transition-colors">Location</a></li>
         <li aria-hidden="true" class="text-stone-300">/</li>
         <li class="text-stone-900 font-bold" aria-current="page">Area Guide</li>
       </ol>
@@ -45,11 +49,11 @@ const pageDescription = frontmatter.description || "Practical information for yo
 
       {/* FOOTER ACTIONS - The "What's Next" loop */}
       <div class="mt-20 pt-10 border-t border-stone-200 flex flex-col sm:flex-row gap-6 justify-between items-center">
-        <a href="/en/location/" class="group flex items-center gap-3 text-xs font-bold uppercase tracking-widest text-stone-400 hover:text-stone-900 transition-all">
+        <a href={localizedPath(defaultLocale, 'location')} class="group flex items-center gap-3 text-xs font-bold uppercase tracking-widest text-stone-400 hover:text-stone-900 transition-all">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="group-hover:-translate-x-1 transition-transform"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
           Back to Map
         </a>
-        <a href="/en/houses/" class="btn-cta px-10 py-4 rounded-xl shadow-lg transition-smooth">
+        <a href={localizedPath(defaultLocale, 'houses')} class="btn-cta px-10 py-4 rounded-xl shadow-lg transition-smooth">
           Explore the Houses
         </a>
       </div>

@@ -1,12 +1,15 @@
 ---
 import Base from '../../layouts/Base.astro';
 import siteCopy from '../../data/siteCopy.json';
+import { defaultLocale } from '../../i18n/config';
+import { localizedPath } from '../../i18n/routes';
+import { localizedCanonical } from '../../i18n/seo';
 ---
 
 <Base
   title={`Our Story | ${siteCopy.siteName}`}
   description={siteCopy.metaDescriptionAbout}
-  canonicalUrl="https://traditional-homes.gr/en/about/"
+  canonicalUrl={localizedCanonical(defaultLocale, localizedPath(defaultLocale, 'about'))}
 >
 
   <div class="site-max site-pad py-16 md:py-24">
@@ -14,7 +17,7 @@ import siteCopy from '../../data/siteCopy.json';
     {/* BREADCRUMB */}
     <nav class="text-[10px] uppercase tracking-[0.4em] text-stone-400 mb-12 font-bold" aria-label="Breadcrumb">
       <ol class="flex items-center gap-2" role="list">
-        <li><a href="/en/" class="hover:text-stone-900 transition-colors">Home</a></li>
+        <li><a href={localizedPath(defaultLocale)} class="hover:text-stone-900 transition-colors">Home</a></li>
         <li aria-hidden="true" class="text-stone-200">/</li>
         <li class="text-stone-900" aria-current="page">Our Story</li>
       </ol>
@@ -61,8 +64,8 @@ import siteCopy from '../../data/siteCopy.json';
         {/* CTAS */}
         <div class="mt-16 pt-12 border-t border-stone-100">
           <div class="flex flex-wrap gap-4">
-            <a href="/en/houses/" class="btn-cta bg-accent-sage text-stone-900 hover:bg-accent-sage-hover hover:text-stone-900 px-10 py-4">Explore the Houses</a>
-            <a href="/en/contact/" class="btn-cta bg-transparent border-stone-200 text-stone-950 hover:bg-stone-50 px-10 py-4">Get in Touch</a>
+            <a href={localizedPath(defaultLocale, 'houses')} class="btn-cta bg-accent-sage text-stone-900 hover:bg-accent-sage-hover hover:text-stone-900 px-10 py-4">Explore the Houses</a>
+            <a href={localizedPath(defaultLocale, 'contact')} class="btn-cta bg-transparent border-stone-200 text-stone-950 hover:bg-stone-50 px-10 py-4">Get in Touch</a>
           </div>
         </div>
       </div>

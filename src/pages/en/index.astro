@@ -7,43 +7,52 @@ import inventory from '../../inventory/inventory.json';
 import siteCopy from '../../data/siteCopy.json';
 import type { InventoryUnit } from '../../types';
 import { validateInventory } from '../../utils/validateInventory';
+import { defaultLocale } from '../../i18n/config';
+import { guidePath, housePath, localizedPath, villaPath } from '../../i18n/routes';
+import { localizedCanonical } from '../../i18n/seo';
 
 const units = inventory as InventoryUnit[];
 validateInventory(units);
 const houses = units.filter(u => u.type === 'house');
 const villa = units.find((u) => u.type === 'villa');
+const housesPath = localizedPath(defaultLocale, 'houses');
+const locationPath = localizedPath(defaultLocale, 'location');
+const faqPath = localizedPath(defaultLocale, 'faq');
+const aboutPath = localizedPath(defaultLocale, 'about');
+const policiesPath = localizedPath(defaultLocale, 'policies');
+const mavrikianoGuidePath = guidePath('mavrikiano');
 const chooseStayOptions = [
   {
     title: 'Sea-view houses',
     names: [
-      { label: 'Argyro', href: '/en/houses/argyro/' },
-      { label: 'Leonidas', href: '/en/houses/leonidas/' },
-      { label: 'Margarita', href: '/en/houses/margarita/' },
-      { label: 'Monastiri', href: '/en/houses/monastiri/' },
+      { label: 'Argyro', href: housePath('argyro') },
+      { label: 'Leonidas', href: housePath('leonidas') },
+      { label: 'Margarita', href: housePath('margarita') },
+      { label: 'Monastiri', href: housePath('monastiri') },
     ],
   },
   {
     title: 'Pool stays',
     names: [
-      { label: 'Erato', href: '/en/houses/erato/' },
-      { label: 'Demetra', href: '/en/houses/demetra/' },
-      { label: 'Penelope', href: '/en/houses/penelope/' },
-      { label: 'Monastiri', href: '/en/houses/monastiri/' },
-      { label: 'Almond Tree Villa', href: '/en/villa/almond-tree-villa/' },
+      { label: 'Erato', href: housePath('erato') },
+      { label: 'Demetra', href: housePath('demetra') },
+      { label: 'Penelope', href: housePath('penelope') },
+      { label: 'Monastiri', href: housePath('monastiri') },
+      { label: 'Almond Tree Villa', href: villaPath('almond-tree-villa') },
     ],
   },
   {
     title: 'Easy access',
     names: [
-      { label: 'Clio, about 10 m from parking', href: '/en/houses/clio/' },
+      { label: 'Clio, about 10 m from parking', href: housePath('clio') },
     ],
   },
   {
     title: 'Larger groups',
     names: [
-      { label: 'Margarita', href: '/en/houses/margarita/' },
-      { label: 'Monastiri', href: '/en/houses/monastiri/' },
-      { label: 'Almond Tree Villa', href: '/en/villa/almond-tree-villa/' },
+      { label: 'Margarita', href: housePath('margarita') },
+      { label: 'Monastiri', href: housePath('monastiri') },
+      { label: 'Almond Tree Villa', href: villaPath('almond-tree-villa') },
     ],
   },
 ];
@@ -52,7 +61,7 @@ const chooseStayOptions = [
 <Base
   title={`${siteCopy.siteName} | Traditional Stone Houses & Villa in Crete`}
   description={siteCopy.metaDescriptionHome}
-  canonicalUrl="https://traditional-homes.gr/en/"
+  canonicalUrl={localizedCanonical(defaultLocale, localizedPath(defaultLocale))}
 >
 
   {/* 1. EDITORIAL HERO SECTION */}
@@ -79,7 +88,7 @@ const chooseStayOptions = [
           {siteCopy.heroSubline}
         </p>
         <div class="flex flex-wrap gap-4">
-          <a href="/en/houses/" class="btn-cta bg-white text-stone-950 border-white hover:bg-primary hover:text-white hover:border-primary px-8 py-4">
+          <a href={housesPath} class="btn-cta bg-white text-stone-950 border-white hover:bg-primary hover:text-white hover:border-primary px-8 py-4">
             Explore the Collection
           </a>
           <a
@@ -110,7 +119,7 @@ const chooseStayOptions = [
           Ten traditional stone houses in Mavrikiano. One larger villa in Vrouchas. Choose by sea view, pool, outdoor space, access, and group size.
         </p>
       </div>
-      <a href="/en/houses/" class="text-stone-900 font-bold text-xs uppercase tracking-widest border-b-2 border-stone-200 hover:border-stone-950 transition-all pb-1 mb-2">
+      <a href={housesPath} class="text-stone-900 font-bold text-xs uppercase tracking-widest border-b-2 border-stone-200 hover:border-stone-950 transition-all pb-1 mb-2">
         Compare all stays
       </a>
     </header>
@@ -121,7 +130,7 @@ const chooseStayOptions = [
           <p class="text-[10px] uppercase tracking-[0.3em] font-bold text-primary mb-3">Choose your stay</p>
           <h3 id="choose-your-stay" class="font-serif text-3xl md:text-4xl text-stone-950">Start with what matters most.</h3>
         </div>
-        <a href="/en/houses/" class="text-stone-900 font-bold text-xs uppercase tracking-widest border-b-2 border-stone-200 hover:border-stone-950 transition-all pb-1">
+        <a href={housesPath} class="text-stone-900 font-bold text-xs uppercase tracking-widest border-b-2 border-stone-200 hover:border-stone-950 transition-all pb-1">
           Open filters
         </a>
       </div>
@@ -169,7 +178,7 @@ const chooseStayOptions = [
               A larger 230 m² villa for up to 10 guests, with five sleeping rooms, two bathrooms, a private 9 m × 4 m pool, reed-shaded balconies, garden, and views toward the Cretan Sea, garden, pool, and mountains.
             </p>
             <div class="mt-auto pt-6 border-t border-stone-100 flex flex-col sm:flex-row gap-3">
-              <a href={`/en/villa/${villa.slug}/`} class="btn-outline flex-1 py-3 px-0 text-center rounded-xl bg-white shadow-sm hover:shadow-md transition-shadow">
+              <a href={villaPath(villa.slug)} class="btn-outline flex-1 py-3 px-0 text-center rounded-xl bg-white shadow-sm hover:shadow-md transition-shadow">
                 View villa
               </a>
               <a
@@ -221,8 +230,8 @@ const chooseStayOptions = [
         </ul>
 
         <div class="flex flex-wrap gap-4">
-          <a href="/en/location/" class="btn-cta border-stone-700 text-white hover:bg-white hover:text-stone-950">Location & Travel</a>
-          <a href="/en/guide/mavrikiano/" class="btn-cta bg-primary border-primary text-white hover:bg-amber-600">Local Guide</a>
+          <a href={locationPath} class="btn-cta border-stone-700 text-white hover:bg-white hover:text-stone-950">Location & Travel</a>
+          <a href={mavrikianoGuidePath} class="btn-cta bg-primary border-primary text-white hover:bg-amber-600">Local Guide</a>
         </div>
       </div>
     </div>
@@ -235,19 +244,19 @@ const chooseStayOptions = [
         { 
           title: 'Frequently Asked', 
           desc: 'Details on Wi-Fi, village access, pet policies, and shared pool arrangements.', 
-          link: '/en/faq/', 
+          link: faqPath,
           label: 'Read FAQ' 
         },
         { 
           title: 'Our Story', 
           desc: 'A family-run legacy of stone restoration and traditional Cretan hospitality since 1994.', 
-          link: '/en/about/', 
+          link: aboutPath,
           label: 'About us' 
         },
         { 
           title: 'Policies', 
           desc: 'Straightforward information on check-in, quiet hours, and house rules.', 
-          link: '/en/policies/', 
+          link: policiesPath,
           label: 'View policies' 
         }
       ].map(item => (
@@ -281,7 +290,7 @@ const chooseStayOptions = [
         />
       </div>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="/en/houses/" class="btn-cta bg-transparent border-stone-200 text-stone-950 hover:bg-stone-100 px-12 py-5">
+        <a href={housesPath} class="btn-cta bg-transparent border-stone-200 text-stone-950 hover:bg-stone-100 px-12 py-5">
           View All Properties
         </a>
       </div>

@@ -35,6 +35,34 @@ When pausing or finishing a substantial task, add a dated note below with:
 
 ## Notes
 
+### 2026-07-14 - Stage 2C static English i18n cleanup
+
+- Goal: convert low-risk static English page links, breadcrumbs, and canonicals to existing i18n route/SEO helpers while preserving current `/en/` behavior.
+- Files changed locally:
+  - `src/pages/en/index.astro`
+  - `src/pages/en/about.astro`
+  - `src/pages/en/contact.astro`
+  - `src/pages/en/faq.astro`
+  - `src/pages/en/policies.astro`
+  - `src/pages/en/houses/index.astro`
+  - `src/pages/en/guide/mavrikiano.astro`
+  - `src/pages/en/guide/vrouchas.astro`
+  - `tests/i18n-foundation.test.mjs`
+  - `docs/agent-handoff-notes.md`
+- What changed:
+  - Replaced static hardcoded English route links and hardcoded static canonicals with `localizedPath`, `housePath`, `villaPath`, `guidePath`, and `localizedCanonical`.
+  - Added explicit helper-built canonicals for the two English guide pages.
+  - Kept `/blog/` separate and kept the contact form action at `/api/contact`.
+- Verified:
+  - Focused i18n regression test failed before implementation and passed after helper conversion.
+  - Full validation passed: `git diff --check`, `node --test tests/contact-function.test.mjs tests/i18n-foundation.test.mjs`, `npx tsc --noEmit`, and `npm run build`.
+  - Generated output kept exact English canonical URLs, kept `/blog/`, did not generate `/en/blog/`, and kept contact form posts to `/api/contact`.
+- Remaining:
+  - Await approval before commit.
+  - `/blog/` still needs its separate redirect/canonical/hreflang/sitemap migration plan before any locale-prefix work.
+- Blockers:
+  - None currently.
+
 ### 2026-07-13 - Stage 2B i18n route helper audit
 
 - Goal: audit hardcoded internal English/blog links and move low-risk repeated property/map links to existing i18n route helpers without adding non-English routes.
