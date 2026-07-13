@@ -35,6 +35,30 @@ When pausing or finishing a substantial task, add a dated note below with:
 
 ## Notes
 
+### 2026-07-13 - I18N documentation control folder
+
+- Goal: create permanent documentation and prompt controls for the planned multilingual implementation.
+- Files changed:
+  - `AGENTS.md`
+  - `docs/i18n/00_I18N_MASTER_PLAN.md`
+  - `docs/i18n/01_TRANSLATION_STYLE_GUIDE.md`
+  - `docs/i18n/02_ROUTE_AND_FILE_STRUCTURE.md`
+  - `docs/i18n/03_TRANSLATION_STATUS.md`
+  - `docs/i18n/04_QA_CHECKLIST.md`
+  - `docs/i18n/prompts/codex-i18n-foundation.md`
+  - `docs/i18n/prompts/translate-one-language.md`
+  - `docs/agent-handoff-notes.md`
+- What changed:
+  - Documented the approved i18n strategy with English at `/en/`, stable slugs, and locales `en`, `de`, `fr`, `ru`, `zh`, and `ar`.
+  - Added route/file structure guidance, translation tone rules, translation status tracking, QA checklist, and future Codex prompts.
+  - Added a root `AGENTS.md` instruction requiring agents to read the i18n master plan before multilingual work.
+- Verified:
+  - Documentation-only change. No Astro routes, config, source code, contact function, DNS, Cloudflare variables, email setup, deploy, commit, or push were changed.
+- Remaining:
+  - Next safe implementation step is Stage 1 foundation helpers and English locale JSON only, using `docs/i18n/prompts/codex-i18n-foundation.md`.
+- Blockers:
+  - None.
+
 ### 2026-06-25 - Old-site URL inventory and redirect preparation
 
 - Goal: prepare controlled old-site URL inventory and redirect map files for the transition from the old Joomla site to the new Astro site.
