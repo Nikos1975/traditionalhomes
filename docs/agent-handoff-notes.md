@@ -35,6 +35,27 @@ When pausing or finishing a substantial task, add a dated note below with:
 
 ## Notes
 
+### 2026-07-13 - Stage 2A i18n English source freeze/extraction
+
+- Goal: audit English source copy and extract only low-risk repeated shared UI strings before starting non-English translation work.
+- Files changed:
+  - `src/i18n/locales/en/forms.json`
+  - `src/components/booking/BookingHandoffForm.astro`
+  - `tests/i18n-foundation.test.mjs`
+  - `docs/i18n/03_TRANSLATION_STATUS.md`
+  - `docs/agent-handoff-notes.md`
+- What changed:
+  - Moved booking handoff default title, description, field labels, submit fallback, secondary search label, and final availability note into English `forms.json`.
+  - Wired `BookingHandoffForm.astro` to `getFormsCopy(locale)` while preserving current English defaults and `/en/` routes.
+  - Left long-form page, property, policy, FAQ, location, and blog copy in place for later content-collection planning.
+- Verified:
+  - Focused i18n test passed after the extraction.
+- Remaining:
+  - Run full Stage 2A validation before committing.
+  - Later stages should move route links to helpers and plan long-form content extraction before adding non-English route folders.
+- Blockers:
+  - None currently.
+
 ### 2026-07-13 - Stage 1 i18n foundation
 
 - Goal: add English-only i18n helpers and shared Header/Footer locale wiring without changing public routes.

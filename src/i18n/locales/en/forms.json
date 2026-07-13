@@ -1,12 +1,17 @@
 {
   "booking": {
     "quickSearchAriaLabel": "Quick availability search",
+    "defaultItemName": "Elounda Traditional Homes",
+    "defaultTitle": "Check availability",
+    "defaultDescription": "Choose your dates and continue to our secure booking system.",
     "arrival": "Arrival",
     "nights": "Nights",
     "adults": "Adults",
     "check": "Check",
     "checkDates": "Check Dates",
-    "checkAvailability": "Check Availability"
+    "checkAvailability": "Check Availability",
+    "searchAllAvailableProperties": "Search all available properties",
+    "finalAvailabilityNote": "Final availability, rates, and alternatives continue in WebHotelier."
   },
   "contact": {
     "openChatLabel": "Open chat",

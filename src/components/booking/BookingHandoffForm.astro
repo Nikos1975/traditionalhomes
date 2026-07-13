@@ -1,4 +1,7 @@
 ---
+import { defaultLocale } from '../../i18n/config';
+import { getFormsCopy } from '../../i18n/translate';
+
 interface Props {
   bookingBaseUrl: string;
   roomCode?: string | null;
@@ -10,20 +13,25 @@ interface Props {
   compact?: boolean;
   framed?: boolean;
   trackView?: boolean;
+  locale?: string;
 }
+
+const props = Astro.props;
+const locale = props.locale ?? defaultLocale;
+const bookingCopy = getFormsCopy(locale).booking;
 
 const {
   bookingBaseUrl,
   roomCode = null,
-  itemName = 'Elounda Traditional Homes',
+  itemName = bookingCopy.defaultItemName,
   maxAdults = 10,
-  title = 'Check availability',
-  description = 'Choose your dates and continue to our secure booking system.',
-  submitLabel = 'Check Availability',
+  title = bookingCopy.defaultTitle,
+  description = bookingCopy.defaultDescription,
+  submitLabel = bookingCopy.checkAvailability,
   compact = false,
   framed = true,
   trackView = false,
-} = Astro.props;
+} = props;
 
 const adultsDefault = Math.min(2, Math.max(1, maxAdults));
 ---
@@ -54,7 +62,7 @@ const adultsDefault = Math.min(2, Math.max(1, maxAdults));
   ]}>
     <label class="block">
       <span class="block text-[10px] uppercase tracking-[0.2em] font-bold text-stone-500 mb-1">
-        Arrival
+        {bookingCopy.arrival}
       </span>
       <input
         type="date"
@@ -66,7 +74,7 @@ const adultsDefault = Math.min(2, Math.max(1, maxAdults));
 
     <label class="block">
       <span class="block text-[10px] uppercase tracking-[0.2em] font-bold text-stone-500 mb-1">
-        Nights
+        {bookingCopy.nights}
       </span>
       <input
         type="number"
@@ -81,7 +89,7 @@ const adultsDefault = Math.min(2, Math.max(1, maxAdults));
 
     <label class="block">
       <span class="block text-[10px] uppercase tracking-[0.2em] font-bold text-stone-500 mb-1">
-        Adults
+        {bookingCopy.adults}
       </span>
       <input
         type="number"
@@ -113,12 +121,12 @@ const adultsDefault = Math.min(2, Math.max(1, maxAdults));
       class="mt-2 w-full rounded-xl border border-stone-200 bg-white px-4 py-2.5 text-center font-sans text-[10px] font-bold uppercase tracking-[0.2em] text-stone-700 transition-colors hover:border-accent-sage hover:text-stone-950"
       data-search-all-houses
     >
-      Search all available properties
+      {bookingCopy.searchAllAvailableProperties}
     </button>
   )}
 
   <p class="mt-2.5 text-[10px] text-muted leading-relaxed">
-    Final availability, rates, and alternatives continue in WebHotelier.
+    {bookingCopy.finalAvailabilityNote}
   </p>
 </form>
 

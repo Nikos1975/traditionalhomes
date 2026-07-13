@@ -3,6 +3,8 @@
 Status values:
 
 - `Source present`: current English source exists on the live English-first site.
+- `Partially extracted`: some shared English UI strings have been moved into locale JSON, while page/body copy remains in source files or content files.
+- `Extracted`: English source for this shared area is now in locale JSON.
 - `Not started`: no approved translation work has started.
 - `Pending`: work is planned but not complete.
 - `Ready for QA`: translation is complete and awaiting checks.
@@ -10,8 +12,8 @@ Status values:
 
 | Area | EN source frozen | DE | FR | RU | ZH | AR | QA status | Notes |
 |---|---|---|---|---|---|---|---|---|
-| Homepage | Source present | Not started | Not started | Not started | Not started | Not started | Not started | Current source at `/en/`. |
-| Houses index | Source present | Not started | Not started | Not started | Not started | Not started | Not started | Current source at `/en/houses/`. |
+| Homepage | Source present | Not started | Not started | Not started | Not started | Not started | Not started | Current source at `/en/`; long-form homepage copy remains in the page file. |
+| Houses index | Source present | Not started | Not started | Not started | Not started | Not started | Not started | Current source at `/en/houses/`; filter/card labels remain in source components. |
 | House detail pages | Source present | Not started | Not started | Not started | Not started | Not started | Not started | Stable slugs should be preserved. |
 | Villa page | Source present | Not started | Not started | Not started | Not started | Not started | Not started | Stable slug should be preserved. |
 | Location page | Source present | Not started | Not started | Not started | Not started | Not started | Not started | Map/sidebar layout needs locale QA. |
@@ -23,7 +25,7 @@ Status values:
 | Vrouchas guide | Source present | Not started | Not started | Not started | Not started | Not started | Not started | Area guides follow the blog editorial system. |
 | Blog index | Source present | Not started | Not started | Not started | Not started | Not started | Not started | Current `/blog/` route is unprefixed. |
 | Blog posts | Source present | Not started | Not started | Not started | Not started | Not started | Not started | Requires separate migration plan. |
-| Header/Footer | Source present | Not started | Not started | Not started | Not started | Not started | Not started | Good first shared UI conversion target. |
-| Booking/contact UI | Source present | Not started | Not started | Not started | Not started | Not started | Not started | Do not change contact endpoint behavior. |
-| SEO/meta | Source present | Not started | Not started | Not started | Not started | Not started | Not started | Canonical, hreflang, and sitemap require QA. |
+| Header/Footer | Extracted | Not started | Not started | Not started | Not started | Not started | Not started | Shared Header/Footer English labels and links are in `navigation.json` and `common.json`. |
+| Booking/contact UI | Partially extracted | Not started | Not started | Not started | Not started | Not started | Not started | Shared booking handoff labels are in `forms.json`; contact page form/body copy remains hardcoded and contact endpoint behavior must not change. |
+| SEO/meta | Source present | Not started | Not started | Not started | Not started | Not started | Not started | SEO strings remain split between page files, `siteCopy.json`, and `seo.json`; canonical, hreflang, and sitemap require QA. |
 | Gallery alt/captions | Source present | Not started | Not started | Not started | Not started | Not started | Not started | Image paths stay shared; text may localize later. |

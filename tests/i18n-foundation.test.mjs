@@ -65,4 +65,32 @@ describe('Stage 1 i18n foundation', () => {
     assert.doesNotMatch(header, /href: '\/de\//);
     assert.doesNotMatch(footer, /href: '\/de\//);
   });
+
+  it('keeps shared booking form labels in forms.json and wires the booking component to them', async () => {
+    const forms = await readJson('src/i18n/locales/en/forms.json');
+    const bookingForm = await readText('src/components/booking/BookingHandoffForm.astro');
+
+    assert.equal(forms.booking.defaultItemName, 'Elounda Traditional Homes');
+    assert.equal(forms.booking.defaultTitle, 'Check availability');
+    assert.equal(
+      forms.booking.defaultDescription,
+      'Choose your dates and continue to our secure booking system.',
+    );
+    assert.equal(forms.booking.arrival, 'Arrival');
+    assert.equal(forms.booking.nights, 'Nights');
+    assert.equal(forms.booking.adults, 'Adults');
+    assert.equal(forms.booking.checkAvailability, 'Check Availability');
+    assert.equal(forms.booking.searchAllAvailableProperties, 'Search all available properties');
+    assert.equal(
+      forms.booking.finalAvailabilityNote,
+      'Final availability, rates, and alternatives continue in WebHotelier.',
+    );
+
+    assert.match(bookingForm, /getFormsCopy\(locale\)/);
+    assert.match(bookingForm, /bookingCopy\.arrival/);
+    assert.match(bookingForm, /bookingCopy\.nights/);
+    assert.match(bookingForm, /bookingCopy\.adults/);
+    assert.match(bookingForm, /bookingCopy\.searchAllAvailableProperties/);
+    assert.match(bookingForm, /bookingCopy\.finalAvailabilityNote/);
+  });
 });
