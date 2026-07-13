@@ -1,6 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import siteCopy from "../data/siteCopy.json";
+import { housePath, villaPath } from "../i18n/routes";
 import type { InventoryUnit } from "../types";
 
 interface Props {
@@ -13,8 +14,8 @@ const { unit, priority = false } = Astro.props;
 // 1. PATH LOGIC (Matches your localized folder structure)
 const unitPagePath =
   unit.type === "villa"
-    ? `/en/villa/${unit.slug}/`
-    : `/en/houses/${unit.slug}/`;
+    ? villaPath(unit.slug)
+    : housePath(unit.slug);
 
 // 2. IMAGE AUTOMATION
 const allImages = import.meta.glob(

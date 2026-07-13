@@ -12,6 +12,9 @@ import siteCopy from '../../../data/siteCopy.json';
 import SinglePinMap from '../../../components/maps/SinglePinMap.astro';
 import { locations } from '../../../data/locations';
 import { getEntry, render } from 'astro:content';
+import { defaultLocale } from '../../../i18n/config';
+import { guidePath, localizedPath, villaPath } from '../../../i18n/routes';
+import { localizedCanonical } from '../../../i18n/seo';
 import { sortGalleryImages } from '../../../utils/sortGalleryImages';
 import type { InventoryUnit, GalleryImage } from '../../../types';
 
@@ -28,7 +31,7 @@ const units = inventory as InventoryUnit[];
 const unit = units.find((u) => u.slug === slug && u.type === 'villa');
 
 if (!unit) {
-  return Astro.redirect('/en/houses/', 302);
+  return Astro.redirect(localizedPath(defaultLocale, 'houses'), 302);
 }
 
 const rawGallery = (galleryData as Record<string, GalleryImage[]>)[slug] ?? [];
@@ -48,7 +51,7 @@ const locData = locations.find(l => l.slug === slug);
 
 const entry = await getEntry('villa', slug);
 if (!entry) {
-  return Astro.redirect('/en/houses/', 302);
+  return Astro.redirect(localizedPath(defaultLocale, 'houses'), 302);
 }
 const { Content } = await render(entry);
 
@@ -74,7 +77,7 @@ const neutralText = 'font-medium text-stone-500';
 <Base
   title={pageTitle}
   description={pageDescription}
-  canonicalUrl={`https://traditional-homes.gr/en/villa/${slug}/`}
+  canonicalUrl={localizedCanonical(defaultLocale, villaPath(slug))}
   ogImage={ogImage}
 >
   {heroEntry && (
@@ -100,9 +103,9 @@ const neutralText = 'font-medium text-stone-500';
     )}
     <div class="relative z-20 site-max site-pad h-full flex flex-col justify-end pb-10 md:pb-14">
       <nav class="text-[10px] uppercase tracking-[0.35em] mb-5 text-white/70" aria-label="Breadcrumb">
-        <a href="/en/" class="hover:text-white transition-colors">Home</a>
+        <a href={localizedPath(defaultLocale)} class="hover:text-white transition-colors">Home</a>
         <span class="mx-2 opacity-50">/</span>
-        <a href="/en/villa/" class="hover:text-white transition-colors">Villa</a>
+        <a href={localizedPath(defaultLocale, 'villa')} class="hover:text-white transition-colors">Villa</a>
         <span class="mx-2 opacity-50">/</span>
         <span class="text-white/90">{unit.name}</span>
       </nav>
@@ -201,7 +204,7 @@ const neutralText = 'font-medium text-stone-500';
               <p class="font-medium mb-1">Location note</p>
               <p>
                 The village of Vrouchas sits above the houses in Mavrikiano. {unit.locationRelations.above} from here.
-                <a href="/en/location/" class="underline hover:text-body-text ml-1 transition-colors duration-150">Location details</a>
+                <a href={localizedPath(defaultLocale, 'location')} class="underline hover:text-body-text ml-1 transition-colors duration-150">Location details</a>
               </p>
             </div>
           </section>
@@ -291,7 +294,7 @@ const neutralText = 'font-medium text-stone-500';
             framed={false}
             trackView
           />
-          <a href="/en/contact/" class="btn-outline w-full py-3 text-center block rounded-xl text-xs uppercase tracking-wider font-bold">
+          <a href={localizedPath(defaultLocale, 'contact')} class="btn-outline w-full py-3 text-center block rounded-xl text-xs uppercase tracking-wider font-bold">
             Ask a Question
           </a>
         </div>
@@ -322,7 +325,7 @@ const neutralText = 'font-medium text-stone-500';
         )}
 
         {locData?.group === 'vrouchas' && (
-          <a href="/en/guide/vrouchas/" class="flex items-center justify-between p-4 rounded-xl border border-stone-200 bg-white hover:border-sky-300 hover:shadow-md transition-all group">
+          <a href={guidePath('vrouchas')} class="flex items-center justify-between p-4 rounded-xl border border-stone-200 bg-white hover:border-sky-300 hover:shadow-md transition-all group">
             <div class="flex flex-col">
               <span class="font-serif text-sky-900 text-base mb-0.5">Vrouchas Area Guide</span>
               <span class="text-xs text-stone-500">Practical area details</span>

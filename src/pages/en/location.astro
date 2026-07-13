@@ -4,6 +4,9 @@ import siteCopyData from '../../data/siteCopy.json';
 import MasterLocationMap from '../../components/maps/MasterLocationMap.astro';
 import inventory from '../../inventory/inventory.json';
 import { locations } from '../../data/locations';
+import { defaultLocale } from '../../i18n/config';
+import { guidePath, housePath, localizedPath, villaPath } from '../../i18n/routes';
+import { localizedCanonical } from '../../i18n/seo';
 import type { InventoryUnit, SiteCopy } from '../../types';
 
 const units = inventory as InventoryUnit[];
@@ -105,7 +108,7 @@ const pageTitle = `Location — Mavrikiano & Vrouchas, Elounda | ${siteCopy.site
 <Base
   title={pageTitle}
   description={siteCopy.metaDescriptionLocation}
-  canonicalUrl="https://traditional-homes.gr/en/location/"
+  canonicalUrl={localizedCanonical(defaultLocale, localizedPath(defaultLocale, 'location'))}
 >
 
   <div class="site-max site-pad py-16 md:py-24">
@@ -113,7 +116,7 @@ const pageTitle = `Location — Mavrikiano & Vrouchas, Elounda | ${siteCopy.site
     {/* BREADCRUMB */}
     <nav class="text-[10px] uppercase tracking-[0.4em] text-stone-400 mb-12 font-bold" aria-label="Breadcrumb">
       <ol class="flex items-center gap-2" role="list">
-        <li><a href="/en/" class="hover:text-stone-900 transition-colors">Home</a></li>
+        <li><a href={localizedPath(defaultLocale)} class="hover:text-stone-900 transition-colors">Home</a></li>
         <li aria-hidden="true" class="text-stone-200">/</li>
         <li class="text-stone-900" aria-current="page">Location</li>
       </ol>
@@ -145,7 +148,7 @@ const pageTitle = `Location — Mavrikiano & Vrouchas, Elounda | ${siteCopy.site
             <p>
               The village has local places to eat and drink, including Kantouni, To Rakadiko tou Kamari, Despoina Tavern, and BeeRaki, while Elounda’s harbour, shops, local markets, and further tavernas are about a 3-minute drive away, or a 10-minute downhill walk for many guests.
             </p>
-            <a href="/en/guide/mavrikiano/" class="inline-flex items-center gap-2 text-stone-950 font-bold text-xs uppercase tracking-[0.2em] border-b border-stone-200 hover:border-primary transition-all pb-1 group">
+            <a href={guidePath('mavrikiano')} class="inline-flex items-center gap-2 text-stone-950 font-bold text-xs uppercase tracking-[0.2em] border-b border-stone-200 hover:border-primary transition-all pb-1 group">
               Explore the Mavrikiano Guide
               <svg class="group-hover:translate-x-1 transition-transform" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
             </a>
@@ -227,8 +230,8 @@ const pageTitle = `Location — Mavrikiano & Vrouchas, Elounda | ${siteCopy.site
                     if (!unit) return null;
 
                     const href = unit.type === 'villa'
-                      ? `/en/villa/${unit.slug}/`
-                      : `/en/houses/${unit.slug}/`;
+                      ? villaPath(unit.slug)
+                      : housePath(unit.slug);
 
                     return (
                       <li>
@@ -263,7 +266,7 @@ const pageTitle = `Location — Mavrikiano & Vrouchas, Elounda | ${siteCopy.site
             <p class="text-sm text-stone-700 leading-relaxed mb-8 font-light">
               Navigating traditional villages can be a challenge. We personally meet all guests at our designated parking area. <strong>{siteCopy.arrival.hostName}</strong> will guide you to your home and assist with your arrival.
             </p>
-            <a href="/en/contact/" class="inline-block w-full py-4 bg-accent-sage text-stone-900 text-center rounded-2xl text-[10px] font-bold uppercase tracking-[0.3em] hover:bg-accent-sage-hover hover:text-stone-900 transition-all duration-300">
+            <a href={localizedPath(defaultLocale, 'contact')} class="inline-block w-full py-4 bg-accent-sage text-stone-900 text-center rounded-2xl text-[10px] font-bold uppercase tracking-[0.3em] hover:bg-accent-sage-hover hover:text-stone-900 transition-all duration-300">
               Contact Guest Relations
             </a>
           </div>

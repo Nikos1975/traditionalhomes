@@ -2,6 +2,7 @@
 import LeafletMap from './LeafletMap.astro';
 import { locations } from '../../data/locations';
 import inventory from '../../inventory/inventory.json';
+import { housePath, villaPath } from '../../i18n/routes';
 import type { InventoryUnit } from '../../types';
 
 const units = inventory as InventoryUnit[];
@@ -38,7 +39,7 @@ const allLocs = locations.filter(l => l.lat && l.lng).map(loc => {
 // 3. MARKER PREP
 // This goes into the actual Leaflet component to draw the pins
 const markers = allLocs.map(loc => {
-  const url = loc.type === 'villa' ? `/en/villa/${loc.slug}/` : `/en/houses/${loc.slug}/`;
+  const url = loc.type === 'villa' ? villaPath(loc.slug) : housePath(loc.slug);
   const unit = units.find(u => u.slug === loc.slug);
   return {
     id: loc.id,
@@ -102,7 +103,7 @@ const markers = allLocs.map(loc => {
                 <span class="text-[10px] font-medium text-stone-400 italic">{loc.distanceTag}</span>
                 <div class="flex gap-4">
                   <a href={loc.googleMapsUrl} target="_blank" class="text-[10px] font-bold uppercase tracking-widest text-stone-400 hover:text-primary transition-colors">Map</a>
-                  <a href={loc.type === 'villa' ? `/en/villa/${loc.slug}/` : `/en/houses/${loc.slug}/`} class="text-[10px] font-bold uppercase tracking-widest text-primary">Details</a>
+                  <a href={loc.type === 'villa' ? villaPath(loc.slug) : housePath(loc.slug)} class="text-[10px] font-bold uppercase tracking-widest text-primary">Details</a>
                 </div>
               </div>
             </div>

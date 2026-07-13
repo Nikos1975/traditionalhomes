@@ -1,6 +1,8 @@
 ---
 import LeafletMap from './LeafletMap.astro';
 import type { LocationItem } from '../../data/locations';
+import { defaultLocale } from '../../i18n/config';
+import { housePath, localizedPath, villaPath } from '../../i18n/routes';
 
 interface Props {
   location: LocationItem;
@@ -21,8 +23,8 @@ interface MarkerData {
 let markers: MarkerData[] = [];
 if (location && location.lat && location.lng) {
   const propertyUrl = location.type === 'villa'
-    ? `/en/villa/${location.slug}/`
-    : `/en/houses/${location.slug}/`;
+    ? villaPath(location.slug)
+    : housePath(location.slug);
 
   markers.push({
     id: location.id,
@@ -33,6 +35,8 @@ if (location && location.lat && location.lng) {
     subtitle: location.locationLabel
   });
 }
+
+const locationMapPath = `${localizedPath(defaultLocale, 'location')}?id=${location.id}#map-section`;
 ---
 {markers.length > 0 ? (
   <div class="single-pin-map relative border border-stone-200 rounded-xl overflow-hidden shadow-sm">
@@ -42,7 +46,7 @@ if (location && location.lat && location.lng) {
         <span class="font-medium text-stone-800">{location.title}</span><br/>
         {location.locationLabel}
       </div>
-      <a href={`/en/location/?id=${location.id}#map-section`} class="text-xs px-3 py-1.5 bg-white border border-stone-300 rounded hover:bg-stone-100 font-medium text-stone-700 transition-colors">
+      <a href={locationMapPath} class="text-xs px-3 py-1.5 bg-white border border-stone-300 rounded hover:bg-stone-100 font-medium text-stone-700 transition-colors">
         View map
       </a>
     </div>

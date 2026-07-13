@@ -1,4 +1,5 @@
 ---
+import { housePath } from '../i18n/routes';
 import type { InventoryUnit } from '../types';
 
 interface Props {
@@ -205,7 +206,7 @@ const formatAccess = (unit: InventoryUnit) => {
         {unit.sharedPoolWith.map((slug, index) => (
           <span>
             {index > 0 ? ' and ' : ' '}
-            <a href={`/en/houses/${slug}/`} class="font-medium text-body-text underline hover:text-primary transition-colors capitalize">
+            <a href={housePath(slug)} class="font-medium text-body-text underline hover:text-primary transition-colors capitalize">
               {slug.replace('-', ' ')}
             </a>
           </span>

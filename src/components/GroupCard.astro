@@ -1,5 +1,6 @@
 ---
 import { Image } from 'astro:assets';
+import { housePath } from '../i18n/routes';
 import type { ListingItem } from '../utils/filters';
 import inventory from '../inventory/inventory.json';
 import type { InventoryUnit } from '../types';
@@ -31,8 +32,8 @@ const units = inventory as InventoryUnit[];
 const memberNames = group.members?.map(m => units.find(u => u.slug === m)?.name ?? m).join(' & ');
 const nameA = units.find(u => u.slug === firstMemberSlug)?.name ?? firstMemberSlug ?? '';
 const nameB = units.find(u => u.slug === secondMemberSlug)?.name ?? secondMemberSlug ?? '';
-const detailPathA = firstMemberSlug ? `/en/houses/${firstMemberSlug}/` : '#';
-const detailPathB = secondMemberSlug ? `/en/houses/${secondMemberSlug}/` : '#';
+const detailPathA = firstMemberSlug ? housePath(firstMemberSlug) : '#';
+const detailPathB = secondMemberSlug ? housePath(secondMemberSlug) : '#';
 ---
 
 <article

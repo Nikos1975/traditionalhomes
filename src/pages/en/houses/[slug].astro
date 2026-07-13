@@ -11,6 +11,9 @@ import { locations, parkingOnly } from '../../../data/locations';
 import { getEntry, render } from 'astro:content';
 import galleryData from '../../../data/gallery.json';
 import suggestedPairingsData from '../../../inventory/suggested-pairings.json';
+import { defaultLocale } from '../../../i18n/config';
+import { housePath, localizedPath } from '../../../i18n/routes';
+import { localizedCanonical } from '../../../i18n/seo';
 import { sortGalleryImages } from '../../../utils/sortGalleryImages';
 import type { InventoryUnit, SiteCopy, GalleryImage } from '../../../types';
 
@@ -128,7 +131,7 @@ const pageDescription = `${unit.name} in ${unit.location} — sleeps ${unit.slee
 <Base
   title={pageTitle}
   description={pageDescription}
-  canonicalUrl={`https://traditional-homes.gr/en/houses/${slug}/`}
+  canonicalUrl={localizedCanonical(defaultLocale, housePath(slug))}
   ogImage={ogImage}
 >
   {/* Preload the gallery hero image so the browser fetches it early,
@@ -157,9 +160,9 @@ const pageDescription = `${unit.name} in ${unit.location} — sleeps ${unit.slee
     )}
     <div class="relative z-20 site-max site-pad h-full flex flex-col justify-end pb-10 md:pb-14">
       <nav class="text-[10px] uppercase tracking-[0.35em] mb-5 text-white/70" aria-label="Breadcrumb">
-        <a href="/en/" class="hover:text-white transition-colors">Home</a>
+        <a href={localizedPath(defaultLocale)} class="hover:text-white transition-colors">Home</a>
         <span class="mx-2 opacity-50">/</span>
-        <a href="/en/houses/" class="hover:text-white transition-colors">Houses</a>
+        <a href={localizedPath(defaultLocale, 'houses')} class="hover:text-white transition-colors">Houses</a>
         <span class="mx-2 opacity-50">/</span>
         <span class="text-white/90">{unit.name}</span>
       </nav>
@@ -361,7 +364,7 @@ const pageDescription = `${unit.name} in ${unit.location} — sleeps ${unit.slee
             framed={false}
             trackView
           />
-          <a href="/en/contact/" class="btn-outline w-full py-3 text-center block rounded-xl text-xs uppercase tracking-wider font-bold">
+          <a href={localizedPath(defaultLocale, 'contact')} class="btn-outline w-full py-3 text-center block rounded-xl text-xs uppercase tracking-wider font-bold">
             Ask a Question
           </a>
         </div>
@@ -399,7 +402,7 @@ const pageDescription = `${unit.name} in ${unit.location} — sleeps ${unit.slee
             <div class="space-y-3">
               {nearUnits.map((near) => (
                 <a
-                  href={`/en/houses/${near.slug}/`}
+                  href={housePath(near.slug)}
                   class="group flex items-center justify-between bg-white p-4 rounded-xl border border-stone-200 hover:border-primary transition-all shadow-sm"
                 >
                   <div>
@@ -442,7 +445,7 @@ const pageDescription = `${unit.name} in ${unit.location} — sleeps ${unit.slee
                         const memberLabel = memberUnit?.name ?? memberSlug;
                         return (
                           <a
-                            href={`/en/houses/${memberSlug}/`}
+                            href={housePath(memberSlug)}
                             class="inline-flex items-center px-3 py-1.5 text-[11px] font-medium text-stone-700 bg-stone-50 border border-stone-200 rounded-full hover:border-primary hover:text-primary transition-colors"
                           >
                             View {memberLabel}

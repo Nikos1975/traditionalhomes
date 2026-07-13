@@ -35,6 +35,35 @@ When pausing or finishing a substantial task, add a dated note below with:
 
 ## Notes
 
+### 2026-07-13 - Stage 2B i18n route helper audit
+
+- Goal: audit hardcoded internal English/blog links and move low-risk repeated property/map links to existing i18n route helpers without adding non-English routes.
+- Files changed locally:
+  - `src/components/AtAGlance.astro`
+  - `src/components/GroupCard.astro`
+  - `src/components/UnitCard.astro`
+  - `src/components/maps/MapPreview.astro`
+  - `src/components/maps/MasterLocationMap.astro`
+  - `src/components/maps/SinglePinMap.astro`
+  - `src/pages/en/houses/[slug].astro`
+  - `src/pages/en/location.astro`
+  - `src/pages/en/villa/[slug].astro`
+  - `tests/i18n-foundation.test.mjs`
+  - `docs/agent-handoff-notes.md`
+- What changed:
+  - Replaced repeated dynamic `/en/houses/${...}/`, `/en/villa/${...}/`, selected breadcrumbs, selected contact/location/guide links, redirects, and dynamic page canonicals with `localizedPath`, `housePath`, `villaPath`, `guidePath`, and `localizedCanonical`.
+  - Left `/blog/` routes and broader one-off hardcoded page links unchanged for the separate blog/canonical migration plan.
+- Verified:
+  - Production smoke check before work: `/en/` returned 200 and `/` redirected to `/en/`.
+  - Focused i18n test failed before implementation and passed after helper conversion.
+  - Full validation passed: `git diff --check`, focused Node tests, `npx tsc --noEmit`, and `npm run build`.
+  - No non-English route folders were created under `src/pages/`.
+- Remaining:
+  - Await approval before commit.
+  - Later stages can convert static page breadcrumbs/canonicals in a broader locale-page pass.
+- Blockers:
+  - None currently.
+
 ### 2026-07-13 - Stage 2A i18n English source freeze/extraction
 
 - Goal: audit English source copy and extract only low-risk repeated shared UI strings before starting non-English translation work.

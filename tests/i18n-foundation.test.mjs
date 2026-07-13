@@ -93,4 +93,49 @@ describe('Stage 1 i18n foundation', () => {
     assert.match(bookingForm, /bookingCopy\.searchAllAvailableProperties/);
     assert.match(bookingForm, /bookingCopy\.finalAvailabilityNote/);
   });
+
+  it('uses route helpers for repeated property and map links without changing blog routes', async () => {
+    const files = {
+      atAGlance: await readText('src/components/AtAGlance.astro'),
+      groupCard: await readText('src/components/GroupCard.astro'),
+      mapPreview: await readText('src/components/maps/MapPreview.astro'),
+      masterLocationMap: await readText('src/components/maps/MasterLocationMap.astro'),
+      singlePinMap: await readText('src/components/maps/SinglePinMap.astro'),
+      unitCard: await readText('src/components/UnitCard.astro'),
+      housePage: await readText('src/pages/en/houses/[slug].astro'),
+      villaPage: await readText('src/pages/en/villa/[slug].astro'),
+      locationPage: await readText('src/pages/en/location.astro'),
+      blogIndex: await readText('src/pages/blog/index.astro'),
+      blogPost: await readText('src/pages/blog/[...slug].astro'),
+    };
+
+    const helperManagedFiles = [
+      files.atAGlance,
+      files.groupCard,
+      files.mapPreview,
+      files.masterLocationMap,
+      files.singlePinMap,
+      files.unitCard,
+      files.housePage,
+      files.villaPage,
+      files.locationPage,
+    ];
+
+    for (const file of helperManagedFiles) {
+      assert.doesNotMatch(file, /`\/en\/(?:houses|villa)\/\$\{/);
+    }
+
+    assert.match(files.atAGlance, /housePath\(slug\)/);
+    assert.match(files.groupCard, /housePath\(firstMemberSlug\)/);
+    assert.match(files.mapPreview, /localizedPath\(defaultLocale, 'location'\)/);
+    assert.match(files.masterLocationMap, /loc\.type === 'villa' \? villaPath\(loc\.slug\) : housePath\(loc\.slug\)/);
+    assert.match(files.singlePinMap, /location\.type === 'villa'[\s\S]*villaPath\(location\.slug\)[\s\S]*housePath\(location\.slug\)/);
+    assert.match(files.unitCard, /unit\.type === "villa"[\s\S]*villaPath\(unit\.slug\)[\s\S]*housePath\(unit\.slug\)/);
+    assert.match(files.housePage, /localizedCanonical\(defaultLocale, housePath\(slug\)\)/);
+    assert.match(files.villaPage, /Astro\.redirect\(localizedPath\(defaultLocale, 'houses'\), 302\)/);
+    assert.match(files.locationPage, /unit\.type === 'villa'[\s\S]*villaPath\(unit\.slug\)[\s\S]*housePath\(unit\.slug\)/);
+
+    assert.match(files.blogIndex, /href=\{`\/blog\/\$\{post\.id\}\/`\}/);
+    assert.match(files.blogPost, /href="\/blog\/"/);
+  });
 });
