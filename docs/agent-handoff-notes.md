@@ -35,6 +35,30 @@ When pausing or finishing a substantial task, add a dated note below with:
 
 ## Notes
 
+### 2026-07-14 - Stage 2G dynamic SEO helper formatting
+
+- Goal: move dynamic house, villa, and guide SEO formatting into helper functions without changing rendered English SEO output.
+- Files changed locally:
+  - `src/i18n/seo.ts`
+  - `src/pages/en/houses/[slug].astro`
+  - `src/pages/en/villa/[slug].astro`
+  - `src/pages/en/guide/mavrikiano.astro`
+  - `src/pages/en/guide/vrouchas.astro`
+  - `tests/i18n-foundation.test.mjs`
+  - `docs/agent-handoff-notes.md`
+- What changed:
+  - Added `getPropertySeo()`, `getVillaSeo()`, and `getGuideSeo()` as formatting-only helpers.
+  - Updated the requested dynamic pages to call the helpers while keeping facts in inventory/frontmatter/page-local labels.
+  - Left `/blog/`, route folders, translations, hreflang rendering, `Base.astro`, and contact behavior unchanged.
+- Verified:
+  - Targeted i18n test failed before helper implementation and passed after migration.
+  - Full validation passed: `git diff --check`, targeted Node tests, `npx tsc --noEmit`, and `npm run build`.
+  - Generated sample title, description, and canonical values for `argyro`, Almond Tree Villa, Mavrikiano guide, and Vrouchas guide matched the pre-change baseline.
+- Remaining:
+  - Await approval before commit.
+- Blockers:
+  - None currently.
+
 ### 2026-07-14 - Stage 2E static English SEO centralization
 
 - Goal: centralize static English `/en/` page SEO titles and descriptions into the English i18n SEO source without changing rendered output.

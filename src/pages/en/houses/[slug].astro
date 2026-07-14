@@ -13,7 +13,7 @@ import galleryData from '../../../data/gallery.json';
 import suggestedPairingsData from '../../../inventory/suggested-pairings.json';
 import { defaultLocale } from '../../../i18n/config';
 import { housePath, localizedPath } from '../../../i18n/routes';
-import { localizedCanonical } from '../../../i18n/seo';
+import { getPropertySeo, localizedCanonical } from '../../../i18n/seo';
 import { sortGalleryImages } from '../../../utils/sortGalleryImages';
 import type { InventoryUnit, SiteCopy, GalleryImage } from '../../../types';
 
@@ -124,13 +124,12 @@ const getNearbyMeta = (near: InventoryUnit) => {
   return details.join(' · ');
 };
 
-const pageTitle = `${unit.name} — ${unit.location} | Elounda Traditional Homes`;
-const pageDescription = `${unit.name} in ${unit.location} — sleeps ${unit.sleeps}, ${unit.bedrooms} bedrooms${unit.pool !== 'none' ? `, ${poolLabel.toLowerCase()}` : ''}. Traditional Cretan home in Elounda.`;
+const pageSeo = getPropertySeo(defaultLocale, unit, poolLabel);
 ---
 
 <Base
-  title={pageTitle}
-  description={pageDescription}
+  title={pageSeo.title}
+  description={pageSeo.description}
   canonicalUrl={localizedCanonical(defaultLocale, housePath(slug))}
   ogImage={ogImage}
 >

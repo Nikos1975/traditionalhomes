@@ -14,7 +14,7 @@ import { locations } from '../../../data/locations';
 import { getEntry, render } from 'astro:content';
 import { defaultLocale } from '../../../i18n/config';
 import { guidePath, localizedPath, villaPath } from '../../../i18n/routes';
-import { localizedCanonical } from '../../../i18n/seo';
+import { getVillaSeo, localizedCanonical } from '../../../i18n/seo';
 import { sortGalleryImages } from '../../../utils/sortGalleryImages';
 import type { InventoryUnit, GalleryImage } from '../../../types';
 
@@ -44,9 +44,6 @@ const heroImage = heroEntry
 const ogImagePath = path.join(process.cwd(), 'public', 'images', 'villa', slug, 'og.jpg');
 const ogImage = fs.existsSync(ogImagePath) ? `/images/villa/${slug}/og.jpg` : undefined;
 
-const pageTitle = `${unit.name} - ${unit.location} | Elounda Traditional Homes`;
-const pageDescription = `${unit.name} is a traditional Cretan villa with private pool in Vrouchas, above Plaka and Elounda. Sleeps ${unit.sleeps}, with 5 bedrooms, 2 bathrooms, and a private 9 m × 4 m pool.`;
-
 const locData = locations.find(l => l.slug === slug);
 
 const entry = await getEntry('villa', slug);
@@ -72,11 +69,12 @@ const sidebarOutdoorSpace = unit.slug === 'almond-tree-villa'
 const positivePool = unit.pool !== 'none';
 const positiveText = 'font-medium text-success';
 const neutralText = 'font-medium text-stone-500';
+const pageSeo = getVillaSeo(defaultLocale, unit, poolLabel);
 ---
 
 <Base
-  title={pageTitle}
-  description={pageDescription}
+  title={pageSeo.title}
+  description={pageSeo.description}
   canonicalUrl={localizedCanonical(defaultLocale, villaPath(slug))}
   ogImage={ogImage}
 >

@@ -3,18 +3,17 @@ import Base from '../../../layouts/Base.astro';
 import * as Guide from '../../../guides/Mavrikiano-Guide.md';
 import { defaultLocale } from '../../../i18n/config';
 import { guidePath, localizedPath } from '../../../i18n/routes';
-import { localizedCanonical } from '../../../i18n/seo';
+import { getGuideSeo, localizedCanonical } from '../../../i18n/seo';
 
 const { Content, frontmatter } = Guide;
 
 // SEO & Data Prep
-const pageTitle = `${frontmatter.title} | Elounda Traditional Homes`;
-const pageDescription = frontmatter.description || "Practical information for your stay in Mavrikiano.";
+const pageSeo = getGuideSeo(defaultLocale, frontmatter, "Practical information for your stay in Mavrikiano.");
 ---
 
 <Base 
-  title={pageTitle} 
-  description={pageDescription}
+  title={pageSeo.title}
+  description={pageSeo.description}
   canonicalUrl={localizedCanonical(defaultLocale, guidePath('mavrikiano'))}
 >
   <div class="site-max site-pad py-12 md:py-20 min-h-[70vh]">

@@ -10,6 +10,23 @@ export type PageSeoMeta = {
   description: string;
 };
 
+type PropertySeoUnit = {
+  name: string;
+  location: string;
+  sleeps: number;
+  bedrooms: number;
+  pool: 'private' | 'shared' | 'none';
+};
+
+type VillaSeoUnit = PropertySeoUnit & {
+  bathrooms: number;
+};
+
+type GuideSeoFrontmatter = {
+  title: string;
+  description?: string;
+};
+
 export type HreflangAlternate = {
   locale: Locale;
   hreflang: string;
@@ -26,6 +43,43 @@ export function getOgLocale(locale: string | undefined): string {
 
 export function getPageSeo(locale: string | undefined, page: PageSeoKey): PageSeoMeta {
   return getSeoCopy(locale).pages[page];
+}
+
+export function getPropertySeo(
+  locale: string | undefined,
+  unit: PropertySeoUnit,
+  poolLabel: string,
+): PageSeoMeta {
+  const titleSuffix = getSeoCopy(locale).templates.titleSuffix;
+
+  return {
+    title: `${unit.name} — ${unit.location} | ${titleSuffix}`,
+    description: `${unit.name} in ${unit.location} — sleeps ${unit.sleeps}, ${unit.bedrooms} bedrooms${
+      unit.pool !== 'none' ? `, ${poolLabel.toLowerCase()}` : ''
+    }. Traditional Cretan home in Elounda.`,
+  };
+}
+
+export function getVillaSeo(locale: string | undefined, unit: VillaSeoUnit, poolLabel: string): PageSeoMeta {
+  const titleSuffix = getSeoCopy(locale).templates.titleSuffix;
+
+  return {
+    title: `${unit.name} - ${unit.location} | ${titleSuffix}`,
+    description: `${unit.name} is a traditional Cretan villa with private pool in Vrouchas, above Plaka and Elounda. Sleeps ${unit.sleeps}, with ${unit.bedrooms} bedrooms, ${unit.bathrooms} bathrooms, and a ${poolLabel.toLowerCase()}.`,
+  };
+}
+
+export function getGuideSeo(
+  locale: string | undefined,
+  frontmatter: GuideSeoFrontmatter,
+  fallbackDescription = '',
+): PageSeoMeta {
+  const guideTitle = getSeoCopy(locale).templates.guideTitle;
+
+  return {
+    title: guideTitle.replace('{title}', frontmatter.title),
+    description: frontmatter.description || fallbackDescription,
+  };
 }
 
 export function localizedCanonical(locale: string | undefined, pathname: string): string {

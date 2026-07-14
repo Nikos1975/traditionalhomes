@@ -96,6 +96,26 @@ describe('Stage 1 i18n foundation', () => {
     }
   });
 
+  it('formats dynamic English SEO through helpers without moving facts into translations', async () => {
+    const seoCopy = await readJson('src/i18n/locales/en/seo.json');
+    const seo = await readText('src/i18n/seo.ts');
+    const housePage = await readText('src/pages/en/houses/[slug].astro');
+    const villaPage = await readText('src/pages/en/villa/[slug].astro');
+    const mavrikianoGuide = await readText('src/pages/en/guide/mavrikiano.astro');
+    const vrouchasGuide = await readText('src/pages/en/guide/vrouchas.astro');
+
+    assert.match(seo, /export function getPropertySeo\(/);
+    assert.match(seo, /export function getVillaSeo\(/);
+    assert.match(seo, /export function getGuideSeo\(/);
+
+    assert.match(housePage, /getPropertySeo\(/);
+    assert.match(villaPage, /getVillaSeo\(/);
+    assert.match(mavrikianoGuide, /getGuideSeo\(/);
+    assert.match(vrouchasGuide, /getGuideSeo\(/);
+
+    assert.doesNotMatch(JSON.stringify(seoCopy), /sleeps|bedrooms|bathrooms|private 9 m/);
+  });
+
   it('keeps current English Header labels and links in navigation.json', async () => {
     const navigation = await readJson('src/i18n/locales/en/navigation.json');
 
