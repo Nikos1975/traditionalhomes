@@ -12,12 +12,13 @@ import type { InventoryUnit, SiteCopy } from '../../../types';
 import type { ListingItem } from '../../../utils/filters';
 import { defaultLocale } from '../../../i18n/config';
 import { localizedPath } from '../../../i18n/routes';
-import { localizedCanonical } from '../../../i18n/seo';
+import { getPageSeo, localizedCanonical } from '../../../i18n/seo';
 
 // 1. DATA VALIDATION & TYPE CASTING
 const units = inventory as InventoryUnit[];
 validateInventory(units);
 const siteCopy = siteCopyData as SiteCopy;
+const pageSeo = getPageSeo(defaultLocale, 'houses');
 
 const houses = units.filter((u) => u.type === 'house');
 const villa = units.find((u) => u.type === 'villa');
@@ -42,8 +43,8 @@ const totalCount = units.length;
 ---
 
 <Base
-  title={`The Collection | Stone Houses & Villa in Elounda | ${siteCopy.siteName}`}
-  description={siteCopy.metaDescriptionHouses}
+  title={pageSeo.title}
+  description={pageSeo.description}
   canonicalUrl={localizedCanonical(defaultLocale, localizedPath(defaultLocale, 'houses'))}
 >
 

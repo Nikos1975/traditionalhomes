@@ -36,6 +36,66 @@ describe('Stage 1 i18n foundation', () => {
     assert.doesNotMatch(base, /rel="alternate"|hreflang/);
   });
 
+  it('centralizes static English SEO metadata without changing rendered values', async () => {
+    const seoCopy = await readJson('src/i18n/locales/en/seo.json');
+    const seo = await readText('src/i18n/seo.ts');
+    const pages = {
+      home: await readText('src/pages/en/index.astro'),
+      houses: await readText('src/pages/en/houses/index.astro'),
+      location: await readText('src/pages/en/location.astro'),
+      contact: await readText('src/pages/en/contact.astro'),
+      faq: await readText('src/pages/en/faq.astro'),
+      policies: await readText('src/pages/en/policies.astro'),
+      about: await readText('src/pages/en/about.astro'),
+    };
+
+    assert.deepEqual(seoCopy.pages, {
+      home: {
+        title: 'Elounda Traditional Homes | Traditional Stone Houses & Villa in Crete',
+        description:
+          'Ten traditional stone houses in Mavrikiano and a hillside villa in Vrouchas — Elounda, Crete. Calm stays, direct booking.',
+      },
+      houses: {
+        title: 'The Collection | Stone Houses & Villa in Elounda | Elounda Traditional Homes',
+        description:
+          'Browse all ten traditional stone houses in Mavrikiano, Elounda. Filter by size, pool, and accessibility. Book direct.',
+      },
+      location: {
+        title: 'Location — Mavrikiano & Vrouchas, Elounda | Elounda Traditional Homes',
+        description:
+          'Mavrikiano and Vrouchas sit above Elounda Bay on the northeast coast of Crete. 5 minutes to the sea, away from the noise.',
+      },
+      contact: {
+        title: 'Contact & Inquiries | Elounda Traditional Homes',
+        description: 'Contact Elounda Traditional Homes — get in touch with questions or booking enquiries.',
+      },
+      faq: {
+        title: 'FAQ | Frequently Asked Questions | Elounda Traditional Homes',
+        description:
+          'Frequently asked questions about Elounda Traditional Homes — access, pools, pets, Wi-Fi, parking, and more.',
+      },
+      policies: {
+        title: 'Policies & House Rules | Elounda Traditional Homes',
+        description:
+          'House rules, access information, pet policy, check-in times, and cancellation terms for Elounda Traditional Homes.',
+      },
+      about: {
+        title: 'Our Story | Elounda Traditional Homes',
+        description:
+          'About Elounda Traditional Homes — a family-run collection of restored stone houses in Mavrikiano, Elounda, Crete.',
+      },
+    });
+
+    assert.match(seo, /export type PageSeoKey = keyof ReturnType<typeof getSeoCopy>\['pages'\]/);
+    assert.match(seo, /getPageSeo\(locale: string \| undefined, page: PageSeoKey\)/);
+    assert.match(seo, /return getSeoCopy\(locale\)\.pages\[page\]/);
+
+    for (const [key, page] of Object.entries(pages)) {
+      assert.match(page, new RegExp(`getPageSeo\\(defaultLocale, '${key}'\\)`));
+      assert.doesNotMatch(page, /metaDescription(?:Home|Houses|Location|Contact|Faq|Policies|About)/);
+    }
+  });
+
   it('keeps current English Header labels and links in navigation.json', async () => {
     const navigation = await readJson('src/i18n/locales/en/navigation.json');
 

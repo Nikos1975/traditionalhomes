@@ -3,16 +3,17 @@ import Base from '../../layouts/Base.astro';
 import siteCopy from '../../data/siteCopy.json';
 import { defaultLocale } from '../../i18n/config';
 import { localizedPath } from '../../i18n/routes';
-import { localizedCanonical } from '../../i18n/seo';
+import { getPageSeo, localizedCanonical } from '../../i18n/seo';
 
+const pageSeo = getPageSeo(defaultLocale, 'contact');
 const contactEmail = 'info@traditional-homes.gr';
 const contactMailto = `mailto:${contactEmail}`;
 const contactSentPath = `${localizedPath(defaultLocale, 'contact')}?sent=1`;
 ---
 
 <Base
-  title={`Contact & Inquiries | ${siteCopy.siteName}`}
-  description={siteCopy.metaDescriptionContact}
+  title={pageSeo.title}
+  description={pageSeo.description}
   canonicalUrl={localizedCanonical(defaultLocale, localizedPath(defaultLocale, 'contact'))}
 >
 

@@ -57,13 +57,6 @@ export interface SiteCopy {
   cancellationPolicy: string;
   heroHeadline: string;
   heroSubline: string;
-  metaDescriptionHome: string;
-  metaDescriptionHouses: string;
-  metaDescriptionLocation: string;
-  metaDescriptionFaq: string;
-  metaDescriptionPolicies: string;
-  metaDescriptionAbout: string;
-  metaDescriptionContact: string;
   arrival: {
     hostName: string;
     meetingPoint: string;

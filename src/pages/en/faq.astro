@@ -3,8 +3,9 @@ import Base from '../../layouts/Base.astro';
 import siteCopy from '../../data/siteCopy.json';
 import { defaultLocale } from '../../i18n/config';
 import { localizedPath } from '../../i18n/routes';
-import { localizedCanonical } from '../../i18n/seo';
+import { getPageSeo, localizedCanonical } from '../../i18n/seo';
 
+const pageSeo = getPageSeo(defaultLocale, 'faq');
 const faqs = [
   {
     q: 'Are the properties step-free or wheelchair accessible?',
@@ -98,8 +99,8 @@ const categories = [
 ---
 
 <Base
-  title={`FAQ | Frequently Asked Questions | ${siteCopy.siteName}`}
-  description={siteCopy.metaDescriptionFaq}
+  title={pageSeo.title}
+  description={pageSeo.description}
   canonicalUrl={localizedCanonical(defaultLocale, localizedPath(defaultLocale, 'faq'))}
 >
 

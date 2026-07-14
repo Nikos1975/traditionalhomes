@@ -9,12 +9,13 @@ import type { InventoryUnit } from '../../types';
 import { validateInventory } from '../../utils/validateInventory';
 import { defaultLocale } from '../../i18n/config';
 import { guidePath, housePath, localizedPath, villaPath } from '../../i18n/routes';
-import { localizedCanonical } from '../../i18n/seo';
+import { getPageSeo, localizedCanonical } from '../../i18n/seo';
 
 const units = inventory as InventoryUnit[];
 validateInventory(units);
 const houses = units.filter(u => u.type === 'house');
 const villa = units.find((u) => u.type === 'villa');
+const pageSeo = getPageSeo(defaultLocale, 'home');
 const housesPath = localizedPath(defaultLocale, 'houses');
 const locationPath = localizedPath(defaultLocale, 'location');
 const faqPath = localizedPath(defaultLocale, 'faq');
@@ -59,8 +60,8 @@ const chooseStayOptions = [
 ---
 
 <Base
-  title={`${siteCopy.siteName} | Traditional Stone Houses & Villa in Crete`}
-  description={siteCopy.metaDescriptionHome}
+  title={pageSeo.title}
+  description={pageSeo.description}
   canonicalUrl={localizedCanonical(defaultLocale, localizedPath(defaultLocale))}
 >
 

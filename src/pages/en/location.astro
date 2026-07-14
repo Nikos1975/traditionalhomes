@@ -6,11 +6,12 @@ import inventory from '../../inventory/inventory.json';
 import { locations } from '../../data/locations';
 import { defaultLocale } from '../../i18n/config';
 import { guidePath, housePath, localizedPath, villaPath } from '../../i18n/routes';
-import { localizedCanonical } from '../../i18n/seo';
+import { getPageSeo, localizedCanonical } from '../../i18n/seo';
 import type { InventoryUnit, SiteCopy } from '../../types';
 
 const units = inventory as InventoryUnit[];
 const siteCopy = siteCopyData as SiteCopy;
+const pageSeo = getPageSeo(defaultLocale, 'location');
 
 // Map Data Integration
 const mapMarkers = locations.map(loc => {
@@ -102,12 +103,11 @@ const collectionMetadata: Record<string, { label: string; tone: BadgeTone }[]> =
 
 const unitBySlug = new Map(units.map((unit) => [unit.slug, unit]));
 
-const pageTitle = `Location — Mavrikiano & Vrouchas, Elounda | ${siteCopy.siteName}`;
 ---
 
 <Base
-  title={pageTitle}
-  description={siteCopy.metaDescriptionLocation}
+  title={pageSeo.title}
+  description={pageSeo.description}
   canonicalUrl={localizedCanonical(defaultLocale, localizedPath(defaultLocale, 'location'))}
 >
 

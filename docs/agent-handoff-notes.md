@@ -35,6 +35,36 @@ When pausing or finishing a substantial task, add a dated note below with:
 
 ## Notes
 
+### 2026-07-14 - Stage 2E static English SEO centralization
+
+- Goal: centralize static English `/en/` page SEO titles and descriptions into the English i18n SEO source without changing rendered output.
+- Files changed locally:
+  - `src/i18n/locales/en/seo.json`
+  - `src/i18n/seo.ts`
+  - `src/pages/en/index.astro`
+  - `src/pages/en/houses/index.astro`
+  - `src/pages/en/location.astro`
+  - `src/pages/en/contact.astro`
+  - `src/pages/en/faq.astro`
+  - `src/pages/en/policies.astro`
+  - `src/pages/en/about.astro`
+  - `src/data/siteCopy.json`
+  - `src/types.ts`
+  - `tests/i18n-foundation.test.mjs`
+  - `docs/agent-handoff-notes.md`
+- What changed:
+  - Added page-level static SEO keys for existing low-risk English pages to `src/i18n/locales/en/seo.json`.
+  - Added `getPageSeo()` in `src/i18n/seo.ts`.
+  - Updated seven static `/en/` pages to read `title` and `description` from `seo.json`.
+  - Removed the duplicate static SEO description fields from `src/data/siteCopy.json` and `SiteCopy`.
+  - Left dynamic house/villa SEO, guide frontmatter SEO, `/blog/`, `404.astro`, and hreflang rendering unchanged.
+- Verified:
+  - Targeted i18n test failed before centralization because `seo.json.pages` was missing.
+- Remaining:
+  - Run full validation before approval or commit: `git diff --check`, targeted Node tests, `npx tsc --noEmit`, and `npm run build`.
+- Blockers:
+  - None currently.
+
 ### 2026-07-14 - Stage 2D SEO/hreflang readiness audit
 
 - Goal: audit SEO/meta and hreflang readiness before adding localized route folders or translated content.

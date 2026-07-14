@@ -1,6 +1,14 @@
 import { getLocaleMeta, isLocale, normalizeLocale, type Locale } from './config';
+import { getSeoCopy } from './translate';
 
 const siteUrl = 'https://traditional-homes.gr';
+
+export type PageSeoKey = keyof ReturnType<typeof getSeoCopy>['pages'];
+
+export type PageSeoMeta = {
+  title: string;
+  description: string;
+};
 
 export type HreflangAlternate = {
   locale: Locale;
@@ -14,6 +22,10 @@ export function canonicalUrl(pathname: string): string {
 
 export function getOgLocale(locale: string | undefined): string {
   return getLocaleMeta(normalizeLocale(locale)).ogLocale;
+}
+
+export function getPageSeo(locale: string | undefined, page: PageSeoKey): PageSeoMeta {
+  return getSeoCopy(locale).pages[page];
 }
 
 export function localizedCanonical(locale: string | undefined, pathname: string): string {

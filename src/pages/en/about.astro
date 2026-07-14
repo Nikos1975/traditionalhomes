@@ -1,14 +1,15 @@
 ---
 import Base from '../../layouts/Base.astro';
-import siteCopy from '../../data/siteCopy.json';
 import { defaultLocale } from '../../i18n/config';
 import { localizedPath } from '../../i18n/routes';
-import { localizedCanonical } from '../../i18n/seo';
+import { getPageSeo, localizedCanonical } from '../../i18n/seo';
+
+const pageSeo = getPageSeo(defaultLocale, 'about');
 ---
 
 <Base
-  title={`Our Story | ${siteCopy.siteName}`}
-  description={siteCopy.metaDescriptionAbout}
+  title={pageSeo.title}
+  description={pageSeo.description}
   canonicalUrl={localizedCanonical(defaultLocale, localizedPath(defaultLocale, 'about'))}
 >
 
