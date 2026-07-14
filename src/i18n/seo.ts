@@ -1,6 +1,12 @@
-import { getLocaleMeta, normalizeLocale } from './config';
+import { getLocaleMeta, isLocale, normalizeLocale, type Locale } from './config';
 
 const siteUrl = 'https://traditional-homes.gr';
+
+export type HreflangAlternate = {
+  locale: Locale;
+  hreflang: string;
+  href: string;
+};
 
 export function canonicalUrl(pathname: string): string {
   return new URL(pathname, siteUrl).href;
@@ -19,4 +25,22 @@ export function localizedCanonical(locale: string | undefined, pathname: string)
   }
 
   return canonicalUrl(pathWithSlash);
+}
+
+export function localizedHreflangAlternates(pathsByLocale: Partial<Record<Locale, string>>): HreflangAlternate[] {
+  return Object.entries(pathsByLocale).flatMap(([locale, pathname]) => {
+    if (!isLocale(locale) || !pathname) {
+      return [];
+    }
+
+    const pathWithSlash = pathname.startsWith('/') ? pathname : `/${pathname}`;
+
+    return [
+      {
+        locale,
+        hreflang: getLocaleMeta(locale).lang,
+        href: canonicalUrl(pathWithSlash),
+      },
+    ];
+  });
 }

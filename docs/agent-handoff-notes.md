@@ -35,6 +35,25 @@ When pausing or finishing a substantial task, add a dated note below with:
 
 ## Notes
 
+### 2026-07-14 - Stage 2D SEO/hreflang readiness audit
+
+- Goal: audit SEO/meta and hreflang readiness before adding localized route folders or translated content.
+- Files changed locally:
+  - `src/i18n/seo.ts`
+  - `tests/i18n-foundation.test.mjs`
+  - `docs/agent-handoff-notes.md`
+- What changed:
+  - Added a pure `localizedHreflangAlternates()` helper that returns alternates only for explicitly supplied existing locale paths.
+  - Added a regression test confirming hreflang helper infrastructure exists but `Base.astro` does not render alternate links yet.
+  - Left `/blog/` SEO/canonicals untouched for the separate blog migration plan.
+- Verified:
+  - Targeted i18n test failed before the helper existed, then passed after adding it.
+- Remaining:
+  - Run full validation before commit approval: `git diff --check`, targeted Node tests, `npx tsc --noEmit`, and `npm run build`.
+  - Do not render hreflang links until localized routes actually exist and blog migration rules are approved.
+- Blockers:
+  - None currently.
+
 ### 2026-07-14 - Add Hebrew to i18n target locale list
 
 - Goal: add Hebrew for Israel to the approved i18n target locale metadata without translating content or creating `/he/` route folders.

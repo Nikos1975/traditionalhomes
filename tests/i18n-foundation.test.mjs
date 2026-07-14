@@ -24,6 +24,18 @@ describe('Stage 1 i18n foundation', () => {
     assert.doesNotMatch(routes, /עברית|בתים|וילה|מדריך/);
   });
 
+  it('prepares hreflang helper infrastructure without rendering unavailable locale alternates', async () => {
+    const seo = await readText('src/i18n/seo.ts');
+    const base = await readText('src/layouts/Base.astro');
+
+    assert.match(seo, /export type HreflangAlternate/);
+    assert.match(seo, /localizedHreflangAlternates\(pathsByLocale: Partial<Record<Locale, string>>\)/);
+    assert.match(seo, /isLocale\(locale\)/);
+    assert.match(seo, /getLocaleMeta\(locale\)\.lang/);
+    assert.match(seo, /canonicalUrl\(pathWithSlash\)/);
+    assert.doesNotMatch(base, /rel="alternate"|hreflang/);
+  });
+
   it('keeps current English Header labels and links in navigation.json', async () => {
     const navigation = await readJson('src/i18n/locales/en/navigation.json');
 
