@@ -37,6 +37,8 @@ flowchart TD
   base --> mobileBooking["Mobile booking bar"]
   base --> i18n
 
+  pages --> rootRedirect["/ redirects to /en/"]
+  pages --> notFound["/404.html<br/>custom not-found fallback"]
   pages --> home["/en/"]
   pages --> collection["/en/houses/"]
   pages --> houseDetail["/en/houses/[slug]/"]
@@ -85,6 +87,7 @@ flowchart TD
 - Treat `docs/i18n/00_I18N_MASTER_PLAN.md` as the control document before multilingual route, page, or translation work.
 - Stage 1 i18n foundation lives under `src/i18n/` and currently provides English-only shared UI strings and locale metadata.
 - Property and villa routes combine structured inventory, Markdown content, gallery data, location data, and shared components.
+- `src/pages/404.astro` exists so missing static routes, including not-yet-created locale-prefixed paths, return a not-found page instead of the root redirect stub.
 - Public URL assets live under `public/`; imported image assets live under `src/assets/images/`.
 - The contact form posts to `/api/contact`, handled by `functions/api/contact.js`.
 - This document is documentation-only and should not be used as a reason to refactor runtime code.

@@ -172,4 +172,12 @@ describe('Stage 1 i18n foundation', () => {
     const navigation = await readJson('src/i18n/locales/en/navigation.json');
     assert.equal(navigation.main.find((link) => link.label === 'Blog')?.href, '/blog/');
   });
+
+  it('has an explicit 404 page so missing locale-prefixed routes do not serve the root redirect stub', async () => {
+    const notFoundPage = await readText('src/pages/404.astro');
+
+    assert.match(notFoundPage, /Page not found/);
+    assert.doesNotMatch(notFoundPage, /Astro\.redirect/);
+    assert.doesNotMatch(notFoundPage, /\/en\/blog\//);
+  });
 });

@@ -26,6 +26,8 @@ flowchart TD
   base --> mobileBooking["Mobile booking bar"]
   base --> i18n
 
+  pages --> rootRedirect["/ redirects to /en/"]
+  pages --> notFound["/404.html<br/>custom not-found fallback"]
   pages --> home["/en/"]
   pages --> collection["/en/houses/"]
   pages --> houseDetail["/en/houses/[slug]/"]

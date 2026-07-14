@@ -1,0 +1,30 @@
+---
+import Base from '../layouts/Base.astro';
+import { defaultLocale } from '../i18n/config';
+import { localizedPath } from '../i18n/routes';
+
+const homePath = localizedPath(defaultLocale);
+---
+
+<Base
+  title="Page not found | Elounda Traditional Homes"
+  description="The requested page could not be found."
+  canonicalUrl="https://traditional-homes.gr/404.html"
+  noindex
+>
+  <section class="site-max site-pad py-24 md:py-32">
+    <div class="max-w-2xl">
+      <p class="mb-5 text-[10px] font-bold uppercase tracking-[0.35em] text-primary">404</p>
+      <h1 class="mb-6 font-serif text-5xl leading-tight text-stone-950 md:text-7xl">Page not found</h1>
+      <p class="mb-10 text-lg leading-8 text-stone-600">
+        The page you requested is not available. Use the homepage or blog index to continue.
+      </p>
+      <div class="flex flex-col gap-3 sm:flex-row">
+        <a href={homePath} class="btn-cta px-8 py-4">Go to homepage</a>
+        <a href="/blog/" class="btn-cta bg-transparent border-stone-200 px-8 py-4 text-stone-950 hover:bg-stone-50">
+          View blog
+        </a>
+      </div>
+    </div>
+  </section>
+</Base>

@@ -35,6 +35,29 @@ When pausing or finishing a substantial task, add a dated note below with:
 
 ## Notes
 
+### 2026-07-14 - Stage 2C production smoke 404 fallback fix
+
+- Goal: fix the production smoke issue where missing `/en/blog/` returned the root redirect stub as HTTP 200 before starting Stage 2D.
+- Files changed locally:
+  - `src/pages/404.astro`
+  - `tests/i18n-foundation.test.mjs`
+  - `docs/architecture/repo-wireframe.md`
+  - `docs/architecture/repo-wireframe.mmd`
+  - `docs/agent-handoff-notes.md`
+- What changed:
+  - Added a static custom 404 page so missing locale-prefixed routes are not served the root `/` redirect stub.
+  - Added a targeted i18n regression test requiring the explicit 404 page and preserving no `/en/blog/` route.
+  - Left `/blog/`, `/`, existing `/en/` routes, and the contact form endpoint unchanged.
+- Verified:
+  - Regression test failed before `src/pages/404.astro` existed, then passed after adding it.
+  - `git diff --check`, `node --test tests/contact-function.test.mjs tests/i18n-foundation.test.mjs`, `npx tsc --noEmit`, and `npm run build` passed.
+  - Built output contains `dist/404.html`, `dist/blog/index.html`, and `dist/en/index.html`; does not contain `dist/en/blog`; root `dist/index.html` still redirects to `/en/`; contact page output still posts to `/api/contact`.
+- Remaining:
+  - Deploy through the normal approved process, then repeat the production smoke check for `/en/blog/`.
+  - Do not start Stage 2D until the production smoke issue is confirmed resolved.
+- Blockers:
+  - None in local validation.
+
 ### 2026-07-14 - Stage 2C static English i18n cleanup
 
 - Goal: convert low-risk static English page links, breadcrumbs, and canonicals to existing i18n route/SEO helpers while preserving current `/en/` behavior.
