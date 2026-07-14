@@ -1,6 +1,6 @@
 export const defaultLocale = 'en';
 
-export const supportedLocales = ['en', 'de', 'fr', 'ru', 'zh', 'ar'] as const;
+export const supportedLocales = ['en', 'de', 'fr', 'ru', 'zh', 'ar', 'he'] as const;
 
 export type Locale = (typeof supportedLocales)[number];
 export type TextDirection = 'ltr' | 'rtl';
@@ -58,6 +58,13 @@ export const localeMeta: Record<
     lang: 'ar',
     dir: 'rtl',
     ogLocale: 'ar_AR',
+  },
+  he: {
+    label: 'Hebrew',
+    nativeLabel: 'עברית',
+    lang: 'he',
+    dir: 'rtl',
+    ogLocale: 'he_IL',
   },
 };
 

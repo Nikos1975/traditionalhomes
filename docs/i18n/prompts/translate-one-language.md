@@ -7,7 +7,7 @@ Language:
 `<target language>`
 
 Locale code:
-`<de|fr|ru|zh|ar>`
+`<de|fr|ru|zh|ar|he>`
 
 Scope:
 `<page, section, or content collection>`

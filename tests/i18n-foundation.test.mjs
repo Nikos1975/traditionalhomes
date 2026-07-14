@@ -10,9 +10,18 @@ describe('Stage 1 i18n foundation', () => {
     const config = await readText('src/i18n/config.ts');
 
     assert.match(config, /defaultLocale\s*=\s*'en'/);
-    assert.match(config, /supportedLocales\s*=\s*\[\s*'en',\s*'de',\s*'fr',\s*'ru',\s*'zh',\s*'ar'\s*\]/);
+    assert.match(config, /supportedLocales\s*=\s*\[\s*'en',\s*'de',\s*'fr',\s*'ru',\s*'zh',\s*'ar',\s*'he'\s*\]/);
     assert.match(config, /prefixDefaultLocale\s*=\s*true/);
     assert.match(config, /ar:[\s\S]*dir:\s*'rtl'/);
+    assert.match(config, /he:[\s\S]*nativeLabel:\s*'עברית'[\s\S]*lang:\s*'he'[\s\S]*dir:\s*'rtl'/);
+  });
+
+  it('keeps future locale route helpers stable for Hebrew without translated slugs', async () => {
+    const routes = await readText('src/i18n/routes.ts');
+
+    assert.match(routes, /localizedPath\(locale: string \| undefined, path = '\/'\)/);
+    assert.match(routes, /`\/\$\{safeLocale\}\/\$\{cleanPath\}\/`/);
+    assert.doesNotMatch(routes, /עברית|בתים|וילה|מדריך/);
   });
 
   it('keeps current English Header labels and links in navigation.json', async () => {

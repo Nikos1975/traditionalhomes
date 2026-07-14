@@ -8,7 +8,7 @@ Prepare multilingual support for the Astro website while keeping the current Eng
 
 ```ts
 defaultLocale: 'en'
-locales: ['en', 'de', 'fr', 'ru', 'zh', 'ar']
+locales: ['en', 'de', 'fr', 'ru', 'zh', 'ar', 'he']
 routing: {
   prefixDefaultLocale: true
 }
@@ -57,6 +57,7 @@ Top-level locale roots:
 - `/ru/`
 - `/zh/`
 - `/ar/`
+- `/he/`
 
 Stable slug examples:
 
@@ -66,6 +67,7 @@ Stable slug examples:
 - `/ru/houses/argyro/`
 - `/zh/houses/argyro/`
 - `/ar/houses/argyro/`
+- `/he/houses/argyro/`
 
 ## Content Strategy
 
@@ -106,7 +108,7 @@ Inventory rules:
 6. Add localized long-form content collections after shared UI is stable.
 7. Add locale-aware SEO, canonicals, hreflang, and sitemap checks.
 8. Handle `/blog/` migration separately with redirects and canonicals.
-9. Complete RTL-specific review for Arabic.
+9. Complete RTL-specific review for Arabic and Hebrew.
 
 ## Launch Order
 
@@ -115,7 +117,8 @@ Inventory rules:
 3. French
 4. Russian
 5. Simplified Chinese
-6. Arabic last with RTL QA
+6. Arabic with RTL QA
+7. Hebrew with RTL QA after route scaffolding is approved
 
 ## Risks
 
@@ -124,7 +127,7 @@ Inventory rules:
 - Migrating `/blog/` without a redirect/canonical plan.
 - Breaking contact form behavior while changing form labels.
 - Adding locale routes before shared rendering and fallback rules are clear.
-- Missing `dir="rtl"` layout issues for Arabic.
+- Missing `dir="rtl"` layout issues for Arabic or Hebrew.
 - Generating sitemap or hreflang entries before all target routes exist.
 - Publishing translated claims that expand beyond the English source.
 

@@ -26,6 +26,7 @@ src/i18n/
     ru/
     zh/
     ar/
+    he/
 ```
 
 Responsibilities:
@@ -47,6 +48,7 @@ src/content/
     ru/
     zh/
     ar/
+    he/
   villa/
     en/
     de/
@@ -54,6 +56,7 @@ src/content/
     ru/
     zh/
     ar/
+    he/
   guides/
     en/
     de/
@@ -61,6 +64,7 @@ src/content/
     ru/
     zh/
     ar/
+    he/
   blog/
     en/
     de/
@@ -68,6 +72,7 @@ src/content/
     ru/
     zh/
     ar/
+    he/
 ```
 
 Long-form content should move into locale-specific content folders only after the English foundation and shared rendering approach are stable.

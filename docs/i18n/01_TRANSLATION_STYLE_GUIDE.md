@@ -50,8 +50,10 @@ Do not use equivalents of:
 - Keep translated meta descriptions aligned with the page's actual content.
 - Do not imply broader availability, luxury level, or location advantages than the English source supports.
 
-## Arabic
+## RTL Locales
 
 - Arabic requires separate RTL QA.
+- Hebrew requires separate RTL QA.
 - Arabic pages should use `lang="ar"` and `dir="rtl"` once implemented.
+- Hebrew pages should use `lang="he"` and `dir="rtl"` once implemented.
 - Do not assume layout correctness from text translation alone.

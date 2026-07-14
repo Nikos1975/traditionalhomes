@@ -25,11 +25,14 @@ Run the relevant parts of this checklist after each i18n implementation stage.
 - [ ] Hreflang is correct.
 - [ ] Sitemap is correct.
 
-## Arabic RTL Checks
+## RTL Checks
 
 - [ ] Arabic has `lang="ar"`.
 - [ ] Arabic has `dir="rtl"`.
+- [ ] Hebrew has `lang="he"`.
+- [ ] Hebrew has `dir="rtl"`.
 - [ ] Arabic mobile menu checked.
+- [ ] Hebrew mobile menu checked.
 - [ ] Map/sidebar layout checked.
 
 ## Configuration Safety Checks

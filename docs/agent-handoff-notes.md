@@ -35,6 +35,34 @@ When pausing or finishing a substantial task, add a dated note below with:
 
 ## Notes
 
+### 2026-07-14 - Add Hebrew to i18n target locale list
+
+- Goal: add Hebrew for Israel to the approved i18n target locale metadata without translating content or creating `/he/` route folders.
+- Files changed locally:
+  - `src/i18n/config.ts`
+  - `tests/i18n-foundation.test.mjs`
+  - `docs/i18n/00_I18N_MASTER_PLAN.md`
+  - `docs/i18n/01_TRANSLATION_STYLE_GUIDE.md`
+  - `docs/i18n/02_ROUTE_AND_FILE_STRUCTURE.md`
+  - `docs/i18n/03_TRANSLATION_STATUS.md`
+  - `docs/i18n/04_QA_CHECKLIST.md`
+  - `docs/i18n/prompts/translate-one-language.md`
+  - `docs/i18n/prompts/codex-i18n-foundation.md`
+  - `docs/agent-handoff-notes.md`
+- What changed:
+  - Added `he` to `supportedLocales` with native label `עברית`, `lang="he"`, `dir="rtl"`, and `ogLocale="he_IL"`.
+  - Updated i18n planning docs, QA checklist, and prompts to include Hebrew as a future stable-slug RTL locale.
+  - Did not create `/he/` routes or translate Hebrew content.
+- Verified:
+  - Targeted i18n test failed before config metadata was updated.
+  - `node --test tests/i18n-foundation.test.mjs` passed after updating config and docs.
+  - Full validation passed: `git diff --check`, `node --test tests/contact-function.test.mjs tests/i18n-foundation.test.mjs`, `npx tsc --noEmit`, and `npm run build`.
+  - Generated output did not create `dist/he`; source routes did not create `src/pages/he`; `/en/`, `/blog/`, and contact form output remained present.
+- Remaining:
+  - Await approval before committing or pushing.
+- Blockers:
+  - None currently.
+
 ### 2026-07-14 - Stage 2C production smoke 404 fallback fix
 
 - Goal: fix the production smoke issue where missing `/en/blog/` returned the root redirect stub as HTTP 200 before starting Stage 2D.

@@ -17,7 +17,7 @@ Before editing:
 Approved strategy:
 
 - `defaultLocale: 'en'`
-- `locales: ['en', 'de', 'fr', 'ru', 'zh', 'ar']`
+- `locales: ['en', 'de', 'fr', 'ru', 'zh', 'ar', 'he']`
 - `routing.prefixDefaultLocale: true`
 - Keep English at `/en/`.
 - Keep current `/en/` behavior unchanged.
@@ -30,7 +30,7 @@ Task:
 - Convert Header/Footer strings only.
 - Keep all current routes working.
 - Do not create translated long-form content yet.
-- Do not create `/de/`, `/fr/`, `/ru/`, `/zh/`, or `/ar/` route folders unless the implementation plan explicitly approves a minimal scaffold.
+- Do not create `/de/`, `/fr/`, `/ru/`, `/zh/`, `/ar/`, or `/he/` route folders unless the implementation plan explicitly approves a minimal scaffold.
 
 Rules:
 
