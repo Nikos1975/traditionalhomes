@@ -3,6 +3,7 @@ import LeafletMap from './LeafletMap.astro';
 import type { LocationItem } from '../../data/locations';
 import { defaultLocale } from '../../i18n/config';
 import { housePath, localizedPath, villaPath } from '../../i18n/routes';
+import { getCommonCopy } from '../../i18n/translate';
 
 interface Props {
   location: LocationItem;
@@ -10,6 +11,7 @@ interface Props {
 }
 
 const { location, height = '300px' } = Astro.props;
+const mapCopy = getCommonCopy(defaultLocale).ui.map;
 
 interface MarkerData {
   id: string;
@@ -47,12 +49,12 @@ const locationMapPath = `${localizedPath(defaultLocale, 'location')}?id=${locati
         {location.locationLabel}
       </div>
       <a href={locationMapPath} class="text-xs px-3 py-1.5 bg-white border border-stone-300 rounded hover:bg-stone-100 font-medium text-stone-700 transition-colors">
-        View map
+        {mapCopy.actions.viewMap}
       </a>
     </div>
   </div>
 ) : (
   <div class="bg-stone-50 rounded-xl p-8 text-center text-stone-500 text-sm border border-stone-200" style={`height: ${height}; display: flex; align-items: center; justify-content: center;`}>
-    Map coordinates unavailable
+    {mapCopy.unavailable}
   </div>
 )}

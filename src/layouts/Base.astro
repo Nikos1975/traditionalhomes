@@ -4,6 +4,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { defaultLocale, getLocaleMeta, type Locale } from '../i18n/config';
 import { getOgLocale } from '../i18n/seo';
+import { getCommonCopy, getFormsCopy } from '../i18n/translate';
 
 interface Props {
   title: string;
@@ -27,9 +28,14 @@ const siteUrl = 'https://traditional-homes.gr';
 const canonical = canonicalUrl ?? new URL(Astro.url.pathname, siteUrl).href;
 const localeMeta = getLocaleMeta(locale);
 const ogLocale = getOgLocale(locale);
+const common = getCommonCopy(locale);
+const forms = getFormsCopy(locale);
+const bookingCopy = forms.booking;
+const contactCopy = forms.contact;
 const robotsContent = noindex
   ? 'noindex'
   : 'index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1';
+const chatPopupHtml = `<p style="position:fixed;bottom:5rem;right:1.5rem;background:#E7F0ED;color:#2C2419;padding:1rem 1.25rem;border:1px solid #98BCB4;border-radius:0.5rem;font-size:0.875rem;max-width:260px;z-index:50;box-shadow:0 8px 32px rgba(44,36,25,0.16)">${contactCopy.chatPopupBeforeEmail} <a href="mailto:${contactCopy.chatPopupEmail}" style="color:#2C2419;text-decoration:underline;font-weight:600">${contactCopy.chatPopupEmail}</a>. ${contactCopy.chatPopupAfterEmail}</p>`;
 ---
 
 <!doctype html>
@@ -50,7 +56,7 @@ const robotsContent = noindex
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={`${siteUrl}${ogImage}`} />
-    <meta property="og:site_name" content="Elounda Traditional Homes" />
+    <meta property="og:site_name" content={common.brand.name} />
     <meta property="og:locale" content={ogLocale} />
 
     <meta name="twitter:card" content="summary_large_image" />
@@ -83,42 +89,42 @@ const robotsContent = noindex
       method="get"
       target="_blank"
       data-mobile-booking-bar
-      aria-label="Quick availability search"
+      aria-label={bookingCopy.quickSearchAriaLabel}
     >
       <label>
-        <span>Arrival</span>
+        <span>{bookingCopy.arrival}</span>
         <input type="date" name="checkin" data-mobile-checkin />
       </label>
       <label>
-        <span>Nights</span>
+        <span>{bookingCopy.nights}</span>
         <input type="number" name="nights" min="1" max="60" value="7" inputmode="numeric" />
       </label>
       <label>
-        <span>Adults</span>
+        <span>{bookingCopy.adults}</span>
         <input type="number" name="adults" min="1" max="10" value="2" inputmode="numeric" data-mobile-adults />
       </label>
       <input type="hidden" name="room" value="" data-mobile-room />
-      <button type="submit">Check</button>
+      <button type="submit">{bookingCopy.check}</button>
     </form>
 
     <button
       id="chat-trigger"
-      aria-label="Open chat"
-      title="Questions? Chat with us"
+      aria-label={contactCopy.openChatLabel}
+      title={contactCopy.chatTitle}
     >
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
         <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
       </svg>
     </button>
 
-    <script>
+    <script define:vars={{ chatPopupHtml, bookingCopy }}>
       document.addEventListener('astro:page-load', () => {
         document.getElementById('chat-trigger')?.addEventListener('click', () => {
           const loaded = document.getElementById('chat-widget');
           if (!loaded) {
             const div = document.createElement('div');
             div.id = 'chat-widget';
-            div.innerHTML = '<p style="position:fixed;bottom:5rem;right:1.5rem;background:#E7F0ED;color:#2C2419;padding:1rem 1.25rem;border:1px solid #98BCB4;border-radius:0.5rem;font-size:0.875rem;max-width:260px;z-index:50;box-shadow:0 8px 32px rgba(44,36,25,0.16)">For booking enquiries, please use the availability button or email <a href="mailto:info@traditional-homes.gr" style="color:#2C2419;text-decoration:underline;font-weight:600">info@traditional-homes.gr</a>. Chat coming soon.</p>';
+            div.innerHTML = chatPopupHtml;
             document.body.appendChild(div);
             setTimeout(() => div.remove(), 5000);
           }
@@ -179,7 +185,7 @@ const robotsContent = noindex
           const analyticsWindow = window as Window & {
             dataLayer?: Array<Record<string, unknown>>;
           };
-          const itemName = pageBookingForm?.dataset.itemName || 'Elounda Traditional Homes';
+          const itemName = pageBookingForm?.dataset.itemName || bookingCopy.defaultItemName;
           const roomCode = pageBookingForm?.dataset.roomCode || undefined;
 
           analyticsWindow.dataLayer = analyticsWindow.dataLayer || [];

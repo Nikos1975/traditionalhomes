@@ -1,43 +1,51 @@
 ---
 import type { ListingItem } from '../utils/filters';
+import { defaultLocale } from '../i18n/config';
+import { getCommonCopy } from '../i18n/translate';
 
 interface Props {
   items: ListingItem[];
 }
 
 const { items } = Astro.props;
+const filterCopy = getCommonCopy(defaultLocale).ui.filters;
+const filterLabels = {
+  countSingle: filterCopy.countSingle,
+  countPlural: filterCopy.countPlural,
+};
 ---
 
 <div class="mb-8">
   <div class="flex items-center gap-6 mb-5 border-b border-stone-200" id="view-tabs" role="tablist">
-    <button class="view-tab active pb-2 border-b-2 border-stone-800 text-primary font-semibold font-sans text-sm transition-colors" data-view="all" role="tab" aria-selected="true">All stays</button>
-    <button class="view-tab pb-2 border-b-2 border-transparent text-stone-500 hover:text-stone-700 font-medium font-sans text-sm transition-colors" data-view="houses" role="tab" aria-selected="false">Houses</button>
-    <button class="view-tab pb-2 border-b-2 border-transparent text-stone-500 hover:text-stone-700 font-medium font-sans text-sm transition-colors" data-view="villa" role="tab" aria-selected="false">Villa</button>
-    <button class="view-tab pb-2 border-b-2 border-transparent text-stone-500 hover:text-stone-700 font-medium font-sans text-sm transition-colors" data-view="groups" role="tab" aria-selected="false">Group stays</button>
+    <button class="view-tab active pb-2 border-b-2 border-stone-800 text-primary font-semibold font-sans text-sm transition-colors" data-view="all" role="tab" aria-selected="true">{filterCopy.viewTabs.all}</button>
+    <button class="view-tab pb-2 border-b-2 border-transparent text-stone-500 hover:text-stone-700 font-medium font-sans text-sm transition-colors" data-view="houses" role="tab" aria-selected="false">{filterCopy.viewTabs.houses}</button>
+    <button class="view-tab pb-2 border-b-2 border-transparent text-stone-500 hover:text-stone-700 font-medium font-sans text-sm transition-colors" data-view="villa" role="tab" aria-selected="false">{filterCopy.viewTabs.villa}</button>
+    <button class="view-tab pb-2 border-b-2 border-transparent text-stone-500 hover:text-stone-700 font-medium font-sans text-sm transition-colors" data-view="groups" role="tab" aria-selected="false">{filterCopy.viewTabs.groups}</button>
   </div>
 
   <div class="flex flex-wrap gap-2 items-center mb-4" id="quick-filters">
-    <button class="filter-chip active" data-action="all">All</button>
-    <button class="filter-chip" data-action="sleeps-3">Sleeps 3</button>
-    <button class="filter-chip" data-action="sleeps-4">Sleeps 4+</button>
-    <button class="filter-chip" data-action="sleeps-6">Sleeps 6+</button>
-    <button class="filter-chip" data-action="sleeps-8">Sleeps 8+</button>
-    <button class="filter-chip" data-action="sea-view">Sea view</button>
-    <button class="filter-chip" data-action="private-pool">Private pool</button>
+    <button class="filter-chip active" data-action="all">{filterCopy.quick.all}</button>
+    <button class="filter-chip" data-action="sleeps-3">{filterCopy.quick.sleeps3}</button>
+    <button class="filter-chip" data-action="sleeps-4">{filterCopy.quick.sleeps4}</button>
+    <button class="filter-chip" data-action="sleeps-6">{filterCopy.quick.sleeps6}</button>
+    <button class="filter-chip" data-action="sleeps-8">{filterCopy.quick.sleeps8}</button>
+    <button class="filter-chip" data-action="sea-view">{filterCopy.quick.seaView}</button>
+    <button class="filter-chip" data-action="private-pool">{filterCopy.quick.privatePool}</button>
     
     <span class="text-stone-300 hidden sm:inline" aria-hidden="true">|</span>
     
-    <button class="filter-chip" data-action="bed-2" role="button" aria-pressed="false">Bedrooms 2+</button>
-    <button class="filter-chip" data-action="bed-3" role="button" aria-pressed="false">Bedrooms 3+</button>
-    <button class="filter-chip" data-action="shared-pool" role="button" aria-pressed="false">Shared pool</button>
-    <button class="filter-chip" data-action="no-pool" role="button" aria-pressed="false">No pool</button>
+    <button class="filter-chip" data-action="bed-2" role="button" aria-pressed="false">{filterCopy.quick.bedrooms2}</button>
+    <button class="filter-chip" data-action="bed-3" role="button" aria-pressed="false">{filterCopy.quick.bedrooms3}</button>
+    <button class="filter-chip" data-action="shared-pool" role="button" aria-pressed="false">{filterCopy.quick.sharedPool}</button>
+    <button class="filter-chip" data-action="no-pool" role="button" aria-pressed="false">{filterCopy.quick.noPool}</button>
     
-    <button class="text-xs underline text-stone-500 hover:text-stone-800 ml-2" data-action="clear" type="button" aria-label="Clear all active filters">Clear filters</button>
+    <button class="text-xs underline text-stone-500 hover:text-stone-800 ml-2" data-action="clear" type="button" aria-label={filterCopy.clearAriaLabel}>{filterCopy.clear}</button>
   </div>
 
   <p id="filter-count" class="text-sm text-muted mt-2 hidden" aria-live="polite" aria-atomic="true"></p>
 
   <script id="filter-data" type="application/json" is:inline set:html={JSON.stringify(items)}></script>
+  <script id="filter-labels" type="application/json" is:inline set:html={JSON.stringify(filterLabels)}></script>
 </div>
 
 <style>
@@ -63,6 +71,11 @@ const { items } = Astro.props;
     root.dataset.filterInit = '1';
 
     const items: ListingItem[] = JSON.parse(dataScript.textContent || '[]');
+    const labelsScript = root.querySelector('#filter-labels');
+    const filterLabels = JSON.parse(labelsScript?.textContent || '{}') as {
+      countSingle?: string;
+      countPlural?: string;
+    };
     const domCards = new Map<string, HTMLElement>();
     items.forEach(item => {
       const el = document.querySelector(`[data-id="${item.id}"]`) as HTMLElement | null;
@@ -130,7 +143,7 @@ const { items } = Astro.props;
       });
 
       if (countEl) {
-        countEl.textContent = `${visibleCount} ${visibleCount === 1 ? 'property matches' : 'properties match'}`;
+        countEl.textContent = `${visibleCount} ${visibleCount === 1 ? filterLabels.countSingle : filterLabels.countPlural}`;
         countEl.classList.remove('hidden');
       }
 

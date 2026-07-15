@@ -1,4 +1,7 @@
 ---
+import { defaultLocale } from '../../i18n/config';
+import { getCommonCopy } from '../../i18n/translate';
+
 export interface MarkerData {
   id: string;
   lat: number;
@@ -21,6 +24,12 @@ interface Props {
 }
 
 const { markers, zoom = 15, center, height = '400px', interactive = true, mapId = 'map' } = Astro.props;
+const mapCopy = getCommonCopy(defaultLocale).ui.map;
+const mapLabels = {
+  fallbackSubtitle: mapCopy.fallbackSubtitle,
+  viewDetails: mapCopy.actions.viewDetails,
+  bookNow: mapCopy.actions.bookNow,
+};
 ---
 
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
@@ -149,6 +158,7 @@ const { markers, zoom = 15, center, height = '400px', interactive = true, mapId 
 
 <div id={mapId} class="leaflet-map-container z-0 rounded-3xl" style={`height: ${height}; width: 100%;`} 
      data-markers={JSON.stringify(markers)} 
+     data-map-labels={JSON.stringify(mapLabels)}
      data-zoom={zoom} 
      data-center={JSON.stringify(center)} 
      data-interactive={interactive.toString()}>
@@ -163,6 +173,7 @@ const { markers, zoom = 15, center, height = '400px', interactive = true, mapId 
       if ((el as any)._leaflet_id) return;
 
       const markersData: any[] = JSON.parse(el.getAttribute('data-markers') || '[]');
+      const labels = JSON.parse(el.getAttribute('data-map-labels') || '{}');
       const zoom        = parseInt(el.getAttribute('data-zoom') || '15', 10);
       const centerAttr  = el.getAttribute('data-center');   // may be "undefined" (string)
       const interactive = el.getAttribute('data-interactive') === 'true';
@@ -216,14 +227,14 @@ const { markers, zoom = 15, center, height = '400px', interactive = true, mapId 
                 <img src="${marker.image}" alt="${marker.title}" class="popup-img" loading="lazy" />
               </div>` : ''}
             <div class="popup-info">
-              <p class="popup-subtitle">${marker.subtitle || 'Traditional Home'}</p>
+              <p class="popup-subtitle">${marker.subtitle || labels.fallbackSubtitle}</p>
               <h3 class="popup-title">${marker.title}</h3>
               ${(marker.url || marker.bookingUrl) ? `<div class="mt-4">
                 ${marker.url ? `
-                <a href="${marker.url}" class="popup-btn">View Details</a>
+                <a href="${marker.url}" class="popup-btn">${labels.viewDetails}</a>
                 ` : ''}
                 ${marker.bookingUrl ? `
-                <a href="${marker.bookingUrl}" class="popup-btn popup-book-btn" target="_blank" rel="noopener noreferrer">Book Now</a>
+                <a href="${marker.bookingUrl}" class="popup-btn popup-book-btn" target="_blank" rel="noopener noreferrer">${labels.bookNow}</a>
                 ` : ''}
               </div>` : ''}
             </div>

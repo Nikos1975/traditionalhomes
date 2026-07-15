@@ -1,10 +1,14 @@
 ---
+import { defaultLocale } from '../i18n/config';
+import { getCommonCopy } from '../i18n/translate';
+
 interface Props {
   images: any[];
   unitName: string;
 }
 
 const { images, unitName } = Astro.props;
+const galleryCopy = getCommonCopy(defaultLocale).ui.gallery;
 
 const featured =
   images.find((img) => img.isFeatured) ??
@@ -46,7 +50,7 @@ const galleryItems = allImages.map((img, i) => ({
       />
     ) : (
       <div class="w-full h-full flex items-center justify-center bg-stone-100 text-stone-400 text-xs uppercase tracking-widest">
-        Photo coming soon
+        {galleryCopy.photoComingSoon}
       </div>
     )}
     <div class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-500"></div>
@@ -81,13 +85,13 @@ const galleryItems = allImages.map((img, i) => ({
           type="button"
           class="flex-shrink-0 flex flex-col items-center justify-center gap-2 px-6 rounded-xl gallery-view-all-cta"
           data-lb-open="0"
-          aria-label={`View all ${totalCount} photos`}
+          aria-label={`View all ${totalCount} ${galleryCopy.photos}`}
         >
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/>
             <rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/>
           </svg>
-          <span class="text-[10px] font-bold uppercase tracking-widest whitespace-nowrap">All {totalCount}<br/>photos</span>
+          <span class="text-[10px] font-bold uppercase tracking-widest whitespace-nowrap">All {totalCount}<br/>{galleryCopy.photos}</span>
         </button>
       )}
     </div>
@@ -128,13 +132,13 @@ const galleryItems = allImages.map((img, i) => ({
       type="button"
       class="mt-3 w-full flex items-center justify-center gap-2 py-3 gallery-view-all-cta rounded-xl text-[11px] uppercase tracking-widest font-bold"
       data-lb-open="0"
-      aria-label={`View all ${totalCount} photos`}
+      aria-label={`View all ${totalCount} ${galleryCopy.photos}`}
     >
       <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
         <rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/>
         <rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/>
       </svg>
-      View all {totalCount} photos
+      {galleryCopy.viewAll} {totalCount} {galleryCopy.photos}
     </button>
   )}
 </section>
@@ -144,7 +148,7 @@ const galleryItems = allImages.map((img, i) => ({
   id="gallery-lb"
   class="fixed inset-0 w-full h-full max-w-none max-h-none m-0 p-0 border-none bg-stone-950/98 text-white overflow-hidden"
   aria-modal="true"
-  aria-label={`${unitName} photo viewer`}
+  aria-label={`${unitName} ${galleryCopy.photoViewer}`}
 >
   <div class="w-full h-full flex flex-col">
 
@@ -154,7 +158,7 @@ const galleryItems = allImages.map((img, i) => ({
       <button
         id="lb-close"
         class="w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 transition-colors"
-        aria-label="Close photo viewer"
+        aria-label={galleryCopy.closeViewer}
       >
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
           <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
@@ -169,7 +173,7 @@ const galleryItems = allImages.map((img, i) => ({
       <button
         id="lb-prev"
         class="absolute left-4 z-20 w-12 h-12 flex items-center justify-center rounded-full bg-white text-stone-900 shadow-2xl hover:scale-105 active:scale-95 transition-transform"
-        aria-label="Previous photo"
+        aria-label={galleryCopy.previousPhoto}
       >
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
           <polyline points="15 18 9 12 15 6"/>
@@ -187,7 +191,7 @@ const galleryItems = allImages.map((img, i) => ({
       <button
         id="lb-next"
         class="absolute right-4 z-20 w-12 h-12 flex items-center justify-center rounded-full bg-white text-stone-900 shadow-2xl hover:scale-105 active:scale-95 transition-transform"
-        aria-label="Next photo"
+        aria-label={galleryCopy.nextPhoto}
       >
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
           <polyline points="9 18 15 12 9 6"/>

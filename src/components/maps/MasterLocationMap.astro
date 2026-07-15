@@ -3,9 +3,12 @@ import LeafletMap from './LeafletMap.astro';
 import { locations } from '../../data/locations';
 import inventory from '../../inventory/inventory.json';
 import { housePath, villaPath } from '../../i18n/routes';
+import { defaultLocale } from '../../i18n/config';
+import { getCommonCopy } from '../../i18n/translate';
 import type { InventoryUnit } from '../../types';
 
 const units = inventory as InventoryUnit[];
+const mapCopy = getCommonCopy(defaultLocale).ui.map;
 
 /** * 1. ASSET RESOLUTION
  * This finds every image in your /src/assets/images/ folder. 
@@ -68,13 +71,13 @@ const markers = allLocs.map(loc => {
   {/* Sidebar: Filters & List */}
   <div class="w-full lg:w-1/3 flex flex-col gap-6 z-10">
     <header>
-      <h3 class="font-serif text-3xl text-body-text mb-4">Explore the Area</h3>
+      <h3 class="font-serif text-3xl text-body-text mb-4">{mapCopy.exploreArea}</h3>
       <div class="filters flex flex-wrap gap-2">
-        <button class="filter-btn active" data-filter="all">All</button>
-        <button class="filter-btn" data-filter="house">Houses</button>
-        <button class="filter-btn" data-filter="villa">Villa</button>
-        <button class="filter-btn" data-filter="mavrikiano">Mavrikiano</button>
-        <button class="filter-btn" data-filter="vrouchas">Vrouchas</button>
+        <button class="filter-btn active" data-filter="all">{mapCopy.filters.all}</button>
+        <button class="filter-btn" data-filter="house">{mapCopy.filters.houses}</button>
+        <button class="filter-btn" data-filter="villa">{mapCopy.filters.villa}</button>
+        <button class="filter-btn" data-filter="mavrikiano">{mapCopy.filters.mavrikiano}</button>
+        <button class="filter-btn" data-filter="vrouchas">{mapCopy.filters.vrouchas}</button>
       </div>
     </header>
 
@@ -102,8 +105,8 @@ const markers = allLocs.map(loc => {
               <div class="flex justify-between items-center pt-3 border-t border-stone-50">
                 <span class="text-[10px] font-medium text-stone-400 italic">{loc.distanceTag}</span>
                 <div class="flex gap-4">
-                  <a href={loc.googleMapsUrl} target="_blank" class="text-[10px] font-bold uppercase tracking-widest text-stone-400 hover:text-primary transition-colors">Map</a>
-                  <a href={loc.type === 'villa' ? villaPath(loc.slug) : housePath(loc.slug)} class="text-[10px] font-bold uppercase tracking-widest text-primary">Details</a>
+                  <a href={loc.googleMapsUrl} target="_blank" class="text-[10px] font-bold uppercase tracking-widest text-stone-400 hover:text-primary transition-colors">{mapCopy.actions.map}</a>
+                  <a href={loc.type === 'villa' ? villaPath(loc.slug) : housePath(loc.slug)} class="text-[10px] font-bold uppercase tracking-widest text-primary">{mapCopy.actions.details}</a>
                 </div>
               </div>
             </div>

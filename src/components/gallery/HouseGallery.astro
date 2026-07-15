@@ -19,6 +19,8 @@
  *   unitName – used for aria-labels and captions
  */
 import type { GalleryImage } from "../../types";
+import { defaultLocale } from "../../i18n/config";
+import { getCommonCopy } from "../../i18n/translate";
 import { filenameLabel, placeholderSrc } from "../../utils/galleryHelpers";
 
 interface Props {
@@ -27,6 +29,7 @@ interface Props {
 }
 
 const { images, unitName } = Astro.props;
+const galleryCopy = getCommonCopy(defaultLocale).ui.gallery;
 
 if (images.length === 0) return;
 
@@ -54,6 +57,13 @@ const galleryItems = images.map((img, i) => ({
   alt: img.alt ?? `${unitName} — photo ${i + 1}`,
   label: filenameLabel(img.src, img.alt ?? `Photo ${i + 1}`),
 }));
+const galleryClientLabels = {
+  hidePhotoGallery: galleryCopy.hidePhotoGallery,
+  viewAllPhotos: galleryCopy.viewAllPhotos,
+  hidePhotos: galleryCopy.hidePhotos,
+  viewAll: galleryCopy.viewAll,
+  photos: galleryCopy.photos,
+};
 ---
 
 {
@@ -181,7 +191,7 @@ const galleryItems = images.map((img, i) => ({
           data-gallery-toggle={uid}
           aria-expanded="false"
           aria-controls={`${uid}-all-photos`}
-          aria-label={`View all ${total} photos of ${unitName}`}
+          aria-label={`View all ${total} ${galleryCopy.photos} of ${unitName}`}
         >
           <svg
             width="16"
@@ -198,9 +208,9 @@ const galleryItems = images.map((img, i) => ({
             class="text-[10px] font-bold uppercase tracking-widest leading-tight whitespace-nowrap"
             data-gallery-toggle-label
           >
-            View all
+            {galleryCopy.viewAll}
             <br />
-            photos
+            {galleryCopy.photos}
           </span>
         </button>
       </div>
@@ -258,7 +268,7 @@ const galleryItems = images.map((img, i) => ({
                  w-9 h-9 flex items-center justify-center
                  rounded-full bg-black/40 text-white backdrop-blur-sm
                  hover:bg-black/60 transition-colors"
-            aria-label="Previous photo"
+            aria-label={galleryCopy.previousPhoto}
           >
             <svg
               width="16"
@@ -279,7 +289,7 @@ const galleryItems = images.map((img, i) => ({
                  w-9 h-9 flex items-center justify-center
                  rounded-full bg-black/40 text-white backdrop-blur-sm
                  hover:bg-black/60 transition-colors"
-            aria-label="Next photo"
+            aria-label={galleryCopy.nextPhoto}
           >
             <svg
               width="16"
@@ -318,7 +328,7 @@ const galleryItems = images.map((img, i) => ({
         data-gallery-toggle={uid}
         aria-expanded="false"
         aria-controls={`${uid}-all-photos`}
-        aria-label={`View all ${total} photos of ${unitName}`}
+        aria-label={`View all ${total} ${galleryCopy.photos} of ${unitName}`}
       >
         <svg
           width="13"
@@ -331,7 +341,7 @@ const galleryItems = images.map((img, i) => ({
         >
           <path d="M3 3h7v7H3zM14 3h7v7h-7zM3 14h7v7H3zM14 14h7v7h-7z" />
         </svg>
-        <span data-gallery-toggle-label>View all photos</span>
+        <span data-gallery-toggle-label>{galleryCopy.viewAllPhotos}</span>
       </button>
     )
   }
@@ -356,9 +366,9 @@ const galleryItems = images.map((img, i) => ({
           id={`${uid}-gallery-heading`}
           class="font-serif text-3xl text-stone-950"
         >
-          Photo Gallery
+          {galleryCopy.photoGallery}
         </h2>
-        <p class="text-xs text-stone-500 tabular-nums">{total} photos</p>
+        <p class="text-xs text-stone-500 tabular-nums">{total} {galleryCopy.photos}</p>
       </div>
 
       <div class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-3">
@@ -406,7 +416,7 @@ const galleryItems = images.map((img, i) => ({
          bg-stone-950 text-white overflow-hidden"
   style="background-color:#09090b;"
   aria-modal="true"
-  aria-label={`${unitName} — photo viewer`}
+  aria-label={`${unitName} — ${galleryCopy.photoViewer}`}
 >
   <div class="w-full h-full flex flex-col">
     {/* Top bar */}
@@ -422,7 +432,7 @@ const galleryItems = images.map((img, i) => ({
         class="w-10 h-10 flex items-center justify-center rounded-full
                bg-stone-700 hover:bg-stone-500 transition-colors"
         style="color:#ffffff;"
-        aria-label="Close photo viewer"
+        aria-label={galleryCopy.closeViewer}
       >
         <svg
           width="18"
@@ -454,7 +464,7 @@ const galleryItems = images.map((img, i) => ({
                w-12 h-12 flex items-center justify-center
                rounded-full bg-white text-stone-900 shadow-2xl
                hover:scale-105 active:scale-95 transition-transform"
-        aria-label="Previous photo"
+        aria-label={galleryCopy.previousPhoto}
       >
         <svg
           width="20"
@@ -494,7 +504,7 @@ const galleryItems = images.map((img, i) => ({
                w-12 h-12 flex items-center justify-center
                rounded-full bg-white text-stone-900 shadow-2xl
                hover:scale-105 active:scale-95 transition-transform"
-        aria-label="Next photo"
+        aria-label={galleryCopy.nextPhoto}
       >
         <svg
           width="20"
@@ -519,7 +529,7 @@ const galleryItems = images.map((img, i) => ({
     CLIENT SCRIPT  (is:inline so define:vars works)
     ═══════════════════════════════════════════════ */
 }
-<script is:inline define:vars={{ uid, galleryItems }}>
+<script is:inline define:vars={{ uid, galleryItems, galleryClientLabels }}>
   (function () {
     var total = galleryItems.length;
     var selectedIdx = 0;
@@ -627,16 +637,16 @@ const galleryItems = images.map((img, i) => ({
         toggle.setAttribute("aria-expanded", expanded ? "true" : "false");
         toggle.setAttribute(
           "aria-label",
-          expanded ? "Hide photo gallery" : "View all " + total + " photos",
+          expanded ? galleryClientLabels.hidePhotoGallery : galleryClientLabels.viewAll + " " + total + " " + galleryClientLabels.photos,
         );
         if (label) {
           label.innerHTML = window.matchMedia("(min-width: 768px)").matches
             ? expanded
-              ? "Hide<br>photos"
-              : "View all<br>photos"
+              ? galleryClientLabels.hidePhotos.replace(" ", "<br>")
+              : galleryClientLabels.viewAll + "<br>" + galleryClientLabels.photos
             : expanded
-              ? "Hide photos"
-              : "View all photos";
+              ? galleryClientLabels.hidePhotos
+              : galleryClientLabels.viewAllPhotos;
         }
       });
       if (expanded) {

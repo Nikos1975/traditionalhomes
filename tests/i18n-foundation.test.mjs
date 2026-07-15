@@ -195,6 +195,82 @@ describe('Stage 1 i18n foundation', () => {
     assert.match(bookingForm, /bookingCopy\.finalAvailabilityNote/);
   });
 
+  it('centralizes shared UI labels for filters, galleries, maps, and Base chrome', async () => {
+    const common = await readJson('src/i18n/locales/en/common.json');
+    const forms = await readJson('src/i18n/locales/en/forms.json');
+    const base = await readText('src/layouts/Base.astro');
+    const filterBar = await readText('src/components/FilterBar.astro');
+    const galleryA = await readText('src/components/GalleryA.astro');
+    const houseGallery = await readText('src/components/gallery/HouseGallery.astro');
+    const mapPreview = await readText('src/components/maps/MapPreview.astro');
+    const masterLocationMap = await readText('src/components/maps/MasterLocationMap.astro');
+    const leafletMap = await readText('src/components/maps/LeafletMap.astro');
+    const singlePinMap = await readText('src/components/maps/SinglePinMap.astro');
+
+    assert.equal(forms.booking.quickSearchAriaLabel, 'Quick availability search');
+    assert.equal(forms.booking.check, 'Check');
+    assert.equal(forms.contact.openChatLabel, 'Open chat');
+    assert.equal(forms.contact.chatTitle, 'Questions? Chat with us');
+    assert.equal(
+      forms.contact.chatPopupBeforeEmail,
+      'For booking enquiries, please use the availability button or email',
+    );
+    assert.equal(forms.contact.chatPopupEmail, 'info@traditional-homes.gr');
+    assert.equal(forms.contact.chatPopupAfterEmail, 'Chat coming soon.');
+
+    assert.deepEqual(common.ui.filters.viewTabs, {
+      all: 'All stays',
+      houses: 'Houses',
+      villa: 'Villa',
+      groups: 'Group stays',
+    });
+    assert.equal(common.ui.filters.quick.sleeps4, 'Sleeps 4+');
+    assert.equal(common.ui.filters.quick.privatePool, 'Private pool');
+    assert.equal(common.ui.filters.clear, 'Clear filters');
+    assert.equal(common.ui.filters.countSingle, 'property matches');
+    assert.equal(common.ui.filters.countPlural, 'properties match');
+
+    assert.equal(common.ui.gallery.viewAll, 'View all');
+    assert.equal(common.ui.gallery.hidePhotos, 'Hide photos');
+    assert.equal(common.ui.gallery.closeViewer, 'Close photo viewer');
+    assert.equal(common.ui.gallery.previousPhoto, 'Previous photo');
+    assert.equal(common.ui.gallery.nextPhoto, 'Next photo');
+
+    assert.equal(common.ui.map.exploreArea, 'Explore the Area');
+    assert.equal(common.ui.map.filters.all, 'All');
+    assert.equal(common.ui.map.filters.houses, 'Houses');
+    assert.equal(common.ui.map.filters.villa, 'Villa');
+    assert.equal(common.ui.map.actions.map, 'Map');
+    assert.equal(common.ui.map.actions.details, 'Details');
+    assert.equal(common.ui.map.actions.viewDetails, 'View Details');
+    assert.equal(common.ui.map.actions.bookNow, 'Book Now');
+    assert.equal(common.ui.map.actions.exploreInteractiveMap, 'Explore interactive map');
+    assert.equal(common.ui.map.actions.viewMap, 'View map');
+    assert.equal(common.ui.map.unavailable, 'Map coordinates unavailable');
+
+    assert.match(base, /getCommonCopy\(locale\)/);
+    assert.match(base, /getFormsCopy\(locale\)/);
+    assert.match(base, /bookingCopy\.quickSearchAriaLabel/);
+    assert.match(base, /contactCopy\.chatPopupBeforeEmail/);
+    assert.match(base, /common\.brand\.name/);
+    assert.match(filterBar, /getCommonCopy\(defaultLocale\)/);
+    assert.match(filterBar, /filterCopy\.viewTabs\.all/);
+    assert.match(filterBar, /filterLabels = /);
+    assert.match(galleryA, /getCommonCopy\(defaultLocale\)/);
+    assert.match(galleryA, /galleryCopy\.previousPhoto/);
+    assert.match(houseGallery, /getCommonCopy\(defaultLocale\)/);
+    assert.match(houseGallery, /galleryCopy\.viewAllPhotos/);
+    assert.match(mapPreview, /getCommonCopy\(defaultLocale\)/);
+    assert.match(mapPreview, /mapCopy\.actions\.exploreInteractiveMap/);
+    assert.match(masterLocationMap, /getCommonCopy\(defaultLocale\)/);
+    assert.match(masterLocationMap, /mapCopy\.exploreArea/);
+    assert.match(leafletMap, /mapLabels/);
+    assert.match(leafletMap, /viewDetails: mapCopy\.actions\.viewDetails/);
+    assert.match(leafletMap, /data-map-labels=\{JSON\.stringify\(mapLabels\)\}/);
+    assert.match(leafletMap, /labels\.viewDetails/);
+    assert.match(singlePinMap, /mapCopy\.actions\.viewMap/);
+  });
+
   it('uses route helpers for repeated property and map links without changing blog routes', async () => {
     const files = {
       atAGlance: await readText('src/components/AtAGlance.astro'),

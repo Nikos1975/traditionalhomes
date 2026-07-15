@@ -67,5 +67,73 @@
         }
       ]
     }
+  },
+  "ui": {
+    "filters": {
+      "viewTabs": {
+        "all": "All stays",
+        "houses": "Houses",
+        "villa": "Villa",
+        "groups": "Group stays"
+      },
+      "quick": {
+        "all": "All",
+        "sleeps3": "Sleeps 3",
+        "sleeps4": "Sleeps 4+",
+        "sleeps6": "Sleeps 6+",
+        "sleeps8": "Sleeps 8+",
+        "seaView": "Sea view",
+        "privatePool": "Private pool",
+        "bedrooms2": "Bedrooms 2+",
+        "bedrooms3": "Bedrooms 3+",
+        "sharedPool": "Shared pool",
+        "noPool": "No pool"
+      },
+      "clear": "Clear filters",
+      "clearAriaLabel": "Clear all active filters",
+      "countSingle": "property matches",
+      "countPlural": "properties match"
+    },
+    "gallery": {
+      "photoComingSoon": "Photo coming soon",
+      "photoGallery": "Photo Gallery",
+      "photoViewer": "photo viewer",
+      "photos": "photos",
+      "viewAll": "View all",
+      "viewAllPhotos": "View all photos",
+      "hidePhotos": "Hide photos",
+      "hidePhotoGallery": "Hide photo gallery",
+      "closeViewer": "Close photo viewer",
+      "previousPhoto": "Previous photo",
+      "nextPhoto": "Next photo"
+    },
+    "map": {
+      "villages": {
+        "mavrikiano": "Mavrikiano",
+        "vrouchas": "Vrouchas"
+      },
+      "counts": {
+        "mavrikianoHouses": "10 Houses",
+        "vrouchasVilla": "1 Villa"
+      },
+      "exploreArea": "Explore the Area",
+      "filters": {
+        "all": "All",
+        "houses": "Houses",
+        "villa": "Villa",
+        "mavrikiano": "Mavrikiano",
+        "vrouchas": "Vrouchas"
+      },
+      "actions": {
+        "map": "Map",
+        "details": "Details",
+        "viewDetails": "View Details",
+        "bookNow": "Book Now",
+        "exploreInteractiveMap": "Explore interactive map",
+        "viewMap": "View map"
+      },
+      "fallbackSubtitle": "Traditional Home",
+      "unavailable": "Map coordinates unavailable"
+    }
   }
 }

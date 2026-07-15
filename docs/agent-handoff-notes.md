@@ -35,6 +35,40 @@ When pausing or finishing a substantial task, add a dated note below with:
 
 ## Notes
 
+### 2026-07-15 - Stage 2I shared UI label extraction
+
+- Goal: extract shared English UI labels from Base, filter, gallery, and map components before adding non-English routes.
+- Files changed locally:
+  - `src/i18n/locales/en/common.json`
+  - `src/i18n/locales/en/forms.json`
+  - `src/layouts/Base.astro`
+  - `src/components/FilterBar.astro`
+  - `src/components/GalleryA.astro`
+  - `src/components/gallery/HouseGallery.astro`
+  - `src/components/maps/MapPreview.astro`
+  - `src/components/maps/MasterLocationMap.astro`
+  - `src/components/maps/LeafletMap.astro`
+  - `src/components/maps/SinglePinMap.astro`
+  - `tests/i18n-foundation.test.mjs`
+  - `docs/agent-handoff-notes.md`
+- What changed:
+  - Added `common.ui.filters`, `common.ui.gallery`, and `common.ui.map` English label namespaces.
+  - Added Base chat popup text to `forms.contact` and reused existing booking form labels in the mobile booking bar.
+  - Wired only the requested shared UI surfaces to English i18n sources.
+  - Left page body copy, contact page form copy, property detail labels, inventory facts, guide Markdown, `/blog/`, route folders, translations, and hreflang unchanged.
+- Verified:
+  - Targeted i18n test failed before the shared labels existed and passed after migration.
+  - Full validation passed: `git diff --check`, `node --test tests/contact-function.test.mjs tests/i18n-foundation.test.mjs`, `npx tsc --noEmit`, and `npm run build`.
+  - Generated checks passed for `/en/`, `/en/houses/`, `/en/houses/argyro/`, `/en/villa/almond-tree-villa/`, `/en/guide/mavrikiano/`, and `/blog/`.
+  - Generated output did not contain `/en/blog/`, `/he/`, rendered hreflang links, or non-English route folders.
+  - Contact form output still posts to `/api/contact`.
+  - `npm run build` initially hit a Windows ACL/lock issue on stale generated `dist`; moving the stale generated output to `dist_locked_20260715_0831/` allowed a clean fresh build.
+- Remaining:
+  - Await approval before commit.
+  - Extract property detail labels, contact page labels, and page body copy in later stages before public translated routes.
+- Blockers:
+  - The ignored `dist_locked_20260715_0831/` generated-output backup still has Windows ACL restrictions and could not be fully removed from this session.
+
 ### 2026-07-14 - Stage 2G dynamic SEO helper formatting
 
 - Goal: move dynamic house, villa, and guide SEO formatting into helper functions without changing rendered English SEO output.

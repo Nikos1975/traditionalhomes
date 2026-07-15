@@ -15,6 +15,9 @@
   },
   "contact": {
     "openChatLabel": "Open chat",
-    "chatTitle": "Questions? Chat with us"
+    "chatTitle": "Questions? Chat with us",
+    "chatPopupBeforeEmail": "For booking enquiries, please use the availability button or email",
+    "chatPopupEmail": "info@traditional-homes.gr",
+    "chatPopupAfterEmail": "Chat coming soon."
   }
 }
