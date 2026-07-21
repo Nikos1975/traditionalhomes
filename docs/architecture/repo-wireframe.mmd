@@ -8,6 +8,7 @@ flowchart TD
   root --> tests["tests/"]
   root --> docs["docs/"]
   root --> scripts["scripts/"]
+  root --> agents[".agents/skills/"]
 
   src --> pages["pages/<br/>route files"]
   src --> layouts["layouts/<br/>Base.astro"]
@@ -55,6 +56,13 @@ flowchart TD
   villaDetail --> singleMap
 
   blogRoutes --> content
+  docs --> blogResearch["research/<br/>topic leads + source notes"]
+  agents --> blogSkill["blog-research-article"]
+  blogResearch --> blogSkill
+  blogSkill --> content
+  scripts --> blogValidator["validate-blog-article.mjs"]
+  content --> blogValidator
+  blogValidator --> blogChecks["tests + typecheck + build<br/>draft PR"]
   location["/en/location/"] --> masterMap["MasterLocationMap"]
   masterMap --> leaflet["LeafletMap"]
   singleMap --> leaflet
