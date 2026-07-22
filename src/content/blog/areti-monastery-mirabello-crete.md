@@ -2,7 +2,7 @@
 title: "Moni Aretiou: A Historic Monastery Inland from Elounda"
 description: "The history, architecture and working courtyards of Moni Aretiou, a restored monastery in the countryside inland from Elounda."
 pubDate: 2026-07-22
-draft: true
+draft: false
 category: "History"
 region: "Karydi and Fourni, Mirabello, Eastern Crete"
 tags:
