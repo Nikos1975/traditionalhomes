@@ -70,7 +70,7 @@ The two-courtyard plan is still the clearest way to read Aretiou. The approach l
 
 Within this arrangement, a visitor can distinguish the principal church, the chapel of Saint Lazarus, the cells and the auxiliary spaces connected with agricultural work. Stone walls and enclosed courts give the complex a strong boundary, but describing it simply as a fortress would obscure its more practical organisation.
 
-The Metropolis currently lists Aretiou among its staffed monasteries. It should therefore be approached as an active religious place, not only as an architectural monument.
+As of July 2026, the Holy Metropolis of Petra and Cherronisos lists Aretiou among its staffed monasteries. It should therefore be approached as an active religious place, not only as an architectural monument.
 
 ## Visiting with restraint
 
