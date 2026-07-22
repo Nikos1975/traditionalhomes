@@ -90,9 +90,9 @@ Before finishing, report whether documentation was updated or why no documentati
 
 # Editorial routing
 
-- `ai/brand/website-brand-style-guide.md` is the shared source of truth for website and blog tone
-- For property pages, homepage sections, collection copy, and property-related location copy, use `ai/prompts/website-editorial-system.md`
-- For blog posts, area guides, village guides, and broader place-based editorial content, use `ai/prompts/blog-editorial-system.md`
+- `.ai/brand/website-brand-style-guide.md` is the shared source of truth for website and blog tone
+- For property pages, homepage sections, collection copy, and property-related location copy, use `.ai/prompts/website-editorial-system.md`
+- For blog posts, area guides, village guides, and broader place-based editorial content, use `.ai/prompts/blog-editorial-system.md`
 - Area guides follow the blog editorial system unless the task is explicitly property-page copy
 - Do not duplicate these instruction files into page content or local task notes unless explicitly requested
 

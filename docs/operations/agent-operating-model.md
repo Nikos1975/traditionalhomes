@@ -65,7 +65,7 @@ Planning and token minimization must not override repo-local instructions, file 
 | Skill | When to use | When not to use | Required inputs | Expected output |
 |---|---|---|---|---|
 | `astro-build-triage` | Astro build failures, content validation, Windows cache locks, minimal repair work | Broad redesigns, copy rewrites, commit planning | Current repo state, build error, affected files | Root-cause classification, smallest safe fix, build result. |
-| `blog-research-article` | Creating or revising Astro blog articles from `docs/research`, especially Elounda history, guide, tourism, or local context posts | Property pages, pure UI work, unrelated docs | Research folder, content schema, existing posts, brand/editorial rules | Publishable `src/content/blog` article or scoped revision with verification notes. |
+| `blog-research-article` | Creating or revising Astro blog articles from `docs/research`, especially Elounda history, guide, tourism, or local context posts | Property pages, pure UI work, unrelated docs | Topic brief, research folder, content schema, existing posts, brand/editorial rules | Claim-reviewed `source-notes.md`, a validated `draft: true` article, and a draft PR for manual approval. |
 | `brand-content-audit-and-rewrite` | Rewriting or auditing public-facing copy for brand voice | Pure code/build tasks, commit-only tasks | Existing copy, content type, factual sources | Revised copy, edits made, removed unsupported claims, remaining gaps. |
 | `clean-commit-planner` | Dirty working trees, mixed changes, commit grouping, pathspec staging plans | Single-file investigation where no staging is planned | `git status`, generated commit-plan groups, reviewed diffs | Clean commit groups, explicit staging scope, build/typecheck guidance. |
 | `property-content-audit` | House or villa page audits, rewrites, inventory accuracy checks | Blog posts, general UI-only work | `src/inventory/inventory.json`, relevant house/villa content | Fact-checked property copy or audit checklist with unsupported claims flagged. |
@@ -83,6 +83,7 @@ Available npm scripts:
 
 - `npm run dev`: starts Astro dev server for local browser review.
 - `npm run build`: runs `astro build`.
+- `npm run blog:validate -- <article-path>`: validates one blog article's frontmatter, draft/image rules, placeholders, internal links, and historical sources section.
 - `npm run preview`: previews the built site.
 - `npm run typecheck`: runs `astro check`.
 - `npm run format`: runs Prettier write mode.

@@ -33,6 +33,16 @@ When pausing or finishing a substantial task, add a dated note below with:
 - What remains
 - Blockers or facts needing confirmation
 
+### 2026-07-22 - Reusable blog research workflow and Moni Aretiou draft
+
+- Goal: add a controlled topic-to-draft-PR blog workflow and use Moni Aretiou as the first claim-reviewed article.
+- Restored and tightened `.agents/skills/blog-research-article/SKILL.md`; `.ai/` remains the only canonical editorial folder.
+- Added a test-covered article validator and `npm run blog:validate -- <article-path>`.
+- Added `docs/research/elounda/moni-aretiou/source-notes.md` and the `draft: true` article `src/content/blog/areti-monastery-mirabello-crete.md`.
+- Verified foundation/location, dedication, layout, 17th-century painting, 1821 destruction, and conservative restoration chronology against ecclesiastical and public sources. Omitted unsupported 1723, episcopal-seat, wartime-damage, elevation, opening-hours, and exact 1618 claims.
+- No owned Moni Aretiou image was found. Five clearly licensed Wikimedia Commons candidates were compared; Jerzy Strzelecki's 4592 × 2398 exterior landscape (`Moni Areti (Crete)00(js).jpg`, CC BY-SA 3.0) was selected and processed with the existing blog-image script. The article uses `hero-1600.webp` with visible alt text, caption, linked photographer credit, licence, change disclosure, and share-alike notice; full candidate and file details are in `docs/research/elounda/moni-aretiou/source-notes.md`.
+- Article validation, 25 tests, visual 16:9 browser review, and production build pass. The article remains `draft: true` and is absent from generated routes and the blog index. A clean detached `origin/main` worktree and this branch both report the same six Astro typecheck errors at the same files, lines, and error codes; this change introduces no new typecheck errors and does not modify the affected files. Manual work remains article and image approval, changing `draft` to `false`, draft-PR approval, and merge.
+
 ## Notes
 
 ### 2026-07-15 - Stage 2I shared UI label extraction
