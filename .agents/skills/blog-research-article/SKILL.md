@@ -39,16 +39,19 @@ If a raw draft is supplied, treat it only as an unverified research lead.
 
 Follow this sequence:
 
-1. Read the topic brief and check for overlap with published posts.
-2. Research authoritative sources, preferring primary, institutional, ecclesiastical, archaeological, and academic material.
-3. Create `source-notes.md` before drafting. Record each important claim, source, URL, status (`verified`, `uncertain`, or `rejected`), and concise reasoning.
-4. Draft only from verified claims. Clearly distinguish documented history from tradition. Omit uncertain and rejected claims.
-5. Keep new articles at `draft: true` until manual approval.
-6. Use owned images by default. Process an approved image with `npm run blog:image`. If rights or attribution are unclear, omit image frontmatter and report the required specification.
-7. Run `npm run blog:validate -- <article-path>`.
-8. Run the repository tests, `npm run typecheck`, and `npm run build`, one command at a time on Windows.
-9. Review the diff and stage only the topic research, article, validator/workflow files, and required handoff documentation.
-10. Commit on a dedicated branch, push it, and open a draft pull request for manual approval.
+1. Start a dedicated branch from updated `origin/main`, then create the deterministic run scaffold with `npm run blog:scaffold -- --topic "<topic>" --slug <slug>`.
+2. Read the topic brief and use the reported overlap as a decision aid. A high-overlap article needs a recorded distinct angle; an exact or near-exact duplicate is blocked.
+3. Research authoritative sources, preferring primary, institutional, ecclesiastical, archaeological, and academic material.
+4. Complete the scaffolded `source-notes.md`, `sources.json`, and `claims.json` before drafting. Record each important claim, source, URL, status (`verified`, `uncertain`, or `rejected`), and concise reasoning.
+5. Draft only from verified claims. Clearly distinguish documented history from tradition. Omit uncertain and rejected claims.
+6. Keep new articles at `draft: true` until manual approval.
+7. Use owned images by default. Process an approved image with `npm run blog:image`. If rights or attribution are unclear, omit image frontmatter and report the required specification.
+8. Run `npm run blog:validate -- <article-path>`.
+9. Run the repository tests, `npm run typecheck`, and `npm run build`, one command at a time on Windows.
+10. Review the diff and stage only the topic research, article, validator/workflow files, and required handoff documentation.
+11. Commit on the dedicated branch, push it, and open a draft pull request for manual approval.
+
+Resume a stopped run with `npm run blog:scaffold -- --resume <run-id>`. Resume preserves user-edited research and blocks unrelated changed files. Inspect an article without writing files with `npm run blog:status -- --slug <slug> --simulate`.
 
 Never auto-merge, push directly to `main`, or publish a draft article.
 

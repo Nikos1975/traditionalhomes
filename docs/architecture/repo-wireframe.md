@@ -67,13 +67,17 @@ flowchart TD
   villaDetail --> singleMap
 
   blogRoutes --> content
-  docs --> blogResearch["research/<br/>topic leads + source notes"]
+  docs --> blogResearch["research/blog/&lt;slug&gt;<br/>brief, sources, claims"]
   agents --> blogSkill["blog-research-article"]
   blogResearch --> blogSkill
   blogSkill --> content
+  scripts --> blogRun["blog/<br/>scaffold + read-only status"]
+  blogRun --> localRuns[".blog-runs/&lt;run-id&gt;<br/>ignored operational state"]
+  blogRun --> blogResearch
   scripts --> blogValidator["validate-blog-article.mjs"]
   content --> blogValidator
   blogValidator --> blogChecks["tests + typecheck + build<br/>draft PR"]
+  blogRun --> blogChecks
   location["/en/location/"] --> masterMap["MasterLocationMap"]
   masterMap --> leaflet["LeafletMap"]
   singleMap --> leaflet

@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://traditional-homes.gr/schemas/blog-run-v1.json",
+  "title": "Blog production run",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "runId",
+    "topic",
+    "slug",
+    "baseCommit",
+    "state",
+    "completedStates",
+    "createdAt",
+    "updatedAt",
+    "blocked",
+    "operations",
+    "approvals",
+    "artifacts",
+    "checks"
+  ],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "runId": {
+      "type": "string",
+      "pattern": "^[0-9]{8}T[0-9]{6}Z-[a-z0-9]+(?:-[a-z0-9]+)*-[a-z0-9]+$"
+    },
+    "topic": { "type": "string", "minLength": 1 },
+    "slug": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+    "baseCommit": { "type": "string", "pattern": "^[0-9a-fA-F]{40}$" },
+    "state": {
+      "enum": [
+        "initialized",
+        "overlap-checked",
+        "researched",
+        "claims-reviewed",
+        "drafted",
+        "media-ready",
+        "validated",
+        "draft-pr-open",
+        "editorial-approved",
+        "blocked"
+      ]
+    },
+    "completedStates": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "type": "string" }
+    },
+    "createdAt": { "type": "string", "format": "date-time" },
+    "updatedAt": { "type": "string", "format": "date-time" },
+    "blocked": {
+      "oneOf": [
+        { "type": "null" },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["reason", "previousState", "at"],
+          "properties": {
+            "reason": { "type": "string", "minLength": 1 },
+            "previousState": { "type": "string" },
+            "at": { "type": "string", "format": "date-time" }
+          }
+        }
+      ]
+    },
+    "operations": { "type": "object" },
+    "approvals": { "type": "object" },
+    "artifacts": { "type": "object" },
+    "checks": { "type": "object" }
+  }
+}
