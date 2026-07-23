@@ -50,3 +50,53 @@ export function compareAgainstArticles({ candidate, articles }) {
         right.score - left.score || left.slug.localeCompare(right.slug),
     );
 }
+
+function bestFieldSimilarity(candidateFields, targetFields) {
+  let best = 0;
+  for (const candidate of candidateFields) {
+    for (const target of targetFields) {
+      best = Math.max(best, shingleSimilarity(candidate, target));
+    }
+  }
+  return best;
+}
+
+export function compareProposedTopic({
+  topic,
+  slug,
+  articles = [],
+  researchTopics = [],
+}) {
+  const candidateFields = [topic, String(slug ?? "").replaceAll("-", " ")];
+  const articleMatches = articles.map((article) => {
+    const score = bestFieldSimilarity(candidateFields, [
+      article.title,
+      String(article.slug ?? "").replaceAll("-", " "),
+    ]);
+    return {
+      kind: "article",
+      slug: article.slug,
+      score,
+      assessment: assessOverlap(score),
+    };
+  });
+  const researchMatches = researchTopics.map((researchTopic) => {
+    const score = bestFieldSimilarity(candidateFields, [
+      researchTopic.name,
+      String(researchTopic.name ?? "").replaceAll("-", " "),
+    ]);
+    return {
+      kind: "research",
+      name: researchTopic.name,
+      path: researchTopic.path,
+      score,
+      assessment: assessOverlap(score),
+    };
+  });
+  return [...articleMatches, ...researchMatches].sort(
+    (left, right) =>
+      right.score - left.score ||
+      left.kind.localeCompare(right.kind) ||
+      (left.slug ?? left.path).localeCompare(right.slug ?? right.path),
+  );
+}

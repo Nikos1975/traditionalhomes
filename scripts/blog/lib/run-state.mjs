@@ -24,6 +24,7 @@ function compactTimestamp(date) {
 export function createRunRecord({
   topic,
   slug,
+  distinctAngle,
   baseCommit,
   now = new Date(),
   entropy,
@@ -42,6 +43,7 @@ export function createRunRecord({
     runId: `${compactTimestamp(now)}-${slug}-${suffix}`,
     topic: topic.trim(),
     slug,
+    distinctAngle: distinctAngle?.trim() || null,
     baseCommit,
     state: "initialized",
     completedStates: ["initialized"],
@@ -84,6 +86,22 @@ export function markRunBlocked(run, reason, now = new Date()) {
   };
 }
 
+export function resumeBlockedRun(run, now = new Date()) {
+  if (run?.state !== "blocked") {
+    throw new Error("Run must be blocked before it can be resumed.");
+  }
+  const previousState = run.blocked?.previousState;
+  if (!RUN_STATES.includes(previousState)) {
+    throw new Error(`Invalid blocked previous state: ${previousState}`);
+  }
+  return {
+    ...run,
+    state: previousState,
+    updatedAt: now.toISOString(),
+    blocked: null,
+  };
+}
+
 export function runDirectory(rootDir, runId) {
   if (
     !/^[0-9]{8}T[0-9]{6}Z-[a-z0-9]+(?:-[a-z0-9]+)*-[a-z0-9]+$/.test(runId ?? "")
@@ -101,7 +119,14 @@ export async function loadRun({ rootDir, runId }) {
 
 export async function saveRun({ rootDir, run }) {
   const existing = await loadRun({ rootDir, runId: run.runId });
-  for (const key of ["runId", "topic", "slug", "baseCommit", "createdAt"]) {
+  for (const key of [
+    "runId",
+    "topic",
+    "slug",
+    "distinctAngle",
+    "baseCommit",
+    "createdAt",
+  ]) {
     if (existing[key] !== run[key])
       throw new Error(`Immutable run field changed: ${key}`);
   }
@@ -124,7 +149,14 @@ export async function initializeRunFiles({ rootDir, run, resume = false }) {
         `Refusing to overwrite existing run directory: ${path.relative(rootDir, directory)}`,
       );
     const existing = await loadRun({ rootDir, runId: run.runId });
-    for (const key of ["runId", "topic", "slug", "baseCommit", "createdAt"]) {
+    for (const key of [
+      "runId",
+      "topic",
+      "slug",
+      "distinctAngle",
+      "baseCommit",
+      "createdAt",
+    ]) {
       if (existing[key] !== run[key])
         throw new Error(`Resume mismatch for immutable run field: ${key}`);
     }

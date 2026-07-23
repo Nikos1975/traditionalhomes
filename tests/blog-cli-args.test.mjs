@@ -25,4 +25,19 @@ test("scaffold accepts named arguments from argv or npm config", () => {
   assert.deepEqual(parseScaffoldArgs(["--resume", "run-id"], {}), {
     resume: "run-id",
   });
+  assert.deepEqual(
+    parseScaffoldArgs([
+      "--topic",
+      "Parking in Mavrikiano",
+      "--slug",
+      "parking-in-mavrikiano",
+      "--distinct-angle",
+      "Step-free arrival only.",
+    ]),
+    {
+      topic: "Parking in Mavrikiano",
+      slug: "parking-in-mavrikiano",
+      distinctAngle: "Step-free arrival only.",
+    },
+  );
 });

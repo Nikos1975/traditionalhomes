@@ -106,6 +106,7 @@ export async function inspectBlogStatus({
   }
   const candidate = `${article.title}\n${article.description}\n${article.body}`;
   const validation = await validateBlogArticle({ rootDir, articlePath });
+  const allOverlap = compareAgainstArticles({ candidate, articles });
   const result = {
     slug,
     exists: true,
@@ -115,7 +116,8 @@ export async function inspectBlogStatus({
       ? "Article is an unpublished draft."
       : "Article is already published; no publication action is needed.",
     researchDirectory: await locateResearch(rootDir, slug, candidate),
-    overlap: compareAgainstArticles({ candidate, articles }),
+    selfMatch: allOverlap.find((match) => match.slug === slug) ?? null,
+    overlap: allOverlap.filter((match) => match.slug !== slug),
     validation: {
       errors: validation.errors,
       warnings: validation.warnings ?? [],
@@ -127,14 +129,16 @@ export async function inspectBlogStatus({
       cwd: rootDir,
       encoding: "utf8",
     }).trim();
-    result.simulatedRun = createRunRecord({
-      topic: article.title,
-      slug,
-      baseCommit,
-      now: new Date(0),
-      entropy: "simulated",
-    });
-    result.simulatedRun.simulated = true;
+    result.simulatedRun = {
+      simulated: true,
+      run: createRunRecord({
+        topic: article.title,
+        slug,
+        baseCommit,
+        now: new Date(0),
+        entropy: "simulated",
+      }),
+    };
   }
   return result;
 }

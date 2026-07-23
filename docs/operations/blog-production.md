@@ -54,7 +54,14 @@ Start from a clean dedicated branch based on updated `origin/main`:
 npm run blog:scaffold -- --topic "<topic>" --slug <slug>
 ```
 
-Scaffolding validates the slug and refuses an existing article, research directory, run directory, or dirty working tree.
+Before creating `.blog-runs`, research directories, or files, scaffolding validates the slug and compares the proposed topic and slug with existing blog article titles/slugs and relevant research-topic folder names. The closest normalized three-word-shingle match controls the gate:
+
+- low: report and continue
+- medium: warn and continue
+- high: block unless `--distinct-angle "<explanation>"` is supplied
+- exact or near-exact duplicate: block
+
+The distinct-angle explanation is stored in `topic-brief.md` and `run.json`. A duplicate or high-overlap proposal without the required angle makes no filesystem changes. Scaffolding also refuses an existing article, research directory, run directory, or dirty working tree.
 
 Resume without replacing user-edited files:
 
@@ -62,7 +69,7 @@ Resume without replacing user-edited files:
 npm run blog:scaffold -- --resume <run-id>
 ```
 
-Resume permits changes only in that run's research, article, source-image, and processed-image paths. Any unrelated changed file blocks the operation.
+Resume permits changes only in that run's research, article, source-image, and processed-image paths. Any unrelated changed file blocks the operation. If the run state is `blocked`, resume calls `resumeBlockedRun(run, now)`: it requires a valid recorded previous state, restores that state, clears `blocked`, preserves `completedStates`, and updates `updatedAt`. Non-blocked runs are reopened without a state transition.
 
 Read-only inspection does not create a run, branch, or pull request:
 
@@ -70,9 +77,9 @@ Read-only inspection does not create a run, branch, or pull request:
 npm run blog:status -- --slug <slug> --simulate
 ```
 
-Status reports whether an article exists, whether it is a draft, its research directory, baseline validator results, overlap with existing posts, and an in-memory simulated run record.
+Status reports whether an article exists, whether it is a draft, its research directory, baseline validator results, and overlap with other existing posts. The inspected slug's own exact match is reported separately as `selfMatch` and excluded from external overlap results. Simulation output has the shape `{ simulatedRun: { simulated: true, run: <schema-valid run> } }`; metadata is not added to the run object.
 
-Overlap uses normalized three-word shingles. Low overlap is informational, medium overlap warns, high overlap requires a distinct angle, and exact or near-exact duplication blocks. Subject similarity alone does not block a legitimate narrower or follow-up article.
+Overlap uses normalized three-word shingles. Subject similarity alone does not block a legitimate narrower or follow-up article when its distinct angle is explicit.
 
 ## Scope boundary and failures
 

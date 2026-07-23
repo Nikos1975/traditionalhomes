@@ -48,6 +48,7 @@ When pausing or finishing a substantial task, add a dated note below with:
 ### 2026-07-22 - Blog automation Phase 1A foundation
 
 - Added ignored, resumable local blog-run state, safe scaffold/resume commands, read-only status reporting, overlap scoring, slug/overwrite safeguards, and Git-scope checks.
+- Phase 1A correction: scaffolding now runs the article/research-topic overlap gate before writes, records required distinct angles, blocked resume restores the validated previous state, and status keeps self-match/simulation metadata outside external/schema-valid run data.
 - Phase 1A changes only workflow tooling, tests, and documentation; articles, media, routes, deployment, validation expansion, publication automation, and rendered-output verification remain unchanged.
 - Moni Aretiou is the read-only acceptance fixture. Verification results are recorded in the Phase 1A pull request.
 

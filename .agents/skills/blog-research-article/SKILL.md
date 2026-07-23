@@ -39,8 +39,8 @@ If a raw draft is supplied, treat it only as an unverified research lead.
 
 Follow this sequence:
 
-1. Start a dedicated branch from updated `origin/main`, then create the deterministic run scaffold with `npm run blog:scaffold -- --topic "<topic>" --slug <slug>`.
-2. Read the topic brief and use the reported overlap as a decision aid. A high-overlap article needs a recorded distinct angle; an exact or near-exact duplicate is blocked.
+1. Start a dedicated branch from updated `origin/main`, then create the deterministic run scaffold with `npm run blog:scaffold -- --topic "<topic>" --slug <slug>`. Before creating run or research files, scaffolding compares the proposed topic and slug with existing article titles/slugs and relevant research-topic folder names. Low overlap reports and continues; medium overlap warns and continues; exact or near-exact duplication blocks without writing files. For high overlap, rerun only with an explicit, defensible angle: `--distinct-angle "<explanation>"`.
+2. Read the topic brief and overlap report. A supplied distinct angle is stored in both `topic-brief.md` and the run record.
 3. Research authoritative sources, preferring primary, institutional, ecclesiastical, archaeological, and academic material.
 4. Complete the scaffolded `source-notes.md`, `sources.json`, and `claims.json` before drafting. Record each important claim, source, URL, status (`verified`, `uncertain`, or `rejected`), and concise reasoning.
 5. Draft only from verified claims. Clearly distinguish documented history from tradition. Omit uncertain and rejected claims.
@@ -51,7 +51,7 @@ Follow this sequence:
 10. Review the diff and stage only the topic research, article, validator/workflow files, and required handoff documentation.
 11. Commit on the dedicated branch, push it, and open a draft pull request for manual approval.
 
-Resume a stopped run with `npm run blog:scaffold -- --resume <run-id>`. Resume preserves user-edited research and blocks unrelated changed files. Inspect an article without writing files with `npm run blog:status -- --slug <slug> --simulate`.
+Resume a stopped run with `npm run blog:scaffold -- --resume <run-id>`. When the run is blocked, resume uses `resumeBlockedRun(run, now)` to restore the recorded previous state, clear the block, preserve completed states, and update the timestamp. Resume preserves user-edited research and blocks unrelated changed files. Inspect an article without writing files with `npm run blog:status -- --slug <slug> --simulate`; status reports the inspected slug's self-match separately from external overlap and wraps simulation metadata around a schema-valid run.
 
 Never auto-merge, push directly to `main`, or publish a draft article.
 
