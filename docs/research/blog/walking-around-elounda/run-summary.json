@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "runId": "20260723T073318Z-walking-around-elounda-2bda3b",
+  "slug": "walking-around-elounda",
+  "status": "validated",
+  "base": {
+    "requiredCommit": "e130dec5080a9015fee26d81e95d0ffcc5137394",
+    "actualCommit": "e130dec5080a9015fee26d81e95d0ffcc5137394",
+    "branch": "codex/walking-around-elounda",
+    "worktree": "C:/Users/Nikos/.config/superpowers/worktrees/traditional-homes/walking-around-elounda",
+    "note": "Remote main resolved to the required commit. Windows denied replacing the stale local origin/main ref file, so the clean branch was created directly from the SHA returned by git ls-remote for refs/heads/main."
+  },
+  "scope": {
+    "article": "src/content/blog/walking-around-elounda.md",
+    "draft": true,
+    "wordCount": 2144,
+    "supportingArticlesDrafted": 0,
+    "phase1ToolingModified": false,
+    "publicationPrCreated": false
+  },
+  "research": {
+    "rawSource": "docs/research/blog/walking-around-elounda/raw/EloundaHikingTrailsGuide.html",
+    "rawSourceSha256": "EB9A90172F7F27B01E691734791913CA98FA736E6787DB7D93D2FA4C9B836913",
+    "rawCopyByteIdentical": true,
+    "reviewedSourceCount": 17,
+    "materialClaimCount": 25,
+    "googleRedirectUrlsInStructuredResearch": 0
+  },
+  "image": {
+    "path": "/images/blog/welcome-to-elounda/mavrikiano-elounda-1200.webp",
+    "sourcePath": "src/assets/blog-source/welcome-to-elounda/mavrikiano-elounda.jpg",
+    "ownership": "Elounda Traditional Homes of Crete",
+    "thirdPartyDownload": false
+  },
+  "validation": {
+    "articleValidator": "passed",
+    "nodeTests": "52 passed, 0 failed",
+    "typecheck": "known six-error baseline matched; no new article diagnostic",
+    "build": "passed; 35 pages generated",
+    "draftRouteGenerated": false,
+    "draftListedOnBlogIndex": false
+  },
+  "documentation": {
+    "architectureUpdated": false,
+    "reason": "The article remains a draft and generated no public route; no structural route, component, data-flow or user-facing flow changed. This run summary provides the required multi-step handoff without expanding the requested pull-request scope."
+  },
+  "unresolvedSafetySensitiveClaims": [
+    "Current continuous waymarking is not confirmed across the four route concepts.",
+    "Current unrestricted access across all tracks, gates, gorge bed and headland sections is not confirmed.",
+    "Post-storm erosion, vegetation and informal diversions have not been independently inspected.",
+    "The long Vrouchas coastal approach is not verified as a simple independent walk.",
+    "Kolokytha's extended unmarked coastal rock traverse is unsuitable for inclusion as ordinary walking.",
+    "Current Havgas gorge conditions after rain are not confirmed."
+  ]
+}

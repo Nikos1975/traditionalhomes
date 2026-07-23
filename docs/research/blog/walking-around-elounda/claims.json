@@ -1,0 +1,252 @@
+[
+  {
+    "id": "C01",
+    "claim": "Mavrikiano is a hillside village above Elounda, connected by village paths and lanes.",
+    "sourceUrl": "https://traditional-homes.gr/en/location/",
+    "sourceType": "first-party location page",
+    "authorityLevel": "high for brand-owned location context",
+    "status": "verified",
+    "safetySensitive": false,
+    "reasoning": "The first-party location page describes the village position and pedestrian fabric; the article uses only this broad setting."
+  },
+  {
+    "id": "C02",
+    "claim": "Oxa routes above Elounda progress from farm road or dirt road onto steeper mountain paths.",
+    "sourceUrl": "https://www.eos-her.gr/en/hikes/2023/ellinika-oxa-elounta/",
+    "sourceType": "mountaineering-club route record",
+    "authorityLevel": "medium-high",
+    "status": "verified",
+    "safetySensitive": true,
+    "reasoning": "A recognised mountaineering club records a dirt-road approach and a steep path descent. The article does not reproduce directions or extend this evidence to every lower-slope track."
+  },
+  {
+    "id": "C03",
+    "claim": "The Oxa summit ascent is materially more demanding than walking Mavrikiano's lanes and lower tracks.",
+    "sourceUrl": "https://orsian.blogspot.com/2022/07/blog-post_14.html",
+    "sourceType": "local mountaineering-club field report",
+    "authorityLevel": "medium-high",
+    "status": "verified",
+    "safetySensitive": true,
+    "reasoning": "The club describes a short but demanding ascent. The article therefore draws a clear boundary between lower-slope walking and a summit hike."
+  },
+  {
+    "id": "C04",
+    "claim": "Oxa waymarking observed by a club in 2022 remains complete and reliable in 2026.",
+    "sourceUrl": "https://orsian.blogspot.com/2022/07/blog-post_14.html",
+    "sourceType": "local mountaineering-club field report",
+    "authorityLevel": "medium-high",
+    "status": "uncertain",
+    "safetySensitive": true,
+    "reasoning": "The source records good markings on one route in 2022, but no current inspection was found. The article warns readers not to assume continuity."
+  },
+  {
+    "id": "C05",
+    "claim": "The Kolokytha walking landscape begins around Poros and the windmills, with broad dirt-road sections before narrower paths.",
+    "sourceUrl": "https://orsian.blogspot.com/2021/05/blog-post_23.html",
+    "sourceType": "local mountaineering-club field report",
+    "authorityLevel": "medium-high",
+    "status": "verified",
+    "safetySensitive": false,
+    "reasoning": "The club describes a loop combining dirt road, uphill paths and narrower rocky sections. Government archaeology sources independently confirm the Poros and peninsula setting."
+  },
+  {
+    "id": "C06",
+    "claim": "Kolokytha contains both approachable track walking and narrower rocky trail sections.",
+    "sourceUrl": "https://orsian.blogspot.com/2021/05/blog-post_23.html",
+    "sourceType": "local mountaineering-club field report",
+    "authorityLevel": "medium-high",
+    "status": "verified",
+    "safetySensitive": true,
+    "reasoning": "The route account explicitly moves between dirt road, narrow marked path and rocky coastal path, supporting the article's distinction without assigning a difficulty rating."
+  },
+  {
+    "id": "C07",
+    "claim": "An extended Kolokytha coastal traverse includes a section with no path or signage on rocks beside the sea and is not recommended for beginners.",
+    "sourceUrl": "https://www.crete-today.com/kolokitha-peninsula-circular-path/",
+    "sourceType": "regional route guide",
+    "authorityLevel": "medium",
+    "status": "verified",
+    "safetySensitive": true,
+    "reasoning": "The guide states this directly and recommends returning by the marked route. The article gives no directions into the section."
+  },
+  {
+    "id": "C08",
+    "claim": "Kolokytha is consistently and continuously waymarked for a complete circuit in 2026.",
+    "sourceUrl": "https://www.crete-today.com/kolokitha-peninsula-circular-path/",
+    "sourceType": "regional route guide",
+    "authorityLevel": "medium",
+    "status": "rejected",
+    "safetySensitive": true,
+    "reasoning": "The same source distinguishes signed sections from sections with no visible path or signage. A blanket waymarking claim would be unsafe."
+  },
+  {
+    "id": "C09",
+    "claim": "The salt-pan and Poros landscape lies on the approach from Schisma towards the Spinalonga/Kolokytha peninsula.",
+    "sourceUrl": "https://spinalonga-island.gr/monuments/elounda-monuments/venetian-period/%CE%B1%CE%BB%CF%85%CE%BA%CE%AD%CF%82/?lang=en",
+    "sourceType": "government archaeological source",
+    "authorityLevel": "high",
+    "status": "verified",
+    "safetySensitive": false,
+    "reasoning": "The Ephorate of Antiquities places the salt pans on this approach. The article uses the site only as geographic orientation."
+  },
+  {
+    "id": "C10",
+    "claim": "Aforesmenos Lighthouse is near Vrouchas, with an approach from the wind-farm side using a dirt road and a short trail.",
+    "sourceUrl": "https://www.agiosnikolaoscrete.com/experiences/culture/museums-sights/lighthouse-of-cape-of-agios-ioannis-or-aforesmenos/",
+    "sourceType": "municipal destination information",
+    "authorityLevel": "high",
+    "status": "verified",
+    "safetySensitive": true,
+    "reasoning": "The municipal page states the location and broad access type. The article does not convert this into turn-by-turn directions."
+  },
+  {
+    "id": "C11",
+    "claim": "The Aforesmenos headland is rugged, exposed and characteristically windy.",
+    "sourceUrl": "https://www.agiosnikolaoscrete.com/experiences/culture/museums-sights/lighthouse-of-cape-of-agios-ioannis-or-aforesmenos/",
+    "sourceType": "municipal destination information",
+    "authorityLevel": "high",
+    "status": "verified",
+    "safetySensitive": true,
+    "reasoning": "The municipal description explicitly identifies barren mountains, rugged coastline and substantial wind."
+  },
+  {
+    "id": "C12",
+    "claim": "A longer Vrouchas-to-lighthouse approach has been walked by the local club on an old rocky coastal path.",
+    "sourceUrl": "https://orsian.blogspot.com/2020/03/blog-post_7.html",
+    "sourceType": "local mountaineering-club field report",
+    "authorityLevel": "medium-high",
+    "status": "verified",
+    "safetySensitive": true,
+    "reasoning": "The 2020 report documents a led outing. It verifies the route concept but not present access or suitability for independent walkers."
+  },
+  {
+    "id": "C13",
+    "claim": "The complete Vrouchas-to-Aforesmenos route is currently a simple, continuously marked walk suitable for any visitor.",
+    "sourceUrl": "https://orsian.blogspot.com/2025/10/blog-post.html",
+    "sourceType": "local mountaineering-club field report",
+    "authorityLevel": "medium-high",
+    "status": "rejected",
+    "safetySensitive": true,
+    "reasoning": "The recent club account includes rocky passages, a narrow path, strong sun and little shade. No source supports universal suitability."
+  },
+  {
+    "id": "C14",
+    "claim": "The Aforesmenos route has little shade and can remain hot around midday even outside peak summer.",
+    "sourceUrl": "https://orsian.blogspot.com/2025/10/blog-post.html",
+    "sourceType": "local mountaineering-club field report",
+    "authorityLevel": "medium-high",
+    "status": "verified",
+    "safetySensitive": true,
+    "reasoning": "The October 2025 field report explicitly records strong midday heat and absence of shade. The article presents this as a field observation, not a climate guarantee."
+  },
+  {
+    "id": "C15",
+    "claim": "Local mountaineering-club reports document routes linking Pines, Havgas Gorge and Plaka.",
+    "sourceUrl": "https://orsian.blogspot.com/2022/06/blog-post.html?m=0",
+    "sourceType": "local mountaineering-club field report",
+    "authorityLevel": "medium-high",
+    "status": "verified",
+    "safetySensitive": false,
+    "reasoning": "The source explicitly documents a Pines–Havgas–Plaka outing, and a separate 2025 club report confirms continuing organised walks through the same landscape."
+  },
+  {
+    "id": "C16",
+    "claim": "The Havgas route includes old stone paths, agricultural road and rough gorge terrain rather than a uniformly engineered footpath.",
+    "sourceUrl": "https://orsian.blogspot.com/2022/06/blog-post.html?m=0",
+    "sourceType": "local mountaineering-club field report",
+    "authorityLevel": "medium-high",
+    "status": "verified",
+    "safetySensitive": true,
+    "reasoning": "The club describes these surfaces directly. The article uses them to distinguish the gorge from ordinary lane walking."
+  },
+  {
+    "id": "C17",
+    "claim": "Parts of the Havgas route were obstructed by low vegetation and branches in June 2022.",
+    "sourceUrl": "https://orsian.blogspot.com/2022/06/blog-post.html?m=0",
+    "sourceType": "local mountaineering-club field report",
+    "authorityLevel": "medium-high",
+    "status": "verified",
+    "safetySensitive": true,
+    "reasoning": "This is a dated field observation. It supports caution about variable maintenance but is not presented as a current 2026 condition report."
+  },
+  {
+    "id": "C18",
+    "claim": "The Havgas gorge route is currently clear, unrestricted and safe after all recent weather.",
+    "sourceUrl": "https://www.cretanbeaches.com/en/gorges-and-canyons-in-crete/central-crete-gorges-heraklion/havgas-gorge-fourni",
+    "sourceType": "regional geography guide",
+    "authorityLevel": "medium",
+    "status": "uncertain",
+    "safetySensitive": true,
+    "reasoning": "No current official inspection was found. The guide warns generally that heavy rains can damage gorge paths; the article requires local confirmation."
+  },
+  {
+    "id": "C19",
+    "claim": "A club's low difficulty description proves that Havgas is easy for an unaccompanied visitor in all conditions.",
+    "sourceUrl": "https://orsian.blogspot.com/2025/02/2.html",
+    "sourceType": "local mountaineering-club field report",
+    "authorityLevel": "medium-high",
+    "status": "rejected",
+    "safetySensitive": true,
+    "reasoning": "Group leadership, weather, maintenance and participant experience affect such labels. The article omits difficulty ratings."
+  },
+  {
+    "id": "C20",
+    "claim": "During a heatwave, long walking or running under the sun should be avoided and ample fluids are advised.",
+    "sourceUrl": "https://civilprotection.gov.gr/en/odigies-prostasias/kaysonas",
+    "sourceType": "government safety guidance",
+    "authorityLevel": "high",
+    "status": "verified",
+    "safetySensitive": true,
+    "reasoning": "Greek Civil Protection gives both instructions directly. The article applies them to all four exposed landscapes."
+  },
+  {
+    "id": "C21",
+    "claim": "Before and during gale-force winds, shore and coastal activities should be avoided.",
+    "sourceUrl": "https://civilprotection.gov.gr/en/odigies-prostasias/thyellodeis-anemoi",
+    "sourceType": "government safety guidance",
+    "authorityLevel": "high",
+    "status": "verified",
+    "safetySensitive": true,
+    "reasoning": "Greek Civil Protection states this directly. It is particularly relevant to Kolokytha and Aforesmenos."
+  },
+  {
+    "id": "C22",
+    "claim": "Sturdy rubber-soled footwear is appropriate for dirt and gravel paths, while ordinary walking shoes may be adequate for paved urban paths.",
+    "sourceUrl": "https://www.nps.gov/articles/hiking-safety.htm",
+    "sourceType": "government hiking-safety guidance",
+    "authorityLevel": "high",
+    "status": "verified",
+    "safetySensitive": true,
+    "reasoning": "The National Park Service makes this surface-based distinction. The article avoids prescribing specialised equipment beyond the evidence."
+  },
+  {
+    "id": "C23",
+    "claim": "The raw HTML's exact route times, distances, elevations and difficulty ratings are sufficiently verified for publication.",
+    "sourceUrl": "https://www.crete-today.com/havgas-gorge-in-elounda/",
+    "sourceType": "regional route guide cited by raw research",
+    "authorityLevel": "medium",
+    "status": "rejected",
+    "safetySensitive": true,
+    "reasoning": "The figures were not independently reproduced across authoritative current sources. The article omits them."
+  },
+  {
+    "id": "C24",
+    "claim": "Current access, gates, diversions and route markings are confirmed across all four route concepts.",
+    "sourceUrl": "https://www.nps.gov/articles/hiking-safety.htm",
+    "sourceType": "government hiking-safety guidance",
+    "authorityLevel": "high",
+    "status": "uncertain",
+    "safetySensitive": true,
+    "reasoning": "No local current-condition authority covering all four routes was located. General hiking guidance supports checking conditions before setting out."
+  },
+  {
+    "id": "C25",
+    "claim": "The selected Mavrikiano aerial hero image is owned by Elounda Traditional Homes of Crete.",
+    "sourceUrl": "https://traditional-homes.gr/blog/welcome-to-elounda/",
+    "sourceType": "first-party media ownership record",
+    "authorityLevel": "high for image ownership",
+    "status": "verified",
+    "safetySensitive": false,
+    "reasoning": "The live first-party article and repository frontmatter credit the image to Elounda Traditional Homes of Crete."
+  }
+]
