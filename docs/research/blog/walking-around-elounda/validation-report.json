@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "slug": "walking-around-elounda",
+  "articlePath": "src/content/blog/walking-around-elounda.md",
+  "baseCommit": "e130dec5080a9015fee26d81e95d0ffcc5137394",
+  "branch": "codex/walking-around-elounda",
+  "checkedAt": "2026-07-23T10:47:04+03:00",
+  "article": {
+    "draft": true,
+    "targetWordRange": {
+      "minimum": 1800,
+      "maximum": 2400
+    },
+    "wordCount": 2144,
+    "forbiddenLanguageScan": "passed: no best, optimal, premier, unparalleled, base camp, competitor-property, snorkelling or marketplace language",
+    "frontmatterImageOwnership": "verified first-party repository media",
+    "draftRouteGenerated": false,
+    "listedOnBlogIndex": false
+  },
+  "commands": [
+    {
+      "command": "npm run blog:validate -- src/content/blog/walking-around-elounda.md",
+      "status": "passed",
+      "exitCode": 0,
+      "summary": "Article validator returned PASS."
+    },
+    {
+      "command": "node --test tests/*.test.mjs",
+      "status": "passed",
+      "exitCode": 0,
+      "summary": "52 tests passed; 0 failed, cancelled, skipped or todo."
+    },
+    {
+      "command": "npm run typecheck",
+      "status": "baseline-match",
+      "exitCode": 1,
+      "summary": "Astro check reported the known six errors in unchanged files: UnitCard.astro, BookingHandoffForm.astro, Base.astro, blog/index.astro, guide/mavrikiano.astro and guide/vrouchas.astro. Count, files, lines and diagnostic codes match the 2026-07-22 handoff baseline; the new article produced no diagnostic."
+    },
+    {
+      "command": "npm run build",
+      "status": "passed",
+      "exitCode": 0,
+      "summary": "Astro static build completed with 35 pages. The draft article generated no route and was absent from the blog index."
+    }
+  ],
+  "baselineComparison": {
+    "command": "npm run typecheck",
+    "baseRef": "e130dec5080a9015fee26d81e95d0ffcc5137394",
+    "status": "matched",
+    "summary": "Known baseline: six Astro typecheck errors in the same unchanged files, lines and diagnostic codes, recorded in docs/agent-handoff-notes.md on 2026-07-22. Current result is identical and introduces no article diagnostic."
+  },
+  "unresolvedSafetySensitiveClaims": [
+    "Current continuous waymarking is not confirmed across the four route concepts.",
+    "Current unrestricted access across all tracks, gates, gorge bed and headland sections is not confirmed.",
+    "Post-storm erosion, vegetation and informal diversions have not been independently inspected.",
+    "The long Vrouchas coastal approach is not verified as a simple independent walk.",
+    "Kolokytha's extended unmarked coastal rock traverse is unsuitable for inclusion as ordinary walking.",
+    "Current Havgas gorge conditions after rain are not confirmed."
+  ]
+}

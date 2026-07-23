@@ -1,0 +1,189 @@
+[
+  {
+    "id": "S01",
+    "title": "Location — Mavrikiano & Vrouchas, Elounda",
+    "publisher": "Elounda Traditional Homes of Crete",
+    "url": "https://traditional-homes.gr/en/location/",
+    "sourceType": "first-party location page",
+    "authorityLevel": "high for brand-owned location and image context",
+    "status": "verified",
+    "accessed": "2026-07-23",
+    "role": "Confirms Mavrikiano as a hillside village above Elounda and the first-party setting used in the article."
+  },
+  {
+    "id": "S02",
+    "title": "Welcome to Elounda Traditional Homes",
+    "publisher": "Elounda Traditional Homes of Crete",
+    "url": "https://traditional-homes.gr/blog/welcome-to-elounda/",
+    "sourceType": "first-party media ownership record",
+    "authorityLevel": "high for image ownership",
+    "status": "verified",
+    "accessed": "2026-07-23",
+    "role": "Public first-party credit for the selected Mavrikiano aerial image."
+  },
+  {
+    "id": "S03",
+    "title": "Ellinika – Mt Oxa – Elounda",
+    "publisher": "Heraklion Mountaineering Club",
+    "url": "https://www.eos-her.gr/en/hikes/2023/ellinika-oxa-elounta/",
+    "sourceType": "mountaineering-club route record",
+    "authorityLevel": "medium-high",
+    "status": "verified",
+    "accessed": "2026-07-23",
+    "role": "Confirms a dirt-road and steep-path Oxa route descending towards Elounda; not evidence of current conditions."
+  },
+  {
+    "id": "S04",
+    "title": "Πανσέληνος στην Οξά, Ελούντα",
+    "publisher": "Agios Nikolaos Mountaineering Club",
+    "url": "https://orsian.blogspot.com/2022/07/blog-post_14.html",
+    "sourceType": "local mountaineering-club field report",
+    "authorityLevel": "medium-high",
+    "status": "verified",
+    "accessed": "2026-07-23",
+    "role": "Documents farm-road approach, a demanding ascent, waymarking observed in 2022 and strong wind on Oxa."
+  },
+  {
+    "id": "S05",
+    "title": "Πεζοπορία στη χερσόνησο Κολοκύθας, Ελούντας",
+    "publisher": "Agios Nikolaos Mountaineering Club",
+    "url": "https://orsian.blogspot.com/2021/05/blog-post_23.html",
+    "sourceType": "local mountaineering-club field report",
+    "authorityLevel": "medium-high",
+    "status": "verified",
+    "accessed": "2026-07-23",
+    "role": "Documents a club loop using uphill, narrow, marked and rocky paths plus a dirt-road return."
+  },
+  {
+    "id": "S06",
+    "title": "Kolokitha Peninsula, circular path",
+    "publisher": "East Crete Travel Guide",
+    "url": "https://www.crete-today.com/kolokitha-peninsula-circular-path/",
+    "sourceType": "regional route guide",
+    "authorityLevel": "medium",
+    "status": "verified",
+    "accessed": "2026-07-23",
+    "role": "Clearly distinguishes visible or signed paths from an extended unmarked coastal rock traverse not recommended for beginners."
+  },
+  {
+    "id": "S07",
+    "title": "Salt Pans",
+    "publisher": "Ephorate of Antiquities of Lasithi, Hellenic Ministry of Culture",
+    "url": "https://spinalonga-island.gr/monuments/elounda-monuments/venetian-period/%CE%B1%CE%BB%CF%85%CE%BA%CE%AD%CF%82/?lang=en",
+    "sourceType": "government archaeological source",
+    "authorityLevel": "high",
+    "status": "verified",
+    "accessed": "2026-07-23",
+    "role": "Confirms the salt-pan landscape on the road from Schisma towards the Spinalonga peninsula."
+  },
+  {
+    "id": "S08",
+    "title": "Olous: a submerged city-state",
+    "publisher": "Ephorate of Antiquities of Lasithi, Hellenic Ministry of Culture",
+    "url": "https://spinalonga-island.gr/monuments/elounda-monuments/antiquity/%CE%B7-%CE%B1%CF%81%CF%87%CE%B1%CE%AF%CE%B1-%CE%BF%CE%BB%CE%BF%CF%8D%CF%82/?lang=en",
+    "sourceType": "government archaeological source",
+    "authorityLevel": "high",
+    "status": "verified",
+    "accessed": "2026-07-23",
+    "role": "Confirms the Poros/Olous setting and the early Christian basilica in Kolokytha bay."
+  },
+  {
+    "id": "S09",
+    "title": "Lighthouse of Cape of Agios Ioannis or Aforesmenos",
+    "publisher": "Municipality of Agios Nikolaos visitor site",
+    "url": "https://www.agiosnikolaoscrete.com/experiences/culture/museums-sights/lighthouse-of-cape-of-agios-ioannis-or-aforesmenos/",
+    "sourceType": "municipal destination information",
+    "authorityLevel": "high",
+    "status": "verified",
+    "accessed": "2026-07-23",
+    "role": "Confirms proximity to Vrouchas, dirt-road and short-trail access from the wind-farm side, rugged coast and strong wind."
+  },
+  {
+    "id": "S10",
+    "title": "Πλάκα Ελούντας – Βρουχάς – Μυρωνικήτας – Αφορεσμένος",
+    "publisher": "Agios Nikolaos Mountaineering Club",
+    "url": "https://orsian.blogspot.com/2025/10/blog-post.html",
+    "sourceType": "local mountaineering-club field report",
+    "authorityLevel": "medium-high",
+    "status": "verified",
+    "accessed": "2026-07-23",
+    "role": "Documents a led route through rocky passages and a narrow path, with little shade and substantial midday heat."
+  },
+  {
+    "id": "S11",
+    "title": "Πεζοπορία Βρουχάς – Φάρος Αφορεσμένου – Αιολικό Πάρκο Αγίου Ιωάννη",
+    "publisher": "Agios Nikolaos Mountaineering Club",
+    "url": "https://orsian.blogspot.com/2020/03/blog-post_7.html",
+    "sourceType": "local mountaineering-club field report",
+    "authorityLevel": "medium-high",
+    "status": "verified",
+    "accessed": "2026-07-23",
+    "role": "Documents a longer old rocky coastal path from near Vrouchas to the lighthouse; not proof of present independent access."
+  },
+  {
+    "id": "S12",
+    "title": "Πεζοπορία Άνω Πινές – Φαράγγι Χαυγά – Πλάκα Ελούντας",
+    "publisher": "Agios Nikolaos Mountaineering Club",
+    "url": "https://orsian.blogspot.com/2022/06/blog-post.html?m=0",
+    "sourceType": "local mountaineering-club field report",
+    "authorityLevel": "medium-high",
+    "status": "verified",
+    "accessed": "2026-07-23",
+    "role": "Documents the Pines–Havgas–Plaka route, stone paths, agricultural road, heat and vegetation obstructing parts of the gorge in 2022."
+  },
+  {
+    "id": "S13",
+    "title": "Ελούντα – Πινές – Τσιφλίκι",
+    "publisher": "Agios Nikolaos Mountaineering Club",
+    "url": "https://orsian.blogspot.com/2025/02/2.html",
+    "sourceType": "local mountaineering-club field report",
+    "authorityLevel": "medium-high",
+    "status": "verified",
+    "accessed": "2026-07-23",
+    "role": "Documents a 2025 led walk through the Havgas landscape between Elounda, Pines and the coast."
+  },
+  {
+    "id": "S14",
+    "title": "Havgas Gorge, Fourni",
+    "publisher": "Cretan Beaches",
+    "url": "https://www.cretanbeaches.com/en/gorges-and-canyons-in-crete/central-crete-gorges-heraklion/havgas-gorge-fourni",
+    "sourceType": "regional geography guide",
+    "authorityLevel": "medium",
+    "status": "verified",
+    "accessed": "2026-07-23",
+    "role": "Identifies the Havgas above Plaka and warns generally that heavy rains have damaged paths in Cretan gorges."
+  },
+  {
+    "id": "S15",
+    "title": "Heatwave",
+    "publisher": "Hellenic Ministry for Climate Crisis and Civil Protection",
+    "url": "https://civilprotection.gov.gr/en/odigies-prostasias/kaysonas",
+    "sourceType": "government safety guidance",
+    "authorityLevel": "high",
+    "status": "verified",
+    "accessed": "2026-07-23",
+    "role": "Advises avoiding long walking or running under the sun during a heatwave and drinking ample fluids."
+  },
+  {
+    "id": "S16",
+    "title": "Stormy Winds",
+    "publisher": "Hellenic Ministry for Climate Crisis and Civil Protection",
+    "url": "https://civilprotection.gov.gr/en/odigies-prostasias/thyellodeis-anemoi",
+    "sourceType": "government safety guidance",
+    "authorityLevel": "high",
+    "status": "verified",
+    "accessed": "2026-07-23",
+    "role": "Advises avoiding shore and coastal activities before and during gale-force winds."
+  },
+  {
+    "id": "S17",
+    "title": "Hike Smart",
+    "publisher": "US National Park Service",
+    "url": "https://www.nps.gov/articles/hiking-safety.htm",
+    "sourceType": "government hiking-safety guidance",
+    "authorityLevel": "high",
+    "status": "verified",
+    "accessed": "2026-07-23",
+    "role": "Supports sturdy rubber-soled footwear for dirt and gravel trails, ordinary shoes for paved paths, and checking current conditions."
+  }
+]
