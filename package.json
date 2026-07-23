@@ -7,6 +7,8 @@
     "dev": "astro dev",
     "build": "astro build",
     "blog:image": "node scripts/process-blog-image.mjs",
+    "blog:scaffold": "node scripts/blog/scaffold.mjs",
+    "blog:status": "node scripts/blog/status.mjs",
     "blog:validate": "node scripts/validate-blog-article.mjs",
     "preview": "astro preview",
     "typecheck": "astro check",

@@ -36,6 +36,7 @@ coverage/
 .claude/
 .codex/
 .superpowers/
+.blog-runs/
 .ai/memory/*.tmp.*
 
 # generated source-local caches
