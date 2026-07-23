@@ -2,7 +2,7 @@
 title: "Walking Around Elounda: Four Routes Between Villages, Hills and Coast"
 description: "A practical comparison of four walking landscapes around Elounda, with clear distinctions between village lanes, broad tracks and exposed or unmarked sections."
 pubDate: 2026-07-23
-draft: true
+draft: false
 category: "Walking Guide"
 region: "Elounda and Mirabello, Eastern Crete"
 tags:
