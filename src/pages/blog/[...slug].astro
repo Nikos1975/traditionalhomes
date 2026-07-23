@@ -198,6 +198,15 @@ const relatedPosts = (await getCollection('blog'))
     display: none;
   }
 
+  .blog-article :global(table) {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    -webkit-overflow-scrolling: touch;
+  }
+
   .blog-lead-image {
     width: min(calc(100vw - 2rem), 64rem);
     margin-left: 50%;
