@@ -39,7 +39,7 @@ When pausing or finishing a substantial task, add a dated note below with:
 - Parking is a non-inventory map marker, so its invalid Details links are suppressed in both the location card and Leaflet popup data; its external Google Maps action remains.
 - The Almond Tree Villa breadcrumb now links to the generated `/en/houses/` collection route.
 - Added exact `301` rules for `/index.php/` to `/en/` and `/index.php/en/about-us-2/` to `/en/houses/`; the existing redirect table is snapshot-tested, with no wildcard, loop, or chain.
-- Verified `node --test` passes 56 tests, `npm run build` builds 36 pages, and Cloudflare Pages local preview returns one-hop `301` responses with the exact targets and final `200` responses.
+- Verified `node --test` passes 57 tests, `npm run build` builds 36 pages, and Cloudflare Pages local preview returns one-hop `301` responses with the exact targets and final `200` responses.
 - `npm run typecheck` matches the starting baseline: the same 6 errors, 0 warnings, and 3 hints in unchanged files. No Labrica batch file adds a diagnostic.
 - No robots, sitemap, host-consolidation, Apartments, metadata, content, performance, or dependency changes were made.
 
