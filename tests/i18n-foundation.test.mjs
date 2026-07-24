@@ -305,7 +305,7 @@ describe('Stage 1 i18n foundation', () => {
     assert.match(files.atAGlance, /housePath\(slug\)/);
     assert.match(files.groupCard, /housePath\(firstMemberSlug\)/);
     assert.match(files.mapPreview, /localizedPath\(defaultLocale, 'location'\)/);
-    assert.match(files.masterLocationMap, /loc\.type === 'villa' \? villaPath\(loc\.slug\) : housePath\(loc\.slug\)/);
+    assert.match(files.masterLocationMap, /unit\.type === 'villa'[\s\S]*villaPath\(unit\.slug\)[\s\S]*housePath\(unit\.slug\)/);
     assert.match(files.singlePinMap, /location\.type === 'villa'[\s\S]*villaPath\(location\.slug\)[\s\S]*housePath\(location\.slug\)/);
     assert.match(files.unitCard, /unit\.type === "villa"[\s\S]*villaPath\(unit\.slug\)[\s\S]*housePath\(unit\.slug\)/);
     assert.match(files.housePage, /localizedCanonical\(defaultLocale, housePath\(slug\)\)/);

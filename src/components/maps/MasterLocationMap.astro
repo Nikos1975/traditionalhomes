@@ -20,6 +20,11 @@ const allImages = import.meta.glob('/src/assets/images/**/*.{webp,jpg,jpeg,png}'
 // We combine the map coordinates with the actual names/labels from your inventory
 const allLocs = locations.filter(l => l.lat && l.lng).map(loc => {
   const unit = units.find(u => u.slug === loc.slug);
+  const detailsUrl = unit
+    ? unit.type === 'villa'
+      ? villaPath(unit.slug)
+      : housePath(unit.slug)
+    : undefined;
   
   // Find the hero image in the assets folder for this specific slug
   const propertyFolder = `/src/assets/images/${loc.slug}/`;
@@ -34,6 +39,7 @@ const allLocs = locations.filter(l => l.lat && l.lng).map(loc => {
     title: unit?.name || loc.title,
     type: unit?.type ?? loc.type,
     locationLabel: unit ? `${unit.location}, ${unit.area}` : loc.locationLabel,
+    detailsUrl,
     // Use optimized path, fallback to static path, then to placeholder
     finalImage: optimizedHero?.src || loc.image || "/images/brand/placeholder.webp" 
   };
@@ -42,14 +48,13 @@ const allLocs = locations.filter(l => l.lat && l.lng).map(loc => {
 // 3. MARKER PREP
 // This goes into the actual Leaflet component to draw the pins
 const markers = allLocs.map(loc => {
-  const url = loc.type === 'villa' ? villaPath(loc.slug) : housePath(loc.slug);
   const unit = units.find(u => u.slug === loc.slug);
   return {
     id: loc.id,
     lat: loc.lat!,
     lng: loc.lng!,
     title: loc.title,
-    url: url,
+    url: loc.detailsUrl,
     bookingUrl: unit?.availabilityUrl,
     type: loc.type,
     group: loc.group,
@@ -106,7 +111,9 @@ const markers = allLocs.map(loc => {
                 <span class="text-[10px] font-medium text-stone-400 italic">{loc.distanceTag}</span>
                 <div class="flex gap-4">
                   <a href={loc.googleMapsUrl} target="_blank" class="text-[10px] font-bold uppercase tracking-widest text-stone-400 hover:text-primary transition-colors">{mapCopy.actions.map}</a>
-                  <a href={loc.type === 'villa' ? villaPath(loc.slug) : housePath(loc.slug)} class="text-[10px] font-bold uppercase tracking-widest text-primary">{mapCopy.actions.details}</a>
+                  {loc.detailsUrl && (
+                    <a href={loc.detailsUrl} class="text-[10px] font-bold uppercase tracking-widest text-primary">{mapCopy.actions.details}</a>
+                  )}
                 </div>
               </div>
             </div>
