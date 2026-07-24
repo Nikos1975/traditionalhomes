@@ -47,15 +47,35 @@ const expectedRedirects = [
 ];
 
 describe('Labrica repair batch 1', () => {
-  it('does not generate an internal details link for the non-inventory parking marker', async () => {
+  it('keeps the parking marker visible without generating an internal details link', async () => {
     const map = await readText('src/components/maps/MasterLocationMap.astro');
+    const locations = await readText('src/data/locations.ts');
     const inventory = JSON.parse(await readText('src/inventory/inventory.json'));
 
+    assert.match(
+      locations,
+      /id: "private-car-parking"[\s\S]*type: "parking"[\s\S]*title: "Shared Guest Parking"/,
+    );
     assert.equal(inventory.some((unit) => unit.slug === 'private-car-parking'), false);
+    assert.match(map, /const allLocs = locations\.filter[\s\S]*return \{[\s\S]*\.\.\.loc/);
+    assert.match(map, /const markers = allLocs\.map[\s\S]*id:\s*loc\.id[\s\S]*url:\s*loc\.detailsUrl/);
     assert.match(map, /const detailsUrl = unit[\s\S]*villaPath\(unit\.slug\)[\s\S]*housePath\(unit\.slug\)[\s\S]*undefined/);
     assert.match(map, /url:\s*loc\.detailsUrl/);
     assert.match(map, /\{loc\.detailsUrl && \([\s\S]*href=\{loc\.detailsUrl\}/);
     assert.doesNotMatch(map, /loc\.type === 'villa' \? villaPath\(loc\.slug\) : housePath\(loc\.slug\)/);
+    assert.doesNotMatch(map, /private-car-parking/);
+  });
+
+  it('keeps valid house markers linked to their generated detail routes', async () => {
+    const map = await readText('src/components/maps/MasterLocationMap.astro');
+    const inventory = JSON.parse(await readText('src/inventory/inventory.json'));
+
+    assert.equal(inventory.find((unit) => unit.slug === 'argyro')?.type, 'house');
+    assert.match(
+      map,
+      /const unit = units\.find[\s\S]*const detailsUrl = unit[\s\S]*unit\.type === 'villa'[\s\S]*villaPath\(unit\.slug\)[\s\S]*housePath\(unit\.slug\)/,
+    );
+    assert.match(map, /href=\{loc\.detailsUrl\}/);
   });
 
   it('points the villa breadcrumb to the generated houses collection route', async () => {
@@ -64,8 +84,9 @@ describe('Labrica repair batch 1', () => {
     await access(new URL('../src/pages/en/houses/index.astro', import.meta.url));
     assert.match(
       villaPage,
-      /<a href=\{localizedPath\(defaultLocale, 'houses'\)}[^>]*>Villa<\/a>/,
+      /<a href=\{localizedPath\(defaultLocale, 'houses'\)}[^>]*>Houses<\/a>/,
     );
+    assert.doesNotMatch(villaPage, />Villa<\/a>/);
     assert.doesNotMatch(villaPage, /localizedPath\(defaultLocale, 'villa'\)/);
   });
 
