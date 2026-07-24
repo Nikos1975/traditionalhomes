@@ -1,5 +1,6 @@
 ---
 title: "Where the Sea Holds Memory"
+draft: true
 testVariant: "elounda-guide-style-1"
 subtitle: "A journey through Elounda and the stone villages of eastern Crete"
 description: >
