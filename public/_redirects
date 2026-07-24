@@ -7,9 +7,11 @@
 # Source inventory: docs/seo/old-site-url-inventory.csv
 # Review map: docs/seo/redirect-map.csv
 /index.php                /en/                          301
+/index.php/               /en/                          301
 /index.php/en             /en/                          301
 /index.php/en/            /en/                          301
 /index.php/en/about-us-2  /en/houses/                   301
+/index.php/en/about-us-2/ /en/houses/                   301
 /index.php/en/about-us-2/argyro     /en/houses/argyro/     301
 /index.php/en/about-us-2/clio       /en/houses/clio/       301
 /index.php/en/about-us-2/dimitra    /en/houses/demetra/    301
