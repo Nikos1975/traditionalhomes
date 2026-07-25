@@ -51,10 +51,11 @@ export function getPropertySeo(
   poolLabel: string,
 ): PageSeoMeta {
   const titleSuffix = getSeoCopy(locale).templates.titleSuffix;
+  const bedroomLabel = unit.bedrooms === 1 ? 'bedroom' : 'bedrooms';
 
   return {
     title: `${unit.name} — ${unit.location} | ${titleSuffix}`,
-    description: `${unit.name} in ${unit.location} — sleeps ${unit.sleeps}, ${unit.bedrooms} bedrooms${
+    description: `${unit.name} in ${unit.location} — sleeps ${unit.sleeps}, ${unit.bedrooms} ${bedroomLabel}${
       unit.pool !== 'none' ? `, ${poolLabel.toLowerCase()}` : ''
     }. Traditional Cretan home in Elounda.`,
   };
