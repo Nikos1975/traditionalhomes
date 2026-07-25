@@ -4,7 +4,7 @@ title: "House Argyro"
 summary: "An 85 m2 two-bedroom stone house in Mavrikiano for up to four guests, with a sea-view veranda, courtyard kitchen, and shared guest parking nearby."
 ---
 
-# House Argyro
+## House Argyro
 
 House Argyro is a traditional Cretan stone home in the hillside village of Mavrikiano, above Elounda Bay. Built in 1905 and shaped over generations, it combines preserved architectural character with a quieter village setting close to Elounda.
 
