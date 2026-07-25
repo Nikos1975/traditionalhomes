@@ -14,7 +14,7 @@ imageAlt: "View from Mavrikiano toward Elounda Bay and Spinalonga."
 imageCaption: "View from Mavrikiano toward Elounda Bay and Spinalonga."
 imageCredit: "Photo by Milada Vigerova."
 ---
-# Mavrikiano & Mirabello Bay Exploration Guide
+## Mavrikiano & Mirabello Bay Exploration Guide
 
 ## Distances from Mavrikiano
 
