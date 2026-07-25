@@ -4,8 +4,6 @@ title: "Almond Tree Villa"
 summary: "Traditional Cretan villa with private pool in Vrouchas, above Plaka and Elounda. Sleeps 10, with 5 bedrooms, 2 bathrooms, a private 9 m × 4 m pool, reed-shaded balconies, and sea views."
 ---
 
-## Almond Tree Villa
-
 Almond Tree Villa is a traditional five-bedroom Cretan villa in Vrouchas, above Plaka and Elounda, with space for up to 10 guests. It suits families or groups who want one base for the whole stay, with room to cook, sit around the table, use the pool, and step out to the reed-shaded balconies during the day.
 
 **230 m² · Sleeps 10 · 5 bedrooms · 2 bathrooms · Private pool, 9 m × 4 m · Reed-shaded balconies · Sea views**

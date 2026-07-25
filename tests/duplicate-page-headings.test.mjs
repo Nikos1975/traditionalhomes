@@ -11,14 +11,19 @@ const routes = [
   {
     path: "blog/mavrikiano-distances-and-guide/index.html",
     url: "/blog/mavrikiano-distances-and-guide/",
+    redundantTitle: "Mavrikiano & Mirabello Bay Exploration Guide",
+    renderedTitlePattern: "Mavrikiano (?:&#x26;|&amp;) Mirabello Bay Exploration Guide",
+    verifyTableOfContents: true,
   },
   {
     path: "en/houses/argyro/index.html",
     url: "/en/houses/argyro/",
+    redundantTitle: "House Argyro",
   },
   {
     path: "en/villa/almond-tree-villa/index.html",
     url: "/en/villa/almond-tree-villa/",
+    redundantTitle: "Almond Tree Villa",
   },
 ];
 
@@ -54,5 +59,30 @@ describe("Duplicate page headings", async () => {
 
       assert.equal(h1Count, 1, `${route.url} should render exactly one H1`);
     });
+
+    it(`does not render the redundant title as an H2 for ${route.url}`, async () => {
+      const html = await readFile(join(outputPath, route.path), "utf8");
+      const renderedTitlePattern = route.renderedTitlePattern ?? route.redundantTitle;
+      const redundantH2 = new RegExp(
+        `<h2(?:\\s[^>]*)?>\\s*${renderedTitlePattern}\\s*</h2>`,
+      );
+
+      assert.doesNotMatch(html, redundantH2, `${route.url} should not render its redundant title as an H2`);
+    });
+
+    if (route.verifyTableOfContents) {
+      it(`does not include the redundant title in the article table of contents for ${route.url}`, async () => {
+        const html = await readFile(join(outputPath, route.path), "utf8");
+        const tableOfContents = html.match(
+          /<nav[^>]*aria-labelledby="article-toc-heading"[^>]*>[\s\S]*?<\/nav>/,
+        )?.[0] ?? "";
+
+        assert.doesNotMatch(
+          tableOfContents,
+          new RegExp(route.renderedTitlePattern ?? route.redundantTitle),
+          `${route.url} should not include its redundant title in the article table of contents`,
+        );
+      });
+    }
   }
 });
