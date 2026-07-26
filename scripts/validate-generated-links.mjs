@@ -50,8 +50,8 @@ try {
     statusCodes: { '4xx': 'error', '5xx': 'error' },
     linksToSkip: [
       'traditionalhomes\\.reserve-online\\.net',
-      'iwm\\.org\\.uk',
-      'hospitalitynet\\.org',
+      '^https://www\\.iwm\\.org\\.uk/history/what-was-the-battle-of-crete/?$',
+      '^https://www\\.hospitalitynet\\.org/announcement/41014450/innside-by-melia-elounda-brings-a-new-era-of-hospitality-to-crete-officially-open-innsides-first-5-star-resort-in-the-world/?$',
     ],
     urlRewriteExpressions: [{ pattern: /^https:\/\/traditional-homes\.gr/, replacement: localOrigin }],
     staticHttpServerHost: localOrigin,

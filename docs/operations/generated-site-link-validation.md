@@ -12,7 +12,7 @@ npm run seo:links
 The following narrow external exclusions are necessary because their bot protection returns 403 to automated requests. They remain normal user-facing links:
 
 - `traditionalhomes.reserve-online.net` — booking engine; owner: WebHotelier.
-- `iwm.org.uk` — Imperial War Museums article; owner: Imperial War Museums.
-- `hospitalitynet.org` — Hospitality Net article; owner: Hospitality Net.
+- `https://www.iwm.org.uk/history/what-was-the-battle-of-crete` — bot-protected Imperial War Museums article; owner: Imperial War Museums.
+- `https://www.hospitalitynet.org/announcement/41014450/innside-by-melia-elounda-brings-a-new-era-of-hospitality-to-crete-officially-open-innsides-first-5-star-resort-in-the-world` — bot-protected Hospitality Net article; owner: Hospitality Net.
 
 Do not exclude internal URLs. If a future external URL needs to be skipped because it is unreliable or inaccessible to automated checks, add a narrow exception and document the exact URL, reason, and owner in this file.

@@ -16,7 +16,7 @@
   - Added Linkinator as a development dependency and `npm run seo:links` for generated `dist` output.
   - The command recursively checks links, Astro clean URLs and fragments; requires HTTPS; warns on redirects; and treats 4xx/5xx responses as errors.
   - The default OG image now uses the existing brand hero image instead of the missing placeholder.
-  - The only external exclusions are the documented bot-protected booking engine, Imperial War Museums, and Hospitality Net domains.
+  - The only external exclusions are the bot-protected booking-engine domain and the two exact documented Imperial War Museums and Hospitality Net article URLs.
 - Verified:
   - `node --test` passed: 72 tests, 0 failures.
   - `npm run build` passed.
