@@ -64,16 +64,39 @@ const chooseStayOptions = [
   description={pageSeo.description}
   canonicalUrl={localizedCanonical(defaultLocale, localizedPath(defaultLocale))}
 >
+  <Fragment slot="head">
+    <link
+      rel="preload"
+      as="image"
+      href="/images/brand/home-hero-spinalonga-1920.webp"
+      imagesrcset="/images/brand/home-hero-spinalonga-480.webp 480w, /images/brand/home-hero-spinalonga-768.webp 768w, /images/brand/home-hero-spinalonga-1024.webp 1024w, /images/brand/home-hero-spinalonga-1440.webp 1440w, /images/brand/home-hero-spinalonga-1920.webp 1920w, /images/brand/home-hero-spinalonga-2400.webp 2400w"
+      imagesizes="100vw"
+      type="image/webp"
+      fetchpriority="high"
+    />
+  </Fragment>
 
   {/* 1. EDITORIAL HERO SECTION */}
   <section class="relative h-[85vh] min-h-[600px] w-full overflow-hidden flex items-center bg-stone-900" aria-label="Hero">
     <div class="absolute inset-0 z-0">
-      <div 
-        class="w-full h-full bg-center bg-cover scale-105 animate-slow-zoom opacity-70"
-        style="background-image: url('/images/brand/home-hero-spinalonga-2400.webp');"
-        role="img"
-        aria-label="View from the hillside properties above Elounda"
-      ></div>
+      <picture>
+        <source
+          type="image/webp"
+          srcset="/images/brand/home-hero-spinalonga-480.webp 480w, /images/brand/home-hero-spinalonga-768.webp 768w, /images/brand/home-hero-spinalonga-1024.webp 1024w, /images/brand/home-hero-spinalonga-1440.webp 1440w, /images/brand/home-hero-spinalonga-1920.webp 1920w, /images/brand/home-hero-spinalonga-2400.webp 2400w"
+          sizes="100vw"
+        />
+        <img
+          src="/images/brand/home-hero-spinalonga.jpg"
+          alt="View from the hillside properties above Elounda"
+          width="2400"
+          height="1350"
+          sizes="100vw"
+          loading="eager"
+          fetchpriority="high"
+          decoding="async"
+          class="h-full w-full object-cover object-center animate-slow-zoom opacity-70"
+        />
+      </picture>
       <div class="absolute inset-0 bg-gradient-to-r from-stone-950/80 via-stone-950/20 to-transparent"></div>
     </div>
 
@@ -313,6 +336,13 @@ const chooseStayOptions = [
 
   .animate-slow-zoom {
     animation: slowZoom 25s infinite alternate ease-in-out;
+  }
+
+  @media (max-width: 767px), (prefers-reduced-motion: reduce) {
+    .animate-slow-zoom {
+      animation: none;
+      transform: scale(1);
+    }
   }
   
   @keyframes slowZoom {
