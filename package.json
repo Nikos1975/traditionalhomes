@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
+    "image:process": "node scripts/images/process-image.mjs",
     "blog:image": "node scripts/process-blog-image.mjs",
     "blog:scaffold": "node scripts/blog/scaffold.mjs",
     "blog:status": "node scripts/blog/status.mjs",
