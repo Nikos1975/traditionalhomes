@@ -11,6 +11,7 @@
     "blog:status": "node scripts/blog/status.mjs",
     "blog:validate": "node scripts/validate-blog-article.mjs",
     "preview": "astro preview",
+    "seo:links": "node scripts/validate-generated-links.mjs",
     "typecheck": "astro check",
     "format": "prettier . --write"
   },
@@ -26,6 +27,7 @@
   "devDependencies": {
     "@astrojs/check": "^0.9.8",
     "autoprefixer": "^10.4.18",
+    "linkinator": "^7.6.1",
     "postcss": "^8.4.35",
     "prettier": "^3.3.3",
     "prettier-plugin-astro": "^0.14.1",

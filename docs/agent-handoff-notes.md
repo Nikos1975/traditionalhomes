@@ -1,5 +1,30 @@
 # Agent Handoff Notes
 
+### 2026-07-26 - Generated-site link validation
+
+- Goal: add a repeatable link and fragment check for the built Astro site.
+- Files changed:
+  - `package.json`
+  - `package-lock.json`
+  - `scripts/validate-generated-links.mjs`
+  - `tests/i18n-foundation.test.mjs`
+  - `src/layouts/Base.astro`
+  - `src/i18n/locales/en/seo.json`
+  - `docs/operations/generated-site-link-validation.md`
+  - `docs/agent-handoff-notes.md`
+- What changed:
+  - Added Linkinator as a development dependency and `npm run seo:links` for generated `dist` output.
+  - The command recursively checks links, Astro clean URLs and fragments; requires HTTPS; warns on redirects; and treats 4xx/5xx responses as errors.
+  - The default OG image now uses the existing brand hero image instead of the missing placeholder.
+  - The only external exclusions are the bot-protected booking-engine domain and the two exact documented Imperial War Museums and Hospitality Net article URLs.
+- Verified:
+  - `node --test` passed: 72 tests, 0 failures.
+  - `npm run build` passed.
+  - `npm run typecheck` returned the expected baseline: 6 errors, 0 warnings, 3 hints.
+  - `npm run seo:links` passed after fixing the OG fallback and using the generated-site server wrapper.
+- Remaining:
+  - None after the final verification commands complete.
+
 Use this file when work becomes multi-step, paused, or important enough that another agent may need to continue it.
 
 Keep notes short and factual. Do not duplicate every git diff. Record the decisions, current state, blockers, and the next useful action.

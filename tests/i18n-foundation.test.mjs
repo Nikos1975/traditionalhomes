@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { readFile } from 'node:fs/promises';
+import { access, readFile } from 'node:fs/promises';
 import { describe, it } from 'node:test';
 
 const readText = (path) => readFile(new URL(`../${path}`, import.meta.url), 'utf8');
@@ -94,6 +94,15 @@ describe('Stage 1 i18n foundation', () => {
       assert.match(page, new RegExp(`getPageSeo\\(defaultLocale, '${key}'\\)`));
       assert.doesNotMatch(page, /metaDescription(?:Home|Houses|Location|Contact|Faq|Policies|About)/);
     }
+  });
+
+  it('uses an existing default Open Graph image', async () => {
+    const seoCopy = await readJson('src/i18n/locales/en/seo.json');
+    const base = await readText('src/layouts/Base.astro');
+
+    assert.equal(seoCopy.defaultOgImage, '/images/brand/home-hero-spinalonga-1024.webp');
+    assert.match(base, /ogImage = '\/images\/brand\/home-hero-spinalonga-1024\.webp'/);
+    await access(new URL('../public/images/brand/home-hero-spinalonga-1024.webp', import.meta.url));
   });
 
   it('formats dynamic English SEO through helpers without moving facts into translations', async () => {
