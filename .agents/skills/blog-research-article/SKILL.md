@@ -11,6 +11,7 @@ Use this skill for historical, cultural, architectural, or place-based articles 
 
 Before writing, read:
 
+- `BLOG_ORCHESTRATOR.md`
 - `AGENTS.md`
 - `CLAUDE.md`
 - `.ai/brand/website-brand-style-guide.md`

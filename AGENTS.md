@@ -2,6 +2,8 @@
 
 Use `CLAUDE.md` as the canonical project instruction file.
 
+For every blog post, area guide, village guide, historical article, blog revision, blog audit, publication, or blog-image task, read `BLOG_ORCHESTRATOR.md` before researching, drafting, editing, validating, processing media, or publishing.
+
 For all multilingual work, follow docs/i18n/00_I18N_MASTER_PLAN.md before changing routes, pages, or translation files.
 
 When structural routes, sections, components, data flows, or user-facing flows change, follow the documentation update rules in `CLAUDE.md`.

@@ -31,7 +31,7 @@ async function exists(filePath) {
 
 function templateFiles(topic, slug, runId, distinctAngle) {
   return {
-    "topic-brief.md": `# Topic Brief: ${topic}\n\n- Slug: \`${slug}\`\n- Intended reader:\n- Distinct angle: ${distinctAngle ?? ""}\n- Questions to investigate:\n- Required internal links:\n- Owned-image location and permission:\n`,
+    "topic-brief.md": `# Objective\n\n- Topic: ${topic}\n- Slug: \`${slug}\`\n\n# Task Mode\n\n- Initial mode: new-article\n\n# Intended Reader\n\n- \n\n# Article Type\n\n- \n\n# Angle and Geographic Scope\n\n- Distinct angle: ${distinctAngle ?? ""}\n- Geographic scope: \n\n# Questions and Claims to Investigate\n\n- \n\n# Facts Supplied by Nikos\n\n- \n\n# Source Requirements\n\n- \n\n# Claims That Must Not Be Published Without Verification\n\n- \n\n# Image Plan and Rights\n\n- Owned-image location, licence, permission, attribution, and crop approval: \n\n# Required Internal Links\n\n- \n\n# Target Article Path\n\n- \`src/content/blog/${slug}.md\`\n\n# Deliverables\n\n- \n\n# Manual Approval Gates\n\n- Editorial approval is required before publication.\n\n# Explicit Exclusions\n\n- \n\n# Current Status\n\n- Topic brief scaffolded; research has not started.\n\n# Next Allowed Action\n\n- Complete the topic brief, then research and record sources and claims.\n`,
     "source-notes.md":
       "# Source Notes\n\n| Claim | Supporting source | URL | Status | Reasoning |\n| --- | --- | --- | --- | --- |\n",
     "sources.json": "[]\n",

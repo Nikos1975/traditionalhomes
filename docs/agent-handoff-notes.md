@@ -1,5 +1,12 @@
 # Agent Handoff Notes
 
+### 2026-07-27 - Persistent blog orchestrator
+
+- Added root `BLOG_ORCHESTRATOR.md` as the routing entry point for blog, guide, audit, publication, and blog-image work; it coordinates existing canonical rules without duplicating them.
+- Added concise mandatory references from `AGENTS.md`, `CLAUDE.md`, and the blog research skill, and expanded new topic-brief scaffolds while preserving edited briefs during resume.
+- The orchestrator uses a staged read model: a user topic may create a new scaffold before its research records exist, while existing-content work requires the available research record before edits or publication work.
+- No articles, public images, routes, pages, validators, or publication state changed. Verified: 97 Node tests, build, generated-link validation, diff check, and the unchanged five-error/two-hint typecheck baseline.
+
 ### 2026-07-27 - Image pipeline PR acceptance fixes
 
 - Added quality-76 defaults for `property-card`, `gallery`, and `social-image`; card and gallery still require explicit widths.
