@@ -79,6 +79,8 @@ Before finishing, report whether documentation was updated or why no documentati
 
 # Blog and guide rules
 
+For every blog post, area guide, village guide, historical article, blog revision, blog audit, publication, or blog-image task, read `BLOG_ORCHESTRATOR.md` before researching, drafting, editing, validating, processing media, or publishing.
+
 - Keep writing observational, grounded, useful, and non-promotional
 - If a fact is uncertain, leave it out or mark it for verification
 - Do not turn blog posts or guides into booking copy
