@@ -147,8 +147,8 @@ const chatPopupHtml = `<p style="position:fixed;bottom:5rem;right:1.5rem;backgro
         }
       });
 
-      const mobileBookingBar = document.querySelector<HTMLFormElement>('[data-mobile-booking-bar]');
-      const pageBookingForm = document.querySelector<HTMLFormElement>('[data-booking-handoff]');
+      const mobileBookingBar = document.querySelector('[data-mobile-booking-bar]');
+      const pageBookingForm = document.querySelector('[data-booking-handoff]');
 
       if (mobileBookingBar && mobileBookingBar.dataset.initialized !== 'true') {
         mobileBookingBar.dataset.initialized = 'true';
@@ -157,9 +157,9 @@ const chatPopupHtml = `<p style="position:fixed;bottom:5rem;right:1.5rem;backgro
         const todayValue = new Date(today.getTime() - today.getTimezoneOffset() * 60000)
           .toISOString()
           .slice(0, 10);
-        const checkin = mobileBookingBar.querySelector<HTMLInputElement>('[data-mobile-checkin]');
-        const adults = mobileBookingBar.querySelector<HTMLInputElement>('[data-mobile-adults]');
-        const room = mobileBookingBar.querySelector<HTMLInputElement>('[data-mobile-room]');
+        const checkin = mobileBookingBar.querySelector('[data-mobile-checkin]');
+        const adults = mobileBookingBar.querySelector('[data-mobile-adults]');
+        const room = mobileBookingBar.querySelector('[data-mobile-room]');
 
         if (checkin) checkin.min = todayValue;
 
@@ -167,7 +167,7 @@ const chatPopupHtml = `<p style="position:fixed;bottom:5rem;right:1.5rem;backgro
           mobileBookingBar.action = pageBookingForm.action;
 
           const roomCode = pageBookingForm.dataset.roomCode || '';
-          const maxAdults = pageBookingForm.querySelector<HTMLInputElement>('input[name="adults"]')?.max;
+          const maxAdults = pageBookingForm.querySelector('input[name="adults"]')?.max;
 
           if (room) {
             room.value = roomCode;
@@ -182,14 +182,11 @@ const chatPopupHtml = `<p style="position:fixed;bottom:5rem;right:1.5rem;backgro
         }
 
         mobileBookingBar.addEventListener('submit', () => {
-          const analyticsWindow = window as Window & {
-            dataLayer?: Array<Record<string, unknown>>;
-          };
           const itemName = pageBookingForm?.dataset.itemName || bookingCopy.defaultItemName;
           const roomCode = pageBookingForm?.dataset.roomCode || undefined;
 
-          analyticsWindow.dataLayer = analyticsWindow.dataLayer || [];
-          analyticsWindow.dataLayer.push({
+          window.dataLayer = window.dataLayer || [];
+          window.dataLayer.push({
             event: 'select_item',
             ecommerce: {
               items: [
