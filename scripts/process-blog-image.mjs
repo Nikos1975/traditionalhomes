@@ -3,6 +3,7 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import process from 'node:process';
+import { inspectRaster, writeWebpCandidate } from './images/core.mjs';
 
 const ROOT = process.cwd();
 const BLOG_CONTENT_DIR = path.join(ROOT, 'src', 'content', 'blog');
@@ -171,12 +172,6 @@ async function main() {
     if (!args[key]) throw new Error(`Missing required --${key} option.`);
   }
 
-  const sharpModule = await import('sharp').catch(() => null);
-  if (!sharpModule?.default) {
-    throw new Error('The "sharp" package is required. Install it before running this script.');
-  }
-  const sharp = sharpModule.default;
-
   const contentId = await resolveBlogSlug(args.slug);
   const slug = safeSegment(contentId, 'slug');
   const imageName = safeSegment(args.name, 'name');
@@ -191,11 +186,12 @@ async function main() {
     throw new Error(`Source image not found: ${sourcePath}`);
   }
 
-  const image = sharp(sourcePath, { failOn: 'warning' });
-  const metadata = await image.metadata();
-
-  if (!metadata.width || !metadata.height) {
-    throw new Error('Could not read source image dimensions.');
+  let metadata;
+  try {
+    metadata = await inspectRaster(sourcePath);
+  } catch (error) {
+    if (error?.code === 'ERR_MODULE_NOT_FOUND') throw new Error('The "sharp" package is required. Install it before running this script.');
+    throw error;
   }
 
   if (metadata.width < 2400) {
@@ -229,11 +225,12 @@ async function main() {
   await fs.copyFile(sourcePath, copiedSourcePath);
 
   for (const width of generatedWidths) {
-    await sharp(sourcePath)
-      .rotate()
-      .resize({ width, withoutEnlargement: true })
-      .webp({ quality: QUALITY })
-      .toFile(path.join(outputDir, `${imageName}-${width}.webp`));
+    await writeWebpCandidate({
+      sourcePath,
+      width,
+      quality: QUALITY,
+      outputPath: path.join(outputDir, `${imageName}-${width}.webp`),
+    });
   }
 
   console.log(`Copied source: ${path.relative(ROOT, copiedSourcePath)}`);

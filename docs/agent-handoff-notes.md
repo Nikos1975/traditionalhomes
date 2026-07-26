@@ -1,5 +1,18 @@
 # Agent Handoff Notes
 
+### 2026-07-27 - Image pipeline PR acceptance fixes
+
+- Added quality-76 defaults for `property-card`, `gallery`, and `social-image`; card and gallery still require explicit widths.
+- `social-image` now requires exactly one width, positive height, and crop review; it uses cover resizing with a validated Sharp position (default `center`) and reports exact dimensions.
+- Width parsing now rejects any malformed token, and lazy Sharp loading gives both image CLIs the stable missing-dependency error.
+- Added focused regression coverage for defaults, width validation, social dimensions/validation, and missing-Sharp CLI behavior. No production images, AVIF, or migrations were added.
+
+### 2026-07-27 - Reusable raster-image pipeline skill
+
+- Added `.agents/skills/traditional-homes-image-pipeline/SKILL.md`, profile-driven WebP processing, structured reporting, and `npm run image:process` without production image migration or page changes.
+- `npm run blog:image` remains unchanged and is regression-tested for CLI forwarding, slug handling, source copy, generated files, refusal behavior, warnings, and snippet output.
+- Future work: use the skill for raster-image tasks; measure property-card/gallery rendered widths before assigning defaults.
+
 ### 2026-07-26 - Generated-site link validation
 
 - Goal: add a repeatable link and fragment check for the built Astro site.
