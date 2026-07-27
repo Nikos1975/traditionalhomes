@@ -110,6 +110,7 @@ const chatPopupHtml = `<p style="position:fixed;bottom:5rem;right:1.5rem;backgro
     <button
       id="chat-trigger"
       aria-label={contactCopy.openChatLabel}
+      aria-expanded="false"
       title={contactCopy.chatTitle}
     >
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -118,18 +119,37 @@ const chatPopupHtml = `<p style="position:fixed;bottom:5rem;right:1.5rem;backgro
     </button>
 
     <script define:vars={{ chatPopupHtml, bookingCopy }}>
-      document.addEventListener('astro:page-load', () => {
-        document.getElementById('chat-trigger')?.addEventListener('click', () => {
-          const loaded = document.getElementById('chat-widget');
-          if (!loaded) {
-            const div = document.createElement('div');
-            div.id = 'chat-widget';
-            div.innerHTML = chatPopupHtml;
-            document.body.appendChild(div);
-            setTimeout(() => div.remove(), 5000);
-          }
-        });
+      const initChatTrigger = () => {
+        const trigger = document.getElementById('chat-trigger');
+        if (!(trigger instanceof HTMLButtonElement)) return;
+        if (trigger.dataset.initialized === 'true') return;
 
+        trigger.dataset.initialized = 'true';
+        trigger.setAttribute('aria-expanded', document.getElementById('chat-widget') ? 'true' : 'false');
+
+        trigger.addEventListener('click', () => {
+          const loaded = document.getElementById('chat-widget');
+          if (loaded) return;
+
+          const div = document.createElement('div');
+          div.id = 'chat-widget';
+          div.innerHTML = chatPopupHtml;
+          document.body.appendChild(div);
+          trigger.setAttribute('aria-expanded', 'true');
+
+          setTimeout(() => {
+            if (document.getElementById('chat-widget') === div) {
+              div.remove();
+              trigger.setAttribute('aria-expanded', 'false');
+            }
+          }, 5000);
+        });
+      };
+
+      initChatTrigger();
+      document.addEventListener('astro:page-load', initChatTrigger);
+
+      document.addEventListener('astro:page-load', () => {
         const reveals = document.querySelectorAll('.reveal');
         if (reveals.length && 'IntersectionObserver' in window) {
           const obs = new IntersectionObserver(

@@ -2,14 +2,13 @@ import assert from 'node:assert/strict';
 import { execFile } from 'node:child_process';
 import { mkdtemp, readFile, rm, writeFile } from 'node:fs/promises';
 import { join, relative } from 'node:path';
-import { tmpdir } from 'node:os';
 import { promisify } from 'node:util';
 import { after, describe, it } from 'node:test';
 
 const execFileAsync = promisify(execFile);
 
 describe('Generated browser booking script', async () => {
-  const temporaryDirectory = await mkdtemp(join(tmpdir(), 'traditional-homes-browser-script-'));
+  const temporaryDirectory = await mkdtemp(join(process.cwd(), 'traditional-homes-browser-script-'));
   const configPath = join(temporaryDirectory, 'astro.config.mjs');
   const cachePath = join(temporaryDirectory, 'cache');
   const outputPath = join(temporaryDirectory, 'dist');

@@ -1,5 +1,11 @@
 # Agent Handoff Notes
 
+### 2026-07-27 - Chat popup static-load initialization
+
+- Fixed the floating chat trigger so its idempotent initializer runs on ordinary static page loads and again on `astro:page-load` when client navigation is present. The popup remains localized, retains its mailto link and five-second dismissal, avoids duplicates, and updates `aria-expanded` while visible.
+- Added generated-browser-script coverage for immediate initialization, repeat initialization, duplicate prevention, popup dismissal/reopening, localized popup markup, and unchanged mobile booking-bar setup.
+- Physical-device review on a Xiaomi Redmi Note 14 Pro using Chrome on Android passed: one tap opened the localized popup above the mobile booking bar; the email link worked; repeated taps created no duplicates; five-second dismissal reset `aria-expanded` and allowed reopening; ARRIVAL, ADULTS, and CHECK remained usable; no horizontal overflow or visible browser error was observed.
+
 ### 2026-07-27 - Blog mobile swipe and article availability CTA
 
 - Added pointer-event swipe navigation to the featured blog slider while retaining the existing buttons, thumbnails, counter, keyboard navigation, wrapping, reduced-motion rules, and no-autoplay behaviour. The featured stage uses `touch-action: pan-y`; a confirmed horizontal swipe must exceed a 48 px threshold and vertical movement, and only its immediately following article-link click is suppressed.
