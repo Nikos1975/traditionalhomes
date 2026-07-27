@@ -61,6 +61,7 @@ describe('shared blog article availability CTA', () => {
   it('uses the canonical houses route and configured booking URL with safe external-link attributes', async () => {
     const source = await readSource('src/pages/blog/[...slug].astro');
 
+    assert.match(source, /See the traditional houses in Mavrikiano, or check availability across the collection\./);
     assert.match(source, /href="\/en\/houses\/"/);
     assert.match(source, /href=\{siteCopy\.bookingEngineUrl\}/);
     assert.match(source, /target="_blank"/);
