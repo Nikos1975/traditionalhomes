@@ -1,5 +1,12 @@
 # Agent Handoff Notes
 
+### 2026-07-27 - Blog mobile swipe and article availability CTA
+
+- Added pointer-event swipe navigation to the featured blog slider while retaining the existing buttons, thumbnails, counter, keyboard navigation, wrapping, reduced-motion rules, and no-autoplay behaviour. The featured stage uses `touch-action: pan-y`; a confirmed horizontal swipe must exceed a 48 px threshold and vertical movement, and only its immediately following article-link click is suppressed.
+- Added the single shared availability CTA after rendered article content and before Related Reading. It links to `/en/houses/` and uses `siteCopy.bookingEngineUrl` for the external availability action. No article Markdown, frontmatter, publication state, i18n file, locale route, hreflang output, sitemap, or booking configuration changed.
+- Added `tests/blog-ui-interactions.test.mjs`; `node --test` exited 0 with 111 passing assertions, including the existing i18n foundation suite. `git diff --check` passed.
+- Validation blocker: on Windows, Astro cannot replace the generated `node_modules/.astro/data-store.json` because it is locked by a non-Node process (`EPERM` on the atomic rename). Both `npm run typecheck` and `npm run build` stop before Astro diagnostics. An exact generated-cache removal was attempted after confirming no Node process held it, but the locked file could not be unlinked. `npm run seo:links` also cannot run because the installed dependencies lack `linkinator`. Responsive browser review is also pending: port 4321 belongs to a separate `traditional-homes-elounda-publication` preview, and an isolated dev-server attempt was interrupted by the command host before it could be inspected.
+
 ### 2026-07-27 - Publication-gate hardening
 
 - Hardened the existing publication skill from the verified publication acceptance case without adding an article-specific workflow or a second publication skill.

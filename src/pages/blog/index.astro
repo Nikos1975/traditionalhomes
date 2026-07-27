@@ -61,7 +61,7 @@ const postsByCategory = categories.map(category => ({
         {featuredPosts.length > 0 && (
           <section class="blog-featured-hero" aria-labelledby="featured-article-heading" data-blog-hero>
             <div class="relative overflow-hidden rounded-xl border border-stone-200 bg-stone-100 shadow-sm">
-              <div class="blog-featured-stage relative min-h-[34rem] overflow-hidden bg-stone-200 md:min-h-[38rem]">
+              <div class="blog-featured-stage relative min-h-[34rem] overflow-hidden bg-stone-200 md:min-h-[38rem]" data-blog-featured-stage>
                 {featuredPosts.map((post, index) => (
                   <article
                     class="blog-featured-slide absolute inset-0"
@@ -221,12 +221,23 @@ const postsByCategory = categories.map(category => ({
   const hero = document.querySelector('[data-blog-hero]');
 
   if (hero instanceof HTMLElement) {
+    type PointerStart = {
+      pointerId: number;
+      startX: number;
+      startY: number;
+    };
+
     const slides = Array.from(hero.querySelectorAll('[data-blog-slide]'));
     const thumbs = Array.from(hero.querySelectorAll('[data-blog-thumb]'));
     const counter = hero.querySelector('[data-blog-counter]');
     const previous = hero.querySelector('[data-blog-prev]');
     const next = hero.querySelector('[data-blog-next]');
+    const stage = hero.querySelector('[data-blog-featured-stage]');
+    const SWIPE_THRESHOLD = 48;
     let activeIndex = 0;
+    let pointerStart: PointerStart | null = null;
+    let suppressNextLinkClick = false;
+    let suppressLinkClickTimer = 0;
 
     const setActiveSlide = (nextIndex) => {
       if (slides.length === 0) return;
@@ -266,6 +277,68 @@ const postsByCategory = categories.map(category => ({
         setActiveSlide(activeIndex + 1);
       }
     });
+
+    if (stage instanceof HTMLElement) {
+      const clearPointer = event => {
+        const start = pointerStart;
+        if (!start || start.pointerId !== event.pointerId) return;
+
+        if (stage.hasPointerCapture(event.pointerId)) {
+          stage.releasePointerCapture(event.pointerId);
+        }
+
+        pointerStart = null;
+      };
+
+      stage.addEventListener('pointerdown', event => {
+        if (event.pointerType !== 'touch' && event.pointerType !== 'pen') return;
+
+        pointerStart = {
+          pointerId: event.pointerId,
+          startX: event.clientX,
+          startY: event.clientY,
+        };
+        stage.setPointerCapture(event.pointerId);
+      });
+
+      stage.addEventListener('pointermove', event => {
+        if (pointerStart?.pointerId !== event.pointerId) return;
+      });
+
+      stage.addEventListener('pointerup', event => {
+        const start = pointerStart;
+        if (!start || start.pointerId !== event.pointerId) return;
+
+        const deltaX = event.clientX - start.startX;
+        const deltaY = event.clientY - start.startY;
+        const isHorizontalSwipe =
+          Math.abs(deltaX) >= SWIPE_THRESHOLD && Math.abs(deltaX) > Math.abs(deltaY);
+
+        clearPointer(event);
+
+        if (!isHorizontalSwipe) return;
+
+        suppressNextLinkClick = true;
+        window.clearTimeout(suppressLinkClickTimer);
+        suppressLinkClickTimer = window.setTimeout(() => {
+          suppressNextLinkClick = false;
+        }, 400);
+        setActiveSlide(activeIndex + (deltaX < 0 ? 1 : -1));
+      });
+
+      stage.addEventListener('pointercancel', clearPointer);
+      stage.addEventListener('lostpointercapture', clearPointer);
+
+      hero.addEventListener('click', event => {
+        const link = event.target instanceof Element ? event.target.closest('a[href]') : null;
+        if (!suppressNextLinkClick || !link || !stage.contains(link)) return;
+
+        event.preventDefault();
+        event.stopPropagation();
+        suppressNextLinkClick = false;
+        window.clearTimeout(suppressLinkClickTimer);
+      }, true);
+    }
   }
 </script>
 
@@ -277,6 +350,10 @@ const postsByCategory = categories.map(category => ({
       opacity 320ms ease,
       transform 320ms ease,
       visibility 320ms ease;
+  }
+
+  .blog-featured-stage {
+    touch-action: pan-y;
   }
 
   .blog-featured-slide[aria-hidden="true"] {
