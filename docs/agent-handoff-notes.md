@@ -1,5 +1,12 @@
 # Agent Handoff Notes
 
+### 2026-07-27 - Blog lifecycle hardening
+
+- Added canonical procedures for draft revision, read-only content audit, and controlled publication; the existing research and image skills remain the new-article and image-only procedures.
+- Reduced `BLOG_ORCHESTRATOR.md` to mode routing and universal manual controls, and added `docs/operations/blog-lifecycle.md` as the concise human lifecycle.
+- Added contract tests for five-mode routing, manual/no-auto-publication controls, publication gates, audit read-only default, draft preservation, and duplicate blog-skill prevention.
+- No article, article frontmatter, research packet, public image, route, or publication state changed.
+
 ### 2026-07-27 - Elounda and Mirabello Bay publication
 
 - Published `/blog/elounda-and-mirabello-bay/` after manual editorial approval.
