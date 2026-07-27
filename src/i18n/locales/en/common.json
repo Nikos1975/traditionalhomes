@@ -134,6 +134,110 @@
       },
       "fallbackSubtitle": "Traditional Home",
       "unavailable": "Map coordinates unavailable"
+    },
+    "property": {
+      "labels": {
+        "sleeps": "Sleeps",
+        "size": "Size",
+        "bedroom": "Bedroom",
+        "bedrooms": "Bedrooms",
+        "bathroom": "Bathroom",
+        "bathrooms": "Bathrooms",
+        "layout": "Layout",
+        "view": "View",
+        "access": "Access",
+        "parking": "Parking",
+        "practicalUse": "Practical Use",
+        "outdoorSpace": "Outdoor Space",
+        "pool": "Pool",
+        "wifi": "Wi-Fi",
+        "pets": "Pets",
+        "included": "Included",
+        "seaView": "Sea view"
+      },
+      "basics": {
+        "house": "House Basics",
+        "villa": "Villa Basics"
+      },
+      "card": {
+        "photoComingSoon": "Photo Coming Soon",
+        "villa": "Villa",
+        "upTo": "Up to",
+        "guests": "Guests",
+        "editorNote": "Editor's Note:",
+        "details": "Details",
+        "checkDates": "Check dates",
+        "features": {
+          "directSeaView": "Direct Sea View",
+          "directSeaViewPrivatePool": "Direct Sea View · Private Pool",
+          "sharedPool": "Shared Pool",
+          "privatePool": "Private Pool",
+          "firstFloor": "First Floor",
+          "groundFloor": "Ground Floor",
+          "privateVillaVrouchas": "Private Villa · Vrouchas"
+        }
+      },
+      "group": {
+        "privateEstate": "Private Estate",
+        "includes": "Includes:",
+        "upTo": "Up to",
+        "guests": "Guests",
+        "bedrooms": "Bedrooms",
+        "exclusiveSharedPool": "Exclusive Estate Pool Area",
+        "privatePoolsIncluded": "Private Pools Included",
+        "editorNote": "Editor's Note:",
+        "view": "View",
+        "checkDates": "Check Dates"
+      },
+      "detail": {
+        "breadcrumbs": {
+          "ariaLabel": "Breadcrumb",
+          "home": "Home",
+          "houses": "Houses"
+        },
+        "sections": {
+          "propertyPhotosAria": "Property photos",
+          "atAGlance": "At a Glance",
+          "aboutHouseAria": "About this house",
+          "aboutVillaAria": "About this villa",
+          "amenitiesAria": "Amenities",
+          "included": "What's included",
+          "locationArrivalAria": "Location and arrival",
+          "locationArrival": "Location & Arrival",
+          "neighbouringHouses": "Neighbouring Houses",
+          "suggestedNearbyCombinationsAria": "Suggested nearby combinations",
+          "suggestedCombinations": "Traveling together? Suggested nearby combinations"
+        },
+        "booking": {
+          "checkDates": "Check dates",
+          "checkThisHouse": "Check this house",
+          "description": "Choose dates and continue to live availability for this property.",
+          "askQuestion": "Ask a Question",
+          "beforeYouBook": "Before you book"
+        },
+        "location": {
+          "howToArrive": "How to arrive",
+          "sharedGuestParking": "Shared guest parking",
+          "houseEntrance": "House entrance",
+          "locationNote": "Location note",
+          "locationDetails": "Location details",
+          "viewVillaMap": "View villa map",
+          "openInGoogleMaps": "Open in Google Maps"
+        },
+        "nearby": {
+          "includes": "Includes:",
+          "view": "View",
+          "sleeps": "Sleeps",
+          "poolViewOnly": "Pool view only",
+          "privateDippingPool": "Private dipping pool",
+          "privatePool": "Private pool",
+          "sharedPool": "Shared pool"
+        },
+        "guide": {
+          "vrouchasTitle": "Vrouchas Area Guide",
+          "practicalAreaDetails": "Practical area details"
+        }
+      }
     }
   }
 }

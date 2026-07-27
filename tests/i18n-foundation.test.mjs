@@ -280,6 +280,133 @@ describe('Stage 1 i18n foundation', () => {
     assert.match(singlePinMap, /mapCopy\.actions\.viewMap/);
   });
 
+  it('defines exact reusable English property interface copy without inventory facts', async () => {
+    const common = await readJson('src/i18n/locales/en/common.json');
+
+    assert.deepEqual(common.ui.property, {
+      labels: {
+        sleeps: 'Sleeps',
+        size: 'Size',
+        bedroom: 'Bedroom',
+        bedrooms: 'Bedrooms',
+        bathroom: 'Bathroom',
+        bathrooms: 'Bathrooms',
+        layout: 'Layout',
+        view: 'View',
+        access: 'Access',
+        parking: 'Parking',
+        practicalUse: 'Practical Use',
+        outdoorSpace: 'Outdoor Space',
+        pool: 'Pool',
+        wifi: 'Wi-Fi',
+        pets: 'Pets',
+        included: 'Included',
+        seaView: 'Sea view',
+      },
+      basics: { house: 'House Basics', villa: 'Villa Basics' },
+      card: {
+        photoComingSoon: 'Photo Coming Soon',
+        villa: 'Villa',
+        upTo: 'Up to',
+        guests: 'Guests',
+        editorNote: "Editor's Note:",
+        details: 'Details',
+        checkDates: 'Check dates',
+        features: {
+          directSeaView: 'Direct Sea View',
+          directSeaViewPrivatePool: 'Direct Sea View · Private Pool',
+          sharedPool: 'Shared Pool',
+          privatePool: 'Private Pool',
+          firstFloor: 'First Floor',
+          groundFloor: 'Ground Floor',
+          privateVillaVrouchas: 'Private Villa · Vrouchas',
+        },
+      },
+      group: {
+        privateEstate: 'Private Estate',
+        includes: 'Includes:',
+        upTo: 'Up to',
+        guests: 'Guests',
+        bedrooms: 'Bedrooms',
+        exclusiveSharedPool: 'Exclusive Estate Pool Area',
+        privatePoolsIncluded: 'Private Pools Included',
+        editorNote: "Editor's Note:",
+        view: 'View',
+        checkDates: 'Check Dates',
+      },
+      detail: {
+        breadcrumbs: { ariaLabel: 'Breadcrumb', home: 'Home', houses: 'Houses' },
+        sections: {
+          propertyPhotosAria: 'Property photos',
+          atAGlance: 'At a Glance',
+          aboutHouseAria: 'About this house',
+          aboutVillaAria: 'About this villa',
+          amenitiesAria: 'Amenities',
+          included: "What's included",
+          locationArrivalAria: 'Location and arrival',
+          locationArrival: 'Location & Arrival',
+          neighbouringHouses: 'Neighbouring Houses',
+          suggestedNearbyCombinationsAria: 'Suggested nearby combinations',
+          suggestedCombinations: 'Traveling together? Suggested nearby combinations',
+        },
+        booking: {
+          checkDates: 'Check dates',
+          checkThisHouse: 'Check this house',
+          description: 'Choose dates and continue to live availability for this property.',
+          askQuestion: 'Ask a Question',
+          beforeYouBook: 'Before you book',
+        },
+        location: {
+          howToArrive: 'How to arrive',
+          sharedGuestParking: 'Shared guest parking',
+          houseEntrance: 'House entrance',
+          locationNote: 'Location note',
+          locationDetails: 'Location details',
+          viewVillaMap: 'View villa map',
+          openInGoogleMaps: 'Open in Google Maps',
+        },
+        nearby: {
+          includes: 'Includes:',
+          view: 'View',
+          sleeps: 'Sleeps',
+          poolViewOnly: 'Pool view only',
+          privateDippingPool: 'Private dipping pool',
+          privatePool: 'Private pool',
+          sharedPool: 'Shared pool',
+        },
+        guide: { vrouchasTitle: 'Vrouchas Area Guide', practicalAreaDetails: 'Practical area details' },
+      },
+    });
+
+    assert.doesNotMatch(JSON.stringify(common.ui.property), /argyro|almond-tree-villa|bookingId|roomCode|coordinates/i);
+    assert.doesNotMatch(JSON.stringify(common.ui.property), /bookingInstruction/);
+
+    const atAGlance = await readText('src/components/AtAGlance.astro');
+    const unitCard = await readText('src/components/UnitCard.astro');
+    const groupCard = await readText('src/components/GroupCard.astro');
+    const housePage = await readText('src/pages/en/houses/[slug].astro');
+    const villaPage = await readText('src/pages/en/villa/[slug].astro');
+    const blogIndex = await readText('src/pages/blog/index.astro');
+    const blogPost = await readText('src/pages/blog/[...slug].astro');
+    const base = await readText('src/layouts/Base.astro');
+    const translate = await readText('src/i18n/translate.ts');
+
+    for (const component of [atAGlance, unitCard, groupCard]) {
+      assert.match(component, /locale\?: Locale/);
+      assert.match(component, /locale = defaultLocale/);
+      assert.match(component, /getCommonCopy\(locale\)\.ui\.property/);
+    }
+
+    assert.match(housePage, /getCommonCopy\(defaultLocale\)\.ui\.property/);
+    assert.match(villaPage, /getCommonCopy\(defaultLocale\)\.ui\.property/);
+    assert.match(blogIndex, /href=\{`\/blog\/\$\{post\.id\}\/`\}/);
+    assert.match(blogPost, /href="\/blog\/"/);
+    assert.doesNotMatch(blogIndex, /\/en\/blog\//);
+    assert.doesNotMatch(blogPost, /\/en\/blog\//);
+    assert.doesNotMatch(base, /rel="alternate"|hreflang|language selector/i);
+    assert.match(translate, /const dictionaries = \{\s*en:/);
+  });
+
   it('uses route helpers for repeated property and map links without changing blog routes', async () => {
     const files = {
       atAGlance: await readText('src/components/AtAGlance.astro'),

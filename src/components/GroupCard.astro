@@ -1,6 +1,8 @@
 ---
 import { Image } from 'astro:assets';
+import { defaultLocale, type Locale } from '../i18n/config';
 import { housePath } from '../i18n/routes';
+import { getCommonCopy } from '../i18n/translate';
 import type { ListingItem } from '../utils/filters';
 import inventory from '../inventory/inventory.json';
 import type { InventoryUnit } from '../types';
@@ -8,9 +10,11 @@ import type { InventoryUnit } from '../types';
 interface Props {
   group: ListingItem;
   priority?: boolean;
+  locale?: Locale;
 }
 
-const { group, priority = false } = Astro.props;
+const { group, priority = false, locale = defaultLocale } = Astro.props;
+const propertyCopy = getCommonCopy(locale).ui.property;
 
 // 1. DYNAMIC IMAGE LOADING
 const allImages = import.meta.glob('/src/assets/images/**/*.{webp,jpg,jpeg,png}', { eager: true });
@@ -91,7 +95,7 @@ const detailPathB = secondMemberSlug ? housePath(secondMemberSlug) : '#';
 
     {/* PREMIUM ESTATE BADGE */}
     <span class="absolute top-4 right-4 px-3 py-1.5 bg-stone-900/80 text-white text-[9px] uppercase font-bold tracking-[0.2em] rounded-full shadow-md backdrop-blur-md">
-      Private Estate
+      {propertyCopy.group.privateEstate}
     </span>
   </div>
 
@@ -109,7 +113,7 @@ const detailPathB = secondMemberSlug ? housePath(secondMemberSlug) : '#';
     <div class="mb-6 p-4 bg-stone-50/70 border border-stone-100 rounded-2xl">
       <span class="flex items-start gap-3 text-sm text-stone-600 font-medium leading-relaxed">
         <svg class="mt-0.5 flex-shrink-0 text-primary/70" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-        <span>Includes: {memberNames}</span>
+        <span>{propertyCopy.group.includes} {memberNames}</span>
       </span>
     </div>
 
@@ -117,18 +121,18 @@ const detailPathB = secondMemberSlug ? housePath(secondMemberSlug) : '#';
     <div class="grid grid-cols-2 gap-y-4 mb-8">
       <span class="flex items-center gap-3 text-xs text-stone-500 font-light">
         <svg class="text-stone-400" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-        Up to {group.sleepsMax} Guests
+        {propertyCopy.group.upTo} {group.sleepsMax} {propertyCopy.group.guests}
       </span>
       <span class="flex items-center gap-3 text-xs text-stone-500 font-light">
         <svg class="text-stone-400" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 4v16"/><path d="M2 8h18a2 2 0 0 1 2 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/></svg>
-        {group.bedrooms} Bedrooms
+        {group.bedrooms} {propertyCopy.group.bedrooms}
       </span>
       
       {/* POOL STATUS INTEGRATED INTO GRID */}
       {group.poolAccess && group.poolAccess !== 'none' && (
         <span class="flex items-center gap-3 text-xs text-primary font-medium col-span-2">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 12h20M2 12c0-5.5 4.5-10 10-10s10 4.5 10 10M2 12c0 5.5 4.5 10 10 10s10-4.5 10-10"/></svg>
-          {group.poolAccess === 'exclusive_shared' ? 'Exclusive Estate Pool Area' : 'Private Pools Included'}
+          {group.poolAccess === 'exclusive_shared' ? propertyCopy.group.exclusiveSharedPool : propertyCopy.group.privatePoolsIncluded}
         </span>
       )}
     </div>
@@ -136,17 +140,17 @@ const detailPathB = secondMemberSlug ? housePath(secondMemberSlug) : '#';
     {/* BOOKING INSTRUCTIONS (Editorial Note Style) */}
     <div class="mb-8 p-4 bg-amber-50/50 border border-amber-100 rounded-2xl mt-auto">
       <p class="text-[11px] text-amber-900/80 leading-relaxed italic">
-        <strong>Editor's Note:</strong> Select both properties for the exact same dates on our booking engine to secure this group estate.
+        <strong>{propertyCopy.group.editorNote}</strong> Select both properties for the exact same dates on our booking engine to secure this group estate.
       </p>
     </div>
 
     {/* ACTIONS */}
     <div class="pt-6 border-t border-stone-100 grid grid-cols-1 sm:grid-cols-3 gap-3">
       <a href={detailPathA} class="btn-outline py-3 px-0 text-center rounded-xl bg-white shadow-sm hover:shadow-md transition-shadow">
-        View {nameA}
+        {propertyCopy.group.view} {nameA}
       </a>
       <a href={detailPathB} class="btn-outline py-3 px-0 text-center rounded-xl bg-white shadow-sm hover:shadow-md transition-shadow">
-        View {nameB}
+        {propertyCopy.group.view} {nameB}
       </a>
       <a 
         href="https://traditionalhomes.reserve-online.net/" 
@@ -154,7 +158,7 @@ const detailPathB = secondMemberSlug ? housePath(secondMemberSlug) : '#';
         rel="noopener" 
         class="btn-cta booking-cta py-3 px-0 text-center rounded-xl shadow-md"
       >
-        Check Dates
+        {propertyCopy.group.checkDates}
       </a>
     </div>
   </div>

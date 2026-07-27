@@ -1,15 +1,19 @@
 ---
 import { Image } from "astro:assets";
 import siteCopy from "../data/siteCopy.json";
+import { defaultLocale, type Locale } from "../i18n/config";
 import { housePath, villaPath } from "../i18n/routes";
+import { getCommonCopy } from "../i18n/translate";
 import type { InventoryUnit } from "../types";
 
 interface Props {
   unit: InventoryUnit;
   priority?: boolean;
+  locale?: Locale;
 }
 
-const { unit, priority = false } = Astro.props;
+const { unit, priority = false, locale = defaultLocale } = Astro.props;
+const propertyCopy = getCommonCopy(locale).ui.property;
 
 // 1. PATH LOGIC (Matches your localized folder structure)
 const unitPagePath =
@@ -43,20 +47,21 @@ const displayLocation =
   unit.village === "Mavrikiano" && unit.area === "Elounda"
     ? "Mavrikiano, Elounda"
     : unit.location;
-const homepageFeatureLabels: Record<string, string> = {
-  argyro: "Direct Sea View",
-  leonidas: "Direct Sea View",
-  margarita: "Direct Sea View",
-  monastiri: "Direct Sea View · Private Pool",
-  demetra: "Shared Pool",
-  penelope: "Shared Pool",
-  erato: "Private Pool",
-  clio: "First Floor",
-  efterpi: "Ground Floor",
-  kalliopi: "First Floor",
-  "almond-tree-villa": "Private Villa · Vrouchas",
+const homepageFeatureKeys: Record<string, keyof typeof propertyCopy.card.features> = {
+  argyro: "directSeaView",
+  leonidas: "directSeaView",
+  margarita: "directSeaView",
+  monastiri: "directSeaViewPrivatePool",
+  demetra: "sharedPool",
+  penelope: "sharedPool",
+  erato: "privatePool",
+  clio: "firstFloor",
+  efterpi: "groundFloor",
+  kalliopi: "firstFloor",
+  "almond-tree-villa": "privateVillaVrouchas",
 };
-const homepageFeatureLabel = homepageFeatureLabels[unit.slug];
+const homepageFeatureKey = homepageFeatureKeys[unit.slug];
+const homepageFeatureLabel = homepageFeatureKey ? propertyCopy.card.features[homepageFeatureKey] : undefined;
 ---
 
 <article
@@ -82,7 +87,7 @@ const homepageFeatureLabel = homepageFeatureLabels[unit.slug];
         />
       ) : (
         <div class="w-full h-full flex items-center justify-center text-stone-400 text-[10px] uppercase tracking-[0.2em] font-bold">
-          Photo Coming Soon
+          {propertyCopy.card.photoComingSoon}
         </div>
       )
     }
@@ -107,7 +112,7 @@ const homepageFeatureLabel = homepageFeatureLabels[unit.slug];
       {
         unit.type === "villa" && (
           <span class="px-3 py-1 bg-stone-100 text-stone-600 border border-stone-200 text-[9px] uppercase font-bold tracking-[0.2em] rounded-full">
-            Villa
+            {propertyCopy.card.villa}
           </span>
         )
       }
@@ -129,7 +134,7 @@ const homepageFeatureLabel = homepageFeatureLabels[unit.slug];
             cy="7"
             r="4"></circle></svg
         >
-        Up to {unit.sleeps} Guests
+        {propertyCopy.card.upTo} {unit.sleeps} {propertyCopy.card.guests}
       </span>
       <span class="flex items-center gap-3 text-xs text-stone-500 font-light">
         <svg
@@ -144,7 +149,7 @@ const homepageFeatureLabel = homepageFeatureLabels[unit.slug];
           ></path><path d="M2 17h20"></path><path d="M6 8v9"></path></svg
         >
         {unit.bedrooms}
-        {unit.bedrooms === 1 ? "Bedroom" : "Bedrooms"}
+        {unit.bedrooms === 1 ? propertyCopy.labels.bedroom : propertyCopy.labels.bedrooms}
       </span>
       {homepageFeatureLabel && (
         <span class="col-span-2 flex items-center gap-3 text-xs font-medium text-stone-600">
@@ -171,7 +176,7 @@ const homepageFeatureLabel = homepageFeatureLabels[unit.slug];
       unit.accessDetail && (
         <div class="mb-8 p-4 bg-amber-50/50 border border-amber-100 rounded-2xl">
           <p class="text-[11px] text-amber-900/80 leading-relaxed italic">
-            <strong>Editor's Note:</strong> {unit.accessDetail}
+            <strong>{propertyCopy.card.editorNote}</strong> {unit.accessDetail}
           </p>
         </div>
       )
@@ -183,7 +188,7 @@ const homepageFeatureLabel = homepageFeatureLabels[unit.slug];
         href={unitPagePath}
         class="btn-outline flex-1 py-3 px-0 text-center rounded-xl bg-white shadow-sm hover:shadow-md transition-shadow"
       >
-        Details
+        {propertyCopy.card.details}
       </a>
       <a
         href={siteCopy.bookingEngineUrl}
@@ -191,7 +196,7 @@ const homepageFeatureLabel = homepageFeatureLabels[unit.slug];
         rel="noopener noreferrer"
         class="btn-cta booking-cta flex-1 py-3 px-0 text-center rounded-xl shadow-sm hover:shadow-md transition-shadow"
       >
-        Check dates
+        {propertyCopy.card.checkDates}
       </a>
     </div>
   </div>
