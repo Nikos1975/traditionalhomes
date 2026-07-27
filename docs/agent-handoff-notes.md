@@ -4,6 +4,7 @@
 
 - Fixed the floating chat trigger so its idempotent initializer runs on ordinary static page loads and again on `astro:page-load` when client navigation is present. The popup remains localized, retains its mailto link and five-second dismissal, avoids duplicates, and updates `aria-expanded` while visible.
 - Added generated-browser-script coverage for immediate initialization, repeat initialization, duplicate prevention, popup dismissal/reopening, localized popup markup, and unchanged mobile booking-bar setup.
+- Physical-device review on a Xiaomi Redmi Note 14 Pro using Chrome on Android passed: one tap opened the localized popup above the mobile booking bar; the email link worked; repeated taps created no duplicates; five-second dismissal reset `aria-expanded` and allowed reopening; ARRIVAL, ADULTS, and CHECK remained usable; no horizontal overflow or visible browser error was observed.
 
 ### 2026-07-27 - Blog mobile swipe and article availability CTA
 
