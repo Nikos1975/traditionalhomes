@@ -2,7 +2,7 @@
 title: "What Is Elounda? Understanding the Villages and Landscapes Around Mirabello Bay"
 description: "A historical-geographical guide to the different meanings of Elounda, its settlements, and its place within the wider Mirabello Bay landscape."
 pubDate: 2026-07-27
-draft: true
+draft: false
 category: "Area Guide"
 region: "Elounda and Mirabello Bay, Lasithi, Eastern Crete"
 tags:
@@ -79,7 +79,7 @@ Ancient Olous is one of the reasons the coast around Elounda carries so much his
 
 That does not justify a simplified story in which one event explains everything. The current research record does not support a single precisely dated catastrophe for Olous, and this article does not claim one. It is enough to recognise that changing shorelines, use of the low ground and the long relationship between settlement and water have left a complex inherited landscape.
 
-Later uses added further layers. The salt pans and the windmills at Poros point to the working use of the sheltered edge. Spinalonga's position made the northern coast significant in later maritime and historical narratives. The present-day settlement pattern still places the shore at Schisma in close relation to the hillside villages and to the road north. A broad tourism-era explanation would not account for all of these relationships. Geography, administrative organisation and historical use each describe a different part of the present.
+Later uses added further layers. The salt pans and the windmills at Poros point to the working use of the sheltered edge. Spinalonga remains a major geographic reference point on the northern coast. The present-day settlement pattern still places the shore at Schisma in close relation to the hillside villages and to the road north. A broad tourism-era explanation would not account for all of these relationships. Geography, administrative organisation and historical use each describe a different part of the present.
 
 For a fuller chronological account, read [A Short Chronological History of Elounda](/blog/elounda-history-through-its-shoreline/). The purpose here is not to repeat its sequence of periods, but to show why the present-day map still holds together: shore and slope, enclosed bay and outer bay, village and peninsula, local community and wider region.
 
