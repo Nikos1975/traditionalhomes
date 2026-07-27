@@ -1,5 +1,13 @@
 # Agent Handoff Notes
 
+### 2026-07-28 - Stage 2 shared property UI extraction
+
+- Extracted reusable English property-interface labels into `common.json` and wired the existing property cards and house/villa detail chrome to those values. Inventory facts, editorial prose, booking/contact flows, routes, and blog files remain unchanged.
+- Reusable `AtAGlance`, `UnitCard`, and `GroupCard` components now accept an optional locale and resolve property UI copy from it; English routes continue to supply the default locale during this foundation stage.
+- Documented the future translated-route contract: English remains `/en/`; `/blog/` remains unprefixed; route publication, hreflang, selector, and sitemap expansion need a separate approval; `GuidePage.astro` remains a later pilot.
+- Source commit `fa1ed69` was used only as a donor patch on a fresh branch; its one-off group booking instruction was kept as component prose rather than added to locale resources.
+- Verified in clean detached worktrees: 115 Node tests passed; build and generated-link validation passed; the candidate retains the base typecheck result of four unrelated errors and three hints. Representative English and unprefixed blog output is equivalent after normal HTML entity and whitespace serialization.
+
 ### 2026-07-27 - Chat popup static-load initialization
 
 - Fixed the floating chat trigger so its idempotent initializer runs on ordinary static page loads and again on `astro:page-load` when client navigation is present. The popup remains localized, retains its mailto link and five-second dismissal, avoids duplicates, and updates `aria-expanded` while visible.

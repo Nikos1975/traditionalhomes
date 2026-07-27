@@ -15,6 +15,7 @@ import { getEntry, render } from 'astro:content';
 import { defaultLocale } from '../../../i18n/config';
 import { guidePath, localizedPath, villaPath } from '../../../i18n/routes';
 import { getVillaSeo, localizedCanonical } from '../../../i18n/seo';
+import { getCommonCopy } from '../../../i18n/translate';
 import { sortGalleryImages } from '../../../utils/sortGalleryImages';
 import type { InventoryUnit, GalleryImage } from '../../../types';
 
@@ -28,6 +29,7 @@ export async function getStaticPaths() {
 
 const { slug } = Astro.params;
 const units = inventory as InventoryUnit[];
+const propertyCopy = getCommonCopy(defaultLocale).ui.property;
 const unit = units.find((u) => u.slug === slug && u.type === 'villa');
 
 if (!unit) {
@@ -100,8 +102,8 @@ const pageSeo = getVillaSeo(defaultLocale, unit, poolLabel);
       ></div>
     )}
     <div class="relative z-20 site-max site-pad h-full flex flex-col justify-end pb-10 md:pb-14">
-      <nav class="text-[10px] uppercase tracking-[0.35em] mb-5 text-white/70" aria-label="Breadcrumb">
-        <a href={localizedPath(defaultLocale)} class="hover:text-white transition-colors">Home</a>
+      <nav class="text-[10px] uppercase tracking-[0.35em] mb-5 text-white/70" aria-label={propertyCopy.detail.breadcrumbs.ariaLabel}>
+        <a href={localizedPath(defaultLocale)} class="hover:text-white transition-colors">{propertyCopy.detail.breadcrumbs.home}</a>
         <span class="mx-2 opacity-50">/</span>
         <a href={localizedPath(defaultLocale, 'houses')} class="hover:text-white transition-colors">Houses</a>
         <span class="mx-2 opacity-50">/</span>
@@ -122,14 +124,14 @@ const pageSeo = getVillaSeo(defaultLocale, unit, poolLabel);
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" class="text-stone-400 shrink-0">
           <path d="M2 4v16"/><path d="M2 8h18a2 2 0 0 1 2 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/>
         </svg>
-        {unit.bedrooms} {unit.bedrooms === 1 ? 'Bedroom' : 'Bedrooms'}
+        {unit.bedrooms} {unit.bedrooms === 1 ? propertyCopy.labels.bedroom : propertyCopy.labels.bedrooms}
       </span>
 
       <span class="flex items-center gap-2">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" class="text-stone-400 shrink-0">
           <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
         </svg>
-        Sleeps {unit.sleeps}
+        {propertyCopy.labels.sleeps} {unit.sleeps}
       </span>
 
       {unit.pool !== 'none' && (
@@ -146,7 +148,7 @@ const pageSeo = getVillaSeo(defaultLocale, unit, poolLabel);
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" class="shrink-0">
             <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
           </svg>
-          Sea view
+          {propertyCopy.labels.seaView}
         </span>
       )}
 
@@ -164,16 +166,16 @@ const pageSeo = getVillaSeo(defaultLocale, unit, poolLabel);
 
       <div class="lg:col-span-8 space-y-14">
 
-        <section aria-label="Property photos">
+        <section aria-label={propertyCopy.detail.sections.propertyPhotosAria}>
           <HouseGallery images={gallery} unitName={unit.name} />
         </section>
 
-        <section aria-label="At a glance" class="border-t border-stone-100 pt-12">
-          <h2 class="font-serif text-2xl text-body-text mb-8">At a Glance</h2>
+        <section aria-label={propertyCopy.detail.sections.atAGlance} class="border-t border-stone-100 pt-12">
+          <h2 class="font-serif text-2xl text-body-text mb-8">{propertyCopy.detail.sections.atAGlance}</h2>
           <AtAGlance unit={unit} />
         </section>
 
-        <section class="border-t border-stone-100 pt-12" aria-label="About this villa">
+        <section class="border-t border-stone-100 pt-12" aria-label={propertyCopy.detail.sections.aboutVillaAria}>
           <div class="prose prose-stone prose-lg max-w-none text-stone-700 leading-relaxed font-light
             prose-headings:font-serif prose-headings:font-normal prose-headings:text-body-text
             prose-h2:text-2xl prose-h3:text-xl prose-h3:mt-8
@@ -182,8 +184,8 @@ const pageSeo = getVillaSeo(defaultLocale, unit, poolLabel);
           </div>
         </section>
 
-        <section class="border-t border-stone-100 pt-12" aria-label="Amenities">
-          <h2 class="font-serif text-2xl text-body-text mb-8">What's included</h2>
+        <section class="border-t border-stone-100 pt-12" aria-label={propertyCopy.detail.sections.amenitiesAria}>
+          <h2 class="font-serif text-2xl text-body-text mb-8">{propertyCopy.detail.sections.included}</h2>
           <ul class="grid grid-cols-1 sm:grid-cols-2 gap-y-3 gap-x-8">
             {unit.amenities.map((amenity) => (
               <li class="flex items-center gap-3 text-sm text-stone-600 border-b border-stone-50 pb-3">
@@ -197,32 +199,32 @@ const pageSeo = getVillaSeo(defaultLocale, unit, poolLabel);
         </section>
 
         {unit.locationRelations?.above && (
-          <section class="border-t border-stone-100 pt-12" aria-label="Location note">
+          <section class="border-t border-stone-100 pt-12" aria-label={propertyCopy.detail.location.locationNote}>
             <div class="bg-stone-100 border border-stone-200 rounded-2xl p-6 text-sm text-stone-700">
-              <p class="font-medium mb-1">Location note</p>
+              <p class="font-medium mb-1">{propertyCopy.detail.location.locationNote}</p>
               <p>
                 The village of Vrouchas sits above the houses in Mavrikiano. {unit.locationRelations.above} from here.
-                <a href={localizedPath(defaultLocale, 'location')} class="underline hover:text-body-text ml-1 transition-colors duration-150">Location details</a>
+                <a href={localizedPath(defaultLocale, 'location')} class="underline hover:text-body-text ml-1 transition-colors duration-150">{propertyCopy.detail.location.locationDetails}</a>
               </p>
             </div>
           </section>
         )}
 
         {locData && (
-          <section class="border-t border-stone-100 pt-12 space-y-6" aria-label="Location and arrival">
-            <h2 class="font-serif text-2xl text-body-text">Location & Arrival</h2>
+          <section class="border-t border-stone-100 pt-12 space-y-6" aria-label={propertyCopy.detail.sections.locationArrivalAria}>
+            <h2 class="font-serif text-2xl text-body-text">{propertyCopy.detail.sections.locationArrival}</h2>
 
             <div class="grid md:grid-cols-2 gap-6">
               <div class="bg-accent-sage-soft text-stone-800 border border-accent-sage/60 rounded-2xl p-6 space-y-5">
-                <h3 class="font-serif text-lg text-stone-950">How to arrive</h3>
+                <h3 class="font-serif text-lg text-stone-950">{propertyCopy.detail.location.howToArrive}</h3>
                 <div class="space-y-3 text-sm text-stone-700 leading-relaxed">
                   <p class="flex items-start gap-3">
                     <span class="w-7 h-7 rounded-full border border-accent-sage flex items-center justify-center text-xs font-bold flex-shrink-0">1</span>
-                    <span>Use the villa map for arrival. <a href={locData.googleMapsUrl} target="_blank" class="underline hover:text-body-text transition-colors">View villa map</a></span>
+                    <span>Use the villa map for arrival. <a href={locData.googleMapsUrl} target="_blank" class="underline hover:text-body-text transition-colors">{propertyCopy.detail.location.viewVillaMap}</a></span>
                   </p>
                   <p class="flex items-start gap-3">
                     <span class="w-7 h-7 rounded-full border border-accent-sage flex items-center justify-center text-xs font-bold flex-shrink-0">2</span>
-                    <span>Alternative: You may drop luggage briefly near the villa. <a href={locData.googleMapsUrl} target="_blank" class="underline hover:text-body-text transition-colors">View villa map</a></span>
+                    <span>Alternative: You may drop luggage briefly near the villa. <a href={locData.googleMapsUrl} target="_blank" class="underline hover:text-body-text transition-colors">{propertyCopy.detail.location.viewVillaMap}</a></span>
                   </p>
                 </div>
                 <p class="text-sm text-stone-600 leading-relaxed">
@@ -239,7 +241,7 @@ const pageSeo = getVillaSeo(defaultLocale, unit, poolLabel);
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
               </svg>
-              Open in Google Maps
+              {propertyCopy.detail.location.openInGoogleMaps}
             </a>
           </section>
         )}
@@ -249,35 +251,35 @@ const pageSeo = getVillaSeo(defaultLocale, unit, poolLabel);
       <aside class="lg:col-span-4 lg:sticky lg:top-20 space-y-6">
         <div class="bg-white rounded-2xl border border-stone-200 p-7 shadow-card">
           <p class="font-serif text-2xl text-body-text mb-1">{unit.name}</p>
-          <p class="text-xs text-muted mb-6 uppercase tracking-wider">{unit.location} · Sleeps {unit.sleeps}</p>
+          <p class="text-xs text-muted mb-6 uppercase tracking-wider">{unit.location} · {propertyCopy.labels.sleeps} {unit.sleeps}</p>
 
           <div class="space-y-0 mb-6 divide-y divide-stone-100 text-sm">
             <div class="flex justify-between py-2.5">
-              <span class="text-muted">Bedrooms</span>
+              <span class="text-muted">{propertyCopy.labels.bedrooms}</span>
               <span class="font-medium">{unit.bedrooms}</span>
             </div>
             <div class="flex justify-between py-2.5">
-              <span class="text-muted">Bathrooms</span>
+              <span class="text-muted">{propertyCopy.labels.bathrooms}</span>
               <span class="font-medium">{unit.bathrooms}</span>
             </div>
             <div class="flex justify-between gap-4 py-2.5">
-              <span class="text-muted">View</span>
+              <span class="text-muted">{propertyCopy.labels.view}</span>
               <span class={positiveText + ' text-right'}>{sidebarView}</span>
             </div>
             <div class="flex justify-between gap-4 py-2.5">
-              <span class="text-muted">Outdoor Space</span>
+              <span class="text-muted">{propertyCopy.labels.outdoorSpace}</span>
               <span class={positiveText + ' text-right'}>{sidebarOutdoorSpace}</span>
             </div>
             <div class="flex justify-between py-2.5">
-              <span class="text-muted">Pool</span>
+              <span class="text-muted">{propertyCopy.labels.pool}</span>
               <span class={positivePool ? positiveText : neutralText}>{poolLabel}</span>
             </div>
             <div class="flex justify-between py-2.5">
-              <span class="text-muted">Wi-Fi</span>
-              <span class="font-medium text-success">Included</span>
+              <span class="text-muted">{propertyCopy.labels.wifi}</span>
+              <span class="font-medium text-success">{propertyCopy.labels.included}</span>
             </div>
             <div class="flex justify-between py-2.5">
-              <span class="text-muted">Pets</span>
+              <span class="text-muted">{propertyCopy.labels.pets}</span>
               <span class="font-medium">{unit.pets}</span>
             </div>
           </div>
@@ -287,13 +289,13 @@ const pageSeo = getVillaSeo(defaultLocale, unit, poolLabel);
             roomCode={unit.bookingId}
             itemName={unit.name}
             maxAdults={unit.sleeps}
-            title="Check dates"
-            description="Choose dates and continue to live availability for this property."
+            title={propertyCopy.detail.booking.checkDates}
+            description={propertyCopy.detail.booking.description}
             framed={false}
             trackView
           />
           <a href={localizedPath(defaultLocale, 'contact')} class="btn-outline w-full py-3 text-center block rounded-xl text-xs uppercase tracking-wider font-bold">
-            Ask a Question
+            {propertyCopy.detail.booking.askQuestion}
           </a>
         </div>
 
@@ -304,7 +306,7 @@ const pageSeo = getVillaSeo(defaultLocale, unit, poolLabel);
                 <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
                 <line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>
               </svg>
-              Before you book
+              {propertyCopy.detail.booking.beforeYouBook}
             </h3>
             <ul class="space-y-2">
               {unit.hardConstraints.map((c) => (
@@ -325,8 +327,8 @@ const pageSeo = getVillaSeo(defaultLocale, unit, poolLabel);
         {locData?.group === 'vrouchas' && (
           <a href={guidePath('vrouchas')} class="flex items-center justify-between p-4 rounded-xl border border-stone-200 bg-white hover:border-sky-300 hover:shadow-md transition-all group">
             <div class="flex flex-col">
-              <span class="font-serif text-sky-900 text-base mb-0.5">Vrouchas Area Guide</span>
-              <span class="text-xs text-stone-500">Practical area details</span>
+              <span class="font-serif text-sky-900 text-base mb-0.5">{propertyCopy.detail.guide.vrouchasTitle}</span>
+              <span class="text-xs text-stone-500">{propertyCopy.detail.guide.practicalAreaDetails}</span>
             </div>
             <svg class="text-sky-700 opacity-50 group-hover:opacity-100 group-hover:translate-x-1 transition-all" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
           </a>

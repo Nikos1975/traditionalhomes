@@ -103,6 +103,15 @@ src/components/pages/
 - Shared components should receive resolved strings and content rather than reading route state implicitly where possible.
 - Internal links should be built through locale-aware route helpers.
 
+## Future Translated-Route Contract
+
+- English remains under `/en/`.
+- A future translated route must pass its locale explicitly to shared page renderers and reusable components; components must not infer locale from route state.
+- Locale resources contain reusable interface copy and SEO templates, not inventory facts, property names, slugs, identifiers, coordinates, or operational data.
+- `/blog/` remains unprefixed and outside translated routing until a separately approved migration stage.
+- Adding translated routes, hreflang output, a language selector, or sitemap locale expansion requires a separate approved stage.
+- `GuidePage.astro` is the proposed first shared page-renderer pilot; it is not implemented by the current extraction work.
+
 ## Blog Migration Note
 
 The blog currently lives under `/blog/` without a locale prefix. Do not move it casually.
