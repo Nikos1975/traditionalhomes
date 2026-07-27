@@ -1,5 +1,12 @@
 # Agent Handoff Notes
 
+### 2026-07-27 - Elounda and Mirabello Bay draft hero
+
+- Added the approved Evangelos Mpikakis Unsplash photograph (photo ID `hmp9alkCaQw`) through the repository blog-image pipeline.
+- Generated the 480, 768, 1200, 1600, and 2400 px WebP candidates and added the supported image, alt, caption, credit, and credit-URL frontmatter fields.
+- The article remains `draft: true`; nothing was published or pushed.
+- The original was verified at 2400 × 1350, 890,296 bytes, SHA-256 `E18B23C6B33E10529CBD44EB7FA82F717B5467B59055AB944524EBFBFB4C1562`.
+
 ### 2026-07-27 - Persistent blog orchestrator
 
 - Added root `BLOG_ORCHESTRATOR.md` as the routing entry point for blog, guide, audit, publication, and blog-image work; it coordinates existing canonical rules without duplicating them.

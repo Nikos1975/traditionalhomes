@@ -12,6 +12,11 @@ tags:
   - historical-geography
   - olous
   - spinalonga
+image: "/images/blog/elounda-and-mirabello-bay/hero-1600.webp"
+imageAlt: "Aerial view over Spinalonga toward the Kalydon peninsula and the sheltered waters of the Elounda area."
+imageCaption: "Spinalonga in the foreground, with the Kalydon peninsula and the sheltered waters of the Elounda area opening toward Mirabello Bay."
+imageCredit: "Photograph by Evangelos Mpikakis / Unsplash"
+imageCreditUrl: "https://unsplash.com/photos/hmp9alkCaQw"
 ---
 
 ## Elounda is more than one place
