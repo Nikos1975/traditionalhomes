@@ -26,6 +26,8 @@ describe('blog featured slider interactions', () => {
     assert.match(source, /pointerup/);
     assert.match(source, /pointercancel/);
     assert.match(source, /SWIPE_THRESHOLD/);
+    assert.match(source, /const setActiveSlide = \(nextIndex: number\) =>/);
+    assert.match(source, /const clearPointer = \(event: PointerEvent\) =>/);
     assert.match(source, /Math\.abs\(deltaX\) > Math\.abs\(deltaY\)/);
   });
 

@@ -239,7 +239,7 @@ const postsByCategory = categories.map(category => ({
     let suppressNextLinkClick = false;
     let suppressLinkClickTimer = 0;
 
-    const setActiveSlide = (nextIndex) => {
+    const setActiveSlide = (nextIndex: number) => {
       if (slides.length === 0) return;
 
       activeIndex = (nextIndex + slides.length) % slides.length;
@@ -279,7 +279,7 @@ const postsByCategory = categories.map(category => ({
     });
 
     if (stage instanceof HTMLElement) {
-      const clearPointer = event => {
+      const clearPointer = (event: PointerEvent) => {
         const start = pointerStart;
         if (!start || start.pointerId !== event.pointerId) return;
 
