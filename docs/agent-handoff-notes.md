@@ -1,5 +1,11 @@
 # Agent Handoff Notes
 
+### 2026-07-27 - Publication-gate hardening
+
+- Hardened the existing publication skill from the verified publication acceptance case without adding an article-specific workflow or a second publication skill.
+- The skill now requires clean dependency installation, detailed generated-route/XML-sitemap/robots checks, three viewport reviews, hero/network checks, Pages preview authority, structured PR evidence, explicit ready/squash approval, and separate production verification.
+- No article, article frontmatter, research packet, image, route, sitemap or deployment configuration changed.
+
 ### 2026-07-27 - Blog lifecycle hardening
 
 - Added canonical procedures for draft revision, read-only content audit, and controlled publication; the existing research and image skills remain the new-article and image-only procedures.

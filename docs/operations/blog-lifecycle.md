@@ -4,8 +4,9 @@ The blog workflow is deliberately staged so factual review and editorial approva
 
 ```text
 topic approval → scaffold → research packet → claim review → draft → image approval
-→ draft PR → human review → unpublished merge → publication branch → final validation
-→ publication PR → production verification → optional social campaign
+→ draft PR → human review → unpublished merge → publication branch → local validation
+→ push publication branch → draft publication PR → Cloudflare Pages preview → final evidence
+→ explicit merge approval → mark ready → squash merge → production verification → optional social campaign
 ```
 
 `new-article` begins with the [research-to-draft procedure](../../.agents/skills/blog-research-article/SKILL.md). It creates a claim-reviewed `draft: true` article and a draft PR; human review may merge it while it remains unpublished.
@@ -16,6 +17,6 @@ topic approval → scaffold → research packet → claim review → draft → i
 
 `audit` uses the [content audit procedure](../../.agents/skills/blog-content-audit/SKILL.md), which is read-only unless new editing approval is given.
 
-`publication` uses the [publication procedure](../../.agents/skills/blog-publication/SKILL.md). It requires recorded editorial approval, final repository and generated-site checks, preview review, a publication PR, explicit merge approval, and production verification. It never auto-publishes or auto-merges.
+`publication` uses the [publication procedure](../../.agents/skills/blog-publication/SKILL.md). It requires recorded editorial approval, local and generated-site validation, a draft PR, Pages preview, final evidence, explicit merge approval, and separate production verification. It never auto-publishes or auto-merges.
 
 `BLOG_ORCHESTRATOR.md` selects the mode. `docs/operations/blog-production.md` remains the reference for deterministic local run state and scaffold/status commands.
