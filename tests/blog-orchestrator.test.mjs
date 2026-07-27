@@ -53,18 +53,17 @@ test("blog entry-point instructions require the persistent orchestrator", async 
   assert.match(requiredReading, /^- `BLOG_ORCHESTRATOR\.md`/m);
 });
 
-test("the orchestrator names canonical sources, every mode, and manual stops", async () => {
+test("the orchestrator routes every mode to a canonical skill and retains manual stops", async () => {
   const orchestrator = await readRepositoryFile("BLOG_ORCHESTRATOR.md");
   for (const file of [
     "AGENTS.md",
     "CLAUDE.md",
-    ".ai/brand/website-brand-style-guide.md",
-    ".ai/prompts/blog-editorial-system.md",
     "docs/operations/blog-production.md",
-    "docs/research/blog/<slug>/topic-brief.md",
-    "source-notes.md",
-    "sources.json",
-    "claims.json",
+    ".agents/skills/blog-research-article/SKILL.md",
+    ".agents/skills/blog-revise-draft/SKILL.md",
+    ".agents/skills/blog-content-audit/SKILL.md",
+    ".agents/skills/blog-publication/SKILL.md",
+    ".agents/skills/traditional-homes-image-pipeline/SKILL.md",
   ]) {
     assert.match(orchestrator, new RegExp(file.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")));
   }
@@ -76,27 +75,18 @@ test("the orchestrator names canonical sources, every mode, and manual stops", a
   assert.match(orchestrator, /manual editorial approval/i);
 });
 
-test("new articles may scaffold before generated research files exist", async () => {
+test("the orchestrator keeps detailed research procedure in the routed skill", async () => {
   const orchestrator = await readRepositoryFile("BLOG_ORCHESTRATOR.md");
-  assert.match(orchestrator, /explicit user topic request may initialize `npm run blog:scaffold`/i);
-  assert.match(orchestrator, /scaffold is allowed before `topic-brief\.md`, `source-notes\.md`, `sources\.json`, and `claims\.json` exist/i);
-  assert.match(orchestrator, /after scaffolding, read and complete those files/i);
-  assert.match(orchestrator, /stop before research or drafting when the generated topic brief is inadequate/i);
-  assert.match(orchestrator, /do not infer missing angle, scope, claims, image rights, or publication plan/i);
-});
-
-test("existing-content modes require research records before editing or publication work", async () => {
-  const orchestrator = await readRepositoryFile("BLOG_ORCHESTRATOR.md");
-  assert.match(orchestrator, /`revise-draft`, `audit`, `publication`, and `image-only` require an existing topic brief/i);
-  assert.match(orchestrator, /read applicable `source-notes\.md`, `sources\.json`, and `claims\.json` before editing or publication work/i);
-  assert.match(orchestrator, /older content has no research record.*instead of inventing one silently/i);
+  assert.doesNotMatch(orchestrator, /## Staged research-record reads/);
+  assert.doesNotMatch(orchestrator, /### Draft article requirements/);
+  assert.doesNotMatch(orchestrator, /### Publication candidate requirements/);
 });
 
 test("subordinate workflow activities do not require a second initial mode", async () => {
   const orchestrator = await readRepositoryFile("BLOG_ORCHESTRATOR.md");
   assert.match(orchestrator, /Choose the mode that matches the requested primary outcome\./);
-  assert.match(orchestrator, /Activities within that workflow, such as claim review, validation, or image processing, do not create another initial mode\./);
-  assert.match(orchestrator, /Stop only when the requested primary outcome is genuinely ambiguous\./);
+  assert.match(orchestrator, /Supporting activities such as claim review, validation, and image processing do not create a second mode\./);
+  assert.match(orchestrator, /Stop only when the outcome is genuinely ambiguous\./);
 });
 
 test("new topic briefs contain the required orchestration headings", async (t) => {
