@@ -1,5 +1,15 @@
 # Agent Handoff Notes
 
+### 2026-07-27 - Blog mobile swipe and article availability CTA
+
+- Added pointer-event swipe navigation to the featured blog slider while retaining the existing buttons, thumbnails, counter, keyboard navigation, wrapping, reduced-motion rules, and no-autoplay behaviour. The featured stage uses `touch-action: pan-y`; a confirmed horizontal swipe must exceed a 48 px threshold and vertical movement, and only its immediately following article-link click is suppressed.
+- Added the single shared availability CTA after rendered article content and before Related Reading. It links to `/en/houses/` and uses `siteCopy.bookingEngineUrl` for the external availability action. No article Markdown, frontmatter, publication state, i18n file, locale route, hreflang output, sitemap, or booking configuration changed.
+- Added `tests/blog-ui-interactions.test.mjs`; `node --test` exited 0 with 111 passing assertions, including the existing i18n foundation suite. `git diff --check` passed.
+- Corrected the CTA location wording to Mavrikiano only and added explicit slider-handler types for `nextIndex` and `PointerEvent`; focused tests cover both corrections.
+- Clean validation at PR head `1119e6c9c91c48d54674a2a641a1a2915889523d` passed `npm ci`, `git diff --check`, `node --test` (111 passes), build, and generated-link validation. Typecheck has no changed-file diagnostics and retains only four existing errors plus two existing hints elsewhere in the repository. The lockfile audit reports 20 dependency vulnerabilities (2 low, 6 moderate, 12 high) for separate maintenance work.
+- Generated output includes `/blog/`, 11 article routes, `/en/houses/`, and a sitemap; the CTA appears once on articles and never on the blog index. The successful Cloudflare Pages preview was reviewed with browser touch emulation at 390 × 844 and desktop viewports at 1440 × 900 and 1920 × 1080. No horizontal overflow or browser errors were observed; no physical touch device was used.
+- Physical-device review on a Xiaomi Redmi Note 14 Pro using Chrome on Android (version not recorded): left and right featured-slider swipes, vertical scrolling, normal hero-link taps, post-swipe link suppression, arrows, thumbnails, article CTA appearance, both article CTA actions, and mobile layout/overflow passed. Earlier swipe and CTA failure reports were testing mistakes; no product issue was found.
+
 ### 2026-07-27 - Publication-gate hardening
 
 - Hardened the existing publication skill from the verified publication acceptance case without adding an article-specific workflow or a second publication skill.
