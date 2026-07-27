@@ -1,5 +1,13 @@
 # Agent Handoff Notes
 
+### 2026-07-27 - Elounda and Mirabello Bay publication
+
+- Published `/blog/elounda-and-mirabello-bay/` after manual editorial approval.
+- The article explains the official, settlement-level and broader geographic meanings of Elounda; Plaka remains correctly distinguished under the Local Community of Vrouchas.
+- The article uses the approved Evangelos Mpikakis / Unsplash hero and retains linked attribution.
+- Final article validation, Node tests, build, generated-link check and typecheck-baseline comparison were completed before merge; the generated output confirms the route and its metadata.
+- The MDPI technical figure and Google Earth screenshot remain excluded.
+
 ### 2026-07-27 - Elounda and Mirabello Bay draft hero
 
 - Added the approved Evangelos Mpikakis Unsplash photograph (photo ID `hmp9alkCaQw`) through the repository blog-image pipeline.
