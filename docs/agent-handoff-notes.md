@@ -1,5 +1,11 @@
 # Agent Handoff Notes
 
+### 2026-07-28 - Social Publisher Core v1
+
+- Added a local-only Node social-publisher core for one published English blog article at a time. It derives canonical article and hero URLs from the existing `/en/blog/<slug>/` route convention, creates non-secret platform drafts, and writes one tracked ledger record per slug.
+- Preparation is non-networked and unapproved by default. Approval requires an existing matching fingerprint, one named platform, and `--confirm`; it cannot publish or overwrite a terminal published platform record. No social API client, credentials, GitHub workflow, scheduler, analytics, article, or content-schema change was added.
+- Verified: `git diff --check`, 134 Node tests, build, and generated-link validation passed. Typecheck retains four pre-existing unrelated errors and has no changed-file diagnostics.
+
 ### 2026-07-28 - English blog canonical migration
 
 - Moved the only rendered blog routes to `src/pages/en/blog/`; `/blog/**` now redirects permanently to `/en/blog/**` through ordered Cloudflare Pages rules.
