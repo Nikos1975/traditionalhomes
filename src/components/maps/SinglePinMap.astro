@@ -25,8 +25,8 @@ interface MarkerData {
 let markers: MarkerData[] = [];
 if (location && location.lat && location.lng) {
   const propertyUrl = location.type === 'villa'
-    ? villaPath(location.slug)
-    : housePath(location.slug);
+    ? villaPath(location.slug, defaultLocale)
+    : housePath(location.slug, defaultLocale);
 
   markers.push({
     id: location.id,

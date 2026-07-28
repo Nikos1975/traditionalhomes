@@ -4,6 +4,7 @@ import siteCopy from "../data/siteCopy.json";
 import { defaultLocale, type Locale } from "../i18n/config";
 import { housePath, villaPath } from "../i18n/routes";
 import { getCommonCopy } from "../i18n/translate";
+import { formatPropertyCount } from "../i18n/property-counts";
 import type { InventoryUnit } from "../types";
 
 interface Props {
@@ -18,8 +19,8 @@ const propertyCopy = getCommonCopy(locale).ui.property;
 // 1. PATH LOGIC (Matches your localized folder structure)
 const unitPagePath =
   unit.type === "villa"
-    ? villaPath(unit.slug)
-    : housePath(unit.slug);
+    ? villaPath(unit.slug, locale)
+    : housePath(unit.slug, locale);
 
 // 2. IMAGE AUTOMATION
 const allImages = import.meta.glob(
@@ -134,7 +135,7 @@ const homepageFeatureLabel = homepageFeatureKey ? propertyCopy.card.features[hom
             cy="7"
             r="4"></circle></svg
         >
-        {propertyCopy.card.upTo} {unit.sleeps} {propertyCopy.card.guests}
+        {formatPropertyCount(locale, unit.sleeps, propertyCopy.counts.guestsUpTo)}
       </span>
       <span class="flex items-center gap-3 text-xs text-stone-500 font-light">
         <svg
@@ -148,8 +149,7 @@ const homepageFeatureLabel = homepageFeatureKey ? propertyCopy.card.features[hom
           ><path d="M2 4v16"></path><path d="M2 8h18a2 2 0 0 1 2 2v10"
           ></path><path d="M2 17h20"></path><path d="M6 8v9"></path></svg
         >
-        {unit.bedrooms}
-        {unit.bedrooms === 1 ? propertyCopy.labels.bedroom : propertyCopy.labels.bedrooms}
+        {formatPropertyCount(locale, unit.bedrooms, propertyCopy.counts.bedrooms)}
       </span>
       {homepageFeatureLabel && (
         <span class="col-span-2 flex items-center gap-3 text-xs font-medium text-stone-600">

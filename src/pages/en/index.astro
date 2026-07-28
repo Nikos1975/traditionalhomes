@@ -26,34 +26,34 @@ const chooseStayOptions = [
   {
     title: 'Sea-view houses',
     names: [
-      { label: 'Argyro', href: housePath('argyro') },
-      { label: 'Leonidas', href: housePath('leonidas') },
-      { label: 'Margarita', href: housePath('margarita') },
-      { label: 'Monastiri', href: housePath('monastiri') },
+      { label: 'Argyro', href: housePath('argyro', defaultLocale) },
+      { label: 'Leonidas', href: housePath('leonidas', defaultLocale) },
+      { label: 'Margarita', href: housePath('margarita', defaultLocale) },
+      { label: 'Monastiri', href: housePath('monastiri', defaultLocale) },
     ],
   },
   {
     title: 'Pool stays',
     names: [
-      { label: 'Erato', href: housePath('erato') },
-      { label: 'Demetra', href: housePath('demetra') },
-      { label: 'Penelope', href: housePath('penelope') },
-      { label: 'Monastiri', href: housePath('monastiri') },
-      { label: 'Almond Tree Villa', href: villaPath('almond-tree-villa') },
+      { label: 'Erato', href: housePath('erato', defaultLocale) },
+      { label: 'Demetra', href: housePath('demetra', defaultLocale) },
+      { label: 'Penelope', href: housePath('penelope', defaultLocale) },
+      { label: 'Monastiri', href: housePath('monastiri', defaultLocale) },
+      { label: 'Almond Tree Villa', href: villaPath('almond-tree-villa', defaultLocale) },
     ],
   },
   {
     title: 'Easy access',
     names: [
-      { label: 'Clio, about 10 m from parking', href: housePath('clio') },
+      { label: 'Clio, about 10 m from parking', href: housePath('clio', defaultLocale) },
     ],
   },
   {
     title: 'Larger groups',
     names: [
-      { label: 'Margarita', href: housePath('margarita') },
-      { label: 'Monastiri', href: housePath('monastiri') },
-      { label: 'Almond Tree Villa', href: villaPath('almond-tree-villa') },
+      { label: 'Margarita', href: housePath('margarita', defaultLocale) },
+      { label: 'Monastiri', href: housePath('monastiri', defaultLocale) },
+      { label: 'Almond Tree Villa', href: villaPath('almond-tree-villa', defaultLocale) },
     ],
   },
 ];
@@ -202,7 +202,7 @@ const chooseStayOptions = [
               A larger 230 m² villa for up to 10 guests, with five sleeping rooms, two bathrooms, a private 9 m × 4 m pool, reed-shaded balconies, garden, and views toward the Cretan Sea, garden, pool, and mountains.
             </p>
             <div class="mt-auto pt-6 border-t border-stone-100 flex flex-col sm:flex-row gap-3">
-              <a href={villaPath(villa.slug)} class="btn-outline flex-1 py-3 px-0 text-center rounded-xl bg-white shadow-sm hover:shadow-md transition-shadow">
+              <a href={villaPath(villa.slug, defaultLocale)} class="btn-outline flex-1 py-3 px-0 text-center rounded-xl bg-white shadow-sm hover:shadow-md transition-shadow">
                 View villa
               </a>
               <a
