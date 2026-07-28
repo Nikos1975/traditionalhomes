@@ -54,6 +54,6 @@ export function createMetaClient({ fetchImpl, graphVersion, pageToken, instagram
     getInstagramContainer: ({ containerId }) => request({ method: "GET", target: containerId, fields: { fields: "status_code" }, token: instagramToken, operation: "instagram.containerStatus" }),
     publishInstagramMedia: ({ userId, containerId }) => request({ method: "POST", target: `${userId}/media_publish`, fields: { creation_id: containerId }, token: instagramToken, operation: "instagram.publish" }),
     getFacebookPost: ({ postId }) => request({ method: "GET", target: postId, fields: { fields: "id,created_time,from" }, token: pageToken, operation: "facebook.reconcile" }),
-    getInstagramMedia: ({ mediaId }) => request({ method: "GET", target: mediaId, fields: { fields: "id,timestamp,username" }, token: instagramToken, operation: "instagram.reconcile" }),
+    getInstagramMedia: ({ mediaId }) => request({ method: "GET", target: mediaId, fields: { fields: "id,owner,username,permalink" }, token: instagramToken, operation: "instagram.reconcile" }),
   };
 }

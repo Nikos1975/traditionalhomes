@@ -42,9 +42,11 @@ function textResponse(body, status) {
 
 const deployedJpeg = await sharp({ create: { width: 1080, height: 1350, channels: 3, background: "#dddddd" } }).jpeg({ quality: 88 }).toBuffer();
 const deployedHash = (await import("node:crypto")).createHash("sha256").update(deployedJpeg).digest("hex");
+const oversizedJpeg = Buffer.concat([deployedJpeg, Buffer.alloc(8 * 1024 * 1024)]);
+const invalidAspectJpeg = await sharp({ create: { width: 2000, height: 500, channels: 3, background: "#dddddd" } }).jpeg({ quality: 88 }).toBuffer();
 
-function imageResponse() {
-  return { ok: true, status: 200, headers: { get: () => "image/jpeg" }, arrayBuffer: async () => deployedJpeg.buffer.slice(deployedJpeg.byteOffset, deployedJpeg.byteOffset + deployedJpeg.byteLength) };
+function imageResponse({ bytes = deployedJpeg, contentType = "image/jpeg" } = {}) {
+  return { ok: true, status: 200, headers: { get: () => contentType }, arrayBuffer: async () => bytes.buffer.slice(bytes.byteOffset, bytes.byteOffset + bytes.byteLength) };
 }
 
 function approvedLedger() {
@@ -110,6 +112,137 @@ test("fails closed for invalid Instagram WebP and aspect-ratio media", () => {
   assert.throws(() => validateInstagramMedia({ imageUrl: "https://example.test/image.jpg", contentType: "image/jpeg", bytes: 1, width: 2000, height: 500 }), /aspect ratio/i);
 });
 
+test("fails Instagram before any Meta POST when deployed derivative hash differs from the ledger", async () => {
+  const ledger = approvedLedger();
+  ledger.media.instagram.sha256 = "b".repeat(64);
+  const calls = [];
+  const result = await publishPlatform({
+    ledger, platform: "instagram", currentFingerprint: fingerprint, env, confirmLive: true, persist: async () => {},
+    fetchImpl: async (url, options) => {
+      calls.push({ url, method: options.method });
+      if (url.includes("/images/social/")) return imageResponse();
+      if (url.startsWith("https://traditional-homes.gr/")) return response({});
+      throw new Error(`Unexpected request: ${options.method} ${url}`);
+    },
+  });
+  assert.equal(result.platforms.instagram.state, "failed");
+  assert.equal(calls.filter((call) => call.method === "POST").length, 0);
+});
+
+test("fails Instagram before any Meta POST when a deployed JPG URL returns non-JPEG MIME and bytes", async () => {
+  const calls = [];
+  const result = await publishPlatform({
+    ledger: approvedLedger(), platform: "instagram", currentFingerprint: fingerprint, env, confirmLive: true, persist: async () => {},
+    fetchImpl: async (url, options) => {
+      calls.push({ url, method: options.method });
+      if (url.includes("/images/social/")) return imageResponse({ bytes: Buffer.from("not a jpeg"), contentType: "image/png" });
+      if (url.startsWith("https://traditional-homes.gr/")) return response({});
+      throw new Error(`Unexpected request: ${options.method} ${url}`);
+    },
+  });
+  assert.equal(result.platforms.instagram.state, "failed");
+  assert.equal(calls.filter((call) => call.method === "POST").length, 0);
+});
+
+test("fails Instagram before any Meta POST when the deployed derivative exceeds 8 MB", async () => {
+  const calls = [];
+  const result = await publishPlatform({
+    ledger: approvedLedger(), platform: "instagram", currentFingerprint: fingerprint, env, confirmLive: true, persist: async () => {},
+    fetchImpl: async (url, options) => {
+      calls.push({ url, method: options.method });
+      if (url.includes("/images/social/")) return imageResponse({ bytes: oversizedJpeg });
+      if (url.startsWith("https://traditional-homes.gr/")) return response({});
+      throw new Error(`Unexpected request: ${options.method} ${url}`);
+    },
+  });
+  assert.equal(result.platforms.instagram.state, "failed");
+  assert.equal(calls.filter((call) => call.method === "POST").length, 0);
+});
+
+test("fails Instagram before any Meta POST when deployed dimensions have an invalid aspect ratio", async () => {
+  const ledger = approvedLedger();
+  ledger.media.instagram.sha256 = (await import("node:crypto")).createHash("sha256").update(invalidAspectJpeg).digest("hex");
+  const calls = [];
+  const result = await publishPlatform({
+    ledger, platform: "instagram", currentFingerprint: fingerprint, env, confirmLive: true, persist: async () => {},
+    fetchImpl: async (url, options) => {
+      calls.push({ url, method: options.method });
+      if (url.includes("/images/social/")) return imageResponse({ bytes: invalidAspectJpeg });
+      if (url.startsWith("https://traditional-homes.gr/")) return response({});
+      throw new Error(`Unexpected request: ${options.method} ${url}`);
+    },
+  });
+  assert.equal(result.platforms.instagram.state, "failed");
+  assert.equal(calls.filter((call) => call.method === "POST").length, 0);
+});
+
+test("fails Instagram without media_publish when its container reports ERROR", async () => {
+  const calls = [];
+  const result = await publishPlatform({
+    ledger: approvedLedger(), platform: "instagram", currentFingerprint: fingerprint, env, confirmLive: true, persist: async () => {}, sleep: async () => {},
+    fetchImpl: async (url, options) => {
+      calls.push({ url, method: options.method });
+      if (options.method === "GET" && url.includes("/images/social/")) return imageResponse();
+      if (options.method === "GET" && url.startsWith("https://traditional-homes.gr/")) return response({});
+      if (options.method === "POST" && url.endsWith("/654321/media")) return response({ id: "container-1" });
+      if (options.method === "GET" && url.includes("/container-1?")) return response({ status_code: "ERROR" });
+      throw new Error(`Unexpected request: ${options.method} ${url}`);
+    },
+  });
+  assert.equal(result.platforms.instagram.state, "failed");
+  assert.equal(calls.filter((call) => call.url.endsWith("/654321/media_publish")).length, 0);
+});
+
+test("fails Instagram after bounded pending polling without retrying container creation or media publish", async () => {
+  const calls = [];
+  const result = await publishPlatform({
+    ledger: approvedLedger(), platform: "instagram", currentFingerprint: fingerprint, env, confirmLive: true, persist: async () => {}, sleep: async () => {},
+    fetchImpl: async (url, options) => {
+      calls.push({ url, method: options.method });
+      if (options.method === "GET" && url.includes("/images/social/")) return imageResponse();
+      if (options.method === "GET" && url.startsWith("https://traditional-homes.gr/")) return response({});
+      if (options.method === "POST" && url.endsWith("/654321/media")) return response({ id: "container-1" });
+      if (options.method === "GET" && url.includes("/container-1?")) return response({ status_code: "IN_PROGRESS" });
+      throw new Error(`Unexpected request: ${options.method} ${url}`);
+    },
+  });
+  assert.equal(result.platforms.instagram.state, "failed");
+  assert.equal(calls.filter((call) => call.method === "POST" && call.url.endsWith("/654321/media")).length, 1);
+  assert.equal(calls.filter((call) => call.method === "GET" && call.url.includes("/container-1?")).length, 3);
+  assert.equal(calls.filter((call) => call.url.endsWith("/654321/media_publish")).length, 0);
+});
+
+test("classifies malformed media_publish HTTP errors as a definite Instagram failure", async () => {
+  const result = await publishPlatform({
+    ledger: approvedLedger(), platform: "instagram", currentFingerprint: fingerprint, env, confirmLive: true, persist: async () => {}, sleep: async () => {},
+    fetchImpl: async (url, options) => {
+      if (options.method === "GET" && url.includes("/images/social/")) return imageResponse();
+      if (options.method === "GET" && url.startsWith("https://traditional-homes.gr/")) return response({});
+      if (options.method === "POST" && url.endsWith("/654321/media")) return response({ id: "container-1" });
+      if (options.method === "GET" && url.includes("/container-1?")) return response({ status_code: "FINISHED" });
+      if (options.method === "POST" && url.endsWith("/654321/media_publish")) return textResponse("<html>upstream failure</html>", 502);
+      throw new Error(`Unexpected request: ${options.method} ${url}`);
+    },
+  });
+  assert.equal(result.platforms.instagram.state, "failed");
+});
+
+test("keeps published Facebook state unchanged when Instagram media deployment validation fails", async () => {
+  const ledger = approvedLedger();
+  ledger.platforms.facebook = { ...ledger.platforms.facebook, state: "published", platformPostId: "123456_789", publishedAt: "2026-07-28T10:00:00.000Z" };
+  const result = await publishPlatform({
+    ledger, platform: "instagram", currentFingerprint: fingerprint, env, confirmLive: true, persist: async () => {},
+    fetchImpl: async (url, options) => {
+      if (options.method === "GET" && url.includes("/images/social/")) return imageResponse({ bytes: Buffer.from("not a jpeg"), contentType: "image/png" });
+      if (options.method === "GET" && url.startsWith("https://traditional-homes.gr/")) return response({});
+      throw new Error(`Unexpected request: ${options.method} ${url}`);
+    },
+  });
+  assert.equal(result.platforms.facebook.state, "published");
+  assert.equal(result.platforms.facebook.platformPostId, "123456_789");
+  assert.equal(result.platforms.instagram.state, "failed");
+});
+
 test("rejects changed fingerprints, wrong targets, and missing live confirmation", async () => {
   await assert.rejects(() => publishPlatform({ ledger: approvedLedger(), platform: "facebook", currentFingerprint: "b".repeat(64), env, confirmLive: true, persist: async () => {}, fetchImpl: successfulPublicUrls }), /stale/i);
   const wrongTarget = approvedLedger();
@@ -149,6 +282,109 @@ test("reconciles a confirmed remote Facebook publication without creating a post
   assert.equal(result.platforms.facebook.state, "published");
 });
 
+function unknownInstagramLedger() {
+  const ledger = approvedLedger();
+  ledger.platforms.instagram = { ...ledger.platforms.instagram, state: "unknown", targetId: env.META_IG_USER_ID, platformPostId: null };
+  return ledger;
+}
+
+async function reconcileUnknownInstagram({ remote, remoteId = "ig-media-1", fetchImpl, persist = async () => {} }) {
+  return reconcilePlatform({
+    ledger: unknownInstagramLedger(), platform: "instagram", env, remoteId, confirmed: true, persist,
+    fetchImpl: fetchImpl ?? (async (url, options) => {
+      assert.equal(options.method, "GET");
+      assert.equal(new URL(url).searchParams.get("fields"), "id,owner,username,permalink");
+      return response(remote);
+    }),
+  });
+}
+
+test("reconciles confirmed Instagram media only after its owner ID matches the configured account", async () => {
+  const calls = [];
+  const result = await reconcileUnknownInstagram({
+    remoteId: "12345",
+    remote: { id: 12345, owner: { id: env.META_IG_USER_ID }, username: "traditionalhomes", permalink: "https://www.instagram.com/p/example/" },
+    fetchImpl: async (url, options) => {
+      calls.push({ url, method: options.method });
+      assert.equal(options.method, "GET");
+      assert.equal(new URL(url).searchParams.get("fields"), "id,owner,username,permalink");
+      return response({ id: 12345, owner: { id: env.META_IG_USER_ID }, username: "traditionalhomes", permalink: "https://www.instagram.com/p/example/" });
+    },
+  });
+  assert.equal(calls.length, 1);
+  assert.equal(calls.filter((call) => call.method === "POST").length, 0);
+  assert.equal(result.platforms.instagram.state, "published");
+  assert.equal(result.platforms.instagram.platformPostId, "12345");
+});
+
+test("rejects confirmed Instagram media from a different owner even when the username matches", async () => {
+  const ledger = unknownInstagramLedger();
+  let persisted = false;
+  let posts = 0;
+  await assert.rejects(() => reconcilePlatform({
+    ledger, platform: "instagram", env, remoteId: "ig-media-1", confirmed: true,
+    persist: async () => { persisted = true; },
+    fetchImpl: async (_url, options) => {
+      if (options.method === "POST") posts += 1;
+      return response({ id: "ig-media-1", owner: { id: "999999" }, username: "traditionalhomes", permalink: "https://www.instagram.com/p/example/" });
+    },
+  }), /ownership/i);
+  assert.equal(ledger.platforms.instagram.state, "unknown");
+  assert.equal(ledger.platforms.instagram.publishedAt, null);
+  assert.equal(ledger.platforms.instagram.platformPostId, null);
+  assert.equal(persisted, false);
+  assert.equal(posts, 0);
+});
+
+test("fails closed for missing, null, scalar, or malformed Instagram owners", async () => {
+  for (const owner of [undefined, null, "654321", [], { unexpected: "value" }]) {
+    const ledger = unknownInstagramLedger();
+    let persisted = false;
+    await assert.rejects(() => reconcilePlatform({
+      ledger, platform: "instagram", env, remoteId: "ig-media-1", confirmed: true,
+      persist: async () => { persisted = true; },
+      fetchImpl: async () => response({ id: "ig-media-1", owner, username: "traditionalhomes", permalink: "https://www.instagram.com/p/example/" }),
+    }), /ownership/i);
+    assert.equal(ledger.platforms.instagram.state, "unknown");
+    assert.equal(persisted, false);
+  }
+});
+
+test("fails closed for missing or non-numeric Instagram owner IDs", async () => {
+  for (const owner of [{}, { id: "not-a-numeric-id" }, { id: {} }]) {
+    const ledger = unknownInstagramLedger();
+    await assert.rejects(() => reconcilePlatform({
+      ledger, platform: "instagram", env, remoteId: "ig-media-1", confirmed: true, persist: async () => { throw new Error("must not persist"); },
+      fetchImpl: async () => response({ id: "ig-media-1", owner, username: "traditionalhomes", permalink: "https://www.instagram.com/p/example/" }),
+    }), /ownership/i);
+    assert.equal(ledger.platforms.instagram.state, "unknown");
+  }
+});
+
+test("fails closed when confirmed Instagram media ID differs from the supplied ID", async () => {
+  const ledger = unknownInstagramLedger();
+  await assert.rejects(() => reconcilePlatform({
+    ledger, platform: "instagram", env, remoteId: "ig-media-1", confirmed: true, persist: async () => { throw new Error("must not persist"); },
+    fetchImpl: async () => response({ id: "different-media", owner: { id: env.META_IG_USER_ID }, username: "traditionalhomes", permalink: "https://www.instagram.com/p/example/" }),
+  }), /could not confirm/i);
+  assert.equal(ledger.platforms.instagram.state, "unknown");
+});
+
+test("fails closed for deleted Instagram media without persisting raw error diagnostics", async () => {
+  const ledger = unknownInstagramLedger();
+  let posts = 0;
+  await assert.rejects(() => reconcilePlatform({
+    ledger, platform: "instagram", env, remoteId: "ig-media-1", confirmed: true, persist: async () => { throw new Error("must not persist"); },
+    fetchImpl: async (_url, options) => {
+      if (options.method === "POST") posts += 1;
+      return textResponse('<html>access_token=secret&raw-response-body</html>', 404);
+    },
+  }), (error) => error.kind === "http" && !String(error.message).includes("secret") && !String(error.message).includes("raw-response-body") && !Object.hasOwn(error, "body"));
+  assert.equal(ledger.platforms.instagram.state, "unknown");
+  assert.equal(ledger.platforms.instagram.platformPostId, null);
+  assert.equal(posts, 0);
+});
+
 test("redacts credentials and writes ledgers atomically", async () => {
   assert.deepEqual(redactSensitive({ access_token: "secret", headers: { Authorization: "Bearer secret" }, id: "safe" }), { id: "safe" });
   const rootDir = await mkdtemp(path.join(os.tmpdir(), "social-atomic-"));
@@ -174,7 +410,12 @@ test("blocks repeated live publishing after unknown or published state", async (
   for (const state of ["unknown", "published"]) {
     const ledger = approvedLedger();
     ledger.platforms.facebook.state = state;
-    await assert.rejects(() => publishPlatform({ ledger, platform: "facebook", currentFingerprint: fingerprint, env, confirmLive: true, persist: async () => {}, fetchImpl: successfulPublicUrls }), /approved/i);
+    let requests = 0;
+    await assert.rejects(() => publishPlatform({
+      ledger, platform: "facebook", currentFingerprint: fingerprint, env, confirmLive: true, persist: async () => {},
+      fetchImpl: async () => { requests += 1; throw new Error("must not request"); },
+    }), /approved/i);
+    assert.equal(requests, 0);
   }
 });
 
