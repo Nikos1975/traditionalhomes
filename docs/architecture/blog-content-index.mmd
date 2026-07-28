@@ -1,20 +1,20 @@
 flowchart TD
-  BlogRoute["/blog/"]
-  NoEnBlog["/en/blog/ does not exist"]
+  BlogRoute["/en/blog/ canonical public route"]
+  Legacy["/blog/** redirect-only (301)"]
 
-  IndexRoute["src/pages/blog/index.astro"]
-  SlugRoute["src/pages/blog/[...slug].astro"]
+  IndexRoute["src/pages/en/blog/index.astro"]
+  SlugRoute["src/pages/en/blog/[...slug].astro"]
   BlogContent["src/content/blog/"]
 
-  Listed["Published posts listed on /blog/"]
-  HiddenTests["Hidden noindex test variants"]
+  Listed["11 published posts listed on /en/blog/"]
+  HiddenTests["3 draft style variants (not public routes)"]
   Guides["Guide content outside blog"]
 
   BlogRoute --> IndexRoute
   BlogRoute --> SlugRoute
   IndexRoute --> BlogContent
   SlugRoute --> BlogContent
-  BlogRoute -.-> NoEnBlog
+  Legacy --> BlogRoute
 
   BlogContent --> Listed
   BlogContent --> HiddenTests

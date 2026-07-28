@@ -1,5 +1,10 @@
 # Cloudflare Pages redirects
 
+# English blog canonical migration
+/blog /en/blog/ 301
+/blog/ /en/blog/ 301
+/blog/* /en/blog/:splat 301
+
 # Root to /en/
 /                         /en/         301
 

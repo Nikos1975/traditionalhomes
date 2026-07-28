@@ -20,3 +20,11 @@ export function villaPath(slug: string, locale: Locale): string {
 export function guidePath(slug: string, locale: Locale = defaultLocale): string {
   return localizedPath(locale, `guide/${slug}`);
 }
+
+export function blogIndexPath(locale: Locale): string {
+  return localizedPath(locale, 'blog');
+}
+
+export function blogArticlePath(slug: string, locale: Locale): string {
+  return localizedPath(locale, `blog/${slug}`);
+}

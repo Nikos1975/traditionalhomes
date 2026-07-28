@@ -18,7 +18,7 @@ imageCredit: "Source: PanosKarapanagiotis / Getty Images."
 
 Elounda's hotel development is easier to understand as a series of clusters rather than a single line of growth. The coast south of the village, the slopes near Plaka, and the larger Mirabello Bay setting each attracted different forms of hotel investment.
 
-The pattern is not separate from the older landscape. The same geography that shaped fishing, salt work, boat routes, and views toward Spinalonga also shaped where hotels were built. For the wider place setting behind those routes and views, read [Where the Sea Holds Memory](/blog/elounda-guide/).
+The pattern is not separate from the older landscape. The same geography that shaped fishing, salt work, boat routes, and views toward Spinalonga also shaped where hotels were built. For the wider place setting behind those routes and views, read [Where the Sea Holds Memory](/en/blog/elounda-guide/).
 
 ## 1957-1960s: After Spinalonga Closed
 
@@ -83,7 +83,7 @@ Elounda's hotel clusters developed in stages:
 
 For visitors, the practical result is simple. Elounda is not one hotel strip. It is a set of coastal and hillside zones, each shaped by the bay, the road, the view to Spinalonga, and the older villages behind the waterfront.
 
-For the broader historical setting, read [A Short Chronological History of Elounda](/blog/elounda-history-through-its-shoreline/). For how this changed the visitor economy, read [How Elounda's Visitor Economy Changed](/blog/elounda-visitor-economy/).
+For the broader historical setting, read [A Short Chronological History of Elounda](/en/blog/elounda-history-through-its-shoreline/). For how this changed the visitor economy, read [How Elounda's Visitor Economy Changed](/en/blog/elounda-visitor-economy/).
 
 ## Sources and Image Credits
 

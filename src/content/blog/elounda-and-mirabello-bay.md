@@ -49,7 +49,7 @@ Schisma occupies the coastal side. Epano Elounda and Mavrikiano belong to the se
 
 An early twentieth-century field account also records Schisma, Kato and Epano Elounda, Mavrikiano and Plaka as a spatial sequence along this side of the coast. It is useful as a dated observation of how the places related on the ground, not as proof that their present administrative status or built form has remained unchanged. That difference matters: historical geography can illuminate a pattern without freezing it in time.
 
-Mavrikiano is especially useful for seeing the transition between coastal Elounda and the hillside. It belongs to the Municipal Community of Elounda, but its setting is not the same as Schisma's. The [Mavrikiano distances and area guide](/blog/mavrikiano-distances-and-guide/) deals with practical local orientation; [Walking Around Elounda](/blog/walking-around-elounda/) explains how the character of the ground changes between village lanes, lower slopes and more exposed terrain. This article's point is simpler: the villages behind the waterfront are part of the same local settlement system, even when they are not experienced from the same level or in the same way.
+Mavrikiano is especially useful for seeing the transition between coastal Elounda and the hillside. It belongs to the Municipal Community of Elounda, but its setting is not the same as Schisma's. The [Mavrikiano distances and area guide](/en/blog/mavrikiano-distances-and-guide/) deals with practical local orientation; [Walking Around Elounda](/en/blog/walking-around-elounda/) explains how the character of the ground changes between village lanes, lower slopes and more exposed terrain. This article's point is simpler: the villages behind the waterfront are part of the same local settlement system, even when they are not experienced from the same level or in the same way.
 
 Kato Elounda appears in the historic spatial record, but the article does not use it to make a fresh administrative classification. Its value here is geographical. Together with Schisma, Epano Elounda and Mavrikiano, it helps show that “Elounda” has long referred to more than a single waterfront point.
 
@@ -61,7 +61,7 @@ The salt pans make that relationship visible. The Ephorate of Antiquities places
 
 The canal is part of the present geography, but this article does not assign it a precise construction date or a responsible authority. Those details require firmer direct evidence than the current record provides. What can be said is less dramatic and more useful: the cut, bridge, water and low salt-pan ground make Poros a passage between the more enclosed Elounda side and the peninsula landscape.
 
-Kolokytha is therefore not merely a beachward extension of Elounda. It is a peninsula whose relationship to the bay, Poros and the archaeological setting of Olous gives it a distinct role. The detailed history of this low working landscape belongs in [Elounda Salt Pans and the Poros Windmills](/blog/elounda-salt-pans-and-poros-windmills/). For walking conditions and the changing surface of the peninsula, the more appropriate companion is [Walking Around Elounda](/blog/walking-around-elounda/).
+Kolokytha is therefore not merely a beachward extension of Elounda. It is a peninsula whose relationship to the bay, Poros and the archaeological setting of Olous gives it a distinct role. The detailed history of this low working landscape belongs in [Elounda Salt Pans and the Poros Windmills](/en/blog/elounda-salt-pans-and-poros-windmills/). For walking conditions and the changing surface of the peninsula, the more appropriate companion is [Walking Around Elounda](/en/blog/walking-around-elounda/).
 
 ## Plaka and the northern coast
 
@@ -69,9 +69,9 @@ Plaka is closely connected to the Elounda coast in geographical terms, but it sh
 
 Its position on the northern coast nevertheless makes Plaka part of the same practical coastal sequence. It faces Spinalonga and sits beyond the lower land and settlement pattern around Poros. In this sense it belongs to the wider Elounda-area conversation: not because an official boundary disappears, but because shoreline, road and view connect the places.
 
-Spinalonga gives that northern orientation a clear landmark. UNESCO documentation describes it as a rocky islet at the mouth of Elounda's natural harbour. Spinalonga’s position off the northern coast makes it an important geographic reference point between Plaka, the Elounda area and the approaches from Mirabello Bay. The island's complicated history deserves its own treatment rather than a compressed retelling here. [Elounda, Spinalonga, and Wartime Memory](/blog/elounda-wartime-memory/) considers one later historical layer with the necessary care.
+Spinalonga gives that northern orientation a clear landmark. UNESCO documentation describes it as a rocky islet at the mouth of Elounda's natural harbour. Spinalonga’s position off the northern coast makes it an important geographic reference point between Plaka, the Elounda area and the approaches from Mirabello Bay. The island's complicated history deserves its own treatment rather than a compressed retelling here. [Elounda, Spinalonga, and Wartime Memory](/en/blog/elounda-wartime-memory/) considers one later historical layer with the necessary care.
 
-The distinction also helps with Vrouchas. Vrouchas is not simply a northern suburb of Elounda; it is the separate local-community frame in which Plaka is listed. [Welcome to Elounda Traditional Homes](/blog/welcome-to-elounda/) offers a first-party introduction to the Mavrikiano and Vrouchas setting, while this article keeps to the geographic relationship rather than accommodation or visitor planning.
+The distinction also helps with Vrouchas. Vrouchas is not simply a northern suburb of Elounda; it is the separate local-community frame in which Plaka is listed. [Welcome to Elounda Traditional Homes](/en/blog/welcome-to-elounda/) offers a first-party introduction to the Mavrikiano and Vrouchas setting, while this article keeps to the geographic relationship rather than accommodation or visitor planning.
 
 ## How history shaped the present geography
 
@@ -81,7 +81,7 @@ That does not justify a simplified story in which one event explains everything.
 
 Later uses added further layers. The salt pans and the windmills at Poros point to the working use of the sheltered edge. Spinalonga remains a major geographic reference point on the northern coast. The present-day settlement pattern still places the shore at Schisma in close relation to the hillside villages and to the road north. A broad tourism-era explanation would not account for all of these relationships. Geography, administrative organisation and historical use each describe a different part of the present.
 
-For a fuller chronological account, read [A Short Chronological History of Elounda](/blog/elounda-history-through-its-shoreline/). The purpose here is not to repeat its sequence of periods, but to show why the present-day map still holds together: shore and slope, enclosed bay and outer bay, village and peninsula, local community and wider region.
+For a fuller chronological account, read [A Short Chronological History of Elounda](/en/blog/elounda-history-through-its-shoreline/). The purpose here is not to repeat its sequence of periods, but to show why the present-day map still holds together: shore and slope, enclosed bay and outer bay, village and peninsula, local community and wider region.
 
 ## Using the name “Elounda” accurately
 

@@ -86,8 +86,8 @@ the Adriatic. They mark a threshold: on one side, the open sea; on the other,
 the inner lagoon and the ruins sleeping beneath it.
 
 For a shorter factual chronology of Olous, the salt pans, and Spinalonga, read
-[A Short Chronological History of Elounda](/blog/elounda-history-through-its-shoreline/)
-and [Elounda Salt Pans and the Poros Windmills](/blog/elounda-salt-pans-and-poros-windmills/).
+[A Short Chronological History of Elounda](/en/blog/elounda-history-through-its-shoreline/)
+and [Elounda Salt Pans and the Poros Windmills](/en/blog/elounda-salt-pans-and-poros-windmills/).
 
 ---
 
@@ -112,7 +112,7 @@ distinct against the fortifications. The fortress has not changed. Only the
 understanding of what happened inside it has deepened.
 
 For a careful note on the island's wartime context, see
-[Elounda, Spinalonga, and Wartime Memory](/blog/elounda-wartime-memory/).
+[Elounda, Spinalonga, and Wartime Memory](/en/blog/elounda-wartime-memory/).
 
 ---
 
@@ -140,7 +140,7 @@ From it, the view across the lagoon and toward the Spinalonga peninsula
 requires no editing — the proportions are already right.
 
 For practical distances from Mavrikiano to Plaka, Spinalonga, Olous, and
-Kolokytha, use the [Mavrikiano Distances and Area Guide](/blog/mavrikiano-distances-and-guide/).
+Kolokytha, use the [Mavrikiano Distances and Area Guide](/en/blog/mavrikiano-distances-and-guide/).
 
 In the early afternoon, the village falls into a profound, heavy silence. The
 only movement is the twitch of a curtain, the slow migration of a shadow across

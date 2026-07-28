@@ -34,7 +34,7 @@ For wartime writing, that geography is a safer foundation than repeating unverif
 
 Spinalonga had its own modern history before the Second World War. The Ephorate of Antiquities of Lasithi records that the island was used as a leprosy hospital from 1903 to 1957. It also records the role of Epaminondas Remoundakis and the Brotherhood of the Sick in improving daily life on the island before the war.
 
-The same official account says that these efforts were interrupted by the Italian and German occupation of Crete, and that living conditions became difficult during the war years. For the longer shoreline chronology around Spinalonga, see [A Short Chronological History of Elounda](/blog/elounda-history-through-its-shoreline/). This is the kind of fact that should be stated plainly.
+The same official account says that these efforts were interrupted by the Italian and German occupation of Crete, and that living conditions became difficult during the war years. For the longer shoreline chronology around Spinalonga, see [A Short Chronological History of Elounda](/en/blog/elounda-history-through-its-shoreline/). This is the kind of fact that should be stated plainly.
 
 <figure>
   <img src="/images/blog/elounda-wartime-memory/spinalonga-venetian-fortifications.jfif" alt="The Venetian fortifications of Spinalonga" loading="lazy" />
@@ -45,7 +45,7 @@ The same official account says that these efforts were interrupted by the Italia
 
 A respectful visit starts with orientation, not performance. Look across the bay from Elounda. Follow the road north to Plaka. If visiting Spinalonga, read the official material on site and keep the island's medical and social history separate from broader wartime memory.
 
-The [Mavrikiano Distances and Area Guide](/blog/mavrikiano-distances-and-guide/) helps with boat, road, and walking orientation around Spinalonga. For a broader essay on Elounda, Mavrikiano, Olous, and the island, read [Where the Sea Holds Memory](/blog/elounda-guide/). The [Vrouchas guide](/en/guide/vrouchas/) gives useful context for the upland side of the area.
+The [Mavrikiano Distances and Area Guide](/en/blog/mavrikiano-distances-and-guide/) helps with boat, road, and walking orientation around Spinalonga. For a broader essay on Elounda, Mavrikiano, Olous, and the island, read [Where the Sea Holds Memory](/en/blog/elounda-guide/). The [Vrouchas guide](/en/guide/vrouchas/) gives useful context for the upland side of the area.
 
 Elounda's wartime memory is strongest when it stays close to what can be known: the bay, the island, the roads, and the lives affected by events larger than the village itself.
 

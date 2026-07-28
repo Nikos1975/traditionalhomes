@@ -1,6 +1,8 @@
 ---
-import Base from '../../layouts/Base.astro';
+import Base from '../../../layouts/Base.astro';
 import { getCollection } from 'astro:content';
+import { defaultLocale } from '../../../i18n/config';
+import { blogArticlePath, blogIndexPath } from '../../../i18n/routes';
 
 const posts = (await getCollection('blog'))
   .filter(p => !p.data.draft && !p.id.startsWith('elounda-guide-style-'))
@@ -35,7 +37,7 @@ const postsByCategory = categories.map(category => ({
 <Base
   title="Blog | Elounda Traditional Homes"
   description="Stories, travel guides, and updates from Elounda Traditional Homes in Crete."
-  canonicalUrl="https://traditional-homes.gr/blog/"
+  canonicalUrl={`https://traditional-homes.gr${blogIndexPath(defaultLocale)}`}
 >
   <div class="site-max site-pad pb-16 pt-20 md:pb-24 md:pt-28">
 
@@ -68,7 +70,7 @@ const postsByCategory = categories.map(category => ({
                     data-blog-slide
                     aria-hidden={index === 0 ? 'false' : 'true'}
                   >
-                    <a href={`/blog/${post.id}/`} class="group/hero block h-full">
+                    <a href={blogArticlePath(post.id, defaultLocale)} class="group/hero block h-full">
                       <img
                         src={post.data.image}
                         alt={post.data.imageAlt ?? ''}
@@ -164,7 +166,7 @@ const postsByCategory = categories.map(category => ({
 
             <div class="grid grid-cols-1 items-stretch gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-8">
               {categoryPosts.map(post => (
-                <a href={`/blog/${post.id}/`} class="group/card blog-card relative flex h-full min-h-[21rem] flex-col overflow-hidden rounded-lg border border-stone-200/90 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-stone-300 hover:shadow-card-hover focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/35">
+                <a href={blogArticlePath(post.id, defaultLocale)} class="group/card blog-card relative flex h-full min-h-[21rem] flex-col overflow-hidden rounded-lg border border-stone-200/90 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-stone-300 hover:shadow-card-hover focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/35">
                   {post.data.image && (
                     <div
                       class="absolute inset-0 z-[1] bg-cover bg-center opacity-0 transition-opacity duration-700 group-hover/card:opacity-[0.11]"

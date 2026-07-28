@@ -48,7 +48,7 @@ The [Mavrikiano area guide](/en/guide/mavrikiano/) gives the broader village con
 
 ## 2. Kolokytha Peninsula
 
-Kolokytha begins with a legible piece of Elounda's coastal geography. The approach passes the salt-pan landscape and Poros windmills before reaching the peninsula side. The [salt pans and Poros windmills article](/blog/elounda-salt-pans-and-poros-windmills/) explains why this low ground is more than an incidental approach to the coast.
+Kolokytha begins with a legible piece of Elounda's coastal geography. The approach passes the salt-pan landscape and Poros windmills before reaching the peninsula side. The [salt pans and Poros windmills article](/en/blog/elounda-salt-pans-and-poros-windmills/) explains why this low ground is more than an incidental approach to the coast.
 
 On the peninsula, broad dirt road and visible paths make some sections look uncomplicated. A local mountaineering-club loop used dirt road, uphill path, a narrow marked path and rocky coastal ground before returning by road. That sequence shows why “a walk on Kolokytha” needs more definition: the surface can change several times within one outing.
 
