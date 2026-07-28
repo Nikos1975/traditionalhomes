@@ -230,8 +230,8 @@ const unitBySlug = new Map(units.map((unit) => [unit.slug, unit]));
                     if (!unit) return null;
 
                     const href = unit.type === 'villa'
-                      ? villaPath(unit.slug)
-                      : housePath(unit.slug);
+                      ? villaPath(unit.slug, defaultLocale)
+                      : housePath(unit.slug, defaultLocale);
 
                     return (
                       <li>

@@ -16,6 +16,7 @@ import { defaultLocale } from '../../../i18n/config';
 import { guidePath, localizedPath, villaPath } from '../../../i18n/routes';
 import { getVillaSeo, localizedCanonical } from '../../../i18n/seo';
 import { getCommonCopy } from '../../../i18n/translate';
+import { formatPropertyCount } from '../../../i18n/property-counts';
 import { sortGalleryImages } from '../../../utils/sortGalleryImages';
 import type { InventoryUnit, GalleryImage } from '../../../types';
 
@@ -77,7 +78,7 @@ const pageSeo = getVillaSeo(defaultLocale, unit, poolLabel);
 <Base
   title={pageSeo.title}
   description={pageSeo.description}
-  canonicalUrl={localizedCanonical(defaultLocale, villaPath(slug))}
+  canonicalUrl={localizedCanonical(defaultLocale, villaPath(slug, defaultLocale))}
   ogImage={ogImage}
 >
   {heroEntry && (
@@ -124,7 +125,7 @@ const pageSeo = getVillaSeo(defaultLocale, unit, poolLabel);
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" class="text-stone-400 shrink-0">
           <path d="M2 4v16"/><path d="M2 8h18a2 2 0 0 1 2 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/>
         </svg>
-        {unit.bedrooms} {unit.bedrooms === 1 ? propertyCopy.labels.bedroom : propertyCopy.labels.bedrooms}
+        {formatPropertyCount(defaultLocale, unit.bedrooms, propertyCopy.counts.bedrooms)}
       </span>
 
       <span class="flex items-center gap-2">
@@ -172,7 +173,7 @@ const pageSeo = getVillaSeo(defaultLocale, unit, poolLabel);
 
         <section aria-label={propertyCopy.detail.sections.atAGlance} class="border-t border-stone-100 pt-12">
           <h2 class="font-serif text-2xl text-body-text mb-8">{propertyCopy.detail.sections.atAGlance}</h2>
-          <AtAGlance unit={unit} />
+          <AtAGlance unit={unit} locale={defaultLocale} />
         </section>
 
         <section class="border-t border-stone-100 pt-12" aria-label={propertyCopy.detail.sections.aboutVillaAria}>

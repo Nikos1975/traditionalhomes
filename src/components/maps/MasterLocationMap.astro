@@ -22,8 +22,8 @@ const allLocs = locations.filter(l => l.lat && l.lng).map(loc => {
   const unit = units.find(u => u.slug === loc.slug);
   const detailsUrl = unit
     ? unit.type === 'villa'
-      ? villaPath(unit.slug)
-      : housePath(unit.slug)
+      ? villaPath(unit.slug, defaultLocale)
+      : housePath(unit.slug, defaultLocale)
     : undefined;
   
   // Find the hero image in the assets folder for this specific slug

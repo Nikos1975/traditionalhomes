@@ -303,12 +303,17 @@ describe('Stage 1 i18n foundation', () => {
         included: 'Included',
         seaView: 'Sea view',
       },
+      counts: {
+        guestsUpTo: { one: 'Up to {count} Guest', other: 'Up to {count} Guests' },
+        bedrooms: { one: '{count} Bedroom', other: '{count} Bedrooms' },
+        bathrooms: { one: '{count} bathroom', other: '{count} bathrooms' },
+        bathroomsCompact: { one: '{count} Bath', other: '{count} Baths' },
+        sleeps: { other: 'Sleeps {count}' },
+      },
       basics: { house: 'House Basics', villa: 'Villa Basics' },
       card: {
         photoComingSoon: 'Photo Coming Soon',
         villa: 'Villa',
-        upTo: 'Up to',
-        guests: 'Guests',
         editorNote: "Editor's Note:",
         details: 'Details',
         checkDates: 'Check dates',
@@ -325,9 +330,6 @@ describe('Stage 1 i18n foundation', () => {
       group: {
         privateEstate: 'Private Estate',
         includes: 'Includes:',
-        upTo: 'Up to',
-        guests: 'Guests',
-        bedrooms: 'Bedrooms',
         exclusiveSharedPool: 'Exclusive Estate Pool Area',
         privatePoolsIncluded: 'Private Pools Included',
         editorNote: "Editor's Note:",
@@ -438,15 +440,19 @@ describe('Stage 1 i18n foundation', () => {
       assert.doesNotMatch(file, /`\/en\/(?:houses|villa)\/\$\{/);
     }
 
-    assert.match(files.atAGlance, /housePath\(slug\)/);
-    assert.match(files.groupCard, /housePath\(firstMemberSlug\)/);
+    assert.match(files.atAGlance, /housePath\(slug, locale\)/);
+    assert.match(files.groupCard, /housePath\(firstMemberSlug, locale\)/);
     assert.match(files.mapPreview, /localizedPath\(defaultLocale, 'location'\)/);
-    assert.match(files.masterLocationMap, /unit\.type === 'villa'[\s\S]*villaPath\(unit\.slug\)[\s\S]*housePath\(unit\.slug\)/);
-    assert.match(files.singlePinMap, /location\.type === 'villa'[\s\S]*villaPath\(location\.slug\)[\s\S]*housePath\(location\.slug\)/);
-    assert.match(files.unitCard, /unit\.type === "villa"[\s\S]*villaPath\(unit\.slug\)[\s\S]*housePath\(unit\.slug\)/);
-    assert.match(files.housePage, /localizedCanonical\(defaultLocale, housePath\(slug\)\)/);
+    assert.match(files.masterLocationMap, /unit\.type === 'villa'[\s\S]*villaPath\(unit\.slug, defaultLocale\)[\s\S]*housePath\(unit\.slug, defaultLocale\)/);
+    assert.match(files.singlePinMap, /location\.type === 'villa'[\s\S]*villaPath\(location\.slug, defaultLocale\)[\s\S]*housePath\(location\.slug, defaultLocale\)/);
+    assert.match(files.unitCard, /unit\.type === "villa"[\s\S]*villaPath\(unit\.slug, locale\)[\s\S]*housePath\(unit\.slug, locale\)/);
+    assert.match(files.housePage, /localizedCanonical\(defaultLocale, housePath\(slug, defaultLocale\)\)/);
     assert.match(files.villaPage, /Astro\.redirect\(localizedPath\(defaultLocale, 'houses'\), 302\)/);
-    assert.match(files.locationPage, /unit\.type === 'villa'[\s\S]*villaPath\(unit\.slug\)[\s\S]*housePath\(unit\.slug\)/);
+    assert.match(files.locationPage, /unit\.type === 'villa'[\s\S]*villaPath\(unit\.slug, defaultLocale\)[\s\S]*housePath\(unit\.slug, defaultLocale\)/);
+
+    for (const file of helperManagedFiles) {
+      assert.doesNotMatch(file, /\b(?:housePath|villaPath)\([^,)]*\)/);
+    }
 
     assert.match(files.blogIndex, /href=\{`\/blog\/\$\{post\.id\}\/`\}/);
     assert.match(files.blogPost, /href="\/blog\/"/);
@@ -472,8 +478,8 @@ describe('Stage 1 i18n foundation', () => {
     }
 
     assert.match(staticPages.home, /localizedCanonical\(defaultLocale, localizedPath\(defaultLocale\)\)/);
-    assert.match(staticPages.home, /housePath\('argyro'\)/);
-    assert.match(staticPages.home, /villaPath\(villa\.slug\)/);
+    assert.match(staticPages.home, /housePath\('argyro', defaultLocale\)/);
+    assert.match(staticPages.home, /villaPath\(villa\.slug, defaultLocale\)/);
     assert.match(staticPages.about, /localizedCanonical\(defaultLocale, localizedPath\(defaultLocale, 'about'\)\)/);
     assert.match(staticPages.contact, /action="\/api\/contact"/);
     assert.match(staticPages.contact, /contactSentPath = `\$\{localizedPath\(defaultLocale, 'contact'\)\}\?sent=1`/);

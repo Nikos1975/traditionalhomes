@@ -155,6 +155,13 @@
         "included": "Included",
         "seaView": "Sea view"
       },
+      "counts": {
+        "guestsUpTo": { "one": "Up to {count} Guest", "other": "Up to {count} Guests" },
+        "bedrooms": { "one": "{count} Bedroom", "other": "{count} Bedrooms" },
+        "bathrooms": { "one": "{count} bathroom", "other": "{count} bathrooms" },
+        "bathroomsCompact": { "one": "{count} Bath", "other": "{count} Baths" },
+        "sleeps": { "other": "Sleeps {count}" }
+      },
       "basics": {
         "house": "House Basics",
         "villa": "Villa Basics"
@@ -162,8 +169,6 @@
       "card": {
         "photoComingSoon": "Photo Coming Soon",
         "villa": "Villa",
-        "upTo": "Up to",
-        "guests": "Guests",
         "editorNote": "Editor's Note:",
         "details": "Details",
         "checkDates": "Check dates",
@@ -180,9 +185,6 @@
       "group": {
         "privateEstate": "Private Estate",
         "includes": "Includes:",
-        "upTo": "Up to",
-        "guests": "Guests",
-        "bedrooms": "Bedrooms",
         "exclusiveSharedPool": "Exclusive Estate Pool Area",
         "privatePoolsIncluded": "Private Pools Included",
         "editorNote": "Editor's Note:",

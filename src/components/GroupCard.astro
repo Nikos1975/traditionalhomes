@@ -3,6 +3,7 @@ import { Image } from 'astro:assets';
 import { defaultLocale, type Locale } from '../i18n/config';
 import { housePath } from '../i18n/routes';
 import { getCommonCopy } from '../i18n/translate';
+import { formatPropertyCount } from '../i18n/property-counts';
 import type { ListingItem } from '../utils/filters';
 import inventory from '../inventory/inventory.json';
 import type { InventoryUnit } from '../types';
@@ -36,8 +37,8 @@ const units = inventory as InventoryUnit[];
 const memberNames = group.members?.map(m => units.find(u => u.slug === m)?.name ?? m).join(' & ');
 const nameA = units.find(u => u.slug === firstMemberSlug)?.name ?? firstMemberSlug ?? '';
 const nameB = units.find(u => u.slug === secondMemberSlug)?.name ?? secondMemberSlug ?? '';
-const detailPathA = firstMemberSlug ? housePath(firstMemberSlug) : '#';
-const detailPathB = secondMemberSlug ? housePath(secondMemberSlug) : '#';
+const detailPathA = firstMemberSlug ? housePath(firstMemberSlug, locale) : '#';
+const detailPathB = secondMemberSlug ? housePath(secondMemberSlug, locale) : '#';
 ---
 
 <article
@@ -121,11 +122,11 @@ const detailPathB = secondMemberSlug ? housePath(secondMemberSlug) : '#';
     <div class="grid grid-cols-2 gap-y-4 mb-8">
       <span class="flex items-center gap-3 text-xs text-stone-500 font-light">
         <svg class="text-stone-400" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-        {propertyCopy.group.upTo} {group.sleepsMax} {propertyCopy.group.guests}
+        {formatPropertyCount(locale, group.sleepsMax!, propertyCopy.counts.guestsUpTo)}
       </span>
       <span class="flex items-center gap-3 text-xs text-stone-500 font-light">
         <svg class="text-stone-400" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 4v16"/><path d="M2 8h18a2 2 0 0 1 2 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/></svg>
-        {group.bedrooms} {propertyCopy.group.bedrooms}
+        {formatPropertyCount(locale, group.bedrooms!, propertyCopy.counts.bedrooms)}
       </span>
       
       {/* POOL STATUS INTEGRATED INTO GRID */}

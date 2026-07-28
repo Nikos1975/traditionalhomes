@@ -1,5 +1,11 @@
 # Agent Handoff Notes
 
+### 2026-07-28 - Stage 2.1 locale route and count contracts
+
+- Made `housePath` and `villaPath` require an explicit locale, and updated every existing caller to pass either its component locale or `defaultLocale`; English output remains under `/en/` and no translated routes were added.
+- Added locale-owned complete property count templates with an `Intl.PluralRules` formatter. Property cards and detail facts now use complete messages; the existing `AtAGlance` `Bath`/`Baths`, Clio, Erato, and Almond Tree Villa wording is intentionally preserved.
+- SEO copy, booking/contact flows, blog routes, hreflang, language selector, sitemap expansion, and locale content beyond English remain out of scope.
+
 ### 2026-07-28 - Stage 2 shared property UI extraction
 
 - Extracted reusable English property-interface labels into `common.json` and wired the existing property cards and house/villa detail chrome to those values. Inventory facts, editorial prose, booking/contact flows, routes, and blog files remain unchanged.

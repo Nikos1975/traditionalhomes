@@ -9,11 +9,11 @@ export function localizedPath(locale: string | undefined, path = '/'): string {
   return cleanPath ? `/${safeLocale}/${cleanPath}/` : `/${safeLocale}/`;
 }
 
-export function housePath(slug: string, locale: Locale = defaultLocale): string {
+export function housePath(slug: string, locale: Locale): string {
   return localizedPath(locale, `houses/${slug}`);
 }
 
-export function villaPath(slug: string, locale: Locale = defaultLocale): string {
+export function villaPath(slug: string, locale: Locale): string {
   return localizedPath(locale, `villa/${slug}`);
 }
 

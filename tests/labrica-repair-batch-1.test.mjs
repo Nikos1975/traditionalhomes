@@ -59,7 +59,7 @@ describe('Labrica repair batch 1', () => {
     assert.equal(inventory.some((unit) => unit.slug === 'private-car-parking'), false);
     assert.match(map, /const allLocs = locations\.filter[\s\S]*return \{[\s\S]*\.\.\.loc/);
     assert.match(map, /const markers = allLocs\.map[\s\S]*id:\s*loc\.id[\s\S]*url:\s*loc\.detailsUrl/);
-    assert.match(map, /const detailsUrl = unit[\s\S]*villaPath\(unit\.slug\)[\s\S]*housePath\(unit\.slug\)[\s\S]*undefined/);
+    assert.match(map, /const detailsUrl = unit[\s\S]*villaPath\(unit\.slug, defaultLocale\)[\s\S]*housePath\(unit\.slug, defaultLocale\)[\s\S]*undefined/);
     assert.match(map, /url:\s*loc\.detailsUrl/);
     assert.match(map, /\{loc\.detailsUrl && \([\s\S]*href=\{loc\.detailsUrl\}/);
     assert.doesNotMatch(map, /loc\.type === 'villa' \? villaPath\(loc\.slug\) : housePath\(loc\.slug\)/);
@@ -73,7 +73,7 @@ describe('Labrica repair batch 1', () => {
     assert.equal(inventory.find((unit) => unit.slug === 'argyro')?.type, 'house');
     assert.match(
       map,
-      /const unit = units\.find[\s\S]*const detailsUrl = unit[\s\S]*unit\.type === 'villa'[\s\S]*villaPath\(unit\.slug\)[\s\S]*housePath\(unit\.slug\)/,
+      /const unit = units\.find[\s\S]*const detailsUrl = unit[\s\S]*unit\.type === 'villa'[\s\S]*villaPath\(unit\.slug, defaultLocale\)[\s\S]*housePath\(unit\.slug, defaultLocale\)/,
     );
     assert.match(map, /href=\{loc\.detailsUrl\}/);
   });
