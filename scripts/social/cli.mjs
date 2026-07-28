@@ -7,7 +7,10 @@ import { approvePlatform } from "./approval.mjs";
 import { loadPublishedArticle } from "./article.mjs";
 import { createManualDrafts } from "./generators/manual.mjs";
 import { fingerprintArticle } from "./fingerprint.mjs";
+import { generateInstagramDerivative, resolvePublicSourcePath } from "./media.mjs";
+import { publishPlatform } from "./publisher.mjs";
 import { createPreparedLedger, isPlatformStale, readLedger, writeLedger } from "./publication-ledger.mjs";
+import { reconcilePlatform } from "./reconcile.mjs";
 
 function parseArgs(argv) {
   const args = {};
@@ -44,7 +47,18 @@ export async function runSocialCli({ command, argv, rootDir = process.cwd() }) {
     } catch (error) {
       if (!/Prepared social record not found/.test(error.message)) throw error;
     }
+    const sourceUrl = new URL(article.heroImageUrl);
+    if (sourceUrl.origin !== new URL(article.canonicalUrl).origin) throw new Error("Instagram derivative source must belong to the public website.");
+    const instagram = await generateInstagramDerivative({
+      rootDir, slug: article.slug, sourcePath: resolvePublicSourcePath({ rootDir, pathname: sourceUrl.pathname }),
+      siteUrl: sourceUrl.origin, articleFingerprint: fingerprint,
+    });
     const ledger = createPreparedLedger({ article, fingerprint, drafts: createManualDrafts(article), existingLedger });
+    ledger.media = {
+      sourceHero: { url: article.heroImageUrl },
+      facebook: { imageUrl: article.heroImageUrl },
+      instagram,
+    };
     await writeLedger({ rootDir, ledger });
     return ledger;
   }
@@ -55,6 +69,24 @@ export async function runSocialCli({ command, argv, rootDir = process.cwd() }) {
     const approved = approvePlatform({ ledger, platform: args.platform, currentFingerprint: fingerprint, confirmed: args.confirm === true });
     await writeLedger({ rootDir, ledger: approved });
     return approved;
+  }
+  if (command === "publish") {
+    if (!args.platform) throw new Error("Live publishing requires --platform facebook or instagram.");
+    const ledger = await readLedger({ rootDir, slug: args.slug });
+    return publishPlatform({
+      ledger, platform: args.platform, currentFingerprint: fingerprint, env: process.env,
+      confirmLive: args["confirm-live"] === true, fetchImpl: globalThis.fetch,
+      persist: (nextLedger) => writeLedger({ rootDir, ledger: nextLedger }),
+    });
+  }
+  if (command === "reconcile") {
+    if (!args.platform) throw new Error("Reconciliation requires --platform facebook or instagram.");
+    const ledger = await readLedger({ rootDir, slug: args.slug });
+    return reconcilePlatform({
+      ledger, platform: args.platform, env: process.env, fetchImpl: globalThis.fetch,
+      remoteId: args["remote-id"], confirmed: args.confirm === true,
+      persist: (nextLedger) => writeLedger({ rootDir, ledger: nextLedger }),
+    });
   }
   throw new Error(`Unknown social command: ${command}.`);
 }

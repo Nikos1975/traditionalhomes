@@ -1,5 +1,11 @@
 # Agent Handoff Notes
 
+### 2026-07-28 - Social Publisher live layer
+
+- Added the Facebook Page and Instagram Professional live-publishing layer on top of the local social core. It uses only configured numeric target IDs, an explicit Meta Graph version, injected HTTP clients, and no public endpoint, workflow, scheduler, dashboard, webhook, or other platform integration.
+- Live publishing requires an approved matching fingerprint, `--confirm-live`, and `SOCIAL_LIVE_PUBLISHING=true`. The ledger is atomically moved to `publishing` before a POST; ambiguous POST results become `unknown` without a retry, while Facebook and Instagram states remain independent.
+- Preparation now retains source-hero, Facebook, and generated 1080 × 1350 JPEG Instagram media records. Instagram fails closed unless its public HTTPS JPEG is no larger than 8 MB and within the permitted aspect-ratio range. Reconciliation performs GET-only confirmation and never creates a post.
+
 ### 2026-07-28 - Social Publisher Core v1
 
 - Added a local-only Node social-publisher core for one published English blog article at a time. It derives canonical article and hero URLs from the existing `/en/blog/<slug>/` route convention, creates non-secret platform drafts, and writes one tracked ledger record per slug.

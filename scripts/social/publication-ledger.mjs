@@ -1,4 +1,5 @@
-import { mkdir, readFile, stat, writeFile } from "node:fs/promises";
+import { mkdir, readFile, rename, stat, writeFile } from "node:fs/promises";
+import { randomUUID } from "node:crypto";
 import path from "node:path";
 
 import { assertDrafts, assertNoSensitiveFields, assertPlatformDraft, PLATFORMS } from "./draft-schema.mjs";
@@ -6,7 +7,10 @@ import { assertDrafts, assertNoSensitiveFields, assertPlatformDraft, PLATFORMS }
 const STATES = new Set(["prepared", "approved", "publishing", "published", "failed", "unknown"]);
 
 function platformRecord(draft, articleFingerprint) {
-  return { draft, articleFingerprint, state: "prepared", approvedAt: null, publishedAt: null, platformPostId: null, attempts: [] };
+  return {
+    draft, articleFingerprint, state: "prepared", targetId: null, containerId: null,
+    approvedAt: null, publishedAt: null, platformPostId: null, attempts: [],
+  };
 }
 
 function hasSafePreparedState(record) {
@@ -44,6 +48,7 @@ function ledgerPath(rootDir, slug) {
 export function assertLedger(ledger) {
   assertNoSensitiveFields(ledger);
   if (!ledger?.slug || !/^[0-9a-f]{64}$/.test(ledger.articleFingerprint ?? "")) throw new Error("Ledger has invalid article identity.");
+  if (ledger.articleUrl != null && (typeof ledger.articleUrl !== "string" || !ledger.articleUrl.startsWith("https://"))) throw new Error("Ledger has invalid article URL.");
   if (!ledger.platforms || typeof ledger.platforms !== "object") throw new Error("Ledger has invalid platform records.");
   for (const platform of Object.keys(ledger.platforms)) {
     if (!PLATFORMS.includes(platform)) throw new Error(`Ledger has unknown ${platform} platform.`);
@@ -55,6 +60,7 @@ export function assertLedger(ledger) {
     if (!STATES.has(record.state)) throw new Error(`Ledger has invalid ${platform} state.`);
     if (!Array.isArray(record.attempts)) throw new Error(`Ledger has invalid ${platform} attempts.`);
     if (record.articleFingerprint != null && !/^[0-9a-f]{64}$/.test(record.articleFingerprint)) throw new Error(`Ledger has invalid ${platform} fingerprint.`);
+    if (record.targetId != null && !/^\d+$/.test(record.targetId)) throw new Error(`Ledger has invalid ${platform} target ID.`);
   }
 }
 
@@ -72,8 +78,10 @@ export function createPreparedLedger({ article, fingerprint, drafts, existingLed
     ...existingLedger,
     schemaVersion: 1,
     slug: article.slug,
+    articleUrl: article.canonicalUrl,
     articleFingerprint: fingerprint,
     preparedAt: now.toISOString(),
+    media: existingLedger?.media ?? { sourceHero: { url: article.heroImageUrl }, facebook: { imageUrl: article.heroImageUrl }, instagram: null },
     platforms: Object.fromEntries(PLATFORMS.map((platform) => [platform, preparedPlatformRecord({
       existingRecord: existingLedger?.platforms[platform],
       draft: drafts[platform],
@@ -115,5 +123,7 @@ export async function writeLedger({ rootDir, ledger }) {
     if (!/Prepared social record not found/.test(error.message)) throw error;
   }
   await mkdir(path.dirname(filePath), { recursive: true });
-  await writeFile(filePath, `${JSON.stringify(ledger, null, 2)}\n`);
+  const temporaryPath = `${filePath}.${randomUUID()}.tmp`;
+  await writeFile(temporaryPath, `${JSON.stringify(ledger, null, 2)}\n`, { flag: "wx" });
+  await rename(temporaryPath, filePath);
 }

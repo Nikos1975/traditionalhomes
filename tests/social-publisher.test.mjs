@@ -3,6 +3,7 @@ import { mkdtemp, mkdir, readFile, writeFile } from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
 import test from "node:test";
+import sharp from "sharp";
 
 import { approvePlatform } from "../scripts/social/approval.mjs";
 import { loadPublishedArticle } from "../scripts/social/article.mjs";
@@ -18,7 +19,7 @@ import {
 
 const SITE_URL = "https://traditional-homes.gr";
 
-async function createRoot({ slug = "published-article", draft = false, image = "/images/blog/hero.webp", body = "A calm first paragraph for readers." } = {}) {
+async function createRoot({ slug = "published-article", draft = false, image = "/images/blog/hero.jpg", body = "A calm first paragraph for readers." } = {}) {
   const rootDir = await mkdtemp(path.join(os.tmpdir(), "social-publisher-"));
   const blogDir = path.join(rootDir, "src", "content", "blog");
   await mkdir(blogDir, { recursive: true });
@@ -26,6 +27,11 @@ async function createRoot({ slug = "published-article", draft = false, image = "
     path.join(blogDir, `${slug}.md`),
     `---\ntitle: "Published Article"\ndescription: "A clear article description."\npubDate: 2026-07-27\ndraft: ${draft}\nimage: "${image}"\nimageAlt: "A quiet view"\n---\n\n${body}\n\nA second paragraph.\n`,
   );
+  if (image.startsWith("/")) {
+    const imagePath = path.join(rootDir, "public", image);
+    await mkdir(path.dirname(imagePath), { recursive: true });
+    await sharp({ create: { width: 1080, height: 1350, channels: 3, background: "#dddddd" } }).jpeg().toFile(imagePath);
+  }
   return rootDir;
 }
 
@@ -38,7 +44,7 @@ test("extracts all required metadata from one published article", async () => {
     title: "Published Article",
     description: "A clear article description.",
     canonicalUrl: "https://traditional-homes.gr/en/blog/published-article/",
-    heroImageUrl: "https://traditional-homes.gr/images/blog/hero.webp",
+    heroImageUrl: "https://traditional-homes.gr/images/blog/hero.jpg",
     heroImageAlt: "A quiet view",
     excerpt: "A calm first paragraph for readers.",
     publicationDate: "2026-07-27",
@@ -111,6 +117,7 @@ test("creates a non-secret prepared ledger without publishing or network access"
     await writeLedger({ rootDir, ledger });
     const stored = await readLedger({ rootDir, slug: article.slug });
     assert.equal(stored.platforms.facebook.state, "prepared");
+    assert.equal(stored.articleUrl, article.canonicalUrl);
     assert.equal(stored.platforms.facebook.publishedAt, null);
     assert.equal(stored.platforms.facebook.platformPostId, null);
     assert.deepEqual(stored.platforms.facebook.attempts, []);
@@ -145,6 +152,14 @@ test("rejects stale approval, secrets, and terminal published records", async ()
   ledger.platforms.facebook.state = "published";
   ledger.platforms.facebook.platformPostId = "123";
   assert.throws(() => approvePlatform({ ledger, platform: "facebook", currentFingerprint: fingerprint, confirmed: true }), /terminal/i);
+});
+
+test("allows approval only from the prepared state", async () => {
+  const rootDir = await createRoot();
+  const article = await loadPublishedArticle({ rootDir, slug: "published-article", siteUrl: SITE_URL });
+  const ledger = createPreparedLedger({ article, fingerprint: fingerprintArticle(article), drafts: createFixtureDrafts(article) });
+  ledger.platforms.facebook.state = "failed";
+  assert.throws(() => approvePlatform({ ledger, platform: "facebook", currentFingerprint: ledger.articleFingerprint, confirmed: true }), /prepared state/i);
 });
 
 test("does not create publication files outside the requested ledger path", async () => {
