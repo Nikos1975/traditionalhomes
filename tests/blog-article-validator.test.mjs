@@ -86,7 +86,7 @@ test('rejects placeholders, broken internal links, and historical posts without 
   assert.match(result.errors.join('\n'), /Historical articles require a Sources section/);
 });
 
-test('rejects legacy blog links while accepting published English blog article links', async () => {
+test('rejects legacy blog links while accepting canonical English blog article links', async () => {
   const fixture = await createFixture(
     validHistoricalArticle.replace('/en/blog/', '/en/blog/test-history/'),
   );
@@ -99,4 +99,16 @@ test('rejects legacy blog links while accepting published English blog article l
   );
   const legacyResult = await validateBlogArticle(fixture);
   assert.match(legacyResult.errors.join('\n'), /Legacy blog link is not allowed: \/blog\//);
+
+  for (const url of [
+    'https://traditional-homes.gr/blog/test-history/',
+    'https://www.traditional-homes.gr/blog/test-history/',
+  ]) {
+    await writeFile(
+      fixture.articlePath,
+      validHistoricalArticle.replace('/en/blog/', url),
+    );
+    const absoluteLegacyResult = await validateBlogArticle(fixture);
+    assert.match(absoluteLegacyResult.errors.join('\n'), /Legacy absolute blog URL is not allowed/);
+  }
 });

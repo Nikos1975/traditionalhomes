@@ -16,7 +16,7 @@ image: "/images/blog/welcome-to-elounda/mavrikiano-elounda-1200.webp"
 imageAlt: "Aerial view of Mavrikiano on the hillside above Elounda and the coast."
 imageCaption: "Mavrikiano, Elounda and the bay: the village-and-coast landscape at the centre of these walks."
 imageCredit: "Elounda Traditional Homes of Crete."
-imageCreditUrl: "https://traditional-homes.gr/blog/welcome-to-elounda/"
+imageCreditUrl: "https://traditional-homes.gr/en/blog/welcome-to-elounda/"
 ---
 
 Around Elounda, walking changes character quickly. A stone lane in Mavrikiano can lead towards open hillside tracks; the road past the salt pans reaches the low, rocky ground of Kolokytha; Vrouchas looks towards a wind-exposed headland; and the old routes around Pines descend into the more enclosed ground of Havgas Gorge.

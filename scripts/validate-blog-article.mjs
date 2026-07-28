@@ -132,6 +132,10 @@ export async function validateBlogArticle({ rootDir, articlePath }) {
   const placeholder = source.match(/\b(?:TODO|TBD|lorem ipsum)\b|\[(?:placeholder|needs confirmation)\]/i);
   if (placeholder) errors.push(`Placeholder text found: ${placeholder[0]}`);
 
+  if (/https:\/\/(?:www\.)?traditional-homes\.gr\/blog(?:\/|$)/i.test(source)) {
+    errors.push('Legacy absolute blog URL is not allowed.');
+  }
+
   const internalLinks = [...parsed.body.matchAll(/(?<!!)\[[^\]]+\]\((\/[^)\s]+)\)/g)].map(match => match[1]);
   for (const href of new Set(internalLinks)) {
     if (/^\/blog(?:\/|$)/.test(href)) {
