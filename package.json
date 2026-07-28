@@ -14,12 +14,15 @@
     "social:prepare": "node scripts/social/cli.mjs prepare",
     "social:approve": "node scripts/social/cli.mjs approve",
     "social:status": "node scripts/social/cli.mjs status",
-    "preview": "astro preview",
+    "preview": "npm run build && wrangler dev",
     "seo:links": "node scripts/validate-generated-links.mjs",
     "typecheck": "astro check",
-    "format": "prettier . --write"
+    "format": "prettier . --write",
+    "deploy": "npm run build && wrangler deploy",
+    "cf-typegen": "wrangler types"
   },
   "dependencies": {
+    "@astrojs/cloudflare": "12",
     "@astrojs/sitemap": "^3.7.1",
     "@astrojs/tailwind": "^5.1.5",
     "@tailwindcss/typography": "^0.5.19",
@@ -36,6 +39,7 @@
     "prettier": "^3.3.3",
     "prettier-plugin-astro": "^0.14.1",
     "tailwindcss": "^3.4.1",
-    "typescript": "^5.5.3"
+    "typescript": "^5.5.3",
+    "wrangler": "^4.114.0"
   }
 }
