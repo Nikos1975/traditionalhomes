@@ -7,7 +7,7 @@ import { approvePlatform } from "./approval.mjs";
 import { loadPublishedArticle } from "./article.mjs";
 import { createManualDrafts } from "./generators/manual.mjs";
 import { fingerprintArticle } from "./fingerprint.mjs";
-import { createPreparedLedger, readLedger, writeLedger } from "./publication-ledger.mjs";
+import { createPreparedLedger, isPlatformStale, readLedger, writeLedger } from "./publication-ledger.mjs";
 
 function parseArgs(argv) {
   const args = {};
@@ -25,11 +25,26 @@ function parseArgs(argv) {
 export async function runSocialCli({ command, argv, rootDir = process.cwd() }) {
   const args = parseArgs(argv);
   if (!args.slug) throw new Error("Usage requires --slug <slug>.");
-  if (command === "status") return readLedger({ rootDir, slug: args.slug });
+  if (command === "status") {
+    const ledger = await readLedger({ rootDir, slug: args.slug });
+    return {
+      ...ledger,
+      platforms: Object.fromEntries(Object.entries(ledger.platforms).map(([platform, record]) => [platform, {
+        ...record,
+        stale: isPlatformStale(record, ledger.articleFingerprint),
+      }])),
+    };
+  }
   const article = await loadPublishedArticle({ rootDir, slug: args.slug });
   const fingerprint = fingerprintArticle(article);
   if (command === "prepare") {
-    const ledger = createPreparedLedger({ article, fingerprint, drafts: createManualDrafts(article) });
+    let existingLedger;
+    try {
+      existingLedger = await readLedger({ rootDir, slug: args.slug });
+    } catch (error) {
+      if (!/Prepared social record not found/.test(error.message)) throw error;
+    }
+    const ledger = createPreparedLedger({ article, fingerprint, drafts: createManualDrafts(article), existingLedger });
     await writeLedger({ rootDir, ledger });
     return ledger;
   }

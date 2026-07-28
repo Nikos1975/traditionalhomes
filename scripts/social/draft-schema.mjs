@@ -21,14 +21,35 @@ function assertHttps(value, field) {
   if (typeof value !== "string" || !value.startsWith("https://")) throw new Error(`${field} must be an HTTPS URL.`);
 }
 
+export function assertPlatformDraft(platform, draft) {
+  assertNoSensitiveFields(draft);
+  if (platform === "facebook") {
+    assertExactKeys(draft, ["text", "url"], platform);
+    return assertHttps(draft.url, "draft URL");
+  }
+  if (platform === "instagram") {
+    assertExactKeys(draft, ["caption", "imageUrl", "altText"], platform);
+    return assertHttps(draft.imageUrl, "draft URL");
+  }
+  if (platform === "threads") {
+    assertExactKeys(draft, ["text", "url"], platform);
+    return assertHttps(draft.url, "draft URL");
+  }
+  if (platform === "linkedin") {
+    assertExactKeys(draft, ["commentary", "url"], platform);
+    return assertHttps(draft.url, "draft URL");
+  }
+  if (platform === "bluesky") {
+    assertExactKeys(draft, ["text", "card"], platform);
+    assertExactKeys(draft.card, ["url", "title", "description", "imageUrl"], "bluesky card");
+    assertHttps(draft.card.url, "draft URL");
+    return assertHttps(draft.card.imageUrl, "draft URL");
+  }
+  throw new Error(`Unknown platform: ${platform}.`);
+}
+
 export function assertDrafts(drafts) {
   assertNoSensitiveFields(drafts);
   assertExactKeys(drafts, PLATFORMS, "social");
-  assertExactKeys(drafts.facebook, ["text", "url"], "facebook");
-  assertExactKeys(drafts.instagram, ["caption", "imageUrl", "altText"], "instagram");
-  assertExactKeys(drafts.threads, ["text", "url"], "threads");
-  assertExactKeys(drafts.linkedin, ["commentary", "url"], "linkedin");
-  assertExactKeys(drafts.bluesky, ["text", "card"], "bluesky");
-  assertExactKeys(drafts.bluesky.card, ["url", "title", "description", "imageUrl"], "bluesky card");
-  for (const value of [drafts.facebook.url, drafts.instagram.imageUrl, drafts.threads.url, drafts.linkedin.url, drafts.bluesky.card.url, drafts.bluesky.card.imageUrl]) assertHttps(value, "draft URL");
+  for (const platform of PLATFORMS) assertPlatformDraft(platform, drafts[platform]);
 }

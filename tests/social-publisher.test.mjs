@@ -6,10 +6,12 @@ import test from "node:test";
 
 import { approvePlatform } from "../scripts/social/approval.mjs";
 import { loadPublishedArticle } from "../scripts/social/article.mjs";
+import { runSocialCli } from "../scripts/social/cli.mjs";
 import { createFixtureDrafts } from "../scripts/social/generators/fixture.mjs";
 import { fingerprintArticle } from "../scripts/social/fingerprint.mjs";
 import {
   createPreparedLedger,
+  isPlatformStale,
   readLedger,
   writeLedger,
 } from "../scripts/social/publication-ledger.mjs";
@@ -152,4 +154,108 @@ test("does not create publication files outside the requested ledger path", asyn
   await writeLedger({ rootDir, ledger });
   const stored = JSON.parse(await readFile(path.join(rootDir, "data", "social-publications", "published-article.json"), "utf8"));
   assert.equal(stored.slug, "published-article");
+});
+
+test("prepare preserves an approved platform record while refreshing other prepared drafts", async () => {
+  const rootDir = await createRoot();
+  const prepared = await runSocialCli({ command: "prepare", argv: ["--slug", "published-article"], rootDir });
+  const approved = approvePlatform({
+    ledger: prepared,
+    platform: "facebook",
+    currentFingerprint: prepared.articleFingerprint,
+    confirmed: true,
+    now: new Date("2026-07-28T10:01:00.000Z"),
+  });
+  approved.platforms.facebook.attempts = [{ at: "2026-07-28T10:01:01.000Z", result: "approved" }];
+  await writeLedger({ rootDir, ledger: approved });
+
+  const refreshed = await runSocialCli({ command: "prepare", argv: ["--slug", "published-article"], rootDir });
+
+  assert.deepEqual(refreshed.platforms.facebook, approved.platforms.facebook);
+  assert.equal(refreshed.platforms.instagram.state, "prepared");
+  assert.equal(refreshed.platforms.instagram.articleFingerprint, refreshed.articleFingerprint);
+});
+
+test("prepare creates only a missing platform record without replacing existing records", async () => {
+  const rootDir = await createRoot();
+  const prepared = await runSocialCli({ command: "prepare", argv: ["--slug", "published-article"], rootDir });
+  const missingLinkedin = { ...prepared, platforms: { ...prepared.platforms } };
+  delete missingLinkedin.platforms.linkedin;
+  await writeLedger({ rootDir, ledger: missingLinkedin });
+
+  const refreshed = await runSocialCli({ command: "prepare", argv: ["--slug", "published-article"], rootDir });
+
+  assert.deepEqual(refreshed.platforms.facebook, prepared.platforms.facebook);
+  assert.equal(refreshed.platforms.linkedin.state, "prepared");
+  assert.equal(refreshed.platforms.linkedin.articleFingerprint, refreshed.articleFingerprint);
+});
+
+test("a published platform is immutable without blocking another platform update", async () => {
+  const rootDir = await createRoot();
+  const article = await loadPublishedArticle({ rootDir, slug: "published-article", siteUrl: SITE_URL });
+  const fingerprint = fingerprintArticle(article);
+  const ledger = createPreparedLedger({ article, fingerprint, drafts: createFixtureDrafts(article) });
+  await writeLedger({ rootDir, ledger });
+  const publishedFacebook = {
+    ...ledger,
+    platforms: {
+      ...ledger.platforms,
+      facebook: {
+        ...ledger.platforms.facebook,
+        state: "published",
+        publishedAt: "2026-07-28T10:02:00.000Z",
+        platformPostId: "123",
+      },
+    },
+  };
+  await writeLedger({ rootDir, ledger: publishedFacebook });
+  const updated = approvePlatform({
+    ledger: publishedFacebook,
+    platform: "instagram",
+    currentFingerprint: fingerprint,
+    confirmed: true,
+    now: new Date("2026-07-28T10:03:00.000Z"),
+  });
+  await writeLedger({ rootDir, ledger: updated });
+
+  assert.deepEqual(updated.platforms.facebook, publishedFacebook.platforms.facebook);
+  assert.equal(updated.platforms.instagram.state, "approved");
+  const mutatedFacebook = {
+    ...updated,
+    platforms: { ...updated.platforms, facebook: { ...updated.platforms.facebook, platformPostId: "456" } },
+  };
+  await assert.rejects(writeLedger({ rootDir, ledger: mutatedFacebook }), /published .* platform record is terminal/i);
+});
+
+test("changed article content preserves prior approved and published platform fingerprints as stale", async () => {
+  const rootDir = await createRoot();
+  const first = await runSocialCli({ command: "prepare", argv: ["--slug", "published-article"], rootDir });
+  const approved = approvePlatform({
+    ledger: first,
+    platform: "facebook",
+    currentFingerprint: first.articleFingerprint,
+    confirmed: true,
+  });
+  const preserved = {
+    ...approved,
+    platforms: {
+      ...approved.platforms,
+      instagram: { ...approved.platforms.instagram, state: "published", publishedAt: "2026-07-28T10:04:00.000Z", platformPostId: "456" },
+    },
+  };
+  await writeLedger({ rootDir, ledger: preserved });
+  const articlePath = path.join(rootDir, "src", "content", "blog", "published-article.md");
+  const source = await readFile(articlePath, "utf8");
+  await writeFile(articlePath, source.replace("A calm first paragraph for readers.", "A changed first paragraph for readers."));
+
+  const refreshed = await runSocialCli({ command: "prepare", argv: ["--slug", "published-article"], rootDir });
+
+  assert.equal(refreshed.articleFingerprint === first.articleFingerprint, false);
+  assert.deepEqual(refreshed.platforms.facebook, preserved.platforms.facebook);
+  assert.deepEqual(refreshed.platforms.instagram, preserved.platforms.instagram);
+  assert.equal(isPlatformStale(refreshed.platforms.facebook, refreshed.articleFingerprint), true);
+  assert.equal(isPlatformStale(refreshed.platforms.instagram, refreshed.articleFingerprint), true);
+  const status = await runSocialCli({ command: "status", argv: ["--slug", "published-article"], rootDir });
+  assert.equal(status.platforms.facebook.stale, true);
+  assert.equal(status.platforms.instagram.stale, true);
 });

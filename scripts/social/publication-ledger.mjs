@@ -1,12 +1,39 @@
 import { mkdir, readFile, stat, writeFile } from "node:fs/promises";
 import path from "node:path";
 
-import { assertDrafts, assertNoSensitiveFields, PLATFORMS } from "./draft-schema.mjs";
+import { assertDrafts, assertNoSensitiveFields, assertPlatformDraft, PLATFORMS } from "./draft-schema.mjs";
 
 const STATES = new Set(["prepared", "approved", "publishing", "published", "failed", "unknown"]);
 
-function platformRecord(draft) {
-  return { draft, state: "prepared", approvedAt: null, publishedAt: null, platformPostId: null, attempts: [] };
+function platformRecord(draft, articleFingerprint) {
+  return { draft, articleFingerprint, state: "prepared", approvedAt: null, publishedAt: null, platformPostId: null, attempts: [] };
+}
+
+function hasSafePreparedState(record) {
+  return record.state === "prepared"
+    && record.approvedAt === null
+    && record.publishedAt === null
+    && record.platformPostId === null
+    && record.attempts.length === 0;
+}
+
+function preparedPlatformRecord({ existingRecord, draft, articleFingerprint, legacyFingerprint }) {
+  if (!existingRecord) return platformRecord(draft, articleFingerprint);
+  const recordFingerprint = existingRecord.articleFingerprint ?? legacyFingerprint;
+  if (!hasSafePreparedState(existingRecord)) {
+    return { ...existingRecord, articleFingerprint: recordFingerprint };
+  }
+  return { ...existingRecord, draft, articleFingerprint };
+}
+
+function recordsMatch(left, right) {
+  return JSON.stringify(left) === JSON.stringify(right);
+}
+
+function allowsLegacyFingerprintAddition(existingRecord, nextRecord, legacyFingerprint) {
+  if (existingRecord.articleFingerprint || nextRecord.articleFingerprint !== legacyFingerprint) return false;
+  const { articleFingerprint: _ignored, ...withoutFingerprint } = nextRecord;
+  return recordsMatch(existingRecord, withoutFingerprint);
 }
 
 function ledgerPath(rootDir, slug) {
@@ -17,23 +44,42 @@ function ledgerPath(rootDir, slug) {
 export function assertLedger(ledger) {
   assertNoSensitiveFields(ledger);
   if (!ledger?.slug || !/^[0-9a-f]{64}$/.test(ledger.articleFingerprint ?? "")) throw new Error("Ledger has invalid article identity.");
-  const drafts = Object.fromEntries(PLATFORMS.map((platform) => [platform, ledger.platforms?.[platform]?.draft]));
-  assertDrafts(drafts);
+  if (!ledger.platforms || typeof ledger.platforms !== "object") throw new Error("Ledger has invalid platform records.");
+  for (const platform of Object.keys(ledger.platforms)) {
+    if (!PLATFORMS.includes(platform)) throw new Error(`Ledger has unknown ${platform} platform.`);
+  }
   for (const platform of PLATFORMS) {
     const record = ledger.platforms[platform];
+    if (!record) continue;
+    assertPlatformDraft(platform, record.draft);
     if (!STATES.has(record.state)) throw new Error(`Ledger has invalid ${platform} state.`);
     if (!Array.isArray(record.attempts)) throw new Error(`Ledger has invalid ${platform} attempts.`);
+    if (record.articleFingerprint != null && !/^[0-9a-f]{64}$/.test(record.articleFingerprint)) throw new Error(`Ledger has invalid ${platform} fingerprint.`);
   }
 }
 
-export function createPreparedLedger({ article, fingerprint, drafts, now = new Date() }) {
+export function isPlatformStale(record, currentFingerprint) {
+  return (record.articleFingerprint ?? currentFingerprint) !== currentFingerprint;
+}
+
+export function createPreparedLedger({ article, fingerprint, drafts, existingLedger, now = new Date() }) {
   assertDrafts(drafts);
+  if (existingLedger) {
+    assertLedger(existingLedger);
+    if (existingLedger.slug !== article.slug) throw new Error("Prepared ledger article slug does not match.");
+  }
   const ledger = {
+    ...existingLedger,
     schemaVersion: 1,
     slug: article.slug,
     articleFingerprint: fingerprint,
     preparedAt: now.toISOString(),
-    platforms: Object.fromEntries(PLATFORMS.map((platform) => [platform, platformRecord(drafts[platform])])),
+    platforms: Object.fromEntries(PLATFORMS.map((platform) => [platform, preparedPlatformRecord({
+      existingRecord: existingLedger?.platforms[platform],
+      draft: drafts[platform],
+      articleFingerprint: fingerprint,
+      legacyFingerprint: existingLedger?.articleFingerprint,
+    })])),
   };
   assertLedger(ledger);
   return ledger;
@@ -56,8 +102,14 @@ export async function writeLedger({ rootDir, ledger }) {
   const filePath = ledgerPath(rootDir, ledger.slug);
   try {
     const existing = await readLedger({ rootDir, slug: ledger.slug });
-    if (PLATFORMS.some((platform) => existing.platforms[platform].state === "published")) {
-      throw new Error("Published platform records are terminal and cannot be replaced.");
+    for (const platform of PLATFORMS) {
+      const existingRecord = existing.platforms[platform];
+      const nextRecord = ledger.platforms[platform];
+      if (existingRecord?.state === "published"
+        && !recordsMatch(existingRecord, nextRecord)
+        && !allowsLegacyFingerprintAddition(existingRecord, nextRecord, existing.articleFingerprint)) {
+        throw new Error(`Published ${platform} platform record is terminal and cannot be replaced.`);
+      }
     }
   } catch (error) {
     if (!/Prepared social record not found/.test(error.message)) throw error;
