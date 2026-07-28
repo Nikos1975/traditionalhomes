@@ -6,6 +6,7 @@
 - Kept the 11 published article slugs and content intact, kept the three style variants as drafts, and moved all live internal blog links, canonicals, Open Graph URLs, navigation, 404, and Markdown cross-links to `/en/blog/**`.
 - Added explicit locale blog route helpers and validator coverage that rejects legacy Markdown links while preserving `/images/blog/**` validation.
 - No translated blog route, hreflang, language selector, RSS, category route, tag route, image replacement, or draft repair was added.
+- Verified: 124 Node tests passed; build generated `/en/blog/` plus 11 article pages and no `dist/blog/**`; sitemap, canonical, `og:url`, generated-link validation, and all 11 article-validator runs passed. Cloudflare Pages preview verified `/blog`, `/blog/`, and every legacy article URL as one-hop 301 redirects to the exact `/en/blog/**` URL; all canonical pages returned 200; `/blog/nonexistent-slug/` redirected once and its canonical target returned 404.
 
 ### 2026-07-28 - Stage 2.1 locale route and count contracts
 
