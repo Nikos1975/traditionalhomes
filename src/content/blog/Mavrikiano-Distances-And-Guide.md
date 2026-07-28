@@ -90,4 +90,4 @@ A slightly longer, scenic route across the bay.
 
 ## Related Reading
 
-For broader context, read [Where the Sea Holds Memory](/blog/elounda-guide/), [A Short Chronological History of Elounda](/blog/elounda-history-through-its-shoreline/), [Elounda Salt Pans and the Poros Windmills](/blog/elounda-salt-pans-and-poros-windmills/), and [Elounda, Spinalonga, and Wartime Memory](/blog/elounda-wartime-memory/).
+For broader context, read [Where the Sea Holds Memory](/en/blog/elounda-guide/), [A Short Chronological History of Elounda](/en/blog/elounda-history-through-its-shoreline/), [Elounda Salt Pans and the Poros Windmills](/en/blog/elounda-salt-pans-and-poros-windmills/), and [Elounda, Spinalonga, and Wartime Memory](/en/blog/elounda-wartime-memory/).

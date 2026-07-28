@@ -28,7 +28,7 @@ routing: {
 - Do not translate the full website during foundation work.
 - Keep `src/inventory/inventory.json` as the factual source of truth.
 - Preserve stable property and guide slugs across locales until a later approved slug strategy exists.
-- Treat `/blog/` carefully because it is currently unprefixed and needs a separate redirect/canonical plan.
+- Treat `/en/blog/` as the canonical English blog; `/blog/**` is redirect-only.
 - Keep contact form behavior unchanged.
 
 ## Current Route Summary
@@ -45,7 +45,7 @@ routing: {
 - `/en/about/`
 - `/en/guide/mavrikiano/`
 - `/en/guide/vrouchas/`
-- `/blog/` is currently unprefixed and should be migrated later with redirects and canonicals.
+- `/en/blog/` is the English blog index; legacy `/blog/**` redirects permanently to it.
 
 ## Future Route Target
 
@@ -107,7 +107,7 @@ Inventory rules:
 5. Translate one language at a time from the English source.
 6. Add localized long-form content collections after shared UI is stable.
 7. Add locale-aware SEO, canonicals, hreflang, and sitemap checks.
-8. Handle `/blog/` migration separately with redirects and canonicals.
+8. Maintain the approved `/blog/**` to `/en/blog/**` redirect and canonical contract.
 9. Complete RTL-specific review for Arabic and Hebrew.
 
 ## Launch Order

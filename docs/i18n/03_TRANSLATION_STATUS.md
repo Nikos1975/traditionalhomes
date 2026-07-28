@@ -23,8 +23,8 @@ Status values:
 | About page | Source present | Not started | Not started | Not started | Not started | Not started | Not started | Not started | Keep factual claims conservative. |
 | Mavrikiano guide | Source present | Not started | Not started | Not started | Not started | Not started | Not started | Not started | Area guides follow the blog editorial system. |
 | Vrouchas guide | Source present | Not started | Not started | Not started | Not started | Not started | Not started | Not started | Area guides follow the blog editorial system. |
-| Blog index | Source present | Not started | Not started | Not started | Not started | Not started | Not started | Not started | Current `/blog/` route is unprefixed. |
-| Blog posts | Source present | Not started | Not started | Not started | Not started | Not started | Not started | Not started | Requires separate migration plan. |
+| Blog index | Source present | Not started | Not started | Not started | Not started | Not started | Not started | Not started | English-only canonical route is `/en/blog/`; legacy `/blog/` redirects permanently. |
+| Blog posts | Source present | Not started | Not started | Not started | Not started | Not started | Not started | Not started | English-only canonical article routes are `/en/blog/<slug>/`; no translated routes exist. |
 | Header/Footer | Extracted | Not started | Not started | Not started | Not started | Not started | Not started | Not started | Shared Header/Footer English labels and links are in `navigation.json` and `common.json`. |
 | Booking/contact UI | Partially extracted | Not started | Not started | Not started | Not started | Not started | Not started | Not started | Shared booking handoff labels are in `forms.json`; contact page form/body copy remains hardcoded and contact endpoint behavior must not change. |
 | SEO/meta | Source present | Not started | Not started | Not started | Not started | Not started | Not started | Not started | SEO strings remain split between page files, `siteCopy.json`, and `seo.json`; canonical, hreflang, and sitemap require QA. |

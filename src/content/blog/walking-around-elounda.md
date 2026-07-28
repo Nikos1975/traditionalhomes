@@ -16,7 +16,7 @@ image: "/images/blog/welcome-to-elounda/mavrikiano-elounda-1200.webp"
 imageAlt: "Aerial view of Mavrikiano on the hillside above Elounda and the coast."
 imageCaption: "Mavrikiano, Elounda and the bay: the village-and-coast landscape at the centre of these walks."
 imageCredit: "Elounda Traditional Homes of Crete."
-imageCreditUrl: "https://traditional-homes.gr/blog/welcome-to-elounda/"
+imageCreditUrl: "https://traditional-homes.gr/en/blog/welcome-to-elounda/"
 ---
 
 Around Elounda, walking changes character quickly. A stone lane in Mavrikiano can lead towards open hillside tracks; the road past the salt pans reaches the low, rocky ground of Kolokytha; Vrouchas looks towards a wind-exposed headland; and the old routes around Pines descend into the more enclosed ground of Havgas Gorge.
@@ -48,7 +48,7 @@ The [Mavrikiano area guide](/en/guide/mavrikiano/) gives the broader village con
 
 ## 2. Kolokytha Peninsula
 
-Kolokytha begins with a legible piece of Elounda's coastal geography. The approach passes the salt-pan landscape and Poros windmills before reaching the peninsula side. The [salt pans and Poros windmills article](/blog/elounda-salt-pans-and-poros-windmills/) explains why this low ground is more than an incidental approach to the coast.
+Kolokytha begins with a legible piece of Elounda's coastal geography. The approach passes the salt-pan landscape and Poros windmills before reaching the peninsula side. The [salt pans and Poros windmills article](/en/blog/elounda-salt-pans-and-poros-windmills/) explains why this low ground is more than an incidental approach to the coast.
 
 On the peninsula, broad dirt road and visible paths make some sections look uncomplicated. A local mountaineering-club loop used dirt road, uphill path, a narrow marked path and rocky coastal ground before returning by road. That sequence shows why “a walk on Kolokytha” needs more definition: the surface can change several times within one outing.
 

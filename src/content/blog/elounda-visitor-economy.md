@@ -27,13 +27,13 @@ For visitors, this means Elounda is easy to understand on the ground. The main e
 
 ## From Working Shoreline to Visitor Economy
 
-Before Elounda became known for hotels, the area had the logic of a working shoreline. Fishing, salt-related activity, local transport, and village life shaped how people used the coast. The older shoreline history is covered in [A Short Chronological History of Elounda](/blog/elounda-history-through-its-shoreline/). Modern tourism added another layer rather than removing the older geography.
+Before Elounda became known for hotels, the area had the logic of a working shoreline. Fishing, salt-related activity, local transport, and village life shaped how people used the coast. The older shoreline history is covered in [A Short Chronological History of Elounda](/en/blog/elounda-history-through-its-shoreline/). Modern tourism added another layer rather than removing the older geography.
 
 This is why the contrast is still visible. A visitor can move from a hotel frontage or harbor cafe to older lanes, windmill traces, small chapels, and the road toward traditional villages within a short distance.
 
 ## Hotels and Public Image
 
-Large hotel development changed how Elounda was described outside Crete. The area became associated with hotels, sea views, and quiet coastal stays. For the main stages of that growth, see [Key Phases in Elounda's Hotel Development](/blog/key-phases-in-elounda-hotel-development/). Those descriptions are part of the modern story, but they are not the whole story.
+Large hotel development changed how Elounda was described outside Crete. The area became associated with hotels, sea views, and quiet coastal stays. For the main stages of that growth, see [Key Phases in Elounda's Hotel Development](/en/blog/key-phases-in-elounda-hotel-development/). Those descriptions are part of the modern story, but they are not the whole story.
 
 For this website, the more useful point is practical: Elounda's public image grew around the same physical qualities that shaped earlier life here. The protected bay, the presence of Spinalonga, and the slope of the villages remain central.
 
@@ -41,6 +41,6 @@ For this website, the more useful point is practical: Elounda's public image gre
 
 Visitors choosing between the coast and the villages should understand the difference in rhythm. The waterfront has services, restaurants, boat departures, and easier evening movement. The hillside villages offer quieter lanes, wider views, and a stronger sense of older settlement.
 
-The [Mavrikiano Distances and Area Guide](/blog/mavrikiano-distances-and-guide/) gives practical route orientation, while the [houses in Mavrikiano and Vrouchas](/en/houses/) show how the village side of Elounda still works as a place to stay.
+The [Mavrikiano Distances and Area Guide](/en/blog/mavrikiano-distances-and-guide/) gives practical route orientation, while the [houses in Mavrikiano and Vrouchas](/en/houses/) show how the village side of Elounda still works as a place to stay.
 
 Elounda's visitor economy is a change in use, not a complete break with the past. The same coastline that supported work and movement now supports travel, but the shape of the place has stayed visible.

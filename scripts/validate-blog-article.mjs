@@ -87,7 +87,7 @@ async function internalPathExists(rootDir, href) {
     if (await exists(candidate)) return true;
   }
 
-  const blogMatch = route.match(/^blog\/([^/]+)$/i);
+  const blogMatch = route.match(/^en\/blog\/([^/]+)$/i);
   if (!blogMatch) return false;
   const blogDir = path.join(rootDir, 'src', 'content', 'blog');
   const expected = `${blogMatch[1]}.md`.toLowerCase();
@@ -132,8 +132,16 @@ export async function validateBlogArticle({ rootDir, articlePath }) {
   const placeholder = source.match(/\b(?:TODO|TBD|lorem ipsum)\b|\[(?:placeholder|needs confirmation)\]/i);
   if (placeholder) errors.push(`Placeholder text found: ${placeholder[0]}`);
 
+  if (/https:\/\/(?:www\.)?traditional-homes\.gr\/blog(?:\/|$)/i.test(source)) {
+    errors.push('Legacy absolute blog URL is not allowed.');
+  }
+
   const internalLinks = [...parsed.body.matchAll(/(?<!!)\[[^\]]+\]\((\/[^)\s]+)\)/g)].map(match => match[1]);
   for (const href of new Set(internalLinks)) {
+    if (/^\/blog(?:\/|$)/.test(href)) {
+      errors.push(`Legacy blog link is not allowed: ${href}`);
+      continue;
+    }
     if (!(await internalPathExists(rootDir, href))) {
       errors.push(`Internal link does not resolve: ${href}`);
     }

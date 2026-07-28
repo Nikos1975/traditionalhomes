@@ -10,8 +10,8 @@ async function createFixture(article) {
   const rootDir = await mkdtemp(path.join(os.tmpdir(), 'blog-validator-'));
   const blogDir = path.join(rootDir, 'src', 'content', 'blog');
   await mkdir(blogDir, { recursive: true });
-  await mkdir(path.join(rootDir, 'src', 'pages', 'blog'), { recursive: true });
-  await writeFile(path.join(rootDir, 'src', 'pages', 'blog', 'index.astro'), '');
+  await mkdir(path.join(rootDir, 'src', 'pages', 'en', 'blog'), { recursive: true });
+  await writeFile(path.join(rootDir, 'src', 'pages', 'en', 'blog', 'index.astro'), '');
   const articlePath = path.join(blogDir, 'test-history.md');
   await writeFile(articlePath, article);
   return { rootDir, articlePath };
@@ -28,7 +28,7 @@ tags:
   - history
 ---
 
-The documented account links back to the [blog index](/blog/).
+The documented account links back to the [blog index](/en/blog/).
 
 ## Sources and Image Credits
 
@@ -76,7 +76,7 @@ test('requires an existing image and imageAlt whenever image is supplied', async
 test('rejects placeholders, broken internal links, and historical posts without sources', async () => {
   const fixture = await createFixture(
     validHistoricalArticle
-      .replace('[blog index](/blog/)', '[missing page](/en/missing-page/)')
+      .replace('[blog index](/en/blog/)', '[missing page](/en/missing-page/)')
       .replace('## Sources and Image Credits', '## Further Reading')
       .replace('The documented account', 'TODO: The documented account'),
   );
@@ -84,4 +84,31 @@ test('rejects placeholders, broken internal links, and historical posts without 
   assert.match(result.errors.join('\n'), /Placeholder text found/);
   assert.match(result.errors.join('\n'), /Internal link does not resolve: \/en\/missing-page\//);
   assert.match(result.errors.join('\n'), /Historical articles require a Sources section/);
+});
+
+test('rejects legacy blog links while accepting canonical English blog article links', async () => {
+  const fixture = await createFixture(
+    validHistoricalArticle.replace('/en/blog/', '/en/blog/test-history/'),
+  );
+  const validResult = await validateBlogArticle(fixture);
+  assert.deepEqual(validResult.errors, []);
+
+  await writeFile(
+    fixture.articlePath,
+    validHistoricalArticle.replace('/en/blog/', '/blog/'),
+  );
+  const legacyResult = await validateBlogArticle(fixture);
+  assert.match(legacyResult.errors.join('\n'), /Legacy blog link is not allowed: \/blog\//);
+
+  for (const url of [
+    'https://traditional-homes.gr/blog/test-history/',
+    'https://www.traditional-homes.gr/blog/test-history/',
+  ]) {
+    await writeFile(
+      fixture.articlePath,
+      validHistoricalArticle.replace('/en/blog/', url),
+    );
+    const absoluteLegacyResult = await validateBlogArticle(fixture);
+    assert.match(absoluteLegacyResult.errors.join('\n'), /Legacy absolute blog URL is not allowed/);
+  }
 });

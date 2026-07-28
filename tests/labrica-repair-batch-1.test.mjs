@@ -17,6 +17,9 @@ function parseRedirects(source) {
 }
 
 const expectedRedirects = [
+  { from: '/blog', to: '/en/blog/', status: 301 },
+  { from: '/blog/', to: '/en/blog/', status: 301 },
+  { from: '/blog/*', to: '/en/blog/:splat', status: 301 },
   { from: '/', to: '/en/', status: 301 },
   { from: '/index.php', to: '/en/', status: 301 },
   { from: '/index.php/', to: '/en/', status: 301 },
@@ -90,7 +93,7 @@ describe('Labrica repair batch 1', () => {
     assert.doesNotMatch(villaPage, /localizedPath\(defaultLocale, 'villa'\)/);
   });
 
-  it('keeps the complete legacy redirect table exact while adding only the two approved rules', async () => {
+  it('keeps the complete redirect table exact including the approved blog migration rules', async () => {
     const redirects = parseRedirects(await readText('public/_redirects'));
 
     assert.deepEqual(redirects, expectedRedirects);
@@ -102,7 +105,9 @@ describe('Labrica repair batch 1', () => {
       redirects.find(({ from }) => from === '/index.php/en/about-us-2/'),
       { from: '/index.php/en/about-us-2/', to: '/en/houses/', status: 301 },
     );
-    assert.equal(redirects.some(({ from }) => from.includes('*')), false);
+    assert.deepEqual(redirects.filter(({ from }) => from.includes('*')), [
+      { from: '/blog/*', to: '/en/blog/:splat', status: 301 },
+    ]);
   });
 
   it('contains no redirect loops or chains', async () => {

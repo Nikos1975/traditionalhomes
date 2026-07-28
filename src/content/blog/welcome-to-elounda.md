@@ -24,7 +24,7 @@ These are not purpose-built holiday rentals. Each house began as a genuine villa
 
 ### The Elounda Area
 
-The region offers far more than beaches (though there are plenty). Within minutes you can reach the Venetian fortress island of Spinalonga, the submerged ruins of ancient Olous, and the lively harbour town of Agios Nikolaos. For background, start with [Where the Sea Holds Memory](/blog/elounda-guide/), [A Short Chronological History of Elounda](/blog/elounda-history-through-its-shoreline/), and the [Mavrikiano Distances and Area Guide](/blog/mavrikiano-distances-and-guide/).
+The region offers far more than beaches (though there are plenty). Within minutes you can reach the Venetian fortress island of Spinalonga, the submerged ruins of ancient Olous, and the lively harbour town of Agios Nikolaos. For background, start with [Where the Sea Holds Memory](/en/blog/elounda-guide/), [A Short Chronological History of Elounda](/en/blog/elounda-history-through-its-shoreline/), and the [Mavrikiano Distances and Area Guide](/en/blog/mavrikiano-distances-and-guide/).
 
 ### Plan Your Stay
 

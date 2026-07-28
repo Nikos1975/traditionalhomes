@@ -53,19 +53,19 @@ This part of the story is easy to oversimplify. Spinalonga was not only a fortre
 
 In 1903, the Cretan State decided to isolate people with leprosy on Spinalonga. The official Spinalonga site explains that the choice was shaped by the medical ideas of the period, the abandoned Ottoman houses on the island, and the intention to remove the remaining Muslim population from Spinalonga.
 
-This history needs care. It should not be reduced to a slogan or a sad image. The island was a place of confinement, but also a place where people built forms of daily life within difficult limits. The official account records the role of Epaminondas Remoundakis and the Brotherhood of the Sick in improving conditions, as well as the final closure of the leprosy hospital in 1957. For the wartime layer of this memory, read [Elounda, Spinalonga, and Wartime Memory](/blog/elounda-wartime-memory/).
+This history needs care. It should not be reduced to a slogan or a sad image. The island was a place of confinement, but also a place where people built forms of daily life within difficult limits. The official account records the role of Epaminondas Remoundakis and the Brotherhood of the Sick in improving conditions, as well as the final closure of the leprosy hospital in 1957. For the wartime layer of this memory, read [Elounda, Spinalonga, and Wartime Memory](/en/blog/elounda-wartime-memory/).
 
 ## 6. Modern Visitor Economy
 
 After the leprosy hospital closed, Elounda's public image changed again. Hotels, coastal roads, boat routes, and the wider promotion of eastern Crete brought new attention to the bay.
 
-That later visitor economy did not erase the older landscape. The same qualities that mattered earlier still matter now: shelter, water, visibility, access to Spinalonga, and the relationship between coast and village. For a focused article on that shift, read [How Elounda's Visitor Economy Changed](/blog/elounda-visitor-economy/). For the hotel timeline that followed, see [Key Phases in Elounda's Hotel Development](/blog/key-phases-in-elounda-hotel-development/).
+That later visitor economy did not erase the older landscape. The same qualities that mattered earlier still matter now: shelter, water, visibility, access to Spinalonga, and the relationship between coast and village. For a focused article on that shift, read [How Elounda's Visitor Economy Changed](/en/blog/elounda-visitor-economy/). For the hotel timeline that followed, see [Key Phases in Elounda's Hotel Development](/en/blog/key-phases-in-elounda-hotel-development/).
 
 ## Reading the Coast Today
 
 A simple route is enough: start at the harbor, continue toward the causeway and lagoon, then look north toward Spinalonga and Plaka. In a short distance, the coast shows several parts of the story: ancient settlement, salt work, windmills, defense, island settlement, public health history, village movement, and modern visitor routes.
 
-For a focused follow-up on the lagoon side, see [Elounda Salt Pans and the Poros Windmills](/blog/elounda-salt-pans-and-poros-windmills/). For orientation across the present-day area, use the [Elounda location guide](/en/location/).
+For a focused follow-up on the lagoon side, see [Elounda Salt Pans and the Poros Windmills](/en/blog/elounda-salt-pans-and-poros-windmills/). For orientation across the present-day area, use the [Elounda location guide](/en/location/).
 
 Elounda's history is not separate from the landscape. It is held in the shape of the bay and in the ordinary routes people still use.
 

@@ -44,7 +44,7 @@ flowchart TD
   pages --> collection["/en/houses/"]
   pages --> houseDetail["/en/houses/[slug]/"]
   pages --> villaDetail["/en/villa/[slug]/"]
-  pages --> blogRoutes["/blog/ + /blog/[slug]"]
+  pages --> blogRoutes["/en/blog/ + /en/blog/[slug]<br/>/blog/** redirects (301)"]
   pages --> infoPages["about, faq, policies, location, contact, guides"]
 
   home --> inventory

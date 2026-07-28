@@ -9,8 +9,8 @@ const execFileAsync = promisify(execFile);
 
 const routes = [
   {
-    path: "blog/mavrikiano-distances-and-guide/index.html",
-    url: "/blog/mavrikiano-distances-and-guide/",
+    path: "en/blog/mavrikiano-distances-and-guide/index.html",
+    url: "/en/blog/mavrikiano-distances-and-guide/",
     redundantTitle: "Mavrikiano & Mirabello Bay Exploration Guide",
     renderedTitlePattern: "Mavrikiano (?:&#x26;|&amp;) Mirabello Bay Exploration Guide",
     verifyTableOfContents: true,

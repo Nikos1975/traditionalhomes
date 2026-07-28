@@ -23,8 +23,8 @@ describe("Elounda test guide privacy", () => {
       assert.match(await readFile(guideUrl, "utf8"), /^draft:\s*true\s*$/m);
     }
 
-    const blogRoute = await readText("src/pages/blog/[...slug].astro");
-    const blogIndex = await readText("src/pages/blog/index.astro");
+    const blogRoute = await readText("src/pages/en/blog/[...slug].astro");
+    const blogIndex = await readText("src/pages/en/blog/index.astro");
     const sitemapConfig = await readText("astro.config.mjs");
 
     assert.match(

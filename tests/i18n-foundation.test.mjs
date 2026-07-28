@@ -134,7 +134,7 @@ describe('Stage 1 i18n foundation', () => {
       { label: 'Location', href: '/en/location/' },
       { label: 'FAQ', href: '/en/faq/' },
       { label: 'About', href: '/en/about/' },
-      { label: 'Blog', href: '/blog/' },
+      { label: 'Blog', href: '/en/blog/' },
       { label: 'Contact', href: '/en/contact/' },
     ]);
     assert.equal(navigation.brand.homeHref, '/en/');
@@ -388,8 +388,8 @@ describe('Stage 1 i18n foundation', () => {
     const groupCard = await readText('src/components/GroupCard.astro');
     const housePage = await readText('src/pages/en/houses/[slug].astro');
     const villaPage = await readText('src/pages/en/villa/[slug].astro');
-    const blogIndex = await readText('src/pages/blog/index.astro');
-    const blogPost = await readText('src/pages/blog/[...slug].astro');
+    const blogIndex = await readText('src/pages/en/blog/index.astro');
+    const blogPost = await readText('src/pages/en/blog/[...slug].astro');
     const base = await readText('src/layouts/Base.astro');
     const translate = await readText('src/i18n/translate.ts');
 
@@ -401,8 +401,9 @@ describe('Stage 1 i18n foundation', () => {
 
     assert.match(housePage, /getCommonCopy\(defaultLocale\)\.ui\.property/);
     assert.match(villaPage, /getCommonCopy\(defaultLocale\)\.ui\.property/);
-    assert.match(blogIndex, /href=\{`\/blog\/\$\{post\.id\}\/`\}/);
-    assert.match(blogPost, /href="\/blog\/"/);
+    assert.match(blogIndex, /blogArticlePath\(post\.id, defaultLocale\)/);
+    assert.match(blogPost, /blogIndexPath\(defaultLocale\)/);
+    assert.match(blogPost, /blogArticlePath\(post\.id, defaultLocale\)/);
     assert.doesNotMatch(blogIndex, /\/en\/blog\//);
     assert.doesNotMatch(blogPost, /\/en\/blog\//);
     assert.doesNotMatch(base, /rel="alternate"|hreflang|language selector/i);
@@ -420,8 +421,8 @@ describe('Stage 1 i18n foundation', () => {
       housePage: await readText('src/pages/en/houses/[slug].astro'),
       villaPage: await readText('src/pages/en/villa/[slug].astro'),
       locationPage: await readText('src/pages/en/location.astro'),
-      blogIndex: await readText('src/pages/blog/index.astro'),
-      blogPost: await readText('src/pages/blog/[...slug].astro'),
+      blogIndex: await readText('src/pages/en/blog/index.astro'),
+      blogPost: await readText('src/pages/en/blog/[...slug].astro'),
     };
 
     const helperManagedFiles = [
@@ -454,8 +455,8 @@ describe('Stage 1 i18n foundation', () => {
       assert.doesNotMatch(file, /\b(?:housePath|villaPath)\([^,)]*\)/);
     }
 
-    assert.match(files.blogIndex, /href=\{`\/blog\/\$\{post\.id\}\/`\}/);
-    assert.match(files.blogPost, /href="\/blog\/"/);
+    assert.match(files.blogIndex, /blogArticlePath\(post\.id, defaultLocale\)/);
+    assert.match(files.blogPost, /blogIndexPath\(defaultLocale\)/);
   });
 
   it('uses route and SEO helpers on static English pages without changing blog or contact endpoints', async () => {
@@ -489,7 +490,7 @@ describe('Stage 1 i18n foundation', () => {
     assert.match(staticPages.mavrikianoGuide, /guidePath\('mavrikiano'\)/);
 
     const navigation = await readJson('src/i18n/locales/en/navigation.json');
-    assert.equal(navigation.main.find((link) => link.label === 'Blog')?.href, '/blog/');
+    assert.equal(navigation.main.find((link) => link.label === 'Blog')?.href, '/en/blog/');
   });
 
   it('has an explicit 404 page so missing locale-prefixed routes do not serve the root redirect stub', async () => {
@@ -497,6 +498,6 @@ describe('Stage 1 i18n foundation', () => {
 
     assert.match(notFoundPage, /Page not found/);
     assert.doesNotMatch(notFoundPage, /Astro\.redirect/);
-    assert.doesNotMatch(notFoundPage, /\/en\/blog\//);
+    assert.match(notFoundPage, /href="\/en\/blog\/"/);
   });
 });

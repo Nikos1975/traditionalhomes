@@ -28,7 +28,7 @@ The monastery stands east of Karydi, within the Fourni area and the wider Mirabe
 
 This location matters to the character of the site. Aretiou was not conceived as an isolated church alone. It developed as a religious community with land, working buildings, storage and accommodation. The monastery belongs to the agricultural and village geography behind the coast.
 
-For a broader account of how the shoreline shaped Elounda itself, see [A Short Chronological History of Elounda](/blog/elounda-history-through-its-shoreline/).
+For a broader account of how the shoreline shaped Elounda itself, see [A Short Chronological History of Elounda](/en/blog/elounda-history-through-its-shoreline/).
 
 ## A foundation around 1600
 

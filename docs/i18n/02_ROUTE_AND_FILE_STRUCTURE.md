@@ -108,18 +108,17 @@ src/components/pages/
 - English remains under `/en/`.
 - A future translated route must pass its locale explicitly to shared page renderers and reusable components; components must not infer locale from route state.
 - Locale resources contain reusable interface copy and SEO templates, not inventory facts, property names, slugs, identifiers, coordinates, or operational data.
-- `/blog/` remains unprefixed and outside translated routing until a separately approved migration stage.
+- `/en/blog/` is the canonical English-only blog route; `/blog/**` is redirect-only.
 - Adding translated routes, hreflang output, a language selector, or sitemap locale expansion requires a separate approved stage.
 - `GuidePage.astro` is the proposed first shared page-renderer pilot; it is not implemented by the current extraction work.
 
 ## Blog Migration Note
 
-The blog currently lives under `/blog/` without a locale prefix. Do not move it casually.
+The blog is canonically under `/en/blog/`. Do not add translated blog routes without a separately approved stage.
 
 Before migrating blog routes, prepare:
 
-- redirect rules from current unprefixed blog URLs
+- redirect rules from legacy unprefixed blog URLs
 - canonical URL rules
-- hreflang rules
 - sitemap expectations
 - checks for existing published and hidden/noindex articles
