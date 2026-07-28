@@ -7,7 +7,7 @@ import sharp from "sharp";
 
 import { publishPlatform, redactSensitive } from "../scripts/social/publisher.mjs";
 import { reconcilePlatform } from "../scripts/social/reconcile.mjs";
-import { validateInstagramMedia } from "../scripts/social/media.mjs";
+import { resolvePublicSourcePath, validateInstagramMedia } from "../scripts/social/media.mjs";
 import { createMetaClient } from "../scripts/social/meta-client.mjs";
 import { createFixtureDrafts } from "../scripts/social/generators/fixture.mjs";
 import { createPreparedLedger, writeLedger } from "../scripts/social/publication-ledger.mjs";
@@ -161,4 +161,35 @@ test("redacts credentials and writes ledgers atomically", async () => {
 test("classifies non-JSON HTTP errors without retaining token-bearing bodies", async () => {
   const client = createMetaClient({ fetchImpl: async () => textResponse("<html>access_token=secret</html>", 500), graphVersion: "v23.0", pageToken: "secret", instagramToken: "secret" });
   await assert.rejects(client.publishFacebook({ pageId: "123", text: "x", url: "https://example.test" }), (error) => error.kind === "http" && error.status === 500 && !Object.hasOwn(error, "body") && !String(error.message).includes("secret"));
+});
+
+test("classifies every received HTTP failure as definite and sanitizes error payloads", async () => {
+  for (const [status, body] of [[401, '{"error":{"code":190,"error_subcode":1,"message":"access_token=secret"}}'], [403, '{"error":{"code":10,"message":"Bearer secret"}}'], [429, "rate limited"], [500, "<html>proxy</html>"], [500, "{"], [502, ""]]) {
+    const client = createMetaClient({ fetchImpl: async () => textResponse(body, status), graphVersion: "v23.0", pageToken: "secret", instagramToken: "secret" });
+    await assert.rejects(client.publishFacebook({ pageId: "123", text: "x", url: "https://example.test" }), (error) => error.kind === "http" && error.status === status && !String(error.message).includes("secret"));
+  }
+});
+
+test("blocks repeated live publishing after unknown or published state", async () => {
+  for (const state of ["unknown", "published"]) {
+    const ledger = approvedLedger();
+    ledger.platforms.facebook.state = state;
+    await assert.rejects(() => publishPlatform({ ledger, platform: "facebook", currentFingerprint: fingerprint, env, confirmLive: true, persist: async () => {}, fetchImpl: successfulPublicUrls }), /approved/i);
+  }
+});
+
+test("keeps unknown reconciliation unchanged without a verified remote ID", async () => {
+  const ledger = approvedLedger();
+  ledger.platforms.facebook.state = "unknown";
+  ledger.platforms.facebook.platformPostId = null;
+  const result = await reconcilePlatform({ ledger, platform: "facebook", env, persist: async () => { throw new Error("must not persist"); }, fetchImpl: async () => { throw new Error("must not fetch"); } });
+  assert.equal(result.platforms.facebook.state, "unknown");
+});
+
+test("rejects unsafe decoded media paths and accepts a safe public path", () => {
+  const rootDir = path.resolve("C:/social-test");
+  assert.throws(() => resolvePublicSourcePath({ rootDir, pathname: "/images/%2e%2e/%2e%2e/secret.jpg" }));
+  assert.throws(() => resolvePublicSourcePath({ rootDir, pathname: "/images/%5c..%5csecret.jpg" }));
+  assert.throws(() => resolvePublicSourcePath({ rootDir, pathname: "//server/share.jpg" }));
+  assert.match(resolvePublicSourcePath({ rootDir, pathname: "/images/blog/hero.jpg" }), /public/);
 });
