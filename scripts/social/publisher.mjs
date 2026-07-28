@@ -1,5 +1,5 @@
 import { assertLedger } from "./publication-ledger.mjs";
-import { validateInstagramMedia } from "./media.mjs";
+import { verifyDeployedInstagramDerivative } from "./media.mjs";
 import { createMetaClient } from "./meta-client.mjs";
 
 const LIVE_PLATFORMS = new Set(["facebook", "instagram"]);
@@ -74,10 +74,14 @@ export async function publishPlatform({ ledger, platform, currentFingerprint, en
   const targetId = platform === "facebook" ? config.pageId : config.instagramUserId;
   if (record.targetId && record.targetId !== targetId) throw new Error("Configured target ID does not match the approved ledger target ID.");
   await verifyPublicUrl(fetchImpl, ledger.articleUrl);
-  await verifyPublicUrl(fetchImpl, ledger.media?.[platform]?.imageUrl);
   if (platform === "instagram") {
-    const media = validateInstagramMedia(ledger.media?.instagram ?? {});
-    await verifyPublicUrl(fetchImpl, media.imageUrl);
+    try {
+      await verifyDeployedInstagramDerivative({ fetchImpl, derivative: ledger.media?.instagram ?? {} });
+    } catch {
+      return persistTransition({ ledger, platform, state: "failed", targetId, persist, changes: { attempts: nextAttempt(record, "deployment-validation-failed", now) } });
+    }
+  } else {
+    await verifyPublicUrl(fetchImpl, ledger.media?.facebook?.imageUrl);
   }
   const client = createMetaClient({ fetchImpl, graphVersion: config.graphVersion, pageToken: config.pageToken, instagramToken: config.instagramToken });
   let working = await persistTransition({ ledger, platform, state: "publishing", targetId, persist });

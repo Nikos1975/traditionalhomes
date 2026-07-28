@@ -3,10 +3,12 @@ import { mkdtemp, readdir } from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
 import test from "node:test";
+import sharp from "sharp";
 
 import { publishPlatform, redactSensitive } from "../scripts/social/publisher.mjs";
 import { reconcilePlatform } from "../scripts/social/reconcile.mjs";
 import { validateInstagramMedia } from "../scripts/social/media.mjs";
+import { createMetaClient } from "../scripts/social/meta-client.mjs";
 import { createFixtureDrafts } from "../scripts/social/generators/fixture.mjs";
 import { createPreparedLedger, writeLedger } from "../scripts/social/publication-ledger.mjs";
 
@@ -34,6 +36,17 @@ function response(body, status = 200) {
   return { ok: status >= 200 && status < 300, status, json: async () => body };
 }
 
+function textResponse(body, status) {
+  return { ok: status >= 200 && status < 300, status, text: async () => body };
+}
+
+const deployedJpeg = await sharp({ create: { width: 1080, height: 1350, channels: 3, background: "#dddddd" } }).jpeg({ quality: 88 }).toBuffer();
+const deployedHash = (await import("node:crypto")).createHash("sha256").update(deployedJpeg).digest("hex");
+
+function imageResponse() {
+  return { ok: true, status: 200, headers: { get: () => "image/jpeg" }, arrayBuffer: async () => deployedJpeg.buffer.slice(deployedJpeg.byteOffset, deployedJpeg.byteOffset + deployedJpeg.byteLength) };
+}
+
 function approvedLedger() {
   const ledger = createPreparedLedger({ article, fingerprint, drafts: createFixtureDrafts(article) });
   ledger.media = {
@@ -45,6 +58,7 @@ function approvedLedger() {
       bytes: 2_000_000,
       width: 1080,
       height: 1350,
+      sha256: deployedHash,
     },
   };
   ledger.platforms.facebook.state = "approved";
@@ -77,6 +91,7 @@ test("publishes Instagram through container, bounded polling, and media publish"
     persist: async () => {}, sleep: async () => {},
     fetchImpl: async (url, options) => {
       calls.push({ url, method: options.method });
+      if (options.method === "GET" && url.includes("/images/social/")) return imageResponse();
       if (options.method === "GET" && url.startsWith("https://traditional-homes.gr/")) return response({});
       if (url.endsWith("/654321/media") && options.method === "POST") return response({ id: "container-1" });
       if (url.includes("/container-1?") && options.method === "GET") return response({ status_code: "FINISHED" });
@@ -141,4 +156,9 @@ test("redacts credentials and writes ledgers atomically", async () => {
   await writeLedger({ rootDir, ledger });
   const entries = await readdir(path.join(rootDir, "data", "social-publications"));
   assert.deepEqual(entries, ["published-article.json"]);
+});
+
+test("classifies non-JSON HTTP errors without retaining token-bearing bodies", async () => {
+  const client = createMetaClient({ fetchImpl: async () => textResponse("<html>access_token=secret</html>", 500), graphVersion: "v23.0", pageToken: "secret", instagramToken: "secret" });
+  await assert.rejects(client.publishFacebook({ pageId: "123", text: "x", url: "https://example.test" }), (error) => error.kind === "http" && error.status === 500 && !Object.hasOwn(error, "body") && !String(error.message).includes("secret"));
 });

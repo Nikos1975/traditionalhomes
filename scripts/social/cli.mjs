@@ -7,7 +7,7 @@ import { approvePlatform } from "./approval.mjs";
 import { loadPublishedArticle } from "./article.mjs";
 import { createManualDrafts } from "./generators/manual.mjs";
 import { fingerprintArticle } from "./fingerprint.mjs";
-import { generateInstagramDerivative } from "./media.mjs";
+import { generateInstagramDerivative, resolvePublicSourcePath } from "./media.mjs";
 import { publishPlatform } from "./publisher.mjs";
 import { createPreparedLedger, isPlatformStale, readLedger, writeLedger } from "./publication-ledger.mjs";
 import { reconcilePlatform } from "./reconcile.mjs";
@@ -50,8 +50,8 @@ export async function runSocialCli({ command, argv, rootDir = process.cwd() }) {
     const sourceUrl = new URL(article.heroImageUrl);
     if (sourceUrl.origin !== new URL(article.canonicalUrl).origin) throw new Error("Instagram derivative source must belong to the public website.");
     const instagram = await generateInstagramDerivative({
-      rootDir, slug: article.slug, sourcePath: path.join(rootDir, "public", decodeURIComponent(sourceUrl.pathname).replace(/^\//, "")),
-      siteUrl: sourceUrl.origin,
+      rootDir, slug: article.slug, sourcePath: resolvePublicSourcePath({ rootDir, pathname: sourceUrl.pathname }),
+      siteUrl: sourceUrl.origin, articleFingerprint: fingerprint,
     });
     const ledger = createPreparedLedger({ article, fingerprint, drafts: createManualDrafts(article), existingLedger });
     ledger.media = {
@@ -84,6 +84,7 @@ export async function runSocialCli({ command, argv, rootDir = process.cwd() }) {
     const ledger = await readLedger({ rootDir, slug: args.slug });
     return reconcilePlatform({
       ledger, platform: args.platform, env: process.env, fetchImpl: globalThis.fetch,
+      remoteId: args["remote-id"], confirmed: args.confirm === true,
       persist: (nextLedger) => writeLedger({ rootDir, ledger: nextLedger }),
     });
   }
