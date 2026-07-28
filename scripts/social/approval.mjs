@@ -10,6 +10,7 @@ export function approvePlatform({ ledger, platform, currentFingerprint, confirme
   if (platformFingerprint !== currentFingerprint) throw new Error("Prepared social draft is stale; prepare it again before approval.");
   if (confirmed !== true) throw new Error("Explicit confirmation via --confirm is required.");
   if (record.state === "published") throw new Error("Published platform record is terminal.");
+  if (record.state !== "prepared") throw new Error(`${platform} must be in the prepared state before approval.`);
   return {
     ...ledger,
     platforms: {

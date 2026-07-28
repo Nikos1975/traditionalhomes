@@ -13,6 +13,8 @@
     "blog:validate": "node scripts/validate-blog-article.mjs",
     "social:prepare": "node scripts/social/cli.mjs prepare",
     "social:approve": "node scripts/social/cli.mjs approve",
+    "social:publish": "node scripts/social/cli.mjs publish",
+    "social:reconcile": "node scripts/social/cli.mjs reconcile",
     "social:status": "node scripts/social/cli.mjs status",
     "preview": "astro preview",
     "seo:links": "node scripts/validate-generated-links.mjs",
