@@ -48,3 +48,9 @@ check_err.txt
 check_err_utf8.txt
 # open-design 
 open-design/
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
+!.env.example
