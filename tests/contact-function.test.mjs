@@ -140,7 +140,10 @@ describe('contact Pages Function', () => {
     ['invalid', Response.json({ success: false, 'error-codes': ['invalid-input-response'] })],
     ['expired or duplicate', Response.json({ success: false, 'error-codes': ['timeout-or-duplicate'] })],
     ['wrong action', turnstileSuccess({ action: 'booking' })],
-    ['wrong hostname', turnstileSuccess({ hostname: 'attacker.example' })],
+    ['unrelated hostname', turnstileSuccess({ hostname: 'attacker.example' })],
+    ['lookalike Pages hostname', turnstileSuccess({ hostname: 'eviltraditionalhomes.pages.dev' })],
+    ['lookalike Pages hostname with a prefix', turnstileSuccess({ hostname: 'attacker-traditionalhomes.pages.dev' })],
+    ['lookalike Pages hostname with a suffix', turnstileSuccess({ hostname: 'traditionalhomes.pages.dev.attacker.example' })],
   ]) {
     it(`rejects a ${name} Turnstile token without sending email`, async () => {
       const { fetchImpl, calls } = fetchWithTurnstile(siteverifyResponse);
@@ -249,6 +252,27 @@ describe('contact Pages Function', () => {
     assert.match(sentMessage.subject, /almond-tree-villa/);
     assert.match(sentMessage.text, /Please send availability details\./);
   });
+
+  for (const [name, hostname] of [
+    ['production www hostname', ' WWW.TRADITIONAL-HOMES.GR '],
+    ['Pages root hostname', 'traditionalhomes.pages.dev'],
+    ['hash Pages preview hostname', 'e93e995f.traditionalhomes.pages.dev'],
+    ['branch-alias Pages preview hostname', 'codex-contact-turnstile.traditionalhomes.pages.dev'],
+  ]) {
+    it(`accepts a valid ${name}`, async () => {
+      const { fetchImpl, calls } = fetchWithTurnstile(
+        turnstileSuccess({ hostname }),
+      );
+      const response = await handleContactRequest(
+        makeFormRequest(validSubmission),
+        validEnv,
+        fetchImpl,
+      );
+
+      assert.equal(response.status, 200);
+      assert.equal(calls.length, 2);
+    });
+  }
 
   it('does not expose secrets in failed email responses or logs', async () => {
     const { result: response, calls: logs } = await withCapturedConsoleError(() =>

@@ -3,10 +3,6 @@ const CLOUDFLARE_EMAIL_API_BASE =
   'https://api.cloudflare.com/client/v4/accounts';
 const TURNSTILE_SITEVERIFY_URL =
   'https://challenges.cloudflare.com/turnstile/v0/siteverify';
-const ALLOWED_TURNSTILE_HOSTNAMES = new Set([
-  'traditional-homes.gr',
-  'www.traditional-homes.gr',
-]);
 const ALLOWED_PROPERTIES = new Set([
   '',
   'argyro',
@@ -50,6 +46,18 @@ const isValidSubmission = ({ name, email, property, message }) =>
 
 const getTurnstileSecret = (env) => env?.TURNSTILE_SECRET_KEY?.trim();
 
+const isAllowedTurnstileHostname = (hostname) => {
+  const normalizedHostname =
+    typeof hostname === 'string' ? hostname.trim().toLowerCase() : '';
+
+  return (
+    normalizedHostname === 'traditional-homes.gr' ||
+    normalizedHostname === 'www.traditional-homes.gr' ||
+    normalizedHostname === 'traditionalhomes.pages.dev' ||
+    normalizedHostname.endsWith('.traditionalhomes.pages.dev')
+  );
+};
+
 const verifyTurnstile = async ({ token, secret, remoteIp }, fetchImpl) => {
   const body = new URLSearchParams({ secret, response: token });
 
@@ -72,7 +80,7 @@ const verifyTurnstile = async ({ token, secret, remoteIp }, fetchImpl) => {
     return {
       verified:
         result.action === 'contact' &&
-        ALLOWED_TURNSTILE_HOSTNAMES.has(result.hostname),
+        isAllowedTurnstileHostname(result.hostname),
       unavailable: false,
     };
   } catch {

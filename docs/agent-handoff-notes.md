@@ -1,5 +1,10 @@
 # Agent Handoff Notes
 
+### 2026-08-02 - Contact Turnstile Pages preview hostnames
+
+- Turnstile hostname validation now normalizes Siteverify hostnames and accepts the production domains plus the Pages root and genuine `*.traditionalhomes.pages.dev` preview hostnames. Lookalike suffix/prefix domains remain rejected; the `contact` action check is unchanged.
+- Added production, Pages root, hash-preview, branch-alias-preview, and lookalike hostname coverage. Preview deployments can now exercise the contact form before production merge.
+
 ### 2026-08-02 - Contact form Turnstile protection
 
 - Added a managed Cloudflare Turnstile widget to the English contact form. Submission is disabled until it returns a token; errors and expiry are explained in plain language, and failed submissions reset the widget.
