@@ -1,6 +1,27 @@
 const REQUIRED_FIELD_ERROR = 'Please complete your name, email, and message.';
 const CLOUDFLARE_EMAIL_API_BASE =
   'https://api.cloudflare.com/client/v4/accounts';
+const TURNSTILE_SITEVERIFY_URL =
+  'https://challenges.cloudflare.com/turnstile/v0/siteverify';
+const ALLOWED_TURNSTILE_HOSTNAMES = new Set([
+  'traditional-homes.gr',
+  'www.traditional-homes.gr',
+]);
+const ALLOWED_PROPERTIES = new Set([
+  '',
+  'argyro',
+  'leonidas',
+  'margarita',
+  'dimitra',
+  'penelope',
+  'erato',
+  'clio',
+  'efterpi',
+  'kalliopi',
+  'monastiri',
+  'almond-tree-villa',
+  'multiple',
+]);
 
 const jsonResponse = (body, status = 200, headers = {}) =>
   new Response(JSON.stringify(body), {
@@ -17,6 +38,47 @@ const getField = (formData, name) => {
 };
 
 const isValidEmail = (value) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+
+const isValidSubmission = ({ name, email, property, message }) =>
+  name.length >= 2 &&
+  name.length <= 80 &&
+  email.length <= 254 &&
+  isValidEmail(email) &&
+  message.length >= 15 &&
+  message.length <= 2000 &&
+  ALLOWED_PROPERTIES.has(property);
+
+const getTurnstileSecret = (env) => env?.TURNSTILE_SECRET_KEY?.trim();
+
+const verifyTurnstile = async ({ token, secret, remoteIp }, fetchImpl) => {
+  const body = new URLSearchParams({ secret, response: token });
+
+  if (remoteIp) {
+    body.set('remoteip', remoteIp);
+  }
+
+  try {
+    const response = await fetchImpl(TURNSTILE_SITEVERIFY_URL, {
+      method: 'POST',
+      headers: { 'content-type': 'application/x-www-form-urlencoded' },
+      body: body.toString(),
+    });
+    const result = await response.json().catch(() => null);
+
+    if (!response.ok || !result?.success) {
+      return { verified: false, unavailable: false };
+    }
+
+    return {
+      verified:
+        result.action === 'contact' &&
+        ALLOWED_TURNSTILE_HOSTNAMES.has(result.hostname),
+      unavailable: false,
+    };
+  } catch {
+    return { verified: false, unavailable: true };
+  }
+};
 
 const stripHeaderValue = (value) => value.replace(/[\r\n]+/g, ' ').trim();
 
@@ -141,8 +203,40 @@ export async function handleContactRequest(request, env, fetchImpl = fetch) {
     return jsonResponse({ error: REQUIRED_FIELD_ERROR }, 400);
   }
 
-  if (!isValidEmail(submission.email)) {
-    return jsonResponse({ error: 'Please enter a valid email address.' }, 400);
+  if (!isValidSubmission(submission)) {
+    return jsonResponse({ error: 'Please check the details in your message.' }, 400);
+  }
+
+  const turnstileToken = getField(formData, 'cf-turnstile-response');
+  if (!turnstileToken) {
+    return jsonResponse(
+      { error: 'Please complete the verification before sending your message.' },
+      400,
+    );
+  }
+
+  const turnstileSecret = getTurnstileSecret(env);
+  if (!turnstileSecret) {
+    return jsonResponse(
+      { error: 'Unable to send this message. Please try again.' },
+      500,
+    );
+  }
+
+  const turnstile = await verifyTurnstile(
+    {
+      token: turnstileToken,
+      secret: turnstileSecret,
+      remoteIp: request.headers.get('CF-Connecting-IP')?.trim(),
+    },
+    fetchImpl,
+  );
+
+  if (!turnstile.verified) {
+    return jsonResponse(
+      { error: 'Unable to verify your form submission. Please try again.' },
+      turnstile.unavailable ? 502 : 400,
+    );
   }
 
   const config = getEmailConfig(env);

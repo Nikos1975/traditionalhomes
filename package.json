@@ -4,6 +4,7 @@
   "version": "1.2.0",
   "type": "module",
   "scripts": {
+    "test": "node --test",
     "dev": "astro dev",
     "build": "astro build",
     "image:process": "node scripts/images/process-image.mjs",
