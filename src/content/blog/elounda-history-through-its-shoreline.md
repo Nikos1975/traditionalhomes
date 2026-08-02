@@ -65,7 +65,7 @@ That later visitor economy did not erase the older landscape. The same qualities
 
 A simple route is enough: start at the harbor, continue toward the causeway and lagoon, then look north toward Spinalonga and Plaka. In a short distance, the coast shows several parts of the story: ancient settlement, salt work, windmills, defense, island settlement, public health history, village movement, and modern visitor routes.
 
-For a focused follow-up on the lagoon side, see [Elounda Salt Pans and the Poros Windmills](/en/blog/elounda-salt-pans-and-poros-windmills/). For orientation across the present-day area, use the [Elounda location guide](/en/location/).
+For a focused follow-up on the lagoon side, see [Elounda Salt Pans and the Poros Windmills](/en/blog/elounda-salt-pans-and-poros-windmills/). For the broader setting, see [the wider Elounda and Mirabello Bay landscape](/en/blog/elounda-and-mirabello-bay/). For orientation across the present-day area, use the [Elounda location guide](/en/location/).
 
 Elounda's history is not separate from the landscape. It is held in the shape of the bay and in the ordinary routes people still use.
 

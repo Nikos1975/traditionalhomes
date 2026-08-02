@@ -29,6 +29,13 @@ At the centre of the official settlement picture is Schisma, the coastal seat id
 
 The most accurate way to use the name is therefore layered. Elounda can be an official community; it can be the coastal settlement around Schisma; and it can be a convenient geographical expression for a connected local landscape. The article uses each meaning deliberately, rather than asking one of them to do all the work.
 
+## Explore the Elounda area
+
+- [View the setting and property map](/en/location/)
+- [Browse the houses and villa](/en/houses/)
+- [Mavrikiano practical guide](/en/guide/mavrikiano/)
+- [Vrouchas practical guide](/en/guide/vrouchas/)
+
 ## Elounda within Mirabello Bay
 
 Mirabello Bay is the broader frame for understanding this coast. It is a large regional bay and a long-standing historical landscape in eastern Crete, not a single local district with one fixed official edge. Its useful extent changes with the question being asked. A marine study, an archaeological survey, a view from a hillside, and a municipal map can all use “Mirabello” at somewhat different scales.
