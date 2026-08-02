@@ -30,6 +30,8 @@
 /index.php/en/almond-tree-villas    /en/villa/almond-tree-villa/  301
 /index.php/en/contact    /en/contact/                   301
 /index.php/en/elounda    /en/location/                  301
+/sitemap.xml /sitemap-index.xml 301
+/index.php/en/component/mailto/ /en/contact/ 301
 
 # Trailing slash enforcement (handled by Astro build, but belt-and-braces)
 /en                       /en/         301
