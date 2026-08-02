@@ -9,6 +9,7 @@ const pageSeo = getPageSeo(defaultLocale, 'contact');
 const contactEmail = 'info@traditional-homes.gr';
 const contactMailto = `mailto:${contactEmail}`;
 const contactSentPath = `${localizedPath(defaultLocale, 'contact')}?sent=1`;
+const turnstileSiteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY ?? '';
 ---
 
 <Base
@@ -68,6 +69,8 @@ const contactSentPath = `${localizedPath(defaultLocale, 'contact')}?sent=1`;
                 id="name"
                 name="name"
                 required
+                minlength="2"
+                maxlength="80"
                 autocomplete="name"
                 class="w-full bg-transparent border-b border-stone-200 py-3 focus:outline-none focus:border-stone-950 transition-colors placeholder-stone-300 font-light"
                 placeholder="Your name"
@@ -80,6 +83,7 @@ const contactSentPath = `${localizedPath(defaultLocale, 'contact')}?sent=1`;
                 id="email"
                 name="email"
                 required
+                maxlength="254"
                 autocomplete="email"
                 class="w-full bg-transparent border-b border-stone-200 py-3 focus:outline-none focus:border-stone-950 transition-colors placeholder-stone-300 font-light"
                 placeholder="you@example.com"
@@ -117,13 +121,38 @@ const contactSentPath = `${localizedPath(defaultLocale, 'contact')}?sent=1`;
               name="message"
               rows={5}
               required
+              minlength="15"
+              maxlength="2000"
               class="w-full bg-transparent border-b border-stone-200 py-3 focus:outline-none focus:border-stone-950 transition-colors placeholder-stone-300 font-light resize-none"
               placeholder="Your question or message…"
             ></textarea>
           </div>
 
+          <div class="pt-1">
+            <div
+              class="cf-turnstile"
+              data-sitekey={turnstileSiteKey}
+              data-action="contact"
+              data-callback="onContactTurnstileSuccess"
+              data-error-callback="onContactTurnstileError"
+              data-expired-callback="onContactTurnstileExpired"
+            ></div>
+            <p
+              class="hidden mt-3 text-sm text-red-700"
+              data-contact-turnstile-error
+              role="alert"
+            >
+              Verification could not be completed. Please try again before sending your message.
+            </p>
+          </div>
+
           <div class="pt-4">
-            <button type="submit" class="btn-cta px-12 py-4 shadow-premium transition-all duration-300">
+            <button
+              type="submit"
+              class="btn-cta px-12 py-4 shadow-premium transition-all duration-300 disabled:cursor-not-allowed disabled:opacity-60"
+              disabled
+              aria-disabled="true"
+            >
               Send Message
             </button>
           </div>
@@ -184,6 +213,26 @@ const contactSentPath = `${localizedPath(defaultLocale, 'contact')}?sent=1`;
     </div>
   </div>
 
+<script is:inline>
+  const contactTurnstileEvent = (name) => {
+    const contactForm = document.querySelector('form[name="contact"]');
+    if (contactForm) {
+      contactForm.dataset.turnstileReady = name === 'success' ? 'true' : 'false';
+    }
+    document.dispatchEvent(new CustomEvent(`contact-turnstile-${name}`));
+  };
+
+  window.onContactTurnstileSuccess = () => contactTurnstileEvent('success');
+  window.onContactTurnstileError = () => contactTurnstileEvent('error');
+  window.onContactTurnstileExpired = () => contactTurnstileEvent('expired');
+</script>
+<script
+  is:inline
+  src="https://challenges.cloudflare.com/turnstile/v0/api.js"
+  async
+  defer
+></script>
+
 <script define:vars={{ contactSentPath }}>
   const form = document.querySelector('form[name="contact"]');
   const successMarkup = `
@@ -206,11 +255,64 @@ const contactSentPath = `${localizedPath(defaultLocale, 'contact')}?sent=1`;
     showSuccess();
   } else if (form instanceof HTMLFormElement) {
     const errorMessage = form.querySelector('[data-contact-error]');
+    const turnstileErrorMessage = form.querySelector('[data-contact-turnstile-error]');
     const submitButton = form.querySelector('button[type="submit"]');
     const defaultButtonText = submitButton?.textContent ?? 'Send Message';
+    let turnstileReady = form.dataset.turnstileReady === 'true';
+    let isSubmitting = false;
+
+    const setSubmitState = () => {
+      if (submitButton) {
+        submitButton.toggleAttribute('disabled', !turnstileReady || isSubmitting);
+        submitButton.setAttribute(
+          'aria-disabled',
+          String(!turnstileReady || isSubmitting),
+        );
+      }
+    };
+
+    const showTurnstileError = () => {
+      if (turnstileErrorMessage) {
+        turnstileErrorMessage.classList.remove('hidden');
+      }
+    };
+
+    const resetTurnstile = () => {
+      turnstileReady = false;
+      form.dataset.turnstileReady = 'false';
+      window.turnstile?.reset();
+      setSubmitState();
+    };
+
+    document.addEventListener('contact-turnstile-success', () => {
+      turnstileReady = true;
+      if (turnstileErrorMessage) {
+        turnstileErrorMessage.classList.add('hidden');
+      }
+      setSubmitState();
+    });
+
+    document.addEventListener('contact-turnstile-error', () => {
+      turnstileReady = false;
+      showTurnstileError();
+      setSubmitState();
+    });
+
+    document.addEventListener('contact-turnstile-expired', () => {
+      turnstileReady = false;
+      showTurnstileError();
+      setSubmitState();
+    });
+
+    setSubmitState();
 
     form.addEventListener('submit', async (event) => {
       event.preventDefault();
+
+      if (!turnstileReady) {
+        showTurnstileError();
+        return;
+      }
 
       if (!form.checkValidity()) {
         form.reportValidity();
@@ -221,9 +323,10 @@ const contactSentPath = `${localizedPath(defaultLocale, 'contact')}?sent=1`;
         errorMessage.classList.add('hidden');
       }
       if (submitButton) {
-        submitButton.setAttribute('disabled', 'true');
         submitButton.textContent = 'Sending...';
       }
+      isSubmitting = true;
+      setSubmitState();
 
       try {
         const response = await fetch(form.action, {
@@ -242,6 +345,7 @@ const contactSentPath = `${localizedPath(defaultLocale, 'contact')}?sent=1`;
         window.history.replaceState({}, '', contactSentPath);
         showSuccess();
       } catch (error) {
+        resetTurnstile();
         if (errorMessage) {
           const fallbackText =
             error instanceof Error
@@ -259,9 +363,10 @@ const contactSentPath = `${localizedPath(defaultLocale, 'contact')}?sent=1`;
           errorMessage.classList.remove('hidden');
         }
       } finally {
+        isSubmitting = false;
         if (submitButton && form.isConnected) {
-          submitButton.removeAttribute('disabled');
           submitButton.textContent = defaultButtonText;
+          setSubmitState();
         }
       }
     });
