@@ -2,7 +2,7 @@
 title: "Elounda Beaches: A Practical Guide from Schisma to Plaka"
 description: "A practical guide to the main beaches and swimming places around Elounda, including Schisma, Chiona, Kolokytha and Plaka, with clear notes on access and facilities."
 pubDate: 2026-08-03
-draft: true
+draft: false
 category: "Area Guide"
 region: "Elounda and Plaka, Lasithi, Eastern Crete"
 tags:

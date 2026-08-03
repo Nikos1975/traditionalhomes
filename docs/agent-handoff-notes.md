@@ -1,5 +1,11 @@
 # Agent Handoff Notes
 
+### 2026-08-03 - Elounda beaches publication PR
+
+- Recorded the approved publication change for `src/content/blog/elounda-beaches.md`: `draft: false` with the existing `pubDate: 2026-08-03`. The public route is `/en/blog/elounda-beaches/`; its research packet and user-owned, approved image attribution remain unchanged.
+- Added one reciprocal contextual link from `src/content/blog/elounda-and-mirabello-bay.md`. Article validation, 185 tests, production build (35 pages), generated-link validation, generated route, sitemap XML and image-path checks passed in a fresh temporary validation worktree because the normal worktree has an Administrator-owned stale `node_modules/.astro_locked_stage21` directory that prevents `npm ci`.
+- Cloudflare Pages preview and the required mobile/desktop review remain pending after the draft PR is opened. The PR stays draft; explicit human merge approval remains required and no merge or production verification has occurred.
+
 ### 2026-08-03 - Elounda beaches draft: verified location links
 
 - Added five coordinate-based Google Maps links to the draft article's “At a glance” table: Schisma, Chiona, Kolokytha, the main Plaka beach and the Phaea Blue sector. The four municipal beach pages supply the first four coordinate pins; the Phaea Blue pin uses the official Blue Flag sector marker near the Agia Marina church-side shoreline approach, not the hotel reception pin.
