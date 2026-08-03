@@ -8,7 +8,7 @@ import siteCopy from '../../data/siteCopy.json';
 import type { InventoryUnit } from '../../types';
 import { validateInventory } from '../../utils/validateInventory';
 import { defaultLocale } from '../../i18n/config';
-import { guidePath, housePath, localizedPath, villaPath } from '../../i18n/routes';
+import { blogArticlePath, guidePath, housePath, localizedPath, villaPath } from '../../i18n/routes';
 import { getPageSeo, localizedCanonical } from '../../i18n/seo';
 
 const units = inventory as InventoryUnit[];
@@ -22,6 +22,7 @@ const faqPath = localizedPath(defaultLocale, 'faq');
 const aboutPath = localizedPath(defaultLocale, 'about');
 const policiesPath = localizedPath(defaultLocale, 'policies');
 const mavrikianoGuidePath = guidePath('mavrikiano');
+const eloundaPillarPath = blogArticlePath('elounda-and-mirabello-bay', defaultLocale);
 const chooseStayOptions = [
   {
     title: 'Sea-view houses',
@@ -256,6 +257,7 @@ const chooseStayOptions = [
         <div class="flex flex-wrap gap-4">
           <a href={locationPath} class="btn-cta border-stone-700 text-white hover:bg-white hover:text-stone-950">Location & Travel</a>
           <a href={mavrikianoGuidePath} class="btn-cta bg-primary border-primary text-white hover:bg-amber-600">Local Guide</a>
+          <a href={eloundaPillarPath} class="inline-flex items-center text-xs font-bold uppercase tracking-[0.2em] text-stone-400 underline decoration-stone-600 underline-offset-4 transition-colors hover:text-white hover:decoration-stone-300">Understand the wider area</a>
         </div>
       </div>
     </div>

@@ -19,7 +19,7 @@ imageCredit: "Elounda Traditional Homes of Crete."
 imageCreditUrl: "https://traditional-homes.gr/en/blog/welcome-to-elounda/"
 ---
 
-Around Elounda, walking changes character quickly. A stone lane in Mavrikiano can lead towards open hillside tracks; the road past the salt pans reaches the low, rocky ground of Kolokytha; Vrouchas looks towards a wind-exposed headland; and the old routes around Pines descend into the more enclosed ground of Havgas Gorge.
+Around Elounda, walking changes character quickly. A stone lane in Mavrikiano can lead towards open hillside tracks; the road past the salt pans reaches the low, rocky ground of Kolokytha; Vrouchas looks towards a wind-exposed headland; and the old routes around Pines descend into the more enclosed ground of Havgas Gorge. For the settlement and coastal context behind these routes, see [the wider Elounda-area geography](/en/blog/elounda-and-mirabello-bay/).
 
 These are not four versions of the same outing. They differ in surface, shade, exposure and how confidently a visitor can follow them. This comparison is intended to help with that first decision. It is not a turn-by-turn route guide, and it does not treat a line walked by an organised mountaineering club as automatically suitable for an independent visitor.
 

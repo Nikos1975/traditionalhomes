@@ -5,13 +5,14 @@ import MasterLocationMap from '../../components/maps/MasterLocationMap.astro';
 import inventory from '../../inventory/inventory.json';
 import { locations } from '../../data/locations';
 import { defaultLocale } from '../../i18n/config';
-import { guidePath, housePath, localizedPath, villaPath } from '../../i18n/routes';
+import { blogArticlePath, guidePath, housePath, localizedPath, villaPath } from '../../i18n/routes';
 import { getPageSeo, localizedCanonical } from '../../i18n/seo';
 import type { InventoryUnit, SiteCopy } from '../../types';
 
 const units = inventory as InventoryUnit[];
 const siteCopy = siteCopyData as SiteCopy;
 const pageSeo = getPageSeo(defaultLocale, 'location');
+const eloundaPillarPath = blogArticlePath('elounda-and-mirabello-bay', defaultLocale);
 
 // Map Data Integration
 const mapMarkers = locations.map(loc => {
@@ -130,6 +131,10 @@ const unitBySlug = new Map(units.map((unit) => [unit.slug, unit]));
         Mavrikiano and Vrouchas sit on the hillside above Elounda, with village paths, sea views, parking details, and beaches close by car.
       </p>
     </header>
+
+    <a href={eloundaPillarPath} class="mb-20 inline-flex text-xs font-bold uppercase tracking-[0.2em] text-stone-500 underline decoration-stone-300 underline-offset-4 transition-colors hover:text-stone-900 hover:decoration-stone-900">
+      Read the area guide to Elounda and Mirabello Bay
+    </a>
 
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 mb-32">
       

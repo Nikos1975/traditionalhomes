@@ -1,5 +1,13 @@
 # Agent Handoff Notes
 
+### 2026-08-02 - Elounda geographic pillar first-stage internal links
+
+- Goal: strengthen intentional internal links to and from `/en/blog/elounda-and-mirabello-bay/` without changing the established SEO architecture.
+- Changed: `elounda-and-mirabello-bay.md`, `welcome-to-elounda.md`, `walking-around-elounda.md`, `elounda-history-through-its-shoreline.md`, `elounda-salt-pans-and-poros-windmills.md`, `/en/`, `/en/location/`, and `docs/seo/elounda-pillar-plan.md`.
+- Retained the pillar URL; made no metadata, route, redirect, canonical, image, or publication-state changes.
+- Validation: `git diff --check`, all five targeted blog validators, and `npm run seo:links` passed. `npm test` is not defined; `node --test` has one existing redirect-fixture mismatch. Build remains blocked by an existing Windows `dist` EPERM lock; typecheck is polluted by the protected untracked SEO audit package and has no changed-source diagnostic.
+- Deferred: generated-page inspection after the Windows output lock is released; Search Console-led consolidation, title changes, claim remediation, redirects, and canonical changes remain out of scope.
+
 ### 2026-08-02 - Contact Turnstile Pages preview hostnames
 
 - Turnstile hostname validation now normalizes Siteverify hostnames and accepts the production domains plus the Pages root and genuine `*.traditionalhomes.pages.dev` preview hostnames. Lookalike suffix/prefix domains remain rejected; the `contact` action check is unchanged.
