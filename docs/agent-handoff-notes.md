@@ -1,5 +1,11 @@
 # Agent Handoff Notes
 
+### 2026-08-03 - Agent-readable site index
+
+- Replaced the existing static `public/llms.txt` with the approved UTF-8 Markdown index for Elounda Traditional Homes of Crete; no Astro route or generator was added.
+- Added `tests/llms-txt.test.mjs`, which builds to an OS temporary directory and verifies the document contract, byte-for-byte generated output, canonical trailing-slash links, generated route targets, and absence of an HTML `/llms/` route.
+- Verified in an isolated worktree: `npm ci`, `npm test` (185 tests), a 34-page temporary-output build, and `npm run seo:links` passed; no `/llms/` HTML route was generated. Typecheck retains the documented four unrelated errors and three hints, with no diagnostic in the new test. `robots.txt`, sitemap, redirects, Cloudflare configuration, and WebMCP remain unchanged.
+
 ### 2026-08-02 - Elounda geographic pillar first-stage internal links
 
 - Goal: strengthen intentional internal links to and from `/en/blog/elounda-and-mirabello-bay/` without changing the established SEO architecture.
