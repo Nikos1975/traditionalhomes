@@ -1,5 +1,25 @@
 # Agent Handoff Notes
 
+### 2026-08-03 - Elounda beaches draft: verified location links
+
+- Added five coordinate-based Google Maps links to the draft article's “At a glance” table: Schisma, Chiona, Kolokytha, the main Plaka beach and the Phaea Blue sector. The four municipal beach pages supply the first four coordinate pins; the Phaea Blue pin uses the official Blue Flag sector marker near the Agia Marina church-side shoreline approach, not the hotel reception pin.
+- Recorded the coordinates, source basis, confidence and scope limits in the existing source notes. The article remains `draft: true`; images and article wording are unchanged.
+
+### 2026-08-03 - Elounda beaches draft: corrected Kolokytha image and editorial revision
+
+- Selected the owner-supplied `kolokytha-beach-sandy-shore.png` as an inline image after visual inspection: the removed date stamp is absent and no retouching artefact is visible. The other corrected PNG retains a visible white retouching artefact and was excluded.
+- The automated blog pipeline copied the selected PNG source and generated 480, 768, 1200 and 1600 px WebP outputs without upscaling. The Plaka/Spinalonga hero remains unchanged; the article now has three inline images (Kolokytha, public Plaka and Plaka shoreline).
+- Revised visitor-facing wording only: retained the verified-local Kolokytha, Plaka and Phaea Blue boundaries while replacing internal verification language. The article remains `draft: true`; no publication, merge or PR-ready action is authorised.
+
+### 2026-08-03 - Elounda beaches draft: owner local verification
+
+- Created research branch `codex/elounda-beaches-research` from refreshed `origin/main` and scaffolded run `20260803T155017Z-elounda-beaches-81484e` at `docs/research/blog/elounda-beaches/`.
+- Imported the ChatGPT and Gemini dossiers verbatim under `raw/`; SHA-256 checks matched the supplied Downloads files.
+- Recorded owner-supplied local observations separately from web sources and marked operational details volatile. The packet now says Kolokytha is unorganised with a rough, mostly single-lane approach and uneven informal natural-ground parking; higher clearance is more suitable, without claiming an SUV is mandatory or ordinary cars cannot reach it.
+- Corrected the distinction between the public, organised main Plaka beach and adjacent hotel-operated facilities. It also records that Phaea Blue adjoins the beach, operates facilities in its sector, and has an independent church-side shoreline approach; it makes no exclusive-private-shoreline or non-guest-facility claim.
+- Drafted `src/content/blog/elounda-beaches.md` with `draft: true`, the approved title, a claim-coverage map, and the selected owner-authorised Plaka image derivatives. The draft uses the current evidence boundary: it does not state hotel guest policy, facility availability, lifeguards, accessibility, crowd or boat timing, fixed travel distances, or minor-cove directions.
+- Verified: both JSON files parse; article validation, `npm test` (185 passing), production build (34 pages), generated-link validation, and `git diff --check` passed. Typecheck retains four unrelated existing errors and three hints, with none in the new article or image files. The draft is correctly omitted from the static build until editorial approval changes its publication state; current hotel policy, beach services, parking rules, road changes and footpath conditions remain volatile.
+
 ### 2026-08-03 - Agent-readable site index
 
 - Replaced the existing static `public/llms.txt` with the approved UTF-8 Markdown index for Elounda Traditional Homes of Crete; no Astro route or generator was added.
