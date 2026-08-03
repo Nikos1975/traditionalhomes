@@ -23,11 +23,11 @@ The coast around Elounda is not one continuous beach. Schisma, Chiona, Kolokytha
 
 | Place | What it is | Practical note |
 | --- | --- | --- |
-| Schisma | Central organised beach area in Elounda | The straightforward central option. |
-| Chiona | Separate beach beside the Elounda salt pans | A useful stop on the shoreline beyond the centre. |
-| Kolokytha | Unorganised small-bay beach | Rough, mostly single-lane track; higher ground clearance is helpful. |
-| Main Plaka beach | Public, organised village shoreline | Keep it distinct from adjacent hotel-operated sectors. |
-| Phaea Blue sector | Beach sector directly beside the hotel | Hotel-managed sunbeds and facilities; use by non-guests depends on the hotel’s current policy. |
+| [Schisma](https://www.google.com/maps/search/?api=1&query=35.26436179,25.72292803) | Central organised beach area in Elounda | The straightforward central option. |
+| [Chiona](https://www.google.com/maps/search/?api=1&query=35.25769987,25.73125013) | Separate beach beside the Elounda salt pans | A useful stop on the shoreline beyond the centre. |
+| [Kolokytha](https://www.google.com/maps/search/?api=1&query=35.26027881,25.75209632) | Unorganised small-bay beach | Rough, mostly single-lane track; higher ground clearance is helpful. |
+| [Main Plaka beach](https://www.google.com/maps/search/?api=1&query=35.30218506,25.72708177) | Public, organised village shoreline | Keep it distinct from adjacent hotel-operated sectors. |
+| [Phaea Blue sector](https://www.google.com/maps/search/?api=1&query=35.295004687905,25.728002674878) | Beach sector directly beside the hotel | Hotel-managed sunbeds and facilities; use by non-guests depends on the hotel’s current policy. |
 | Southern resort sectors | Named hotel-linked sectors on the 2026 Blue Flag list | Their award names do not settle public access or facilities. |
 
 ## Schisma: central Elounda

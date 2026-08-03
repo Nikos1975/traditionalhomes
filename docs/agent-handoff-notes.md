@@ -1,5 +1,10 @@
 # Agent Handoff Notes
 
+### 2026-08-03 - Elounda beaches draft: verified location links
+
+- Added five coordinate-based Google Maps links to the draft article's “At a glance” table: Schisma, Chiona, Kolokytha, the main Plaka beach and the Phaea Blue sector. The four municipal beach pages supply the first four coordinate pins; the Phaea Blue pin uses the official Blue Flag sector marker near the Agia Marina church-side shoreline approach, not the hotel reception pin.
+- Recorded the coordinates, source basis, confidence and scope limits in the existing source notes. The article remains `draft: true`; images and article wording are unchanged.
+
 ### 2026-08-03 - Elounda beaches draft: corrected Kolokytha image and editorial revision
 
 - Selected the owner-supplied `kolokytha-beach-sandy-shore.png` as an inline image after visual inspection: the removed date stamp is absent and no retouching artefact is visible. The other corrected PNG retains a visible white retouching artefact and was excluded.
