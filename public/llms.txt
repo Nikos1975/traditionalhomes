@@ -1,15 +1,28 @@
-# Elounda Traditional Homes (traditional-homes.gr)
+# Elounda Traditional Homes of Crete
 
-Purpose: Provide accurate, up-to-date information about our houses and villa in Elounda, Crete.
-Preferred pages:
-- /en/
-- /en/houses/
-- /en/villa/
-- /en/location/
-- /en/faq/
-- /en/policies/
-- /en/contact/
+> Official website of Elounda Traditional Homes of Crete, offering restored traditional houses in Mavrikiano above Elounda and a villa in Vrouchas, East Crete, Greece.
 
-Data sources:
-- Unit facts are defined in /en/houses/ pages and derived from on-site content.
-- Images are referenced with alt text on each page.
+The website provides official accommodation descriptions, location information, practical village guides, and researched articles about Elounda and Mirabello Bay. Availability, prices, and booking conditions may change; consult the booking and contact pages for current information.
+
+## Accommodation
+
+- [Home](https://traditional-homes.gr/en/): Overview of Elounda Traditional Homes of Crete.
+- [Traditional houses](https://traditional-homes.gr/en/houses/): Collection of traditional houses in Mavrikiano.
+- [Almond Tree Villa](https://traditional-homes.gr/en/villa/almond-tree-villa/): Villa accommodation in Vrouchas.
+- [Contact](https://traditional-homes.gr/en/contact/): Official contact and enquiry form.
+- [Policies](https://traditional-homes.gr/en/policies/): Booking and accommodation policies.
+
+## Location and practical guides
+
+- [Location](https://traditional-homes.gr/en/location/): Location, maps, distances, and the two accommodation areas.
+- [Mavrikiano guide](https://traditional-homes.gr/en/guide/mavrikiano/): Practical information about Mavrikiano.
+- [Vrouchas guide](https://traditional-homes.gr/en/guide/vrouchas/): Practical information about Vrouchas.
+- [Frequently asked questions](https://traditional-homes.gr/en/faq/): Common questions about the properties and stays.
+
+## Elounda and Mirabello Bay
+
+- [Blog](https://traditional-homes.gr/en/blog/): Articles about Elounda, East Crete, history, landscapes, and local life.
+- [Elounda and Mirabello Bay](https://traditional-homes.gr/en/blog/elounda-and-mirabello-bay/): Geographic orientation to Elounda and Mirabello Bay.
+- [Walking around Elounda](https://traditional-homes.gr/en/blog/walking-around-elounda/): Walking landscapes, route conditions, and practical safety.
+- [Elounda history through its shoreline](https://traditional-homes.gr/en/blog/elounda-history-through-its-shoreline/): Historical overview of the Elounda coastline.
+- [Elounda salt pans and Poros windmills](https://traditional-homes.gr/en/blog/elounda-salt-pans-and-poros-windmills/): History of the salt pans and windmills.
