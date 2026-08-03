@@ -4,7 +4,8 @@
 
 - Recorded the approved publication change for `src/content/blog/elounda-beaches.md`: `draft: false` with the existing `pubDate: 2026-08-03`. The public route is `/en/blog/elounda-beaches/`; its research packet and user-owned, approved image attribution remain unchanged.
 - Added one reciprocal contextual link from `src/content/blog/elounda-and-mirabello-bay.md`. Article validation, 185 tests, production build (35 pages), generated-link validation, generated route, sitemap XML and image-path checks passed in a fresh temporary validation worktree because the normal worktree has an Administrator-owned stale `node_modules/.astro_locked_stage21` directory that prevents `npm ci`.
-- Cloudflare Pages preview and the required mobile/desktop review remain pending after the draft PR is opened. The PR stays draft; explicit human merge approval remains required and no merge or production verification has occurred.
+- Added the canonical article URL and concise factual description to the curated `public/llms.txt` discovery file. The rebuilt `dist/llms.txt`, sitemap index and child sitemap include the article as expected; the generated page has the canonical URL and no `noindex` marker. No submission was made to Google.
+- Cloudflare Pages preview for the publication article passed at 390 × 844 and 1440 × 900; a new branch deployment will be checked after the `llms.txt` commit. The PR stays draft; explicit human merge approval remains required and no merge or production verification has occurred.
 
 ### 2026-08-03 - Elounda beaches draft: verified location links
 
