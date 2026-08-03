@@ -1,0 +1,134 @@
+[
+  {
+    "id": "schisma-central-name",
+    "subject": "Schisma and central Elounda beach",
+    "claim": "Treat Schisma and the principal central municipal beach as overlapping naming for the central shore unless a distinct official boundary is verified.",
+    "sources": ["agios-nikolaos-schisma", "blue-flag-agios-nikolaos-2026"],
+    "status": "verified",
+    "volatility": "volatile",
+    "safePublicationWording": "Schisma is the central municipal beach area of Elounda.",
+    "excludedWording": "Schisma, Elounda Main Beach and Elounda Municipal Beach are three separate beaches.",
+    "localConfirmationRequired": false
+  },
+  {
+    "id": "chiona-salt-pans-identity",
+    "subject": "Chiona and the salt-pan shoreline",
+    "claim": "Chiona is a named beach beside the Elounda salt pans.",
+    "sources": ["agios-nikolaos-chiona"],
+    "status": "verified",
+    "volatility": "medium",
+    "safePublicationWording": "Chiona is a separate beach beside the Elounda salt pans.",
+    "excludedWording": "A current list of Chiona facilities, lifeguard cover or parking arrangements.",
+    "localConfirmationRequired": "Only for operational detail."
+  },
+  {
+    "id": "kolokytha-basic-identity",
+    "subject": "Kolokytha / Agios Loukas",
+    "claim": "Kolokytha is a small-bay beach near Elounda, with a downhill path forming part of the approach.",
+    "sources": ["agios-nikolaos-kolokytha"],
+    "status": "verified",
+    "volatility": "medium",
+    "safePublicationWording": "Kolokytha is a small-bay beach with a final downhill path.",
+    "excludedWording": "An exact walking time, length, gradient or accessibility assessment.",
+    "localConfirmationRequired": "For path condition and accessibility."
+  },
+  {
+    "id": "blue-flag-2026-named-sectors",
+    "subject": "Southern resort-coast and Phaea Blue award labels",
+    "claim": "The 2026 Blue Flag list names Driros/Domes of Elounda, Pigaidakia Eloundas/Elounda Village, Plaka/Phaea Blue, Poros 1/Elounda Bay Palace and Poros 2/Elounda Beach among Agios Nikolaos municipality sectors.",
+    "sources": ["blue-flag-agios-nikolaos-2026"],
+    "status": "verified",
+    "volatility": "seasonal",
+    "safePublicationWording": "The 2026 Blue Flag list uses several named hotel-linked sectors on the Elounda coast.",
+    "excludedWording": "Each label is a separate public beach or proves non-guest facility access.",
+    "localConfirmationRequired": "For current award status beyond 2026 and any access policy."
+  },
+  {
+    "id": "kolokytha-road-and-parking",
+    "subject": "Kolokytha access by road and vehicle",
+    "claim": "The route is rocky, rough and mostly single-lane with occasional passing places; the informal natural-ground parking area is uneven. A higher-clearance vehicle or SUV is more suitable, and inexperienced drivers should not use the route.",
+    "sources": ["owner-local-2026-08-03"],
+    "status": "verified-local",
+    "volatility": "volatile",
+    "safePublicationWording": "Kolokytha is reached by a rough, mostly single-lane track with occasional passing places. The informal parking area is uneven natural ground; a higher-clearance vehicle is more suitable, and the route is not recommended for inexperienced drivers.",
+    "excludedWording": "An SUV is mandatory.",
+    "localConfirmationRequired": "Recheck after significant weather, roadworks or seasonal management changes."
+  },
+  {
+    "id": "kolokytha-no-car-exclusion",
+    "subject": "Kolokytha vehicle eligibility",
+    "claim": "The owner observation does not establish that ordinary cars cannot reach Kolokytha.",
+    "sources": ["owner-local-2026-08-03"],
+    "status": "verified-local-boundary",
+    "volatility": "volatile",
+    "safePublicationWording": "Choose a vehicle and driver appropriate to the current track conditions; higher clearance is more suitable.",
+    "excludedWording": "Ordinary cars categorically cannot reach Kolokytha.",
+    "localConfirmationRequired": "Only if making vehicle-specific advice."
+  },
+  {
+    "id": "kolokytha-organisation",
+    "subject": "Kolokytha beach operation",
+    "claim": "Kolokytha is unorganised.",
+    "sources": ["owner-local-2026-08-03"],
+    "status": "verified-local",
+    "volatility": "volatile",
+    "safePublicationWording": "Kolokytha is an unorganised natural beach.",
+    "excludedWording": "Kolokytha has dependable public beach facilities.",
+    "localConfirmationRequired": "Recheck each season before mentioning services."
+  },
+  {
+    "id": "plaka-public-beach",
+    "subject": "Main Plaka beach",
+    "claim": "The main Plaka beach is public and organised.",
+    "sources": ["owner-local-2026-08-03"],
+    "status": "verified-local",
+    "volatility": "volatile",
+    "safePublicationWording": "The main Plaka beach is a public, organised shoreline.",
+    "excludedWording": "All Plaka beach facilities are hotel-operated.",
+    "localConfirmationRequired": "Recheck the specific facilities and seasonal operation before listing them."
+  },
+  {
+    "id": "phaea-blue-adjacency",
+    "subject": "Phaea Blue and the beach",
+    "claim": "Phaea Blue directly adjoins the beach.",
+    "sources": ["owner-local-2026-08-03", "phaea-blue-official"],
+    "status": "verified",
+    "volatility": "low",
+    "safePublicationWording": "Phaea Blue directly adjoins the beach in its sector.",
+    "excludedWording": "The whole Plaka shoreline belongs to the hotel.",
+    "localConfirmationRequired": false
+  },
+  {
+    "id": "phaea-blue-facilities",
+    "subject": "Phaea Blue sunbeds and facilities",
+    "claim": "Sunbeds and associated facilities in the Phaea Blue sector are operated by the hotel.",
+    "sources": ["owner-local-2026-08-03"],
+    "status": "verified-local",
+    "volatility": "volatile",
+    "safePublicationWording": "Sunbeds and associated facilities in this sector are hotel-operated.",
+    "excludedWording": "Non-guests may use the hotel facilities.",
+    "localConfirmationRequired": "Confirm the hotel's current non-guest policy before making any access or facility-use statement."
+  },
+  {
+    "id": "phaea-blue-shoreline-access",
+    "subject": "Phaea Blue shoreline access",
+    "claim": "The shoreline can also be approached independently from the church side.",
+    "sources": ["owner-local-2026-08-03"],
+    "status": "verified-local",
+    "volatility": "volatile",
+    "safePublicationWording": "The shoreline can also be approached independently from the church side.",
+    "excludedWording": "The shoreline is exclusively private.",
+    "localConfirmationRequired": "Recheck the approach if access arrangements or physical conditions change."
+  },
+  {
+    "id": "official-vs-local-names",
+    "subject": "Official monitoring and Blue Flag names",
+    "claim": "Official named sectors and everyday beach names should not be treated as identical without a source-level match.",
+    "sources": ["greek-bathing-water-registry", "blue-flag-agios-nikolaos-2026"],
+    "status": "verified",
+    "volatility": "seasonal",
+    "safePublicationWording": "Official monitoring and award names are used only where their geographic match is clear.",
+    "excludedWording": "An award label proves an independently bounded public beach.",
+    "localConfirmationRequired": false
+  }
+]

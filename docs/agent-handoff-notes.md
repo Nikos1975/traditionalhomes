@@ -1,5 +1,14 @@
 # Agent Handoff Notes
 
+### 2026-08-03 - Elounda beaches draft: owner local verification
+
+- Created research branch `codex/elounda-beaches-research` from refreshed `origin/main` and scaffolded run `20260803T155017Z-elounda-beaches-81484e` at `docs/research/blog/elounda-beaches/`.
+- Imported the ChatGPT and Gemini dossiers verbatim under `raw/`; SHA-256 checks matched the supplied Downloads files.
+- Recorded owner-supplied local observations separately from web sources and marked operational details volatile. The packet now says Kolokytha is unorganised with a rough, mostly single-lane approach and uneven informal natural-ground parking; higher clearance is more suitable, without claiming an SUV is mandatory or ordinary cars cannot reach it.
+- Corrected the distinction between the public, organised main Plaka beach and adjacent hotel-operated facilities. It also records that Phaea Blue adjoins the beach, operates facilities in its sector, and has an independent church-side shoreline approach; it makes no exclusive-private-shoreline or non-guest-facility claim.
+- Drafted `src/content/blog/elounda-beaches.md` with `draft: true`, the approved title, a claim-coverage map, and the selected owner-authorised Plaka image derivatives. The draft uses the current evidence boundary: it does not state hotel guest policy, facility availability, lifeguards, accessibility, crowd or boat timing, fixed travel distances, or minor-cove directions.
+- Verified: both JSON files parse; article validation, `npm test` (185 passing), production build (34 pages), generated-link validation, and `git diff --check` passed. Typecheck retains four unrelated existing errors and three hints, with none in the new article or image files. The draft is correctly omitted from the static build until editorial approval changes its publication state; current hotel policy, beach services, parking rules, road changes and footpath conditions remain volatile.
+
 ### 2026-08-03 - Agent-readable site index
 
 - Replaced the existing static `public/llms.txt` with the approved UTF-8 Markdown index for Elounda Traditional Homes of Crete; no Astro route or generator was added.

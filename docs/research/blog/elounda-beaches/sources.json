@@ -1,0 +1,112 @@
+[
+  {
+    "id": "owner-local-2026-08-03",
+    "title": "Property owner local verification: Kolokytha, Plaka and Phaea Blue",
+    "sourceType": "first-hand local observation",
+    "url": null,
+    "accessedOn": "2026-08-03",
+    "status": "verified-local",
+    "volatility": "volatile",
+    "notes": "Operational observations supplied by the property owner. Kept separate from web evidence. Does not establish legal access rights or hotel policy."
+  },
+  {
+    "id": "phaea-blue-official",
+    "title": "Phāea Blue official website",
+    "sourceType": "commercial primary",
+    "url": "https://phaeablue.com/",
+    "accessedOn": "2026-08-03",
+    "status": "verified",
+    "volatility": "volatile",
+    "notes": "Supports that the hotel presents itself as directly on the beach; not evidence of public access or non-guest facility use."
+  },
+  {
+    "id": "greek-bathing-water-registry",
+    "title": "Greek Bathing Water Profiles Registry",
+    "sourceType": "institutional primary",
+    "url": "https://bathingwaterprofiles.gr/en",
+    "accessedOn": "2026-08-03",
+    "status": "verified",
+    "volatility": "medium",
+    "notes": "Official monitored-water registry. Use for monitored identities and water-quality records, not current operational amenities."
+  },
+  {
+    "id": "blue-flag-agios-nikolaos-2026",
+    "title": "Blue Flag 2026 — Municipality of Agios Nikolaos",
+    "sourceType": "institutional programme",
+    "url": "https://www.blueflag.gr/sites/default/files/page-basic/bf2026-28-dimos-agiou-nikolaou.pdf",
+    "accessedOn": "2026-08-03",
+    "status": "verified",
+    "volatility": "seasonal",
+    "notes": "Use only for the 2026 award list and named sectors; do not infer public access or hotel-facility eligibility."
+  },
+  {
+    "id": "agios-nikolaos-schisma",
+    "title": "Schisma B. — Agios Nikolaos Crete",
+    "sourceType": "municipal visitor information",
+    "url": "https://www.agiosnikolaoscrete.com/beaches/schisma-b/",
+    "accessedOn": "2026-08-03",
+    "status": "verified",
+    "volatility": "volatile",
+    "notes": "Supports Schisma's central Elounda identity and describes it as organised. It is not used for a current list of facilities or accessibility equipment."
+  },
+  {
+    "id": "agios-nikolaos-chiona",
+    "title": "Chiona B. — Agios Nikolaos Crete",
+    "sourceType": "municipal visitor information",
+    "url": "https://www.agiosnikolaoscrete.com/beaches/chiona-b/",
+    "accessedOn": "2026-08-03",
+    "status": "verified",
+    "volatility": "medium",
+    "notes": "Supports Chiona's identity beside the Elounda salt pans. Avoids current amenity or access claims."
+  },
+  {
+    "id": "agios-nikolaos-kolokytha",
+    "title": "Kolokytha B. — Agios Nikolaos Crete",
+    "sourceType": "municipal visitor information",
+    "url": "https://www.agiosnikolaoscrete.com/beaches/kolokytha-b/",
+    "accessedOn": "2026-08-03",
+    "status": "verified",
+    "volatility": "medium",
+    "notes": "Supports Kolokytha as a small-bay beach near Elounda with a downhill path. Do not use its brief journey description for current road advice."
+  },
+  {
+    "id": "blue-flag-plaka-phaea-2026",
+    "title": "Plaka/Phaea Blue — Blue Flag 2026",
+    "sourceType": "institutional programme",
+    "url": "https://www.blueflag.gr/el/beach/plaka-phaea-blue",
+    "accessedOn": "2026-08-03",
+    "status": "verified",
+    "volatility": "seasonal",
+    "notes": "Records the named 2026 sector and its programme manager, Phāea Blue. It does not establish beach ownership, shoreline exclusivity, or non-guest facility use."
+  },
+  {
+    "id": "owner-photos-2026-08-03",
+    "title": "Owner-approved Elounda beaches photographs",
+    "sourceType": "first-party owned photographs",
+    "url": null,
+    "accessedOn": "2026-08-03",
+    "status": "approved-for-publication",
+    "volatility": "fixed",
+    "notes": "User-owned photographs supplied with permission for traditional-homes.gr. They document the photographed view only and are not used to establish general current facilities or access policy."
+  },
+  {
+    "id": "chatgpt-dossier-2026-08-03",
+    "title": "Elounda Beaches and Recognised Swimming Places: Research Dossier",
+    "sourceType": "generated research synthesis",
+    "url": null,
+    "accessedOn": "2026-08-03",
+    "status": "lead-only",
+    "volatility": "mixed",
+    "notes": "Imported verbatim as the primary synthesis lead. Its citations and conclusions require source-level verification."
+  },
+  {
+    "id": "gemini-dossier-2026-08-03",
+    "title": "Elounda beaches research dossier (Gemini)",
+    "sourceType": "generated research synthesis",
+    "url": null,
+    "accessedOn": "2026-08-03",
+    "status": "lead-only",
+    "volatility": "mixed",
+    "notes": "Imported verbatim as a contradiction source. Its citations and conclusions require source-level verification."
+  }
+]
