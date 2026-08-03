@@ -1,5 +1,11 @@
 # Agent Handoff Notes
 
+### 2026-08-03 - Elounda beaches draft: corrected Kolokytha image and editorial revision
+
+- Selected the owner-supplied `kolokytha-beach-sandy-shore.png` as an inline image after visual inspection: the removed date stamp is absent and no retouching artefact is visible. The other corrected PNG retains a visible white retouching artefact and was excluded.
+- The automated blog pipeline copied the selected PNG source and generated 480, 768, 1200 and 1600 px WebP outputs without upscaling. The Plaka/Spinalonga hero remains unchanged; the article now has three inline images (Kolokytha, public Plaka and Plaka shoreline).
+- Revised visitor-facing wording only: retained the verified-local Kolokytha, Plaka and Phaea Blue boundaries while replacing internal verification language. The article remains `draft: true`; no publication, merge or PR-ready action is authorised.
+
 ### 2026-08-03 - Elounda beaches draft: owner local verification
 
 - Created research branch `codex/elounda-beaches-research` from refreshed `origin/main` and scaffolded run `20260803T155017Z-elounda-beaches-81484e` at `docs/research/blog/elounda-beaches/`.
