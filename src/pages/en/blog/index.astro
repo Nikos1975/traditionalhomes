@@ -17,11 +17,11 @@ const formatDate = (date: Date) => date.toLocaleDateString('en-GB', {
 const categoryLabel = (category?: string) => category ?? 'Updates';
 const categorySlug = (category: string) => category.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
 const preferredFeaturedIds = [
+  'elounda-and-mirabello-bay',
+  'elounda-beaches',
+  'walking-around-elounda',
   'elounda-history-through-its-shoreline',
   'elounda-salt-pans-and-poros-windmills',
-  'elounda-wartime-memory',
-  'key-phases-in-elounda-hotel-development',
-  'Mavrikiano-Distances-And-Guide',
 ];
 const featuredPosts = preferredFeaturedIds
   .map(id => posts.find(post => post.id.toLowerCase() === id.toLowerCase() && post.data.image?.startsWith('/')))
@@ -119,11 +119,11 @@ const postsByCategory = categories.map(category => ({
               </div>
 
               {featuredPosts.length > 1 && (
-                <div class="grid gap-2 border-t border-stone-200 bg-stone-50 p-3 sm:grid-cols-2 lg:grid-cols-5" role="tablist" aria-label="Featured articles">
+                <div class="blog-featured-tablist flex gap-2 overflow-x-auto overscroll-x-contain border-t border-stone-200 bg-stone-50 p-3 snap-x snap-mandatory touch-pan-x sm:grid sm:grid-cols-2 sm:overflow-visible sm:overscroll-auto sm:snap-none sm:touch-auto lg:grid-cols-5" role="tablist" aria-label="Featured articles">
                   {featuredPosts.map((post, index) => (
                     <button
                       type="button"
-                      class="blog-featured-thumb group/thumb grid grid-cols-[4.5rem_minmax(0,1fr)] items-center gap-3 rounded-lg border border-transparent p-2 text-left transition-colors hover:border-primary/40 hover:bg-white focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
+                      class="blog-featured-thumb group/thumb grid w-[min(78vw,17rem)] shrink-0 snap-start grid-cols-[4.5rem_minmax(0,1fr)] items-center gap-3 rounded-lg border border-transparent p-2 text-left transition-colors hover:border-primary/40 hover:bg-white focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 sm:w-auto sm:shrink sm:basis-auto"
                       data-blog-thumb
                       data-active={index === 0 ? 'true' : 'false'}
                       aria-label={`Show featured article: ${post.data.title}`}
@@ -401,6 +401,11 @@ const postsByCategory = categories.map(category => ({
   .blog-featured-thumb[data-active="true"] {
     border-color: rgb(180 75 42 / 0.45);
     background: #ffffff;
+  }
+
+  .blog-featured-tablist {
+    scrollbar-color: rgb(168 162 158 / 0.8) transparent;
+    scrollbar-width: thin;
   }
 
   @media (prefers-reduced-motion: reduce) {

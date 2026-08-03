@@ -6,6 +6,14 @@ const readSource = (relativePath) =>
   readFile(new URL(`../${relativePath}`, import.meta.url), 'utf8');
 
 describe('blog featured slider interactions', () => {
+  it('curates five balanced featured articles and keeps mobile selectors scrollable', async () => {
+    const source = await readSource('src/pages/en/blog/index.astro');
+
+    assert.match(source, /const preferredFeaturedIds = \[\s*'elounda-and-mirabello-bay',\s*'elounda-beaches',\s*'walking-around-elounda',\s*'elounda-history-through-its-shoreline',\s*'elounda-salt-pans-and-poros-windmills',\s*\]/);
+    assert.match(source, /overflow-x-auto[\s\S]*snap-x[\s\S]*snap-mandatory[\s\S]*touch-pan-x[\s\S]*sm:grid/);
+    assert.match(source, /blog-featured-thumb[\s\S]*snap-start[\s\S]*sm:basis-auto/);
+  });
+
   it('keeps the existing controls and keyboard navigation connected to setActiveSlide', async () => {
     const source = await readSource('src/pages/en/blog/index.astro');
 
