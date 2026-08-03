@@ -8,6 +8,18 @@
 - Validation: `git diff --check`, all five targeted blog validators, and `npm run seo:links` passed. `npm test` is not defined; `node --test` has one existing redirect-fixture mismatch. Build remains blocked by an existing Windows `dist` EPERM lock; typecheck is polluted by the protected untracked SEO audit package and has no changed-source diagnostic.
 - Deferred: generated-page inspection after the Windows output lock is released; Search Console-led consolidation, title changes, claim remediation, redirects, and canonical changes remain out of scope.
 
+### 2026-08-02 - Contact Turnstile Pages preview hostnames
+
+- Turnstile hostname validation now normalizes Siteverify hostnames and accepts the production domains plus the Pages root and genuine `*.traditionalhomes.pages.dev` preview hostnames. Lookalike suffix/prefix domains remain rejected; the `contact` action check is unchanged.
+- Added production, Pages root, hash-preview, branch-alias-preview, and lookalike hostname coverage. Preview deployments can now exercise the contact form before production merge.
+
+### 2026-08-02 - Contact form Turnstile protection
+
+- Added a managed Cloudflare Turnstile widget to the English contact form. Submission is disabled until it returns a token; errors and expiry are explained in plain language, and failed submissions reset the widget.
+- The Pages Function now rejects honeypot, malformed, unapproved-property, missing-token, unverified-token, wrong-action, and wrong-hostname submissions before email delivery. Siteverify receives the configured secret, token, and CF-Connecting-IP when present; the existing Email Service REST flow is unchanged.
+- Added Node test-runner coverage and an `npm test` script. Build passes; typecheck retains four unrelated errors in `UnitCard.astro`, `BookingHandoffForm.astro`, and both English guide pages.
+- Remaining manual work: configure `PUBLIC_TURNSTILE_SITE_KEY` for the build and `TURNSTILE_SECRET_KEY` in Cloudflare Pages, then register the production hostnames in the Turnstile dashboard.
+
 ### 2026-07-28 - Social Publisher live layer
 
 - Added the Facebook Page and Instagram Professional live-publishing layer on top of the local social core. It uses only configured numeric target IDs, an explicit Meta Graph version, injected HTTP clients, and no public endpoint, workflow, scheduler, dashboard, webhook, or other platform integration.
