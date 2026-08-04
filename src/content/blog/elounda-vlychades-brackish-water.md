@@ -30,17 +30,19 @@ A *vlychada* can refer, depending on local usage, to a brackish-water place, flo
 
 It is therefore better not to force a single definition onto the word. Nor is there adequate support for the proposed derivation from γλυκάζω, “to sweeten”. The available lexicographic evidence supports the word family and its association with brackishness; the precise historical path into Elounda speech remains unresolved.
 
-## The two reported flows on the Elounda waterfront
+## Two vlychades on the Elounda waterfront
 
 A 2025 local report discussed two underground brackish flows in Elounda: one near the Community Office and another before Mavrikiano. The report described both as moving towards the waterfront. It also recorded local concern about brackish borehole water and a proposal to make practical use of water intercepted farther upstream.
 
-Two locally recognised *vlychada* outlet areas have now been field-identified along the Elounda waterfront. The first lies on the Schisma waterfront beside Poulis Restaurant and opposite the First Port Department of Elounda: [Vlychada 1 on the Schisma waterfront](https://www.google.com/maps/search/?api=1&query=35.2616194%2C25.7245278), at approximately 35°15'41.83"N, 25°43'28.30"E.
+Two locally recognised *vlychada* outlet areas have now been field-identified along the Elounda waterfront.
 
-The second lies farther north towards Mavrikiano: [Vlychada 2 towards Mavrikiano](https://www.google.com/maps/search/?api=1&query=35.2680083%2C25.7215611), at approximately 35°16'04.83"N, 25°43'17.62"E.
+The first is the Elounda or Schisma *vlychada*, beside Poulis Restaurant and opposite the First Port Department of Elounda: [Vlychada 1 on the Schisma waterfront](https://www.google.com/maps/search/?api=1&query=35.2616194%2C25.7245278), at approximately 35°15'41.83"N, 25°43'28.30"E.
 
-These coordinates identify the locally recognised outlet areas. They do not establish the complete underground course, recharge area, flow rate, seasonal behaviour, chemistry or formal hydrogeological classification of either flow.
+The second is the Mavrikiano *vlychada*, locally identified as κάτω Φούρνου: [Vlychada 2 at Mavrikiano](https://www.google.com/maps/search/?api=1&query=35.2680083%2C25.7215611), at approximately 35°16'04.83"N, 25°43'17.62"E.
 
-The 2025 report is documentary evidence that the two flows were publicly discussed. The present locations are based on owner-supplied local field identification, rather than confirmation by an official authority, engineer, geologist or laboratory. The flows should not be treated as drinking-water sources, and their historical uses remain unresolved.
+These coordinates identify the locally recognised outlet areas. They do not establish the complete underground course, recharge area, flow rate, seasonal behaviour, chemistry, potability or formal hydrogeological classification of either flow.
+
+The 2025 report is documentary evidence that the two flows were publicly discussed. The present locations are based on owner-supplied local field identification, rather than confirmation by an official authority, engineer, geologist or laboratory. The flows should not be treated as drinking-water sources, and their wider historical uses remain unresolved.
 
 ## How coastal water becomes brackish
 
@@ -78,13 +80,13 @@ Stored rainwater on Spinalonga was necessary because there were no springs. In m
 
 The two reported *vlychades* should not be described as potable. The local report calls them brackish, but provides no laboratory analysis. Brackish water can be useful in some circumstances without being safe or desirable for drinking. Its value lies partly in that distinction: it may have reduced the pressure on more limited sources of fresh water, but the precise Elounda history remains to be established.
 
-## What local memory may still reveal
+## What the local reports record
 
-Communal washing is an important research question, not a documented conclusion.
+The two Anatoli reports are published local reporting, rather than a field survey or historical study. They identify a larger *vlychada* below Mavrikiano, “at Fournos”, and a smaller one in front of the Community Office at Schisma. Their location descriptions support the distinction between the two sites, but not their exact coordinates or underground courses.
 
-Older residents may still remember whether these waters were used for washing, animals, gardens or other household work. They may also remember names, seasonal changes, older access routes, built basins or the arrival of piped water. Until those accounts are recorded, compared and located on the ground, such uses should remain questions rather than conclusions.
+According to a local account reported by Anatoli in 2023, the speaker remembered her mother washing μαλλιά at the Schisma outlet. Anatoli's 2025 report also says that μαλλιά were washed there in earlier years. Neither report specifies the material, process or date. They do not establish the same use at Mavrikiano.
 
-There is presently no sufficient documentary basis to say that women washed clothes, wool, blankets or woven textiles at either *vlychada*. Nor is there evidence to reconstruct gatherings, tools, songs, routes, drying places or a standard washing process. The absence of that evidence is not a reason to fill the gap with a familiar village scene.
+Older residents may still remember other uses, seasonal changes, access routes or the arrival of piped water. Until such accounts are recorded, compared and located on the ground, those matters remain research questions. There is no basis here to reconstruct gatherings, tools, routes, drying places or a standard washing process.
 
 ## Why ordinary soap struggles in brackish water
 
@@ -115,6 +117,8 @@ The [Traditional Homes collection](/en/houses/) remains part of Mavrikiano’s s
 ## Sources
 
 - [Anatoli: local 2025 report on Elounda’s reported brackish flows](https://www.anatolh.com/topikanea/agiosnikolaos/anagki-na-kataskeyastoyn-pezodromia-sto-dromo-eloynta-plaka/).
+- [Anatoli: “Η υφάλμυρη βλυχάδα της Ελούντας” (The brackish vlychada of Elounda)](https://www.anatolh.com/topikanea/agiosnikolaos/i-yfalmyri-vlychada-tis-eloyntas/).
+- [Anatoli: “Οι δύο βλυχάδες της Ελούντας, στο Μαυρικιανό και στο Σχίσμα” (The two vlychades of Elounda, at Mavrikiano and Schisma)](https://www.anatolh.com/topikanea/agiosnikolaos/oi-dyo-vlychades-tis-elountas/).
 - [Centre for the Greek Language: Kriaras Dictionary of Medieval Vernacular Greek](https://www.greek-language.gr/).
 - [Ephorate of Antiquities of Lasithi: vaulted cisterns of Spinalonga](https://spinalonga-island.gr/monuments/spinalonga/%CE%BA%CF%84%CE%AE%CF%81%CE%B9%CE%B1-%CE%B5%CE%BD%CE%B5%CF%84%CE%B9%CE%BA%CE%BF%CF%8D-%CF%83%CF%84%CF%81%CE%B1%CF%84%CE%BF%CF%80%CE%AD%CE%B4%CE%BF%CF%85/%CE%BF%CE%B9-%CE%B4%CE%B5%CE%BE%CE%B1%CE%BC%CE%B5%CE%BD%CE%AD%CF%82-%CF%83%CF%85%CE%BB%CE%BB%CE%BF%CE%B3%CE%AE%CF%82-%CE%BD%CE%B5%CF%81%CE%BF%CF%8D/?lang=en).
 - Voudouris, K. S. (2021), [“Status and codification of karst aquifer systems in Greece”](https://doi.org/10.12681/bgsg.25471).
