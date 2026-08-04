@@ -72,16 +72,16 @@ The beach itself is not legally private: the shoreline remains a common-use area
 
 Phaea Blue directly adjoins the beach in its sector. The shoreline remains publicly accessible as a common-use area under the Greek framework, while the hotel operates the sunbeds and related facilities there. The 2026 Blue Flag record names Phāea Blue as the programme manager for the Plaka/Phaea Blue sector.
 
-<figure>
-  <img src="/images/blog/elounda-beaches/plaka-pebble-1600.webp" alt="Pebble shore and swimmers at Plaka, with the coast beyond." loading="lazy" />
-  <figcaption>Plaka’s pebble shoreline. Photograph: Elounda Traditional Homes of Crete.</figcaption>
-</figure>
-
 The shoreline can also be approached independently from the church side. The facilities remain hotel-managed, and non-guests should not assume that they may use them. This does not establish a right to pass through the hotel's private premises, car park or internal grounds; check practical route conditions locally.
 
 ## Main Plaka beach
 
 The main Plaka beach is public and organised. Its character is different from central Elounda: it is a village shoreline on the coast facing Spinalonga. The public village beach is separate from the hotel-managed beach sections farther along the shoreline.
+
+<figure>
+  <img src="/images/blog/elounda-beaches/plaka-pebble-1600.webp" alt="Pebble shore and swimmers at Plaka, with the coast beyond." loading="lazy" />
+  <figcaption>Plaka’s pebble shoreline. Photograph: Elounda Traditional Homes of Crete.</figcaption>
+</figure>
 
 <figure>
   <img src="/images/blog/elounda-beaches/plaka-organised-1600.webp" alt="Pebble shore at the public organised section of Plaka beach, with umbrellas and Spinalonga beyond." loading="lazy" />
