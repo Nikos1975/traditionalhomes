@@ -38,7 +38,7 @@ Two locally recognised *vlychada* outlet areas have now been field-identified al
 
 The first is the Elounda or Schisma *vlychada*, beside Poulis Restaurant and opposite the First Port Department of Elounda: [Vlychada 1 on the Schisma waterfront](https://www.google.com/maps/search/?api=1&query=35.2616194%2C25.7245278), at approximately 35°15'41.83"N, 25°43'28.30"E.
 
-The second is the Mavrikiano *vlychada*, locally identified as κάτω Φούρνου: [Vlychada 2 at Mavrikiano](https://www.google.com/maps/search/?api=1&query=35.2680083%2C25.7215611), at approximately 35°16'04.83"N, 25°43'17.62"E.
+The second is the Mavrikiano *vlychada*, locally identified as κάτω Φούρνου (Kato Fournou): [Vlychada 2 at Mavrikiano](https://www.google.com/maps/search/?api=1&query=35.2680083%2C25.7215611), at approximately 35°16'04.83"N, 25°43'17.62"E.
 
 These coordinates identify the locally recognised outlet areas. They do not establish the complete underground course, recharge area, flow rate, seasonal behaviour, chemistry, potability or formal hydrogeological classification of either flow.
 
@@ -86,6 +86,8 @@ The two Anatoli reports are published local reporting, rather than a field surve
 
 According to a local account reported by Anatoli in 2023, the speaker remembered her mother washing μαλλιά at the Schisma outlet. Anatoli's 2025 report also says that μαλλιά were washed there in earlier years. Neither report specifies the material, process or date. They do not establish the same use at Mavrikiano.
 
+A local press report concerns the covered brackish *vlychada* beside the boatyard on the road from Elounda towards Plaka. It states that, during earlier periods of water scarcity, women from Elounda came there to rinse their laundry. This provides local press support for laundry use at the Mavrikiano/Fournos site. It does not establish the same use at the Schisma *vlychada*, nor does it document the complete washing process.
+
 Older residents may still remember other uses, seasonal changes, access routes or the arrival of piped water. Until such accounts are recorded, compared and located on the ground, those matters remain research questions. There is no basis here to reconstruct gatherings, tools, routes, drying places or a standard washing process.
 
 ## Why ordinary soap struggles in brackish water
@@ -119,6 +121,7 @@ The [Traditional Homes collection](/en/houses/) remains part of Mavrikiano’s s
 - [Anatoli: local 2025 report on Elounda’s reported brackish flows](https://www.anatolh.com/topikanea/agiosnikolaos/anagki-na-kataskeyastoyn-pezodromia-sto-dromo-eloynta-plaka/).
 - [Anatoli: “Η υφάλμυρη βλυχάδα της Ελούντας” (The brackish vlychada of Elounda)](https://www.anatolh.com/topikanea/agiosnikolaos/i-yfalmyri-vlychada-tis-eloyntas/).
 - [Anatoli: “Οι δύο βλυχάδες της Ελούντας, στο Μαυρικιανό και στο Σχίσμα” (The two vlychades of Elounda, at Mavrikiano and Schisma)](https://www.anatolh.com/topikanea/agiosnikolaos/oi-dyo-vlychades-tis-elountas/).
+- [Patris: “Πολύ επικίνδυνο, δεν το βλέπουν;” (A dangerous covered brackish source beside the boatyard)](https://www.patris.gr/stiles/chthes-simera-afrio/poly-epikindyno-den-to-vlepoyn/).
 - [Centre for the Greek Language: Kriaras Dictionary of Medieval Vernacular Greek](https://www.greek-language.gr/).
 - [Ephorate of Antiquities of Lasithi: vaulted cisterns of Spinalonga](https://spinalonga-island.gr/monuments/spinalonga/%CE%BA%CF%84%CE%AE%CF%81%CE%B9%CE%B1-%CE%B5%CE%BD%CE%B5%CF%84%CE%B9%CE%BA%CE%BF%CF%8D-%CF%83%CF%84%CF%81%CE%B1%CF%84%CE%BF%CF%80%CE%AD%CE%B4%CE%BF%CF%85/%CE%BF%CE%B9-%CE%B4%CE%B5%CE%BE%CE%B1%CE%BC%CE%B5%CE%BD%CE%AD%CF%82-%CF%83%CF%85%CE%BB%CE%BB%CE%BF%CE%B3%CE%AE%CF%82-%CE%BD%CE%B5%CF%81%CE%BF%CF%8D/?lang=en).
 - Voudouris, K. S. (2021), [“Status and codification of karst aquifer systems in Greece”](https://doi.org/10.12681/bgsg.25471).
