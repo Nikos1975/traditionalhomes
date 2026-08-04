@@ -239,12 +239,12 @@ Do not overwrite earlier conclusions silently. Add the new evidence, retain the 
 
 ## 10. 5 August 2026 dossier: priority acquisition tracker
 
-The ChatGPT dossier is a lead inventory only; see [its intake record](./sources/chatgpt-dossier-2026-08-05.md). The statuses below replace no earlier evidence status.
+The ChatGPT dossier is an accepted substantive research dossier and secondary synthesis; see [its intake record](./sources/chatgpt-dossier-2026-08-05.md). It is not primary evidence, and individual findings retain their stated confidence and source status. The statuses below replace no earlier evidence status.
 
 | Priority gap | Current status | Required next record | Publication effect |
 |---|---|---|---|
 | Full *Scipio* Inspector of Accidents report | searched and not found | report, appendices, inspector, reference and page-level findings | keeps technical reconstruction and crew list blocked |
-| Complete March 1936 timetable and route-map provenance | identified but not obtained | complete scan, title/cover, pages, scan host/archive and reproduction terms | may establish operational-point versus public-passenger-station distinction |
+| Complete March 1936 timetable and route-map provenance | accepted research finding; original identified but not retained | complete scan, title/cover, pages, scan host/archive and reproduction terms | supports the operational-point versus ordinary public-passenger-station distinction; primary document still required for final publication |
 | Earlier and later Imperial Airways timetables, 1929–1939 | not yet searched | dated timetable series and station instructions | keeps first/last use, continuity and frequency unresolved |
 | Webb Miller original pages | obtained and inspected | title-page/catalogue check for edition and imprint | supports May 1930, “Jimmy Youell,” *Imperia*, serum and overnight; does not identify an official crew assignment |
 | Imperial Airways movement log for the Miller journey | not yet searched | May 1930 movement/crew log or dispatch sheet | required to tie Jimmy Youell to a full personnel identity and aircraft |

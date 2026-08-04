@@ -8,17 +8,17 @@
 - **SHA-256:** `4105D1F6B668DC7CC2794D945037B8EC222339A32A32E5AE1897E9FB38C8DF9A`.
 - **Source-copy policy:** this repository stores an intake record rather than a generated-text copy. The local source remains the supplied Downloads file and must not be silently edited or treated as a historical source.
 
-## Evidence rule
+## Evidence classification
 
-This dossier is **not a primary historical source**. Its claims are leads only and must be traced to an original source, stable publication record or archival reference before use in the verification dossier or any public article. Its internal tool-style citations are non-portable and must never appear as repository or public citations.
+This is an **accepted substantive research dossier and secondary synthesis**. It is suitable for the internal evidence and research record, but it is **not a primary historical source**. Individual findings retain their stated confidence and source status; public claims must be cited through the underlying document, stable publication record or archival reference. Its internal tool-style `turn...` citations are non-portable and must never appear as repository or public citations.
 
-## Lead inventory retained for reconciliation
+## Accepted findings retained for reconciliation
 
-- Reported Imperial Airways *Time Table: England–Australia*, effective March 1936, with a route map that labels Mirabella between Athens and Alexandria while the public table separately times Athens and Alexandria.
-- Reported *Spectator*, “Flying-boat Accidents,” 28 August 1936, p. 3.
-- Repeated aircraft identifiers for *Scipio*: G-ABFA, Short S.17 Kent, c/n S.758.
+- Reported Imperial Airways *Time Table: England–Australia*, effective March 1936, with a route map that labels Mirabella between Athens and Alexandria while the public table separately times Athens and Alexandria. This supports the interpretation of Mirabella as a regular operational point rather than an ordinary public passenger station; the original complete timetable/map is still required for final publication.
+- Reported *Spectator*, “Flying-boat Accidents,” 28 August 1936, p. 3: contemporary commentary, not the official accident report.
+- Aircraft identifiers for *Scipio*: Short S.17 Kent flying boat, G-ABFA, c/n S.758, supported by the dossier and specialist corroboration.
 - Provisional people, vessel, rescue and route claims that remain subject to the existing claim register.
 
 ## Intake outcome
 
-The March timetable/map and *Spectator* item are **identified but not obtained**. The supplied dossier does not provide a portable scan host, archive reference or usable external citation for either item. The Miller/Youell lead conflicts with the existing source scan and is reconciled in the [verification dossier](../verification-dossier.md).
+The March timetable/map and *Spectator* item are accepted research findings whose underlying originals are **identified but not retained**. The supplied dossier does not provide a portable scan host, archive reference or usable external citation for either item. The Miller/Youell issue is reconciled in the [verification dossier](../verification-dossier.md): Miller directly supports “Jimmy Youell,” while the A. B. H./Alan Bruce Hamilton expansion remains unresolved.

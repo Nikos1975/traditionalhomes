@@ -23,7 +23,7 @@ The Scipio accident is securely dated to 22 August 1936. Hansard confirms two de
 |---|---|
 | Gemini | Useful lead list, but repeatedly converts inferred or crash-mail claims into official findings. Its statement that Youell is unidentified is wrong; Miller identifies him. Treat its precise accident mechanics and rescue narrative as unverified pending the accident report. |
 | Perplexity | More cautious and correctly identifies methodological limits. It nevertheless repeats a false claim that Miller did not name the pilot, misdescribes the Kent as three-engined in one passage, and relies heavily on secondary reconstructions. |
-| ChatGPT-labelled file | A substantive methodology memo, not Elounda evidence. Its source hierarchy and circular-sourcing warnings are useful; it supports no historical conclusion. |
+| ChatGPT-labelled file | An accepted substantive research dossier and secondary synthesis. It contributes the reported March 1936 map/table distinction, *Spectator* metadata and aircraft identifiers, each retaining the dossier's stated evidence status. It is not primary evidence; public claims require portable citations to the underlying documents. |
 
 ## 3. Three-dossier conflict matrix
 
@@ -266,14 +266,14 @@ Keep the proposed title and slug. Proposed description, only after research clos
 
 ## Reconciliation with the 5 August 2026 ChatGPT dossier
 
-The received ChatGPT dossier is preserved only as a research lead in [its intake record](./sources/chatgpt-dossier-2026-08-05.md). Its internal `turn...` markers are not portable citations and are not evidence in this dossier.
+The received ChatGPT dossier is an accepted substantive research dossier and secondary synthesis; its intake record is [here](./sources/chatgpt-dossier-2026-08-05.md). It is not a primary historical source. Its findings are retained with their individual evidence classifications and, for public use, must be cited through the underlying documents. Its internal `turn...` markers are non-portable and must never be copied into repository or public citations.
 
 | Claim | Earlier status | New evidence | Revised status | Reason |
 |---|---|---|---|---|
-| March 1936 timetable/map treatment | not recorded | The lead reports an Imperial Airways map placing Mirabella between Athens and Alexandria while the public station table times only Athens and Alexandria | identified but not obtained | The lead gives no inspectable scan host, page image or portable citation. Acquire and inspect the complete timetable before publishing this distinction. |
-| Mirabella as operational point, not ordinary passenger station | probable but not fully verified | Same reported map/table distinction | probable but not fully verified | The interpretation is promising but cannot yet be upgraded without the original. It does not mean Mirabella was unscheduled. |
-| *The Spectator*, “Flying-boat Accidents” | not recorded | Lead identifies 28 August 1936, p. 3 | identified but not obtained | The issue/date/title is a targeted acquisition lead. Treat it as pre-investigation editorial commentary, never as an accident report or proof of cause. |
-| *Scipio* identity | supported by specialist secondary source | Lead repeats name, G-ABFA, Short S.17 Kent and c/n S.758 | supported by specialist secondary source | AirHistory and registration sources corroborate the identifiers; a registration/Short record remains preferable for publication. |
+| March 1936 timetable/map treatment | not recorded | Accepted dossier reports an Imperial Airways map placing Mirabella between Athens and Alexandria while the public station table times only Athens and Alexandria | accepted research finding; underlying original identified but not retained | Obtain and inspect the complete timetable before final publication; no portable scan host, page image or archive reference is yet recorded here. |
+| Mirabella as operational point, not ordinary passenger station | probable but not fully verified | Same reported map/table distinction | accepted research inference; primary document still required for final publication | The distinction supports a regular operational point rather than an ordinary public passenger station. It does not mean Mirabella was unscheduled. |
+| *The Spectator*, “Flying-boat Accidents” | not recorded | Accepted dossier identifies *The Spectator*, “Flying-boat Accidents,” 28 August 1936, p. 3 | accepted research finding; original identified but not retained | It is contemporary commentary, not the official accident report or proof of cause. |
+| *Scipio* identity | supported by specialist secondary source | Accepted dossier identifies Short S.17 Kent flying boat *Scipio*, G-ABFA, c/n S.758 | supported by contemporary or specialist secondary evidence | AirHistory and registration sources corroborate the identifiers; a registration/Short record remains preferable for final publication. |
 | Tailplane, nose-heavy state, downdraught, break-up and exact sinking sequence | plausible but unverified / exclude | Lead repeats later specialist reconstructions | unchanged | The full Inspector of Accidents report is still unavailable. |
 | *Imperia* functions | memoir support for accommodation; later support for wireless/refuelling | Lead repeats distinction | unchanged | Miller supports its local air-base/accommodation role. Wireless/refuelling mechanics still need contemporary company or operational evidence. |
 | Knikker, Dutch build, 1929 acquisition and later fate | plausible but unverified / exclude | Lead supplies further asserted particulars | unchanged | No registry, ownership or company asset record has been inspected. |
@@ -286,7 +286,7 @@ The original page is available as a 358-page online scan of Webb Miller, *I Foun
 
 ### Revised article-readiness conclusion
 
-The new lead strengthens the acquisition path—especially the reported March 1936 timetable/map and *Spectator* item—but it does not make the article ready. The exact public-timetable distinction, full accident report, named crew/passenger records, vessel registry chain, base records and cleared image rights remain required. Public article drafting remains blocked.
+The accepted dossier materially strengthens the internal evidence record—especially the reported March 1936 timetable/map distinction, the *Spectator* item and the aircraft identifiers—but it does not make the article ready. The underlying original timetable, full accident report, named crew/passenger records, vessel registry chain, base records and cleared image rights remain required. Public article drafting remains blocked.
 
 ## Next research stage
 
