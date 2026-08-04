@@ -1,5 +1,16 @@
 # Agent Handoff Notes
 
+### 2026-08-05 - New Imperial Airways research reconciliation
+
+- Reviewed the accepted ChatGPT Deep Research dossier as a substantive secondary synthesis for the internal evidence record; its non-portable internal citations were not adopted. The reported March 1936 timetable/map distinction is a key acquisition target, and the reported *Spectator* item is dated 28 August 1936 subject to source confirmation.
+- The Miller scan directly names “Jimmy Youell” and dates the journey to May 1930, but an Imperial Airways movement log is still needed before expanding the name to a verified full identity. The public article remains blocked; no public route or image work has begun.
+
+### 2026-08-05 - Imperial Airways archival-enquiry package
+
+- Prepared, but did not send, institution-specific requests for the *Scipio* accident file, Imperial Airways timetables and maps, staff records, and *Imperia* vessel evidence. The package records only official contact routes and does not presume that any institution holds the report.
+- The National Archives is the first route for the unidentified accident file; British Airways Heritage is the first company-record route. RAeS, RAF Museum and AAIB are limited referral/collection checks; the CAA is not an initial accident-record target under its published remit.
+- Corrected the eventual article-length record: there is no 2,500-word maximum. Do not draft until the publication gate is met and the user explicitly authorises article production.
+
 ### 2026-08-03 - Elounda beaches publication PR
 
 - Recorded the approved publication change for `src/content/blog/elounda-beaches.md`: `draft: false` with the existing `pubDate: 2026-08-03`. The public route is `/en/blog/elounda-beaches/`; its research packet and user-owned, approved image attribution remain unchanged.
