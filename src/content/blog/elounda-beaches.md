@@ -27,8 +27,8 @@ The coast around Elounda is not one continuous beach. Schisma, Chiona, Kolokytha
 | [Chiona](https://www.google.com/maps/search/?api=1&query=35.25769987,25.73125013) | Separate beach beside the Elounda salt pans | A useful stop on the shoreline beyond the centre. |
 | [Kolokytha](https://www.google.com/maps/search/?api=1&query=35.26027881,25.75209632) | Unorganised small-bay beach | Rough, mostly single-lane track; higher ground clearance is helpful. |
 | [Driros / Domes of Elounda](https://www.google.com/maps/search/?api=1&query=35.289502798875,25.730227768618) | Named sector on the Elounda–Plaka coast | Common-use shoreline; adjoining resort manages equipment and services. |
-| [Main Plaka beach](https://www.google.com/maps/search/?api=1&query=35.30218506,25.72708177) | Public, organised village shoreline | Keep it distinct from adjacent hotel-operated sectors. |
 | [Phaea Blue sector](https://www.google.com/maps/search/?api=1&query=35.295004687905,25.728002674878) | Beach sector directly beside the hotel | Hotel-managed sunbeds and facilities; use by non-guests depends on the hotel’s current policy. |
+| [Main Plaka beach](https://www.google.com/maps/search/?api=1&query=35.30218506,25.72708177) | Public, organised village shoreline | Keep it distinct from adjacent hotel-operated sectors. |
 | Southern resort sectors | Named hotel-linked sectors on the 2026 Blue Flag list | Their award names do not settle public access or facilities. |
 
 ## Are any Elounda beaches private?
@@ -60,22 +60,11 @@ Kolokytha is an unorganised beach in a small bay, with a downhill path forming t
 
 An SUV is not essential, but higher ground clearance is helpful. The route is not recommended for inexperienced drivers. Conditions can change after weather or roadworks, so check locally before setting out.
 
-## Main Plaka beach
-
-The main Plaka beach is public and organised. Its character is different from central Elounda: it is a village shoreline on the coast facing Spinalonga. The public village beach is separate from the hotel-managed beach sections farther along the shoreline.
-
-<figure>
-  <img src="/images/blog/elounda-beaches/plaka-organised-1600.webp" alt="Pebble shore at the public organised section of Plaka beach, with umbrellas and Spinalonga beyond." loading="lazy" />
-  <figcaption>The public organised section of Plaka beach. Photograph: Elounda Traditional Homes of Crete.</figcaption>
-</figure>
-
-Seasonal provision can change, so check locally when a particular service matters. The [Vrouchas guide](/en/guide/vrouchas/) gives the wider northern-coast context.
-
 ## Driros / Domes of Elounda
 
 Driros is the officially named Driros/Domes of Elounda beach sector on the Elounda–Plaka coast. The 2026 Blue Flag record names Domes of Elounda as the sector's programme manager, and the resort directly adjoins Driros beach.
 
-Before the present resort development, Driros was known locally as a small beach of fine, pale-beige sand beside the former Hotel Driros. In a local recollection supplied by Elounda Traditional Homes, Nikos Pasparakis remembers families from Elounda swimming there and visiting the hotel's seaside taverna. The hotel later changed ownership. This is historical context only, not evidence of current access, sand conditions or facility policy.
+Before the present resort development, Driros was known locally as a small beach of fine, pale-beige sand beside the former Hotel Driros. In a local recollection supplied by Elounda Traditional Homes of Crete, families from Elounda swam there and visited the hotel's seaside taverna. The hotel later changed ownership. This is historical context only, not evidence of current access, sand conditions or facility policy.
 
 The beach itself is not legally private: the shoreline remains a common-use area under the Greek framework. Domes of Elounda manages its sunbeds, umbrellas, towels and other beach services, however, and use of those facilities is subject to the resort's policy. Check practical shoreline routes and current facility conditions locally; do not assume use of resort parking, an entrance through the resort or access to its internal grounds.
 
@@ -89,6 +78,17 @@ Phaea Blue directly adjoins the beach in its sector. The shoreline remains publi
 </figure>
 
 The shoreline can also be approached independently from the church side. The facilities remain hotel-managed, and non-guests should not assume that they may use them. This does not establish a right to pass through the hotel's private premises, car park or internal grounds; check practical route conditions locally.
+
+## Main Plaka beach
+
+The main Plaka beach is public and organised. Its character is different from central Elounda: it is a village shoreline on the coast facing Spinalonga. The public village beach is separate from the hotel-managed beach sections farther along the shoreline.
+
+<figure>
+  <img src="/images/blog/elounda-beaches/plaka-organised-1600.webp" alt="Pebble shore at the public organised section of Plaka beach, with umbrellas and Spinalonga beyond." loading="lazy" />
+  <figcaption>The public organised section of Plaka beach. Photograph: Elounda Traditional Homes of Crete.</figcaption>
+</figure>
+
+Seasonal provision can change, so check locally when a particular service matters. The [Vrouchas guide](/en/guide/vrouchas/) gives the wider northern-coast context.
 
 ## Southern resort beaches: use the names carefully
 
