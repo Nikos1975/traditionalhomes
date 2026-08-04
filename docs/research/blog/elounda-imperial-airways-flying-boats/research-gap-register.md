@@ -253,3 +253,7 @@ The ChatGPT dossier is an accepted substantive research dossier and secondary sy
 | Mirabella station or marine-base records | not yet searched | station instructions, marine equipment ledger, fuel/wireless/launch records | keeps refuelling method, staffing and base facilities unresolved |
 | Greek police, medical, harbour and burial records | not yet searched | incident, treatment, port, cemetery and burial records | keeps local rescue and fatality details provisional |
 | Cleared images and reproduction rights | permission unresolved | rights statement, licence or permission plus usable file | prevents image selection; image-free decision remains possible |
+
+## 11. Prepared archival-enquiry stage
+
+The ready-to-send, unsent request drafts and official contact routes are in the [archive-enquiry pack](./archive-enquiry-pack.md). The [*Scipio* acquisition log](./scipio-accident-report-acquisition-log.md) retains the completed catalogue searches and their limits. No archive holding is presumed: the first requests ask each institution to identify the relevant series, catalogue references, access route and copying or publication terms.

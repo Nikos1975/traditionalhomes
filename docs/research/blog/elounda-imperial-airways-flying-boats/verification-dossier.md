@@ -15,7 +15,7 @@ The strongest contemporary/company evidence supports *Imperia* as accommodation 
 
 The Scipio accident is securely dated to 22 August 1936. Hansard confirms two deaths, that the inspector attributed one reason to a misjudged approach which led the pilot to open the engines, and that there was no evidence that an engine failed to respond. Detailed narratives concerning a downdraught, tailplane setting, wing separation and rescue are presently only specialist/philatelic or later reporting; they must not be presented as official findings until the full report is obtained.
 
-**Decision:** not article-ready. A publication-safe short note could use Miller and Hansard alone, but the requested 1,800–2,500-word pilot-led microhistory requires the accident file, original timetables, and crew/ship records.
+**Decision:** not article-ready. A publication-safe short note could use Miller and Hansard alone, but the proposed pilot-led microhistory requires the accident file, original timetables, and crew/ship records. Its eventual length must follow the verified evidence and narrative needs, not an arbitrary word ceiling; a likely range is approximately 2,500–4,500 words, with no hard maximum.
 
 ## 2. Assessment of each uploaded dossier
 

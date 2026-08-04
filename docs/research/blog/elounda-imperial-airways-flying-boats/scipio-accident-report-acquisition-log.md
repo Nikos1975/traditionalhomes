@@ -22,3 +22,7 @@
 No full *Scipio* Inspector of Accidents report, file title, catalogue reference, covering dates, appendices, digitised copy or reproduction price was located in this pass. The first acquisition request should go to The National Archives and the British Airways Heritage Collection, asking them to search their holdings for `Scipio`, `G-ABFA`, `Short S.17 Kent`, `Mirabella`, `Mirabello`, `Crete`, `Imperial Airways`, `22 August 1936`, `Inspector of Accidents`, `civil aircraft accident report`, and `flying boat accident`.
 
 Until the actual report is supplied and reviewed, retain only the existing Hansard-level conclusion: a misjudged approach was one stated reason and no evidence suggested an engine failed to respond. Do not promote later accounts of tailplane setting, nose-heavy configuration, downdraughts, wind/sea conditions, structural breakup or the sinking sequence to official findings.
+
+## Verified enquiry routes, 5 August 2026
+
+The [archive-enquiry pack](./archive-enquiry-pack.md) records the current official routes and unsent request drafts. The National Archives' records-and-research form is the principal route for an unidentified file reference. British Airways Heritage is the principal company-record route. The Royal Aeronautical Society National Aerospace Library, RAF Museum and AAIB requests are referral or collection checks, not assertions that they hold the report. The CAA's published guidance says that it is not responsible for accident investigation, so it is not an initial report-custody request target.
