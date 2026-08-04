@@ -1,5 +1,16 @@
 # Agent Handoff Notes
 
+### 2026-08-05 - Imperial Airways archival acquisition plan
+
+- The reconciliation dossier and the next-stage `docs/research/blog/elounda-imperial-airways-flying-boats/research-gap-register.md` now define the evidence boundary and acquisition work for the proposed Imperial Airways/Elounda article. No public article should be created yet.
+- Reconcile every newly obtained archival record against the existing claim register before changing any conclusion. The highest-priority acquisitions remain the full *Scipio* accident report and original Imperial Airways timetables.
+
+### 2026-08-05 - Imperial Airways / Elounda verification dossier
+
+- Added a research-only, non-publication dossier at `docs/research/blog/elounda-imperial-airways-flying-boats/verification-dossier.md`. It reconciles the three supplied dossiers against the accessed original memoir and Hansard source, supplies the required claim-status boundary, and concludes that the proposed article is not ready.
+- Key corrections: Webb Miller’s May 1930 account identifies the pilot as Jimmy Youell (A. B. H. Youell) and directly records the 100-ton *Imperia* as accommodation for pilots and passengers; Hansard confirms only a misjudged approach and no evidence that an engine failed to respond. No article, route, image, publication state, or website copy changed.
+- The normal blog-run scaffold was deliberately not started because unrelated untracked `seo-audit-input-2026-08-02_2004` files make the working tree non-clean. Outstanding archival work: the full *Scipio* report, original timetables, vessel registers, crew/manifest records, naval log, and image permissions.
+
 ### 2026-08-03 - Elounda beaches publication PR
 
 - Recorded the approved publication change for `src/content/blog/elounda-beaches.md`: `draft: false` with the existing `pubDate: 2026-08-03`. The public route is `/en/blog/elounda-beaches/`; its research packet and user-owned, approved image attribution remain unchanged.
