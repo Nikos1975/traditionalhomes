@@ -34,7 +34,9 @@ It is therefore better not to force a single definition onto the word. Nor is th
 
 A 2025 local report discussed two underground brackish flows in Elounda: one near the Community Office and another before Mavrikiano. The report described both as moving towards the waterfront. It also recorded local concern about brackish borehole water and a proposal to make practical use of water intercepted farther upstream.
 
-Two locally recognised *vlychada* outlet areas have now been field-identified along the Elounda waterfront. The first lies on the Schisma waterfront beside Poulis Restaurant and opposite the First Port Department of Elounda, at approximately [Vlychada 1 on the Schisma waterfront](https://www.google.com/maps/search/?api=1&query=35.2616194%2C25.7245278). The second lies farther north towards Mavrikiano, at approximately [Vlychada 2 towards Mavrikiano](https://www.google.com/maps/search/?api=1&query=35.2680083%2C25.7215611).
+Two locally recognised *vlychada* outlet areas have now been field-identified along the Elounda waterfront. The first lies on the Schisma waterfront beside Poulis Restaurant and opposite the First Port Department of Elounda: [Vlychada 1 on the Schisma waterfront](https://www.google.com/maps/search/?api=1&query=35.2616194%2C25.7245278), at approximately 35°15'41.83"N, 25°43'28.30"E.
+
+The second lies farther north towards Mavrikiano: [Vlychada 2 towards Mavrikiano](https://www.google.com/maps/search/?api=1&query=35.2680083%2C25.7215611), at approximately 35°16'04.83"N, 25°43'17.62"E.
 
 These coordinates identify the locally recognised outlet areas. They do not establish the complete underground course, recharge area, flow rate, seasonal behaviour, chemistry or formal hydrogeological classification of either flow.
 
