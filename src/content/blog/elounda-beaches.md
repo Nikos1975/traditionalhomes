@@ -75,6 +75,8 @@ Seasonal provision can change, so check locally when a particular service matter
 
 Driros is the officially named Driros/Domes of Elounda beach sector on the Elounda–Plaka coast. The 2026 Blue Flag record names Domes of Elounda as the sector's programme manager, and the resort directly adjoins Driros beach.
 
+Before the present resort development, Driros was known locally as a small beach of fine, pale-beige sand beside the former Hotel Driros. In a local recollection supplied by Elounda Traditional Homes, Nikos Pasparakis remembers families from Elounda swimming there and visiting the hotel's seaside taverna. The hotel later changed ownership. This is historical context only, not evidence of current access, sand conditions or facility policy.
+
 The beach itself is not legally private: the shoreline remains a common-use area under the Greek framework. Domes of Elounda manages its sunbeds, umbrellas, towels and other beach services, however, and use of those facilities is subject to the resort's policy. Check practical shoreline routes and current facility conditions locally; do not assume use of resort parking, an entrance through the resort or access to its internal grounds.
 
 ## Phaea Blue beach sector
@@ -115,5 +117,5 @@ That framework keeps the coastline legible without assuming that every named bea
 - [Law 5092/2024](https://www.et.gr/api/DownloadFeksApi/?fek_pdf=20240100033), Government Gazette A 33, 4 March 2024; [rights and obligations on the seashore and beach](https://minfin.gov.gr/dimosia-periousia/aigialos/dikaiomata-kai-ypochreoseis-epi-aigialou-kai-paralias/) and [Paralia gia Olous](https://minfin.gov.gr/paraliagiaolous/), Ministry of National Economy and Finance.
 - [MyCoast app](https://www.gov.gr/en/ipiresies/periousia-kai-phorologia/demosia-periousia-kai-ethnika-klerodotemata-koinopheleis-periousies/MyCoast_app), Gov.gr.
 - [Driros/Domes of Elounda](https://www.blueflag.gr/el/beach/driros-domes-elounda), Blue Flag Greece; [Domes of Elounda FAQ](https://domesresorts.com/domesofelounda/faq/), official resort website.
-- Owner-supplied local observations, 3 August 2026, are recorded separately in the research packet; operational details are volatile.
+- Owner-supplied local observations and historical recollection, 3–4 August 2026, are recorded separately in the research packet; operational details are volatile.
 - Hero and inline photographs: Elounda Traditional Homes of Crete; user-owned and approved for publication.
