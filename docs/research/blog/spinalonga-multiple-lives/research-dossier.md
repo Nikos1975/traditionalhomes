@@ -4,7 +4,7 @@
 
 Spinalonga (officially associated with Kalydon) is a pre-existing rocky islet at the mouth of Elounda’s natural harbour, not an island made by Venice. Its location gave visual and maritime control at the junction of the sheltered Gulf of Elounda, the approaches from Mirabello, and the shore opposite Plaka. The surviving place is best understood as a palimpsest: earlier walling, a late-sixteenth-century Venetian seaward fortress, a Venetian-held refuge after 1669, an Ottoman military-commercial settlement, a state isolation institution for people with Hansen’s disease, and an archaeological/heritage site.
 
-The research record supports a future article organised around changes of use and physical adaptation rather than a generic chronology. It is not yet ready for drafting: the original legal texts, a fuller Ottoman social-history corpus, primary local testimony, and image permissions remain outstanding.
+The research record supports a future article organised around changes of use and physical adaptation rather than a generic chronology. It is not yet ready for drafting: the original legal texts, a fuller Ottoman social-history corpus and primary local testimony remain outstanding. Three user-owned current photographs now have documented commercial permission; archival image, map and plan rights remain outstanding.
 
 ## Verified working chronology
 
@@ -60,7 +60,7 @@ Use “people with leprosy,” “people with Hansen’s disease,” “resident
 
 ## Publication gate
 
-Do not draft the public article. The gate remains **blocked** until the unresolved questions register is materially closed, image rights are cleared, numerical claims are reconciled, and the user explicitly authorises drafting.
+Do not draft the public article. The gate remains **blocked** until the unresolved questions register is materially closed, historical image/map rights are cleared as needed, numerical claims are reconciled, and the user explicitly authorises drafting. The cleared current photographs remain research-preparation assets until article authorisation.
 
 Primary references: S01–S16 in [source bibliography](source-bibliography.md).
 

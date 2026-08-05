@@ -1,6 +1,6 @@
 # Image and map rights register
 
-**Publication position: no asset is cleared for commercial website use.** Discovery links identify holdings, not permissions. No files were downloaded or added.
+**Publication position:** the three user-owned photographs documented below are cleared for the authorised Traditional Homes uses. Archival images, maps and plans remain uncleared: discovery links identify holdings, not permissions. No archival files were downloaded or added.
 
 | Subject | Creator/date | Institution / stable source | Licence / commercial reuse | Required credit | Resolution / higher-res | Decision |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -14,6 +14,18 @@
 | Current architectural remains | To be commissioned / owned | Traditional Homes or licensed photographer | Contract/licence needed | Photographer/copyright line | Specify master delivery | Preferred future route |
 | Aerial/landscape map | To be commissioned or data-derived | Need base-map and aerial rights | Varies | Attribution per licence | Need print/web resolution | Do not use screenshots or map tiles without licence |
 | Archaeological drawings | Project authors | Ministry/Ephorate/academic project reports | Not stated | Per copyright holder | Unknown | Written permission required |
+
+## User-owned image clearance — 2026-08-06
+
+Nikos Pasparakis confirms that he photographed the three assets below and authorises commercial use, editing, cropping, format conversion and publication on `traditional-homes.gr` and its related social-media accounts. This permission does **not** extend to third-party syndication or resale. It does not make the photographs public domain or Creative Commons material.
+
+| Asset ID | Source filename and location | Photographer / rights holder | Date and viewpoint | Technical record | Intended role and alt text | Permission and required credit | Derivative / publication status |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| SPN-OWN-001 | `spinalonga-fortress-from-vrouchas.jpg` — `C:\Users\Nikos\Downloads\spinalonga-fortress-from-vrouchas.jpg` | Nikos Pasparakis / Nikos Pasparakis | Date unknown; above Vrouchas, as identified by the supplied filename | JPG; 4,640 × 3,472 px; no EXIF, GPS or camera-date metadata detected | Proposed article hero. “Spinalonga and its fortified settlement in the Gulf of Elounda, seen from above Vrouchas.” | Ownership confirmed by photographer; commercial website use, editing, cropping, conversion and related social-media use authorised. Credit: “Photo: Nikos Pasparakis / Elounda Traditional Homes of Crete”. | WebP prepared in research staging; no public website placement or deployment. |
+| SPN-OWN-002 | `spinalonga-island-close-view.jpg` — `C:\Users\Nikos\Downloads\spinalonga-island-close-view.jpg` | Nikos Pasparakis / Nikos Pasparakis | Date and exact viewpoint unknown | JPG; 4,640 × 3,472 px; no EXIF, GPS or camera-date metadata detected | Supporting architectural/history image. “Closer view of Spinalonga’s fortifications and surviving settlement buildings.” | Ownership confirmed by photographer; commercial website use, editing, cropping, conversion and related social-media use authorised. Credit: “Photo: Nikos Pasparakis / Elounda Traditional Homes of Crete”. | WebP prepared in research staging; no public website placement or deployment. |
+| SPN-OWN-003 | `spinalonga-gulf-context.jpg` — `C:\Users\Nikos\Downloads\spinalonga-gulf-context.jpg` | Nikos Pasparakis / Nikos Pasparakis | Date unknown; hillside above the coast, exact viewpoint unconfirmed | JPG; 4,640 × 3,472 px; no EXIF, GPS or camera-date metadata detected | Supporting geographic-context image. “Spinalonga and the Gulf of Elounda seen from the hillside above the coast.” | Ownership confirmed by photographer; commercial website use, editing, cropping, conversion and related social-media use authorised. Credit: “Photo: Nikos Pasparakis / Elounda Traditional Homes of Crete”. | WebP prepared in research staging; no public website placement or deployment. |
+
+The original JPGs remain outside the repository in Downloads. A pre-existing trailing-space source filename for SPN-OWN-003 was preserved; the byte-identical canonical source `spinalonga-gulf-context.jpg` is the only filename used in this research packet and derivative preparation. Visible camera-date stamps were removed by the photographer.
 
 ## Clearance checklist
 
@@ -30,4 +42,4 @@ For every candidate, record the exact object identifier, rights holder, licence 
 | Ottoman-town imagery | Historical Museum of Crete/Vikelaia reported generically | Various | Unknown | Unknown | Unknown | Discovery lead only |
 | Dormitories/hospital/current remains | Ephorate/Ministry pages are discovery sources, not licences | Various/current | Unknown | Unknown | Unknown | Commission or request written licence |
 
-No dossier lead has supplied all required metadata. The image gate remains closed: no usable hero image and no supporting-image set are cleared for commercial website reuse.
+No dossier lead has supplied all required metadata. The historical-image and map clearance gap remains open. The separate user-owned set above supplies one cleared proposed hero and two cleared supporting photographs, but final crop selection, rendered-page review and public placement remain pending article authorisation.
