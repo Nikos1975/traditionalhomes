@@ -16,12 +16,12 @@ All routes below were checked on 2026-08-06. “Not stated” means the cited of
 | Institution | Relevant collection | Official page | Contact route | Public access | Digital copies | Fees | Rights restrictions | Date checked |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | General State Archives of Greece (GAK), Central Service | Central public archives; referral for Cretan State/health files | [GAK contact](https://www.archives.gak.gr/Cont/cont-ky-00.html) | `anagnostirio@gak.gr`; reading-room phones on page | GAK inventory says access is free under Law 4610/2019; study in reading room | [@ρχειομνήμων](https://arxeiomnimon.gak.gr/) has described/digitised subsets | Reproduction cost set by GAK; ask | Sensitive personal data requires declaration; publication/reuse must be cleared | 2026-08-06 |
-| GAK — Lasithi | Local municipal, notarial, court and administrative records; Plaka/Elounda leads | [GAK contact directory](https://www.gak.gr/index.php/el/tilefona-diefthynseis) | Official directory gives branch phone/postal route: 28410 31510, Αναπήρων Πολέμου 3, 72400 Neapoli; no unobscured branch email relied on | GAK rules apply; confirm branch arrangements | Not stated; search @ρχειομνήμων first | Not stated; ask | GAK reproduction/publication conditions apply | 2026-08-06 |
+| GAK — Lasithi | Local municipal, notarial, court and administrative records; Plaka/Elounda leads | [official GAK staff directory](https://test.gak.gr/wp-content/uploads/2026/02/katalogos_ypallhlon_synolo_10_9_2025.pdf) | `mail@gak.las.sch.gr`; 28410 31510; Αναπήρων Πολέμου 3, Παλαιό Διοικητήριο, 724 00 Νεάπολη Λασιθίου; no institution-specific official form found | GAK rules apply; confirm reader arrangements | Not stated; search @ρχειομνήμων first | Not stated; ask | GAK reproduction/publication conditions apply | 2026-08-06 |
 | GAK — Heraklion | Prefectural, health, court, municipal and related eastern-Crete files | [official inventory](https://greekarchivesinventory.gak.gr/index.php/u-u-2931?sf_culture=en) | `mail@gak.ira.sch.gr` | Contact page identifies public archival service; confirm reader booking | Search inventory/@ρχειομνήμων | Not stated; ask | Ask for reproduction and personal-data conditions | 2026-08-06 |
 | Vikelaia Municipal Library | Gerola, historical archives, newspapers, Ottoman/municipal research leads | [Archives and Newspapers Department](https://vikelaia.gr/%CF%84%CE%BC%CE%AE%CE%BC%CE%B1-%CE%B1%CF%81%CF%87%CE%B5%CE%AF%CF%89%CE%BD-%CE%BA%CE%B1%CE%B9-%CE%B5%CF%86%CE%B7%CE%BC%CE%B5%CF%81%CE%AF%CE%B4%CF%89%CE%BD-%CF%80%CE%B5%CF%81%CE%B9%CE%BF%CE%B4%CE%B9/) | `vikelaia@heraklion.gr` | Research holdings described; arrange access with staff | [Digital Library](https://vikelaia.gr/%CF%88%CE%B7%CF%86%CE%B9%CE%B1%CE%BA%CE%AE-%CE%B2%CE%B9%CE%B2%CE%BB%CE%B9%CE%BF%CE%B8%CE%AE%CE%BA%CE%B7/) offers selected material | Not stated; ask | Item-level holder/credit/permission required | 2026-08-06 |
 | GAK — Historical Archive of Crete | Complete Cretan State archive, Ottoman records, Cretan press and photographs | [official inventory](https://greekarchivesinventory.gak.gr/index.php/dby6-5ty8-qexy?sf_culture=en) | `history@gak.chan.sch.gr` | Public reading room and copies stated, Mon–Fri 08:30–14:30 | Catalogue-level inventory; digitisation coverage not stated | Ask | GAK personal-data and reproduction rules apply | 2026-08-06 |
 | Ephorate of Antiquities of Lasithi | Site documentation, fortress plans, conservation/demolition records, archaeological drawings | [official service page](https://www.culture.gov.gr/el/ministry/SitePages/viewyphresia.aspx?iID=1837) | `efalas@culture.gr` | Service page gives public hours; research access/permits need confirmation | Official Spinalonga pages are discovery sources, not licences | Not stated; ask | Ministry/Ephorate permission and item credit required | 2026-08-06 |
-| Greek Ministry of Culture | Central heritage files, permission/referral route | [official contact](https://www.culture.gov.gr/el/SitePages/contact.aspx) | `grplk@culture.gr` or official contact form | General public contact; archive access not stated | Not stated | Not stated | Website display is not a commercial image licence | 2026-08-06 |
+| Greek Ministry of Culture | Central heritage files; referral/information route only for this package | [official contact](https://www.culture.gov.gr/el/SitePages/contact.aspx) | `grplk@culture.gr` or official contact form, only after an official referral or a central permission route is required | General public contact; archive access not stated | Not stated | Not stated | Website display is not a commercial image licence; not an initial direct recipient, so no tracker row is required | 2026-08-06 |
 | Hellenic Parliament Library | Gazette, parliamentary and explanatory-report bibliography | [official contact](https://library.parliament.gr/%CE%A0%CE%BB%CE%B7%CF%81%CE%BF%CF%86%CE%BF%CF%81%CE%AF%CE%B5%CF%82/%CE%95%CF%80%CE%B9%CE%BA%CE%BF%CE%B9%CE%BD%CF%89%CE%BD%CE%AF%CE%B1) | `reference@parliament.gr`; special collections by appointment | External public hours stated; special collections require scheduled visit/ID | Catalogue/online services; copy terms ask | Not stated | Rights and reproduction depend on item | 2026-08-06 |
 | National Library of Greece | Printed Gazette/newspapers, special collections, bibliographic leads | [official contact information](https://network.nlg.gr/epikinonia/) | `nlg@nlg.gr` | Reading-room arrangements depend on collection; ask | [Digital Collections terms](https://digitalcollections.nlg.gr/nlg-repo/dl/el/terms.html) | Not stated | Digital-collections licence permits non-commercial database use; commercial reuse needs item/rights confirmation | 2026-08-06 |
 | National Printing Office / Government Gazette archive | Search, copies and bibliographic confirmation for Greek Official Gazette | [official Gazette search](https://search.et.gr/el/simple-search/) | `grammateia@et.gr`; 210 5279000 | Public service hours stated | Search portal; coverage for Cretan State Gazette must be confirmed | Sales/subscriptions listed; exact historic-copy fee ask | Copy/publication terms ask | 2026-08-06 |
@@ -31,6 +31,14 @@ All routes below were checked on 2026-08-06. “Not stated” means the cited of
 | University of Crete Library and Historical Archive | Scholarly works, special collections, oral-history/project referrals | [official library home](https://www.lib.uoc.gr/?lang=en) | `libr@lib.uoc.gr` (Rethymno) / `libh@lib.uoc.gr` (Heraklion) | Visitors may use reading rooms; limited collections need reservation | Anemi and catalogue are discovery tools | External annual membership fee is stated for borrowing; research/copy cost ask | Rare material is controlled; copies may be restricted | 2026-08-06 |
 | Archivio di Stato di Venezia | Venetian government correspondence, Senate/provisioner records, maps and plans | [official correspondence research](https://www.archiviodistatovenezia.it/it/servizi-al-pubblico/servizio-ricerche-per-corrispondenza.html) | `as-ve@cultura.gov.it`; use official scientific-research form for any actual request | Reading-room hours published; remote research is limited to fund/series guidance | Search tools/inventories; reproduction service available | Paid reproduction stated; quote required | Image use/publication needs formal concession | 2026-08-06 |
 | Biblioteca Nazionale Marciana | Manuscripts, rare books and possible map/plan references | [official contact](https://bibliotecanazionalemarciana.cultura.gov.it/la-biblioteca/contatti) | `b-marc@cultura.gov.it`; manuscripts/rare-books contact published | Confirm reader access and booking | Digital/special-material department exists; item availability ask | Not stated | Item-level reproduction and publication terms required | 2026-08-06 |
+
+### GAK Lasithi contact check — 2026-08-06
+
+- Official page: [GAK staff directory](https://test.gak.gr/wp-content/uploads/2026/02/katalogos_ypallhlon_synolo_10_9_2025.pdf).
+- Email: `mail@gak.las.sch.gr`.
+- Official form: no institution-specific enquiry form was found on the official GAK pages checked.
+- Telephone: 28410 31510.
+- Postal address: Αναπήρων Πολέμου 3, Παλαιό Διοικητήριο, 724 00 Νεάπολη Λασιθίου.
 
 ## Package map
 
@@ -81,15 +89,15 @@ Every enquiry below asks for catalogue-level help first and states that no indiv
 Use this signature unchanged:
 
 ```text
-Nikos Pasparakis
+Νίκος Πασπαράκης
 Elounda Traditional Homes of Crete
 https://traditional-homes.gr
-Greece
+Ελλάδα
 ```
 
 ## Ready-to-send enquiries
 
-### R01 — GAK Historical Archive of Crete (A, B, C, E)
+### R01 — GAK Historical Archive of Crete (A, B, E)
 
 - Official route: `history@gak.chan.sch.gr`
 - Priority: P0
@@ -108,13 +116,13 @@ Greece
 
 Ερευνώ τεκμηριωμένα την ιστορία της Σπιναλόγκας για μη δημοσιευμένο ακόμη ιστορικό άρθρο. Παρακαλώ να με ενημερώσετε αν το Ιστορικό Αρχείο Κρήτης φυλάσσει ή μπορεί να παραπέμψει σε τεκμήρια της Κρητικής Πολιτείας σχετικά με: (1) τους νόμους 375 και 463, το κανονιστικό διάταγμα 166, το εσωτερικό κανονιστικό διάταγμα του 1903, εισηγητικές εκθέσεις, συζητήσεις και εγκυκλίους· (2) τις πρώτες υποχρεωτικές μεταφορές του 1904, με παραλλαγές Οκτωβρίου/13ης/14ης/Δεκεμβρίου, καταλόγους ονομάτων, αναχωρήσεις/αφίξεις, φύλο/ηλικία, τόπους προέλευσης, πλοίο και συνοδεία· και (3) ιατρικά ή διοικητικά αρχεία για θεραπεία με σουλφόνες και το κλείσιμο του 1957.
 
-Θα εκτιμούσα αριθμούς καταλόγου και ακριβείς σειρές/φακέλους, επίσημους τίτλους, ημερομηνίες, γλώσσα, όρους πρόσβασης, δυνατότητα πλήρους σάρωσης (με σελίδα τίτλου), κόστος ερευνητικού αντιγράφου και όρους παράθεσης ή δημοσίευσης. Δεν ζητώ δημοσίευση αναγνωρίσιμων ιατρικών δεδομένων· παρακαλώ πρώτα για πληροφορίες καταλόγου και περιορισμούς πρόσβασης. Εφόσον υπάρχει σχετικό οθωμανικό, περιουσιακό, τελωνειακό ή τοπικό αρχείο, θα ήμουν ευγνώμων για παραπομπή.
+Θα εκτιμούσα αριθμούς καταλόγου και ακριβείς σειρές/φακέλους, επίσημους τίτλους, ημερομηνίες, γλώσσα, όρους πρόσβασης, δυνατότητα πλήρους σάρωσης (με σελίδα τίτλου), κόστος ερευνητικού αντιγράφου και όρους παράθεσης ή δημοσίευσης. Δεν ζητώ δημοσίευση αναγνωρίσιμων ιατρικών δεδομένων· παρακαλώ πρώτα για πληροφορίες καταλόγου και περιορισμούς πρόσβασης.
 
 Με εκτίμηση,
-Nikos Pasparakis
+Νίκος Πασπαράκης
 Elounda Traditional Homes of Crete
 https://traditional-homes.gr
-Greece
+Ελλάδα
 ```
 
 **English message:**
@@ -124,21 +132,21 @@ Dear Sir or Madam,
 
 I am conducting documented research on Spinalonga for a historical article that has not yet been published. Please advise whether the Historical Archive of Crete holds, or can refer me to, Cretan State records concerning: (1) Laws 375 and 463, Regulatory Decree 166, the 1903 internal-operation decree, explanatory reports, debates and circulars; (2) the first compulsory transfers in 1904, including October/13 October/14 October/December variants, nominal lists, departure and arrival dates, sex/age, places of origin, vessel and escort; and (3) medical or administrative records on sulfone treatment and the 1957 closure.
 
-I would be grateful for catalogue numbers and exact series/files, official titles, dates, language, access conditions, availability of complete scans including title pages, research-copy cost, and quotation or publication conditions. I am not requesting publication of identifiable medical data; please provide catalogue information and access restrictions first. If relevant Ottoman, property, customs or local records are held elsewhere, a referral would be appreciated.
+I would be grateful for catalogue numbers and exact series/files, official titles, dates, language, access conditions, availability of complete scans including title pages, research-copy cost, and quotation or publication conditions. I am not requesting publication of identifiable medical data; please provide catalogue information and access restrictions first.
 
 Kind regards,
-Nikos Pasparakis
+Νίκος Πασπαράκης
 Elounda Traditional Homes of Crete
 https://traditional-homes.gr
-Greece
+Ελλάδα
 ```
 
-### R02 — GAK Lasithi (D, B, E)
+### R02 — GAK Lasithi (D, E)
 
-- Official route: GAK directory phone/postal route for the Lasithi branch; confirm an active electronic route before sending.
+- Official route: `mail@gak.las.sch.gr`; [official GAK staff directory](https://test.gak.gr/wp-content/uploads/2026/02/katalogos_ypallhlon_synolo_10_9_2025.pdf). No institution-specific official form was found on the official GAK pages checked.
 - Priority: P0
 - Recommended attachments: one-page keyword sheet in Greek.
-- Follow-up: 21 calendar days after a confirmed route is used.
+- Follow-up: 21 calendar days after sending.
 - Likely restrictions: reader-room access, reproduction charges and personal-data limits.
 
 **Greek subject:** Αίτημα καταλόγου και παραπομπών για τοπικά αρχεία Πλάκας, Ελούντας και Σπιναλόγκας
@@ -155,10 +163,10 @@ Greece
 Ιδιαίτερα ενδιαφέρουν ονομαστικά στοιχεία για βαρκάρηδες, προμηθευτές, ψαράδες, φύλακες, εργάτες, ιερείς και συγγενείς επισκεπτών, χωρίς να προϋποτίθεται ότι οι κατηγορίες αυτές υπάρχουν. Παρακαλώ για αριθμούς καταλόγου, σειρά/φάκελο, χρονολογίες, όρους πρόσβασης, κόστος αντιγράφων και παραπομπή σε άλλο φορέα εάν τα αρχεία έχουν μεταφερθεί. Δεν θεωρώ κανένα αριθμό ή αφήγηση επαληθευμένο χωρίς το πρωτότυπο τεκμήριο.
 
 Με εκτίμηση,
-Nikos Pasparakis
+Νίκος Πασπαράκης
 Elounda Traditional Homes of Crete
 https://traditional-homes.gr
-Greece
+Ελλάδα
 ```
 
 **English message:**
@@ -171,10 +179,10 @@ Please guide me to Lasithi records that can document the relationships of Plaka 
 I am particularly seeking named evidence for boatmen, suppliers, fishers, guards, workers, priests and visiting relatives, without presuming such records exist. Please provide catalogue numbers, series/files, dates, access conditions, copy cost, and a referral if records have been transferred. No number or narrative will be treated as verified without the original document.
 
 Kind regards,
-Nikos Pasparakis
+Νίκος Πασπαράκης
 Elounda Traditional Homes of Crete
 https://traditional-homes.gr
-Greece
+Ελλάδα
 ```
 
 ### R03 — GAK Heraklion (B, D, E)
@@ -199,10 +207,10 @@ Greece
 Παρακαλώ για αριθμούς αναφοράς, χρονολογικό εύρος, όρους πρόσβασης και αναπαραγωγής και για τυχόν παραπομπή στο Ιστορικό Αρχείο Κρήτης, στα ΓΑΚ Λασιθίου ή στο Υπουργείο Υγείας. Δεν ζητώ αναγνωρίσιμα ιατρικά δεδομένα, αλλά μόνο περιγραφή, περιορισμούς και τυχόν συγκεντρωτικά στοιχεία που επιτρέπονται.
 
 Με εκτίμηση,
-Nikos Pasparakis
+Νίκος Πασπαράκης
 Elounda Traditional Homes of Crete
 https://traditional-homes.gr
-Greece
+Ελλάδα
 ```
 
 **English message:**
@@ -215,10 +223,10 @@ Please advise whether your catalogues include prefectural, health-service, court
 Please provide references, date ranges, access and reproduction conditions, and any referral to the Historical Archive of Crete, GAK Lasithi or the Ministry of Health. I am not seeking identifiable medical data, only descriptions, restrictions and any permitted aggregate information.
 
 Kind regards,
-Nikos Pasparakis
+Νίκος Πασπαράκης
 Elounda Traditional Homes of Crete
 https://traditional-homes.gr
-Greece
+Ελλάδα
 ```
 
 ### R04 — GAK Central Service / National Printing Office / Parliament Library / National Library (A, E)
@@ -244,10 +252,10 @@ Use the same enclosed request with the appropriate official recipient: GAK Centr
 Παρακαλώ για τον ακριβή επίσημο τίτλο, ημερομηνία ψήφισης και δημοσίευσης, σειρά/τεύχος/σελίδες, τροποποιήσεις και εκτελεστικές ρυθμίσεις. Ζητώ πλήρεις σαρώσεις με σελίδες τίτλου όπου είναι διαθέσιμες, και στοιχεία για εισηγητικές εκθέσεις, πρακτικά ή εγκυκλίους. Παρακαλώ επίσης για κόστος, όρους παράθεσης και πνευματικών δικαιωμάτων. Κανένα από τα παραπάνω δεν θα παρουσιαστεί ως επαληθευμένο χωρίς επιθεώρηση του πρωτοτύπου.
 
 Με εκτίμηση,
-Nikos Pasparakis
+Νίκος Πασπαράκης
 Elounda Traditional Homes of Crete
 https://traditional-homes.gr
-Greece
+Ελλάδα
 ```
 
 **English message:**
@@ -260,10 +268,10 @@ I seek original pages or certified catalogue details from the Official Gazette o
 Please provide the exact official title, voting and publication date, series/issue/pages, amendments and implementing measures. I request complete scans including title pages where available, and references to explanatory reports, debates or circulars. Please also advise on cost, quotation and copyright conditions. None of these references will be represented as verified without inspection of the original pages.
 
 Kind regards,
-Nikos Pasparakis
+Νίκος Πασπαράκης
 Elounda Traditional Homes of Crete
 https://traditional-homes.gr
-Greece
+Ελλάδα
 ```
 
 ### R05 — Vikelaia Municipal Library (C, D, G)
@@ -288,10 +296,10 @@ Greece
 Ενδιαφέρουν επίσης η συλλογή Giuseppe Gerola, χάρτες, σχέδια, φωτογραφίες του οθωμανικού οικισμού ή του λωβοκομείου και εικόνες της Πλάκας/των αποβαθρών. Για κάθε οπτικό τεκμήριο παρακαλώ για αριθμό καταλόγου, δημιουργό, ημερομηνία, δικαιούχο, κόστος ερευνητικού και υψηλής ανάλυσης αντιγράφου, εμπορική χρήση σε ιστότοπο και κοινωνικά δίκτυα, υποχρεωτική αναφορά δημιουργού και δυνατότητα περικοπής/επεξεργασίας.
 
 Με εκτίμηση,
-Nikos Pasparakis
+Νίκος Πασπαράκης
 Elounda Traditional Homes of Crete
 https://traditional-homes.gr
-Greece
+Ελλάδα
 ```
 
 **English message:**
@@ -304,15 +312,15 @@ Please advise on Vikelaia holdings concerning Spinalonga: the 1881 Ottoman censu
 I also seek the Giuseppe Gerola collection, maps, plans, photographs of the Ottoman settlement or leprosarium, and images of Plaka/landing places. For each visual item, please provide catalogue number, creator, date, rights holder, research and high-resolution copy fees, commercial website and social-media permission, required credit, and whether cropping/editing is permitted.
 
 Kind regards,
-Nikos Pasparakis
+Νίκος Πασπαράκης
 Elounda Traditional Homes of Crete
 https://traditional-homes.gr
-Greece
+Ελλάδα
 ```
 
-### R06 — Ephorate of Antiquities of Lasithi / Ministry of Culture (F, G)
+### R06 — Ephorate of Antiquities of Lasithi (F, G); Ministry of Culture referral/information route only
 
-Use the recipient `efalas@culture.gr` for the Ephorate; use `grplk@culture.gr` only if a central Ministry referral or permission route is needed.
+The Ephorate is the only initial direct recipient, at `efalas@culture.gr`. The Ministry of Culture is a referral/information route only: use `grplk@culture.gr` or the official form only if an official response identifies a central referral or permission route. This intentional classification leaves 15 actionable tracker entries; no Ministry tracker row is required unless that later direct enquiry becomes necessary.
 
 - Priority: P0 for rights/records routing; P2 for Venetian-enclave detail.
 - Recommended attachments: a one-page list of requested asset categories; no presumed item numbers.
@@ -328,15 +336,15 @@ Use the recipient `efalas@culture.gr` for the Ephorate; use `grplk@culture.gr` o
 ```text
 Αξιότιμοι/ες,
 
-Παρακαλώ για καθοδήγηση σε αρχεία της Εφορείας ή του Υπουργείου σχετικά με σχέδια οχύρωσης, αρχιτεκτονικά/κτηματολογικά σχέδια, φωτογραφίες οθωμανικού οικισμού και λωβοκομείου, τεκμήρια αποκατάστασης ή κατεδάφισης και καταλόγους/φακέλους έργων της Σπιναλόγκας. Για τη βενετική περίοδο ενδιαφέρουν ιδίως παραπομπές σε πρωτογενή σχέδια και αλληλογραφία 1669–1715, όχι δευτερογενείς αφηγήσεις.
+Παρακαλώ για καθοδήγηση σε αρχεία της Εφορείας σχετικά με σχέδια οχύρωσης, αρχιτεκτονικά/κτηματολογικά σχέδια, φωτογραφίες οθωμανικού οικισμού και λωβοκομείου, τεκμήρια αποκατάστασης ή κατεδάφισης και καταλόγους/φακέλους έργων της Σπιναλόγκας. Για τη βενετική περίοδο ενδιαφέρουν ιδίως παραπομπές σε πρωτογενή σχέδια και αλληλογραφία 1669–1715, όχι δευτερογενείς αφηγήσεις. Εάν απαιτείται κεντρική παραπομπή ή διαδικασία άδειας, παρακαλώ να υποδείξετε την αρμόδια υπηρεσία του Υπουργείου.
 
 Για κάθε πιθανό οπτικό ή σχεδιαστικό τεκμήριο ζητώ αριθμό καταλόγου, δημιουργό, ημερομηνία, φορέα φύλαξης και δικαιούχο, δυνατότητα ερευνητικού/υψηλής ανάλυσης αντιγράφου, αμοιβές και έγγραφη άδεια για εμπορική δημοσίευση σε ιστότοπο και κοινωνικά δίκτυα, απαιτούμενη αναφορά δημιουργού και δυνατότητα περικοπής/επεξεργασίας. Οι έξι σύγχρονες φωτογραφίες του ερευνητικού φακέλου είναι ήδη ιδιόκτητες και αδειοδοτημένες· δεν ζητώ άδεια γι’ αυτές.
 
 Με εκτίμηση,
-Nikos Pasparakis
+Νίκος Πασπαράκης
 Elounda Traditional Homes of Crete
 https://traditional-homes.gr
-Greece
+Ελλάδα
 ```
 
 **English message:**
@@ -344,15 +352,15 @@ Greece
 ```text
 Dear Sir or Madam,
 
-Please guide me to Ephorate or Ministry records for fortress plans, architectural/cadastral drawings, photographs of the Ottoman settlement and leprosarium, restoration or demolition documentation, and Spinalonga project catalogues/files. For the Venetian period I particularly seek references to primary plans and 1669–1715 correspondence, rather than secondary narratives.
+Please guide me to Ephorate records for fortress plans, architectural/cadastral drawings, photographs of the Ottoman settlement and leprosarium, restoration or demolition documentation, and Spinalonga project catalogues/files. For the Venetian period I particularly seek references to primary plans and 1669–1715 correspondence, rather than secondary narratives. If a central referral or permission process is required, please identify the responsible Ministry service.
 
 For every possible visual or drawing item, please provide catalogue number, creator, date, holding institution and rights holder, research/high-resolution availability, fees, and written permission for commercial website and social-media publication, required credit, and crop/edit permission. The six contemporary photographs in the research packet are already owned and licensed; no permission for those is requested.
 
 Kind regards,
-Nikos Pasparakis
+Νίκος Πασπαράκης
 Elounda Traditional Homes of Crete
 https://traditional-homes.gr
-Greece
+Ελλάδα
 ```
 
 ### R07 — Municipality of Agios Nikolaos / Port Authority of Agios Nikolaos (D)
@@ -378,10 +386,10 @@ Use `info@dimosagn.gr` for the Municipality and `agios.nikolaos@hcg.gr` for the 
 Σκοπός είναι να εντοπιστούν ονομαστικά τεκμήρια για τοπικούς εργαζόμενους και όχι να αναπαραχθεί γενική αφήγηση. Παρακαλώ για αριθμούς πρωτοκόλλου/σειράς, χρονολογίες, όρους πρόσβασης και αντιγράφων ή για παραπομπή σε ΓΑΚ, άλλο λιμενικό φορέα, κοινότητα, ενορία ή ιδιωτική συλλογή. Δεν ζητώ αποστολή ευαίσθητων προσωπικών δεδομένων.
 
 Με εκτίμηση,
-Nikos Pasparakis
+Νίκος Πασπαράκης
 Elounda Traditional Homes of Crete
 https://traditional-homes.gr
-Greece
+Ελλάδα
 ```
 
 **English message:**
@@ -394,10 +402,10 @@ Please advise whether your service holds, or knows the present custodian for, hi
 The aim is to locate named evidence for local workers, not to repeat a general narrative. Please provide register/series references, dates, access and copying conditions, or a referral to GAK, another harbour authority, a community, parish or private collection. I do not request transfer of sensitive personal data.
 
 Kind regards,
-Nikos Pasparakis
+Νίκος Πασπαράκης
 Elounda Traditional Homes of Crete
 https://traditional-homes.gr
-Greece
+Ελλάδα
 ```
 
 ### R08 — Ministry of Health (E)
@@ -422,10 +430,10 @@ Greece
 Δεν ζητώ δημοσίευση ή αποστολή αναγνωρίσιμων ιατρικών δεδομένων. Παρακαλώ πρώτα για αριθμούς φακέλων, υπεύθυνο φορέα, χρονολογικό εύρος, περιορισμούς πρόσβασης, διαδικασία αίτησης και αν επιτρέπεται η χρήση συγκεντρωτικών μη ταυτοποιήσιμων στοιχείων. Παρακαλώ να αναφέρετε κόστος ή τυχόν απαιτούμενη νομική/ηθική διαδικασία.
 
 Με εκτίμηση,
-Nikos Pasparakis
+Νίκος Πασπαράκης
 Elounda Traditional Homes of Crete
 https://traditional-homes.gr
-Greece
+Ελλάδα
 ```
 
 **English message:**
@@ -438,10 +446,10 @@ Please provide catalogue information or a referral to the current custodian of a
 I do not request publication or transfer of identifiable medical data. Please first provide file references, responsible institution, date range, access restrictions, request procedure and whether non-identifiable aggregate information may be used. Please state any cost or required legal/ethical process.
 
 Kind regards,
-Nikos Pasparakis
+Νίκος Πασπαράκης
 Elounda Traditional Homes of Crete
 https://traditional-homes.gr
-Greece
+Ελλάδα
 ```
 
 ### R09 — University of Crete Library/Historical Archive (C, D, E)
@@ -466,10 +474,10 @@ Greece
 Παρακαλώ για αριθμούς καταλόγου, όρους πρόσβασης σε περιορισμένες συλλογές, δυνατότητα ψηφιακού αντιγράφου και παραπομπή σε ερευνητή ή φορέα μόνον όπου υπάρχει σχετική τεκμηριωμένη συλλογή. Για φωτογραφίες, χάρτες ή σχέδια παρακαλώ και για τους όρους εμπορικής δημοσίευσης και αναφοράς.
 
 Με εκτίμηση,
-Nikos Pasparakis
+Νίκος Πασπαράκης
 Elounda Traditional Homes of Crete
 https://traditional-homes.gr
-Greece
+Ελλάδα
 ```
 
 **English message:**
@@ -482,10 +490,10 @@ Please help identify relevant collections, theses, research archives, oral histo
 Please provide catalogue references, conditions for limited collections, digital-copy availability, and a referral to a researcher or institution only where a documented collection exists. For photographs, maps or plans, please also state commercial-publication and credit conditions.
 
 Kind regards,
-Nikos Pasparakis
+Νίκος Πασπαράκης
 Elounda Traditional Homes of Crete
 https://traditional-homes.gr
-Greece
+Ελλάδα
 ```
 
 ### R10 — Archivio di Stato di Venezia (F, G)
@@ -510,10 +518,10 @@ Greece
 Χρήσιμοι όροι αναζήτησης είναι Spinalonga, fortezza, provveditore, guarnigione, vettovaglie, assedio, resa, Candia και Mirabello. Παρακαλώ για αριθμούς fond/serie/busta/registro, γλώσσα, ψηφιοποίηση, όρους αναπαραγωγής και κόστος. Για σχέδια ή εικόνες ζητώ επιπλέον δικαιούχο, εμπορική διαδικτυακή και social-media άδεια, αναφορά δημιουργού και άδεια περικοπής/επεξεργασίας.
 
 Με εκτίμηση,
-Nikos Pasparakis
+Νίκος Πασπαράκης
 Elounda Traditional Homes of Crete
 https://traditional-homes.gr
-Greece
+Ελλάδα
 ```
 
 **English message:**
@@ -526,10 +534,10 @@ Subject to the institution’s required remote-research procedure, please guide 
 Useful search terms include Spinalonga, fortezza, provveditore, guarnigione, vettovaglie, assedio, resa, Candia and Mirabello. Please provide fond/series/busta/registro references, language, digitisation, reproduction conditions and cost. For plans or images, please also provide rights holder, commercial web/social-media permission, credit and crop/edit permission.
 
 Kind regards,
-Nikos Pasparakis
+Νίκος Πασπαράκης
 Elounda Traditional Homes of Crete
 https://traditional-homes.gr
-Greece
+Ελλάδα
 ```
 
 ### R11 — Biblioteca Nazionale Marciana (F, G)
@@ -554,10 +562,10 @@ Greece
 Παρακαλώ για αριθμό καταλόγου, δημιουργό, ημερομηνία, γλώσσα, όρους πρόσβασης και ψηφιακής αναπαραγωγής. Για κάθε οπτικό τεκμήριο παρακαλώ για δικαιούχο, κόστος, άδεια εμπορικής χρήσης σε ιστότοπο και κοινωνικά δίκτυα, υποχρεωτική αναφορά και άδεια περικοπής/επεξεργασίας.
 
 Με εκτίμηση,
-Nikos Pasparakis
+Νίκος Πασπαράκης
 Elounda Traditional Homes of Crete
 https://traditional-homes.gr
-Greece
+Ελλάδα
 ```
 
 **English message:**
@@ -570,10 +578,10 @@ Please guide me to Marciana manuscripts, printed works, maps or plans concerning
 Please provide catalogue number, creator, date, language, access and digital-reproduction conditions. For each visual item, please state rights holder, cost, commercial website/social-media permission, required credit and crop/edit permission.
 
 Kind regards,
-Nikos Pasparakis
+Νίκος Πασπαράκης
 Elounda Traditional Homes of Crete
 https://traditional-homes.gr
-Greece
+Ελλάδα
 ```
 
 ## Post-response decision rules

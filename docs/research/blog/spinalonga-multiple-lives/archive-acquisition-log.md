@@ -11,10 +11,12 @@ Status date: 2026-08-06. This is a planning and response-intake record. No enqui
 
 ## Tracker
 
+The 15 rows below are the actionable direct-recipient enquiries. The Ministry of Culture is recorded in the acquisition package as a referral/information route only, not an initial direct recipient; it therefore has no tracker row unless an official response requires a separate central enquiry.
+
 | ID | Institution | Package | Official route | Draft ready | Sent | Response date | References received | Cost | Rights result | Next action |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | SPN-ARC-01 | GAK — Historical Archive of Crete | A, B, E | `history@gak.chan.sch.gr`; [official inventory](https://greekarchivesinventory.gak.gr/index.php/dby6-5ty8-qexy?sf_culture=en) | Yes | ☐ |  | Pending | Pending | Pending | Obtain approval before sending; search Cretan State and prefectural series. |
-| SPN-ARC-02 | GAK — Lasithi | D, E | [official GAK contact directory](https://www.gak.gr/index.php/el/tilefona-diefthynseis) (phone/postal route published) | Yes | ☐ |  | Pending | Pending | Pending | Confirm current email/form with the branch before sending. |
+| SPN-ARC-02 | GAK — Lasithi | D, E | `mail@gak.las.sch.gr`; [official GAK staff directory](https://test.gak.gr/wp-content/uploads/2026/02/katalogos_ypallhlon_synolo_10_9_2025.pdf); 28410 31510; Αναπήρων Πολέμου 3, Παλαιό Διοικητήριο, 724 00 Νεάπολη Λασιθίου | Yes | ☐ |  | Pending | Pending | Pending | Obtain approval before sending; no institution-specific official form found on the GAK pages checked 2026-08-06. |
 | SPN-ARC-03 | GAK — Heraklion | B, D, E | `mail@gak.ira.sch.gr`; [official inventory](https://greekarchivesinventory.gak.gr/index.php/u-u-2931?sf_culture=en) | Yes | ☐ |  | Pending | Pending | Pending | Ask for prefectural, health, court and port-related references. |
 | SPN-ARC-04 | GAK — Central Service | A, E | `anagnostirio@gak.gr`; [official contact page](https://www.archives.gak.gr/Cont/cont-ky-00.html) | Yes | ☐ |  | Pending | Pending | Pending | Ask for referral if Cretan State material is held elsewhere. |
 | SPN-ARC-05 | National Printing Office | A, E | `grammateia@et.gr`; [official Gazette search](https://search.et.gr/el/simple-search/) | Yes | ☐ |  | Pending | Pending | Pending | Ask whether the Cretan State Gazette is held/indexed and for copy route. |
