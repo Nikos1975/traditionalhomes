@@ -4,10 +4,10 @@ Status date: 2026-08-06. Prepared for Nikos Pasparakis, Elounda Traditional Home
 
 ## Research safeguards
 
-- The future article remains blocked. No original Cretan State Gazette, transfer manifest, Ottoman census/property record, treatment register or closure-transfer record has been obtained.
+- The user authorised provisional publication on 2026-08-06 using verified evidence currently available. No original Cretan State Gazette, transfer manifest, Ottoman census/property record, treatment register or closure-transfer record has been obtained; unresolved precision must remain qualified, generalised or omitted.
 - Treat every reported legal title, Gazette citation, transfer day, count, sex breakdown, medicine name, closure instrument and named person as a search lead until original material is inspected.
 - Handle patient and family data cautiously. Request catalogue information, aggregate findings and access conditions first; seek legal review before any request or use of identifiable protected medical data.
-- Six modern photographs by Nikos Pasparakis are cleared for the stated Traditional Homes commercial and social-media use. They are research-staging assets only; final crops and public placement are still pending. Archival material is not cleared.
+- Six modern photographs by Nikos Pasparakis are cleared for the stated Traditional Homes commercial and social-media use. They may be placed in the authorised provisional article after rendered-page review. Archival material is not cleared.
 
 ## Official institutional routes
 

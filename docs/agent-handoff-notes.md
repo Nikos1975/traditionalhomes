@@ -1,5 +1,12 @@
 # Agent Handoff Notes
 
+### 2026-08-06 - Spinalonga provisional article draft
+
+- Added the review-stage historical article `src/content/blog/spinalonga-why-fortified-changing-uses.md`; its draft route will be `/en/blog/spinalonga-why-fortified-changing-uses/` when editorial approval changes `draft: true`.
+- Added six cleared Nikos Pasparakis WebP photographs at `public/images/blog/spinalonga-why-fortified-changing-uses/`; the hero and four inline figures use explicit credit, and the boat figure is labelled as a modern view rather than historical evidence.
+- Updated the controlled Spinalonga research records to replace the former drafting block with user-authorised provisional publication. The archive-acquisition tracker remains active and unsent; legal, numerical, local-mainland, medical and archival-image gaps remain open for a documented future revision.
+- Pending: article validation, typecheck, build, link checks, rendered-route review, commit and fast-forward push to PR #46. No deployment, merge or change to PR #45 is authorised.
+
 ### 2026-08-03 - Elounda beaches publication PR
 
 - Recorded the approved publication change for `src/content/blog/elounda-beaches.md`: `draft: false` with the existing `pubDate: 2026-08-03`. The public route is `/en/blog/elounda-beaches/`; its research packet and user-owned, approved image attribution remain unchanged.

@@ -1,6 +1,6 @@
 # User-owned image manifest: Spinalonga multiple lives
 
-Status date: 2026-08-06. This is a controlled provenance and preparation record, not publication approval for the article.
+Status date: 2026-08-06. This is a controlled provenance and preparation record. The user authorised the documented photographs for the provisional article on 2026-08-06; archival material remains outside that authorisation.
 
 | Asset ID | Original filename | Photographer | Viewpoint | Dimensions | Intended role | Alt text | Rights status | Credit |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |

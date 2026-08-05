@@ -1,6 +1,6 @@
 # Unresolved questions and acquisition plan
 
-These gaps block the future article’s publication gate; they are not invitations to fill gaps from travel copy.
+These gaps no longer block the provisionally authorised article, but they remain active archival priorities and are not invitations to fill gaps from travel copy. The article must qualify, generalise or omit unresolved precision.
 
 | Priority | Question / risk | Best next evidence | Why it matters |
 | --- | --- | --- | --- |
@@ -47,4 +47,4 @@ Until at least one source documents transport/supply and one names a mainland-co
 
 ## Acquisition-package status — 2026-08-06
 
-[archive-acquisition-pack.md](archive-acquisition-pack.md) and [archive-acquisition-log.md](archive-acquisition-log.md) now provide official-route research, unsent bilingual requests and response-intake controls for the P0/P1 gaps. This is a preparation step only: no reply, primary record, rights clearance or numerical reconciliation has been received, and the publication gate remains blocked.
+[archive-acquisition-pack.md](archive-acquisition-pack.md) and [archive-acquisition-log.md](archive-acquisition-log.md) now provide official-route research, unsent bilingual requests and response-intake controls for the P0/P1 gaps. This is a preparation step only: no reply, primary record, rights clearance or numerical reconciliation has been received. The user authorised provisional publication on 2026-08-06; later evidence will trigger a documented article revision.

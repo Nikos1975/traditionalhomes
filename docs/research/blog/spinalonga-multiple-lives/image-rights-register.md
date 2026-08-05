@@ -45,7 +45,7 @@ For every candidate, record the exact object identifier, rights holder, licence 
 | Ottoman-town imagery | Historical Museum of Crete/Vikelaia reported generically | Various | Unknown | Unknown | Unknown | Discovery lead only |
 | Dormitories/hospital/current remains | Ephorate/Ministry pages are discovery sources, not licences | Various/current | Unknown | Unknown | Unknown | Commission or request written licence |
 
-No dossier lead has supplied all required metadata. The historical-image and map clearance gap remains open. The separate user-owned set above supplies one cleared proposed hero and five cleared supporting photographs, but final crop selection, rendered-page review and public placement remain pending article authorisation.
+No dossier lead has supplied all required metadata. The historical-image and map clearance gap remains open. The separate user-owned set above supplies one cleared hero and five cleared supporting photographs; the user authorised their placement in the provisional article on 2026-08-06, subject to rendered-page review.
 
 ## Acquisition control — 2026-08-06
 

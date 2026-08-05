@@ -2,7 +2,7 @@
 
 Working title: **Spinalonga: Why It Was Fortified and How the Island’s Uses Changed**
 
-This is an evidence-led architecture only. It authorises no article draft.
+This is an evidence-led architecture for the provisionally authorised article. The user authorised drafting on 2026-08-06 using verified evidence currently available; unresolved precision must remain qualified, generalised or omitted.
 
 1. **The island at the mouth of Elounda’s harbour** — Open with the rocky islet, sheltered water, Plaka opposite and the central question. Establish that location preceded fortification.
 2. **Why Venice fortified Spinalonga** — Place 1579 works in the wider Ottoman-threat context; explain harbour/route control without a single-cause claim.
@@ -18,10 +18,10 @@ This is an evidence-led architecture only. It authorises no article draft.
 
 ## Evidence discipline per section
 
-Use only verified claims from the claim register. Give primary/official sources priority; label uncertainty where a necessary interpretive transition remains. Do not include visitor hours, tickets, “must-see” language, fictional scenes, “island of tears” rhetoric, Europe-last claims or unlicensed archival imagery. Six user-owned modern photographs have documented commercial permission (one proposed hero and five supporting images); their final crops, rendered-page review and public placement remain pending article authorisation. The passenger-boat photograph is modern context only and must not evidence historical boat operations. Link outward to the existing regional geography and short chronology pages; do not cannibalise their practical-visit purpose.
+Use only verified claims from the claim register. Give primary/official sources priority; label uncertainty where a necessary interpretive transition remains. Do not include visitor hours, tickets, “must-see” language, fictional scenes, “island of tears” rhetoric, Europe-last claims or unlicensed archival imagery. Six user-owned modern photographs have documented commercial permission (one proposed hero and five supporting images); they may be placed after rendered-page review. The passenger-boat photograph is modern context only and must not evidence historical boat operations. Link outward to the existing regional geography and short chronology pages; do not cannibalise their practical-visit purpose.
 
 ## Reconciliation constraint — 2026-08-05
 
 This remains an evidence-led architecture, not a draft mandate. The external dossiers confirm two refinements only: mainland dependency must be tested throughout the chronology, and conservation should make visible that selection and demolition altered the surviving record. They do **not** clear the detailed legal, numerical, medical, Ottoman, named-person or image claims now listed as unresolved.
 
-**Gate: not ready to draft.** Reopen the architecture for drafting only after original legal records, first-transfer evidence, a bounded Ottoman demographic/property corpus, documented Plaka/Elounda history, multiple named people, reconciled medical/closure records, and commercial image permissions have been reviewed.
+**Publication decision:** authorised for provisional publication with uncertainty controls. Continue archival acquisition, preserve the unresolved questions, and revise the article when original legal records, first-transfer evidence, Ottoman demographic/property material, documented Plaka/Elounda history, further named people, or medical/closure records are reviewed.

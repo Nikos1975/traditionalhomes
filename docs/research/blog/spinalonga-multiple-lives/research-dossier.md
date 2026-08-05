@@ -4,7 +4,7 @@
 
 Spinalonga (officially associated with Kalydon) is a pre-existing rocky islet at the mouth of Elounda’s natural harbour, not an island made by Venice. Its location gave visual and maritime control at the junction of the sheltered Gulf of Elounda, the approaches from Mirabello, and the shore opposite Plaka. The surviving place is best understood as a palimpsest: earlier walling, a late-sixteenth-century Venetian seaward fortress, a Venetian-held refuge after 1669, an Ottoman military-commercial settlement, a state isolation institution for people with Hansen’s disease, and an archaeological/heritage site.
 
-The research record supports a future article organised around changes of use and physical adaptation rather than a generic chronology. It is not yet ready for drafting: the original legal texts, a fuller Ottoman social-history corpus and primary local testimony remain outstanding. Six user-owned modern photographs now have documented commercial permission—one proposed hero and five supporting images—with WebP derivatives prepared in research staging. Archival image, map and plan rights remain outstanding.
+The research record supports a public article organised around changes of use and physical adaptation rather than a generic chronology. The user authorised provisional publication on 2026-08-06 using the verified evidence currently available. Original legal texts, a fuller Ottoman social-history corpus and primary local testimony remain outstanding. Six user-owned modern photographs now have documented commercial permission—one proposed hero and five supporting images—with WebP derivatives prepared in research staging. Archival image, map and plan rights remain outstanding and are not needed for the initial article.
 
 ## Verified working chronology
 
@@ -58,9 +58,11 @@ Use **Spinalonga** for the historic island in normal prose and explain **Kalydon
 
 Use “people with leprosy,” “people with Hansen’s disease,” “residents” and “patients” as context requires. Historical institutional labels can appear in quotations or explanatory notes.
 
-## Publication gate
+## Publication decision
 
-Do not draft the public article. The gate remains **blocked** until the unresolved questions register is materially closed, historical image/map rights are cleared as needed, numerical claims are reconciled, and the user explicitly authorises drafting. The cleared current photographs remain research-preparation assets; public placement and final crop review remain pending article authorisation.
+**Authorised for provisional publication using the verified evidence currently available.** Unresolved dates, totals, legal references and individual details must be qualified, generalised or omitted. The article will be updated when archive responses or primary records add clarity. The archive-acquisition tracker remains active; no unsent enquiry has been sent or closed.
+
+The cleared current photographs may be placed with the article after final rendered-page review. Archival image, map and plan rights remain outstanding and no archival asset may be used without separate written permission.
 
 Primary references: S01–S16 in [source bibliography](source-bibliography.md).
 
@@ -70,4 +72,4 @@ Three external dossiers were read in full and preserved unchanged (apart from pr
 
 Useful additions are source leads: EAL pages on Ottoman daily life, commercial shops, the leprosarium foundation, dormitories/hospital and named figures; the cemetery record; and a direct UNESCO decision confirming that the 2021 nomination was **withdrawn at Greece’s request**. None changes the publication decision. In particular, the new dossiers do not supply the original Cretan State Gazette, a transfer manifest, Ottoman census/property records, verified Plaka/Elounda social history, treatment registers, or image licences.
 
-**Current decision: not ready to draft.** The stronger source map confirms the earlier blocked gate rather than converting it to conditional readiness.
+The 2026-08-05 evidence assessment remains useful as an acquisition record. It was superseded for drafting by the user’s 2026-08-06 provisional-publication authorisation; it does not mean archival research is complete.
