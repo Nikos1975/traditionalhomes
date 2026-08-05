@@ -17,3 +17,17 @@ This is a narrative-selection register, not a biographical authority file. “Su
 ## Register rules for the future article
 
 Do not reconstruct dialogue, motives or scenes. Add a person only with a stable source, role, date, and a specific connection to the island. At least two additional resident voices and one mainland-connected worker/supplier account are needed before a human-scale section can be considered adequately balanced.
+
+## External-dossier reconciliation — 2026-08-05
+
+| Person | Dossier claim | Identifiable source | Confidence / narrative use |
+| --- | --- | --- | --- |
+| Orestis Maltos | Designed 1937–39 dormitories | Ephorate dormitory page reported by ChatGPT; direct record not yet added | Medium lead; do not use until the monument record is recovered |
+| Manolis Christodoulakis | Associated with early sulphone material | ChatGPT’s medical-history chain only | Low-medium; not usable |
+| Giannis Kapaidonis | Reported first resident | Later historical synthesis only | Low; not usable |
+| Charilaos Papadakis | Reported early director/doctor | Later medical synthesis only | Medium lead; personnel record required |
+| Dimitrios Grammatikakis | Reported doctor/administrator | Later medical synthesis only | Medium lead; distinguish from Emmanouil and verify personnel record |
+| Chrysanthos Katsoulogiannakes | Priest, reported 1947–post-closure | Gemini church/oral-history links; no diocesan record reviewed | Medium lead; no narrative use until primary church record |
+| Boatmen, guards, suppliers, nurses, teachers and women residents | Essential categories, names absent | Regulations/secondary descriptions only | Categories are real research targets, not narratable people |
+
+The dossier set adds names and leads but no additional person currently meets the register rule of an identifiable source, role, date and safe relevance. Do not retain a person solely because an AI dossier named them.

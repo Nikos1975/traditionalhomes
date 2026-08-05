@@ -18,3 +18,16 @@
 ## Clearance checklist
 
 For every candidate, record the exact object identifier, rights holder, licence text, commercial-web permission, territory/term, required credit, alteration/crop permission, model/privacy issue where applicable, and master-file delivery terms. Age, public display, Ministry ownership and a web thumbnail do not establish reuse rights.
+
+## External-dossier reconciliation — 2026-08-05
+
+| Lead | Exact holding institution / stable page | Creator/date | Catalogue number | Rights / commercial permission | Credit, fee, high-res | Decision |
+| --- | --- | --- | --- | --- | --- | --- |
+| 1618 Basilicata plan | Vikelaia Library is reported; exact item page not recovered | Francesco Basilicata / 1618 | Unknown | Unknown; public-domain age does not clear a digital reproduction | Unknown | Permission/enquiry required |
+| c.1580 model | Museo Storico Navale di Venezia reported; no stable item page recovered | Unknown / c.1580 | Unknown | Unknown | Unknown | Permission/enquiry required |
+| 1638 Orsini plan | Marciana Library reported; no stable item page recovered | Francesco Basilicata / 1638 | Unknown | Unknown | Unknown | Permission/enquiry required |
+| 1901 Gerola view | Vikelaia Gerola Collection reported; no stable item page recovered | Giuseppe Gerola / 1901 | Unknown | Unknown | Unknown | Permission/enquiry required |
+| Ottoman-town imagery | Historical Museum of Crete/Vikelaia reported generically | Various | Unknown | Unknown | Unknown | Discovery lead only |
+| Dormitories/hospital/current remains | Ephorate/Ministry pages are discovery sources, not licences | Various/current | Unknown | Unknown | Unknown | Commission or request written licence |
+
+No dossier lead has supplied all required metadata. The image gate remains closed: no usable hero image and no supporting-image set are cleared for commercial website reuse.

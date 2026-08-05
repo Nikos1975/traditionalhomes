@@ -63,3 +63,11 @@ Use “people with leprosy,” “people with Hansen’s disease,” “resident
 Do not draft the public article. The gate remains **blocked** until the unresolved questions register is materially closed, image rights are cleared, numerical claims are reconciled, and the user explicitly authorises drafting.
 
 Primary references: S01–S16 in [source bibliography](source-bibliography.md).
+
+## 2026-08-05 external-research reconciliation
+
+Three external dossiers were read in full and preserved unchanged (apart from provenance headers) in [sources/](sources/). They are accepted secondary syntheses, not independent primary evidence. Their overlapping claims must not be counted as three confirmations. The controlled disposition of each new claim cluster is in the [external dossier reconciliation](external-dossier-reconciliation.md), with conflicts in the [contradiction register](contradiction-register.md), legal claims in the [legal records register](legal-records-register.md), and quantities in the [numerical-claims register](numerical-claims-register.md).
+
+Useful additions are source leads: EAL pages on Ottoman daily life, commercial shops, the leprosarium foundation, dormitories/hospital and named figures; the cemetery record; and a direct UNESCO decision confirming that the 2021 nomination was **withdrawn at Greece’s request**. None changes the publication decision. In particular, the new dossiers do not supply the original Cretan State Gazette, a transfer manifest, Ottoman census/property records, verified Plaka/Elounda social history, treatment registers, or image licences.
+
+**Current decision: not ready to draft.** The stronger source map confirms the earlier blocked gate rather than converting it to conditional readiness.

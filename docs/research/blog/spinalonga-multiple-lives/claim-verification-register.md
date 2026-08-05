@@ -27,3 +27,21 @@ Status labels: **verified** = adequate for a carefully attributed dossier statem
 | UNESCO status | “On Greece’s Tentative List since 2014; not inscribed on the World Heritage List.” | S07, S09 | High | Never call it a World Heritage Site | Verified | Recheck at drafting date |
 | Visitor numbers | No public figure yet. | S07 only says hundreds of thousands | Low | Current figures change and need operator data | Blocked | Use official annual statistics |
 | Image/map rights | No image may be reused yet. | Register below | High | Online/government display ≠ commercial licence | Blocked | Written licence/terms per asset |
+
+## External-dossier control addendum — 2026-08-05
+
+The three intake dossiers are secondary syntheses. Their internal citation markers are non-portable and their repetition is not independent corroboration. Detailed disposition is maintained in [external-dossier-reconciliation.md](external-dossier-reconciliation.md).
+
+| Claim cluster newly raised or sharpened | Controlled status | Public-use rule |
+| --- | --- | --- |
+| Natural-islet/Poros distinction; current Byzantine wall interpretation | Already verified / strengthened | Preserve only the already qualified wording |
+| 1715 date; 2021 nomination withdrawal | Already verified | Use S03 and S09, not dossier citations |
+| Ottoman town, trade and physical fabric | Strengthens existing claim | Broad, attributed description only; no unverified counts |
+| Exact cannon count; enclave quarters/churches; surrender aftermath | Unsupported precision | Exclude |
+| Laws, Gazette details, internal rules, property procedures | Requires primary-document acquisition | Do not call directly verified |
+| First-transfer day/count/sex split | Contradicted / blocked | Retain 1904 only |
+| Allowances, mortality, births, escapes, remissions, Hygranol quantity | Unsupported precision | Exclude |
+| Electricity, protest tactics, currency, marriage/infant procedures, boat licences | Unsupported or non-portable | Exclude; retain as archive leads |
+| 1948 sulphone availability | Strengthens existing claim | Use general formulation; treatment protocol blocked |
+| July closure, final count, final priest/caretaker | Requires primary records | Retain 1957 closure only |
+| Heritage demolition, exhibits and current UNESCO status | Strengthens / partly verified | Distinguish broad 1980s demolition from detailed project history |

@@ -24,3 +24,20 @@ Status date: 2026-08-05. This is a research bibliography, not a clearance for im
 ## Source hierarchy and use rule
 
 S01–S06 and S11–S14 anchor factual description. S07 is useful but is a nomination text: its evaluative language and numbers require corroboration. S10 and S16 frame medical/institutional history. No tourism page, novel, television adaptation, or unsourced image page is evidence for central claims.
+
+## External-dossier source recovery — 2026-08-05
+
+The copied Perplexity, Gemini and ChatGPT dossiers are intake records, **not bibliography entries and not evidence**. Their internal markers are excluded. The following identifiable underlying documents were recovered as leads; unless marked otherwise they are not yet read/verified additions to the claim base.
+
+| ID | Identifiable underlying document | Recovery status and controlled use |
+| --- | --- | --- |
+| L01 | [Ephorate, *Everyday life in the Ottoman settlement*](https://spinalonga-island.gr/history/everyday-life/%CE%B7-%CE%BA%CE%B1%CE%B8%CE%B7%CE%BC%CE%B5%CF%81%CE%B9%CE%BD%CE%AE-%CE%B6%CF%89%CE%AE-%CF%83%CF%84%CE%BF%CE%BD-%CE%BF%CE%B8%CF%89%CE%BC%CE%B1%CE%BD%CE%B9%CE%BA%CF%8C-%CE%BF%CE%B9%CE%BA%CE%B9%CF%83/?lang=en) | Official source lead; supports an inhabited-town inquiry. Fetch unavailable during this reconciliation; do not adopt its reported figures without direct review. |
+| L02 | [Ephorate, *Foundation of the leprosarium and first years, 1903–1913*](https://spinalonga-island.gr/%CE%B7-%CE%AF%CE%B4%CF%81%CF%85%CF%83%CE%B7-%CF%84%CE%BF%CF%85-%CE%BB%CE%B5%CF%80%CF%81%CE%BF%CE%BA%CE%BF%CE%BC%CE%B5%CE%AF%CE%BF%CF%85-%CF%84%CE%B7%CF%82-%CF%83%CF%80%CE%B9%CE%BD%CE%B1%CE%BB%CF%8C%CE%B3%CE%BA%CE%B1%CF%82/) | Official source lead; use to locate primary legislation and foundation chronology, not as a substitute for Gazette pages. |
+| L03 | [Ephorate, *Opening of the perimeter road—Remoundakis inscription*](https://spinalonga-island.gr/monuments/spinalonga/leprocomy/%CE%B4%CE%B9%CE%AC%CE%BD%CE%BF%CE%B9%CE%BE%CE%B7-%CF%80%CE%B5%CF%81%CE%B9%CE%BC%CE%B5%CF%84%CF%81%CE%B9%CE%BA%CE%BF%CF%8D-%CE%B4%CF%81%CF%8C%CE%BC%CE%BF%CF%85-%CE%B5%CF%80%CE%B9%CE%B3%CF%81/?lang=en) | Already S06; confirms the only current narrow Remoundakis claim. |
+| L04 | [Ephorate, *Leprosy-colony cemetery*](https://spinalonga-island.gr/monuments/spinalonga/leprocomy/%CF%84%CE%BF-%CE%BD%CE%B5%CE%BA%CF%81%CE%BF%CF%84%CE%B1%CF%86%CE%B5%CE%AF%CE%BF-%CF%84%CE%BF%CF%85-%CE%BB%CE%B5%CF%80%CF%81%CE%BF%CE%BA%CE%BF%CE%BC%CE%B5%CE%AF%CE%BF%CF%85/?lang=en) | Official source lead; may support site description, not cemetery totals or later anecdotal accounts. |
+| L05 | [Ephorate, *Remoundakis*](https://spinalonga-island.gr/history/historical-figures/%CE%B5%CF%80%CE%B1%CE%BC%CE%B5%CE%B9%CE%BD%CF%8E%CE%BD%CE%B4%CE%B1%CF%82-%CF%81%CE%B5%CE%BC%CE%BF%CF%85%CE%BD%CF%84%CE%AC%CE%BA%CE%B7%CF%82/?lang=en) | Official biographical lead; recover before adding biography beyond S06’s inscription. |
+| L06 | [UNESCO Decision 44 COM 8B.19](https://whc.unesco.org/en/decisions/7938/) | Directly checked: it states that the nomination was withdrawn at the request of the State Party. This confirms S09’s controlled use. |
+| L07 | [International Leprosy Association, *Spinalonga archive record*](https://leprosyhistory.org/archive/archive1001/) | Identifiable research lead; not a substitute for local clinical or administrative records. |
+| L08 | [Dawkins, *Mirabello (Spina Longa etc.)*](https://dawkinscrete.mml.ox.ac.uk/pdf/crete-of-rm-dawkins-chapter-27.pdf) | Already S15; dated field account and etymology lead only. |
+
+Unrecoverable/opaque references in the dossiers—including AI file uploads, `turn…` citations, unnamed “archival records”, generic travel pages, and sources whose asserted content cannot be traced—are deliberately absent from this bibliography.

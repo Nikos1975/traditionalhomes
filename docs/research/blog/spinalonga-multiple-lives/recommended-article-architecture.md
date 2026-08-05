@@ -19,3 +19,9 @@ This is an evidence-led architecture only. It authorises no article draft.
 ## Evidence discipline per section
 
 Use only verified claims from the claim register. Give primary/official sources priority; label uncertainty where a necessary interpretive transition remains. Do not include visitor hours, tickets, “must-see” language, fictional scenes, “island of tears” rhetoric, Europe-last claims or unlicensed images. Link outward to the existing regional geography and short chronology pages; do not cannibalise their practical-visit purpose.
+
+## Reconciliation constraint — 2026-08-05
+
+This remains an evidence-led architecture, not a draft mandate. The external dossiers confirm two refinements only: mainland dependency must be tested throughout the chronology, and conservation should make visible that selection and demolition altered the surviving record. They do **not** clear the detailed legal, numerical, medical, Ottoman, named-person or image claims now listed as unresolved.
+
+**Gate: not ready to draft.** Reopen the architecture for drafting only after original legal records, first-transfer evidence, a bounded Ottoman demographic/property corpus, documented Plaka/Elounda history, multiple named people, reconciled medical/closure records, and commercial image permissions have been reviewed.

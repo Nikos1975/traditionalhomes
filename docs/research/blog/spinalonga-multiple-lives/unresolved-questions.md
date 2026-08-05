@@ -26,3 +26,21 @@ These gaps block the future article’s publication gate; they are not invitatio
 | Italian *spina lunga* (“long thorn”) | Disputed / folk etymology | Linguistically attractive but unproven as origin |
 | Name derives from island’s shape | Unsupported | No authoritative linguistic evidence reviewed |
 | “Kalydon” official name and its introduction | Documented as current designation in secondary/administrative usage; historical introduction unresolved | Needs gazette/map evidence |
+
+## Plaka and Elounda mainland-records gap — 2026-08-05
+
+The external dossiers make the mainland connection more important, not more evidenced. They contain broad claims about boatmen, guards, suppliers, food, water, mail, relatives, fishermen, medical transport, burials, wartime supply, employment and later visitor boats, but provide no adequately documented named local actor or integrated local record. Do not turn these generic claims into human-scale history.
+
+| Record required | Target question |
+| --- | --- |
+| Municipal council and community records (Plaka, Elounda, Neapoli/Agios Nikolaos as applicable) | Landing places, local policy, health measures, support or conflict |
+| Harbour, port and coastguard records | Landings, service boats, medical transport and regulated access |
+| Boat licences, crew registers and insurance/tax files | Names, routes, owners and periods of service |
+| Supply contracts, invoices and institutional accounts | Food, water, firewood, medicines, building materials and suppliers |
+| Oral histories and family archives | Named workers/residents, ethical permissions, local memory and cross-checkable dates |
+| Local and regional newspapers | Transfers, protests, deaths, supply disruption and public response |
+| Dated photographs, postcards and harbour plans | Landing places, boats, working relationships and rights leads |
+| Employment, payroll and Ministry of Health correspondence | Guards, laundresses, nurses, clerks, boatmen and contractors |
+| Church/cemetery and municipal burial records | Burial arrangements and mainland involvement without anecdote |
+
+Until at least one source documents transport/supply and one names a mainland-connected actor, the future article must describe this relationship as a documented research gap, not a fully recoverable social network.
