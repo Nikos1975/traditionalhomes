@@ -8,7 +8,7 @@ These gaps block the future article’s publication gate; they are not invitatio
 | P0 | Verify first transfer date/count and the last transfers/closure paperwork | Cretan State/Greece health or prefectural files; contemporary press | Avoid repeating 251, final-resident and closure narratives without proof |
 | P0 | Build an Ottoman settlement record | 1881 census, property/tax/customs records, Ottoman archives, peer-reviewed studies | Supports population, houses, shops, families, trade, religious buildings and departure |
 | P0 | Document mainland relationships | Plaka/Elounda municipal records, boat licences, oral-history archive, local press | Needed to connect residents, supplies, transport, burials and work without invention |
-| P0 | Clear historical images/maps | Holding institutions and written licences | Three current user-owned photographs are cleared separately; archival plans, maps and historical imagery remain unavailable for reuse |
+| P0 | Clear historical images/maps | Holding institutions and written licences | Six current user-owned modern photographs are cleared separately; archival plans, maps and historical imagery remain unavailable for reuse |
 | P1 | Determine legal/topographic status of Kalydon and name history | Gazetteer, cadastral/map records, Venetian textual edition | Prevents mistaken name/etymology claims |
 | P1 | Verify electricity, water, school, churches, nurses and everyday services | Institution accounts, technical records, resident testimony | Human-scale section needs time-specific evidence |
 | P1 | Locate multiple resident testimonies, not only Remoundakis | Published oral histories, archive interviews, family permissions | Avoids heroic single-person narrative |

@@ -18,7 +18,7 @@ This is an evidence-led architecture only. It authorises no article draft.
 
 ## Evidence discipline per section
 
-Use only verified claims from the claim register. Give primary/official sources priority; label uncertainty where a necessary interpretive transition remains. Do not include visitor hours, tickets, “must-see” language, fictional scenes, “island of tears” rhetoric, Europe-last claims or unlicensed archival imagery. Three user-owned photographs have documented commercial permission (one proposed hero and two supporting images); their final crops, rendered-page review and public placement remain pending article authorisation. Link outward to the existing regional geography and short chronology pages; do not cannibalise their practical-visit purpose.
+Use only verified claims from the claim register. Give primary/official sources priority; label uncertainty where a necessary interpretive transition remains. Do not include visitor hours, tickets, “must-see” language, fictional scenes, “island of tears” rhetoric, Europe-last claims or unlicensed archival imagery. Six user-owned modern photographs have documented commercial permission (one proposed hero and five supporting images); their final crops, rendered-page review and public placement remain pending article authorisation. The passenger-boat photograph is modern context only and must not evidence historical boat operations. Link outward to the existing regional geography and short chronology pages; do not cannibalise their practical-visit purpose.
 
 ## Reconciliation constraint — 2026-08-05
 
