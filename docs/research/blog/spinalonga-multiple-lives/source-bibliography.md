@@ -41,3 +41,25 @@ The copied Perplexity, Gemini and ChatGPT dossiers are intake records, **not bib
 | L08 | [Dawkins, *Mirabello (Spina Longa etc.)*](https://dawkinscrete.mml.ox.ac.uk/pdf/crete-of-rm-dawkins-chapter-27.pdf) | Already S15; dated field account and etymology lead only. |
 
 Unrecoverable/opaque references in the dossiers—including AI file uploads, `turn…` citations, unnamed “archival records”, generic travel pages, and sources whose asserted content cannot be traced—are deliberately absent from this bibliography.
+
+## Archive-access and rights routes — checked 2026-08-06
+
+These administrative sources identify access, catalogue or reproduction routes. They are not historical evidence and do not upgrade a claim or clear an archival asset for reuse. Detailed findings and unsent bilingual requests are in [archive-acquisition-pack.md](archive-acquisition-pack.md).
+
+| ID | Official route | Controlled use |
+| --- | --- | --- |
+| A01 | [GAK central contact and reading room](https://www.archives.gak.gr/Cont/cont-ky-00.html) | Central referral/research route for records held by GAK. |
+| A02 | [GAK national inventory — access conditions](https://greekarchivesinventory.gak.gr/index.php/kcrw-cw68-6cca?sf_culture=el) | States free access under the cited GAK law and reading-room study; sensitive data needs declaration. |
+| A03 | [GAK contact directory](https://www.gak.gr/index.php/el/tilefona-diefthynseis) | Official published Lasithi postal/telephone route. |
+| A04 | [GAK Heraklion inventory record](https://greekarchivesinventory.gak.gr/index.php/u-u-2931?sf_culture=en) | Current branch route and holdings discovery. |
+| A05 | [GAK Historical Archive of Crete inventory record](https://greekarchivesinventory.gak.gr/index.php/dby6-5ty8-qexy?sf_culture=en) | Current route; identifies Cretan State archive and public reading room/copy service. |
+| A06 | [Vikelaia Archives and Newspapers Department](https://vikelaia.gr/%CF%84%CE%BC%CE%AE%CE%BC%CE%B1-%CE%B1%CF%81%CF%87%CE%B5%CE%AF%CF%89%CE%BD-%CE%BA%CE%B1%CE%B9-%CE%B5%CF%86%CE%B7%CE%BC%CE%B5%CF%81%CE%AF%CE%B4%CF%89%CE%BD-%CF%80%CE%B5%CF%81%CE%B9%CE%BF%CE%B4%CE%B9/) | Historical-archive discovery route; not a licence. |
+| A07 | [Ephorate of Antiquities of Lasithi service page](https://www.culture.gov.gr/el/ministry/SitePages/viewyphresia.aspx?iID=1837) | Official contact and remit for Spinalonga heritage documentation. |
+| A08 | [Ministry of Culture contact page](https://www.culture.gov.gr/el/SitePages/contact.aspx) | Central referral and contact route only. |
+| A09 | [Hellenic Parliament Library contact page](https://library.parliament.gr/%CE%A0%CE%BB%CE%B7%CF%81%CE%BF%CF%86%CE%BF%CF%81%CE%AF%CE%B5%CF%82/%CE%95%CF%80%CE%B9%CE%BA%CE%BF%CE%B9%CE%BD%CF%89%CE%BD%CE%AF%CE%B1) | Special-collection booking and reference route. |
+| A10 | [National Library digital-collections terms](https://digitalcollections.nlg.gr/nlg-repo/dl/el/terms.html) | Records non-commercial baseline for its database; commercial asset use remains item-specific. |
+| A11 | [National Printing Office Gazette search](https://search.et.gr/el/simple-search/) | Official search/copy enquiry route; does not prove coverage of Cretan State Gazette. |
+| A12 | [Ministry of Health contact and central protocol](https://www.moh.gov.gr/contact) | Official referral route; sensitive medical records require case-specific access review. |
+| A13 | [Municipality of Agios Nikolaos contact page](https://www.agiosnikolaos.gr/municipality/) and [Port Authority directory](https://edla.hcg.gr/authorities/) | Official local and harbour routing, not evidence that records survive. |
+| A14 | [University of Crete Library contacts](https://www.lib.uoc.gr/contact/?lang=en) and [limited-collections rules](https://www.lib.uoc.gr/info/about/c_reg/theme-09-article09.tkl?lang=en) | Academic/special-collection discovery and controlled-access route. |
+| A15 | [Archivio di Stato di Venezia correspondence research](https://www.archiviodistatovenezia.it/it/servizi-al-pubblico/servizio-ricerche-per-corrispondenza.html), [reproduction service](https://archiviodistatovenezia.it/it/servizi-al-pubblico/servizio-di-fotoriproduzione.html), and [Marciana contacts](https://bibliotecanazionalemarciana.cultura.gov.it/la-biblioteca/contatti) | Directly relevant Venetian research/reproduction routes; a formal publication concession may be required. |

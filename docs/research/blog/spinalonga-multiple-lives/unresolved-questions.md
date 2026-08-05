@@ -44,3 +44,7 @@ The external dossiers make the mainland connection more important, not more evid
 | Church/cemetery and municipal burial records | Burial arrangements and mainland involvement without anecdote |
 
 Until at least one source documents transport/supply and one names a mainland-connected actor, the future article must describe this relationship as a documented research gap, not a fully recoverable social network.
+
+## Acquisition-package status — 2026-08-06
+
+[archive-acquisition-pack.md](archive-acquisition-pack.md) and [archive-acquisition-log.md](archive-acquisition-log.md) now provide official-route research, unsent bilingual requests and response-intake controls for the P0/P1 gaps. This is a preparation step only: no reply, primary record, rights clearance or numerical reconciliation has been received, and the publication gate remains blocked.

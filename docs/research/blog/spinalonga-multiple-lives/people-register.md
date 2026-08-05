@@ -31,3 +31,7 @@ Do not reconstruct dialogue, motives or scenes. Add a person only with a stable 
 | Boatmen, guards, suppliers, nurses, teachers and women residents | Essential categories, names absent | Regulations/secondary descriptions only | Categories are real research targets, not narratable people |
 
 The dossier set adds names and leads but no additional person currently meets the register rule of an identifiable source, role, date and safe relevance. Do not retain a person solely because an AI dossier named them.
+
+## Acquisition control — 2026-08-06
+
+Package D in [archive-acquisition-pack.md](archive-acquisition-pack.md) seeks named evidence for mainland-connected people—boat owners and crew, suppliers, guards, postal workers, laundresses, cleaners, builders, medical-transport workers, shopkeepers, priests and administrators—from licences, contracts, ledgers, civil/parish records, press and family/oral-history collections. It does not add any person to this register until a stable source, role, date and specific connection are inspected.

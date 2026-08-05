@@ -46,3 +46,7 @@ For every candidate, record the exact object identifier, rights holder, licence 
 | Dormitories/hospital/current remains | Ephorate/Ministry pages are discovery sources, not licences | Various/current | Unknown | Unknown | Unknown | Commission or request written licence |
 
 No dossier lead has supplied all required metadata. The historical-image and map clearance gap remains open. The separate user-owned set above supplies one cleared proposed hero and five cleared supporting photographs, but final crop selection, rendered-page review and public placement remain pending article authorisation.
+
+## Acquisition control — 2026-08-06
+
+Package G in [archive-acquisition-pack.md](archive-acquisition-pack.md) supplies unsent enquiry text for historical plans, maps, photographs and drawings held or potentially held by the Ephorate, Vikelaia, Historical Archive of Crete, Archivio di Stato di Venezia and Biblioteca Nazionale Marciana. Every request requires catalogue number, creator, date, rights holder, copy/high-resolution fee, commercial website and social-media permission, required credit, and crop/edit permission. No archival asset, licence or reproduction has been obtained; the six user-owned modern photographs remain the only cleared photographs in the research packet.
