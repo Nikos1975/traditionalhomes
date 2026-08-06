@@ -1,117 +1,139 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "month": 9,
   "generatedAt": "deterministic",
   "candidates": [
     {
+      "id": "elounda-autumn-walking-routes",
       "slug": "elounda-autumn-walking-routes",
+      "workingTitle": "Autumn walking around Elounda and the villages",
       "title": "Autumn walking around Elounda and the villages",
+      "centralQuestion": "Which local walks are useful in early autumn?",
+      "pillar": "walking routes",
       "contentPillar": "walking routes",
-      "scores": {
-        "localRelevance": 5,
-        "evidenceStrength": 3,
-        "seasonalFit": 5,
-        "existingContentGap": 4,
-        "visualAvailability": 4,
-        "operationalStability": 3
-      },
-      "penalties": {
-        "evidence": 4,
-        "duplication": 6
-      },
-      "researchDecision": "research required",
-      "operationalVolatilityWarning": "Current verification required before publication.",
-      "confidentialityWarning": false,
+      "targetAudience": "travellers planning an Elounda stay",
+      "audienceValue": "practical local orientation",
+      "existingCoverage": "no exact article",
+      "overlapAssessment": "likely",
+      "evidenceState": "usable",
+      "sourcesOrPrimarySourceNeeds": [
+        "route verification before publication"
+      ],
+      "visualAvailability": "cleared",
+      "archivalVisualNeed": false,
+      "operationalVolatility": "moderate",
+      "confidentialityState": "clear",
+      "nextAction": "research first",
       "factorScores": {
         "localRelevance": 5,
-        "evidenceStrength": 3,
-        "seasonalFit": 5,
-        "existingContentGap": 4,
-        "visualAvailability": 4,
-        "operationalStability": 3
-      },
-      "baseScore": 82,
-      "editorialPriorityScore": 72,
-      "explanation": "Base score 82/100; evidence penalty and other penalties total 10.",
-      "recommendedStatus": "recommend",
-      "selectedAt": "deterministic",
-      "nextAction": "research required",
-      "duplicateOrOverlap": true,
-      "unclearImageRightsPenalty": 0
-    },
-    {
-      "slug": "spinalonga-archival-supply-records",
-      "title": "Spinalonga, Plaka and Elounda: archival supply records to seek",
-      "contentPillar": "archival and oral-history research",
-      "scores": {
-        "localRelevance": 5,
-        "evidenceStrength": 2,
-        "seasonalFit": 3,
-        "existingContentGap": 5,
-        "visualAvailability": 3,
-        "operationalStability": 5
+        "audienceUsefulness": 5,
+        "evidenceReadiness": 4,
+        "contentDistinctness": 3,
+        "visualVideoPotential": 4,
+        "seasonalRelevance": 5,
+        "internalLinkValue": 4
       },
       "penalties": {
-        "evidence": 10,
-        "duplication": 3
+        "inadequateEvidence": 0,
+        "likelyDuplication": 10,
+        "unclearImageRights": 0,
+        "unsupportedNumericalPrecision": 0,
+        "genericTravelListFraming": 0,
+        "confidentialityRisk": 0
       },
-      "researchDecision": "research required",
-      "ownedVisualAvailability": true,
-      "archivalVisualRequirement": true,
-      "operationalVolatilityWarning": false,
-      "confidentialityWarning": false,
-      "factorScores": {
-        "localRelevance": 5,
-        "evidenceStrength": 2,
-        "seasonalFit": 3,
-        "existingContentGap": 5,
-        "visualAvailability": 3,
-        "operationalStability": 5
-      },
-      "baseScore": 78,
-      "editorialPriorityScore": 65,
-      "explanation": "Base score 78/100; evidence penalty and other penalties total 13.",
-      "recommendedStatus": "review",
-      "selectedAt": "deterministic",
-      "nextAction": "research required",
-      "duplicateOrOverlap": true,
-      "unclearImageRightsPenalty": 0
+      "rawScore": 88,
+      "finalScore": 78,
+      "scoreExplanation": "Raw score 88/100; deductions: likelyDuplication 10.",
+      "editorialGateResult": "score band",
+      "recommendedStatus": "useful candidate"
     },
     {
+      "id": "elounda-winter-practical-guide",
       "slug": "elounda-winter-practical-guide",
+      "workingTitle": "Elounda in winter: a practical guide requiring current checks",
       "title": "Elounda in winter: a practical guide requiring current checks",
+      "centralQuestion": "Which practical details need current verification in winter?",
+      "pillar": "practical stay information",
       "contentPillar": "practical stay information",
-      "scores": {
-        "localRelevance": 4,
-        "evidenceStrength": 3,
-        "seasonalFit": 2,
-        "existingContentGap": 4,
-        "visualAvailability": 3,
-        "operationalStability": 1
-      },
-      "penalties": {
-        "evidence": 4,
-        "duplication": 0
-      },
-      "researchDecision": "current verification required",
-      "operationalVolatilityWarning": "Current verification required before publication.",
-      "confidentialityWarning": false,
+      "targetAudience": "travellers planning an Elounda stay",
+      "audienceValue": "current practical orientation",
+      "existingCoverage": "no exact article",
+      "overlapAssessment": "clear",
+      "evidenceState": "usable",
+      "sourcesOrPrimarySourceNeeds": [
+        "current opening and transport checks"
+      ],
+      "visualAvailability": "cleared",
+      "archivalVisualNeed": false,
+      "operationalVolatility": "high",
+      "confidentialityState": "clear",
+      "nextAction": "verify current details",
       "factorScores": {
         "localRelevance": 4,
-        "evidenceStrength": 3,
-        "seasonalFit": 2,
-        "existingContentGap": 4,
-        "visualAvailability": 3,
-        "operationalStability": 1
+        "audienceUsefulness": 4,
+        "evidenceReadiness": 3,
+        "contentDistinctness": 4,
+        "visualVideoPotential": 2,
+        "seasonalRelevance": 2,
+        "internalLinkValue": 3
       },
-      "baseScore": 62,
-      "editorialPriorityScore": 58,
-      "explanation": "Base score 62/100; evidence penalty and other penalties total 4.",
-      "recommendedStatus": "review",
-      "selectedAt": "deterministic",
-      "nextAction": "current verification required",
-      "duplicateOrOverlap": false,
-      "unclearImageRightsPenalty": 0
+      "penalties": {
+        "inadequateEvidence": 0,
+        "likelyDuplication": 0,
+        "unclearImageRights": 0,
+        "unsupportedNumericalPrecision": 0,
+        "genericTravelListFraming": 0,
+        "confidentialityRisk": 0
+      },
+      "rawScore": 68,
+      "finalScore": 68,
+      "scoreExplanation": "Raw score 68/100; deductions: none.",
+      "editorialGateResult": "score band",
+      "recommendedStatus": "useful candidate"
+    },
+    {
+      "id": "spinalonga-archival-supply-records",
+      "slug": "spinalonga-archival-supply-records",
+      "workingTitle": "Spinalonga, Plaka and Elounda: archival supply records to seek",
+      "title": "Spinalonga, Plaka and Elounda: archival supply records to seek",
+      "centralQuestion": "What records could clarify mainland connections to Spinalonga?",
+      "pillar": "archival and oral-history research",
+      "contentPillar": "archival and oral-history research",
+      "targetAudience": "readers interested in East Crete history",
+      "audienceValue": "research-led context",
+      "existingCoverage": "no exact article",
+      "overlapAssessment": "likely",
+      "evidenceState": "inadequate",
+      "sourcesOrPrimarySourceNeeds": [
+        "archival supply records"
+      ],
+      "visualAvailability": "unclear",
+      "archivalVisualNeed": true,
+      "operationalVolatility": "low",
+      "confidentialityState": "clear",
+      "nextAction": "research first",
+      "factorScores": {
+        "localRelevance": 5,
+        "audienceUsefulness": 4,
+        "evidenceReadiness": 2,
+        "contentDistinctness": 5,
+        "visualVideoPotential": 3,
+        "seasonalRelevance": 4,
+        "internalLinkValue": 5
+      },
+      "penalties": {
+        "inadequateEvidence": 30,
+        "likelyDuplication": 10,
+        "unclearImageRights": 15,
+        "unsupportedNumericalPrecision": 0,
+        "genericTravelListFraming": 0,
+        "confidentialityRisk": 0
+      },
+      "rawScore": 81,
+      "finalScore": 26,
+      "scoreExplanation": "Raw score 81/100; deductions: inadequateEvidence 30, likelyDuplication 10, unclearImageRights 15.",
+      "editorialGateResult": "evidence gate; image rights review required",
+      "recommendedStatus": "research first"
     }
   ]
 }

@@ -1,5 +1,5 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "generatedAt": "deterministic",
   "includeDrafts": true,
   "articles": [
@@ -25,6 +25,20 @@
         "Visiting with restraint",
         "Sources and Image Credits"
       ],
+      "wordCount": 1054,
+      "internalLinks": [
+        "/en/blog/elounda-history-through-its-shoreline/",
+        "/en/guide/vrouchas/"
+      ],
+      "entities": [
+        "Elounda",
+        "Plaka",
+        "Vrouchas",
+        "Mirabello",
+        "Crete"
+      ],
+      "relatedResearchDirectory": null,
+      "videoReadiness": "human review required",
       "sourceFingerprint": "838a7f26bfaabbb894fad49c50b1c1659f5d5dfd3c86e76b82fbd1ef61a5a2e0"
     },
     {
@@ -50,6 +64,32 @@
         "Using the name “Elounda” accurately",
         "Sources and Image Credits"
       ],
+      "wordCount": 2272,
+      "internalLinks": [
+        "/en/blog/elounda-beaches/",
+        "/en/blog/elounda-history-through-its-shoreline/",
+        "/en/blog/elounda-salt-pans-and-poros-windmills/",
+        "/en/blog/elounda-wartime-memory/",
+        "/en/blog/mavrikiano-distances-and-guide/",
+        "/en/blog/walking-around-elounda/",
+        "/en/blog/walking-around-elounda/",
+        "/en/blog/welcome-to-elounda/",
+        "/en/guide/mavrikiano/",
+        "/en/guide/vrouchas/",
+        "/en/houses/",
+        "/en/location/"
+      ],
+      "entities": [
+        "Elounda",
+        "Plaka",
+        "Mavrikiano",
+        "Vrouchas",
+        "Mirabello",
+        "Spinalonga",
+        "Crete"
+      ],
+      "relatedResearchDirectory": "docs/research/blog/elounda-and-mirabello-bay",
+      "videoReadiness": "human review required",
       "sourceFingerprint": "de3e7b1fc330972c0a74d27ee30af7ea1c0a11f1f9dab82e080a68a71f6e8fd0"
     },
     {
@@ -78,6 +118,26 @@
         "Reading the coast in practical terms",
         "Sources and Image Credits"
       ],
+      "wordCount": 1605,
+      "internalLinks": [
+        "/en/blog/elounda-and-mirabello-bay/",
+        "/en/blog/elounda-salt-pans-and-poros-windmills/",
+        "/en/guide/mavrikiano/",
+        "/en/guide/vrouchas/",
+        "/en/houses/",
+        "/en/location/"
+      ],
+      "entities": [
+        "Elounda",
+        "Plaka",
+        "Mavrikiano",
+        "Vrouchas",
+        "Mirabello",
+        "Spinalonga",
+        "Crete"
+      ],
+      "relatedResearchDirectory": "docs/research/blog/elounda-beaches",
+      "videoReadiness": "human review required",
       "sourceFingerprint": "f03b48f4a9fdf6a222066a44166ac7484241e9bc2c60a5ccd6da55bf2bb2d919"
     },
     {
@@ -93,6 +153,18 @@
       "image": "/images/location-map.jpg",
       "imageCredit": null,
       "headings": [],
+      "wordCount": 1699,
+      "internalLinks": [],
+      "entities": [
+        "Elounda",
+        "Plaka",
+        "Mavrikiano",
+        "Mirabello",
+        "Spinalonga",
+        "Crete"
+      ],
+      "relatedResearchDirectory": null,
+      "videoReadiness": "draft review required",
       "sourceFingerprint": "328b1b1d9638fbbada2b293b1a4d44ded26e3ba7088285f6d61ec4d090651990"
     },
     {
@@ -108,6 +180,18 @@
       "image": "/images/location-map.jpg",
       "imageCredit": null,
       "headings": [],
+      "wordCount": 1699,
+      "internalLinks": [],
+      "entities": [
+        "Elounda",
+        "Plaka",
+        "Mavrikiano",
+        "Mirabello",
+        "Spinalonga",
+        "Crete"
+      ],
+      "relatedResearchDirectory": null,
+      "videoReadiness": "draft review required",
       "sourceFingerprint": "77b3b603894e49daa7bc2273151186535efa562f24938100314e88859e66d060"
     },
     {
@@ -123,6 +207,18 @@
       "image": "/images/location-map.jpg",
       "imageCredit": null,
       "headings": [],
+      "wordCount": 1699,
+      "internalLinks": [],
+      "entities": [
+        "Elounda",
+        "Plaka",
+        "Mavrikiano",
+        "Mirabello",
+        "Spinalonga",
+        "Crete"
+      ],
+      "relatedResearchDirectory": null,
+      "videoReadiness": "draft review required",
       "sourceFingerprint": "f161d3eaa1153a92438fe0bb6208295f34579f1464cf919d693b781110e313ed"
     },
     {
@@ -138,6 +234,23 @@
       "image": "/images/houses/argyro/1600/argyro-veranda-dining-sea-view-03-1600.webp",
       "imageCredit": "Elounda Traditional Homes of Crete.",
       "headings": [],
+      "wordCount": 1772,
+      "internalLinks": [
+        "/en/blog/elounda-history-through-its-shoreline/",
+        "/en/blog/elounda-salt-pans-and-poros-windmills/",
+        "/en/blog/elounda-wartime-memory/",
+        "/en/blog/mavrikiano-distances-and-guide/"
+      ],
+      "entities": [
+        "Elounda",
+        "Plaka",
+        "Mavrikiano",
+        "Mirabello",
+        "Spinalonga",
+        "Crete"
+      ],
+      "relatedResearchDirectory": null,
+      "videoReadiness": "human review required",
       "sourceFingerprint": "97db5dbc4603b662c346b6438852fd02d2e9a6c0657b72921491c9d40a03382c"
     },
     {
@@ -162,6 +275,24 @@
         "Reading the Coast Today",
         "Sources and Image Credits"
       ],
+      "wordCount": 1092,
+      "internalLinks": [
+        "/en/blog/elounda-and-mirabello-bay/",
+        "/en/blog/elounda-salt-pans-and-poros-windmills/",
+        "/en/blog/elounda-visitor-economy/",
+        "/en/blog/elounda-wartime-memory/",
+        "/en/blog/key-phases-in-elounda-hotel-development/",
+        "/en/location/"
+      ],
+      "entities": [
+        "Elounda",
+        "Plaka",
+        "Mirabello",
+        "Spinalonga",
+        "Crete"
+      ],
+      "relatedResearchDirectory": null,
+      "videoReadiness": "human review required",
       "sourceFingerprint": "8b1f8599a92b3b2e321debe1a92590a63a01f8b67fa1679ed7c430eb486e6fae"
     },
     {
@@ -184,6 +315,21 @@
         "How to Read the Place Today",
         "Sources and Image Credits"
       ],
+      "wordCount": 633,
+      "internalLinks": [
+        "/en/blog/elounda-and-mirabello-bay/",
+        "/en/blog/elounda-history-through-its-shoreline/",
+        "/en/blog/mavrikiano-distances-and-guide/"
+      ],
+      "entities": [
+        "Elounda",
+        "Mavrikiano",
+        "Mirabello",
+        "Spinalonga",
+        "Crete"
+      ],
+      "relatedResearchDirectory": null,
+      "videoReadiness": "human review required",
       "sourceFingerprint": "9810c62be85c2518d3835acb50b8fe5f5e3cf1098851b7557c447e40b9560ba0"
     },
     {
@@ -204,6 +350,24 @@
         "Hotels and Public Image",
         "What This Means for Visitors Today"
       ],
+      "wordCount": 459,
+      "internalLinks": [
+        "/en/blog/elounda-history-through-its-shoreline/",
+        "/en/blog/key-phases-in-elounda-hotel-development/",
+        "/en/blog/mavrikiano-distances-and-guide/",
+        "/en/houses/"
+      ],
+      "entities": [
+        "Elounda",
+        "Plaka",
+        "Mavrikiano",
+        "Vrouchas",
+        "Mirabello",
+        "Spinalonga",
+        "Crete"
+      ],
+      "relatedResearchDirectory": null,
+      "videoReadiness": "human review required",
       "sourceFingerprint": "c60fe3aee9c35df28b02d98c72fdef689845f6c1ff15535cdb64ac75b09ba46e"
     },
     {
@@ -231,6 +395,25 @@
         "What remains unresolved",
         "Sources"
       ],
+      "wordCount": 2175,
+      "internalLinks": [
+        "/en/blog/elounda-and-mirabello-bay/",
+        "/en/blog/elounda-history-through-its-shoreline/",
+        "/en/blog/elounda-salt-pans-and-poros-windmills/",
+        "/en/guide/mavrikiano/",
+        "/en/houses/",
+        "/en/location/"
+      ],
+      "entities": [
+        "Elounda",
+        "Plaka",
+        "Mavrikiano",
+        "Mirabello",
+        "Spinalonga",
+        "Crete"
+      ],
+      "relatedResearchDirectory": null,
+      "videoReadiness": "draft review required",
       "sourceFingerprint": "d5584f193d86e361d23d02adabf010d268652d066d28321219480ac4e4810287"
     },
     {
@@ -252,6 +435,24 @@
         "How to Visit With Care",
         "Sources and Image Credits"
       ],
+      "wordCount": 594,
+      "internalLinks": [
+        "/en/blog/elounda-guide/",
+        "/en/blog/elounda-history-through-its-shoreline/",
+        "/en/blog/mavrikiano-distances-and-guide/",
+        "/en/guide/vrouchas/"
+      ],
+      "entities": [
+        "Elounda",
+        "Plaka",
+        "Mavrikiano",
+        "Vrouchas",
+        "Mirabello",
+        "Spinalonga",
+        "Crete"
+      ],
+      "relatedResearchDirectory": null,
+      "videoReadiness": "human review required",
       "sourceFingerprint": "94b08359da6966ebe83c41c073ccd7135cdf04bf623428439d4dc13e4c54f1f1"
     },
     {
@@ -278,6 +479,22 @@
         "What the Timeline Shows",
         "Sources and Image Credits"
       ],
+      "wordCount": 1123,
+      "internalLinks": [
+        "/en/blog/elounda-guide/",
+        "/en/blog/elounda-history-through-its-shoreline/",
+        "/en/blog/elounda-visitor-economy/"
+      ],
+      "entities": [
+        "Elounda",
+        "Plaka",
+        "Mavrikiano",
+        "Mirabello",
+        "Spinalonga",
+        "Crete"
+      ],
+      "relatedResearchDirectory": null,
+      "videoReadiness": "human review required",
       "sourceFingerprint": "5ba03c84baf0b20d92d3115527176be8934de5eb058910ac12a27e6ef736c3d4"
     },
     {
@@ -299,6 +516,23 @@
         "Spinalonga Visitor Information (2026 Season)",
         "Related Reading"
       ],
+      "wordCount": 1137,
+      "internalLinks": [
+        "/en/blog/elounda-guide/",
+        "/en/blog/elounda-history-through-its-shoreline/",
+        "/en/blog/elounda-salt-pans-and-poros-windmills/",
+        "/en/blog/elounda-wartime-memory/"
+      ],
+      "entities": [
+        "Elounda",
+        "Plaka",
+        "Mavrikiano",
+        "Mirabello",
+        "Spinalonga",
+        "Crete"
+      ],
+      "relatedResearchDirectory": null,
+      "videoReadiness": "human review required",
       "sourceFingerprint": "d845853f9119cf6bb86a0feaffd8d61a20afd32422fbf377b7a19b45559eae84"
     },
     {
@@ -336,6 +570,22 @@
         "A note on evidence",
         "Sources and Image Credits"
       ],
+      "wordCount": 2512,
+      "internalLinks": [
+        "/en/blog/elounda-and-mirabello-bay/",
+        "/en/blog/elounda-beaches/",
+        "/en/blog/elounda-history-through-its-shoreline/",
+        "/en/blog/welcome-to-elounda/"
+      ],
+      "entities": [
+        "Elounda",
+        "Plaka",
+        "Mirabello",
+        "Spinalonga",
+        "Crete"
+      ],
+      "relatedResearchDirectory": "docs/research/blog/spinalonga-multiple-lives",
+      "videoReadiness": "human review required",
       "sourceFingerprint": "77a374a15f9304f2e9db6ac5584780784705687ad865f83ed0c7302b149b356d"
     },
     {
@@ -360,6 +610,24 @@
         "Wind, footwear and route marking",
         "Sources and Image Credits"
       ],
+      "wordCount": 2189,
+      "internalLinks": [
+        "/en/blog/elounda-and-mirabello-bay/",
+        "/en/blog/elounda-salt-pans-and-poros-windmills/",
+        "/en/guide/mavrikiano/",
+        "/en/guide/vrouchas/"
+      ],
+      "entities": [
+        "Elounda",
+        "Plaka",
+        "Mavrikiano",
+        "Vrouchas",
+        "Mirabello",
+        "Spinalonga",
+        "Crete"
+      ],
+      "relatedResearchDirectory": "docs/research/blog/walking-around-elounda",
+      "videoReadiness": "human review required",
       "sourceFingerprint": "869d454d437ee0da6a95f5895a703b717686475f5c62af8c6f9494f618200cd8"
     },
     {
@@ -375,6 +643,25 @@
       "image": "/images/blog/welcome-to-elounda/mavrikiano-elounda-1200.webp",
       "imageCredit": "Elounda Traditional Homes of Crete.",
       "headings": [],
+      "wordCount": 215,
+      "internalLinks": [
+        "/en/blog/elounda-and-mirabello-bay/",
+        "/en/blog/elounda-guide/",
+        "/en/blog/elounda-history-through-its-shoreline/",
+        "/en/blog/mavrikiano-distances-and-guide/",
+        "/en/guide/mavrikiano/",
+        "/en/guide/vrouchas/",
+        "/en/houses/"
+      ],
+      "entities": [
+        "Elounda",
+        "Mavrikiano",
+        "Vrouchas",
+        "Mirabello",
+        "Spinalonga"
+      ],
+      "relatedResearchDirectory": null,
+      "videoReadiness": "human review required",
       "sourceFingerprint": "677f3b62bed02fcef9215e3b07d6c2a0baed45f6e301418d048954e83e629d92"
     }
   ]

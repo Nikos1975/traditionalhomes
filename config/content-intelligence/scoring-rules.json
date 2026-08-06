@@ -1,1 +1,12 @@
-{ "weights": { "localRelevance": 25, "evidenceStrength": 20, "seasonalFit": 15, "existingContentGap": 20, "visualAvailability": 10, "operationalStability": 10 }, "penaltyLimits": { "evidence": 15, "duplication": 15, "confidentiality": 25 } }
+{
+  "weights": { "localRelevance": 25, "audienceUsefulness": 20, "evidenceReadiness": 15, "contentDistinctness": 15, "visualVideoPotential": 10, "seasonalRelevance": 10, "internalLinkValue": 5 },
+  "penalties": {
+    "inadequateEvidence": { "description": "Evidence is absent or not usable for publication.", "maximumDeduction": 30, "trigger": "evidenceState is none or inadequate" },
+    "likelyDuplication": { "description": "The angle materially overlaps existing content.", "maximumDeduction": 20, "trigger": "overlapState is likely or duplicate" },
+    "unclearImageRights": { "description": "Required imagery has no confirmed publication rights.", "maximumDeduction": 15, "trigger": "imageRightsState is unclear" },
+    "unsupportedNumericalPrecision": { "description": "The topic depends on unverified dates, counts or measurements.", "maximumDeduction": 15, "trigger": "numericalPrecisionState is unsupported" },
+    "genericTravelListFraming": { "description": "The framing is generic travel-list content.", "maximumDeduction": 15, "trigger": "framing is generic-list or sensational" },
+    "confidentialityRisk": { "description": "The topic exposes private property or personal information.", "maximumDeduction": 40, "trigger": "confidentialityState is unresolved" }
+  },
+  "statusBands": [{ "minimum": 80, "status": "strong candidate" }, { "minimum": 65, "status": "useful candidate" }, { "minimum": 50, "status": "research first" }, { "minimum": 0, "status": "hold" }]
+}

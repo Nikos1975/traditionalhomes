@@ -2,7 +2,7 @@
 
 Every prompt below requires: supplied article/research inputs; no invented facts or people; qualify uncertainty; distinguish modern context from historical evidence; do not cite AI dossiers publicly; do not publish automatically; do not expose confidential property information; human approval required.
 
-1. **Article to video plan:** Return central question, evidence-labelled scene plan, visual register and blockers.
+1. **Article to video plan:** Return central question, structured claim statuses, evidence-labelled scene plan, visual register and blockers; never write a final script.
 2. **Archival video script:** Return only a draft narration with source labels and omitted claims.
 3. **Factual titles:** Return five restrained titles tied to supplied facts.
 4. **Thumbnail concepts:** Return three rights-aware concepts without sensational hooks.

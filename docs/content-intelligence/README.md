@@ -1,15 +1,13 @@
 # Traditional Homes Content Intelligence
 
-An offline, deterministic planning layer for article inventory, topic discovery, seasonal calendars and historical video plans. It runs before editorial approval and before the existing social workflow; it cannot publish, call social commands, use credentials, APIs, scraping, or LLMs.
+Offline, deterministic editorial planning records. Phase 1 never uses network access, LLMs, credentials or social publishing.
 
-## Commands
+## Scoring and gates
 
-```powershell
-npm run content:inventory
-npm run content:discover -- --month 9
-npm run content:seasonal -- --month 9
-npm run content:video -- --slug spinalonga-why-fortified-changing-uses
-npm run content:status
-```
+Scores total 100: Elounda/East Crete relevance 25, audience usefulness 20, evidence readiness 15, distinctness 15, visual/video potential 10, seasonal relevance 10 and internal-link value 5. Deterministic deductions cover inadequate evidence, duplication, unclear image rights, unsupported numerical precision, generic-list framing and confidentiality risk. Evidence and confidentiality gates can downgrade the score band.
 
-Configuration is non-secret JSON in `config/content-intelligence/`; generated review records remain in `data/content-intelligence/`. Scores weight local relevance (25), evidence (20), seasonal fit (15), content gap (20), visuals (10), and stability (10), then subtract explicit penalties. Phase 1 tracks configuration, examples and reviewed plans; it excludes credentials, private analytics, scraped media, transcripts and property-sale data. Phase 2 may add optional public-interest and platform imports; Phase 3 may use Traditional Homes performance metrics only.
+## Outputs and commands
+
+`content:inventory`, `content:discover -- --month 9`, `content:seasonal -- --month 9` and `content:video -- --slug spinalonga-why-fortified-changing-uses` each write JSON and meaningful Markdown below `data/content-intelligence/`. September is the only tracked discovery example. `content:status` is readable; `content:status -- --json` is machine-readable and both are read-only.
+
+Seasonal selection is metadata-led, not alphabetical. Every plan requires human factual, source and rights review before publication.
