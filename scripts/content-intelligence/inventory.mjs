@@ -1,0 +1,9 @@
+import { readdir, readFile } from "node:fs/promises";
+import path from "node:path";
+import { hash } from "./utils.mjs";
+import { validateInventory } from "./schemas.mjs";
+function frontmatter(source) { const match = source.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?([\s\S]*)$/); if (!match) throw new Error("article frontmatter is missing."); const data = {}; for (const line of match[1].split(/\r?\n/)) { const item = line.match(/^(\w+):\s*(.*)$/); if (item) data[item[1]] = item[2].replace(/^"|"$/g, ""); } return { data, body: match[2] }; }
+const list = (value) => (value?.match(/\[([^\]]*)\]/)?.[1] ?? "").split(",").map((item) => item.trim()).filter(Boolean);
+export function deriveRoute(slug) { return `/en/blog/${slug}/`; }
+export async function buildInventory({ rootDir, includeDrafts = true }) { const directory = path.join(rootDir, "src", "content", "blog"); const names = (await readdir(directory)).filter((name) => name.endsWith(".md")).sort((a, b) => a.localeCompare(b)); const articles = []; for (const name of names) { const slug = path.basename(name, ".md"); const source = await readFile(path.join(directory, name), "utf8"); const { data, body } = frontmatter(source); const draft = data.draft === "true"; if (!includeDrafts && draft) continue; articles.push({ slug, title: data.title, description: data.description ?? data.subtitle ?? "", pubDate: data.pubDate, draft, category: data.category ?? null, region: data.region ?? null, tags: list(data.tags), route: deriveRoute(slug), image: data.image ?? null, imageCredit: data.imageCredit ?? null, headings: [...body.matchAll(/^##\s+(.+)$/gm)].map((match) => match[1]), sourceFingerprint: hash(source) }); } const inventory = { schemaVersion: 1, generatedAt: "deterministic", includeDrafts, articles }; return validateInventory(inventory); }
+export { frontmatter };

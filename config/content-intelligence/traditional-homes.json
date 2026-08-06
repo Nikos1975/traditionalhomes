@@ -1,0 +1,14 @@
+{
+  "identity": "Elounda Traditional Homes of Crete — traditional-homes.gr",
+  "geography": ["Elounda", "Mavrikiano", "Plaka", "Vrouchas", "Mirabello Bay"],
+  "audiences": ["travellers planning an Elounda stay", "readers interested in East Crete history", "returning guests", "traditional architecture readers", "property buyers and advisers only in explicit property context"],
+  "contentPillars": ["Elounda and Mirabello history", "villages and landscapes", "walking routes", "beaches and shoreline", "local buildings and microhistory", "traditional houses and architecture", "practical stay information", "responsible property context", "archival and oral-history research"],
+  "tone": ["calm", "factual", "human", "accessible", "research-led", "non-promotional", "locally specific"],
+  "prohibitedLanguage": ["hidden gem", "must-see", "breathtaking", "magical", "unforgettable", "paradise", "dark secret", "island of tears", "living dead", "tragedy as entertainment", "best", "most beautiful"],
+  "editorialRules": ["Do not invent local stories or named people.", "Do not cite AI-generated dossiers publicly.", "Do not imitate competitor wording.", "No publication without explicit approval.", "No automatic social publishing."],
+  "evidenceRules": ["Distinguish primary, official, scholarly and secondary evidence.", "Do not present uncertain dates as facts."],
+  "imageRightsRules": ["Respect commercial image rights.", "Do not use modern images as evidence for historical operations."],
+  "uncertaintyRules": ["Use qualified wording or omit unsupported precision."],
+  "supportedOutputFormats": ["article plan", "historical video plan", "seasonal calendar", "social derivative draft"],
+  "defaultCallsToAction": { "article": "Read the full article on traditional-homes.gr.", "historicalVideo": "Sources and further reading are available in the accompanying article.", "practicalGuide": "See the complete local guide on traditional-homes.gr.", "property": "Qualified enquiries are handled privately through the official contact route." }
+}

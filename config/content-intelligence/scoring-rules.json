@@ -1,0 +1,1 @@
+{ "weights": { "localRelevance": 25, "evidenceStrength": 20, "seasonalFit": 15, "existingContentGap": 20, "visualAvailability": 10, "operationalStability": 10 }, "penaltyLimits": { "evidence": 15, "duplication": 15, "confidentiality": 25 } }

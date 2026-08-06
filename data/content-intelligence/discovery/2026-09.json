@@ -1,0 +1,117 @@
+{
+  "schemaVersion": 1,
+  "month": 9,
+  "generatedAt": "deterministic",
+  "candidates": [
+    {
+      "slug": "elounda-autumn-walking-routes",
+      "title": "Autumn walking around Elounda and the villages",
+      "contentPillar": "walking routes",
+      "scores": {
+        "localRelevance": 5,
+        "evidenceStrength": 3,
+        "seasonalFit": 5,
+        "existingContentGap": 4,
+        "visualAvailability": 4,
+        "operationalStability": 3
+      },
+      "penalties": {
+        "evidence": 4,
+        "duplication": 6
+      },
+      "researchDecision": "research required",
+      "operationalVolatilityWarning": "Current verification required before publication.",
+      "confidentialityWarning": false,
+      "factorScores": {
+        "localRelevance": 5,
+        "evidenceStrength": 3,
+        "seasonalFit": 5,
+        "existingContentGap": 4,
+        "visualAvailability": 4,
+        "operationalStability": 3
+      },
+      "baseScore": 82,
+      "editorialPriorityScore": 72,
+      "explanation": "Base score 82/100; evidence penalty and other penalties total 10.",
+      "recommendedStatus": "recommend",
+      "selectedAt": "deterministic",
+      "nextAction": "research required",
+      "duplicateOrOverlap": true,
+      "unclearImageRightsPenalty": 0
+    },
+    {
+      "slug": "spinalonga-archival-supply-records",
+      "title": "Spinalonga, Plaka and Elounda: archival supply records to seek",
+      "contentPillar": "archival and oral-history research",
+      "scores": {
+        "localRelevance": 5,
+        "evidenceStrength": 2,
+        "seasonalFit": 3,
+        "existingContentGap": 5,
+        "visualAvailability": 3,
+        "operationalStability": 5
+      },
+      "penalties": {
+        "evidence": 10,
+        "duplication": 3
+      },
+      "researchDecision": "research required",
+      "ownedVisualAvailability": true,
+      "archivalVisualRequirement": true,
+      "operationalVolatilityWarning": false,
+      "confidentialityWarning": false,
+      "factorScores": {
+        "localRelevance": 5,
+        "evidenceStrength": 2,
+        "seasonalFit": 3,
+        "existingContentGap": 5,
+        "visualAvailability": 3,
+        "operationalStability": 5
+      },
+      "baseScore": 78,
+      "editorialPriorityScore": 65,
+      "explanation": "Base score 78/100; evidence penalty and other penalties total 13.",
+      "recommendedStatus": "review",
+      "selectedAt": "deterministic",
+      "nextAction": "research required",
+      "duplicateOrOverlap": true,
+      "unclearImageRightsPenalty": 0
+    },
+    {
+      "slug": "elounda-winter-practical-guide",
+      "title": "Elounda in winter: a practical guide requiring current checks",
+      "contentPillar": "practical stay information",
+      "scores": {
+        "localRelevance": 4,
+        "evidenceStrength": 3,
+        "seasonalFit": 2,
+        "existingContentGap": 4,
+        "visualAvailability": 3,
+        "operationalStability": 1
+      },
+      "penalties": {
+        "evidence": 4,
+        "duplication": 0
+      },
+      "researchDecision": "current verification required",
+      "operationalVolatilityWarning": "Current verification required before publication.",
+      "confidentialityWarning": false,
+      "factorScores": {
+        "localRelevance": 4,
+        "evidenceStrength": 3,
+        "seasonalFit": 2,
+        "existingContentGap": 4,
+        "visualAvailability": 3,
+        "operationalStability": 1
+      },
+      "baseScore": 62,
+      "editorialPriorityScore": 58,
+      "explanation": "Base score 62/100; evidence penalty and other penalties total 4.",
+      "recommendedStatus": "review",
+      "selectedAt": "deterministic",
+      "nextAction": "current verification required",
+      "duplicateOrOverlap": false,
+      "unclearImageRightsPenalty": 0
+    }
+  ]
+}

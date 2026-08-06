@@ -1,0 +1,62 @@
+{
+  "month": 9,
+  "name": "September",
+  "recommendations": {
+    "resurface existing article": [
+      {
+        "slug": "areti-monastery-mirabello-crete",
+        "why": "Matches September: walking and archival research."
+      },
+      {
+        "slug": "elounda-and-mirabello-bay",
+        "why": "Matches September: walking and archival research."
+      },
+      {
+        "slug": "elounda-beaches",
+        "why": "Matches September: walking and archival research."
+      }
+    ],
+    "update existing article": [
+      {
+        "slug": "elounda-beaches",
+        "why": "Matches September: walking and archival research. Current verification required before publication."
+      }
+    ],
+    "finish draft": [
+      {
+        "slug": "elounda-guide-style-1",
+        "why": "Matches September: walking and archival research."
+      },
+      {
+        "slug": "elounda-guide-style-2",
+        "why": "Matches September: walking and archival research."
+      }
+    ],
+    "research next": [
+      {
+        "slug": "elounda-autumn-walking-routes",
+        "why": "Matches September: walking and archival research. Current verification required before publication."
+      },
+      {
+        "slug": "spinalonga-archival-supply-records",
+        "why": "Matches September: walking and archival research."
+      },
+      {
+        "slug": "elounda-winter-practical-guide",
+        "why": "Matches September: walking and archival research. Current verification required before publication."
+      }
+    ],
+    "video candidate": [
+      {
+        "slug": "areti-monastery-mirabello-crete",
+        "why": "Matches September: walking and archival research."
+      }
+    ],
+    "practical seasonal content": [
+      {
+        "slug": "elounda-winter-practical-guide",
+        "why": "Matches September: walking and archival research. Current verification required before publication."
+      }
+    ]
+  }
+}

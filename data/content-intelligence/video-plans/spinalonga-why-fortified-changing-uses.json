@@ -1,0 +1,333 @@
+{
+  "schemaVersion": 1,
+  "articleSlug": "spinalonga-why-fortified-changing-uses",
+  "articleTitle": "Spinalonga: Why It Was Fortified and How the Island’s Uses Changed",
+  "canonicalRoute": "/en/blog/spinalonga-why-fortified-changing-uses/",
+  "draft": false,
+  "generatedAt": "deterministic",
+  "sourceFingerprint": "77a374a15f9304f2e9db6ac5584780784705687ad865f83ed0c7302b149b356d",
+  "proposedDurationMinutes": 10,
+  "targetAudience": "Readers interested in East Crete history",
+  "contentPillar": "Elounda and Mirabello history",
+  "editorialCore": {
+    "centralQuestion": "What does Spinalonga: Why It Was Fortified and How the Island’s Uses Changed show when read through supported evidence?",
+    "thesis": "The video follows the article's evidence boundary and changing historical uses.",
+    "viewerValue": "A careful visual orientation to the article's documented scope.",
+    "factualScope": [
+      "A small island in a strategic bay",
+      "Why Venice fortified Spinalonga",
+      "A Venetian enclave after 1669",
+      "From fortress to Ottoman town",
+      "Why the Cretan State chose Spinalonga",
+      "The first transfers in 1904",
+      "Life inside the settlement",
+      "Plaka, Elounda and the island’s supply line",
+      "Treatment, change and closure",
+      "From abandonment to protected monument",
+      "What the island’s successive lives reveal",
+      "A note on evidence",
+      "Sources and Image Credits"
+    ],
+    "excludedScope": [
+      "Unresolved precision",
+      "Unverified named people",
+      "Final narration script"
+    ],
+    "terminologyNotes": "Use Hansen’s disease terminology and explain historic wording only where necessary.",
+    "uncertaintyNotes": "Retain qualified and unresolved labels."
+  },
+  "longFormPlan": [
+    {
+      "order": 1,
+      "heading": "A small island in a strategic bay",
+      "estimatedSeconds": 46,
+      "narrationPurpose": "Explain the article's supported scope without supplying a final script.",
+      "claimStatus": "verified fact",
+      "supportedClaims": [
+        "A small island in a strategic bay"
+      ],
+      "uncertaintyWording": null,
+      "visualRequirement": "Use owned context image or rights-cleared archival visual.",
+      "onScreenText": "A small island in a strategic bay",
+      "transition": "Measured transition; no dramatic hook.",
+      "prohibitedExaggeration": true
+    },
+    {
+      "order": 2,
+      "heading": "Why Venice fortified Spinalonga",
+      "estimatedSeconds": 46,
+      "narrationPurpose": "Explain the article's supported scope without supplying a final script.",
+      "claimStatus": "verified fact",
+      "supportedClaims": [
+        "Why Venice fortified Spinalonga"
+      ],
+      "uncertaintyWording": null,
+      "visualRequirement": "Use owned context image or rights-cleared archival visual.",
+      "onScreenText": "Why Venice fortified Spinalonga",
+      "transition": "Measured transition; no dramatic hook.",
+      "prohibitedExaggeration": true
+    },
+    {
+      "order": 3,
+      "heading": "A Venetian enclave after 1669",
+      "estimatedSeconds": 46,
+      "narrationPurpose": "Explain the article's supported scope without supplying a final script.",
+      "claimStatus": "verified fact",
+      "supportedClaims": [
+        "A Venetian enclave after 1669"
+      ],
+      "uncertaintyWording": null,
+      "visualRequirement": "Use owned context image or rights-cleared archival visual.",
+      "onScreenText": "A Venetian enclave after 1669",
+      "transition": "Measured transition; no dramatic hook.",
+      "prohibitedExaggeration": true
+    },
+    {
+      "order": 4,
+      "heading": "From fortress to Ottoman town",
+      "estimatedSeconds": 46,
+      "narrationPurpose": "Explain the article's supported scope without supplying a final script.",
+      "claimStatus": "verified fact",
+      "supportedClaims": [
+        "From fortress to Ottoman town"
+      ],
+      "uncertaintyWording": null,
+      "visualRequirement": "Use owned context image or rights-cleared archival visual.",
+      "onScreenText": "From fortress to Ottoman town",
+      "transition": "Measured transition; no dramatic hook.",
+      "prohibitedExaggeration": true
+    },
+    {
+      "order": 5,
+      "heading": "Why the Cretan State chose Spinalonga",
+      "estimatedSeconds": 46,
+      "narrationPurpose": "Explain the article's supported scope without supplying a final script.",
+      "claimStatus": "verified fact",
+      "supportedClaims": [
+        "Why the Cretan State chose Spinalonga"
+      ],
+      "uncertaintyWording": null,
+      "visualRequirement": "Use owned context image or rights-cleared archival visual.",
+      "onScreenText": "Why the Cretan State chose Spinalonga",
+      "transition": "Measured transition; no dramatic hook.",
+      "prohibitedExaggeration": true
+    },
+    {
+      "order": 6,
+      "heading": "The first transfers in 1904",
+      "estimatedSeconds": 46,
+      "narrationPurpose": "Explain the article's supported scope without supplying a final script.",
+      "claimStatus": "qualified fact",
+      "supportedClaims": [
+        "The first transfers in 1904"
+      ],
+      "uncertaintyWording": "Use qualified wording from the article; do not add precision.",
+      "visualRequirement": "Use owned context image or rights-cleared archival visual.",
+      "onScreenText": "The first transfers in 1904",
+      "transition": "Measured transition; no dramatic hook.",
+      "prohibitedExaggeration": true
+    },
+    {
+      "order": 7,
+      "heading": "Life inside the settlement",
+      "estimatedSeconds": 46,
+      "narrationPurpose": "Explain the article's supported scope without supplying a final script.",
+      "claimStatus": "verified fact",
+      "supportedClaims": [
+        "Life inside the settlement"
+      ],
+      "uncertaintyWording": null,
+      "visualRequirement": "Use owned context image or rights-cleared archival visual.",
+      "onScreenText": "Life inside the settlement",
+      "transition": "Measured transition; no dramatic hook.",
+      "prohibitedExaggeration": true
+    },
+    {
+      "order": 8,
+      "heading": "Plaka, Elounda and the island’s supply line",
+      "estimatedSeconds": 46,
+      "narrationPurpose": "Explain the article's supported scope without supplying a final script.",
+      "claimStatus": "qualified fact",
+      "supportedClaims": [
+        "Plaka, Elounda and the island’s supply line"
+      ],
+      "uncertaintyWording": "Use qualified wording from the article; do not add precision.",
+      "visualRequirement": "Use owned context image or rights-cleared archival visual.",
+      "onScreenText": "Plaka, Elounda and the island’s supply line",
+      "transition": "Measured transition; no dramatic hook.",
+      "prohibitedExaggeration": true
+    },
+    {
+      "order": 9,
+      "heading": "Treatment, change and closure",
+      "estimatedSeconds": 46,
+      "narrationPurpose": "Explain the article's supported scope without supplying a final script.",
+      "claimStatus": "qualified fact",
+      "supportedClaims": [
+        "Treatment, change and closure"
+      ],
+      "uncertaintyWording": "Use qualified wording from the article; do not add precision.",
+      "visualRequirement": "Use owned context image or rights-cleared archival visual.",
+      "onScreenText": "Treatment, change and closure",
+      "transition": "Measured transition; no dramatic hook.",
+      "prohibitedExaggeration": true
+    },
+    {
+      "order": 10,
+      "heading": "From abandonment to protected monument",
+      "estimatedSeconds": 46,
+      "narrationPurpose": "Explain the article's supported scope without supplying a final script.",
+      "claimStatus": "qualified fact",
+      "supportedClaims": [
+        "From abandonment to protected monument"
+      ],
+      "uncertaintyWording": "Use qualified wording from the article; do not add precision.",
+      "visualRequirement": "Use owned context image or rights-cleared archival visual.",
+      "onScreenText": "From abandonment to protected monument",
+      "transition": "Measured transition; no dramatic hook.",
+      "prohibitedExaggeration": true
+    },
+    {
+      "order": 11,
+      "heading": "What the island’s successive lives reveal",
+      "estimatedSeconds": 46,
+      "narrationPurpose": "Explain the article's supported scope without supplying a final script.",
+      "claimStatus": "verified fact",
+      "supportedClaims": [
+        "What the island’s successive lives reveal"
+      ],
+      "uncertaintyWording": null,
+      "visualRequirement": "Use owned context image or rights-cleared archival visual.",
+      "onScreenText": "What the island’s successive lives reveal",
+      "transition": "Measured transition; no dramatic hook.",
+      "prohibitedExaggeration": true
+    },
+    {
+      "order": 12,
+      "heading": "A note on evidence",
+      "estimatedSeconds": 46,
+      "narrationPurpose": "Explain the article's supported scope without supplying a final script.",
+      "claimStatus": "verified fact",
+      "supportedClaims": [
+        "A note on evidence"
+      ],
+      "uncertaintyWording": null,
+      "visualRequirement": "Use owned context image or rights-cleared archival visual.",
+      "onScreenText": "A note on evidence",
+      "transition": "Measured transition; no dramatic hook.",
+      "prohibitedExaggeration": true
+    },
+    {
+      "order": 13,
+      "heading": "Sources and Image Credits",
+      "estimatedSeconds": 46,
+      "narrationPurpose": "Explain the article's supported scope without supplying a final script.",
+      "claimStatus": "verified fact",
+      "supportedClaims": [
+        "Sources and Image Credits"
+      ],
+      "uncertaintyWording": null,
+      "visualRequirement": "Use owned context image or rights-cleared archival visual.",
+      "onScreenText": "Sources and Image Credits",
+      "transition": "Measured transition; no dramatic hook.",
+      "prohibitedExaggeration": true
+    }
+  ],
+  "shortFormDerivative": {
+    "durationSeconds": 45,
+    "question": "A small island in a strategic bay",
+    "supportedAnswer": "Use one supported statement from the article only.",
+    "visualConcept": "Owned contemporary context image with a visible context label.",
+    "restrainedCta": "Sources and further reading are available in the accompanying article."
+  },
+  "youtubeMetadata": {
+    "titleCandidates": [
+      "Spinalonga: Why It Was Fortified and How the Island’s Uses Changed",
+      "A factual guide to Spinalonga: Why It Was Fortified and How the Island’s Uses Changed",
+      "Spinalonga: Why It Was Fortified and How the Island’s Uses Changed: historical context",
+      "Understanding Spinalonga: Why It Was Fortified and How the Island’s Uses Changed",
+      "Spinalonga: Why It Was Fortified and How the Island’s Uses Changed: sources and changing uses"
+    ],
+    "thumbnailConcepts": [
+      "Fortress landscape with factual date label",
+      "Settlement layers with restrained caption",
+      "Map-led geographic context"
+    ],
+    "descriptionDraft": "Why Spinalonga was fortified, how it became an Ottoman town and a compulsory settlement for people with Hansen’s disease, and how it remains connected to Elounda and Plaka.\n\nSources and further reading are available in the accompanying article.",
+    "chapterOutline": [
+      "A small island in a strategic bay",
+      "Why Venice fortified Spinalonga",
+      "A Venetian enclave after 1669",
+      "From fortress to Ottoman town",
+      "Why the Cretan State chose Spinalonga",
+      "The first transfers in 1904",
+      "Life inside the settlement",
+      "Plaka, Elounda and the island’s supply line",
+      "Treatment, change and closure",
+      "From abandonment to protected monument",
+      "What the island’s successive lives reveal",
+      "A note on evidence",
+      "Sources and Image Credits"
+    ],
+    "articleLinkPlaceholder": "https://traditional-homes.gr/en/blog/ARTICLE-SLUG/",
+    "imageCreditBlock": "Photo: Nikos Pasparakis / Elounda Traditional Homes of Crete",
+    "sourceNoteBlock": "Use article sources and controlled research records only."
+  },
+  "visualEvidenceRegister": [
+    {
+      "scene": "Spinalonga and the Gulf of Elounda seen from the hillside above the coast.",
+      "availableAsset": "spinalonga-gulf-context.webp",
+      "claimSupported": "modern context or article geography",
+      "sourceOrOwnership": "Nikos Pasparakis / Elounda Traditional Homes of Crete",
+      "rightsState": "owned, approved website use",
+      "modernContextWarning": null,
+      "actionNeeded": null
+    },
+    {
+      "scene": "Venetian coastal fortifications along the rocky shoreline of Spinalonga.",
+      "availableAsset": "spinalonga-coastal-fortifications.webp",
+      "claimSupported": "modern context or article geography",
+      "sourceOrOwnership": "Nikos Pasparakis / Elounda Traditional Homes of Crete",
+      "rightsState": "owned, approved website use",
+      "modernContextWarning": null,
+      "actionNeeded": null
+    },
+    {
+      "scene": "Spinalonga’s fortifications and settlement buildings rising above the shoreline.",
+      "availableAsset": "spinalonga-fortress-and-settlement-close-view.webp",
+      "claimSupported": "modern context or article geography",
+      "sourceOrOwnership": "Nikos Pasparakis / Elounda Traditional Homes of Crete",
+      "rightsState": "owned, approved website use",
+      "modernContextWarning": null,
+      "actionNeeded": null
+    },
+    {
+      "scene": "Passenger boat approaching the fortified shoreline of Spinalonga.",
+      "availableAsset": "spinalonga-boat-and-main-landing.webp",
+      "claimSupported": "modern context or article geography",
+      "sourceOrOwnership": "Nikos Pasparakis / Elounda Traditional Homes of Crete",
+      "rightsState": "owned, approved website use",
+      "modernContextWarning": "Modern context only; not evidence of historical transport operations.",
+      "actionNeeded": null
+    },
+    {
+      "scene": "Closer view of Spinalonga’s fortifications and surviving settlement buildings.",
+      "availableAsset": "spinalonga-island-close-view.webp",
+      "claimSupported": "modern context or article geography",
+      "sourceOrOwnership": "Nikos Pasparakis / Elounda Traditional Homes of Crete",
+      "rightsState": "owned, approved website use",
+      "modernContextWarning": null,
+      "actionNeeded": null
+    }
+  ],
+  "publicationReadiness": {
+    "factualReadiness": "review required",
+    "imageReadiness": "rights review required",
+    "sourceReadiness": "review required",
+    "unresolvedBlockers": [
+      "Human factual review",
+      "No final narration in Phase 1"
+    ],
+    "requiresHumanReview": true
+  }
+}
