@@ -3,7 +3,7 @@ title: "Spinalonga: Why It Was Fortified and How the Island’s Uses Changed"
 description: "Why Spinalonga was fortified, how it became an Ottoman town and a compulsory settlement for people with Hansen’s disease, and how it remains connected to Elounda and Plaka."
 pubDate: 2026-08-06
 author: "Elounda Traditional Homes of Crete"
-draft: true
+draft: false
 category: "History"
 region: "Elounda, Plaka and Mirabello Bay, Lasithi, Eastern Crete"
 tags: [spinalonga, elounda, plaka, venetian-history, ottoman-history, hansens-disease, mirabello-bay]
@@ -137,7 +137,7 @@ Original records have not survived, or have not yet been located, equally for ev
 - [The construction phases](https://spinalonga-island.gr/monuments/spinalonga/%CE%B5%CE%BD%CE%B5%CF%84%CE%B9%CE%BA%CF%8C-%CF%86%CF%81%CE%BF%CF%8D%CF%81%CE%B9%CE%BF/fortifications/%CE%BF%CE%B9-%CE%BA%CE%B1%CF%84%CE%B1%CF%83%CE%BA%CE%B5%CF%85%CE%B1%CF%83%CF%84%CE%B9%CE%BA%CE%AD%CF%82-%CF%86%CE%AC%CF%83%CE%B5%CE%B9%CF%82/?lang=en), Ephorate of Antiquities of Lasithi.
 - [Ottoman times](https://spinalonga-island.gr/history/%CE%B7-%CE%BF%CE%B8%CF%89%CE%BC%CE%B1%CE%BD%CE%B9%CE%BA%CE%AE-%CF%80%CE%B5%CF%81%CE%AF%CE%BF%CE%B4%CE%BF%CF%82/?lang=en), Ephorate of Antiquities of Lasithi.
 - [Modern times](https://spinalonga-island.gr/history/%CE%B7-%CF%83%CF%8D%CE%B3%CF%87%CF%81%CE%BF%CE%BD%CE%B7-%CF%80%CE%B5%CF%81%CE%AF%CE%BF%CE%B4%CE%BF%CF%82/?lang=en), Ephorate of Antiquities of Lasithi.
-- [Opening of the perimeter road—Remoundakis inscription](https://spinalonga-island.gr/monuments/spinalonga/leprocomy/%CE%B4%CE%B9%CE%AC%CE%BD%CE%BF%CE%B9%CE%BE%CE%B7-%CF%80%CE%B5%CF%81%CE%B9%CE%BC%CE%B5%CF%84%CF%81%CE%B9%CE%BA%CE%BF%CF%8D-%CE%B4%CF%81%CE%BF%CE%BC%CE%BF%CF%85-%CE%B5%CF%80%CE%B9%CE%B3%CF%81/?lang=en), Ephorate of Antiquities of Lasithi.
+- [Opening of the perimeter road—Remoundakis inscription](https://spinalonga-island.gr/monuments/spinalonga/leprocomy/%CE%B4%CE%B9%CE%AC%CE%BD%CE%BF%CE%B9%CE%BE%CE%B7-%CF%80%CE%B5%CF%81%CE%B9%CE%BC%CE%B5%CF%84%CF%81%CE%B9%CE%BA%CE%BF%CF%8D-%CE%B4%CF%81%CF%8C%CE%BC%CE%BF%CF%85-%CE%B5%CF%80%CE%B9%CE%B3%CF%81/?lang=en), Ephorate of Antiquities of Lasithi.
 - Stavrakakis, N., [“The living conditions and care of the lepers on the islet of Spinalonga”](https://www.mednet.gr/archives/2022-3/pdf/397.pdf), *Archives of Hellenic Medicine* 39(3), 397–409.
 - [At the Spinalonga leprosarium: history and memory](https://digitalculture.gov.gr/2023/03/sto-leprokomio-tis-spinalogkas-istoria-ke-mnimi/), Greek digital-culture platform.
 - [Fortress of Spinalonga](https://whc.unesco.org/en/tentativelists/5866), UNESCO World Heritage Centre Tentative List, and [Decision 44 COM 8B.19](https://whc.unesco.org/en/decisions/7938), UNESCO World Heritage Committee.
