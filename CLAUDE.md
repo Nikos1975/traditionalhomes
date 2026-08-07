@@ -28,6 +28,12 @@
 - Reuse context already loaded in the current session. Reread files only when they changed or a specific unresolved question requires it.
 - Read only the skill and instruction files relevant to the task; do not repeatedly reload them in the same session.
 - Prefer targeted `rg`, focused diffs, and small line ranges over dumping whole files.
+- For complex multi-file exploration, prefer an existing fresh Graphify graph before broad grep or file reads, including a matching graph held in a separate worktree only when its source SHA matches the relevant repository base.
+- Use a small Graphify query budget (normally 1000–1500 tokens); treat its results as navigation evidence and verify the exact source before editing.
+- Do not use Graphify for obvious single-file or local tasks, and do not automatically rebuild graphs during ordinary work.
+- Do not trigger semantic or LLM extraction unless explicitly required.
+- If the graph is missing, stale, incomplete, or does not cover the relevant files, fall back to targeted `rg` and source reads.
+- Graphify never overrides correctness, protected-file rules, or source verification; keep its output local and untracked.
 - Check repository/worktree state at the start, before commit, and after commit unless there is a concrete reason to recheck sooner.
 - During implementation, run the smallest relevant tests first; run the full validation suite once after the change is complete unless a failure requires another run.
 - Group safe shell commands and avoid narrating routine command execution. Report material findings, decisions, and concrete blockers only.
