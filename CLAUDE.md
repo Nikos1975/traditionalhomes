@@ -23,6 +23,19 @@
 - When work is multi-step, paused, or important for future agents, update `docs/agent-handoff-notes.md` with what changed, what was verified, what remains, and any blockers
 - Keep handoff notes short and factual; do not duplicate every diff
 
+## Agent efficiency
+
+- Reuse context already loaded in the current session. Reread files only when they changed or a specific unresolved question requires it.
+- Read only the skill and instruction files relevant to the task; do not repeatedly reload them in the same session.
+- Prefer targeted `rg`, focused diffs, and small line ranges over dumping whole files.
+- Check repository/worktree state at the start, before commit, and after commit unless there is a concrete reason to recheck sooner.
+- During implementation, run the smallest relevant tests first; run the full validation suite once after the change is complete unless a failure requires another run.
+- Group safe shell commands and avoid narrating routine command execution. Report material findings, decisions, and concrete blockers only.
+- Do not repeat the task specification, rediscover known branch/worktree facts, or print large generated files when targeted field checks, hashes, parsers, or tests are sufficient.
+- Do not pause only to report partial progress. Continue until completion or a genuine blocker.
+- Keep final reports concise: changed scope, validation, commit/PR state, and remaining issues.
+- Token efficiency never overrides correctness, safety, protected-file rules, verification gates, or required approvals.
+
 ## Documentation update rules
 
 When adding, removing, renaming, or significantly changing a website section, route, component, content collection, data file, API function, or user-facing flow, update the relevant documentation in the same task.
