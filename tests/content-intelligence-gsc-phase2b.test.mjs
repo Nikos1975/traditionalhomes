@@ -119,15 +119,33 @@ test("API datasets are idempotent and retain truncation provenance", async () =>
   } finally { await rm(rootDir, { recursive: true, force: true }); }
 });
 
-test("GSC fetch lists properties without a property and validates access before querying", async () => {
+test("GSC fetch requires a property before authentication or transport access", async () => {
+  let authenticationCalls = 0;
+  let transportCalls = 0;
+  const authProvider = { getAccessToken: async () => { authenticationCalls += 1; return "token"; } };
+  const transport = {
+    listSites: async () => { transportCalls += 1; return { siteEntry: [] }; },
+    querySearchAnalytics: async () => { transportCalls += 1; return { rows: [] }; },
+  };
+  await assert.rejects(runContentCli({ command: "gsc-fetch", argv: [], authProvider, transport }), /requires --property/);
+  assert.equal(authenticationCalls, 0);
+  assert.equal(transportCalls, 0);
+});
+
+test("GSC properties lists accessible properties independently", async () => {
+  const authProvider = { getAccessToken: async () => "token" };
+  const transport = { listSites: async () => ({ siteEntry: [{ siteUrl: "sc-domain:example.com", permissionLevel: "siteOwner" }] }) };
+  const listed = await runContentCli({ command: "gsc-properties", argv: ["--json"], authProvider, transport });
+  assert.deepEqual(listed, [{ property: "sc-domain:example.com", permissionLevel: "siteOwner" }]);
+});
+
+test("GSC fetch validates accessible properties before querying", async () => {
   const calls = [];
   const authProvider = { getAccessToken: async () => "token" };
   const transport = {
     listSites: async () => ({ siteEntry: [{ siteUrl: "sc-domain:example.com", permissionLevel: "siteOwner" }] }),
     querySearchAnalytics: async (...args) => { calls.push(args); return { rows: [] }; },
   };
-  const listed = await runContentCli({ command: "gsc-fetch", argv: [], authProvider, transport });
-  assert.deepEqual(listed, [{ property: "sc-domain:example.com", permissionLevel: "siteOwner" }]);
   await assert.rejects(runContentCli({ command: "gsc-fetch", argv: ["--property", "sc-domain:other.com", "--start-date", "2026-01-01", "--end-date", "2026-01-01", "--dimensions", "query"], authProvider, transport }), /not accessible/);
   assert.equal(calls.length, 0);
 });
