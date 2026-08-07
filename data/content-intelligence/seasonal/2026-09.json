@@ -1,0 +1,55 @@
+{
+  "month": 9,
+  "name": "September",
+  "recommendations": {
+    "resurface existing article": [
+      {
+        "slug": "walking-around-elounda",
+        "relevanceScore": 3,
+        "relevanceReason": "Configured themes: walking.",
+        "why": "Matches September: walking and archival research.",
+        "evidenceReadiness": "published article",
+        "overlapStatus": "existing content",
+        "volatilityStatus": "low",
+        "nextAction": "review suitability"
+      }
+    ],
+    "update existing article": [],
+    "finish draft": [],
+    "research next": [
+      {
+        "slug": "elounda-autumn-walking-routes",
+        "relevanceScore": 5,
+        "relevanceReason": "Seed seasonal relevance: 5/5.",
+        "why": "Raw score 88/100; deductions: likelyDuplication 10.",
+        "evidenceReadiness": "usable",
+        "overlapStatus": "likely",
+        "volatilityStatus": "moderate",
+        "nextAction": "research first"
+      },
+      {
+        "slug": "spinalonga-archival-supply-records",
+        "relevanceScore": 4,
+        "relevanceReason": "Seed seasonal relevance: 4/5.",
+        "why": "Raw score 81/100; deductions: inadequateEvidence 30, likelyDuplication 10, unclearImageRights 15.",
+        "evidenceReadiness": "inadequate",
+        "overlapStatus": "likely",
+        "volatilityStatus": "low",
+        "nextAction": "research first"
+      }
+    ],
+    "video candidate": [
+      {
+        "slug": "spinalonga-why-fortified-changing-uses",
+        "relevanceScore": 3,
+        "relevanceReason": "Configured themes: historical-itineraries.",
+        "why": "Matches September: walking and archival research.",
+        "evidenceReadiness": "published article",
+        "overlapStatus": "existing content",
+        "volatilityStatus": "low",
+        "nextAction": "create review-only video plan"
+      }
+    ],
+    "practical seasonal content": []
+  }
+}

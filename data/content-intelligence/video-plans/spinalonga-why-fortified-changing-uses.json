@@ -1,0 +1,1910 @@
+{
+  "schemaVersion": 3,
+  "articleSlug": "spinalonga-why-fortified-changing-uses",
+  "articleTitle": "Spinalonga: Why It Was Fortified and How the Island’s Uses Changed",
+  "canonicalRoute": "/en/blog/spinalonga-why-fortified-changing-uses/",
+  "draft": false,
+  "generatedAt": "deterministic",
+  "sourceFingerprint": "77a374a15f9304f2e9db6ac5584780784705687ad865f83ed0c7302b149b356d",
+  "targetAudience": "Readers interested in East Crete history",
+  "contentPillar": "History",
+  "proposedDurationMinutes": 10,
+  "editorialCore": {
+    "centralQuestion": "What does Spinalonga: Why It Was Fortified and How the Island’s Uses Changed show through controlled evidence?",
+    "thesis": "The plan follows controlled evidence and preserves unresolved questions.",
+    "viewerValue": "A careful orientation to supported historical context.",
+    "factualScope": [
+      {
+        "claim": "Work on the Venetian fortress began in June 1579.",
+        "status": "verified",
+        "support": [
+          "S01"
+        ],
+        "uncertainty": "None found",
+        "publicSourceReady": true,
+        "parseState": "parsed"
+      },
+      {
+        "claim": "Bressani proposed the first enclosure; Orsini’s 1584 intervention added an upper defensive line.",
+        "status": "verified",
+        "support": [
+          "S01, S05"
+        ],
+        "uncertainty": "Do not call either sole creator",
+        "publicSourceReady": true,
+        "parseState": "parsed"
+      },
+      {
+        "claim": "Its position served the harbour and approaches to Elounda within a wider defensive response.",
+        "status": "qualified",
+        "support": [
+          "S01, S07"
+        ],
+        "uncertainty": "Single-cause explanations are unsupported",
+        "publicSourceReady": false,
+        "parseState": "parsed"
+      },
+      {
+        "claim": "Salt production formed part of the local strategic economy.",
+        "status": "qualified",
+        "support": [
+          "S14"
+        ],
+        "uncertainty": "Direct decision-making link not demonstrated",
+        "publicSourceReady": false,
+        "parseState": "parsed"
+      },
+      {
+        "claim": "An earlier wall is now interpreted as Byzantine, probably 7th–8th c.",
+        "status": "qualified",
+        "support": [
+          "S02"
+        ],
+        "uncertainty": "UNESCO tentative text says antiquity; do not collapse disagreement",
+        "publicSourceReady": false,
+        "parseState": "parsed"
+      },
+      {
+        "claim": "The fortress surrendered on 4 October 1715 after a three-month siege.",
+        "status": "verified",
+        "support": [
+          "S03"
+        ],
+        "uncertainty": "Captivity figures need archival corroboration",
+        "publicSourceReady": true,
+        "parseState": "parsed"
+      },
+      {
+        "claim": "UNESCO’s nomination reports 1,112 people in 1881 and roughly 200 houses/25 shops later in the century.",
+        "status": "qualified",
+        "support": [
+          "S07"
+        ],
+        "uncertainty": "Nomination, not census edition",
+        "publicSourceReady": false,
+        "parseState": "parsed"
+      },
+      {
+        "claim": "The 1903 selection was connected with removal of remaining Muslim residents.",
+        "status": "qualified",
+        "support": [
+          "S04"
+        ],
+        "uncertainty": "Exact dates/process not yet established",
+        "publicSourceReady": false,
+        "parseState": "parsed"
+      },
+      {
+        "claim": "Law 463 identified Spinalonga for settlement; first arrivals followed in 1904.",
+        "status": "qualified",
+        "support": [
+          "S04, S16"
+        ],
+        "uncertainty": "Dates/title must be checked in Gazette facsimile",
+        "publicSourceReady": false,
+        "parseState": "parsed"
+      },
+      {
+        "claim": "A scholarly chapter reports 251 people transferred on 13 October 1904.",
+        "status": "unresolved",
+        "support": [
+          "S16"
+        ],
+        "uncertainty": "Needs primary transport or gazette confirmation",
+        "publicSourceReady": false,
+        "parseState": "parsed"
+      },
+      {
+        "claim": "Early food, housing and medical provision were severely inadequate.",
+        "status": "verified",
+        "support": [
+          "S04, S10"
+        ],
+        "uncertainty": "Avoid universalised individual experience",
+        "publicSourceReady": true,
+        "parseState": "parsed"
+      },
+      {
+        "claim": "Electricity",
+        "status": "unresolved",
+        "support": [
+          "None reviewed"
+        ],
+        "uncertainty": "Common retellings conflict",
+        "publicSourceReady": false,
+        "parseState": "parsed"
+      },
+      {
+        "claim": "Sulphone treatment changed the medical context in the 1940s.",
+        "status": "qualified",
+        "support": [
+          "S10"
+        ],
+        "uncertainty": "Exact availability on Spinalonga unresolved",
+        "publicSourceReady": false,
+        "parseState": "parsed"
+      },
+      {
+        "claim": "An inscription credits the Brotherhood and its president Remoundakis with the 1939 perimeter road.",
+        "status": "verified",
+        "support": [
+          "S06"
+        ],
+        "uncertainty": "Does not prove every claimed reform",
+        "publicSourceReady": true,
+        "parseState": "parsed"
+      },
+      {
+        "claim": "The institution closed in 1957.",
+        "status": "verified",
+        "support": [
+          "S04, S10, S07"
+        ],
+        "uncertainty": "Final transfers/resident differ in retellings",
+        "publicSourceReady": true,
+        "parseState": "parsed"
+      },
+      {
+        "claim": "Final resident",
+        "status": "unresolved",
+        "support": [
+          "None reviewed"
+        ],
+        "uncertainty": "Highly repeated but unverified here",
+        "publicSourceReady": false,
+        "parseState": "parsed"
+      },
+      {
+        "claim": "Do not use.",
+        "status": "unresolved",
+        "support": [
+          "None comparative"
+        ],
+        "uncertainty": "Definition and comparison unresolved",
+        "publicSourceReady": false,
+        "parseState": "parsed"
+      },
+      {
+        "claim": "Much leprosarium-era fabric was demolished in the 1980s.",
+        "status": "qualified",
+        "support": [
+          "S11"
+        ],
+        "uncertainty": "Not evidence that records were burned/destroyed",
+        "publicSourceReady": false,
+        "parseState": "parsed"
+      },
+      {
+        "claim": "Plaka disinfection facility",
+        "status": "unresolved",
+        "support": [
+          "None reviewed"
+        ],
+        "uncertainty": "Requires site/municipal evidence",
+        "publicSourceReady": false,
+        "parseState": "parsed"
+      },
+      {
+        "claim": "Cemetery practices",
+        "status": "unresolved",
+        "support": [
+          "None reviewed"
+        ],
+        "uncertainty": "Sensitive, often romanticised",
+        "publicSourceReady": false,
+        "parseState": "parsed"
+      },
+      {
+        "claim": "On Greece’s Tentative List since 2014; not inscribed on the World Heritage List.",
+        "status": "verified",
+        "support": [
+          "S07, S09"
+        ],
+        "uncertainty": "Never call it a World Heritage Site",
+        "publicSourceReady": true,
+        "parseState": "parsed"
+      },
+      {
+        "claim": "No public figure yet.",
+        "status": "unresolved",
+        "support": [
+          "S07 only says hundreds of thousands"
+        ],
+        "uncertainty": "Current figures change and need operator data",
+        "publicSourceReady": false,
+        "parseState": "parsed"
+      },
+      {
+        "claim": "No image may be reused yet.",
+        "status": "unresolved",
+        "support": [
+          "Register below"
+        ],
+        "uncertainty": "Online/government display ≠ commercial licence",
+        "publicSourceReady": false,
+        "parseState": "parsed"
+      },
+      {
+        "claim": "Obtain Law 375 (1901), Law 463 (1903), Decree 166 and internal-operation decree in the *Official Gazette of the Cretan State*",
+        "status": "omitted",
+        "support": [
+          "Gazette scans/transcriptions from a national, state or library archive"
+        ],
+        "uncertainty": "Establish exact legal wording, dates, authority, admission and administration",
+        "publicSourceReady": false,
+        "parseState": "review required"
+      },
+      {
+        "claim": "Verify first transfer date/count and the last transfers/closure paperwork",
+        "status": "omitted",
+        "support": [
+          "Cretan State/Greece health or prefectural files; contemporary press"
+        ],
+        "uncertainty": "Avoid repeating 251, final-resident and closure narratives without proof",
+        "publicSourceReady": false,
+        "parseState": "review required"
+      },
+      {
+        "claim": "Build an Ottoman settlement record",
+        "status": "omitted",
+        "support": [
+          "1881 census, property/tax/customs records, Ottoman archives, peer-reviewed studies"
+        ],
+        "uncertainty": "Supports population, houses, shops, families, trade, religious buildings and departure",
+        "publicSourceReady": false,
+        "parseState": "review required"
+      },
+      {
+        "claim": "Document mainland relationships",
+        "status": "omitted",
+        "support": [
+          "Plaka/Elounda municipal records, boat licences, oral-history archive, local press"
+        ],
+        "uncertainty": "Needed to connect residents, supplies, transport, burials and work without invention",
+        "publicSourceReady": false,
+        "parseState": "review required"
+      },
+      {
+        "claim": "Clear historical images/maps",
+        "status": "omitted",
+        "support": [
+          "Holding institutions and written licences"
+        ],
+        "uncertainty": "Six current user-owned modern photographs are cleared separately; archival plans, maps and historical imagery remain unavailable for reuse",
+        "publicSourceReady": false,
+        "parseState": "review required"
+      },
+      {
+        "claim": "Determine legal/topographic status of Kalydon and name history",
+        "status": "omitted",
+        "support": [
+          "Gazetteer, cadastral/map records, Venetian textual edition"
+        ],
+        "uncertainty": "Prevents mistaken name/etymology claims",
+        "publicSourceReady": false,
+        "parseState": "review required"
+      },
+      {
+        "claim": "Verify electricity, water, school, churches, nurses and everyday services",
+        "status": "omitted",
+        "support": [
+          "Institution accounts, technical records, resident testimony"
+        ],
+        "uncertainty": "Human-scale section needs time-specific evidence",
+        "publicSourceReady": false,
+        "parseState": "review required"
+      },
+      {
+        "claim": "Locate multiple resident testimonies, not only Remoundakis",
+        "status": "omitted",
+        "support": [
+          "Published oral histories, archive interviews, family permissions"
+        ],
+        "uncertainty": "Avoids heroic single-person narrative",
+        "publicSourceReady": false,
+        "parseState": "review required"
+      },
+      {
+        "claim": "Test the fortress/salt-pans relationship",
+        "status": "omitted",
+        "support": [
+          "Venetian Senate/provisioner correspondence and economic history"
+        ],
+        "uncertainty": "Separates context from demonstrated motive",
+        "publicSourceReady": false,
+        "parseState": "review required"
+      },
+      {
+        "claim": "Resolve earlier wall chronology",
+        "status": "omitted",
+        "support": [
+          "Excavation report or specialist archaeological publication"
+        ],
+        "uncertainty": "Reconciles Ministry/UNESCO formulations",
+        "publicSourceReady": false,
+        "parseState": "review required"
+      },
+      {
+        "claim": "Confirm 2026 UNESCO position and Committee outcome",
+        "status": "omitted",
+        "support": [
+          "Direct current UNESCO database / decision text"
+        ],
+        "uncertainty": "Enables precise heritage status at drafting",
+        "publicSourceReady": false,
+        "parseState": "review required"
+      },
+      {
+        "claim": "Visitor numbers and current operation",
+        "status": "omitted",
+        "support": [
+          "Ministry statistical/reporting source"
+        ],
+        "uncertainty": "Only needed if future article makes a contemporary management claim",
+        "publicSourceReady": false,
+        "parseState": "review required"
+      },
+      {
+        "claim": "Record-loss/burning stories and cemetery/disinfection narratives",
+        "status": "omitted",
+        "support": [
+          "Archival inventory, archaeological report, local authority records"
+        ],
+        "uncertainty": "High-risk, emotionally charged claims",
+        "publicSourceReady": false,
+        "parseState": "review required"
+      },
+      {
+        "claim": "Classification",
+        "status": "omitted",
+        "support": [],
+        "uncertainty": null,
+        "publicSourceReady": false,
+        "parseState": "review required",
+        "malformed": true
+      },
+      {
+        "claim": "Plausible, pending Venetian-document edition",
+        "status": "omitted",
+        "support": [],
+        "uncertainty": null,
+        "publicSourceReady": false,
+        "parseState": "review required",
+        "malformed": true
+      },
+      {
+        "claim": "Disputed / folk etymology",
+        "status": "omitted",
+        "support": [],
+        "uncertainty": null,
+        "publicSourceReady": false,
+        "parseState": "review required",
+        "malformed": true
+      },
+      {
+        "claim": "Unsupported",
+        "status": "omitted",
+        "support": [],
+        "uncertainty": null,
+        "publicSourceReady": false,
+        "parseState": "review required",
+        "malformed": true
+      },
+      {
+        "claim": "Documented as current designation in secondary/administrative usage; historical introduction unresolved",
+        "status": "omitted",
+        "support": [],
+        "uncertainty": null,
+        "publicSourceReady": false,
+        "parseState": "review required",
+        "malformed": true
+      },
+      {
+        "claim": "Target question",
+        "status": "omitted",
+        "support": [],
+        "uncertainty": null,
+        "publicSourceReady": false,
+        "parseState": "review required",
+        "malformed": true
+      },
+      {
+        "claim": "Landing places, local policy, health measures, support or conflict",
+        "status": "omitted",
+        "support": [],
+        "uncertainty": null,
+        "publicSourceReady": false,
+        "parseState": "review required",
+        "malformed": true
+      },
+      {
+        "claim": "Landings, service boats, medical transport and regulated access",
+        "status": "omitted",
+        "support": [],
+        "uncertainty": null,
+        "publicSourceReady": false,
+        "parseState": "review required",
+        "malformed": true
+      },
+      {
+        "claim": "Names, routes, owners and periods of service",
+        "status": "omitted",
+        "support": [],
+        "uncertainty": null,
+        "publicSourceReady": false,
+        "parseState": "review required",
+        "malformed": true
+      },
+      {
+        "claim": "Food, water, firewood, medicines, building materials and suppliers",
+        "status": "omitted",
+        "support": [],
+        "uncertainty": null,
+        "publicSourceReady": false,
+        "parseState": "review required",
+        "malformed": true
+      },
+      {
+        "claim": "Named workers/residents, ethical permissions, local memory and cross-checkable dates",
+        "status": "omitted",
+        "support": [],
+        "uncertainty": null,
+        "publicSourceReady": false,
+        "parseState": "review required",
+        "malformed": true
+      },
+      {
+        "claim": "Transfers, protests, deaths, supply disruption and public response",
+        "status": "omitted",
+        "support": [],
+        "uncertainty": null,
+        "publicSourceReady": false,
+        "parseState": "review required",
+        "malformed": true
+      },
+      {
+        "claim": "Landing places, boats, working relationships and rights leads",
+        "status": "omitted",
+        "support": [],
+        "uncertainty": null,
+        "publicSourceReady": false,
+        "parseState": "review required",
+        "malformed": true
+      },
+      {
+        "claim": "Guards, laundresses, nurses, clerks, boatmen and contractors",
+        "status": "omitted",
+        "support": [],
+        "uncertainty": null,
+        "publicSourceReady": false,
+        "parseState": "review required",
+        "malformed": true
+      },
+      {
+        "claim": "Burial arrangements and mainland involvement without anecdote",
+        "status": "omitted",
+        "support": [],
+        "uncertainty": null,
+        "publicSourceReady": false,
+        "parseState": "review required",
+        "malformed": true
+      },
+      {
+        "claim": "In 2021, Greece’s nomination was withdrawn at the request of the State Party.",
+        "status": "omitted",
+        "support": [],
+        "uncertainty": "Article-derived distinction retained for human confirmation against the controlled research record.",
+        "publicSourceReady": false,
+        "parseState": "review required"
+      }
+    ],
+    "excludedScope": [
+      "Final narration script",
+      "Unverified named people",
+      "Unresolved precision"
+    ],
+    "terminologyNotes": "Use current, respectful terminology.",
+    "uncertaintyNotes": "Retain qualified and unresolved labels."
+  },
+  "longFormPlan": [
+    {
+      "order": 1,
+      "heading": "A small island in a strategic bay",
+      "estimatedSeconds": 50,
+      "narrationPurpose": "Explain controlled research without a final script.",
+      "supportedClaims": [
+        {
+          "claim": "Work on the Venetian fortress began in June 1579.",
+          "status": "verified",
+          "support": [
+            "S01"
+          ],
+          "uncertainty": "None found",
+          "publicSourceReady": true,
+          "parseState": "parsed"
+        },
+        {
+          "claim": "Bressani proposed the first enclosure; Orsini’s 1584 intervention added an upper defensive line.",
+          "status": "verified",
+          "support": [
+            "S01, S05"
+          ],
+          "uncertainty": "Do not call either sole creator",
+          "publicSourceReady": true,
+          "parseState": "parsed"
+        },
+        {
+          "claim": "The fortress surrendered on 4 October 1715 after a three-month siege.",
+          "status": "verified",
+          "support": [
+            "S03"
+          ],
+          "uncertainty": "Captivity figures need archival corroboration",
+          "publicSourceReady": true,
+          "parseState": "parsed"
+        }
+      ],
+      "qualifiedClaims": [
+        {
+          "claim": "Its position served the harbour and approaches to Elounda within a wider defensive response.",
+          "status": "qualified",
+          "support": [
+            "S01, S07"
+          ],
+          "uncertainty": "Single-cause explanations are unsupported",
+          "publicSourceReady": false,
+          "parseState": "parsed"
+        },
+        {
+          "claim": "Salt production formed part of the local strategic economy.",
+          "status": "qualified",
+          "support": [
+            "S14"
+          ],
+          "uncertainty": "Direct decision-making link not demonstrated",
+          "publicSourceReady": false,
+          "parseState": "parsed"
+        },
+        {
+          "claim": "An earlier wall is now interpreted as Byzantine, probably 7th–8th c.",
+          "status": "qualified",
+          "support": [
+            "S02"
+          ],
+          "uncertainty": "UNESCO tentative text says antiquity; do not collapse disagreement",
+          "publicSourceReady": false,
+          "parseState": "parsed"
+        }
+      ],
+      "unresolvedIssues": [
+        {
+          "claim": "A scholarly chapter reports 251 people transferred on 13 October 1904.",
+          "status": "unresolved",
+          "support": [
+            "S16"
+          ],
+          "uncertainty": "Needs primary transport or gazette confirmation",
+          "publicSourceReady": false,
+          "parseState": "parsed"
+        },
+        {
+          "claim": "Electricity",
+          "status": "unresolved",
+          "support": [
+            "None reviewed"
+          ],
+          "uncertainty": "Common retellings conflict",
+          "publicSourceReady": false,
+          "parseState": "parsed"
+        },
+        {
+          "claim": "Final resident",
+          "status": "unresolved",
+          "support": [
+            "None reviewed"
+          ],
+          "uncertainty": "Highly repeated but unverified here",
+          "publicSourceReady": false,
+          "parseState": "parsed"
+        }
+      ],
+      "visualRequirement": "Use owned context imagery or rights-cleared archival material.",
+      "onScreenText": "A small island in a strategic bay",
+      "transition": "Measured transition.",
+      "sourceNotes": "Use controlled research records only.",
+      "rightsNotes": "Human rights review required."
+    },
+    {
+      "order": 2,
+      "heading": "Why Venice fortified Spinalonga",
+      "estimatedSeconds": 50,
+      "narrationPurpose": "Explain controlled research without a final script.",
+      "supportedClaims": [
+        {
+          "claim": "Work on the Venetian fortress began in June 1579.",
+          "status": "verified",
+          "support": [
+            "S01"
+          ],
+          "uncertainty": "None found",
+          "publicSourceReady": true,
+          "parseState": "parsed"
+        },
+        {
+          "claim": "Bressani proposed the first enclosure; Orsini’s 1584 intervention added an upper defensive line.",
+          "status": "verified",
+          "support": [
+            "S01, S05"
+          ],
+          "uncertainty": "Do not call either sole creator",
+          "publicSourceReady": true,
+          "parseState": "parsed"
+        },
+        {
+          "claim": "The fortress surrendered on 4 October 1715 after a three-month siege.",
+          "status": "verified",
+          "support": [
+            "S03"
+          ],
+          "uncertainty": "Captivity figures need archival corroboration",
+          "publicSourceReady": true,
+          "parseState": "parsed"
+        }
+      ],
+      "qualifiedClaims": [
+        {
+          "claim": "Its position served the harbour and approaches to Elounda within a wider defensive response.",
+          "status": "qualified",
+          "support": [
+            "S01, S07"
+          ],
+          "uncertainty": "Single-cause explanations are unsupported",
+          "publicSourceReady": false,
+          "parseState": "parsed"
+        },
+        {
+          "claim": "Salt production formed part of the local strategic economy.",
+          "status": "qualified",
+          "support": [
+            "S14"
+          ],
+          "uncertainty": "Direct decision-making link not demonstrated",
+          "publicSourceReady": false,
+          "parseState": "parsed"
+        },
+        {
+          "claim": "An earlier wall is now interpreted as Byzantine, probably 7th–8th c.",
+          "status": "qualified",
+          "support": [
+            "S02"
+          ],
+          "uncertainty": "UNESCO tentative text says antiquity; do not collapse disagreement",
+          "publicSourceReady": false,
+          "parseState": "parsed"
+        }
+      ],
+      "unresolvedIssues": [
+        {
+          "claim": "A scholarly chapter reports 251 people transferred on 13 October 1904.",
+          "status": "unresolved",
+          "support": [
+            "S16"
+          ],
+          "uncertainty": "Needs primary transport or gazette confirmation",
+          "publicSourceReady": false,
+          "parseState": "parsed"
+        },
+        {
+          "claim": "Electricity",
+          "status": "unresolved",
+          "support": [
+            "None reviewed"
+          ],
+          "uncertainty": "Common retellings conflict",
+          "publicSourceReady": false,
+          "parseState": "parsed"
+        },
+        {
+          "claim": "Final resident",
+          "status": "unresolved",
+          "support": [
+            "None reviewed"
+          ],
+          "uncertainty": "Highly repeated but unverified here",
+          "publicSourceReady": false,
+          "parseState": "parsed"
+        }
+      ],
+      "visualRequirement": "Use owned context imagery or rights-cleared archival material.",
+      "onScreenText": "Why Venice fortified Spinalonga",
+      "transition": "Measured transition.",
+      "sourceNotes": "Use controlled research records only.",
+      "rightsNotes": "Human rights review required."
+    },
+    {
+      "order": 3,
+      "heading": "A Venetian enclave after 1669",
+      "estimatedSeconds": 50,
+      "narrationPurpose": "Explain controlled research without a final script.",
+      "supportedClaims": [
+        {
+          "claim": "Work on the Venetian fortress began in June 1579.",
+          "status": "verified",
+          "support": [
+            "S01"
+          ],
+          "uncertainty": "None found",
+          "publicSourceReady": true,
+          "parseState": "parsed"
+        },
+        {
+          "claim": "Bressani proposed the first enclosure; Orsini’s 1584 intervention added an upper defensive line.",
+          "status": "verified",
+          "support": [
+            "S01, S05"
+          ],
+          "uncertainty": "Do not call either sole creator",
+          "publicSourceReady": true,
+          "parseState": "parsed"
+        },
+        {
+          "claim": "The fortress surrendered on 4 October 1715 after a three-month siege.",
+          "status": "verified",
+          "support": [
+            "S03"
+          ],
+          "uncertainty": "Captivity figures need archival corroboration",
+          "publicSourceReady": true,
+          "parseState": "parsed"
+        }
+      ],
+      "qualifiedClaims": [
+        {
+          "claim": "Its position served the harbour and approaches to Elounda within a wider defensive response.",
+          "status": "qualified",
+          "support": [
+            "S01, S07"
+          ],
+          "uncertainty": "Single-cause explanations are unsupported",
+          "publicSourceReady": false,
+          "parseState": "parsed"
+        },
+        {
+          "claim": "Salt production formed part of the local strategic economy.",
+          "status": "qualified",
+          "support": [
+            "S14"
+          ],
+          "uncertainty": "Direct decision-making link not demonstrated",
+          "publicSourceReady": false,
+          "parseState": "parsed"
+        },
+        {
+          "claim": "An earlier wall is now interpreted as Byzantine, probably 7th–8th c.",
+          "status": "qualified",
+          "support": [
+            "S02"
+          ],
+          "uncertainty": "UNESCO tentative text says antiquity; do not collapse disagreement",
+          "publicSourceReady": false,
+          "parseState": "parsed"
+        }
+      ],
+      "unresolvedIssues": [
+        {
+          "claim": "A scholarly chapter reports 251 people transferred on 13 October 1904.",
+          "status": "unresolved",
+          "support": [
+            "S16"
+          ],
+          "uncertainty": "Needs primary transport or gazette confirmation",
+          "publicSourceReady": false,
+          "parseState": "parsed"
+        },
+        {
+          "claim": "Electricity",
+          "status": "unresolved",
+          "support": [
+            "None reviewed"
+          ],
+          "uncertainty": "Common retellings conflict",
+          "publicSourceReady": false,
+          "parseState": "parsed"
+        },
+        {
+          "claim": "Final resident",
+          "status": "unresolved",
+          "support": [
+            "None reviewed"
+          ],
+          "uncertainty": "Highly repeated but unverified here",
+          "publicSourceReady": false,
+          "parseState": "parsed"
+        }
+      ],
+      "visualRequirement": "Use owned context imagery or rights-cleared archival material.",
+      "onScreenText": "A Venetian enclave after 1669",
+      "transition": "Measured transition.",
+      "sourceNotes": "Use controlled research records only.",
+      "rightsNotes": "Human rights review required."
+    },
+    {
+      "order": 4,
+      "heading": "From fortress to Ottoman town",
+      "estimatedSeconds": 50,
+      "narrationPurpose": "Explain controlled research without a final script.",
+      "supportedClaims": [
+        {
+          "claim": "Work on the Venetian fortress began in June 1579.",
+          "status": "verified",
+          "support": [
+            "S01"
+          ],
+          "uncertainty": "None found",
+          "publicSourceReady": true,
+          "parseState": "parsed"
+        },
+        {
+          "claim": "Bressani proposed the first enclosure; Orsini’s 1584 intervention added an upper defensive line.",
+          "status": "verified",
+          "support": [
+            "S01, S05"
+          ],
+          "uncertainty": "Do not call either sole creator",
+          "publicSourceReady": true,
+          "parseState": "parsed"
+        },
+        {
+          "claim": "The fortress surrendered on 4 October 1715 after a three-month siege.",
+          "status": "verified",
+          "support": [
+            "S03"
+          ],
+          "uncertainty": "Captivity figures need archival corroboration",
+          "publicSourceReady": true,
+          "parseState": "parsed"
+        }
+      ],
+      "qualifiedClaims": [
+        {
+          "claim": "Its position served the harbour and approaches to Elounda within a wider defensive response.",
+          "status": "qualified",
+          "support": [
+            "S01, S07"
+          ],
+          "uncertainty": "Single-cause explanations are unsupported",
+          "publicSourceReady": false,
+          "parseState": "parsed"
+        },
+        {
+          "claim": "Salt production formed part of the local strategic economy.",
+          "status": "qualified",
+          "support": [
+            "S14"
+          ],
+          "uncertainty": "Direct decision-making link not demonstrated",
+          "publicSourceReady": false,
+          "parseState": "parsed"
+        },
+        {
+          "claim": "An earlier wall is now interpreted as Byzantine, probably 7th–8th c.",
+          "status": "qualified",
+          "support": [
+            "S02"
+          ],
+          "uncertainty": "UNESCO tentative text says antiquity; do not collapse disagreement",
+          "publicSourceReady": false,
+          "parseState": "parsed"
+        }
+      ],
+      "unresolvedIssues": [
+        {
+          "claim": "A scholarly chapter reports 251 people transferred on 13 October 1904.",
+          "status": "unresolved",
+          "support": [
+            "S16"
+          ],
+          "uncertainty": "Needs primary transport or gazette confirmation",
+          "publicSourceReady": false,
+          "parseState": "parsed"
+        },
+        {
+          "claim": "Electricity",
+          "status": "unresolved",
+          "support": [
+            "None reviewed"
+          ],
+          "uncertainty": "Common retellings conflict",
+          "publicSourceReady": false,
+          "parseState": "parsed"
+        },
+        {
+          "claim": "Final resident",
+          "status": "unresolved",
+          "support": [
+            "None reviewed"
+          ],
+          "uncertainty": "Highly repeated but unverified here",
+          "publicSourceReady": false,
+          "parseState": "parsed"
+        }
+      ],
+      "visualRequirement": "Use owned context imagery or rights-cleared archival material.",
+      "onScreenText": "From fortress to Ottoman town",
+      "transition": "Measured transition.",
+      "sourceNotes": "Use controlled research records only.",
+      "rightsNotes": "Human rights review required."
+    },
+    {
+      "order": 5,
+      "heading": "Why the Cretan State chose Spinalonga",
+      "estimatedSeconds": 50,
+      "narrationPurpose": "Explain controlled research without a final script.",
+      "supportedClaims": [
+        {
+          "claim": "Work on the Venetian fortress began in June 1579.",
+          "status": "verified",
+          "support": [
+            "S01"
+          ],
+          "uncertainty": "None found",
+          "publicSourceReady": true,
+          "parseState": "parsed"
+        },
+        {
+          "claim": "Bressani proposed the first enclosure; Orsini’s 1584 intervention added an upper defensive line.",
+          "status": "verified",
+          "support": [
+            "S01, S05"
+          ],
+          "uncertainty": "Do not call either sole creator",
+          "publicSourceReady": true,
+          "parseState": "parsed"
+        },
+        {
+          "claim": "The fortress surrendered on 4 October 1715 after a three-month siege.",
+          "status": "verified",
+          "support": [
+            "S03"
+          ],
+          "uncertainty": "Captivity figures need archival corroboration",
+          "publicSourceReady": true,
+          "parseState": "parsed"
+        }
+      ],
+      "qualifiedClaims": [
+        {
+          "claim": "Its position served the harbour and approaches to Elounda within a wider defensive response.",
+          "status": "qualified",
+          "support": [
+            "S01, S07"
+          ],
+          "uncertainty": "Single-cause explanations are unsupported",
+          "publicSourceReady": false,
+          "parseState": "parsed"
+        },
+        {
+          "claim": "Salt production formed part of the local strategic economy.",
+          "status": "qualified",
+          "support": [
+            "S14"
+          ],
+          "uncertainty": "Direct decision-making link not demonstrated",
+          "publicSourceReady": false,
+          "parseState": "parsed"
+        },
+        {
+          "claim": "An earlier wall is now interpreted as Byzantine, probably 7th–8th c.",
+          "status": "qualified",
+          "support": [
+            "S02"
+          ],
+          "uncertainty": "UNESCO tentative text says antiquity; do not collapse disagreement",
+          "publicSourceReady": false,
+          "parseState": "parsed"
+        }
+      ],
+      "unresolvedIssues": [
+        {
+          "claim": "A scholarly chapter reports 251 people transferred on 13 October 1904.",
+          "status": "unresolved",
+          "support": [
+            "S16"
+          ],
+          "uncertainty": "Needs primary transport or gazette confirmation",
+          "publicSourceReady": false,
+          "parseState": "parsed"
+        },
+        {
+          "claim": "Electricity",
+          "status": "unresolved",
+          "support": [
+            "None reviewed"
+          ],
+          "uncertainty": "Common retellings conflict",
+          "publicSourceReady": false,
+          "parseState": "parsed"
+        },
+        {
+          "claim": "Final resident",
+          "status": "unresolved",
+          "support": [
+            "None reviewed"
+          ],
+          "uncertainty": "Highly repeated but unverified here",
+          "publicSourceReady": false,
+          "parseState": "parsed"
+        }
+      ],
+      "visualRequirement": "Use owned context imagery or rights-cleared archival material.",
+      "onScreenText": "Why the Cretan State chose Spinalonga",
+      "transition": "Measured transition.",
+      "sourceNotes": "Use controlled research records only.",
+      "rightsNotes": "Human rights review required."
+    },
+    {
+      "order": 6,
+      "heading": "The first transfers in 1904",
+      "estimatedSeconds": 50,
+      "narrationPurpose": "Explain controlled research without a final script.",
+      "supportedClaims": [
+        {
+          "claim": "Work on the Venetian fortress began in June 1579.",
+          "status": "verified",
+          "support": [
+            "S01"
+          ],
+          "uncertainty": "None found",
+          "publicSourceReady": true,
+          "parseState": "parsed"
+        },
+        {
+          "claim": "Bressani proposed the first enclosure; Orsini’s 1584 intervention added an upper defensive line.",
+          "status": "verified",
+          "support": [
+            "S01, S05"
+          ],
+          "uncertainty": "Do not call either sole creator",
+          "publicSourceReady": true,
+          "parseState": "parsed"
+        },
+        {
+          "claim": "The fortress surrendered on 4 October 1715 after a three-month siege.",
+          "status": "verified",
+          "support": [
+            "S03"
+          ],
+          "uncertainty": "Captivity figures need archival corroboration",
+          "publicSourceReady": true,
+          "parseState": "parsed"
+        }
+      ],
+      "qualifiedClaims": [
+        {
+          "claim": "Its position served the harbour and approaches to Elounda within a wider defensive response.",
+          "status": "qualified",
+          "support": [
+            "S01, S07"
+          ],
+          "uncertainty": "Single-cause explanations are unsupported",
+          "publicSourceReady": false,
+          "parseState": "parsed"
+        },
+        {
+          "claim": "Salt production formed part of the local strategic economy.",
+          "status": "qualified",
+          "support": [
+            "S14"
+          ],
+          "uncertainty": "Direct decision-making link not demonstrated",
+          "publicSourceReady": false,
+          "parseState": "parsed"
+        },
+        {
+          "claim": "An earlier wall is now interpreted as Byzantine, probably 7th–8th c.",
+          "status": "qualified",
+          "support": [
+            "S02"
+          ],
+          "uncertainty": "UNESCO tentative text says antiquity; do not collapse disagreement",
+          "publicSourceReady": false,
+          "parseState": "parsed"
+        }
+      ],
+      "unresolvedIssues": [
+        {
+          "claim": "A scholarly chapter reports 251 people transferred on 13 October 1904.",
+          "status": "unresolved",
+          "support": [
+            "S16"
+          ],
+          "uncertainty": "Needs primary transport or gazette confirmation",
+          "publicSourceReady": false,
+          "parseState": "parsed"
+        },
+        {
+          "claim": "Electricity",
+          "status": "unresolved",
+          "support": [
+            "None reviewed"
+          ],
+          "uncertainty": "Common retellings conflict",
+          "publicSourceReady": false,
+          "parseState": "parsed"
+        },
+        {
+          "claim": "Final resident",
+          "status": "unresolved",
+          "support": [
+            "None reviewed"
+          ],
+          "uncertainty": "Highly repeated but unverified here",
+          "publicSourceReady": false,
+          "parseState": "parsed"
+        }
+      ],
+      "visualRequirement": "Use owned context imagery or rights-cleared archival material.",
+      "onScreenText": "The first transfers in 1904",
+      "transition": "Measured transition.",
+      "sourceNotes": "Use controlled research records only.",
+      "rightsNotes": "Human rights review required."
+    },
+    {
+      "order": 7,
+      "heading": "Life inside the settlement",
+      "estimatedSeconds": 50,
+      "narrationPurpose": "Explain controlled research without a final script.",
+      "supportedClaims": [
+        {
+          "claim": "Work on the Venetian fortress began in June 1579.",
+          "status": "verified",
+          "support": [
+            "S01"
+          ],
+          "uncertainty": "None found",
+          "publicSourceReady": true,
+          "parseState": "parsed"
+        },
+        {
+          "claim": "Bressani proposed the first enclosure; Orsini’s 1584 intervention added an upper defensive line.",
+          "status": "verified",
+          "support": [
+            "S01, S05"
+          ],
+          "uncertainty": "Do not call either sole creator",
+          "publicSourceReady": true,
+          "parseState": "parsed"
+        },
+        {
+          "claim": "The fortress surrendered on 4 October 1715 after a three-month siege.",
+          "status": "verified",
+          "support": [
+            "S03"
+          ],
+          "uncertainty": "Captivity figures need archival corroboration",
+          "publicSourceReady": true,
+          "parseState": "parsed"
+        }
+      ],
+      "qualifiedClaims": [
+        {
+          "claim": "Its position served the harbour and approaches to Elounda within a wider defensive response.",
+          "status": "qualified",
+          "support": [
+            "S01, S07"
+          ],
+          "uncertainty": "Single-cause explanations are unsupported",
+          "publicSourceReady": false,
+          "parseState": "parsed"
+        },
+        {
+          "claim": "Salt production formed part of the local strategic economy.",
+          "status": "qualified",
+          "support": [
+            "S14"
+          ],
+          "uncertainty": "Direct decision-making link not demonstrated",
+          "publicSourceReady": false,
+          "parseState": "parsed"
+        },
+        {
+          "claim": "An earlier wall is now interpreted as Byzantine, probably 7th–8th c.",
+          "status": "qualified",
+          "support": [
+            "S02"
+          ],
+          "uncertainty": "UNESCO tentative text says antiquity; do not collapse disagreement",
+          "publicSourceReady": false,
+          "parseState": "parsed"
+        }
+      ],
+      "unresolvedIssues": [
+        {
+          "claim": "A scholarly chapter reports 251 people transferred on 13 October 1904.",
+          "status": "unresolved",
+          "support": [
+            "S16"
+          ],
+          "uncertainty": "Needs primary transport or gazette confirmation",
+          "publicSourceReady": false,
+          "parseState": "parsed"
+        },
+        {
+          "claim": "Electricity",
+          "status": "unresolved",
+          "support": [
+            "None reviewed"
+          ],
+          "uncertainty": "Common retellings conflict",
+          "publicSourceReady": false,
+          "parseState": "parsed"
+        },
+        {
+          "claim": "Final resident",
+          "status": "unresolved",
+          "support": [
+            "None reviewed"
+          ],
+          "uncertainty": "Highly repeated but unverified here",
+          "publicSourceReady": false,
+          "parseState": "parsed"
+        }
+      ],
+      "visualRequirement": "Use owned context imagery or rights-cleared archival material.",
+      "onScreenText": "Life inside the settlement",
+      "transition": "Measured transition.",
+      "sourceNotes": "Use controlled research records only.",
+      "rightsNotes": "Human rights review required."
+    },
+    {
+      "order": 8,
+      "heading": "Plaka, Elounda and the island’s supply line",
+      "estimatedSeconds": 50,
+      "narrationPurpose": "Explain controlled research without a final script.",
+      "supportedClaims": [
+        {
+          "claim": "Work on the Venetian fortress began in June 1579.",
+          "status": "verified",
+          "support": [
+            "S01"
+          ],
+          "uncertainty": "None found",
+          "publicSourceReady": true,
+          "parseState": "parsed"
+        },
+        {
+          "claim": "Bressani proposed the first enclosure; Orsini’s 1584 intervention added an upper defensive line.",
+          "status": "verified",
+          "support": [
+            "S01, S05"
+          ],
+          "uncertainty": "Do not call either sole creator",
+          "publicSourceReady": true,
+          "parseState": "parsed"
+        },
+        {
+          "claim": "The fortress surrendered on 4 October 1715 after a three-month siege.",
+          "status": "verified",
+          "support": [
+            "S03"
+          ],
+          "uncertainty": "Captivity figures need archival corroboration",
+          "publicSourceReady": true,
+          "parseState": "parsed"
+        }
+      ],
+      "qualifiedClaims": [
+        {
+          "claim": "Its position served the harbour and approaches to Elounda within a wider defensive response.",
+          "status": "qualified",
+          "support": [
+            "S01, S07"
+          ],
+          "uncertainty": "Single-cause explanations are unsupported",
+          "publicSourceReady": false,
+          "parseState": "parsed"
+        },
+        {
+          "claim": "Salt production formed part of the local strategic economy.",
+          "status": "qualified",
+          "support": [
+            "S14"
+          ],
+          "uncertainty": "Direct decision-making link not demonstrated",
+          "publicSourceReady": false,
+          "parseState": "parsed"
+        },
+        {
+          "claim": "An earlier wall is now interpreted as Byzantine, probably 7th–8th c.",
+          "status": "qualified",
+          "support": [
+            "S02"
+          ],
+          "uncertainty": "UNESCO tentative text says antiquity; do not collapse disagreement",
+          "publicSourceReady": false,
+          "parseState": "parsed"
+        }
+      ],
+      "unresolvedIssues": [
+        {
+          "claim": "A scholarly chapter reports 251 people transferred on 13 October 1904.",
+          "status": "unresolved",
+          "support": [
+            "S16"
+          ],
+          "uncertainty": "Needs primary transport or gazette confirmation",
+          "publicSourceReady": false,
+          "parseState": "parsed"
+        },
+        {
+          "claim": "Electricity",
+          "status": "unresolved",
+          "support": [
+            "None reviewed"
+          ],
+          "uncertainty": "Common retellings conflict",
+          "publicSourceReady": false,
+          "parseState": "parsed"
+        },
+        {
+          "claim": "Final resident",
+          "status": "unresolved",
+          "support": [
+            "None reviewed"
+          ],
+          "uncertainty": "Highly repeated but unverified here",
+          "publicSourceReady": false,
+          "parseState": "parsed"
+        }
+      ],
+      "visualRequirement": "Use owned context imagery or rights-cleared archival material.",
+      "onScreenText": "Plaka, Elounda and the island’s supply line",
+      "transition": "Measured transition.",
+      "sourceNotes": "Use controlled research records only.",
+      "rightsNotes": "Human rights review required."
+    },
+    {
+      "order": 9,
+      "heading": "Treatment, change and closure",
+      "estimatedSeconds": 50,
+      "narrationPurpose": "Explain controlled research without a final script.",
+      "supportedClaims": [
+        {
+          "claim": "Work on the Venetian fortress began in June 1579.",
+          "status": "verified",
+          "support": [
+            "S01"
+          ],
+          "uncertainty": "None found",
+          "publicSourceReady": true,
+          "parseState": "parsed"
+        },
+        {
+          "claim": "Bressani proposed the first enclosure; Orsini’s 1584 intervention added an upper defensive line.",
+          "status": "verified",
+          "support": [
+            "S01, S05"
+          ],
+          "uncertainty": "Do not call either sole creator",
+          "publicSourceReady": true,
+          "parseState": "parsed"
+        },
+        {
+          "claim": "The fortress surrendered on 4 October 1715 after a three-month siege.",
+          "status": "verified",
+          "support": [
+            "S03"
+          ],
+          "uncertainty": "Captivity figures need archival corroboration",
+          "publicSourceReady": true,
+          "parseState": "parsed"
+        }
+      ],
+      "qualifiedClaims": [
+        {
+          "claim": "Its position served the harbour and approaches to Elounda within a wider defensive response.",
+          "status": "qualified",
+          "support": [
+            "S01, S07"
+          ],
+          "uncertainty": "Single-cause explanations are unsupported",
+          "publicSourceReady": false,
+          "parseState": "parsed"
+        },
+        {
+          "claim": "Salt production formed part of the local strategic economy.",
+          "status": "qualified",
+          "support": [
+            "S14"
+          ],
+          "uncertainty": "Direct decision-making link not demonstrated",
+          "publicSourceReady": false,
+          "parseState": "parsed"
+        },
+        {
+          "claim": "An earlier wall is now interpreted as Byzantine, probably 7th–8th c.",
+          "status": "qualified",
+          "support": [
+            "S02"
+          ],
+          "uncertainty": "UNESCO tentative text says antiquity; do not collapse disagreement",
+          "publicSourceReady": false,
+          "parseState": "parsed"
+        }
+      ],
+      "unresolvedIssues": [
+        {
+          "claim": "A scholarly chapter reports 251 people transferred on 13 October 1904.",
+          "status": "unresolved",
+          "support": [
+            "S16"
+          ],
+          "uncertainty": "Needs primary transport or gazette confirmation",
+          "publicSourceReady": false,
+          "parseState": "parsed"
+        },
+        {
+          "claim": "Electricity",
+          "status": "unresolved",
+          "support": [
+            "None reviewed"
+          ],
+          "uncertainty": "Common retellings conflict",
+          "publicSourceReady": false,
+          "parseState": "parsed"
+        },
+        {
+          "claim": "Final resident",
+          "status": "unresolved",
+          "support": [
+            "None reviewed"
+          ],
+          "uncertainty": "Highly repeated but unverified here",
+          "publicSourceReady": false,
+          "parseState": "parsed"
+        }
+      ],
+      "visualRequirement": "Use owned context imagery or rights-cleared archival material.",
+      "onScreenText": "Treatment, change and closure",
+      "transition": "Measured transition.",
+      "sourceNotes": "Use controlled research records only.",
+      "rightsNotes": "Human rights review required."
+    },
+    {
+      "order": 10,
+      "heading": "From abandonment to protected monument",
+      "estimatedSeconds": 50,
+      "narrationPurpose": "Explain controlled research without a final script.",
+      "supportedClaims": [
+        {
+          "claim": "Work on the Venetian fortress began in June 1579.",
+          "status": "verified",
+          "support": [
+            "S01"
+          ],
+          "uncertainty": "None found",
+          "publicSourceReady": true,
+          "parseState": "parsed"
+        },
+        {
+          "claim": "Bressani proposed the first enclosure; Orsini’s 1584 intervention added an upper defensive line.",
+          "status": "verified",
+          "support": [
+            "S01, S05"
+          ],
+          "uncertainty": "Do not call either sole creator",
+          "publicSourceReady": true,
+          "parseState": "parsed"
+        },
+        {
+          "claim": "The fortress surrendered on 4 October 1715 after a three-month siege.",
+          "status": "verified",
+          "support": [
+            "S03"
+          ],
+          "uncertainty": "Captivity figures need archival corroboration",
+          "publicSourceReady": true,
+          "parseState": "parsed"
+        }
+      ],
+      "qualifiedClaims": [
+        {
+          "claim": "Its position served the harbour and approaches to Elounda within a wider defensive response.",
+          "status": "qualified",
+          "support": [
+            "S01, S07"
+          ],
+          "uncertainty": "Single-cause explanations are unsupported",
+          "publicSourceReady": false,
+          "parseState": "parsed"
+        },
+        {
+          "claim": "Salt production formed part of the local strategic economy.",
+          "status": "qualified",
+          "support": [
+            "S14"
+          ],
+          "uncertainty": "Direct decision-making link not demonstrated",
+          "publicSourceReady": false,
+          "parseState": "parsed"
+        },
+        {
+          "claim": "An earlier wall is now interpreted as Byzantine, probably 7th–8th c.",
+          "status": "qualified",
+          "support": [
+            "S02"
+          ],
+          "uncertainty": "UNESCO tentative text says antiquity; do not collapse disagreement",
+          "publicSourceReady": false,
+          "parseState": "parsed"
+        }
+      ],
+      "unresolvedIssues": [
+        {
+          "claim": "A scholarly chapter reports 251 people transferred on 13 October 1904.",
+          "status": "unresolved",
+          "support": [
+            "S16"
+          ],
+          "uncertainty": "Needs primary transport or gazette confirmation",
+          "publicSourceReady": false,
+          "parseState": "parsed"
+        },
+        {
+          "claim": "Electricity",
+          "status": "unresolved",
+          "support": [
+            "None reviewed"
+          ],
+          "uncertainty": "Common retellings conflict",
+          "publicSourceReady": false,
+          "parseState": "parsed"
+        },
+        {
+          "claim": "Final resident",
+          "status": "unresolved",
+          "support": [
+            "None reviewed"
+          ],
+          "uncertainty": "Highly repeated but unverified here",
+          "publicSourceReady": false,
+          "parseState": "parsed"
+        }
+      ],
+      "visualRequirement": "Use owned context imagery or rights-cleared archival material.",
+      "onScreenText": "From abandonment to protected monument",
+      "transition": "Measured transition.",
+      "sourceNotes": "Use controlled research records only.",
+      "rightsNotes": "Human rights review required."
+    },
+    {
+      "order": 11,
+      "heading": "What the island’s successive lives reveal",
+      "estimatedSeconds": 50,
+      "narrationPurpose": "Explain controlled research without a final script.",
+      "supportedClaims": [
+        {
+          "claim": "Work on the Venetian fortress began in June 1579.",
+          "status": "verified",
+          "support": [
+            "S01"
+          ],
+          "uncertainty": "None found",
+          "publicSourceReady": true,
+          "parseState": "parsed"
+        },
+        {
+          "claim": "Bressani proposed the first enclosure; Orsini’s 1584 intervention added an upper defensive line.",
+          "status": "verified",
+          "support": [
+            "S01, S05"
+          ],
+          "uncertainty": "Do not call either sole creator",
+          "publicSourceReady": true,
+          "parseState": "parsed"
+        },
+        {
+          "claim": "The fortress surrendered on 4 October 1715 after a three-month siege.",
+          "status": "verified",
+          "support": [
+            "S03"
+          ],
+          "uncertainty": "Captivity figures need archival corroboration",
+          "publicSourceReady": true,
+          "parseState": "parsed"
+        }
+      ],
+      "qualifiedClaims": [
+        {
+          "claim": "Its position served the harbour and approaches to Elounda within a wider defensive response.",
+          "status": "qualified",
+          "support": [
+            "S01, S07"
+          ],
+          "uncertainty": "Single-cause explanations are unsupported",
+          "publicSourceReady": false,
+          "parseState": "parsed"
+        },
+        {
+          "claim": "Salt production formed part of the local strategic economy.",
+          "status": "qualified",
+          "support": [
+            "S14"
+          ],
+          "uncertainty": "Direct decision-making link not demonstrated",
+          "publicSourceReady": false,
+          "parseState": "parsed"
+        },
+        {
+          "claim": "An earlier wall is now interpreted as Byzantine, probably 7th–8th c.",
+          "status": "qualified",
+          "support": [
+            "S02"
+          ],
+          "uncertainty": "UNESCO tentative text says antiquity; do not collapse disagreement",
+          "publicSourceReady": false,
+          "parseState": "parsed"
+        }
+      ],
+      "unresolvedIssues": [
+        {
+          "claim": "A scholarly chapter reports 251 people transferred on 13 October 1904.",
+          "status": "unresolved",
+          "support": [
+            "S16"
+          ],
+          "uncertainty": "Needs primary transport or gazette confirmation",
+          "publicSourceReady": false,
+          "parseState": "parsed"
+        },
+        {
+          "claim": "Electricity",
+          "status": "unresolved",
+          "support": [
+            "None reviewed"
+          ],
+          "uncertainty": "Common retellings conflict",
+          "publicSourceReady": false,
+          "parseState": "parsed"
+        },
+        {
+          "claim": "Final resident",
+          "status": "unresolved",
+          "support": [
+            "None reviewed"
+          ],
+          "uncertainty": "Highly repeated but unverified here",
+          "publicSourceReady": false,
+          "parseState": "parsed"
+        }
+      ],
+      "visualRequirement": "Use owned context imagery or rights-cleared archival material.",
+      "onScreenText": "What the island’s successive lives reveal",
+      "transition": "Measured transition.",
+      "sourceNotes": "Use controlled research records only.",
+      "rightsNotes": "Human rights review required."
+    },
+    {
+      "order": 12,
+      "heading": "A note on evidence",
+      "estimatedSeconds": 50,
+      "narrationPurpose": "Explain controlled research without a final script.",
+      "supportedClaims": [
+        {
+          "claim": "Work on the Venetian fortress began in June 1579.",
+          "status": "verified",
+          "support": [
+            "S01"
+          ],
+          "uncertainty": "None found",
+          "publicSourceReady": true,
+          "parseState": "parsed"
+        },
+        {
+          "claim": "Bressani proposed the first enclosure; Orsini’s 1584 intervention added an upper defensive line.",
+          "status": "verified",
+          "support": [
+            "S01, S05"
+          ],
+          "uncertainty": "Do not call either sole creator",
+          "publicSourceReady": true,
+          "parseState": "parsed"
+        },
+        {
+          "claim": "The fortress surrendered on 4 October 1715 after a three-month siege.",
+          "status": "verified",
+          "support": [
+            "S03"
+          ],
+          "uncertainty": "Captivity figures need archival corroboration",
+          "publicSourceReady": true,
+          "parseState": "parsed"
+        }
+      ],
+      "qualifiedClaims": [
+        {
+          "claim": "Its position served the harbour and approaches to Elounda within a wider defensive response.",
+          "status": "qualified",
+          "support": [
+            "S01, S07"
+          ],
+          "uncertainty": "Single-cause explanations are unsupported",
+          "publicSourceReady": false,
+          "parseState": "parsed"
+        },
+        {
+          "claim": "Salt production formed part of the local strategic economy.",
+          "status": "qualified",
+          "support": [
+            "S14"
+          ],
+          "uncertainty": "Direct decision-making link not demonstrated",
+          "publicSourceReady": false,
+          "parseState": "parsed"
+        },
+        {
+          "claim": "An earlier wall is now interpreted as Byzantine, probably 7th–8th c.",
+          "status": "qualified",
+          "support": [
+            "S02"
+          ],
+          "uncertainty": "UNESCO tentative text says antiquity; do not collapse disagreement",
+          "publicSourceReady": false,
+          "parseState": "parsed"
+        }
+      ],
+      "unresolvedIssues": [
+        {
+          "claim": "A scholarly chapter reports 251 people transferred on 13 October 1904.",
+          "status": "unresolved",
+          "support": [
+            "S16"
+          ],
+          "uncertainty": "Needs primary transport or gazette confirmation",
+          "publicSourceReady": false,
+          "parseState": "parsed"
+        },
+        {
+          "claim": "Electricity",
+          "status": "unresolved",
+          "support": [
+            "None reviewed"
+          ],
+          "uncertainty": "Common retellings conflict",
+          "publicSourceReady": false,
+          "parseState": "parsed"
+        },
+        {
+          "claim": "Final resident",
+          "status": "unresolved",
+          "support": [
+            "None reviewed"
+          ],
+          "uncertainty": "Highly repeated but unverified here",
+          "publicSourceReady": false,
+          "parseState": "parsed"
+        }
+      ],
+      "visualRequirement": "Use owned context imagery or rights-cleared archival material.",
+      "onScreenText": "A note on evidence",
+      "transition": "Measured transition.",
+      "sourceNotes": "Use controlled research records only.",
+      "rightsNotes": "Human rights review required."
+    }
+  ],
+  "shortFormDerivative": {
+    "durationSeconds": 45,
+    "question": "Spinalonga: Why It Was Fortified and How the Island’s Uses Changed",
+    "supportedAnswer": "Work on the Venetian fortress began in June 1579.",
+    "visualConcept": "Owned contemporary context image with label.",
+    "restrainedCta": "Sources and further reading are available in the accompanying article."
+  },
+  "youtubeMetadata": {
+    "titleCandidates": [
+      "Spinalonga: Why It Was Fortified and How the Island’s Uses Changed"
+    ],
+    "thumbnailConcepts": [
+      "Fortress landscape with factual caption"
+    ],
+    "descriptionDraft": "Why Spinalonga was fortified, how it became an Ottoman town and a compulsory settlement for people with Hansen’s disease, and how it remains connected to Elounda and Plaka.",
+    "chapterOutline": [
+      "A small island in a strategic bay",
+      "Why Venice fortified Spinalonga",
+      "A Venetian enclave after 1669",
+      "From fortress to Ottoman town",
+      "Why the Cretan State chose Spinalonga",
+      "The first transfers in 1904",
+      "Life inside the settlement",
+      "Plaka, Elounda and the island’s supply line",
+      "Treatment, change and closure",
+      "From abandonment to protected monument",
+      "What the island’s successive lives reveal",
+      "A note on evidence"
+    ],
+    "articleLinkPlaceholder": "https://traditional-homes.gr/en/blog/ARTICLE-SLUG/",
+    "imageCreditBlock": "Photo: Nikos Pasparakis / Elounda Traditional Homes of Crete",
+    "sourceNoteBlock": "Use controlled research records only."
+  },
+  "visualEvidenceRegister": [
+    {
+      "scene": "Spinalonga and the Gulf of Elounda seen from the hillside above the coast.",
+      "asset": "spinalonga-gulf-context.webp",
+      "location": "public website asset",
+      "claimSupported": "modern context or article geography",
+      "ownerSource": "Nikos Pasparakis / Elounda Traditional Homes of Crete",
+      "rightsState": "owned, approved website use",
+      "modernContextWarning": null,
+      "actionRequired": "Human review"
+    },
+    {
+      "scene": "Venetian coastal fortifications along the rocky shoreline of Spinalonga.",
+      "asset": "spinalonga-coastal-fortifications.webp",
+      "location": "public website asset",
+      "claimSupported": "modern context or article geography",
+      "ownerSource": "Nikos Pasparakis / Elounda Traditional Homes of Crete",
+      "rightsState": "owned, approved website use",
+      "modernContextWarning": null,
+      "actionRequired": "Human review"
+    },
+    {
+      "scene": "Spinalonga’s fortifications and settlement buildings rising above the shoreline.",
+      "asset": "spinalonga-fortress-and-settlement-close-view.webp",
+      "location": "public website asset",
+      "claimSupported": "modern context or article geography",
+      "ownerSource": "Nikos Pasparakis / Elounda Traditional Homes of Crete",
+      "rightsState": "owned, approved website use",
+      "modernContextWarning": null,
+      "actionRequired": "Human review"
+    },
+    {
+      "scene": "Passenger boat approaching the fortified shoreline of Spinalonga.",
+      "asset": "spinalonga-boat-and-main-landing.webp",
+      "location": "public website asset",
+      "claimSupported": "modern context or article geography",
+      "ownerSource": "Nikos Pasparakis / Elounda Traditional Homes of Crete",
+      "rightsState": "owned, approved website use",
+      "modernContextWarning": "Modern context only; not evidence of historical transport operations.",
+      "actionRequired": "Human review"
+    },
+    {
+      "scene": "Closer view of Spinalonga’s fortifications and surviving settlement buildings.",
+      "asset": "spinalonga-island-close-view.webp",
+      "location": "public website asset",
+      "claimSupported": "modern context or article geography",
+      "ownerSource": "Nikos Pasparakis / Elounda Traditional Homes of Crete",
+      "rightsState": "owned, approved website use",
+      "modernContextWarning": null,
+      "actionRequired": "Human review"
+    }
+  ],
+  "publicationReadiness": {
+    "factualReadiness": "review required",
+    "imageReadiness": "rights review required",
+    "sourceReadiness": "review required",
+    "unresolvedBlockers": [
+      "Human factual review",
+      "No final voice-over script is produced"
+    ],
+    "requiresHumanReview": true
+  }
+}
