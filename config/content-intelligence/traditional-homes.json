@@ -9,6 +9,8 @@
   "evidenceRules": ["Distinguish primary, official, scholarly and secondary evidence.", "Do not present uncertain dates as facts."],
   "imageRightsRules": ["Respect commercial image rights.", "Do not use modern images as evidence for historical operations."],
   "uncertaintyRules": ["Use qualified wording or omit unsupported precision."],
+  "entityVocabulary": ["Elounda", "Mavrikiano", "Plaka", "Vrouchas", "Mirabello", "Spinalonga", "Crete"],
+  "researchDirectoryAliases": { "spinalonga-why-fortified-changing-uses": "spinalonga-multiple-lives" },
   "supportedOutputFormats": ["article plan", "historical video plan", "seasonal calendar", "social derivative draft"],
   "defaultCallsToAction": { "article": "Read the full article on traditional-homes.gr.", "historicalVideo": "Sources and further reading are available in the accompanying article.", "practicalGuide": "See the complete local guide on traditional-homes.gr.", "property": "Qualified enquiries are handled privately through the official contact route." }
 }

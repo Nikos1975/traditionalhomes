@@ -1,5 +1,5 @@
 {
-  "schemaVersion": 2,
+  "schemaVersion": 3,
   "articleSlug": "spinalonga-why-fortified-changing-uses",
   "articleTitle": "Spinalonga: Why It Was Fortified and How the Island’s Uses Changed",
   "canonicalRoute": "/en/blog/spinalonga-why-fortified-changing-uses/",
@@ -7,38 +7,478 @@
   "generatedAt": "deterministic",
   "sourceFingerprint": "77a374a15f9304f2e9db6ac5584780784705687ad865f83ed0c7302b149b356d",
   "targetAudience": "Readers interested in East Crete history",
-  "contentPillar": "Elounda and Mirabello history",
+  "contentPillar": "History",
   "proposedDurationMinutes": 10,
   "editorialCore": {
-    "centralQuestion": "How did Spinalonga’s changing uses shape its connection with Elounda and Plaka?",
-    "thesis": "The island’s physical fabric records successive defensive, residential, compulsory-isolation and conservation uses.",
+    "centralQuestion": "What does Spinalonga: Why It Was Fortified and How the Island’s Uses Changed show through controlled evidence?",
+    "thesis": "The plan follows controlled evidence and preserves unresolved questions.",
     "viewerValue": "A careful orientation to supported historical context.",
     "factualScope": [
       {
-        "claim": "Spinalonga is on Greece’s UNESCO Tentative List, not the World Heritage List; the 2021 nomination was withdrawn at the State Party’s request.",
+        "claim": "Work on the Venetian fortress began in June 1579.",
         "status": "verified",
         "support": [
-          "article Sources and Image Credits"
+          "S01"
         ],
-        "uncertainty": null,
+        "uncertainty": "None found",
         "publicSourceReady": true
       },
       {
-        "claim": "Exact numerical and legal precision remains qualified pending primary records.",
+        "claim": "Bressani proposed the first enclosure; Orsini’s 1584 intervention added an upper defensive line.",
+        "status": "verified",
+        "support": [
+          "S01, S05"
+        ],
+        "uncertainty": "Do not call either sole creator",
+        "publicSourceReady": true
+      },
+      {
+        "claim": "Its position served the harbour and approaches to Elounda within a wider defensive response.",
         "status": "qualified",
         "support": [
-          "article A note on evidence"
+          "S01, S07"
         ],
-        "uncertainty": "Do not add exact dates, counts or legal citations.",
+        "uncertainty": "Single-cause explanations are unsupported",
         "publicSourceReady": false
       },
       {
-        "claim": "Mainland supply routes and named participants require further archival research.",
+        "claim": "Salt production formed part of the local strategic economy.",
+        "status": "qualified",
+        "support": [
+          "S14"
+        ],
+        "uncertainty": "Direct decision-making link not demonstrated",
+        "publicSourceReady": false
+      },
+      {
+        "claim": "An earlier wall is now interpreted as Byzantine, probably 7th–8th c.",
+        "status": "qualified",
+        "support": [
+          "S02"
+        ],
+        "uncertainty": "UNESCO tentative text says antiquity; do not collapse disagreement",
+        "publicSourceReady": false
+      },
+      {
+        "claim": "The fortress surrendered on 4 October 1715 after a three-month siege.",
+        "status": "verified",
+        "support": [
+          "S03"
+        ],
+        "uncertainty": "Captivity figures need archival corroboration",
+        "publicSourceReady": true
+      },
+      {
+        "claim": "UNESCO’s nomination reports 1,112 people in 1881 and roughly 200 houses/25 shops later in the century.",
+        "status": "qualified",
+        "support": [
+          "S07"
+        ],
+        "uncertainty": "Nomination, not census edition",
+        "publicSourceReady": false
+      },
+      {
+        "claim": "The 1903 selection was connected with removal of remaining Muslim residents.",
+        "status": "qualified",
+        "support": [
+          "S04"
+        ],
+        "uncertainty": "Exact dates/process not yet established",
+        "publicSourceReady": false
+      },
+      {
+        "claim": "Law 463 identified Spinalonga for settlement; first arrivals followed in 1904.",
+        "status": "qualified",
+        "support": [
+          "S04, S16"
+        ],
+        "uncertainty": "Dates/title must be checked in Gazette facsimile",
+        "publicSourceReady": false
+      },
+      {
+        "claim": "A scholarly chapter reports 251 people transferred on 13 October 1904.",
         "status": "unresolved",
         "support": [
-          "article Plaka, Elounda and the island’s supply line"
+          "S16"
         ],
-        "uncertainty": "Do not infer named people or historical transport detail.",
+        "uncertainty": "Needs primary transport or gazette confirmation",
+        "publicSourceReady": false
+      },
+      {
+        "claim": "Early food, housing and medical provision were severely inadequate.",
+        "status": "verified",
+        "support": [
+          "S04, S10"
+        ],
+        "uncertainty": "Avoid universalised individual experience",
+        "publicSourceReady": true
+      },
+      {
+        "claim": "Electricity",
+        "status": "unresolved",
+        "support": [
+          "None reviewed"
+        ],
+        "uncertainty": "Common retellings conflict",
+        "publicSourceReady": false
+      },
+      {
+        "claim": "Sulphone treatment changed the medical context in the 1940s.",
+        "status": "qualified",
+        "support": [
+          "S10"
+        ],
+        "uncertainty": "Exact availability on Spinalonga unresolved",
+        "publicSourceReady": false
+      },
+      {
+        "claim": "An inscription credits the Brotherhood and its president Remoundakis with the 1939 perimeter road.",
+        "status": "verified",
+        "support": [
+          "S06"
+        ],
+        "uncertainty": "Does not prove every claimed reform",
+        "publicSourceReady": true
+      },
+      {
+        "claim": "The institution closed in 1957.",
+        "status": "verified",
+        "support": [
+          "S04, S10, S07"
+        ],
+        "uncertainty": "Final transfers/resident differ in retellings",
+        "publicSourceReady": true
+      },
+      {
+        "claim": "Final resident",
+        "status": "unresolved",
+        "support": [
+          "None reviewed"
+        ],
+        "uncertainty": "Highly repeated but unverified here",
+        "publicSourceReady": false
+      },
+      {
+        "claim": "Do not use.",
+        "status": "unresolved",
+        "support": [
+          "None comparative"
+        ],
+        "uncertainty": "Definition and comparison unresolved",
+        "publicSourceReady": false
+      },
+      {
+        "claim": "Much leprosarium-era fabric was demolished in the 1980s.",
+        "status": "qualified",
+        "support": [
+          "S11"
+        ],
+        "uncertainty": "Not evidence that records were burned/destroyed",
+        "publicSourceReady": false
+      },
+      {
+        "claim": "Plaka disinfection facility",
+        "status": "unresolved",
+        "support": [
+          "None reviewed"
+        ],
+        "uncertainty": "Requires site/municipal evidence",
+        "publicSourceReady": false
+      },
+      {
+        "claim": "Cemetery practices",
+        "status": "unresolved",
+        "support": [
+          "None reviewed"
+        ],
+        "uncertainty": "Sensitive, often romanticised",
+        "publicSourceReady": false
+      },
+      {
+        "claim": "On Greece’s Tentative List since 2014; not inscribed on the World Heritage List.",
+        "status": "verified",
+        "support": [
+          "S07, S09"
+        ],
+        "uncertainty": "Never call it a World Heritage Site",
+        "publicSourceReady": true
+      },
+      {
+        "claim": "No public figure yet.",
+        "status": "unresolved",
+        "support": [
+          "S07 only says hundreds of thousands"
+        ],
+        "uncertainty": "Current figures change and need operator data",
+        "publicSourceReady": false
+      },
+      {
+        "claim": "No image may be reused yet.",
+        "status": "unresolved",
+        "support": [
+          "Register below"
+        ],
+        "uncertainty": "Online/government display ≠ commercial licence",
+        "publicSourceReady": false
+      },
+      {
+        "claim": "Natural-islet/Poros distinction; current Byzantine wall interpretation",
+        "status": "verified",
+        "support": [],
+        "uncertainty": "Preserve only the already qualified wording",
+        "publicSourceReady": true
+      },
+      {
+        "claim": "1715 date; 2021 nomination withdrawal",
+        "status": "verified",
+        "support": [],
+        "uncertainty": "Use S03 and S09, not dossier citations",
+        "publicSourceReady": true
+      },
+      {
+        "claim": "First-transfer day/count/sex split",
+        "status": "unresolved",
+        "support": [],
+        "uncertainty": "Retain 1904 only",
+        "publicSourceReady": false
+      },
+      {
+        "claim": "Heritage demolition, exhibits and current UNESCO status",
+        "status": "verified",
+        "support": [],
+        "uncertainty": "Distinguish broad 1980s demolition from detailed project history",
+        "publicSourceReady": true
+      },
+      {
+        "claim": "Creator/date",
+        "status": "verified",
+        "support": [
+          "Institution / stable source"
+        ],
+        "uncertainty": "Required credit",
+        "publicSourceReady": true
+      },
+      {
+        "claim": "Francesco Basilicata, 1618",
+        "status": "unresolved",
+        "support": [
+          "Ephorate page S01 credits Vikelaia Library / Mikros Nautilus publication"
+        ],
+        "uncertainty": "Exact holder credit required",
+        "publicSourceReady": false
+      },
+      {
+        "claim": "Unknown / c.1580",
+        "status": "unresolved",
+        "support": [
+          "Museo Storico Navale di Venezia, credited on Ephorate pages"
+        ],
+        "uncertainty": "Museum credit",
+        "publicSourceReady": false
+      },
+      {
+        "claim": "Giuseppe Gerola, 1901",
+        "status": "unresolved",
+        "support": [
+          "Vikelaia Municipal Library, Gerola Collection (credited S03)"
+        ],
+        "uncertainty": "Collection/photographer as specified",
+        "publicSourceReady": false
+      },
+      {
+        "claim": "Francesco Basilicata, 1638",
+        "status": "unresolved",
+        "support": [
+          "Referenced by S05"
+        ],
+        "uncertainty": "Verify holding",
+        "publicSourceReady": false
+      },
+      {
+        "claim": "Various / late 19th–early 20th c.",
+        "status": "unresolved",
+        "support": [
+          "Vikelaia / local archives leads"
+        ],
+        "uncertainty": "Per item",
+        "publicSourceReady": false
+      },
+      {
+        "claim": "Various / 1904–57",
+        "status": "unresolved",
+        "support": [
+          "No cleared stable source in packet"
+        ],
+        "uncertainty": "Per rights holder",
+        "publicSourceReady": false
+      },
+      {
+        "claim": "Unknown",
+        "status": "unresolved",
+        "support": [
+          "No rights-cleared historical collection found"
+        ],
+        "uncertainty": "Per item",
+        "publicSourceReady": false
+      },
+      {
+        "claim": "To be commissioned / owned",
+        "status": "unresolved",
+        "support": [
+          "Traditional Homes or licensed photographer"
+        ],
+        "uncertainty": "Photographer/copyright line",
+        "publicSourceReady": false
+      },
+      {
+        "claim": "To be commissioned or data-derived",
+        "status": "unresolved",
+        "support": [
+          "Need base-map and aerial rights"
+        ],
+        "uncertainty": "Attribution per licence",
+        "publicSourceReady": false
+      },
+      {
+        "claim": "Project authors",
+        "status": "unresolved",
+        "support": [
+          "Ministry/Ephorate/academic project reports"
+        ],
+        "uncertainty": "Per copyright holder",
+        "publicSourceReady": false
+      },
+      {
+        "claim": "Source filename and location",
+        "status": "unresolved",
+        "support": [
+          "Photographer / rights holder"
+        ],
+        "uncertainty": "Technical record",
+        "publicSourceReady": false
+      },
+      {
+        "claim": "`spinalonga-fortress-from-vrouchas.jpg` — `C:\\Users\\Nikos\\Downloads\\spinalonga-fortress-from-vrouchas.jpg`",
+        "status": "unresolved",
+        "support": [
+          "Nikos Pasparakis / Nikos Pasparakis"
+        ],
+        "uncertainty": "JPG; 4,640 × 3,472 px; no EXIF, GPS or camera-date metadata detected",
+        "publicSourceReady": false
+      },
+      {
+        "claim": "`spinalonga-island-close-view.jpg` — `C:\\Users\\Nikos\\Downloads\\spinalonga-island-close-view.jpg`",
+        "status": "unresolved",
+        "support": [
+          "Nikos Pasparakis / Nikos Pasparakis"
+        ],
+        "uncertainty": "JPG; 4,640 × 3,472 px; no EXIF, GPS or camera-date metadata detected",
+        "publicSourceReady": false
+      },
+      {
+        "claim": "`spinalonga-gulf-context.jpg` — `C:\\Users\\Nikos\\Downloads\\spinalonga-gulf-context.jpg`",
+        "status": "unresolved",
+        "support": [
+          "Nikos Pasparakis / Nikos Pasparakis"
+        ],
+        "uncertainty": "JPG; 4,640 × 3,472 px; no EXIF, GPS or camera-date metadata detected",
+        "publicSourceReady": false
+      },
+      {
+        "claim": "`spinalonga-fortress-and-settlement-close-view.jpg` — `C:\\Users\\Nikos\\Downloads\\spinalonga-fortress-and-settlement-close-view.jpg`",
+        "status": "unresolved",
+        "support": [
+          "Nikos Pasparakis / Nikos Pasparakis"
+        ],
+        "uncertainty": "JPG; 1,920 × 1,080 px; EXIF capture timestamp present; no GPS detected",
+        "publicSourceReady": false
+      },
+      {
+        "claim": "`spinalonga-coastal-fortifications.jpg` — `C:\\Users\\Nikos\\Downloads\\spinalonga-coastal-fortifications.jpg`",
+        "status": "unresolved",
+        "support": [
+          "Nikos Pasparakis / Nikos Pasparakis"
+        ],
+        "uncertainty": "JPG; 3,264 × 2,448 px; EXIF capture timestamp present; no GPS detected",
+        "publicSourceReady": false
+      },
+      {
+        "claim": "`spinalonga-boat-and-main-landing.jpg` — `C:\\Users\\Nikos\\Downloads\\spinalonga-boat-and-main-landing.jpg`",
+        "status": "unresolved",
+        "support": [
+          "Nikos Pasparakis / Nikos Pasparakis"
+        ],
+        "uncertainty": "JPG; 1,920 × 1,080 px; EXIF capture timestamp present; no GPS detected",
+        "publicSourceReady": false
+      },
+      {
+        "claim": "Exact holding institution / stable page",
+        "status": "verified",
+        "support": [
+          "Creator/date"
+        ],
+        "uncertainty": "Rights / commercial permission",
+        "publicSourceReady": true
+      },
+      {
+        "claim": "Vikelaia Library is reported; exact item page not recovered",
+        "status": "unresolved",
+        "support": [
+          "Francesco Basilicata / 1618"
+        ],
+        "uncertainty": "Unknown; public-domain age does not clear a digital reproduction",
+        "publicSourceReady": false
+      },
+      {
+        "claim": "Museo Storico Navale di Venezia reported; no stable item page recovered",
+        "status": "unresolved",
+        "support": [
+          "Unknown / c.1580"
+        ],
+        "uncertainty": "Unknown",
+        "publicSourceReady": false
+      },
+      {
+        "claim": "Marciana Library reported; no stable item page recovered",
+        "status": "unresolved",
+        "support": [
+          "Francesco Basilicata / 1638"
+        ],
+        "uncertainty": "Unknown",
+        "publicSourceReady": false
+      },
+      {
+        "claim": "Vikelaia Gerola Collection reported; no stable item page recovered",
+        "status": "unresolved",
+        "support": [
+          "Giuseppe Gerola / 1901"
+        ],
+        "uncertainty": "Unknown",
+        "publicSourceReady": false
+      },
+      {
+        "claim": "Historical Museum of Crete/Vikelaia reported generically",
+        "status": "unresolved",
+        "support": [
+          "Various"
+        ],
+        "uncertainty": "Unknown",
+        "publicSourceReady": false
+      },
+      {
+        "claim": "Ephorate/Ministry pages are discovery sources, not licences",
+        "status": "unresolved",
+        "support": [
+          "Various/current"
+        ],
+        "uncertainty": "Unknown",
+        "publicSourceReady": false
+      },
+      {
+        "claim": "“Kalydon” official name and its introduction",
+        "status": "unresolved",
+        "support": [],
+        "uncertainty": "Needs gazette/map evidence",
         "publicSourceReady": false
       }
     ],
@@ -47,7 +487,7 @@
       "Unverified named people",
       "Unresolved precision"
     ],
-    "terminologyNotes": "Use Hansen’s disease terminology.",
+    "terminologyNotes": "Use current, respectful terminology.",
     "uncertaintyNotes": "Retain qualified and unresolved labels."
   },
   "longFormPlan": [
@@ -55,739 +495,1198 @@
       "order": 1,
       "heading": "A small island in a strategic bay",
       "estimatedSeconds": 50,
-      "narrationPurpose": "Explain the documented historical sequence without producing a final script.",
+      "narrationPurpose": "Explain controlled research without a final script.",
       "supportedClaims": [
         {
-          "claim": "Spinalonga is on Greece’s UNESCO Tentative List, not the World Heritage List; the 2021 nomination was withdrawn at the State Party’s request.",
+          "claim": "Work on the Venetian fortress began in June 1579.",
           "status": "verified",
           "support": [
-            "article Sources and Image Credits"
+            "S01"
           ],
-          "uncertainty": null,
+          "uncertainty": "None found",
           "publicSourceReady": true
         },
         {
-          "claim": "Exact numerical and legal precision remains qualified pending primary records.",
+          "claim": "Bressani proposed the first enclosure; Orsini’s 1584 intervention added an upper defensive line.",
+          "status": "verified",
+          "support": [
+            "S01, S05"
+          ],
+          "uncertainty": "Do not call either sole creator",
+          "publicSourceReady": true
+        },
+        {
+          "claim": "Its position served the harbour and approaches to Elounda within a wider defensive response.",
           "status": "qualified",
           "support": [
-            "article A note on evidence"
+            "S01, S07"
           ],
-          "uncertainty": "Do not add exact dates, counts or legal citations.",
+          "uncertainty": "Single-cause explanations are unsupported",
           "publicSourceReady": false
         }
       ],
       "qualifiedClaims": [
         {
-          "claim": "Exact numerical and legal precision remains qualified pending primary records.",
+          "claim": "Its position served the harbour and approaches to Elounda within a wider defensive response.",
           "status": "qualified",
           "support": [
-            "article A note on evidence"
+            "S01, S07"
           ],
-          "uncertainty": "Do not add exact dates, counts or legal citations.",
+          "uncertainty": "Single-cause explanations are unsupported",
+          "publicSourceReady": false
+        },
+        {
+          "claim": "Salt production formed part of the local strategic economy.",
+          "status": "qualified",
+          "support": [
+            "S14"
+          ],
+          "uncertainty": "Direct decision-making link not demonstrated",
+          "publicSourceReady": false
+        },
+        {
+          "claim": "An earlier wall is now interpreted as Byzantine, probably 7th–8th c.",
+          "status": "qualified",
+          "support": [
+            "S02"
+          ],
+          "uncertainty": "UNESCO tentative text says antiquity; do not collapse disagreement",
           "publicSourceReady": false
         }
       ],
       "unresolvedIssues": [
         {
-          "claim": "Mainland supply routes and named participants require further archival research.",
+          "claim": "A scholarly chapter reports 251 people transferred on 13 October 1904.",
           "status": "unresolved",
           "support": [
-            "article Plaka, Elounda and the island’s supply line"
+            "S16"
           ],
-          "uncertainty": "Do not infer named people or historical transport detail.",
+          "uncertainty": "Needs primary transport or gazette confirmation",
+          "publicSourceReady": false
+        },
+        {
+          "claim": "Electricity",
+          "status": "unresolved",
+          "support": [
+            "None reviewed"
+          ],
+          "uncertainty": "Common retellings conflict",
+          "publicSourceReady": false
+        },
+        {
+          "claim": "Final resident",
+          "status": "unresolved",
+          "support": [
+            "None reviewed"
+          ],
+          "uncertainty": "Highly repeated but unverified here",
           "publicSourceReady": false
         }
       ],
       "visualRequirement": "Use owned context imagery or rights-cleared archival material.",
       "onScreenText": "A small island in a strategic bay",
       "transition": "Measured transition.",
-      "sourceNotes": "Use article sources and controlled research records only.",
+      "sourceNotes": "Use controlled research records only.",
       "rightsNotes": "Human rights review required."
     },
     {
       "order": 2,
       "heading": "Why Venice fortified Spinalonga",
       "estimatedSeconds": 50,
-      "narrationPurpose": "Explain the documented historical sequence without producing a final script.",
+      "narrationPurpose": "Explain controlled research without a final script.",
       "supportedClaims": [
         {
-          "claim": "Spinalonga is on Greece’s UNESCO Tentative List, not the World Heritage List; the 2021 nomination was withdrawn at the State Party’s request.",
+          "claim": "Work on the Venetian fortress began in June 1579.",
           "status": "verified",
           "support": [
-            "article Sources and Image Credits"
+            "S01"
           ],
-          "uncertainty": null,
+          "uncertainty": "None found",
           "publicSourceReady": true
         },
         {
-          "claim": "Exact numerical and legal precision remains qualified pending primary records.",
+          "claim": "Bressani proposed the first enclosure; Orsini’s 1584 intervention added an upper defensive line.",
+          "status": "verified",
+          "support": [
+            "S01, S05"
+          ],
+          "uncertainty": "Do not call either sole creator",
+          "publicSourceReady": true
+        },
+        {
+          "claim": "Its position served the harbour and approaches to Elounda within a wider defensive response.",
           "status": "qualified",
           "support": [
-            "article A note on evidence"
+            "S01, S07"
           ],
-          "uncertainty": "Do not add exact dates, counts or legal citations.",
+          "uncertainty": "Single-cause explanations are unsupported",
           "publicSourceReady": false
         }
       ],
       "qualifiedClaims": [
         {
-          "claim": "Exact numerical and legal precision remains qualified pending primary records.",
+          "claim": "Its position served the harbour and approaches to Elounda within a wider defensive response.",
           "status": "qualified",
           "support": [
-            "article A note on evidence"
+            "S01, S07"
           ],
-          "uncertainty": "Do not add exact dates, counts or legal citations.",
+          "uncertainty": "Single-cause explanations are unsupported",
+          "publicSourceReady": false
+        },
+        {
+          "claim": "Salt production formed part of the local strategic economy.",
+          "status": "qualified",
+          "support": [
+            "S14"
+          ],
+          "uncertainty": "Direct decision-making link not demonstrated",
+          "publicSourceReady": false
+        },
+        {
+          "claim": "An earlier wall is now interpreted as Byzantine, probably 7th–8th c.",
+          "status": "qualified",
+          "support": [
+            "S02"
+          ],
+          "uncertainty": "UNESCO tentative text says antiquity; do not collapse disagreement",
           "publicSourceReady": false
         }
       ],
       "unresolvedIssues": [
         {
-          "claim": "Mainland supply routes and named participants require further archival research.",
+          "claim": "A scholarly chapter reports 251 people transferred on 13 October 1904.",
           "status": "unresolved",
           "support": [
-            "article Plaka, Elounda and the island’s supply line"
+            "S16"
           ],
-          "uncertainty": "Do not infer named people or historical transport detail.",
+          "uncertainty": "Needs primary transport or gazette confirmation",
+          "publicSourceReady": false
+        },
+        {
+          "claim": "Electricity",
+          "status": "unresolved",
+          "support": [
+            "None reviewed"
+          ],
+          "uncertainty": "Common retellings conflict",
+          "publicSourceReady": false
+        },
+        {
+          "claim": "Final resident",
+          "status": "unresolved",
+          "support": [
+            "None reviewed"
+          ],
+          "uncertainty": "Highly repeated but unverified here",
           "publicSourceReady": false
         }
       ],
       "visualRequirement": "Use owned context imagery or rights-cleared archival material.",
       "onScreenText": "Why Venice fortified Spinalonga",
       "transition": "Measured transition.",
-      "sourceNotes": "Use article sources and controlled research records only.",
+      "sourceNotes": "Use controlled research records only.",
       "rightsNotes": "Human rights review required."
     },
     {
       "order": 3,
       "heading": "A Venetian enclave after 1669",
       "estimatedSeconds": 50,
-      "narrationPurpose": "Explain the documented historical sequence without producing a final script.",
+      "narrationPurpose": "Explain controlled research without a final script.",
       "supportedClaims": [
         {
-          "claim": "Spinalonga is on Greece’s UNESCO Tentative List, not the World Heritage List; the 2021 nomination was withdrawn at the State Party’s request.",
+          "claim": "Work on the Venetian fortress began in June 1579.",
           "status": "verified",
           "support": [
-            "article Sources and Image Credits"
+            "S01"
           ],
-          "uncertainty": null,
+          "uncertainty": "None found",
           "publicSourceReady": true
         },
         {
-          "claim": "Exact numerical and legal precision remains qualified pending primary records.",
+          "claim": "Bressani proposed the first enclosure; Orsini’s 1584 intervention added an upper defensive line.",
+          "status": "verified",
+          "support": [
+            "S01, S05"
+          ],
+          "uncertainty": "Do not call either sole creator",
+          "publicSourceReady": true
+        },
+        {
+          "claim": "Its position served the harbour and approaches to Elounda within a wider defensive response.",
           "status": "qualified",
           "support": [
-            "article A note on evidence"
+            "S01, S07"
           ],
-          "uncertainty": "Do not add exact dates, counts or legal citations.",
+          "uncertainty": "Single-cause explanations are unsupported",
           "publicSourceReady": false
         }
       ],
       "qualifiedClaims": [
         {
-          "claim": "Exact numerical and legal precision remains qualified pending primary records.",
+          "claim": "Its position served the harbour and approaches to Elounda within a wider defensive response.",
           "status": "qualified",
           "support": [
-            "article A note on evidence"
+            "S01, S07"
           ],
-          "uncertainty": "Do not add exact dates, counts or legal citations.",
+          "uncertainty": "Single-cause explanations are unsupported",
+          "publicSourceReady": false
+        },
+        {
+          "claim": "Salt production formed part of the local strategic economy.",
+          "status": "qualified",
+          "support": [
+            "S14"
+          ],
+          "uncertainty": "Direct decision-making link not demonstrated",
+          "publicSourceReady": false
+        },
+        {
+          "claim": "An earlier wall is now interpreted as Byzantine, probably 7th–8th c.",
+          "status": "qualified",
+          "support": [
+            "S02"
+          ],
+          "uncertainty": "UNESCO tentative text says antiquity; do not collapse disagreement",
           "publicSourceReady": false
         }
       ],
       "unresolvedIssues": [
         {
-          "claim": "Mainland supply routes and named participants require further archival research.",
+          "claim": "A scholarly chapter reports 251 people transferred on 13 October 1904.",
           "status": "unresolved",
           "support": [
-            "article Plaka, Elounda and the island’s supply line"
+            "S16"
           ],
-          "uncertainty": "Do not infer named people or historical transport detail.",
+          "uncertainty": "Needs primary transport or gazette confirmation",
+          "publicSourceReady": false
+        },
+        {
+          "claim": "Electricity",
+          "status": "unresolved",
+          "support": [
+            "None reviewed"
+          ],
+          "uncertainty": "Common retellings conflict",
+          "publicSourceReady": false
+        },
+        {
+          "claim": "Final resident",
+          "status": "unresolved",
+          "support": [
+            "None reviewed"
+          ],
+          "uncertainty": "Highly repeated but unverified here",
           "publicSourceReady": false
         }
       ],
       "visualRequirement": "Use owned context imagery or rights-cleared archival material.",
       "onScreenText": "A Venetian enclave after 1669",
       "transition": "Measured transition.",
-      "sourceNotes": "Use article sources and controlled research records only.",
+      "sourceNotes": "Use controlled research records only.",
       "rightsNotes": "Human rights review required."
     },
     {
       "order": 4,
       "heading": "From fortress to Ottoman town",
       "estimatedSeconds": 50,
-      "narrationPurpose": "Explain the documented historical sequence without producing a final script.",
+      "narrationPurpose": "Explain controlled research without a final script.",
       "supportedClaims": [
         {
-          "claim": "Spinalonga is on Greece’s UNESCO Tentative List, not the World Heritage List; the 2021 nomination was withdrawn at the State Party’s request.",
+          "claim": "Work on the Venetian fortress began in June 1579.",
           "status": "verified",
           "support": [
-            "article Sources and Image Credits"
+            "S01"
           ],
-          "uncertainty": null,
+          "uncertainty": "None found",
           "publicSourceReady": true
         },
         {
-          "claim": "Exact numerical and legal precision remains qualified pending primary records.",
-          "status": "qualified",
+          "claim": "Bressani proposed the first enclosure; Orsini’s 1584 intervention added an upper defensive line.",
+          "status": "verified",
           "support": [
-            "article A note on evidence"
+            "S01, S05"
           ],
-          "uncertainty": "Do not add exact dates, counts or legal citations.",
-          "publicSourceReady": false
+          "uncertainty": "Do not call either sole creator",
+          "publicSourceReady": true
         },
         {
-          "claim": "Mainland supply routes and named participants require further archival research.",
-          "status": "unresolved",
+          "claim": "Its position served the harbour and approaches to Elounda within a wider defensive response.",
+          "status": "qualified",
           "support": [
-            "article Plaka, Elounda and the island’s supply line"
+            "S01, S07"
           ],
-          "uncertainty": "Do not infer named people or historical transport detail.",
+          "uncertainty": "Single-cause explanations are unsupported",
           "publicSourceReady": false
         }
       ],
       "qualifiedClaims": [
         {
-          "claim": "Exact numerical and legal precision remains qualified pending primary records.",
+          "claim": "Its position served the harbour and approaches to Elounda within a wider defensive response.",
           "status": "qualified",
           "support": [
-            "article A note on evidence"
+            "S01, S07"
           ],
-          "uncertainty": "Do not add exact dates, counts or legal citations.",
+          "uncertainty": "Single-cause explanations are unsupported",
+          "publicSourceReady": false
+        },
+        {
+          "claim": "Salt production formed part of the local strategic economy.",
+          "status": "qualified",
+          "support": [
+            "S14"
+          ],
+          "uncertainty": "Direct decision-making link not demonstrated",
+          "publicSourceReady": false
+        },
+        {
+          "claim": "An earlier wall is now interpreted as Byzantine, probably 7th–8th c.",
+          "status": "qualified",
+          "support": [
+            "S02"
+          ],
+          "uncertainty": "UNESCO tentative text says antiquity; do not collapse disagreement",
           "publicSourceReady": false
         }
       ],
       "unresolvedIssues": [
         {
-          "claim": "Mainland supply routes and named participants require further archival research.",
+          "claim": "A scholarly chapter reports 251 people transferred on 13 October 1904.",
           "status": "unresolved",
           "support": [
-            "article Plaka, Elounda and the island’s supply line"
+            "S16"
           ],
-          "uncertainty": "Do not infer named people or historical transport detail.",
+          "uncertainty": "Needs primary transport or gazette confirmation",
+          "publicSourceReady": false
+        },
+        {
+          "claim": "Electricity",
+          "status": "unresolved",
+          "support": [
+            "None reviewed"
+          ],
+          "uncertainty": "Common retellings conflict",
+          "publicSourceReady": false
+        },
+        {
+          "claim": "Final resident",
+          "status": "unresolved",
+          "support": [
+            "None reviewed"
+          ],
+          "uncertainty": "Highly repeated but unverified here",
           "publicSourceReady": false
         }
       ],
       "visualRequirement": "Use owned context imagery or rights-cleared archival material.",
       "onScreenText": "From fortress to Ottoman town",
       "transition": "Measured transition.",
-      "sourceNotes": "Use article sources and controlled research records only.",
+      "sourceNotes": "Use controlled research records only.",
       "rightsNotes": "Human rights review required."
     },
     {
       "order": 5,
       "heading": "Why the Cretan State chose Spinalonga",
       "estimatedSeconds": 50,
-      "narrationPurpose": "Explain the documented historical sequence without producing a final script.",
+      "narrationPurpose": "Explain controlled research without a final script.",
       "supportedClaims": [
         {
-          "claim": "Spinalonga is on Greece’s UNESCO Tentative List, not the World Heritage List; the 2021 nomination was withdrawn at the State Party’s request.",
+          "claim": "Work on the Venetian fortress began in June 1579.",
           "status": "verified",
           "support": [
-            "article Sources and Image Credits"
+            "S01"
           ],
-          "uncertainty": null,
+          "uncertainty": "None found",
           "publicSourceReady": true
         },
         {
-          "claim": "Exact numerical and legal precision remains qualified pending primary records.",
-          "status": "qualified",
+          "claim": "Bressani proposed the first enclosure; Orsini’s 1584 intervention added an upper defensive line.",
+          "status": "verified",
           "support": [
-            "article A note on evidence"
+            "S01, S05"
           ],
-          "uncertainty": "Do not add exact dates, counts or legal citations.",
-          "publicSourceReady": false
+          "uncertainty": "Do not call either sole creator",
+          "publicSourceReady": true
         },
         {
-          "claim": "Mainland supply routes and named participants require further archival research.",
-          "status": "unresolved",
+          "claim": "Its position served the harbour and approaches to Elounda within a wider defensive response.",
+          "status": "qualified",
           "support": [
-            "article Plaka, Elounda and the island’s supply line"
+            "S01, S07"
           ],
-          "uncertainty": "Do not infer named people or historical transport detail.",
+          "uncertainty": "Single-cause explanations are unsupported",
           "publicSourceReady": false
         }
       ],
       "qualifiedClaims": [
         {
-          "claim": "Exact numerical and legal precision remains qualified pending primary records.",
+          "claim": "Its position served the harbour and approaches to Elounda within a wider defensive response.",
           "status": "qualified",
           "support": [
-            "article A note on evidence"
+            "S01, S07"
           ],
-          "uncertainty": "Do not add exact dates, counts or legal citations.",
+          "uncertainty": "Single-cause explanations are unsupported",
+          "publicSourceReady": false
+        },
+        {
+          "claim": "Salt production formed part of the local strategic economy.",
+          "status": "qualified",
+          "support": [
+            "S14"
+          ],
+          "uncertainty": "Direct decision-making link not demonstrated",
+          "publicSourceReady": false
+        },
+        {
+          "claim": "An earlier wall is now interpreted as Byzantine, probably 7th–8th c.",
+          "status": "qualified",
+          "support": [
+            "S02"
+          ],
+          "uncertainty": "UNESCO tentative text says antiquity; do not collapse disagreement",
           "publicSourceReady": false
         }
       ],
       "unresolvedIssues": [
         {
-          "claim": "Mainland supply routes and named participants require further archival research.",
+          "claim": "A scholarly chapter reports 251 people transferred on 13 October 1904.",
           "status": "unresolved",
           "support": [
-            "article Plaka, Elounda and the island’s supply line"
+            "S16"
           ],
-          "uncertainty": "Do not infer named people or historical transport detail.",
+          "uncertainty": "Needs primary transport or gazette confirmation",
+          "publicSourceReady": false
+        },
+        {
+          "claim": "Electricity",
+          "status": "unresolved",
+          "support": [
+            "None reviewed"
+          ],
+          "uncertainty": "Common retellings conflict",
+          "publicSourceReady": false
+        },
+        {
+          "claim": "Final resident",
+          "status": "unresolved",
+          "support": [
+            "None reviewed"
+          ],
+          "uncertainty": "Highly repeated but unverified here",
           "publicSourceReady": false
         }
       ],
       "visualRequirement": "Use owned context imagery or rights-cleared archival material.",
       "onScreenText": "Why the Cretan State chose Spinalonga",
       "transition": "Measured transition.",
-      "sourceNotes": "Use article sources and controlled research records only.",
+      "sourceNotes": "Use controlled research records only.",
       "rightsNotes": "Human rights review required."
     },
     {
       "order": 6,
       "heading": "The first transfers in 1904",
       "estimatedSeconds": 50,
-      "narrationPurpose": "Explain the documented historical sequence without producing a final script.",
+      "narrationPurpose": "Explain controlled research without a final script.",
       "supportedClaims": [
         {
-          "claim": "Spinalonga is on Greece’s UNESCO Tentative List, not the World Heritage List; the 2021 nomination was withdrawn at the State Party’s request.",
+          "claim": "Work on the Venetian fortress began in June 1579.",
           "status": "verified",
           "support": [
-            "article Sources and Image Credits"
+            "S01"
           ],
-          "uncertainty": null,
+          "uncertainty": "None found",
           "publicSourceReady": true
         },
         {
-          "claim": "Exact numerical and legal precision remains qualified pending primary records.",
-          "status": "qualified",
+          "claim": "Bressani proposed the first enclosure; Orsini’s 1584 intervention added an upper defensive line.",
+          "status": "verified",
           "support": [
-            "article A note on evidence"
+            "S01, S05"
           ],
-          "uncertainty": "Do not add exact dates, counts or legal citations.",
-          "publicSourceReady": false
+          "uncertainty": "Do not call either sole creator",
+          "publicSourceReady": true
         },
         {
-          "claim": "Mainland supply routes and named participants require further archival research.",
-          "status": "unresolved",
+          "claim": "Its position served the harbour and approaches to Elounda within a wider defensive response.",
+          "status": "qualified",
           "support": [
-            "article Plaka, Elounda and the island’s supply line"
+            "S01, S07"
           ],
-          "uncertainty": "Do not infer named people or historical transport detail.",
+          "uncertainty": "Single-cause explanations are unsupported",
           "publicSourceReady": false
         }
       ],
       "qualifiedClaims": [
         {
-          "claim": "Exact numerical and legal precision remains qualified pending primary records.",
+          "claim": "Its position served the harbour and approaches to Elounda within a wider defensive response.",
           "status": "qualified",
           "support": [
-            "article A note on evidence"
+            "S01, S07"
           ],
-          "uncertainty": "Do not add exact dates, counts or legal citations.",
+          "uncertainty": "Single-cause explanations are unsupported",
+          "publicSourceReady": false
+        },
+        {
+          "claim": "Salt production formed part of the local strategic economy.",
+          "status": "qualified",
+          "support": [
+            "S14"
+          ],
+          "uncertainty": "Direct decision-making link not demonstrated",
+          "publicSourceReady": false
+        },
+        {
+          "claim": "An earlier wall is now interpreted as Byzantine, probably 7th–8th c.",
+          "status": "qualified",
+          "support": [
+            "S02"
+          ],
+          "uncertainty": "UNESCO tentative text says antiquity; do not collapse disagreement",
           "publicSourceReady": false
         }
       ],
       "unresolvedIssues": [
         {
-          "claim": "Mainland supply routes and named participants require further archival research.",
+          "claim": "A scholarly chapter reports 251 people transferred on 13 October 1904.",
           "status": "unresolved",
           "support": [
-            "article Plaka, Elounda and the island’s supply line"
+            "S16"
           ],
-          "uncertainty": "Do not infer named people or historical transport detail.",
+          "uncertainty": "Needs primary transport or gazette confirmation",
+          "publicSourceReady": false
+        },
+        {
+          "claim": "Electricity",
+          "status": "unresolved",
+          "support": [
+            "None reviewed"
+          ],
+          "uncertainty": "Common retellings conflict",
+          "publicSourceReady": false
+        },
+        {
+          "claim": "Final resident",
+          "status": "unresolved",
+          "support": [
+            "None reviewed"
+          ],
+          "uncertainty": "Highly repeated but unverified here",
           "publicSourceReady": false
         }
       ],
       "visualRequirement": "Use owned context imagery or rights-cleared archival material.",
       "onScreenText": "The first transfers in 1904",
       "transition": "Measured transition.",
-      "sourceNotes": "Use article sources and controlled research records only.",
+      "sourceNotes": "Use controlled research records only.",
       "rightsNotes": "Human rights review required."
     },
     {
       "order": 7,
       "heading": "Life inside the settlement",
       "estimatedSeconds": 50,
-      "narrationPurpose": "Explain the documented historical sequence without producing a final script.",
+      "narrationPurpose": "Explain controlled research without a final script.",
       "supportedClaims": [
         {
-          "claim": "Spinalonga is on Greece’s UNESCO Tentative List, not the World Heritage List; the 2021 nomination was withdrawn at the State Party’s request.",
+          "claim": "Work on the Venetian fortress began in June 1579.",
           "status": "verified",
           "support": [
-            "article Sources and Image Credits"
+            "S01"
           ],
-          "uncertainty": null,
+          "uncertainty": "None found",
           "publicSourceReady": true
         },
         {
-          "claim": "Exact numerical and legal precision remains qualified pending primary records.",
-          "status": "qualified",
+          "claim": "Bressani proposed the first enclosure; Orsini’s 1584 intervention added an upper defensive line.",
+          "status": "verified",
           "support": [
-            "article A note on evidence"
+            "S01, S05"
           ],
-          "uncertainty": "Do not add exact dates, counts or legal citations.",
-          "publicSourceReady": false
+          "uncertainty": "Do not call either sole creator",
+          "publicSourceReady": true
         },
         {
-          "claim": "Mainland supply routes and named participants require further archival research.",
-          "status": "unresolved",
+          "claim": "Its position served the harbour and approaches to Elounda within a wider defensive response.",
+          "status": "qualified",
           "support": [
-            "article Plaka, Elounda and the island’s supply line"
+            "S01, S07"
           ],
-          "uncertainty": "Do not infer named people or historical transport detail.",
+          "uncertainty": "Single-cause explanations are unsupported",
           "publicSourceReady": false
         }
       ],
       "qualifiedClaims": [
         {
-          "claim": "Exact numerical and legal precision remains qualified pending primary records.",
+          "claim": "Its position served the harbour and approaches to Elounda within a wider defensive response.",
           "status": "qualified",
           "support": [
-            "article A note on evidence"
+            "S01, S07"
           ],
-          "uncertainty": "Do not add exact dates, counts or legal citations.",
+          "uncertainty": "Single-cause explanations are unsupported",
+          "publicSourceReady": false
+        },
+        {
+          "claim": "Salt production formed part of the local strategic economy.",
+          "status": "qualified",
+          "support": [
+            "S14"
+          ],
+          "uncertainty": "Direct decision-making link not demonstrated",
+          "publicSourceReady": false
+        },
+        {
+          "claim": "An earlier wall is now interpreted as Byzantine, probably 7th–8th c.",
+          "status": "qualified",
+          "support": [
+            "S02"
+          ],
+          "uncertainty": "UNESCO tentative text says antiquity; do not collapse disagreement",
           "publicSourceReady": false
         }
       ],
       "unresolvedIssues": [
         {
-          "claim": "Mainland supply routes and named participants require further archival research.",
+          "claim": "A scholarly chapter reports 251 people transferred on 13 October 1904.",
           "status": "unresolved",
           "support": [
-            "article Plaka, Elounda and the island’s supply line"
+            "S16"
           ],
-          "uncertainty": "Do not infer named people or historical transport detail.",
+          "uncertainty": "Needs primary transport or gazette confirmation",
+          "publicSourceReady": false
+        },
+        {
+          "claim": "Electricity",
+          "status": "unresolved",
+          "support": [
+            "None reviewed"
+          ],
+          "uncertainty": "Common retellings conflict",
+          "publicSourceReady": false
+        },
+        {
+          "claim": "Final resident",
+          "status": "unresolved",
+          "support": [
+            "None reviewed"
+          ],
+          "uncertainty": "Highly repeated but unverified here",
           "publicSourceReady": false
         }
       ],
       "visualRequirement": "Use owned context imagery or rights-cleared archival material.",
       "onScreenText": "Life inside the settlement",
       "transition": "Measured transition.",
-      "sourceNotes": "Use article sources and controlled research records only.",
+      "sourceNotes": "Use controlled research records only.",
       "rightsNotes": "Human rights review required."
     },
     {
       "order": 8,
       "heading": "Plaka, Elounda and the island’s supply line",
       "estimatedSeconds": 50,
-      "narrationPurpose": "Explain the documented historical sequence without producing a final script.",
+      "narrationPurpose": "Explain controlled research without a final script.",
       "supportedClaims": [
         {
-          "claim": "Spinalonga is on Greece’s UNESCO Tentative List, not the World Heritage List; the 2021 nomination was withdrawn at the State Party’s request.",
+          "claim": "Work on the Venetian fortress began in June 1579.",
           "status": "verified",
           "support": [
-            "article Sources and Image Credits"
+            "S01"
           ],
-          "uncertainty": null,
+          "uncertainty": "None found",
           "publicSourceReady": true
         },
         {
-          "claim": "Exact numerical and legal precision remains qualified pending primary records.",
-          "status": "qualified",
+          "claim": "Bressani proposed the first enclosure; Orsini’s 1584 intervention added an upper defensive line.",
+          "status": "verified",
           "support": [
-            "article A note on evidence"
+            "S01, S05"
           ],
-          "uncertainty": "Do not add exact dates, counts or legal citations.",
-          "publicSourceReady": false
+          "uncertainty": "Do not call either sole creator",
+          "publicSourceReady": true
         },
         {
-          "claim": "Mainland supply routes and named participants require further archival research.",
-          "status": "unresolved",
+          "claim": "Its position served the harbour and approaches to Elounda within a wider defensive response.",
+          "status": "qualified",
           "support": [
-            "article Plaka, Elounda and the island’s supply line"
+            "S01, S07"
           ],
-          "uncertainty": "Do not infer named people or historical transport detail.",
+          "uncertainty": "Single-cause explanations are unsupported",
           "publicSourceReady": false
         }
       ],
       "qualifiedClaims": [
         {
-          "claim": "Exact numerical and legal precision remains qualified pending primary records.",
+          "claim": "Its position served the harbour and approaches to Elounda within a wider defensive response.",
           "status": "qualified",
           "support": [
-            "article A note on evidence"
+            "S01, S07"
           ],
-          "uncertainty": "Do not add exact dates, counts or legal citations.",
+          "uncertainty": "Single-cause explanations are unsupported",
+          "publicSourceReady": false
+        },
+        {
+          "claim": "Salt production formed part of the local strategic economy.",
+          "status": "qualified",
+          "support": [
+            "S14"
+          ],
+          "uncertainty": "Direct decision-making link not demonstrated",
+          "publicSourceReady": false
+        },
+        {
+          "claim": "An earlier wall is now interpreted as Byzantine, probably 7th–8th c.",
+          "status": "qualified",
+          "support": [
+            "S02"
+          ],
+          "uncertainty": "UNESCO tentative text says antiquity; do not collapse disagreement",
           "publicSourceReady": false
         }
       ],
       "unresolvedIssues": [
         {
-          "claim": "Mainland supply routes and named participants require further archival research.",
+          "claim": "A scholarly chapter reports 251 people transferred on 13 October 1904.",
           "status": "unresolved",
           "support": [
-            "article Plaka, Elounda and the island’s supply line"
+            "S16"
           ],
-          "uncertainty": "Do not infer named people or historical transport detail.",
+          "uncertainty": "Needs primary transport or gazette confirmation",
+          "publicSourceReady": false
+        },
+        {
+          "claim": "Electricity",
+          "status": "unresolved",
+          "support": [
+            "None reviewed"
+          ],
+          "uncertainty": "Common retellings conflict",
+          "publicSourceReady": false
+        },
+        {
+          "claim": "Final resident",
+          "status": "unresolved",
+          "support": [
+            "None reviewed"
+          ],
+          "uncertainty": "Highly repeated but unverified here",
           "publicSourceReady": false
         }
       ],
       "visualRequirement": "Use owned context imagery or rights-cleared archival material.",
       "onScreenText": "Plaka, Elounda and the island’s supply line",
       "transition": "Measured transition.",
-      "sourceNotes": "Use article sources and controlled research records only.",
+      "sourceNotes": "Use controlled research records only.",
       "rightsNotes": "Human rights review required."
     },
     {
       "order": 9,
       "heading": "Treatment, change and closure",
       "estimatedSeconds": 50,
-      "narrationPurpose": "Explain the documented historical sequence without producing a final script.",
+      "narrationPurpose": "Explain controlled research without a final script.",
       "supportedClaims": [
         {
-          "claim": "Spinalonga is on Greece’s UNESCO Tentative List, not the World Heritage List; the 2021 nomination was withdrawn at the State Party’s request.",
+          "claim": "Work on the Venetian fortress began in June 1579.",
           "status": "verified",
           "support": [
-            "article Sources and Image Credits"
+            "S01"
           ],
-          "uncertainty": null,
+          "uncertainty": "None found",
           "publicSourceReady": true
         },
         {
-          "claim": "Exact numerical and legal precision remains qualified pending primary records.",
-          "status": "qualified",
+          "claim": "Bressani proposed the first enclosure; Orsini’s 1584 intervention added an upper defensive line.",
+          "status": "verified",
           "support": [
-            "article A note on evidence"
+            "S01, S05"
           ],
-          "uncertainty": "Do not add exact dates, counts or legal citations.",
-          "publicSourceReady": false
+          "uncertainty": "Do not call either sole creator",
+          "publicSourceReady": true
         },
         {
-          "claim": "Mainland supply routes and named participants require further archival research.",
-          "status": "unresolved",
+          "claim": "Its position served the harbour and approaches to Elounda within a wider defensive response.",
+          "status": "qualified",
           "support": [
-            "article Plaka, Elounda and the island’s supply line"
+            "S01, S07"
           ],
-          "uncertainty": "Do not infer named people or historical transport detail.",
+          "uncertainty": "Single-cause explanations are unsupported",
           "publicSourceReady": false
         }
       ],
       "qualifiedClaims": [
         {
-          "claim": "Exact numerical and legal precision remains qualified pending primary records.",
+          "claim": "Its position served the harbour and approaches to Elounda within a wider defensive response.",
           "status": "qualified",
           "support": [
-            "article A note on evidence"
+            "S01, S07"
           ],
-          "uncertainty": "Do not add exact dates, counts or legal citations.",
+          "uncertainty": "Single-cause explanations are unsupported",
+          "publicSourceReady": false
+        },
+        {
+          "claim": "Salt production formed part of the local strategic economy.",
+          "status": "qualified",
+          "support": [
+            "S14"
+          ],
+          "uncertainty": "Direct decision-making link not demonstrated",
+          "publicSourceReady": false
+        },
+        {
+          "claim": "An earlier wall is now interpreted as Byzantine, probably 7th–8th c.",
+          "status": "qualified",
+          "support": [
+            "S02"
+          ],
+          "uncertainty": "UNESCO tentative text says antiquity; do not collapse disagreement",
           "publicSourceReady": false
         }
       ],
       "unresolvedIssues": [
         {
-          "claim": "Mainland supply routes and named participants require further archival research.",
+          "claim": "A scholarly chapter reports 251 people transferred on 13 October 1904.",
           "status": "unresolved",
           "support": [
-            "article Plaka, Elounda and the island’s supply line"
+            "S16"
           ],
-          "uncertainty": "Do not infer named people or historical transport detail.",
+          "uncertainty": "Needs primary transport or gazette confirmation",
+          "publicSourceReady": false
+        },
+        {
+          "claim": "Electricity",
+          "status": "unresolved",
+          "support": [
+            "None reviewed"
+          ],
+          "uncertainty": "Common retellings conflict",
+          "publicSourceReady": false
+        },
+        {
+          "claim": "Final resident",
+          "status": "unresolved",
+          "support": [
+            "None reviewed"
+          ],
+          "uncertainty": "Highly repeated but unverified here",
           "publicSourceReady": false
         }
       ],
       "visualRequirement": "Use owned context imagery or rights-cleared archival material.",
       "onScreenText": "Treatment, change and closure",
       "transition": "Measured transition.",
-      "sourceNotes": "Use article sources and controlled research records only.",
+      "sourceNotes": "Use controlled research records only.",
       "rightsNotes": "Human rights review required."
     },
     {
       "order": 10,
       "heading": "From abandonment to protected monument",
       "estimatedSeconds": 50,
-      "narrationPurpose": "Explain the documented historical sequence without producing a final script.",
+      "narrationPurpose": "Explain controlled research without a final script.",
       "supportedClaims": [
         {
-          "claim": "Spinalonga is on Greece’s UNESCO Tentative List, not the World Heritage List; the 2021 nomination was withdrawn at the State Party’s request.",
+          "claim": "Work on the Venetian fortress began in June 1579.",
           "status": "verified",
           "support": [
-            "article Sources and Image Credits"
+            "S01"
           ],
-          "uncertainty": null,
+          "uncertainty": "None found",
           "publicSourceReady": true
         },
         {
-          "claim": "Exact numerical and legal precision remains qualified pending primary records.",
-          "status": "qualified",
+          "claim": "Bressani proposed the first enclosure; Orsini’s 1584 intervention added an upper defensive line.",
+          "status": "verified",
           "support": [
-            "article A note on evidence"
+            "S01, S05"
           ],
-          "uncertainty": "Do not add exact dates, counts or legal citations.",
-          "publicSourceReady": false
+          "uncertainty": "Do not call either sole creator",
+          "publicSourceReady": true
         },
         {
-          "claim": "Mainland supply routes and named participants require further archival research.",
-          "status": "unresolved",
+          "claim": "Its position served the harbour and approaches to Elounda within a wider defensive response.",
+          "status": "qualified",
           "support": [
-            "article Plaka, Elounda and the island’s supply line"
+            "S01, S07"
           ],
-          "uncertainty": "Do not infer named people or historical transport detail.",
+          "uncertainty": "Single-cause explanations are unsupported",
           "publicSourceReady": false
         }
       ],
       "qualifiedClaims": [
         {
-          "claim": "Exact numerical and legal precision remains qualified pending primary records.",
+          "claim": "Its position served the harbour and approaches to Elounda within a wider defensive response.",
           "status": "qualified",
           "support": [
-            "article A note on evidence"
+            "S01, S07"
           ],
-          "uncertainty": "Do not add exact dates, counts or legal citations.",
+          "uncertainty": "Single-cause explanations are unsupported",
+          "publicSourceReady": false
+        },
+        {
+          "claim": "Salt production formed part of the local strategic economy.",
+          "status": "qualified",
+          "support": [
+            "S14"
+          ],
+          "uncertainty": "Direct decision-making link not demonstrated",
+          "publicSourceReady": false
+        },
+        {
+          "claim": "An earlier wall is now interpreted as Byzantine, probably 7th–8th c.",
+          "status": "qualified",
+          "support": [
+            "S02"
+          ],
+          "uncertainty": "UNESCO tentative text says antiquity; do not collapse disagreement",
           "publicSourceReady": false
         }
       ],
       "unresolvedIssues": [
         {
-          "claim": "Mainland supply routes and named participants require further archival research.",
+          "claim": "A scholarly chapter reports 251 people transferred on 13 October 1904.",
           "status": "unresolved",
           "support": [
-            "article Plaka, Elounda and the island’s supply line"
+            "S16"
           ],
-          "uncertainty": "Do not infer named people or historical transport detail.",
+          "uncertainty": "Needs primary transport or gazette confirmation",
+          "publicSourceReady": false
+        },
+        {
+          "claim": "Electricity",
+          "status": "unresolved",
+          "support": [
+            "None reviewed"
+          ],
+          "uncertainty": "Common retellings conflict",
+          "publicSourceReady": false
+        },
+        {
+          "claim": "Final resident",
+          "status": "unresolved",
+          "support": [
+            "None reviewed"
+          ],
+          "uncertainty": "Highly repeated but unverified here",
           "publicSourceReady": false
         }
       ],
       "visualRequirement": "Use owned context imagery or rights-cleared archival material.",
       "onScreenText": "From abandonment to protected monument",
       "transition": "Measured transition.",
-      "sourceNotes": "Use article sources and controlled research records only.",
+      "sourceNotes": "Use controlled research records only.",
       "rightsNotes": "Human rights review required."
     },
     {
       "order": 11,
       "heading": "What the island’s successive lives reveal",
       "estimatedSeconds": 50,
-      "narrationPurpose": "Explain the documented historical sequence without producing a final script.",
+      "narrationPurpose": "Explain controlled research without a final script.",
       "supportedClaims": [
         {
-          "claim": "Spinalonga is on Greece’s UNESCO Tentative List, not the World Heritage List; the 2021 nomination was withdrawn at the State Party’s request.",
+          "claim": "Work on the Venetian fortress began in June 1579.",
           "status": "verified",
           "support": [
-            "article Sources and Image Credits"
+            "S01"
           ],
-          "uncertainty": null,
+          "uncertainty": "None found",
           "publicSourceReady": true
         },
         {
-          "claim": "Exact numerical and legal precision remains qualified pending primary records.",
-          "status": "qualified",
+          "claim": "Bressani proposed the first enclosure; Orsini’s 1584 intervention added an upper defensive line.",
+          "status": "verified",
           "support": [
-            "article A note on evidence"
+            "S01, S05"
           ],
-          "uncertainty": "Do not add exact dates, counts or legal citations.",
-          "publicSourceReady": false
+          "uncertainty": "Do not call either sole creator",
+          "publicSourceReady": true
         },
         {
-          "claim": "Mainland supply routes and named participants require further archival research.",
-          "status": "unresolved",
+          "claim": "Its position served the harbour and approaches to Elounda within a wider defensive response.",
+          "status": "qualified",
           "support": [
-            "article Plaka, Elounda and the island’s supply line"
+            "S01, S07"
           ],
-          "uncertainty": "Do not infer named people or historical transport detail.",
+          "uncertainty": "Single-cause explanations are unsupported",
           "publicSourceReady": false
         }
       ],
       "qualifiedClaims": [
         {
-          "claim": "Exact numerical and legal precision remains qualified pending primary records.",
+          "claim": "Its position served the harbour and approaches to Elounda within a wider defensive response.",
           "status": "qualified",
           "support": [
-            "article A note on evidence"
+            "S01, S07"
           ],
-          "uncertainty": "Do not add exact dates, counts or legal citations.",
+          "uncertainty": "Single-cause explanations are unsupported",
+          "publicSourceReady": false
+        },
+        {
+          "claim": "Salt production formed part of the local strategic economy.",
+          "status": "qualified",
+          "support": [
+            "S14"
+          ],
+          "uncertainty": "Direct decision-making link not demonstrated",
+          "publicSourceReady": false
+        },
+        {
+          "claim": "An earlier wall is now interpreted as Byzantine, probably 7th–8th c.",
+          "status": "qualified",
+          "support": [
+            "S02"
+          ],
+          "uncertainty": "UNESCO tentative text says antiquity; do not collapse disagreement",
           "publicSourceReady": false
         }
       ],
       "unresolvedIssues": [
         {
-          "claim": "Mainland supply routes and named participants require further archival research.",
+          "claim": "A scholarly chapter reports 251 people transferred on 13 October 1904.",
           "status": "unresolved",
           "support": [
-            "article Plaka, Elounda and the island’s supply line"
+            "S16"
           ],
-          "uncertainty": "Do not infer named people or historical transport detail.",
+          "uncertainty": "Needs primary transport or gazette confirmation",
+          "publicSourceReady": false
+        },
+        {
+          "claim": "Electricity",
+          "status": "unresolved",
+          "support": [
+            "None reviewed"
+          ],
+          "uncertainty": "Common retellings conflict",
+          "publicSourceReady": false
+        },
+        {
+          "claim": "Final resident",
+          "status": "unresolved",
+          "support": [
+            "None reviewed"
+          ],
+          "uncertainty": "Highly repeated but unverified here",
           "publicSourceReady": false
         }
       ],
       "visualRequirement": "Use owned context imagery or rights-cleared archival material.",
       "onScreenText": "What the island’s successive lives reveal",
       "transition": "Measured transition.",
-      "sourceNotes": "Use article sources and controlled research records only.",
+      "sourceNotes": "Use controlled research records only.",
       "rightsNotes": "Human rights review required."
     },
     {
       "order": 12,
       "heading": "A note on evidence",
       "estimatedSeconds": 50,
-      "narrationPurpose": "Explain the documented historical sequence without producing a final script.",
+      "narrationPurpose": "Explain controlled research without a final script.",
       "supportedClaims": [
         {
-          "claim": "Spinalonga is on Greece’s UNESCO Tentative List, not the World Heritage List; the 2021 nomination was withdrawn at the State Party’s request.",
+          "claim": "Work on the Venetian fortress began in June 1579.",
           "status": "verified",
           "support": [
-            "article Sources and Image Credits"
+            "S01"
           ],
-          "uncertainty": null,
+          "uncertainty": "None found",
           "publicSourceReady": true
         },
         {
-          "claim": "Exact numerical and legal precision remains qualified pending primary records.",
-          "status": "qualified",
+          "claim": "Bressani proposed the first enclosure; Orsini’s 1584 intervention added an upper defensive line.",
+          "status": "verified",
           "support": [
-            "article A note on evidence"
+            "S01, S05"
           ],
-          "uncertainty": "Do not add exact dates, counts or legal citations.",
-          "publicSourceReady": false
+          "uncertainty": "Do not call either sole creator",
+          "publicSourceReady": true
         },
         {
-          "claim": "Mainland supply routes and named participants require further archival research.",
-          "status": "unresolved",
+          "claim": "Its position served the harbour and approaches to Elounda within a wider defensive response.",
+          "status": "qualified",
           "support": [
-            "article Plaka, Elounda and the island’s supply line"
+            "S01, S07"
           ],
-          "uncertainty": "Do not infer named people or historical transport detail.",
+          "uncertainty": "Single-cause explanations are unsupported",
           "publicSourceReady": false
         }
       ],
       "qualifiedClaims": [
         {
-          "claim": "Exact numerical and legal precision remains qualified pending primary records.",
+          "claim": "Its position served the harbour and approaches to Elounda within a wider defensive response.",
           "status": "qualified",
           "support": [
-            "article A note on evidence"
+            "S01, S07"
           ],
-          "uncertainty": "Do not add exact dates, counts or legal citations.",
+          "uncertainty": "Single-cause explanations are unsupported",
+          "publicSourceReady": false
+        },
+        {
+          "claim": "Salt production formed part of the local strategic economy.",
+          "status": "qualified",
+          "support": [
+            "S14"
+          ],
+          "uncertainty": "Direct decision-making link not demonstrated",
+          "publicSourceReady": false
+        },
+        {
+          "claim": "An earlier wall is now interpreted as Byzantine, probably 7th–8th c.",
+          "status": "qualified",
+          "support": [
+            "S02"
+          ],
+          "uncertainty": "UNESCO tentative text says antiquity; do not collapse disagreement",
           "publicSourceReady": false
         }
       ],
       "unresolvedIssues": [
         {
-          "claim": "Mainland supply routes and named participants require further archival research.",
+          "claim": "A scholarly chapter reports 251 people transferred on 13 October 1904.",
           "status": "unresolved",
           "support": [
-            "article Plaka, Elounda and the island’s supply line"
+            "S16"
           ],
-          "uncertainty": "Do not infer named people or historical transport detail.",
+          "uncertainty": "Needs primary transport or gazette confirmation",
+          "publicSourceReady": false
+        },
+        {
+          "claim": "Electricity",
+          "status": "unresolved",
+          "support": [
+            "None reviewed"
+          ],
+          "uncertainty": "Common retellings conflict",
+          "publicSourceReady": false
+        },
+        {
+          "claim": "Final resident",
+          "status": "unresolved",
+          "support": [
+            "None reviewed"
+          ],
+          "uncertainty": "Highly repeated but unverified here",
           "publicSourceReady": false
         }
       ],
       "visualRequirement": "Use owned context imagery or rights-cleared archival material.",
       "onScreenText": "A note on evidence",
       "transition": "Measured transition.",
-      "sourceNotes": "Use article sources and controlled research records only.",
+      "sourceNotes": "Use controlled research records only.",
       "rightsNotes": "Human rights review required."
     }
   ],
   "shortFormDerivative": {
     "durationSeconds": 45,
-    "question": "Why did Spinalonga’s uses change?",
-    "supportedAnswer": "Its location and built fabric were repeatedly adapted to different historical purposes.",
+    "question": "Spinalonga: Why It Was Fortified and How the Island’s Uses Changed",
+    "supportedAnswer": "Work on the Venetian fortress began in June 1579.",
     "visualConcept": "Owned contemporary context image with label.",
     "restrainedCta": "Sources and further reading are available in the accompanying article."
   },
   "youtubeMetadata": {
     "titleCandidates": [
       "Spinalonga: Why It Was Fortified and How the Island’s Uses Changed",
-      "Spinalonga: a factual historical orientation",
-      "Spinalonga’s changing uses",
-      "Understanding Spinalonga’s historical layers",
-      "Spinalonga: evidence and changing uses"
+      "A factual guide to Spinalonga: Why It Was Fortified and How the Island’s Uses Changed",
+      "Spinalonga: Why It Was Fortified and How the Island’s Uses Changed: historical context",
+      "Understanding Spinalonga: Why It Was Fortified and How the Island’s Uses Changed",
+      "Spinalonga: Why It Was Fortified and How the Island’s Uses Changed: sources and changing uses"
     ],
     "thumbnailConcepts": [
       "Fortress landscape with factual caption",
       "Settlement layers with restrained label",
-      "Map-led bay context"
+      "Map-led context"
     ],
     "descriptionDraft": "Why Spinalonga was fortified, how it became an Ottoman town and a compulsory settlement for people with Hansen’s disease, and how it remains connected to Elounda and Plaka.",
     "chapterOutline": [
@@ -806,7 +1705,7 @@
     ],
     "articleLinkPlaceholder": "https://traditional-homes.gr/en/blog/ARTICLE-SLUG/",
     "imageCreditBlock": "Photo: Nikos Pasparakis / Elounda Traditional Homes of Crete",
-    "sourceNoteBlock": "Use article sources and controlled research records only."
+    "sourceNoteBlock": "Use controlled research records only."
   },
   "visualEvidenceRegister": [
     {

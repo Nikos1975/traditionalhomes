@@ -6,60 +6,46 @@
 - Human review: required
 
 ## Editorial core
-- Question: How did Spinalonga’s changing uses shape its connection with Elounda and Plaka?
-- Thesis: The island’s physical fabric records successive defensive, residential, compulsory-isolation and conservation uses.
+- Question: What does Spinalonga: Why It Was Fortified and How the Island’s Uses Changed show through controlled evidence?
+- Thesis: The plan follows controlled evidence and preserves unresolved questions.
 
 ## Scene plan
-- **A small island in a strategic bay** (50s): Explain the documented historical sequence without producing a final script.
-  - Claims: verified: Spinalonga is on Greece’s UNESCO Tentative List, not the World Heritage List; the 2021 nomination was withdrawn at the State Party’s request.; qualified: Exact numerical and legal precision remains qualified pending primary records.
+- **A small island in a strategic bay** (50s)
+  - Claims: verified: Work on the Venetian fortress began in June 1579.; verified: Bressani proposed the first enclosure; Orsini’s 1584 intervention added an upper defensive line.; qualified: Its position served the harbour and approaches to Elounda within a wider defensive response.
   - Human rights review required.
-- **Why Venice fortified Spinalonga** (50s): Explain the documented historical sequence without producing a final script.
-  - Claims: verified: Spinalonga is on Greece’s UNESCO Tentative List, not the World Heritage List; the 2021 nomination was withdrawn at the State Party’s request.; qualified: Exact numerical and legal precision remains qualified pending primary records.
+- **Why Venice fortified Spinalonga** (50s)
+  - Claims: verified: Work on the Venetian fortress began in June 1579.; verified: Bressani proposed the first enclosure; Orsini’s 1584 intervention added an upper defensive line.; qualified: Its position served the harbour and approaches to Elounda within a wider defensive response.
   - Human rights review required.
-- **A Venetian enclave after 1669** (50s): Explain the documented historical sequence without producing a final script.
-  - Claims: verified: Spinalonga is on Greece’s UNESCO Tentative List, not the World Heritage List; the 2021 nomination was withdrawn at the State Party’s request.; qualified: Exact numerical and legal precision remains qualified pending primary records.
+- **A Venetian enclave after 1669** (50s)
+  - Claims: verified: Work on the Venetian fortress began in June 1579.; verified: Bressani proposed the first enclosure; Orsini’s 1584 intervention added an upper defensive line.; qualified: Its position served the harbour and approaches to Elounda within a wider defensive response.
   - Human rights review required.
-- **From fortress to Ottoman town** (50s): Explain the documented historical sequence without producing a final script.
-  - Claims: verified: Spinalonga is on Greece’s UNESCO Tentative List, not the World Heritage List; the 2021 nomination was withdrawn at the State Party’s request.; qualified: Exact numerical and legal precision remains qualified pending primary records.; unresolved: Mainland supply routes and named participants require further archival research.
+- **From fortress to Ottoman town** (50s)
+  - Claims: verified: Work on the Venetian fortress began in June 1579.; verified: Bressani proposed the first enclosure; Orsini’s 1584 intervention added an upper defensive line.; qualified: Its position served the harbour and approaches to Elounda within a wider defensive response.
   - Human rights review required.
-- **Why the Cretan State chose Spinalonga** (50s): Explain the documented historical sequence without producing a final script.
-  - Claims: verified: Spinalonga is on Greece’s UNESCO Tentative List, not the World Heritage List; the 2021 nomination was withdrawn at the State Party’s request.; qualified: Exact numerical and legal precision remains qualified pending primary records.; unresolved: Mainland supply routes and named participants require further archival research.
+- **Why the Cretan State chose Spinalonga** (50s)
+  - Claims: verified: Work on the Venetian fortress began in June 1579.; verified: Bressani proposed the first enclosure; Orsini’s 1584 intervention added an upper defensive line.; qualified: Its position served the harbour and approaches to Elounda within a wider defensive response.
   - Human rights review required.
-- **The first transfers in 1904** (50s): Explain the documented historical sequence without producing a final script.
-  - Claims: verified: Spinalonga is on Greece’s UNESCO Tentative List, not the World Heritage List; the 2021 nomination was withdrawn at the State Party’s request.; qualified: Exact numerical and legal precision remains qualified pending primary records.; unresolved: Mainland supply routes and named participants require further archival research.
+- **The first transfers in 1904** (50s)
+  - Claims: verified: Work on the Venetian fortress began in June 1579.; verified: Bressani proposed the first enclosure; Orsini’s 1584 intervention added an upper defensive line.; qualified: Its position served the harbour and approaches to Elounda within a wider defensive response.
   - Human rights review required.
-- **Life inside the settlement** (50s): Explain the documented historical sequence without producing a final script.
-  - Claims: verified: Spinalonga is on Greece’s UNESCO Tentative List, not the World Heritage List; the 2021 nomination was withdrawn at the State Party’s request.; qualified: Exact numerical and legal precision remains qualified pending primary records.; unresolved: Mainland supply routes and named participants require further archival research.
+- **Life inside the settlement** (50s)
+  - Claims: verified: Work on the Venetian fortress began in June 1579.; verified: Bressani proposed the first enclosure; Orsini’s 1584 intervention added an upper defensive line.; qualified: Its position served the harbour and approaches to Elounda within a wider defensive response.
   - Human rights review required.
-- **Plaka, Elounda and the island’s supply line** (50s): Explain the documented historical sequence without producing a final script.
-  - Claims: verified: Spinalonga is on Greece’s UNESCO Tentative List, not the World Heritage List; the 2021 nomination was withdrawn at the State Party’s request.; qualified: Exact numerical and legal precision remains qualified pending primary records.; unresolved: Mainland supply routes and named participants require further archival research.
+- **Plaka, Elounda and the island’s supply line** (50s)
+  - Claims: verified: Work on the Venetian fortress began in June 1579.; verified: Bressani proposed the first enclosure; Orsini’s 1584 intervention added an upper defensive line.; qualified: Its position served the harbour and approaches to Elounda within a wider defensive response.
   - Human rights review required.
-- **Treatment, change and closure** (50s): Explain the documented historical sequence without producing a final script.
-  - Claims: verified: Spinalonga is on Greece’s UNESCO Tentative List, not the World Heritage List; the 2021 nomination was withdrawn at the State Party’s request.; qualified: Exact numerical and legal precision remains qualified pending primary records.; unresolved: Mainland supply routes and named participants require further archival research.
+- **Treatment, change and closure** (50s)
+  - Claims: verified: Work on the Venetian fortress began in June 1579.; verified: Bressani proposed the first enclosure; Orsini’s 1584 intervention added an upper defensive line.; qualified: Its position served the harbour and approaches to Elounda within a wider defensive response.
   - Human rights review required.
-- **From abandonment to protected monument** (50s): Explain the documented historical sequence without producing a final script.
-  - Claims: verified: Spinalonga is on Greece’s UNESCO Tentative List, not the World Heritage List; the 2021 nomination was withdrawn at the State Party’s request.; qualified: Exact numerical and legal precision remains qualified pending primary records.; unresolved: Mainland supply routes and named participants require further archival research.
+- **From abandonment to protected monument** (50s)
+  - Claims: verified: Work on the Venetian fortress began in June 1579.; verified: Bressani proposed the first enclosure; Orsini’s 1584 intervention added an upper defensive line.; qualified: Its position served the harbour and approaches to Elounda within a wider defensive response.
   - Human rights review required.
-- **What the island’s successive lives reveal** (50s): Explain the documented historical sequence without producing a final script.
-  - Claims: verified: Spinalonga is on Greece’s UNESCO Tentative List, not the World Heritage List; the 2021 nomination was withdrawn at the State Party’s request.; qualified: Exact numerical and legal precision remains qualified pending primary records.; unresolved: Mainland supply routes and named participants require further archival research.
+- **What the island’s successive lives reveal** (50s)
+  - Claims: verified: Work on the Venetian fortress began in June 1579.; verified: Bressani proposed the first enclosure; Orsini’s 1584 intervention added an upper defensive line.; qualified: Its position served the harbour and approaches to Elounda within a wider defensive response.
   - Human rights review required.
-- **A note on evidence** (50s): Explain the documented historical sequence without producing a final script.
-  - Claims: verified: Spinalonga is on Greece’s UNESCO Tentative List, not the World Heritage List; the 2021 nomination was withdrawn at the State Party’s request.; qualified: Exact numerical and legal precision remains qualified pending primary records.; unresolved: Mainland supply routes and named participants require further archival research.
+- **A note on evidence** (50s)
+  - Claims: verified: Work on the Venetian fortress began in June 1579.; verified: Bressani proposed the first enclosure; Orsini’s 1584 intervention added an upper defensive line.; qualified: Its position served the harbour and approaches to Elounda within a wider defensive response.
   - Human rights review required.
-
-## Visual and source notes
-- spinalonga-gulf-context.webp: owned, approved website use; context only
-- spinalonga-coastal-fortifications.webp: owned, approved website use; context only
-- spinalonga-fortress-and-settlement-close-view.webp: owned, approved website use; context only
-- spinalonga-boat-and-main-landing.webp: owned, approved website use; Modern context only; not evidence of historical transport operations.
-- spinalonga-island-close-view.webp: owned, approved website use; context only
-
-## YouTube metadata
-- Spinalonga: Why It Was Fortified and How the Island’s Uses Changed
-- Spinalonga: a factual historical orientation
-- Spinalonga’s changing uses
-- Understanding Spinalonga’s historical layers
-- Spinalonga: evidence and changing uses
 
 ## Readiness
 - Human factual review

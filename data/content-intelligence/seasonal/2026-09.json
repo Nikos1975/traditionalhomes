@@ -4,61 +4,23 @@
   "recommendations": {
     "resurface existing article": [
       {
-        "slug": "elounda-and-mirabello-bay",
-        "why": "Relevant to September: walking and archival research.",
-        "evidenceReadiness": "published article",
-        "overlapStatus": "existing content",
-        "volatilityStatus": "low",
-        "nextAction": "review suitability"
-      },
-      {
         "slug": "walking-around-elounda",
-        "why": "Relevant to September: walking and archival research.",
+        "relevanceScore": 5,
+        "relevanceReason": "September signals: walking.",
+        "why": "Matches September: walking and archival research.",
         "evidenceReadiness": "published article",
         "overlapStatus": "existing content",
         "volatilityStatus": "low",
         "nextAction": "review suitability"
       }
     ],
-    "update existing article": [
-      {
-        "slug": "elounda-beaches",
-        "why": "Relevant to September: walking and archival research. Current verification required before publication.",
-        "evidenceReadiness": "published article",
-        "overlapStatus": "existing content",
-        "volatilityStatus": "high",
-        "nextAction": "verify current details",
-        "verificationWarning": "Current verification required before publication."
-      }
-    ],
+    "update existing article": [],
     "finish draft": [
       {
-        "slug": "elounda-guide-style-1",
-        "why": "Relevant to September: walking and archival research. Draft requires evidence and editorial review.",
-        "evidenceReadiness": "draft review required",
-        "overlapStatus": "existing content",
-        "volatilityStatus": "low",
-        "nextAction": "finish draft review"
-      },
-      {
-        "slug": "elounda-guide-style-2",
-        "why": "Relevant to September: walking and archival research. Draft requires evidence and editorial review.",
-        "evidenceReadiness": "draft review required",
-        "overlapStatus": "existing content",
-        "volatilityStatus": "low",
-        "nextAction": "finish draft review"
-      },
-      {
-        "slug": "elounda-guide-style-3",
-        "why": "Relevant to September: walking and archival research. Draft requires evidence and editorial review.",
-        "evidenceReadiness": "draft review required",
-        "overlapStatus": "existing content",
-        "volatilityStatus": "low",
-        "nextAction": "finish draft review"
-      },
-      {
         "slug": "elounda-vlychades-brackish-water",
-        "why": "Relevant to September: walking and archival research. Draft requires evidence and editorial review.",
+        "relevanceScore": 5,
+        "relevanceReason": "September signals: history.",
+        "why": "Matches September: walking and archival research.",
         "evidenceReadiness": "draft review required",
         "overlapStatus": "existing content",
         "volatilityStatus": "low",
@@ -68,7 +30,9 @@
     "research next": [
       {
         "slug": "elounda-autumn-walking-routes",
-        "why": "Relevant to September: walking and archival research. Raw score 88/100; deductions: likelyDuplication 10.",
+        "relevanceScore": 5,
+        "relevanceReason": "Seed seasonal relevance: 5/5.",
+        "why": "Raw score 88/100; deductions: likelyDuplication 10.",
         "evidenceReadiness": "usable",
         "overlapStatus": "likely",
         "volatilityStatus": "moderate",
@@ -76,7 +40,9 @@
       },
       {
         "slug": "elounda-winter-practical-guide",
-        "why": "Relevant to September: walking and archival research. Raw score 68/100; deductions: none.",
+        "relevanceScore": 2,
+        "relevanceReason": "Seed seasonal relevance: 2/5.",
+        "why": "Raw score 68/100; deductions: none.",
         "evidenceReadiness": "usable",
         "overlapStatus": "clear",
         "volatilityStatus": "high",
@@ -85,7 +51,9 @@
       },
       {
         "slug": "spinalonga-archival-supply-records",
-        "why": "Relevant to September: walking and archival research. Raw score 81/100; deductions: inadequateEvidence 30, likelyDuplication 10, unclearImageRights 15.",
+        "relevanceScore": 4,
+        "relevanceReason": "Seed seasonal relevance: 4/5.",
+        "why": "Raw score 81/100; deductions: inadequateEvidence 30, likelyDuplication 10, unclearImageRights 15.",
         "evidenceReadiness": "inadequate",
         "overlapStatus": "likely",
         "volatilityStatus": "low",
@@ -95,7 +63,9 @@
     "video candidate": [
       {
         "slug": "areti-monastery-mirabello-crete",
-        "why": "Relevant to September: walking and archival research.",
+        "relevanceScore": 5,
+        "relevanceReason": "September signals: history.",
+        "why": "Matches September: walking and archival research.",
         "evidenceReadiness": "published article",
         "overlapStatus": "existing content",
         "volatilityStatus": "low",
@@ -103,7 +73,9 @@
       },
       {
         "slug": "elounda-history-through-its-shoreline",
-        "why": "Relevant to September: walking and archival research.",
+        "relevanceScore": 5,
+        "relevanceReason": "September signals: history.",
+        "why": "Matches September: walking and archival research.",
         "evidenceReadiness": "published article",
         "overlapStatus": "existing content",
         "volatilityStatus": "low",
@@ -111,7 +83,9 @@
       },
       {
         "slug": "elounda-salt-pans-and-poros-windmills",
-        "why": "Relevant to September: walking and archival research.",
+        "relevanceScore": 5,
+        "relevanceReason": "September signals: history.",
+        "why": "Matches September: walking and archival research.",
         "evidenceReadiness": "published article",
         "overlapStatus": "existing content",
         "volatilityStatus": "low",
@@ -119,7 +93,9 @@
       },
       {
         "slug": "elounda-wartime-memory",
-        "why": "Relevant to September: walking and archival research.",
+        "relevanceScore": 5,
+        "relevanceReason": "September signals: history.",
+        "why": "Matches September: walking and archival research.",
         "evidenceReadiness": "published article",
         "overlapStatus": "existing content",
         "volatilityStatus": "low",
@@ -127,7 +103,9 @@
       },
       {
         "slug": "spinalonga-why-fortified-changing-uses",
-        "why": "Relevant to September: walking and archival research.",
+        "relevanceScore": 5,
+        "relevanceReason": "September signals: history.",
+        "why": "Matches September: walking and archival research.",
         "evidenceReadiness": "published article",
         "overlapStatus": "existing content",
         "volatilityStatus": "low",
@@ -137,7 +115,9 @@
     "practical seasonal content": [
       {
         "slug": "elounda-winter-practical-guide",
-        "why": "Relevant to September: walking and archival research. Current verification required before publication.",
+        "relevanceScore": 2,
+        "relevanceReason": "Operational content requires current checking.",
+        "why": "Matches September: walking and archival research.",
         "evidenceReadiness": "usable",
         "overlapStatus": "clear",
         "volatilityStatus": "high",

@@ -1,7 +1,7 @@
 # Content inventory
 
 | Title | Draft | Route | Words | Video readiness |
-| --- | --- | --- | ---: | --- |
+| --- | --- | ---: | ---: | --- |
 | Moni Aretiou: A Historic Monastery Inland from Elounda | no | /en/blog/areti-monastery-mirabello-crete/ | 1054 | human review required |
 | What Is Elounda? Understanding the Villages and Landscapes Around Mirabello Bay | no | /en/blog/elounda-and-mirabello-bay/ | 2272 | human review required |
 | Elounda Beaches: A Practical Guide from Schisma to Plaka | no | /en/blog/elounda-beaches/ | 1605 | human review required |

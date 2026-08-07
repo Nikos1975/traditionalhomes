@@ -1,5 +1,5 @@
 {
-  "schemaVersion": 2,
+  "schemaVersion": 3,
   "generatedAt": "deterministic",
   "includeDrafts": true,
   "articles": [
@@ -36,6 +36,13 @@
         "Vrouchas",
         "Mirabello",
         "Crete"
+      ],
+      "keywords": [
+        "crete",
+        "elounda",
+        "mirabello",
+        "plaka",
+        "vrouchas"
       ],
       "relatedResearchDirectory": null,
       "videoReadiness": "human review required",
@@ -81,12 +88,21 @@
       ],
       "entities": [
         "Elounda",
-        "Plaka",
         "Mavrikiano",
+        "Plaka",
         "Vrouchas",
         "Mirabello",
         "Spinalonga",
         "Crete"
+      ],
+      "keywords": [
+        "crete",
+        "elounda",
+        "mavrikiano",
+        "mirabello",
+        "plaka",
+        "spinalonga",
+        "vrouchas"
       ],
       "relatedResearchDirectory": "docs/research/blog/elounda-and-mirabello-bay",
       "videoReadiness": "human review required",
@@ -129,12 +145,21 @@
       ],
       "entities": [
         "Elounda",
-        "Plaka",
         "Mavrikiano",
+        "Plaka",
         "Vrouchas",
         "Mirabello",
         "Spinalonga",
         "Crete"
+      ],
+      "keywords": [
+        "crete",
+        "elounda",
+        "mavrikiano",
+        "mirabello",
+        "plaka",
+        "spinalonga",
+        "vrouchas"
       ],
       "relatedResearchDirectory": "docs/research/blog/elounda-beaches",
       "videoReadiness": "human review required",
@@ -157,11 +182,19 @@
       "internalLinks": [],
       "entities": [
         "Elounda",
-        "Plaka",
         "Mavrikiano",
+        "Plaka",
         "Mirabello",
         "Spinalonga",
         "Crete"
+      ],
+      "keywords": [
+        "crete",
+        "elounda",
+        "mavrikiano",
+        "mirabello",
+        "plaka",
+        "spinalonga"
       ],
       "relatedResearchDirectory": null,
       "videoReadiness": "draft review required",
@@ -184,11 +217,19 @@
       "internalLinks": [],
       "entities": [
         "Elounda",
-        "Plaka",
         "Mavrikiano",
+        "Plaka",
         "Mirabello",
         "Spinalonga",
         "Crete"
+      ],
+      "keywords": [
+        "crete",
+        "elounda",
+        "mavrikiano",
+        "mirabello",
+        "plaka",
+        "spinalonga"
       ],
       "relatedResearchDirectory": null,
       "videoReadiness": "draft review required",
@@ -211,11 +252,19 @@
       "internalLinks": [],
       "entities": [
         "Elounda",
-        "Plaka",
         "Mavrikiano",
+        "Plaka",
         "Mirabello",
         "Spinalonga",
         "Crete"
+      ],
+      "keywords": [
+        "crete",
+        "elounda",
+        "mavrikiano",
+        "mirabello",
+        "plaka",
+        "spinalonga"
       ],
       "relatedResearchDirectory": null,
       "videoReadiness": "draft review required",
@@ -243,11 +292,19 @@
       ],
       "entities": [
         "Elounda",
-        "Plaka",
         "Mavrikiano",
+        "Plaka",
         "Mirabello",
         "Spinalonga",
         "Crete"
+      ],
+      "keywords": [
+        "crete",
+        "elounda",
+        "mavrikiano",
+        "mirabello",
+        "plaka",
+        "spinalonga"
       ],
       "relatedResearchDirectory": null,
       "videoReadiness": "human review required",
@@ -291,6 +348,13 @@
         "Spinalonga",
         "Crete"
       ],
+      "keywords": [
+        "crete",
+        "elounda",
+        "mirabello",
+        "plaka",
+        "spinalonga"
+      ],
       "relatedResearchDirectory": null,
       "videoReadiness": "human review required",
       "sourceFingerprint": "8b1f8599a92b3b2e321debe1a92590a63a01f8b67fa1679ed7c430eb486e6fae"
@@ -328,6 +392,13 @@
         "Spinalonga",
         "Crete"
       ],
+      "keywords": [
+        "crete",
+        "elounda",
+        "mavrikiano",
+        "mirabello",
+        "spinalonga"
+      ],
       "relatedResearchDirectory": null,
       "videoReadiness": "human review required",
       "sourceFingerprint": "9810c62be85c2518d3835acb50b8fe5f5e3cf1098851b7557c447e40b9560ba0"
@@ -359,12 +430,21 @@
       ],
       "entities": [
         "Elounda",
-        "Plaka",
         "Mavrikiano",
+        "Plaka",
         "Vrouchas",
         "Mirabello",
         "Spinalonga",
         "Crete"
+      ],
+      "keywords": [
+        "crete",
+        "elounda",
+        "mavrikiano",
+        "mirabello",
+        "plaka",
+        "spinalonga",
+        "vrouchas"
       ],
       "relatedResearchDirectory": null,
       "videoReadiness": "human review required",
@@ -406,11 +486,19 @@
       ],
       "entities": [
         "Elounda",
-        "Plaka",
         "Mavrikiano",
+        "Plaka",
         "Mirabello",
         "Spinalonga",
         "Crete"
+      ],
+      "keywords": [
+        "crete",
+        "elounda",
+        "mavrikiano",
+        "mirabello",
+        "plaka",
+        "spinalonga"
       ],
       "relatedResearchDirectory": null,
       "videoReadiness": "draft review required",
@@ -444,12 +532,21 @@
       ],
       "entities": [
         "Elounda",
-        "Plaka",
         "Mavrikiano",
+        "Plaka",
         "Vrouchas",
         "Mirabello",
         "Spinalonga",
         "Crete"
+      ],
+      "keywords": [
+        "crete",
+        "elounda",
+        "mavrikiano",
+        "mirabello",
+        "plaka",
+        "spinalonga",
+        "vrouchas"
       ],
       "relatedResearchDirectory": null,
       "videoReadiness": "human review required",
@@ -487,11 +584,19 @@
       ],
       "entities": [
         "Elounda",
-        "Plaka",
         "Mavrikiano",
+        "Plaka",
         "Mirabello",
         "Spinalonga",
         "Crete"
+      ],
+      "keywords": [
+        "crete",
+        "elounda",
+        "mavrikiano",
+        "mirabello",
+        "plaka",
+        "spinalonga"
       ],
       "relatedResearchDirectory": null,
       "videoReadiness": "human review required",
@@ -525,11 +630,19 @@
       ],
       "entities": [
         "Elounda",
-        "Plaka",
         "Mavrikiano",
+        "Plaka",
         "Mirabello",
         "Spinalonga",
         "Crete"
+      ],
+      "keywords": [
+        "crete",
+        "elounda",
+        "mavrikiano",
+        "mirabello",
+        "plaka",
+        "spinalonga"
       ],
       "relatedResearchDirectory": null,
       "videoReadiness": "human review required",
@@ -584,6 +697,17 @@
         "Spinalonga",
         "Crete"
       ],
+      "keywords": [
+        "crete",
+        "elounda",
+        "hansens-disease",
+        "mirabello",
+        "mirabello-bay",
+        "ottoman-history",
+        "plaka",
+        "spinalonga",
+        "venetian-history"
+      ],
       "relatedResearchDirectory": "docs/research/blog/spinalonga-multiple-lives",
       "videoReadiness": "human review required",
       "sourceFingerprint": "77a374a15f9304f2e9db6ac5584780784705687ad865f83ed0c7302b149b356d"
@@ -619,12 +743,21 @@
       ],
       "entities": [
         "Elounda",
-        "Plaka",
         "Mavrikiano",
+        "Plaka",
         "Vrouchas",
         "Mirabello",
         "Spinalonga",
         "Crete"
+      ],
+      "keywords": [
+        "crete",
+        "elounda",
+        "mavrikiano",
+        "mirabello",
+        "plaka",
+        "spinalonga",
+        "vrouchas"
       ],
       "relatedResearchDirectory": "docs/research/blog/walking-around-elounda",
       "videoReadiness": "human review required",
@@ -659,6 +792,13 @@
         "Vrouchas",
         "Mirabello",
         "Spinalonga"
+      ],
+      "keywords": [
+        "elounda",
+        "mavrikiano",
+        "mirabello",
+        "spinalonga",
+        "vrouchas"
       ],
       "relatedResearchDirectory": null,
       "videoReadiness": "human review required",
