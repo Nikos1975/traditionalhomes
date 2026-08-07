@@ -1,7 +1,7 @@
 import { createHash } from "node:crypto";
 import { readFile } from "node:fs/promises";
 import path from "node:path";
-import { atomicJson, contentPath } from "./utils.mjs";
+import { persistDataset } from "./gsc-dataset.mjs";
 
 const REQUIRED_METRICS = ["clicks", "impressions", "ctr", "position"];
 const LIMITED_HISTORY_WARNING = "Limited Search Console history. Use for current query/page observations, not seasonality or long-term trend conclusions.";
@@ -175,8 +175,6 @@ export async function importSearchConsoleCsv({ rootDir = process.cwd(), file, pr
   const coverage = baseline(records);
   const stable = { schemaVersion: 1, property, exportType, sourceFingerprint: fingerprint(source), coverageStart: coverage.startDate, coverageEnd: coverage.endDate, coverageDays: coverage.days, baselineOnly: coverage.baselineOnly, records };
   const datasetFingerprint = fingerprint(JSON.stringify(stable));
-  const destination = contentPath(rootDir, "search-console", "processed", `${datasetFingerprint}.json`);
-  try { return JSON.parse(await readFile(destination, "utf8")); } catch (error) { if (error?.code !== "ENOENT") throw error; }
   const provenance = {
     source: "google-search-console",
     importedAt: new Date().toISOString(),
@@ -189,6 +187,5 @@ export async function importSearchConsoleCsv({ rootDir = process.cwd(), file, pr
     sourceFingerprint: stable.sourceFingerprint,
   };
   const result = { schemaVersion: 1, generatedAt: "deterministic", property, exportType, provenance, baselineOnly: coverage.baselineOnly, baseline: coverage, records, fingerprint: datasetFingerprint };
-  await atomicJson(destination, result);
-  return result;
+  return persistDataset({ rootDir, dataset: result });
 }

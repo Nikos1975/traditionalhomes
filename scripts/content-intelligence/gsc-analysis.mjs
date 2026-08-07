@@ -1,5 +1,6 @@
 const number = (value) => Number(value.toFixed(6));
 const LIMITED_HISTORY_WARNING = "Limited Search Console history. Use for current query/page observations, not seasonality or long-term trend conclusions.";
+const INCOMPLETE_ACQUISITION_WARNING = "Search Console acquisition was incomplete due to its safety cap; do not treat it as complete evidence.";
 const phrase = (value) => String(value ?? "").toLowerCase().replace(/[^\p{L}\p{N}]+/gu, " ").trim();
 const tokens = (value) => new Set(phrase(value).split(" ").filter((item) => item.length > 2));
 const sharedTerms = (left, right) => [...tokens(left)].filter((term) => tokens(right).has(term));
@@ -34,8 +35,10 @@ export function analyzeSearchConsole({ datasets, inventory, options = {} } = {})
     return { ...item, route, existingPageFirst: Boolean(target), existingPage: target ? { route: target.route, title: target.title } : null, possibleOverlap, overlapNote: possibleOverlap ? "Possible topical overlap; review manually, not a diagnosis." : null };
   });
   const baselineOnly = datasets.some((dataset) => dataset.baselineOnly === true);
+  const complete = !datasets.some((dataset) => dataset.complete === false || dataset.provenance?.truncated === true);
   const baselineWarnings = datasets.filter((dataset) => dataset.baselineOnly === true).map((dataset) => dataset.baseline?.warning ?? LIMITED_HISTORY_WARNING).sort();
-  const baseline = { baselineOnly, warnings: [...new Set(baselineWarnings)], warning: [...new Set(baselineWarnings)][0] ?? null, datasets: datasets.map((dataset) => ({ property: dataset.property, exportType: dataset.exportType, baselineOnly: dataset.baselineOnly === true, baseline: dataset.baseline, provenance: dataset.provenance })).sort((left, right) => `${left.property}:${left.provenance.sourceFilename ?? left.provenance.sourceFile}`.localeCompare(`${right.property}:${right.provenance.sourceFilename ?? right.provenance.sourceFile}`)) };
+  const warnings = [...new Set([...baselineWarnings, ...(complete ? [] : [INCOMPLETE_ACQUISITION_WARNING])])];
+  const baseline = { baselineOnly, complete, warnings, warning: warnings[0] ?? null, datasets: datasets.map((dataset) => ({ property: dataset.property, exportType: dataset.exportType, baselineOnly: dataset.baselineOnly === true, complete: dataset.complete !== false && dataset.provenance?.truncated !== true, baseline: dataset.baseline, provenance: dataset.provenance })).sort((left, right) => `${left.property}:${left.provenance.sourceFilename ?? left.provenance.sourceFile}`.localeCompare(`${right.property}:${right.provenance.sourceFilename ?? right.provenance.sourceFile}`)) };
   const highImpressionLowClick = sortByMetrics(queryRecords.filter((item) => item.impressions >= thresholds.highImpressions && item.clicks <= thresholds.lowClicks));
   const nearRank = sortByMetrics(queryRecords.filter((item) => item.position > 3 && item.position <= thresholds.nearRank));
   const links = [];
@@ -45,7 +48,7 @@ export function analyzeSearchConsole({ datasets, inventory, options = {} } = {})
   }
   const uniqueLinks = [...new Map(links.map((item) => [`${item.from}\u0000${item.to}\u0000${item.query}`, item])).values()].sort((left, right) => `${left.from}:${left.to}:${left.query}`.localeCompare(`${right.from}:${right.to}:${right.query}`));
   const pageCoverage = queryPages.length > 0;
-  const gaps = baseline.baselineOnly ? { status: "guarded: baseline warning", candidates: [] } : !pageCoverage ? { status: "guarded: page-level evidence unavailable", candidates: [] } : { status: "review required", candidates: sortByMetrics(queryRecords.filter((item) => !queryPages.some((relation) => relation.query === item.query)).map((item) => ({ ...item, note: "Evidence-led research lead only; do not create or delete URLs from this output." }))) };
+  const gaps = !baseline.complete ? { status: "guarded: incomplete acquisition", candidates: [] } : baseline.baselineOnly ? { status: "guarded: baseline warning", candidates: [] } : !pageCoverage ? { status: "guarded: page-level evidence unavailable", candidates: [] } : { status: "review required", candidates: sortByMetrics(queryRecords.filter((item) => !queryPages.some((relation) => relation.query === item.query)).map((item) => ({ ...item, note: "Evidence-led research lead only; do not create or delete URLs from this output." }))) };
   return { schemaVersion: 1, generatedAt: "deterministic", thresholds, searchConsoleEvidence: { baseline, processedDatasets: baseline.datasets }, relationships: { queryPages: sortByMetrics(queryPages) }, opportunities: { highImpressionLowClick, nearRank }, gaps, internalLinkSuggestions: uniqueLinks };
 }
 
