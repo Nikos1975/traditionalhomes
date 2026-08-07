@@ -10,12 +10,28 @@ import { createVideoPlan, videoPlanMarkdown } from "./video-plan.mjs";
 import { validateVideoPlan } from "./schemas.mjs";
 import { importSearchConsoleCsv } from "./gsc-import.mjs";
 import { analyzeSearchConsole, searchConsoleMarkdown } from "./gsc-analysis.mjs";
+import { LocalUserAdcAuthProvider } from "./gsc-auth.mjs";
+import { SearchConsoleTransport } from "./gsc-transport.mjs";
+import { normalizeProperties, validateProperty } from "./gsc-api-normalize.mjs";
+import { fetchSearchAnalyticsPages } from "./gsc-acquire.mjs";
+import { buildApiDataset, persistDataset } from "./gsc-dataset.mjs";
 import { assertMonth, assertSlug, atomicJson, atomicText, contentPath } from "./utils.mjs";
-const flags = { inventory: ["published-only"], discover: ["month"], seasonal: ["month"], video: ["slug"], status: ["json"], "gsc-import": ["file", "property"], "gsc-analyze": ["high-impressions", "low-clicks", "near-rank"], "gsc-status": ["json"] };
+const flags = { inventory: ["published-only"], discover: ["month"], seasonal: ["month"], video: ["slug"], status: ["json"], "gsc-import": ["file", "property"], "gsc-analyze": ["high-impressions", "low-clicks", "near-rank"], "gsc-status": ["json"], "gsc-properties": ["json"], "gsc-fetch": ["property", "start-date", "end-date", "dimensions", "row-limit"] };
 function parse(command, argv) { const result = { _: [] }; for (let i = 0; i < argv.length; i += 1) { const token = argv[i]; if (!token.startsWith("--")) { result._.push(token); continue; } const key = token.slice(2); if (!flags[command]?.includes(key) || result[key] !== undefined) throw new Error(`Invalid argument: ${token}.`); if (["json", "published-only"].includes(key)) result[key] = true; else { const value = argv[++i]; if (!value || value.startsWith("--")) throw new Error(`Invalid argument: ${token} requires a value.`); result[key] = value; } } return result; }
 const positional = (args, named, label) => { if (args._.length > 1 || (args._.length && named !== undefined)) throw new Error(`Invalid argument: ${label} accepts one value only.`); return named ?? args._[0]; };
 const discoveryMarkdown = (items) => `# Discovery\n\n${items.map((item) => `## ${item.title}\n- Score: ${item.finalScore}/100\n- Status: ${item.recommendedStatus}\n- Evidence: ${item.evidenceState}\n- Next action: ${item.nextAction}`).join("\n\n")}\n`;
-export async function runContentCli({ command, argv, rootDir = process.cwd() }) {
+const isoDate = (value, label) => { if (typeof value !== "string" || !/^\d{4}-\d{2}-\d{2}$/.test(value) || new Date(`${value}T00:00:00Z`).toISOString().slice(0, 10) !== value) throw new Error(`Invalid argument: ${label} must be an ISO date.`); return value; };
+const gscRequest = (args) => {
+  for (const key of ["property", "start-date", "end-date", "dimensions"]) if (!args[key]) throw new Error("Invalid argument: gsc-fetch requires --property, --start-date, --end-date, and --dimensions.");
+  validateProperty(args.property); const startDate = isoDate(args["start-date"], "--start-date"); const endDate = isoDate(args["end-date"], "--end-date");
+  const days = Math.round((Date.parse(`${endDate}T00:00:00Z`) - Date.parse(`${startDate}T00:00:00Z`)) / 86400000) + 1;
+  if (days < 1) throw new Error("Invalid argument: --start-date must not be after --end-date."); if (days > 365) throw new Error("Invalid argument: requested range must be at most 365 days.");
+  const dimensions = args.dimensions.split(","); const allowed = new Set(["query", "page", "date", "query,page", "query,date", "page,date"]);
+  if (!allowed.has(args.dimensions)) throw new Error("Invalid argument: --dimensions is unsupported.");
+  const rowLimit = args["row-limit"] === undefined ? 25000 : Number(args["row-limit"]); if (!Number.isInteger(rowLimit) || rowLimit < 1 || rowLimit > 25000) throw new Error("Invalid argument: --row-limit must be an integer from 1 to 25000.");
+  return { property: args.property, startDate, endDate, dimensions, rowLimit, type: "web", dataState: "final", aggregationType: "auto" };
+};
+export async function runContentCli({ command, argv, rootDir = process.cwd(), authProvider = new LocalUserAdcAuthProvider(), transport = new SearchConsoleTransport() }) {
   const args = parse(command, argv);
   const processed = contentPath(rootDir, "search-console", "processed");
   const listProcessed = async () => { try { return (await readdir(processed)).filter((name) => name.endsWith(".json")).sort(); } catch { return []; } };
@@ -28,6 +44,21 @@ export async function runContentCli({ command, argv, rootDir = process.cwd() }) 
   if (command === "gsc-import") {
     if (args._.length || !args.file || !args.property) throw new Error("Invalid argument: gsc-import requires --file and --property.");
     return importSearchConsoleCsv({ rootDir, file: args.file, property: args.property });
+  }
+  if (command === "gsc-properties") {
+    if (args._.length) throw new Error("Invalid argument: gsc-properties accepts no positional arguments.");
+    const accessToken = await authProvider.getAccessToken();
+    const properties = normalizeProperties(await transport.listSites(accessToken));
+    return args.json ? properties : properties.map((item) => `${item.property}\t${item.permissionLevel}`).join("\n");
+  }
+  if (command === "gsc-fetch") {
+    if (args._.length) throw new Error("Invalid argument: gsc-fetch accepts no positional arguments.");
+    const request = gscRequest(args);
+    const accessToken = await authProvider.getAccessToken();
+    const properties = normalizeProperties(await transport.listSites(accessToken));
+    if (!properties.some((item) => item.property === request.property)) throw new Error("Search Console property is not accessible.");
+    const acquired = await fetchSearchAnalyticsPages({ transport, accessToken, request });
+    return persistDataset({ rootDir, dataset: buildApiDataset({ ...request, ...acquired }) });
   }
   if (command === "gsc-analyze") {
     if (args._.length) throw new Error("Invalid argument: gsc-analyze accepts no positional arguments.");

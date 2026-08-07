@@ -1,5 +1,17 @@
 # Agent Handoff Notes
 
+### 2026-08-08 - Search Console Phase 2B
+
+- Added local-user ADC Search Console property discovery and paginated Search Analytics acquisition.
+- API datasets are normalized and persisted privately alongside CSV imports; acquisitions reaching the 100-batch safety cap are marked incomplete and analysis remains guarded.
+- Added focused coverage for authentication redaction, transport behavior, property validation, one/multi-page pagination, cap truncation, persistence, CLI validation, and mixed CSV/API analysis.
+- Remaining: run `gcloud auth application-default login --scopes=https://www.googleapis.com/auth/webmasters.readonly` locally before using live acquisition, if ADC is not already configured.
+
+### 2026-08-08 - Search Console Phase 2B design only
+
+- Added `docs/superpowers/specs/2026-08-08-search-console-phase-2b-design.md`: a self-reviewed, implementation-free specification for optional local-user-ADC Search Console acquisition. It fixes the read-only network boundary, explicit property/date/dimension CLI contract, processed-data provenance and fingerprints, privacy, failure semantics, and mocked test seams.
+- No application code, dependency, credentials, configuration, dataset, analysis output, commit, push, or PR was created. Implementation requires separate user approval.
+
 ### 2026-08-07 - Content Intelligence Search Console Phase 2A
 
 - Added `docs/content-intelligence/search-console.md` for the local-only CSV import, status and analysis workflow, including exact command/property contracts, raw-data privacy, outputs, provenance and baseline warnings, and the no-trends/no-automatic-action boundary.
