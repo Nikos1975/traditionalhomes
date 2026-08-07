@@ -4,6 +4,7 @@ import path from "node:path";
 import { atomicJson, contentPath } from "./utils.mjs";
 
 const REQUIRED_METRICS = ["clicks", "impressions", "ctr", "position"];
+const LIMITED_HISTORY_WARNING = "Limited Search Console history. Use for current query/page observations, not seasonality or long-term trend conclusions.";
 const HEADER_ALIASES = {
   query: ["query", "queries", "top query", "top queries"],
   page: ["page", "pages", "top page", "top pages"],
@@ -37,6 +38,10 @@ function parseCsv(text, file) {
   if (quoted) throw new Error(`${file}: unterminated quoted CSV value.`);
   if (cell || row.length) { row.push(cell); rows.push(row); }
   if (rows.length < 2) throw new Error(`${file}: CSV must contain a header and at least one record.`);
+  const width = rows[0].length;
+  rows.slice(1).forEach((dataRow, index) => {
+    if (dataRow.length !== width) throw new Error(`${file}: row ${index + 2} has ${dataRow.length} columns; expected ${width}.`);
+  });
   return rows;
 }
 
@@ -145,11 +150,11 @@ function deduplicate(values) {
 
 function baseline(records) {
   const dates = records.map((record) => record.date).filter(Boolean).sort();
-  if (!dates.length) return { startDate: null, endDate: null, days: null, warning: "Baseline period is not available." };
+  if (!dates.length) return { startDate: null, endDate: null, days: null, warning: LIMITED_HISTORY_WARNING, baselineOnly: true };
   const startDate = dates[0];
   const endDate = dates.at(-1);
   const days = Math.round((Date.parse(`${endDate}T00:00:00Z`) - Date.parse(`${startDate}T00:00:00Z`)) / 86400000) + 1;
-  return { startDate, endDate, days, warning: days < 90 ? "Baseline covers fewer than 90 days." : null };
+  return { startDate, endDate, days, warning: days < 90 ? LIMITED_HISTORY_WARNING : null, baselineOnly: days < 90 };
 }
 
 export async function importSearchConsoleCsv({ rootDir = process.cwd(), file, property } = {}) {
@@ -167,9 +172,23 @@ export async function importSearchConsoleCsv({ rootDir = process.cwd(), file, pr
   const values = rows.map((row) => normalizedRecord(row, headers, file));
   for (const value of values) assertCompatible(value.record.page, validatedProperty, file);
   const records = deduplicate(values);
-  const provenance = { sourceFile: path.basename(file), sourceFingerprint: fingerprint(source), property };
-  const result = { schemaVersion: 1, generatedAt: "deterministic", property, exportType, provenance, baseline: baseline(records), records };
-  result.fingerprint = fingerprint(JSON.stringify(result));
-  await atomicJson(contentPath(rootDir, "search-console", "processed", `${result.fingerprint}.json`), result);
+  const coverage = baseline(records);
+  const stable = { schemaVersion: 1, property, exportType, sourceFingerprint: fingerprint(source), coverageStart: coverage.startDate, coverageEnd: coverage.endDate, coverageDays: coverage.days, baselineOnly: coverage.baselineOnly, records };
+  const datasetFingerprint = fingerprint(JSON.stringify(stable));
+  const destination = contentPath(rootDir, "search-console", "processed", `${datasetFingerprint}.json`);
+  try { return JSON.parse(await readFile(destination, "utf8")); } catch (error) { if (error?.code !== "ENOENT") throw error; }
+  const provenance = {
+    source: "google-search-console",
+    importedAt: new Date().toISOString(),
+    coverageStart: coverage.startDate,
+    coverageEnd: coverage.endDate,
+    coverageDays: coverage.days,
+    property,
+    sourceFilename: path.basename(file),
+    recordCount: records.length,
+    sourceFingerprint: stable.sourceFingerprint,
+  };
+  const result = { schemaVersion: 1, generatedAt: "deterministic", property, exportType, provenance, baselineOnly: coverage.baselineOnly, baseline: coverage, records, fingerprint: datasetFingerprint };
+  await atomicJson(destination, result);
   return result;
 }

@@ -52,3 +52,7 @@ open-design/
 # Local Search Console exports can contain sensitive query and performance data.
 data/content-intelligence/search-console/raw/*
 !data/content-intelligence/search-console/raw/.gitkeep
+data/content-intelligence/search-console/processed/*
+!data/content-intelligence/search-console/processed/.gitkeep
+data/content-intelligence/search-console/analysis.json
+data/content-intelligence/search-console/analysis.md

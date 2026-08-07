@@ -22,10 +22,18 @@ test("imports a query export with normalized metrics, provenance, deduplication,
     assert.equal(result.exportType, "query");
     assert.deepEqual(result.records[0], { query: "Elounda beaches", date: "2026-05-01", clicks: 15, impressions: 120, ctr: 0.125, position: 3.583333 });
     assert.equal(result.records.length, 2);
-    assert.equal(result.provenance.sourceFile, "query.csv");
+    assert.deepEqual(Object.keys(result.provenance).sort(), ["coverageDays", "coverageEnd", "coverageStart", "importedAt", "property", "recordCount", "source", "sourceFilename", "sourceFingerprint"].sort());
+    assert.equal(result.provenance.source, "google-search-console");
+    assert.equal(result.provenance.property, property);
+    assert.equal(result.provenance.sourceFilename, "query.csv");
+    assert.equal(result.provenance.recordCount, 2);
     assert.match(result.provenance.sourceFingerprint, /^[a-f0-9]{64}$/);
-    assert.equal(result.baseline.warning, "Baseline covers fewer than 90 days.");
-    assert.equal(result.baseline.days, 89);
+    assert.match(result.provenance.importedAt, /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z$/);
+    assert.equal(result.provenance.coverageStart, "2026-05-01");
+    assert.equal(result.provenance.coverageEnd, "2026-07-28");
+    assert.equal(result.provenance.coverageDays, 89);
+    assert.equal(result.baselineOnly, true);
+    assert.equal(result.baseline.warning, "Limited Search Console history. Use for current query/page observations, not seasonality or long-term trend conclusions.");
   } finally { await temp.cleanup(); }
 });
 
@@ -78,18 +86,58 @@ test("produces deterministic output and has no warning at the 90-day baseline bo
     await writeFile(file, "Query,Clicks,Impressions,CTR,Position,Date\na,1,10,10%,1,2026-01-01\nb,1,10,10%,1,2026-03-31\n", "utf8");
     const first = await importSearchConsoleCsv({ rootDir: temp.rootDir, file, property });
     const second = await importSearchConsoleCsv({ rootDir: temp.rootDir, file, property });
-    assert.deepEqual(first, second);
-    assert.equal(first.baseline.days, 90);
+    assert.equal(first.fingerprint, second.fingerprint);
+    assert.equal(first.provenance.importedAt, second.provenance.importedAt);
+    const { readdir } = await import("node:fs/promises");
+    const processedNames = await readdir(path.join(temp.rootDir, "data", "content-intelligence", "search-console", "processed"));
+    assert.equal(processedNames.filter((name) => name.endsWith(".json")).length, 1);
+    assert.equal(first.provenance.coverageDays, 90);
+    assert.equal(first.baselineOnly, false);
     assert.equal(first.baseline.warning, null);
   } finally { await temp.cleanup(); }
+});
+
+test("marks exports without a date dimension as baseline-only without inventing coverage", async () => {
+  const temp = await scratch();
+  try {
+    const file = path.join(temp.rootDir, "no-date.csv");
+    await writeFile(file, "Query,Clicks,Impressions,CTR,Position\nbeaches,1,10,10%,2\n", "utf8");
+    const result = await importSearchConsoleCsv({ rootDir: temp.rootDir, file, property });
+    assert.equal(result.provenance.coverageStart, null);
+    assert.equal(result.provenance.coverageEnd, null);
+    assert.equal(result.provenance.coverageDays, null);
+    assert.equal(result.baselineOnly, true);
+    assert.equal(result.baseline.warning, "Limited Search Console history. Use for current query/page observations, not seasonality or long-term trend conclusions.");
+  } finally { await temp.cleanup(); }
+});
+
+test("rejects CSV data rows whose width differs from the header", async () => {
+  const temp = await scratch();
+  try {
+    const surplus = path.join(temp.rootDir, "surplus.csv");
+    const missing = path.join(temp.rootDir, "missing-cell.csv");
+    await writeFile(surplus, "Query,Clicks,Impressions,CTR,Position\nbeaches,1,10,10%,2,extra\n", "utf8");
+    await writeFile(missing, "Query,Clicks,Impressions,CTR,Position\nbeaches,1,10,10%\n", "utf8");
+    await assert.rejects(importSearchConsoleCsv({ rootDir: temp.rootDir, file: surplus, property }), /surplus\.csv: row 2 has 6 columns; expected 5/);
+    await assert.rejects(importSearchConsoleCsv({ rootDir: temp.rootDir, file: missing, property }), /missing-cell\.csv: row 2 has 4 columns; expected 5/);
+  } finally { await temp.cleanup(); }
+});
+
+test("ignores generated private Search Console datasets and analysis outputs", async () => {
+  const ignore = await readFile(path.join(process.cwd(), ".gitignore"), "utf8");
+  assert.match(ignore, /data\/content-intelligence\/search-console\/processed\/\*/);
+  assert.match(ignore, /!data\/content-intelligence\/search-console\/processed\/\.gitkeep/);
+  assert.match(ignore, /data\/content-intelligence\/search-console\/analysis\.json/);
+  assert.match(ignore, /data\/content-intelligence\/search-console\/analysis\.md/);
 });
 
 test("analyses processed evidence deterministically without changing Phase 1 scoring", () => {
   const dataset = {
     property,
     exportType: "combined",
-    provenance: { sourceFile: "combined.csv", sourceFingerprint: "a".repeat(64), property },
-    baseline: { startDate: "2026-05-01", endDate: "2026-05-30", days: 30, warning: "Baseline covers fewer than 90 days." },
+    provenance: { source: "google-search-console", importedAt: "2026-08-08T00:00:00.000Z", coverageStart: "2026-05-01", coverageEnd: "2026-05-30", coverageDays: 30, property, sourceFilename: "combined.csv", recordCount: 2, sourceFingerprint: "a".repeat(64) },
+    baselineOnly: true,
+    baseline: { startDate: "2026-05-01", endDate: "2026-05-30", days: 30, warning: "Limited Search Console history. Use for current query/page observations, not seasonality or long-term trend conclusions." },
     records: [
       { query: "elounda beaches", page: "https://example.com/en/blog/elounda-beaches/", clicks: 1, impressions: 150, ctr: 0.006667, position: 9 },
       { query: "spinalonga history", page: "https://example.com/en/blog/elounda-beaches/", clicks: 0, impressions: 120, ctr: 0, position: 11 },
@@ -102,7 +150,8 @@ test("analyses processed evidence deterministically without changing Phase 1 sco
   const first = analyzeSearchConsole({ datasets: [dataset], inventory, options: { highImpressions: 100, nearRank: 12 } });
   const second = analyzeSearchConsole({ datasets: [dataset], inventory, options: { highImpressions: 100, nearRank: 12 } });
   assert.deepEqual(first, second);
-  assert.equal(first.searchConsoleEvidence.baseline.warning, "Baseline covers fewer than 90 days.");
+  assert.equal(first.searchConsoleEvidence.baseline.warning, "Limited Search Console history. Use for current query/page observations, not seasonality or long-term trend conclusions.");
+  assert.equal(first.searchConsoleEvidence.baseline.baselineOnly, true);
   assert.equal(first.opportunities.highImpressionLowClick[0].query, "spinalonga history");
   assert.ok(first.opportunities.nearRank.some((item) => item.query === "spinalonga history"));
   assert.equal(first.relationships.queryPages[0].existingPageFirst, true);
@@ -111,7 +160,7 @@ test("analyses processed evidence deterministically without changing Phase 1 sco
   assert.equal(first.gaps.candidates.length, 0);
   assert.equal(first.internalLinkSuggestions[0].from, "/en/blog/spinalonga-guide/");
   assert.equal(first.internalLinkSuggestions[0].to, "/en/blog/elounda-beaches/");
-  assert.match(searchConsoleMarkdown(first), /Baseline warning: Baseline covers fewer than 90 days\./);
+  assert.match(searchConsoleMarkdown(first), /Baseline warning: Limited Search Console history/);
   assert.equal("finalScore" in first.searchConsoleEvidence, false);
 });
 

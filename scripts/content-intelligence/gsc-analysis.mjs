@@ -1,4 +1,5 @@
 const number = (value) => Number(value.toFixed(6));
+const LIMITED_HISTORY_WARNING = "Limited Search Console history. Use for current query/page observations, not seasonality or long-term trend conclusions.";
 const phrase = (value) => String(value ?? "").toLowerCase().replace(/[^\p{L}\p{N}]+/gu, " ").trim();
 const tokens = (value) => new Set(phrase(value).split(" ").filter((item) => item.length > 2));
 const sharedTerms = (left, right) => [...tokens(left)].filter((term) => tokens(right).has(term));
@@ -32,8 +33,9 @@ export function analyzeSearchConsole({ datasets, inventory, options = {} } = {})
     const possibleOverlap = overlapArticles.some((article) => article.route !== route);
     return { ...item, route, existingPageFirst: Boolean(target), existingPage: target ? { route: target.route, title: target.title } : null, possibleOverlap, overlapNote: possibleOverlap ? "Possible topical overlap; review manually, not a diagnosis." : null };
   });
-  const baselineWarnings = datasets.map((dataset) => dataset.baseline?.warning).filter(Boolean).sort();
-  const baseline = { warnings: [...new Set(baselineWarnings)], warning: [...new Set(baselineWarnings)][0] ?? null, datasets: datasets.map((dataset) => ({ property: dataset.property, exportType: dataset.exportType, baseline: dataset.baseline, provenance: dataset.provenance })).sort((left, right) => `${left.property}:${left.provenance.sourceFile}`.localeCompare(`${right.property}:${right.provenance.sourceFile}`)) };
+  const baselineOnly = datasets.some((dataset) => dataset.baselineOnly === true);
+  const baselineWarnings = datasets.filter((dataset) => dataset.baselineOnly === true).map((dataset) => dataset.baseline?.warning ?? LIMITED_HISTORY_WARNING).sort();
+  const baseline = { baselineOnly, warnings: [...new Set(baselineWarnings)], warning: [...new Set(baselineWarnings)][0] ?? null, datasets: datasets.map((dataset) => ({ property: dataset.property, exportType: dataset.exportType, baselineOnly: dataset.baselineOnly === true, baseline: dataset.baseline, provenance: dataset.provenance })).sort((left, right) => `${left.property}:${left.provenance.sourceFilename ?? left.provenance.sourceFile}`.localeCompare(`${right.property}:${right.provenance.sourceFilename ?? right.provenance.sourceFile}`)) };
   const highImpressionLowClick = sortByMetrics(queryRecords.filter((item) => item.impressions >= thresholds.highImpressions && item.clicks <= thresholds.lowClicks));
   const nearRank = sortByMetrics(queryRecords.filter((item) => item.position > 3 && item.position <= thresholds.nearRank));
   const links = [];
@@ -43,7 +45,7 @@ export function analyzeSearchConsole({ datasets, inventory, options = {} } = {})
   }
   const uniqueLinks = [...new Map(links.map((item) => [`${item.from}\u0000${item.to}\u0000${item.query}`, item])).values()].sort((left, right) => `${left.from}:${left.to}:${left.query}`.localeCompare(`${right.from}:${right.to}:${right.query}`));
   const pageCoverage = queryPages.length > 0;
-  const gaps = baseline.warning ? { status: "guarded: baseline warning", candidates: [] } : !pageCoverage ? { status: "guarded: page-level evidence unavailable", candidates: [] } : { status: "review required", candidates: sortByMetrics(queryRecords.filter((item) => !queryPages.some((relation) => relation.query === item.query)).map((item) => ({ ...item, note: "Evidence-led research lead only; do not create or delete URLs from this output." }))) };
+  const gaps = baseline.baselineOnly ? { status: "guarded: baseline warning", candidates: [] } : !pageCoverage ? { status: "guarded: page-level evidence unavailable", candidates: [] } : { status: "review required", candidates: sortByMetrics(queryRecords.filter((item) => !queryPages.some((relation) => relation.query === item.query)).map((item) => ({ ...item, note: "Evidence-led research lead only; do not create or delete URLs from this output." }))) };
   return { schemaVersion: 1, generatedAt: "deterministic", thresholds, searchConsoleEvidence: { baseline, processedDatasets: baseline.datasets }, relationships: { queryPages: sortByMetrics(queryPages) }, opportunities: { highImpressionLowClick, nearRank }, gaps, internalLinkSuggestions: uniqueLinks };
 }
 
