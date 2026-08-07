@@ -21,7 +21,8 @@
           "S01"
         ],
         "uncertainty": "None found",
-        "publicSourceReady": true
+        "publicSourceReady": true,
+        "parseState": "parsed"
       },
       {
         "claim": "Bressani proposed the first enclosure; Orsini’s 1584 intervention added an upper defensive line.",
@@ -30,7 +31,8 @@
           "S01, S05"
         ],
         "uncertainty": "Do not call either sole creator",
-        "publicSourceReady": true
+        "publicSourceReady": true,
+        "parseState": "parsed"
       },
       {
         "claim": "Its position served the harbour and approaches to Elounda within a wider defensive response.",
@@ -39,7 +41,8 @@
           "S01, S07"
         ],
         "uncertainty": "Single-cause explanations are unsupported",
-        "publicSourceReady": false
+        "publicSourceReady": false,
+        "parseState": "parsed"
       },
       {
         "claim": "Salt production formed part of the local strategic economy.",
@@ -48,7 +51,8 @@
           "S14"
         ],
         "uncertainty": "Direct decision-making link not demonstrated",
-        "publicSourceReady": false
+        "publicSourceReady": false,
+        "parseState": "parsed"
       },
       {
         "claim": "An earlier wall is now interpreted as Byzantine, probably 7th–8th c.",
@@ -57,7 +61,8 @@
           "S02"
         ],
         "uncertainty": "UNESCO tentative text says antiquity; do not collapse disagreement",
-        "publicSourceReady": false
+        "publicSourceReady": false,
+        "parseState": "parsed"
       },
       {
         "claim": "The fortress surrendered on 4 October 1715 after a three-month siege.",
@@ -66,7 +71,8 @@
           "S03"
         ],
         "uncertainty": "Captivity figures need archival corroboration",
-        "publicSourceReady": true
+        "publicSourceReady": true,
+        "parseState": "parsed"
       },
       {
         "claim": "UNESCO’s nomination reports 1,112 people in 1881 and roughly 200 houses/25 shops later in the century.",
@@ -75,7 +81,8 @@
           "S07"
         ],
         "uncertainty": "Nomination, not census edition",
-        "publicSourceReady": false
+        "publicSourceReady": false,
+        "parseState": "parsed"
       },
       {
         "claim": "The 1903 selection was connected with removal of remaining Muslim residents.",
@@ -84,7 +91,8 @@
           "S04"
         ],
         "uncertainty": "Exact dates/process not yet established",
-        "publicSourceReady": false
+        "publicSourceReady": false,
+        "parseState": "parsed"
       },
       {
         "claim": "Law 463 identified Spinalonga for settlement; first arrivals followed in 1904.",
@@ -93,7 +101,8 @@
           "S04, S16"
         ],
         "uncertainty": "Dates/title must be checked in Gazette facsimile",
-        "publicSourceReady": false
+        "publicSourceReady": false,
+        "parseState": "parsed"
       },
       {
         "claim": "A scholarly chapter reports 251 people transferred on 13 October 1904.",
@@ -102,7 +111,8 @@
           "S16"
         ],
         "uncertainty": "Needs primary transport or gazette confirmation",
-        "publicSourceReady": false
+        "publicSourceReady": false,
+        "parseState": "parsed"
       },
       {
         "claim": "Early food, housing and medical provision were severely inadequate.",
@@ -111,7 +121,8 @@
           "S04, S10"
         ],
         "uncertainty": "Avoid universalised individual experience",
-        "publicSourceReady": true
+        "publicSourceReady": true,
+        "parseState": "parsed"
       },
       {
         "claim": "Electricity",
@@ -120,7 +131,8 @@
           "None reviewed"
         ],
         "uncertainty": "Common retellings conflict",
-        "publicSourceReady": false
+        "publicSourceReady": false,
+        "parseState": "parsed"
       },
       {
         "claim": "Sulphone treatment changed the medical context in the 1940s.",
@@ -129,7 +141,8 @@
           "S10"
         ],
         "uncertainty": "Exact availability on Spinalonga unresolved",
-        "publicSourceReady": false
+        "publicSourceReady": false,
+        "parseState": "parsed"
       },
       {
         "claim": "An inscription credits the Brotherhood and its president Remoundakis with the 1939 perimeter road.",
@@ -138,7 +151,8 @@
           "S06"
         ],
         "uncertainty": "Does not prove every claimed reform",
-        "publicSourceReady": true
+        "publicSourceReady": true,
+        "parseState": "parsed"
       },
       {
         "claim": "The institution closed in 1957.",
@@ -147,7 +161,8 @@
           "S04, S10, S07"
         ],
         "uncertainty": "Final transfers/resident differ in retellings",
-        "publicSourceReady": true
+        "publicSourceReady": true,
+        "parseState": "parsed"
       },
       {
         "claim": "Final resident",
@@ -156,7 +171,8 @@
           "None reviewed"
         ],
         "uncertainty": "Highly repeated but unverified here",
-        "publicSourceReady": false
+        "publicSourceReady": false,
+        "parseState": "parsed"
       },
       {
         "claim": "Do not use.",
@@ -165,7 +181,8 @@
           "None comparative"
         ],
         "uncertainty": "Definition and comparison unresolved",
-        "publicSourceReady": false
+        "publicSourceReady": false,
+        "parseState": "parsed"
       },
       {
         "claim": "Much leprosarium-era fabric was demolished in the 1980s.",
@@ -174,7 +191,8 @@
           "S11"
         ],
         "uncertainty": "Not evidence that records were burned/destroyed",
-        "publicSourceReady": false
+        "publicSourceReady": false,
+        "parseState": "parsed"
       },
       {
         "claim": "Plaka disinfection facility",
@@ -183,7 +201,8 @@
           "None reviewed"
         ],
         "uncertainty": "Requires site/municipal evidence",
-        "publicSourceReady": false
+        "publicSourceReady": false,
+        "parseState": "parsed"
       },
       {
         "claim": "Cemetery practices",
@@ -192,7 +211,8 @@
           "None reviewed"
         ],
         "uncertainty": "Sensitive, often romanticised",
-        "publicSourceReady": false
+        "publicSourceReady": false,
+        "parseState": "parsed"
       },
       {
         "claim": "On Greece’s Tentative List since 2014; not inscribed on the World Heritage List.",
@@ -201,7 +221,8 @@
           "S07, S09"
         ],
         "uncertainty": "Never call it a World Heritage Site",
-        "publicSourceReady": true
+        "publicSourceReady": true,
+        "parseState": "parsed"
       },
       {
         "claim": "No public figure yet.",
@@ -210,7 +231,8 @@
           "S07 only says hundreds of thousands"
         ],
         "uncertainty": "Current figures change and need operator data",
-        "publicSourceReady": false
+        "publicSourceReady": false,
+        "parseState": "parsed"
       },
       {
         "claim": "No image may be reused yet.",
@@ -219,267 +241,281 @@
           "Register below"
         ],
         "uncertainty": "Online/government display ≠ commercial licence",
-        "publicSourceReady": false
+        "publicSourceReady": false,
+        "parseState": "parsed"
       },
       {
-        "claim": "Natural-islet/Poros distinction; current Byzantine wall interpretation",
-        "status": "verified",
+        "claim": "Obtain Law 375 (1901), Law 463 (1903), Decree 166 and internal-operation decree in the *Official Gazette of the Cretan State*",
+        "status": "omitted",
+        "support": [
+          "Gazette scans/transcriptions from a national, state or library archive"
+        ],
+        "uncertainty": "Establish exact legal wording, dates, authority, admission and administration",
+        "publicSourceReady": false,
+        "parseState": "review required"
+      },
+      {
+        "claim": "Verify first transfer date/count and the last transfers/closure paperwork",
+        "status": "omitted",
+        "support": [
+          "Cretan State/Greece health or prefectural files; contemporary press"
+        ],
+        "uncertainty": "Avoid repeating 251, final-resident and closure narratives without proof",
+        "publicSourceReady": false,
+        "parseState": "review required"
+      },
+      {
+        "claim": "Build an Ottoman settlement record",
+        "status": "omitted",
+        "support": [
+          "1881 census, property/tax/customs records, Ottoman archives, peer-reviewed studies"
+        ],
+        "uncertainty": "Supports population, houses, shops, families, trade, religious buildings and departure",
+        "publicSourceReady": false,
+        "parseState": "review required"
+      },
+      {
+        "claim": "Document mainland relationships",
+        "status": "omitted",
+        "support": [
+          "Plaka/Elounda municipal records, boat licences, oral-history archive, local press"
+        ],
+        "uncertainty": "Needed to connect residents, supplies, transport, burials and work without invention",
+        "publicSourceReady": false,
+        "parseState": "review required"
+      },
+      {
+        "claim": "Clear historical images/maps",
+        "status": "omitted",
+        "support": [
+          "Holding institutions and written licences"
+        ],
+        "uncertainty": "Six current user-owned modern photographs are cleared separately; archival plans, maps and historical imagery remain unavailable for reuse",
+        "publicSourceReady": false,
+        "parseState": "review required"
+      },
+      {
+        "claim": "Determine legal/topographic status of Kalydon and name history",
+        "status": "omitted",
+        "support": [
+          "Gazetteer, cadastral/map records, Venetian textual edition"
+        ],
+        "uncertainty": "Prevents mistaken name/etymology claims",
+        "publicSourceReady": false,
+        "parseState": "review required"
+      },
+      {
+        "claim": "Verify electricity, water, school, churches, nurses and everyday services",
+        "status": "omitted",
+        "support": [
+          "Institution accounts, technical records, resident testimony"
+        ],
+        "uncertainty": "Human-scale section needs time-specific evidence",
+        "publicSourceReady": false,
+        "parseState": "review required"
+      },
+      {
+        "claim": "Locate multiple resident testimonies, not only Remoundakis",
+        "status": "omitted",
+        "support": [
+          "Published oral histories, archive interviews, family permissions"
+        ],
+        "uncertainty": "Avoids heroic single-person narrative",
+        "publicSourceReady": false,
+        "parseState": "review required"
+      },
+      {
+        "claim": "Test the fortress/salt-pans relationship",
+        "status": "omitted",
+        "support": [
+          "Venetian Senate/provisioner correspondence and economic history"
+        ],
+        "uncertainty": "Separates context from demonstrated motive",
+        "publicSourceReady": false,
+        "parseState": "review required"
+      },
+      {
+        "claim": "Resolve earlier wall chronology",
+        "status": "omitted",
+        "support": [
+          "Excavation report or specialist archaeological publication"
+        ],
+        "uncertainty": "Reconciles Ministry/UNESCO formulations",
+        "publicSourceReady": false,
+        "parseState": "review required"
+      },
+      {
+        "claim": "Confirm 2026 UNESCO position and Committee outcome",
+        "status": "omitted",
+        "support": [
+          "Direct current UNESCO database / decision text"
+        ],
+        "uncertainty": "Enables precise heritage status at drafting",
+        "publicSourceReady": false,
+        "parseState": "review required"
+      },
+      {
+        "claim": "Visitor numbers and current operation",
+        "status": "omitted",
+        "support": [
+          "Ministry statistical/reporting source"
+        ],
+        "uncertainty": "Only needed if future article makes a contemporary management claim",
+        "publicSourceReady": false,
+        "parseState": "review required"
+      },
+      {
+        "claim": "Record-loss/burning stories and cemetery/disinfection narratives",
+        "status": "omitted",
+        "support": [
+          "Archival inventory, archaeological report, local authority records"
+        ],
+        "uncertainty": "High-risk, emotionally charged claims",
+        "publicSourceReady": false,
+        "parseState": "review required"
+      },
+      {
+        "claim": "Classification",
+        "status": "omitted",
         "support": [],
-        "uncertainty": "Preserve only the already qualified wording",
-        "publicSourceReady": true
+        "uncertainty": null,
+        "publicSourceReady": false,
+        "parseState": "review required",
+        "malformed": true
       },
       {
-        "claim": "1715 date; 2021 nomination withdrawal",
-        "status": "verified",
+        "claim": "Plausible, pending Venetian-document edition",
+        "status": "omitted",
         "support": [],
-        "uncertainty": "Use S03 and S09, not dossier citations",
-        "publicSourceReady": true
+        "uncertainty": null,
+        "publicSourceReady": false,
+        "parseState": "review required",
+        "malformed": true
       },
       {
-        "claim": "First-transfer day/count/sex split",
-        "status": "unresolved",
+        "claim": "Disputed / folk etymology",
+        "status": "omitted",
         "support": [],
-        "uncertainty": "Retain 1904 only",
-        "publicSourceReady": false
+        "uncertainty": null,
+        "publicSourceReady": false,
+        "parseState": "review required",
+        "malformed": true
       },
       {
-        "claim": "Heritage demolition, exhibits and current UNESCO status",
-        "status": "verified",
+        "claim": "Unsupported",
+        "status": "omitted",
         "support": [],
-        "uncertainty": "Distinguish broad 1980s demolition from detailed project history",
-        "publicSourceReady": true
+        "uncertainty": null,
+        "publicSourceReady": false,
+        "parseState": "review required",
+        "malformed": true
       },
       {
-        "claim": "Creator/date",
-        "status": "verified",
-        "support": [
-          "Institution / stable source"
-        ],
-        "uncertainty": "Required credit",
-        "publicSourceReady": true
-      },
-      {
-        "claim": "Francesco Basilicata, 1618",
-        "status": "unresolved",
-        "support": [
-          "Ephorate page S01 credits Vikelaia Library / Mikros Nautilus publication"
-        ],
-        "uncertainty": "Exact holder credit required",
-        "publicSourceReady": false
-      },
-      {
-        "claim": "Unknown / c.1580",
-        "status": "unresolved",
-        "support": [
-          "Museo Storico Navale di Venezia, credited on Ephorate pages"
-        ],
-        "uncertainty": "Museum credit",
-        "publicSourceReady": false
-      },
-      {
-        "claim": "Giuseppe Gerola, 1901",
-        "status": "unresolved",
-        "support": [
-          "Vikelaia Municipal Library, Gerola Collection (credited S03)"
-        ],
-        "uncertainty": "Collection/photographer as specified",
-        "publicSourceReady": false
-      },
-      {
-        "claim": "Francesco Basilicata, 1638",
-        "status": "unresolved",
-        "support": [
-          "Referenced by S05"
-        ],
-        "uncertainty": "Verify holding",
-        "publicSourceReady": false
-      },
-      {
-        "claim": "Various / late 19th–early 20th c.",
-        "status": "unresolved",
-        "support": [
-          "Vikelaia / local archives leads"
-        ],
-        "uncertainty": "Per item",
-        "publicSourceReady": false
-      },
-      {
-        "claim": "Various / 1904–57",
-        "status": "unresolved",
-        "support": [
-          "No cleared stable source in packet"
-        ],
-        "uncertainty": "Per rights holder",
-        "publicSourceReady": false
-      },
-      {
-        "claim": "Unknown",
-        "status": "unresolved",
-        "support": [
-          "No rights-cleared historical collection found"
-        ],
-        "uncertainty": "Per item",
-        "publicSourceReady": false
-      },
-      {
-        "claim": "To be commissioned / owned",
-        "status": "unresolved",
-        "support": [
-          "Traditional Homes or licensed photographer"
-        ],
-        "uncertainty": "Photographer/copyright line",
-        "publicSourceReady": false
-      },
-      {
-        "claim": "To be commissioned or data-derived",
-        "status": "unresolved",
-        "support": [
-          "Need base-map and aerial rights"
-        ],
-        "uncertainty": "Attribution per licence",
-        "publicSourceReady": false
-      },
-      {
-        "claim": "Project authors",
-        "status": "unresolved",
-        "support": [
-          "Ministry/Ephorate/academic project reports"
-        ],
-        "uncertainty": "Per copyright holder",
-        "publicSourceReady": false
-      },
-      {
-        "claim": "Source filename and location",
-        "status": "unresolved",
-        "support": [
-          "Photographer / rights holder"
-        ],
-        "uncertainty": "Technical record",
-        "publicSourceReady": false
-      },
-      {
-        "claim": "`spinalonga-fortress-from-vrouchas.jpg` — `C:\\Users\\Nikos\\Downloads\\spinalonga-fortress-from-vrouchas.jpg`",
-        "status": "unresolved",
-        "support": [
-          "Nikos Pasparakis / Nikos Pasparakis"
-        ],
-        "uncertainty": "JPG; 4,640 × 3,472 px; no EXIF, GPS or camera-date metadata detected",
-        "publicSourceReady": false
-      },
-      {
-        "claim": "`spinalonga-island-close-view.jpg` — `C:\\Users\\Nikos\\Downloads\\spinalonga-island-close-view.jpg`",
-        "status": "unresolved",
-        "support": [
-          "Nikos Pasparakis / Nikos Pasparakis"
-        ],
-        "uncertainty": "JPG; 4,640 × 3,472 px; no EXIF, GPS or camera-date metadata detected",
-        "publicSourceReady": false
-      },
-      {
-        "claim": "`spinalonga-gulf-context.jpg` — `C:\\Users\\Nikos\\Downloads\\spinalonga-gulf-context.jpg`",
-        "status": "unresolved",
-        "support": [
-          "Nikos Pasparakis / Nikos Pasparakis"
-        ],
-        "uncertainty": "JPG; 4,640 × 3,472 px; no EXIF, GPS or camera-date metadata detected",
-        "publicSourceReady": false
-      },
-      {
-        "claim": "`spinalonga-fortress-and-settlement-close-view.jpg` — `C:\\Users\\Nikos\\Downloads\\spinalonga-fortress-and-settlement-close-view.jpg`",
-        "status": "unresolved",
-        "support": [
-          "Nikos Pasparakis / Nikos Pasparakis"
-        ],
-        "uncertainty": "JPG; 1,920 × 1,080 px; EXIF capture timestamp present; no GPS detected",
-        "publicSourceReady": false
-      },
-      {
-        "claim": "`spinalonga-coastal-fortifications.jpg` — `C:\\Users\\Nikos\\Downloads\\spinalonga-coastal-fortifications.jpg`",
-        "status": "unresolved",
-        "support": [
-          "Nikos Pasparakis / Nikos Pasparakis"
-        ],
-        "uncertainty": "JPG; 3,264 × 2,448 px; EXIF capture timestamp present; no GPS detected",
-        "publicSourceReady": false
-      },
-      {
-        "claim": "`spinalonga-boat-and-main-landing.jpg` — `C:\\Users\\Nikos\\Downloads\\spinalonga-boat-and-main-landing.jpg`",
-        "status": "unresolved",
-        "support": [
-          "Nikos Pasparakis / Nikos Pasparakis"
-        ],
-        "uncertainty": "JPG; 1,920 × 1,080 px; EXIF capture timestamp present; no GPS detected",
-        "publicSourceReady": false
-      },
-      {
-        "claim": "Exact holding institution / stable page",
-        "status": "verified",
-        "support": [
-          "Creator/date"
-        ],
-        "uncertainty": "Rights / commercial permission",
-        "publicSourceReady": true
-      },
-      {
-        "claim": "Vikelaia Library is reported; exact item page not recovered",
-        "status": "unresolved",
-        "support": [
-          "Francesco Basilicata / 1618"
-        ],
-        "uncertainty": "Unknown; public-domain age does not clear a digital reproduction",
-        "publicSourceReady": false
-      },
-      {
-        "claim": "Museo Storico Navale di Venezia reported; no stable item page recovered",
-        "status": "unresolved",
-        "support": [
-          "Unknown / c.1580"
-        ],
-        "uncertainty": "Unknown",
-        "publicSourceReady": false
-      },
-      {
-        "claim": "Marciana Library reported; no stable item page recovered",
-        "status": "unresolved",
-        "support": [
-          "Francesco Basilicata / 1638"
-        ],
-        "uncertainty": "Unknown",
-        "publicSourceReady": false
-      },
-      {
-        "claim": "Vikelaia Gerola Collection reported; no stable item page recovered",
-        "status": "unresolved",
-        "support": [
-          "Giuseppe Gerola / 1901"
-        ],
-        "uncertainty": "Unknown",
-        "publicSourceReady": false
-      },
-      {
-        "claim": "Historical Museum of Crete/Vikelaia reported generically",
-        "status": "unresolved",
-        "support": [
-          "Various"
-        ],
-        "uncertainty": "Unknown",
-        "publicSourceReady": false
-      },
-      {
-        "claim": "Ephorate/Ministry pages are discovery sources, not licences",
-        "status": "unresolved",
-        "support": [
-          "Various/current"
-        ],
-        "uncertainty": "Unknown",
-        "publicSourceReady": false
-      },
-      {
-        "claim": "“Kalydon” official name and its introduction",
-        "status": "unresolved",
+        "claim": "Documented as current designation in secondary/administrative usage; historical introduction unresolved",
+        "status": "omitted",
         "support": [],
-        "uncertainty": "Needs gazette/map evidence",
-        "publicSourceReady": false
+        "uncertainty": null,
+        "publicSourceReady": false,
+        "parseState": "review required",
+        "malformed": true
+      },
+      {
+        "claim": "Target question",
+        "status": "omitted",
+        "support": [],
+        "uncertainty": null,
+        "publicSourceReady": false,
+        "parseState": "review required",
+        "malformed": true
+      },
+      {
+        "claim": "Landing places, local policy, health measures, support or conflict",
+        "status": "omitted",
+        "support": [],
+        "uncertainty": null,
+        "publicSourceReady": false,
+        "parseState": "review required",
+        "malformed": true
+      },
+      {
+        "claim": "Landings, service boats, medical transport and regulated access",
+        "status": "omitted",
+        "support": [],
+        "uncertainty": null,
+        "publicSourceReady": false,
+        "parseState": "review required",
+        "malformed": true
+      },
+      {
+        "claim": "Names, routes, owners and periods of service",
+        "status": "omitted",
+        "support": [],
+        "uncertainty": null,
+        "publicSourceReady": false,
+        "parseState": "review required",
+        "malformed": true
+      },
+      {
+        "claim": "Food, water, firewood, medicines, building materials and suppliers",
+        "status": "omitted",
+        "support": [],
+        "uncertainty": null,
+        "publicSourceReady": false,
+        "parseState": "review required",
+        "malformed": true
+      },
+      {
+        "claim": "Named workers/residents, ethical permissions, local memory and cross-checkable dates",
+        "status": "omitted",
+        "support": [],
+        "uncertainty": null,
+        "publicSourceReady": false,
+        "parseState": "review required",
+        "malformed": true
+      },
+      {
+        "claim": "Transfers, protests, deaths, supply disruption and public response",
+        "status": "omitted",
+        "support": [],
+        "uncertainty": null,
+        "publicSourceReady": false,
+        "parseState": "review required",
+        "malformed": true
+      },
+      {
+        "claim": "Landing places, boats, working relationships and rights leads",
+        "status": "omitted",
+        "support": [],
+        "uncertainty": null,
+        "publicSourceReady": false,
+        "parseState": "review required",
+        "malformed": true
+      },
+      {
+        "claim": "Guards, laundresses, nurses, clerks, boatmen and contractors",
+        "status": "omitted",
+        "support": [],
+        "uncertainty": null,
+        "publicSourceReady": false,
+        "parseState": "review required",
+        "malformed": true
+      },
+      {
+        "claim": "Burial arrangements and mainland involvement without anecdote",
+        "status": "omitted",
+        "support": [],
+        "uncertainty": null,
+        "publicSourceReady": false,
+        "parseState": "review required",
+        "malformed": true
+      },
+      {
+        "claim": "In 2021, Greece’s nomination was withdrawn at the request of the State Party.",
+        "status": "omitted",
+        "support": [],
+        "uncertainty": "Article-derived distinction retained for human confirmation against the controlled research record.",
+        "publicSourceReady": false,
+        "parseState": "review required"
       }
     ],
     "excludedScope": [
@@ -504,7 +540,8 @@
             "S01"
           ],
           "uncertainty": "None found",
-          "publicSourceReady": true
+          "publicSourceReady": true,
+          "parseState": "parsed"
         },
         {
           "claim": "Bressani proposed the first enclosure; Orsini’s 1584 intervention added an upper defensive line.",
@@ -513,16 +550,18 @@
             "S01, S05"
           ],
           "uncertainty": "Do not call either sole creator",
-          "publicSourceReady": true
+          "publicSourceReady": true,
+          "parseState": "parsed"
         },
         {
-          "claim": "Its position served the harbour and approaches to Elounda within a wider defensive response.",
-          "status": "qualified",
+          "claim": "The fortress surrendered on 4 October 1715 after a three-month siege.",
+          "status": "verified",
           "support": [
-            "S01, S07"
+            "S03"
           ],
-          "uncertainty": "Single-cause explanations are unsupported",
-          "publicSourceReady": false
+          "uncertainty": "Captivity figures need archival corroboration",
+          "publicSourceReady": true,
+          "parseState": "parsed"
         }
       ],
       "qualifiedClaims": [
@@ -533,7 +572,8 @@
             "S01, S07"
           ],
           "uncertainty": "Single-cause explanations are unsupported",
-          "publicSourceReady": false
+          "publicSourceReady": false,
+          "parseState": "parsed"
         },
         {
           "claim": "Salt production formed part of the local strategic economy.",
@@ -542,7 +582,8 @@
             "S14"
           ],
           "uncertainty": "Direct decision-making link not demonstrated",
-          "publicSourceReady": false
+          "publicSourceReady": false,
+          "parseState": "parsed"
         },
         {
           "claim": "An earlier wall is now interpreted as Byzantine, probably 7th–8th c.",
@@ -551,7 +592,8 @@
             "S02"
           ],
           "uncertainty": "UNESCO tentative text says antiquity; do not collapse disagreement",
-          "publicSourceReady": false
+          "publicSourceReady": false,
+          "parseState": "parsed"
         }
       ],
       "unresolvedIssues": [
@@ -562,7 +604,8 @@
             "S16"
           ],
           "uncertainty": "Needs primary transport or gazette confirmation",
-          "publicSourceReady": false
+          "publicSourceReady": false,
+          "parseState": "parsed"
         },
         {
           "claim": "Electricity",
@@ -571,7 +614,8 @@
             "None reviewed"
           ],
           "uncertainty": "Common retellings conflict",
-          "publicSourceReady": false
+          "publicSourceReady": false,
+          "parseState": "parsed"
         },
         {
           "claim": "Final resident",
@@ -580,7 +624,8 @@
             "None reviewed"
           ],
           "uncertainty": "Highly repeated but unverified here",
-          "publicSourceReady": false
+          "publicSourceReady": false,
+          "parseState": "parsed"
         }
       ],
       "visualRequirement": "Use owned context imagery or rights-cleared archival material.",
@@ -602,7 +647,8 @@
             "S01"
           ],
           "uncertainty": "None found",
-          "publicSourceReady": true
+          "publicSourceReady": true,
+          "parseState": "parsed"
         },
         {
           "claim": "Bressani proposed the first enclosure; Orsini’s 1584 intervention added an upper defensive line.",
@@ -611,16 +657,18 @@
             "S01, S05"
           ],
           "uncertainty": "Do not call either sole creator",
-          "publicSourceReady": true
+          "publicSourceReady": true,
+          "parseState": "parsed"
         },
         {
-          "claim": "Its position served the harbour and approaches to Elounda within a wider defensive response.",
-          "status": "qualified",
+          "claim": "The fortress surrendered on 4 October 1715 after a three-month siege.",
+          "status": "verified",
           "support": [
-            "S01, S07"
+            "S03"
           ],
-          "uncertainty": "Single-cause explanations are unsupported",
-          "publicSourceReady": false
+          "uncertainty": "Captivity figures need archival corroboration",
+          "publicSourceReady": true,
+          "parseState": "parsed"
         }
       ],
       "qualifiedClaims": [
@@ -631,7 +679,8 @@
             "S01, S07"
           ],
           "uncertainty": "Single-cause explanations are unsupported",
-          "publicSourceReady": false
+          "publicSourceReady": false,
+          "parseState": "parsed"
         },
         {
           "claim": "Salt production formed part of the local strategic economy.",
@@ -640,7 +689,8 @@
             "S14"
           ],
           "uncertainty": "Direct decision-making link not demonstrated",
-          "publicSourceReady": false
+          "publicSourceReady": false,
+          "parseState": "parsed"
         },
         {
           "claim": "An earlier wall is now interpreted as Byzantine, probably 7th–8th c.",
@@ -649,7 +699,8 @@
             "S02"
           ],
           "uncertainty": "UNESCO tentative text says antiquity; do not collapse disagreement",
-          "publicSourceReady": false
+          "publicSourceReady": false,
+          "parseState": "parsed"
         }
       ],
       "unresolvedIssues": [
@@ -660,7 +711,8 @@
             "S16"
           ],
           "uncertainty": "Needs primary transport or gazette confirmation",
-          "publicSourceReady": false
+          "publicSourceReady": false,
+          "parseState": "parsed"
         },
         {
           "claim": "Electricity",
@@ -669,7 +721,8 @@
             "None reviewed"
           ],
           "uncertainty": "Common retellings conflict",
-          "publicSourceReady": false
+          "publicSourceReady": false,
+          "parseState": "parsed"
         },
         {
           "claim": "Final resident",
@@ -678,7 +731,8 @@
             "None reviewed"
           ],
           "uncertainty": "Highly repeated but unverified here",
-          "publicSourceReady": false
+          "publicSourceReady": false,
+          "parseState": "parsed"
         }
       ],
       "visualRequirement": "Use owned context imagery or rights-cleared archival material.",
@@ -700,7 +754,8 @@
             "S01"
           ],
           "uncertainty": "None found",
-          "publicSourceReady": true
+          "publicSourceReady": true,
+          "parseState": "parsed"
         },
         {
           "claim": "Bressani proposed the first enclosure; Orsini’s 1584 intervention added an upper defensive line.",
@@ -709,16 +764,18 @@
             "S01, S05"
           ],
           "uncertainty": "Do not call either sole creator",
-          "publicSourceReady": true
+          "publicSourceReady": true,
+          "parseState": "parsed"
         },
         {
-          "claim": "Its position served the harbour and approaches to Elounda within a wider defensive response.",
-          "status": "qualified",
+          "claim": "The fortress surrendered on 4 October 1715 after a three-month siege.",
+          "status": "verified",
           "support": [
-            "S01, S07"
+            "S03"
           ],
-          "uncertainty": "Single-cause explanations are unsupported",
-          "publicSourceReady": false
+          "uncertainty": "Captivity figures need archival corroboration",
+          "publicSourceReady": true,
+          "parseState": "parsed"
         }
       ],
       "qualifiedClaims": [
@@ -729,7 +786,8 @@
             "S01, S07"
           ],
           "uncertainty": "Single-cause explanations are unsupported",
-          "publicSourceReady": false
+          "publicSourceReady": false,
+          "parseState": "parsed"
         },
         {
           "claim": "Salt production formed part of the local strategic economy.",
@@ -738,7 +796,8 @@
             "S14"
           ],
           "uncertainty": "Direct decision-making link not demonstrated",
-          "publicSourceReady": false
+          "publicSourceReady": false,
+          "parseState": "parsed"
         },
         {
           "claim": "An earlier wall is now interpreted as Byzantine, probably 7th–8th c.",
@@ -747,7 +806,8 @@
             "S02"
           ],
           "uncertainty": "UNESCO tentative text says antiquity; do not collapse disagreement",
-          "publicSourceReady": false
+          "publicSourceReady": false,
+          "parseState": "parsed"
         }
       ],
       "unresolvedIssues": [
@@ -758,7 +818,8 @@
             "S16"
           ],
           "uncertainty": "Needs primary transport or gazette confirmation",
-          "publicSourceReady": false
+          "publicSourceReady": false,
+          "parseState": "parsed"
         },
         {
           "claim": "Electricity",
@@ -767,7 +828,8 @@
             "None reviewed"
           ],
           "uncertainty": "Common retellings conflict",
-          "publicSourceReady": false
+          "publicSourceReady": false,
+          "parseState": "parsed"
         },
         {
           "claim": "Final resident",
@@ -776,7 +838,8 @@
             "None reviewed"
           ],
           "uncertainty": "Highly repeated but unverified here",
-          "publicSourceReady": false
+          "publicSourceReady": false,
+          "parseState": "parsed"
         }
       ],
       "visualRequirement": "Use owned context imagery or rights-cleared archival material.",
@@ -798,7 +861,8 @@
             "S01"
           ],
           "uncertainty": "None found",
-          "publicSourceReady": true
+          "publicSourceReady": true,
+          "parseState": "parsed"
         },
         {
           "claim": "Bressani proposed the first enclosure; Orsini’s 1584 intervention added an upper defensive line.",
@@ -807,16 +871,18 @@
             "S01, S05"
           ],
           "uncertainty": "Do not call either sole creator",
-          "publicSourceReady": true
+          "publicSourceReady": true,
+          "parseState": "parsed"
         },
         {
-          "claim": "Its position served the harbour and approaches to Elounda within a wider defensive response.",
-          "status": "qualified",
+          "claim": "The fortress surrendered on 4 October 1715 after a three-month siege.",
+          "status": "verified",
           "support": [
-            "S01, S07"
+            "S03"
           ],
-          "uncertainty": "Single-cause explanations are unsupported",
-          "publicSourceReady": false
+          "uncertainty": "Captivity figures need archival corroboration",
+          "publicSourceReady": true,
+          "parseState": "parsed"
         }
       ],
       "qualifiedClaims": [
@@ -827,7 +893,8 @@
             "S01, S07"
           ],
           "uncertainty": "Single-cause explanations are unsupported",
-          "publicSourceReady": false
+          "publicSourceReady": false,
+          "parseState": "parsed"
         },
         {
           "claim": "Salt production formed part of the local strategic economy.",
@@ -836,7 +903,8 @@
             "S14"
           ],
           "uncertainty": "Direct decision-making link not demonstrated",
-          "publicSourceReady": false
+          "publicSourceReady": false,
+          "parseState": "parsed"
         },
         {
           "claim": "An earlier wall is now interpreted as Byzantine, probably 7th–8th c.",
@@ -845,7 +913,8 @@
             "S02"
           ],
           "uncertainty": "UNESCO tentative text says antiquity; do not collapse disagreement",
-          "publicSourceReady": false
+          "publicSourceReady": false,
+          "parseState": "parsed"
         }
       ],
       "unresolvedIssues": [
@@ -856,7 +925,8 @@
             "S16"
           ],
           "uncertainty": "Needs primary transport or gazette confirmation",
-          "publicSourceReady": false
+          "publicSourceReady": false,
+          "parseState": "parsed"
         },
         {
           "claim": "Electricity",
@@ -865,7 +935,8 @@
             "None reviewed"
           ],
           "uncertainty": "Common retellings conflict",
-          "publicSourceReady": false
+          "publicSourceReady": false,
+          "parseState": "parsed"
         },
         {
           "claim": "Final resident",
@@ -874,7 +945,8 @@
             "None reviewed"
           ],
           "uncertainty": "Highly repeated but unverified here",
-          "publicSourceReady": false
+          "publicSourceReady": false,
+          "parseState": "parsed"
         }
       ],
       "visualRequirement": "Use owned context imagery or rights-cleared archival material.",
@@ -896,7 +968,8 @@
             "S01"
           ],
           "uncertainty": "None found",
-          "publicSourceReady": true
+          "publicSourceReady": true,
+          "parseState": "parsed"
         },
         {
           "claim": "Bressani proposed the first enclosure; Orsini’s 1584 intervention added an upper defensive line.",
@@ -905,16 +978,18 @@
             "S01, S05"
           ],
           "uncertainty": "Do not call either sole creator",
-          "publicSourceReady": true
+          "publicSourceReady": true,
+          "parseState": "parsed"
         },
         {
-          "claim": "Its position served the harbour and approaches to Elounda within a wider defensive response.",
-          "status": "qualified",
+          "claim": "The fortress surrendered on 4 October 1715 after a three-month siege.",
+          "status": "verified",
           "support": [
-            "S01, S07"
+            "S03"
           ],
-          "uncertainty": "Single-cause explanations are unsupported",
-          "publicSourceReady": false
+          "uncertainty": "Captivity figures need archival corroboration",
+          "publicSourceReady": true,
+          "parseState": "parsed"
         }
       ],
       "qualifiedClaims": [
@@ -925,7 +1000,8 @@
             "S01, S07"
           ],
           "uncertainty": "Single-cause explanations are unsupported",
-          "publicSourceReady": false
+          "publicSourceReady": false,
+          "parseState": "parsed"
         },
         {
           "claim": "Salt production formed part of the local strategic economy.",
@@ -934,7 +1010,8 @@
             "S14"
           ],
           "uncertainty": "Direct decision-making link not demonstrated",
-          "publicSourceReady": false
+          "publicSourceReady": false,
+          "parseState": "parsed"
         },
         {
           "claim": "An earlier wall is now interpreted as Byzantine, probably 7th–8th c.",
@@ -943,7 +1020,8 @@
             "S02"
           ],
           "uncertainty": "UNESCO tentative text says antiquity; do not collapse disagreement",
-          "publicSourceReady": false
+          "publicSourceReady": false,
+          "parseState": "parsed"
         }
       ],
       "unresolvedIssues": [
@@ -954,7 +1032,8 @@
             "S16"
           ],
           "uncertainty": "Needs primary transport or gazette confirmation",
-          "publicSourceReady": false
+          "publicSourceReady": false,
+          "parseState": "parsed"
         },
         {
           "claim": "Electricity",
@@ -963,7 +1042,8 @@
             "None reviewed"
           ],
           "uncertainty": "Common retellings conflict",
-          "publicSourceReady": false
+          "publicSourceReady": false,
+          "parseState": "parsed"
         },
         {
           "claim": "Final resident",
@@ -972,7 +1052,8 @@
             "None reviewed"
           ],
           "uncertainty": "Highly repeated but unverified here",
-          "publicSourceReady": false
+          "publicSourceReady": false,
+          "parseState": "parsed"
         }
       ],
       "visualRequirement": "Use owned context imagery or rights-cleared archival material.",
@@ -994,7 +1075,8 @@
             "S01"
           ],
           "uncertainty": "None found",
-          "publicSourceReady": true
+          "publicSourceReady": true,
+          "parseState": "parsed"
         },
         {
           "claim": "Bressani proposed the first enclosure; Orsini’s 1584 intervention added an upper defensive line.",
@@ -1003,16 +1085,18 @@
             "S01, S05"
           ],
           "uncertainty": "Do not call either sole creator",
-          "publicSourceReady": true
+          "publicSourceReady": true,
+          "parseState": "parsed"
         },
         {
-          "claim": "Its position served the harbour and approaches to Elounda within a wider defensive response.",
-          "status": "qualified",
+          "claim": "The fortress surrendered on 4 October 1715 after a three-month siege.",
+          "status": "verified",
           "support": [
-            "S01, S07"
+            "S03"
           ],
-          "uncertainty": "Single-cause explanations are unsupported",
-          "publicSourceReady": false
+          "uncertainty": "Captivity figures need archival corroboration",
+          "publicSourceReady": true,
+          "parseState": "parsed"
         }
       ],
       "qualifiedClaims": [
@@ -1023,7 +1107,8 @@
             "S01, S07"
           ],
           "uncertainty": "Single-cause explanations are unsupported",
-          "publicSourceReady": false
+          "publicSourceReady": false,
+          "parseState": "parsed"
         },
         {
           "claim": "Salt production formed part of the local strategic economy.",
@@ -1032,7 +1117,8 @@
             "S14"
           ],
           "uncertainty": "Direct decision-making link not demonstrated",
-          "publicSourceReady": false
+          "publicSourceReady": false,
+          "parseState": "parsed"
         },
         {
           "claim": "An earlier wall is now interpreted as Byzantine, probably 7th–8th c.",
@@ -1041,7 +1127,8 @@
             "S02"
           ],
           "uncertainty": "UNESCO tentative text says antiquity; do not collapse disagreement",
-          "publicSourceReady": false
+          "publicSourceReady": false,
+          "parseState": "parsed"
         }
       ],
       "unresolvedIssues": [
@@ -1052,7 +1139,8 @@
             "S16"
           ],
           "uncertainty": "Needs primary transport or gazette confirmation",
-          "publicSourceReady": false
+          "publicSourceReady": false,
+          "parseState": "parsed"
         },
         {
           "claim": "Electricity",
@@ -1061,7 +1149,8 @@
             "None reviewed"
           ],
           "uncertainty": "Common retellings conflict",
-          "publicSourceReady": false
+          "publicSourceReady": false,
+          "parseState": "parsed"
         },
         {
           "claim": "Final resident",
@@ -1070,7 +1159,8 @@
             "None reviewed"
           ],
           "uncertainty": "Highly repeated but unverified here",
-          "publicSourceReady": false
+          "publicSourceReady": false,
+          "parseState": "parsed"
         }
       ],
       "visualRequirement": "Use owned context imagery or rights-cleared archival material.",
@@ -1092,7 +1182,8 @@
             "S01"
           ],
           "uncertainty": "None found",
-          "publicSourceReady": true
+          "publicSourceReady": true,
+          "parseState": "parsed"
         },
         {
           "claim": "Bressani proposed the first enclosure; Orsini’s 1584 intervention added an upper defensive line.",
@@ -1101,16 +1192,18 @@
             "S01, S05"
           ],
           "uncertainty": "Do not call either sole creator",
-          "publicSourceReady": true
+          "publicSourceReady": true,
+          "parseState": "parsed"
         },
         {
-          "claim": "Its position served the harbour and approaches to Elounda within a wider defensive response.",
-          "status": "qualified",
+          "claim": "The fortress surrendered on 4 October 1715 after a three-month siege.",
+          "status": "verified",
           "support": [
-            "S01, S07"
+            "S03"
           ],
-          "uncertainty": "Single-cause explanations are unsupported",
-          "publicSourceReady": false
+          "uncertainty": "Captivity figures need archival corroboration",
+          "publicSourceReady": true,
+          "parseState": "parsed"
         }
       ],
       "qualifiedClaims": [
@@ -1121,7 +1214,8 @@
             "S01, S07"
           ],
           "uncertainty": "Single-cause explanations are unsupported",
-          "publicSourceReady": false
+          "publicSourceReady": false,
+          "parseState": "parsed"
         },
         {
           "claim": "Salt production formed part of the local strategic economy.",
@@ -1130,7 +1224,8 @@
             "S14"
           ],
           "uncertainty": "Direct decision-making link not demonstrated",
-          "publicSourceReady": false
+          "publicSourceReady": false,
+          "parseState": "parsed"
         },
         {
           "claim": "An earlier wall is now interpreted as Byzantine, probably 7th–8th c.",
@@ -1139,7 +1234,8 @@
             "S02"
           ],
           "uncertainty": "UNESCO tentative text says antiquity; do not collapse disagreement",
-          "publicSourceReady": false
+          "publicSourceReady": false,
+          "parseState": "parsed"
         }
       ],
       "unresolvedIssues": [
@@ -1150,7 +1246,8 @@
             "S16"
           ],
           "uncertainty": "Needs primary transport or gazette confirmation",
-          "publicSourceReady": false
+          "publicSourceReady": false,
+          "parseState": "parsed"
         },
         {
           "claim": "Electricity",
@@ -1159,7 +1256,8 @@
             "None reviewed"
           ],
           "uncertainty": "Common retellings conflict",
-          "publicSourceReady": false
+          "publicSourceReady": false,
+          "parseState": "parsed"
         },
         {
           "claim": "Final resident",
@@ -1168,7 +1266,8 @@
             "None reviewed"
           ],
           "uncertainty": "Highly repeated but unverified here",
-          "publicSourceReady": false
+          "publicSourceReady": false,
+          "parseState": "parsed"
         }
       ],
       "visualRequirement": "Use owned context imagery or rights-cleared archival material.",
@@ -1190,7 +1289,8 @@
             "S01"
           ],
           "uncertainty": "None found",
-          "publicSourceReady": true
+          "publicSourceReady": true,
+          "parseState": "parsed"
         },
         {
           "claim": "Bressani proposed the first enclosure; Orsini’s 1584 intervention added an upper defensive line.",
@@ -1199,16 +1299,18 @@
             "S01, S05"
           ],
           "uncertainty": "Do not call either sole creator",
-          "publicSourceReady": true
+          "publicSourceReady": true,
+          "parseState": "parsed"
         },
         {
-          "claim": "Its position served the harbour and approaches to Elounda within a wider defensive response.",
-          "status": "qualified",
+          "claim": "The fortress surrendered on 4 October 1715 after a three-month siege.",
+          "status": "verified",
           "support": [
-            "S01, S07"
+            "S03"
           ],
-          "uncertainty": "Single-cause explanations are unsupported",
-          "publicSourceReady": false
+          "uncertainty": "Captivity figures need archival corroboration",
+          "publicSourceReady": true,
+          "parseState": "parsed"
         }
       ],
       "qualifiedClaims": [
@@ -1219,7 +1321,8 @@
             "S01, S07"
           ],
           "uncertainty": "Single-cause explanations are unsupported",
-          "publicSourceReady": false
+          "publicSourceReady": false,
+          "parseState": "parsed"
         },
         {
           "claim": "Salt production formed part of the local strategic economy.",
@@ -1228,7 +1331,8 @@
             "S14"
           ],
           "uncertainty": "Direct decision-making link not demonstrated",
-          "publicSourceReady": false
+          "publicSourceReady": false,
+          "parseState": "parsed"
         },
         {
           "claim": "An earlier wall is now interpreted as Byzantine, probably 7th–8th c.",
@@ -1237,7 +1341,8 @@
             "S02"
           ],
           "uncertainty": "UNESCO tentative text says antiquity; do not collapse disagreement",
-          "publicSourceReady": false
+          "publicSourceReady": false,
+          "parseState": "parsed"
         }
       ],
       "unresolvedIssues": [
@@ -1248,7 +1353,8 @@
             "S16"
           ],
           "uncertainty": "Needs primary transport or gazette confirmation",
-          "publicSourceReady": false
+          "publicSourceReady": false,
+          "parseState": "parsed"
         },
         {
           "claim": "Electricity",
@@ -1257,7 +1363,8 @@
             "None reviewed"
           ],
           "uncertainty": "Common retellings conflict",
-          "publicSourceReady": false
+          "publicSourceReady": false,
+          "parseState": "parsed"
         },
         {
           "claim": "Final resident",
@@ -1266,7 +1373,8 @@
             "None reviewed"
           ],
           "uncertainty": "Highly repeated but unverified here",
-          "publicSourceReady": false
+          "publicSourceReady": false,
+          "parseState": "parsed"
         }
       ],
       "visualRequirement": "Use owned context imagery or rights-cleared archival material.",
@@ -1288,7 +1396,8 @@
             "S01"
           ],
           "uncertainty": "None found",
-          "publicSourceReady": true
+          "publicSourceReady": true,
+          "parseState": "parsed"
         },
         {
           "claim": "Bressani proposed the first enclosure; Orsini’s 1584 intervention added an upper defensive line.",
@@ -1297,16 +1406,18 @@
             "S01, S05"
           ],
           "uncertainty": "Do not call either sole creator",
-          "publicSourceReady": true
+          "publicSourceReady": true,
+          "parseState": "parsed"
         },
         {
-          "claim": "Its position served the harbour and approaches to Elounda within a wider defensive response.",
-          "status": "qualified",
+          "claim": "The fortress surrendered on 4 October 1715 after a three-month siege.",
+          "status": "verified",
           "support": [
-            "S01, S07"
+            "S03"
           ],
-          "uncertainty": "Single-cause explanations are unsupported",
-          "publicSourceReady": false
+          "uncertainty": "Captivity figures need archival corroboration",
+          "publicSourceReady": true,
+          "parseState": "parsed"
         }
       ],
       "qualifiedClaims": [
@@ -1317,7 +1428,8 @@
             "S01, S07"
           ],
           "uncertainty": "Single-cause explanations are unsupported",
-          "publicSourceReady": false
+          "publicSourceReady": false,
+          "parseState": "parsed"
         },
         {
           "claim": "Salt production formed part of the local strategic economy.",
@@ -1326,7 +1438,8 @@
             "S14"
           ],
           "uncertainty": "Direct decision-making link not demonstrated",
-          "publicSourceReady": false
+          "publicSourceReady": false,
+          "parseState": "parsed"
         },
         {
           "claim": "An earlier wall is now interpreted as Byzantine, probably 7th–8th c.",
@@ -1335,7 +1448,8 @@
             "S02"
           ],
           "uncertainty": "UNESCO tentative text says antiquity; do not collapse disagreement",
-          "publicSourceReady": false
+          "publicSourceReady": false,
+          "parseState": "parsed"
         }
       ],
       "unresolvedIssues": [
@@ -1346,7 +1460,8 @@
             "S16"
           ],
           "uncertainty": "Needs primary transport or gazette confirmation",
-          "publicSourceReady": false
+          "publicSourceReady": false,
+          "parseState": "parsed"
         },
         {
           "claim": "Electricity",
@@ -1355,7 +1470,8 @@
             "None reviewed"
           ],
           "uncertainty": "Common retellings conflict",
-          "publicSourceReady": false
+          "publicSourceReady": false,
+          "parseState": "parsed"
         },
         {
           "claim": "Final resident",
@@ -1364,7 +1480,8 @@
             "None reviewed"
           ],
           "uncertainty": "Highly repeated but unverified here",
-          "publicSourceReady": false
+          "publicSourceReady": false,
+          "parseState": "parsed"
         }
       ],
       "visualRequirement": "Use owned context imagery or rights-cleared archival material.",
@@ -1386,7 +1503,8 @@
             "S01"
           ],
           "uncertainty": "None found",
-          "publicSourceReady": true
+          "publicSourceReady": true,
+          "parseState": "parsed"
         },
         {
           "claim": "Bressani proposed the first enclosure; Orsini’s 1584 intervention added an upper defensive line.",
@@ -1395,16 +1513,18 @@
             "S01, S05"
           ],
           "uncertainty": "Do not call either sole creator",
-          "publicSourceReady": true
+          "publicSourceReady": true,
+          "parseState": "parsed"
         },
         {
-          "claim": "Its position served the harbour and approaches to Elounda within a wider defensive response.",
-          "status": "qualified",
+          "claim": "The fortress surrendered on 4 October 1715 after a three-month siege.",
+          "status": "verified",
           "support": [
-            "S01, S07"
+            "S03"
           ],
-          "uncertainty": "Single-cause explanations are unsupported",
-          "publicSourceReady": false
+          "uncertainty": "Captivity figures need archival corroboration",
+          "publicSourceReady": true,
+          "parseState": "parsed"
         }
       ],
       "qualifiedClaims": [
@@ -1415,7 +1535,8 @@
             "S01, S07"
           ],
           "uncertainty": "Single-cause explanations are unsupported",
-          "publicSourceReady": false
+          "publicSourceReady": false,
+          "parseState": "parsed"
         },
         {
           "claim": "Salt production formed part of the local strategic economy.",
@@ -1424,7 +1545,8 @@
             "S14"
           ],
           "uncertainty": "Direct decision-making link not demonstrated",
-          "publicSourceReady": false
+          "publicSourceReady": false,
+          "parseState": "parsed"
         },
         {
           "claim": "An earlier wall is now interpreted as Byzantine, probably 7th–8th c.",
@@ -1433,7 +1555,8 @@
             "S02"
           ],
           "uncertainty": "UNESCO tentative text says antiquity; do not collapse disagreement",
-          "publicSourceReady": false
+          "publicSourceReady": false,
+          "parseState": "parsed"
         }
       ],
       "unresolvedIssues": [
@@ -1444,7 +1567,8 @@
             "S16"
           ],
           "uncertainty": "Needs primary transport or gazette confirmation",
-          "publicSourceReady": false
+          "publicSourceReady": false,
+          "parseState": "parsed"
         },
         {
           "claim": "Electricity",
@@ -1453,7 +1577,8 @@
             "None reviewed"
           ],
           "uncertainty": "Common retellings conflict",
-          "publicSourceReady": false
+          "publicSourceReady": false,
+          "parseState": "parsed"
         },
         {
           "claim": "Final resident",
@@ -1462,7 +1587,8 @@
             "None reviewed"
           ],
           "uncertainty": "Highly repeated but unverified here",
-          "publicSourceReady": false
+          "publicSourceReady": false,
+          "parseState": "parsed"
         }
       ],
       "visualRequirement": "Use owned context imagery or rights-cleared archival material.",
@@ -1484,7 +1610,8 @@
             "S01"
           ],
           "uncertainty": "None found",
-          "publicSourceReady": true
+          "publicSourceReady": true,
+          "parseState": "parsed"
         },
         {
           "claim": "Bressani proposed the first enclosure; Orsini’s 1584 intervention added an upper defensive line.",
@@ -1493,16 +1620,18 @@
             "S01, S05"
           ],
           "uncertainty": "Do not call either sole creator",
-          "publicSourceReady": true
+          "publicSourceReady": true,
+          "parseState": "parsed"
         },
         {
-          "claim": "Its position served the harbour and approaches to Elounda within a wider defensive response.",
-          "status": "qualified",
+          "claim": "The fortress surrendered on 4 October 1715 after a three-month siege.",
+          "status": "verified",
           "support": [
-            "S01, S07"
+            "S03"
           ],
-          "uncertainty": "Single-cause explanations are unsupported",
-          "publicSourceReady": false
+          "uncertainty": "Captivity figures need archival corroboration",
+          "publicSourceReady": true,
+          "parseState": "parsed"
         }
       ],
       "qualifiedClaims": [
@@ -1513,7 +1642,8 @@
             "S01, S07"
           ],
           "uncertainty": "Single-cause explanations are unsupported",
-          "publicSourceReady": false
+          "publicSourceReady": false,
+          "parseState": "parsed"
         },
         {
           "claim": "Salt production formed part of the local strategic economy.",
@@ -1522,7 +1652,8 @@
             "S14"
           ],
           "uncertainty": "Direct decision-making link not demonstrated",
-          "publicSourceReady": false
+          "publicSourceReady": false,
+          "parseState": "parsed"
         },
         {
           "claim": "An earlier wall is now interpreted as Byzantine, probably 7th–8th c.",
@@ -1531,7 +1662,8 @@
             "S02"
           ],
           "uncertainty": "UNESCO tentative text says antiquity; do not collapse disagreement",
-          "publicSourceReady": false
+          "publicSourceReady": false,
+          "parseState": "parsed"
         }
       ],
       "unresolvedIssues": [
@@ -1542,7 +1674,8 @@
             "S16"
           ],
           "uncertainty": "Needs primary transport or gazette confirmation",
-          "publicSourceReady": false
+          "publicSourceReady": false,
+          "parseState": "parsed"
         },
         {
           "claim": "Electricity",
@@ -1551,7 +1684,8 @@
             "None reviewed"
           ],
           "uncertainty": "Common retellings conflict",
-          "publicSourceReady": false
+          "publicSourceReady": false,
+          "parseState": "parsed"
         },
         {
           "claim": "Final resident",
@@ -1560,7 +1694,8 @@
             "None reviewed"
           ],
           "uncertainty": "Highly repeated but unverified here",
-          "publicSourceReady": false
+          "publicSourceReady": false,
+          "parseState": "parsed"
         }
       ],
       "visualRequirement": "Use owned context imagery or rights-cleared archival material.",
@@ -1582,7 +1717,8 @@
             "S01"
           ],
           "uncertainty": "None found",
-          "publicSourceReady": true
+          "publicSourceReady": true,
+          "parseState": "parsed"
         },
         {
           "claim": "Bressani proposed the first enclosure; Orsini’s 1584 intervention added an upper defensive line.",
@@ -1591,16 +1727,18 @@
             "S01, S05"
           ],
           "uncertainty": "Do not call either sole creator",
-          "publicSourceReady": true
+          "publicSourceReady": true,
+          "parseState": "parsed"
         },
         {
-          "claim": "Its position served the harbour and approaches to Elounda within a wider defensive response.",
-          "status": "qualified",
+          "claim": "The fortress surrendered on 4 October 1715 after a three-month siege.",
+          "status": "verified",
           "support": [
-            "S01, S07"
+            "S03"
           ],
-          "uncertainty": "Single-cause explanations are unsupported",
-          "publicSourceReady": false
+          "uncertainty": "Captivity figures need archival corroboration",
+          "publicSourceReady": true,
+          "parseState": "parsed"
         }
       ],
       "qualifiedClaims": [
@@ -1611,7 +1749,8 @@
             "S01, S07"
           ],
           "uncertainty": "Single-cause explanations are unsupported",
-          "publicSourceReady": false
+          "publicSourceReady": false,
+          "parseState": "parsed"
         },
         {
           "claim": "Salt production formed part of the local strategic economy.",
@@ -1620,7 +1759,8 @@
             "S14"
           ],
           "uncertainty": "Direct decision-making link not demonstrated",
-          "publicSourceReady": false
+          "publicSourceReady": false,
+          "parseState": "parsed"
         },
         {
           "claim": "An earlier wall is now interpreted as Byzantine, probably 7th–8th c.",
@@ -1629,7 +1769,8 @@
             "S02"
           ],
           "uncertainty": "UNESCO tentative text says antiquity; do not collapse disagreement",
-          "publicSourceReady": false
+          "publicSourceReady": false,
+          "parseState": "parsed"
         }
       ],
       "unresolvedIssues": [
@@ -1640,7 +1781,8 @@
             "S16"
           ],
           "uncertainty": "Needs primary transport or gazette confirmation",
-          "publicSourceReady": false
+          "publicSourceReady": false,
+          "parseState": "parsed"
         },
         {
           "claim": "Electricity",
@@ -1649,7 +1791,8 @@
             "None reviewed"
           ],
           "uncertainty": "Common retellings conflict",
-          "publicSourceReady": false
+          "publicSourceReady": false,
+          "parseState": "parsed"
         },
         {
           "claim": "Final resident",
@@ -1658,7 +1801,8 @@
             "None reviewed"
           ],
           "uncertainty": "Highly repeated but unverified here",
-          "publicSourceReady": false
+          "publicSourceReady": false,
+          "parseState": "parsed"
         }
       ],
       "visualRequirement": "Use owned context imagery or rights-cleared archival material.",
@@ -1677,16 +1821,10 @@
   },
   "youtubeMetadata": {
     "titleCandidates": [
-      "Spinalonga: Why It Was Fortified and How the Island’s Uses Changed",
-      "A factual guide to Spinalonga: Why It Was Fortified and How the Island’s Uses Changed",
-      "Spinalonga: Why It Was Fortified and How the Island’s Uses Changed: historical context",
-      "Understanding Spinalonga: Why It Was Fortified and How the Island’s Uses Changed",
-      "Spinalonga: Why It Was Fortified and How the Island’s Uses Changed: sources and changing uses"
+      "Spinalonga: Why It Was Fortified and How the Island’s Uses Changed"
     ],
     "thumbnailConcepts": [
-      "Fortress landscape with factual caption",
-      "Settlement layers with restrained label",
-      "Map-led context"
+      "Fortress landscape with factual caption"
     ],
     "descriptionDraft": "Why Spinalonga was fortified, how it became an Ottoman town and a compulsory settlement for people with Hansen’s disease, and how it remains connected to Elounda and Plaka.",
     "chapterOutline": [

@@ -5,8 +5,8 @@
     "resurface existing article": [
       {
         "slug": "walking-around-elounda",
-        "relevanceScore": 5,
-        "relevanceReason": "September signals: walking.",
+        "relevanceScore": 3,
+        "relevanceReason": "Configured themes: walking.",
         "why": "Matches September: walking and archival research.",
         "evidenceReadiness": "published article",
         "overlapStatus": "existing content",
@@ -15,18 +15,7 @@
       }
     ],
     "update existing article": [],
-    "finish draft": [
-      {
-        "slug": "elounda-vlychades-brackish-water",
-        "relevanceScore": 5,
-        "relevanceReason": "September signals: history.",
-        "why": "Matches September: walking and archival research.",
-        "evidenceReadiness": "draft review required",
-        "overlapStatus": "existing content",
-        "volatilityStatus": "low",
-        "nextAction": "finish draft review"
-      }
-    ],
+    "finish draft": [],
     "research next": [
       {
         "slug": "elounda-autumn-walking-routes",
@@ -37,17 +26,6 @@
         "overlapStatus": "likely",
         "volatilityStatus": "moderate",
         "nextAction": "research first"
-      },
-      {
-        "slug": "elounda-winter-practical-guide",
-        "relevanceScore": 2,
-        "relevanceReason": "Seed seasonal relevance: 2/5.",
-        "why": "Raw score 68/100; deductions: none.",
-        "evidenceReadiness": "usable",
-        "overlapStatus": "clear",
-        "volatilityStatus": "high",
-        "nextAction": "verify current details",
-        "verificationWarning": "Current verification required before publication."
       },
       {
         "slug": "spinalonga-archival-supply-records",
@@ -62,49 +40,9 @@
     ],
     "video candidate": [
       {
-        "slug": "areti-monastery-mirabello-crete",
-        "relevanceScore": 5,
-        "relevanceReason": "September signals: history.",
-        "why": "Matches September: walking and archival research.",
-        "evidenceReadiness": "published article",
-        "overlapStatus": "existing content",
-        "volatilityStatus": "low",
-        "nextAction": "create review-only video plan"
-      },
-      {
-        "slug": "elounda-history-through-its-shoreline",
-        "relevanceScore": 5,
-        "relevanceReason": "September signals: history.",
-        "why": "Matches September: walking and archival research.",
-        "evidenceReadiness": "published article",
-        "overlapStatus": "existing content",
-        "volatilityStatus": "low",
-        "nextAction": "create review-only video plan"
-      },
-      {
-        "slug": "elounda-salt-pans-and-poros-windmills",
-        "relevanceScore": 5,
-        "relevanceReason": "September signals: history.",
-        "why": "Matches September: walking and archival research.",
-        "evidenceReadiness": "published article",
-        "overlapStatus": "existing content",
-        "volatilityStatus": "low",
-        "nextAction": "create review-only video plan"
-      },
-      {
-        "slug": "elounda-wartime-memory",
-        "relevanceScore": 5,
-        "relevanceReason": "September signals: history.",
-        "why": "Matches September: walking and archival research.",
-        "evidenceReadiness": "published article",
-        "overlapStatus": "existing content",
-        "volatilityStatus": "low",
-        "nextAction": "create review-only video plan"
-      },
-      {
         "slug": "spinalonga-why-fortified-changing-uses",
-        "relevanceScore": 5,
-        "relevanceReason": "September signals: history.",
+        "relevanceScore": 3,
+        "relevanceReason": "Configured themes: historical-itineraries.",
         "why": "Matches September: walking and archival research.",
         "evidenceReadiness": "published article",
         "overlapStatus": "existing content",
@@ -112,18 +50,6 @@
         "nextAction": "create review-only video plan"
       }
     ],
-    "practical seasonal content": [
-      {
-        "slug": "elounda-winter-practical-guide",
-        "relevanceScore": 2,
-        "relevanceReason": "Operational content requires current checking.",
-        "why": "Matches September: walking and archival research.",
-        "evidenceReadiness": "usable",
-        "overlapStatus": "clear",
-        "volatilityStatus": "high",
-        "nextAction": "verify current details",
-        "verificationWarning": "Current verification required before publication."
-      }
-    ]
+    "practical seasonal content": []
   }
 }

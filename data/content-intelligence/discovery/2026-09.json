@@ -6,6 +6,7 @@
     {
       "id": "elounda-autumn-walking-routes",
       "slug": "elounda-autumn-walking-routes",
+      "seasonalFit": "preferred month",
       "workingTitle": "Autumn walking around Elounda and the villages",
       "title": "Autumn walking around Elounda and the villages",
       "centralQuestion": "Which local walks are useful in early autumn?",
@@ -48,52 +49,9 @@
       "recommendedStatus": "useful candidate"
     },
     {
-      "id": "elounda-winter-practical-guide",
-      "slug": "elounda-winter-practical-guide",
-      "workingTitle": "Elounda in winter: a practical guide requiring current checks",
-      "title": "Elounda in winter: a practical guide requiring current checks",
-      "centralQuestion": "Which practical details need current verification in winter?",
-      "pillar": "practical stay information",
-      "contentPillar": "practical stay information",
-      "targetAudience": "travellers planning an Elounda stay",
-      "audienceValue": "current practical orientation",
-      "existingCoverage": "no exact article",
-      "overlapAssessment": "clear",
-      "evidenceState": "usable",
-      "sourcesOrPrimarySourceNeeds": [
-        "current opening and transport checks"
-      ],
-      "visualAvailability": "cleared",
-      "archivalVisualNeed": false,
-      "operationalVolatility": "high",
-      "confidentialityState": "clear",
-      "nextAction": "verify current details",
-      "factorScores": {
-        "localRelevance": 4,
-        "audienceUsefulness": 4,
-        "evidenceReadiness": 3,
-        "contentDistinctness": 4,
-        "visualVideoPotential": 2,
-        "seasonalRelevance": 2,
-        "internalLinkValue": 3
-      },
-      "penalties": {
-        "inadequateEvidence": 0,
-        "likelyDuplication": 0,
-        "unclearImageRights": 0,
-        "unsupportedNumericalPrecision": 0,
-        "genericTravelListFraming": 0,
-        "confidentialityRisk": 0
-      },
-      "rawScore": 68,
-      "finalScore": 68,
-      "scoreExplanation": "Raw score 68/100; deductions: none.",
-      "editorialGateResult": "score band",
-      "recommendedStatus": "useful candidate"
-    },
-    {
       "id": "spinalonga-archival-supply-records",
       "slug": "spinalonga-archival-supply-records",
+      "seasonalFit": "preferred month",
       "workingTitle": "Spinalonga, Plaka and Elounda: archival supply records to seek",
       "title": "Spinalonga, Plaka and Elounda: archival supply records to seek",
       "centralQuestion": "What records could clarify mainland connections to Spinalonga?",
