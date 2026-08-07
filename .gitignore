@@ -48,3 +48,7 @@ check_err.txt
 check_err_utf8.txt
 # open-design 
 open-design/
+
+# Local Search Console exports can contain sensitive query and performance data.
+data/content-intelligence/search-console/raw/*
+!data/content-intelligence/search-console/raw/.gitkeep

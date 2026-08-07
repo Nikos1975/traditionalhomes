@@ -1,5 +1,10 @@
 # Agent Handoff Notes
 
+### 2026-08-07 - Content Intelligence Search Console Phase 2A
+
+- Added `docs/content-intelligence/search-console.md` for the local-only CSV import, status and analysis workflow, including exact command/property contracts, raw-data privacy, outputs, provenance and baseline warnings, and the no-trends/no-automatic-action boundary.
+- Documentation verification: command names, flags, property forms, output paths and baseline behaviour were checked against the Phase 2A CLI/import/analysis implementation. Phase 2B remains a separately approved historical-comparison workflow; no raw export or generated analysis was added to Git.
+
 ### 2026-08-06 - Spinalonga provisional article draft
 
 - Added the review-stage historical article `src/content/blog/spinalonga-why-fortified-changing-uses.md`; its draft route will be `/en/blog/spinalonga-why-fortified-changing-uses/` when editorial approval changes `draft: true`.
