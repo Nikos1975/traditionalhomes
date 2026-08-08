@@ -1,11 +1,5 @@
 # Agent Handoff Notes
 
-### 2026-08-08 - Performance Pass 1B logo and property cards
-
-- Replaced the live 780 KiB raster-embedded SVG logo request with a pixel-identical 144×144 lossless WebP; the old SVG remains tracked but is no longer referenced.
-- UnitCard now emits 320/480/672/768 widths at quality 68, retaining 768 for higher-DPR cards and preserving existing loading priority behavior.
-- Verified focused delivery tests, full test suite, build output, generated links, and local visual review; the primary checkout was not modified.
-
 ### 2026-08-08 - Search Console Phase 2B
 
 - Added local-user ADC Search Console property discovery and paginated Search Analytics acquisition.
