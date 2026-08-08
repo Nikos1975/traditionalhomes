@@ -81,8 +81,13 @@ const homepageFeatureLabel = homepageFeatureKey ? propertyCopy.card.features[hom
         <Image
           src={featuredImgAsset}
           alt={unit.name}
-          width={600}
-          height={450}
+          widths={[320, 480, 640, 768]}
+          sizes="
+            (min-width: 1344px) 373px,
+            (min-width: 1024px) calc((100vw - 160px) / 3),
+            (min-width: 640px) calc((100vw - 88px) / 2),
+            calc(100vw - 32px)
+          "
           loading={priority ? "eager" : "lazy"}
           class="w-full h-full object-cover opacity-90 transition-transform duration-[10s] ease-out group-hover:scale-105"
         />
