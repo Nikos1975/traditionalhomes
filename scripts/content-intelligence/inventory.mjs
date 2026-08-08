@@ -249,7 +249,7 @@ export async function buildInventory({ rootDir, includeDrafts = true }) {
   const sitePages = deduplicatePages([...staticPages, ...articlePages, ...unitPages]);
 
   return validateInventory({
-    schemaVersion: 4,
+    schemaVersion: 3,
     generatedAt: "deterministic",
     includeDrafts,
     articles,
