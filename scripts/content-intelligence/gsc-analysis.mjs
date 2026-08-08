@@ -219,8 +219,11 @@ export function analyzeSearchConsole({ datasets, inventory, options = {} } = {})
   };
 
   const primaryQueryPages = queryPages.filter((item) => item.ownershipRole === "primary" && item.seoEligible !== false && !item.redirected);
-  const highImpressionLowClick = sortByMetrics(primaryQueryPages.filter((item) => item.impressions >= thresholds.highImpressions && item.clicks <= thresholds.lowClicks));
-  const nearRank = sortByMetrics(primaryQueryPages.filter((item) => item.position > 3 && item.position <= thresholds.nearRank));
+  const opportunitySource = primaryQueryPages.length
+    ? primaryQueryPages
+    : queryRecords.map((item) => ({ ...item, route: null, canonicalRoute: null, signal: signalFor(item) }));
+  const highImpressionLowClick = sortByMetrics(opportunitySource.filter((item) => item.impressions >= thresholds.highImpressions && item.clicks <= thresholds.lowClicks));
+  const nearRank = sortByMetrics(opportunitySource.filter((item) => item.position > 3 && item.position <= thresholds.nearRank));
 
   const published = publishedArticles(inventory);
   const links = [];
@@ -256,7 +259,7 @@ export function analyzeSearchConsole({ datasets, inventory, options = {} } = {})
           };
 
   return {
-    schemaVersion: 2,
+    schemaVersion: 1,
     generatedAt: "deterministic",
     thresholds,
     searchConsoleEvidence: { baseline, processedDatasets: baseline.datasets },
@@ -273,6 +276,9 @@ export function analyzeSearchConsole({ datasets, inventory, options = {} } = {})
 
 export function searchConsoleMarkdown(analysis) {
   const warning = analysis.searchConsoleEvidence.baseline.warning;
+  const formatOpportunity = (item, details) => item.canonicalRoute
+    ? `- ${item.query} → ${item.canonicalRoute}: ${details}`
+    : `- ${item.query}: ${details}`;
   const lines = [
     "# Search Console evidence analysis",
     "",
@@ -281,10 +287,10 @@ export function searchConsoleMarkdown(analysis) {
     "## Opportunities",
     "",
     "### High impressions, low clicks",
-    ...analysis.opportunities.highImpressionLowClick.map((item) => `- ${item.query} → ${item.canonicalRoute}: ${item.impressions} impressions, ${item.clicks} clicks, position ${item.position} (${item.signal})`),
+    ...analysis.opportunities.highImpressionLowClick.map((item) => formatOpportunity(item, `${item.impressions} impressions, ${item.clicks} clicks, position ${item.position} (${item.signal})`)),
     "",
     "### Near rank",
-    ...analysis.opportunities.nearRank.map((item) => `- ${item.query} → ${item.canonicalRoute}: position ${item.position}, ${item.impressions} impressions (${item.signal})`),
+    ...analysis.opportunities.nearRank.map((item) => formatOpportunity(item, `position ${item.position}, ${item.impressions} impressions (${item.signal})`)),
     "",
     "## Query ownership",
     ...analysis.relationships.queryOwnership.map((item) => `- ${item.query} → ${item.primary.canonicalRoute} (primary: ${item.primary.impressions} impressions, position ${item.primary.position})${item.secondary.length ? `; secondary: ${item.secondary.map((secondary) => `${secondary.canonicalRoute} (${secondary.impressions})`).join(", ")}` : ""}${item.overlapEvidence.level === "MULTIPLE_RANKING_URLS" ? " — multiple ranking URLs observed" : ""}`),
