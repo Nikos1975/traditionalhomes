@@ -4,7 +4,7 @@ import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
   integrations: [
-    tailwind(),
+    tailwind({ applyBaseStyles: false }),
     sitemap({
       filter: (page) =>
         page !== 'https://traditional-homes.gr/' && !page.includes('/AGENTS/'),
