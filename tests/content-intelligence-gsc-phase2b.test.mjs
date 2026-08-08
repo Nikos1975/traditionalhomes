@@ -7,7 +7,7 @@ import { fetchSearchAnalyticsPages } from "../scripts/content-intelligence/gsc-a
 import { buildApiDataset, persistDataset } from "../scripts/content-intelligence/gsc-dataset.mjs";
 import { runContentCli } from "../scripts/content-intelligence/cli.mjs";
 import { analyzeSearchConsole } from "../scripts/content-intelligence/gsc-analysis.mjs";
-import { mkdtemp, rm } from "node:fs/promises";
+import { mkdtemp, rm, readFile } from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
 
@@ -21,6 +21,16 @@ test("local ADC auth requests only the Search Console readonly scope", async () 
   assert.equal(await provider.getAccessToken(), "secret-token");
 });
 
+test("local ADC auth preserves library request metadata including its quota project", async () => {
+  const provider = new LocalUserAdcAuthProvider({
+    createAuthClient: async () => ({
+      credentials: { type: "authorized_user" },
+      getRequestHeaders: async () => ({ Authorization: "Bearer secret-token", "x-goog-user-project": "quota-from-auth-library" }),
+    }),
+  });
+  assert.deepEqual(await provider.getRequestHeaders(), { Authorization: "Bearer secret-token", "x-goog-user-project": "quota-from-auth-library" });
+});
+
 test("local ADC auth redacts credential values from failures", async () => {
   const provider = new LocalUserAdcAuthProvider({
     createAuthClient: async () => { throw new Error("refresh_token=secret-token"); },
@@ -32,18 +42,38 @@ test("local ADC auth redacts credential values from failures", async () => {
   });
 });
 
-test("Search Console transport uses readonly bearer auth and encodes property paths", async () => {
+test("local ADC auth blocks GOOGLE_APPLICATION_CREDENTIALS for request metadata", async () => {
+  const previous = process.env.GOOGLE_APPLICATION_CREDENTIALS;
+  process.env.GOOGLE_APPLICATION_CREDENTIALS = "blocked-credential-path";
+  try {
+    await assert.rejects(new LocalUserAdcAuthProvider().getRequestHeaders(), /local user Application Default Credentials are required/);
+  } finally {
+    if (previous === undefined) delete process.env.GOOGLE_APPLICATION_CREDENTIALS;
+    else process.env.GOOGLE_APPLICATION_CREDENTIALS = previous;
+  }
+});
+
+test("Search Console transport forwards library auth and quota headers and encodes property paths", async () => {
   const calls = [];
   const transport = new SearchConsoleTransport({ fetch: async (url, options) => {
     calls.push({ url, options });
     return new Response(JSON.stringify({ siteEntry: [{ siteUrl: "sc-domain:example.com", permissionLevel: "siteOwner" }] }), { status: 200 });
   } });
-  const sites = await transport.listSites("secret-token");
+  const authHeaders = { Authorization: "Bearer secret-token", "x-goog-user-project": "quota-from-auth-library" };
+  const sites = await transport.listSites(authHeaders);
   assert.equal(sites.siteEntry[0].siteUrl, "sc-domain:example.com");
   assert.equal(calls[0].options.headers.Authorization, "Bearer secret-token");
-  await transport.querySearchAnalytics("secret-token", { property: "sc-domain:example.com", startDate: "2026-01-01" });
+  assert.equal(calls[0].options.headers["x-goog-user-project"], "quota-from-auth-library");
+  await transport.querySearchAnalytics(authHeaders, { property: "sc-domain:example.com", startDate: "2026-01-01" });
   assert.match(calls[1].url, /sites\/sc-domain%3Aexample.com\/searchAnalytics\/query$/);
   assert.equal(calls[1].options.method, "POST");
+  assert.equal(calls[1].options.headers.Authorization, "Bearer secret-token");
+  assert.equal(calls[1].options.headers["x-goog-user-project"], "quota-from-auth-library");
+});
+
+test("local ADC auth does not parse credential files", async () => {
+  const source = await readFile(new URL("../scripts/content-intelligence/gsc-auth.mjs", import.meta.url), "utf8");
+  assert.doesNotMatch(source, /application_default_credentials\.json|readFile/);
 });
 
 test("Search Console transport maps HTTP failures without retrying", async () => {
@@ -51,6 +81,11 @@ test("Search Console transport maps HTTP failures without retrying", async () =>
   const transport = new SearchConsoleTransport({ fetch: async () => { calls += 1; return new Response("no", { status: 429 }); } });
   await assert.rejects(transport.listSites("secret-token"), /quota blocked/);
   assert.equal(calls, 1);
+});
+
+for (const status of [401, 403]) test(`Search Console transport keeps ${status} permission failures blocked`, async () => {
+  const transport = new SearchConsoleTransport({ fetch: async () => new Response("no", { status }) });
+  await assert.rejects(transport.listSites({ Authorization: "Bearer secret-token" }), /permission blocked/);
 });
 
 test("property discovery keeps only valid URL-prefix and domain properties", () => {
@@ -133,15 +168,16 @@ test("GSC fetch requires a property before authentication or transport access", 
 });
 
 test("GSC properties lists accessible properties independently", async () => {
-  const authProvider = { getAccessToken: async () => "token" };
-  const transport = { listSites: async () => ({ siteEntry: [{ siteUrl: "sc-domain:example.com", permissionLevel: "siteOwner" }] }) };
+  const headers = { Authorization: "Bearer token", "x-goog-user-project": "quota-from-auth-library" };
+  const authProvider = { getRequestHeaders: async () => headers };
+  const transport = { listSites: async (receivedHeaders) => { assert.deepEqual(receivedHeaders, headers); return { siteEntry: [{ siteUrl: "sc-domain:example.com", permissionLevel: "siteOwner" }] }; } };
   const listed = await runContentCli({ command: "gsc-properties", argv: ["--json"], authProvider, transport });
   assert.deepEqual(listed, [{ property: "sc-domain:example.com", permissionLevel: "siteOwner" }]);
 });
 
 test("GSC fetch validates accessible properties before querying", async () => {
   const calls = [];
-  const authProvider = { getAccessToken: async () => "token" };
+  const authProvider = { getRequestHeaders: async () => ({ Authorization: "Bearer token" }) };
   const transport = {
     listSites: async () => ({ siteEntry: [{ siteUrl: "sc-domain:example.com", permissionLevel: "siteOwner" }] }),
     querySearchAnalytics: async (...args) => { calls.push(args); return { rows: [] }; },
@@ -153,12 +189,18 @@ test("GSC fetch validates accessible properties before querying", async () => {
 test("GSC fetch validates strict request flags and persists API responses", async () => {
   const rootDir = await mkdtemp(path.join(os.tmpdir(), "gsc-fetch-"));
   try {
-    const authProvider = { getAccessToken: async () => "token" };
-    const transport = { listSites: async () => ({ siteEntry: [{ siteUrl: "sc-domain:example.com", permissionLevel: "siteOwner" }] }), querySearchAnalytics: async () => ({ rows: [] }) };
+    const headers = { Authorization: "Bearer token", "x-goog-user-project": "quota-from-auth-library" };
+    const requests = [];
+    const authProvider = { getRequestHeaders: async () => headers };
+    const transport = {
+      listSites: async (receivedHeaders) => { requests.push(receivedHeaders); return { siteEntry: [{ siteUrl: "sc-domain:example.com", permissionLevel: "siteOwner" }] }; },
+      querySearchAnalytics: async (receivedHeaders) => { requests.push(receivedHeaders); return { rows: [] }; },
+    };
     await assert.rejects(runContentCli({ command: "gsc-fetch", argv: ["--property", "sc-domain:example.com", "--start-date", "2026-01-01", "--end-date", "2027-01-01", "--dimensions", "query"], rootDir, authProvider, transport }), /at most 365/);
     const result = await runContentCli({ command: "gsc-fetch", argv: ["--property", "sc-domain:example.com", "--start-date", "2026-01-01", "--end-date", "2026-01-01", "--dimensions", "query", "--row-limit", "1"], rootDir, authProvider, transport });
     assert.equal(result.provenance.source, "google-search-console-api");
     assert.equal(result.complete, true);
+    assert.deepEqual(requests, [headers, headers]);
   } finally { await rm(rootDir, { recursive: true, force: true }); }
 });
 
