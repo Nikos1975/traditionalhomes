@@ -179,8 +179,8 @@ const chooseStayOptions = [
 
     {/* THE GRID */}
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-12 mb-16">
-      {houses.map((unit, index) => (
-        <UnitCard unit={unit} priority={index < 3} />
+      {houses.map((unit) => (
+        <UnitCard unit={unit} />
       ))}
     </div>
 
