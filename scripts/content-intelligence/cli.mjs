@@ -47,17 +47,17 @@ export async function runContentCli({ command, argv, rootDir = process.cwd(), au
   }
   if (command === "gsc-properties") {
     if (args._.length) throw new Error("Invalid argument: gsc-properties accepts no positional arguments.");
-    const accessToken = await authProvider.getAccessToken();
-    const properties = normalizeProperties(await transport.listSites(accessToken));
+    const authHeaders = await authProvider.getRequestHeaders();
+    const properties = normalizeProperties(await transport.listSites(authHeaders));
     return args.json ? properties : properties.map((item) => `${item.property}\t${item.permissionLevel}`).join("\n");
   }
   if (command === "gsc-fetch") {
     if (args._.length) throw new Error("Invalid argument: gsc-fetch accepts no positional arguments.");
     const request = gscRequest(args);
-    const accessToken = await authProvider.getAccessToken();
-    const properties = normalizeProperties(await transport.listSites(accessToken));
+    const authHeaders = await authProvider.getRequestHeaders();
+    const properties = normalizeProperties(await transport.listSites(authHeaders));
     if (!properties.some((item) => item.property === request.property)) throw new Error("Search Console property is not accessible.");
-    const acquired = await fetchSearchAnalyticsPages({ transport, accessToken, request });
+    const acquired = await fetchSearchAnalyticsPages({ transport, accessToken: authHeaders, request });
     return persistDataset({ rootDir, dataset: buildApiDataset({ ...request, ...acquired }) });
   }
   if (command === "gsc-analyze") {

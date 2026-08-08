@@ -12,22 +12,22 @@ export class SearchConsoleTransport {
     this.fetch = fetchImpl;
   }
 
-  async request(url, accessToken, options = {}) {
+  async request(url, authHeaders, options = {}) {
     const response = await this.fetch(url, {
       ...options,
-      headers: { Authorization: `Bearer ${accessToken}`, ...(options.headers ?? {}) },
+      headers: { ...authHeaders, ...(options.headers ?? {}) },
     });
     if (!response.ok) throw failure(response.status);
     try { return await response.json(); } catch { throw new Error("Search Console response was malformed."); }
   }
 
-  listSites(accessToken) {
-    return this.request(`${API_ROOT}/sites`, accessToken);
+  listSites(authHeaders) {
+    return this.request(`${API_ROOT}/sites`, authHeaders);
   }
 
-  querySearchAnalytics(accessToken, request) {
+  querySearchAnalytics(authHeaders, request) {
     const { property, ...body } = request;
-    return this.request(`${API_ROOT}/sites/${encodeURIComponent(property)}/searchAnalytics/query`, accessToken, {
+    return this.request(`${API_ROOT}/sites/${encodeURIComponent(property)}/searchAnalytics/query`, authHeaders, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(body),

@@ -28,6 +28,19 @@ export class LocalUserAdcAuthProvider {
       throw blocked();
     }
   }
+
+  async getRequestHeaders() {
+    try {
+      const client = await this.createAuthClient({ scopes: [WEBMASTERS_READONLY_SCOPE] });
+      if (client.credentials?.type && client.credentials.type !== "authorized_user") throw blocked();
+      const headers = await client.getRequestHeaders();
+      if (!headers?.Authorization) throw blocked();
+      return headers;
+    } catch (error) {
+      if (error?.message?.startsWith("Authentication blocked:")) throw error;
+      throw blocked();
+    }
+  }
 }
 
 export { WEBMASTERS_READONLY_SCOPE };
