@@ -12,6 +12,7 @@ Choose the mode that matches the requested primary outcome. Supporting activitie
 | `revise-draft` | `.agents/skills/blog-revise-draft/SKILL.md` |
 | `audit` | `.agents/skills/blog-content-audit/SKILL.md` |
 | `publication` | `.agents/skills/blog-publication/SKILL.md` |
+| `visual-plan` | `.agents/skills/traditional-homes-article-visual-plan/SKILL.md` |
 | `image-only` | `.agents/skills/traditional-homes-image-pipeline/SKILL.md` |
 
 ## Universal controls
