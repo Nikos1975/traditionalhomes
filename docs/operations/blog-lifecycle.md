@@ -3,13 +3,15 @@
 The blog workflow is deliberately staged so factual review and editorial approval happen before a post becomes public.
 
 ```text
-topic approval → scaffold → research packet → claim review → draft → image approval
+topic approval → scaffold → research packet → claim review → draft → visual plan → plan approval → image approval
 → draft PR → human review → unpublished merge → publication branch → local validation
 → push publication branch → draft publication PR → Cloudflare Pages preview → final evidence
 → explicit merge approval → mark ready → squash merge → production verification → optional social campaign
 ```
 
 `new-article` begins with the [research-to-draft procedure](../../.agents/skills/blog-research-article/SKILL.md). It creates a claim-reviewed `draft: true` article and a draft PR; human review may merge it while it remains unpublished.
+
+`visual-plan` uses the [article visual planning procedure](../../.agents/skills/traditional-homes-article-visual-plan/SKILL.md). It may create or validate only `docs/research/blog/<slug>/visual-plan.md`; it does not authorize generation, processing, article edits, publication, social posting, deployment, or merge.
 
 `image-only` uses the [image pipeline](../../.agents/skills/traditional-homes-image-pipeline/SKILL.md) after media ownership, licence, attribution, crop, and alt-text decisions are approved.
 
