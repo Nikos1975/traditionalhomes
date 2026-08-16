@@ -119,10 +119,13 @@ export function validateVisualPlan(markdown, { expectedSlug } = {}) {
   }
 
   const visualArea = section(markdown, "## Proposed Visuals", "## Exclusions");
-  const visualMatches = [...visualArea.matchAll(/^### Visual\s+\d+:\s+.+$[\s\S]*?(?=^### Visual\s+\d+:|\n## Exclusions|$)/gm)];
-  const visuals = visualMatches.map((match, index) => {
-    const heading = match[0].split("\n", 1)[0];
-    const fields = markdownFields(match[0]);
+  const visualHeadings = [...visualArea.matchAll(/^### Visual\s+\d+:\s+.+$/gm)];
+  const visualSections = visualHeadings.map((match, index) =>
+    visualArea.slice(match.index, visualHeadings[index + 1]?.index ?? visualArea.length),
+  );
+  const visuals = visualSections.map((visualSection, index) => {
+    const heading = visualSection.split("\n", 1)[0];
+    const fields = markdownFields(visualSection);
     const scope = `Visual ${index + 1}`;
     for (const field of VISUAL_FIELDS) requireField(errors, fields, field, scope);
 
