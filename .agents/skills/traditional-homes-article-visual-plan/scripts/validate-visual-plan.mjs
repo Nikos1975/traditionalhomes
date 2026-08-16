@@ -1,6 +1,6 @@
 import { readFile } from "node:fs/promises";
 import path from "node:path";
-import { fileURLToPath, pathToFileURL } from "node:url";
+import { pathToFileURL } from "node:url";
 
 const REQUIRED_HEADINGS = [
   "# Article Visual Plan",
@@ -251,7 +251,11 @@ async function main(argv) {
   );
 }
 
-if (import.meta.url === pathToFileURL(fileURLToPath(import.meta.url)).href) {
+const invokedUrl = process.argv[1]
+  ? pathToFileURL(path.resolve(process.argv[1])).href
+  : null;
+
+if (import.meta.url === invokedUrl) {
   main(process.argv.slice(2)).catch((error) => {
     console.error(error.message);
     process.exitCode = 1;
