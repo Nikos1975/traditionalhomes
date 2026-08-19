@@ -43,11 +43,6 @@
 - Added focused coverage for authentication redaction, transport behavior, property validation, one/multi-page pagination, cap truncation, persistence, CLI validation, and mixed CSV/API analysis.
 - Remaining: run `gcloud auth application-default login --scopes=https://www.googleapis.com/auth/webmasters.readonly` locally before using live acquisition, if ADC is not already configured.
 
-### 2026-08-16 - Article visual-plan skill pilot
-
-- Added a project-local planning-only skill for evidence-led article visuals, with a fixed `docs/research/blog/<slug>/visual-plan.md` contract and deterministic validator.
-- Added a `visual-plan` Blog Orchestrator mode, lifecycle and operating-model documentation, and focused tests for text-only decisions, rights blockers, generated-image disclosure, downstream-action prohibition, and orchestration routing.
-- The skill does not generate, process, insert, publish, deploy, post, or merge anything. A separate explicit approval remains required before the existing image pipeline may act.
 
 ### 2026-08-08 - Search Console Phase 2B design only
 
