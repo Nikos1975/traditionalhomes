@@ -16,6 +16,128 @@ const routeForPage = (page) => {
   catch { return normalizeRoute(page); }
 };
 
+const AGGREGABLE_EXPORT_TYPES = new Set(["combined", "query", "page"]);
+const ISO_DATE = /^\d{4}-\d{2}-\d{2}$/;
+const UNKNOWN_COVERAGE_ERROR = "Cannot safely combine multiple Search Console datasets because date-range compatibility cannot be established.";
+
+const isoDay = (value) => {
+  if (typeof value !== "string" || !ISO_DATE.test(value)) return null;
+  const parsed = new Date(`${value}T00:00:00Z`);
+  if (Number.isNaN(parsed.valueOf()) || parsed.toISOString().slice(0, 10) !== value) return null;
+  return value;
+};
+
+const dimensionKey = (dimensions) => Array.isArray(dimensions) && dimensions.length
+  ? [...new Set(dimensions.map((item) => String(item).trim().toLowerCase()).filter(Boolean))].sort().join("+")
+  : null;
+
+function datasetLabel(dataset, index) {
+  const name = dataset?.provenance?.sourceFilename;
+  return typeof name === "string" && name ? `dataset ${index + 1} (${name})` : `dataset ${index + 1}`;
+}
+
+function datasetCoverage(dataset, label) {
+  const baselineStart = isoDay(dataset?.baseline?.startDate);
+  const baselineEnd = isoDay(dataset?.baseline?.endDate);
+  const provenanceStart = isoDay(dataset?.provenance?.coverageStart);
+  const provenanceEnd = isoDay(dataset?.provenance?.coverageEnd);
+  if (baselineStart && provenanceStart && baselineStart !== provenanceStart) {
+    throw new Error(`Cannot analyse Search Console evidence: ${label} records inconsistent coverage start dates (baseline ${baselineStart}, provenance ${provenanceStart}).`);
+  }
+  if (baselineEnd && provenanceEnd && baselineEnd !== provenanceEnd) {
+    throw new Error(`Cannot analyse Search Console evidence: ${label} records inconsistent coverage end dates (baseline ${baselineEnd}, provenance ${provenanceEnd}).`);
+  }
+  const startDate = baselineStart ?? provenanceStart;
+  const endDate = baselineEnd ?? provenanceEnd;
+  if (!startDate || !endDate) return null;
+  if (startDate > endDate) throw new Error(`Cannot analyse Search Console evidence: ${label} declares an invalid evidence period (${startDate} to ${endDate}).`);
+  return { startDate, endDate };
+}
+
+function describeDataset(dataset, index) {
+  const label = datasetLabel(dataset, index);
+  if (!dataset || typeof dataset !== "object" || Array.isArray(dataset)) {
+    throw new Error(`Cannot analyse Search Console evidence: ${label} is not a processed dataset object.`);
+  }
+  const { property } = dataset;
+  if (typeof property !== "string" || !property || property !== property.trim()) {
+    throw new Error(`Cannot analyse Search Console evidence: ${label} has a missing or non-exact Search Console property.`);
+  }
+  if (!AGGREGABLE_EXPORT_TYPES.has(dataset.exportType)) {
+    throw new Error(`Cannot analyse Search Console evidence: ${label} has an unrecognised export type ${JSON.stringify(dataset.exportType ?? null)}.`);
+  }
+  const provenanceProperty = dataset.provenance?.property;
+  if (typeof provenanceProperty === "string" && provenanceProperty !== property) {
+    throw new Error(`Cannot analyse Search Console evidence: ${label} provenance property "${provenanceProperty}" does not match its dataset property "${property}".`);
+  }
+  if (!Array.isArray(dataset.records)) {
+    throw new Error(`Cannot analyse Search Console evidence: ${label} has no records array.`);
+  }
+  return {
+    label,
+    property,
+    exportType: dataset.exportType,
+    dimensions: dimensionKey(dataset.provenance?.dimensions),
+    fingerprint: typeof dataset.fingerprint === "string" && dataset.fingerprint ? dataset.fingerprint : null,
+    coverage: datasetCoverage(dataset, label),
+  };
+}
+
+export function assertDatasetsAggregable(datasets) {
+  if (!Array.isArray(datasets) || !datasets.length) throw new Error("At least one processed Search Console dataset is required.");
+  const described = datasets.map(describeDataset);
+  if (described.length === 1) {
+    return { property: described[0].property, exportType: described[0].exportType, datasets: described.length, coverageKnown: Boolean(described[0].coverage) };
+  }
+
+  const properties = [...new Set(described.map((item) => item.property))].sort();
+  if (properties.length > 1) {
+    throw new Error(`Cannot safely combine Search Console datasets from different properties (${properties.join(", ")}). Each Search Console property is a separate evidence scope; analyse one property at a time.`);
+  }
+
+  const exportTypes = [...new Set(described.map((item) => item.exportType))].sort();
+  if (exportTypes.length > 1) {
+    throw new Error(`Cannot safely combine Search Console datasets with different export types (${exportTypes.join(", ")}). Query-only, page-only and query-and-page exports report the same clicks and impressions in different shapes, so combining them double-counts metrics.`);
+  }
+
+  const dimensionSets = [...new Set(described.map((item) => item.dimensions).filter(Boolean))].sort();
+  if (dimensionSets.length > 1) {
+    throw new Error(`Cannot safely combine Search Console datasets acquired with different dimensions (${dimensionSets.join(", ")}). Different dimension sets slice the same metrics differently and cannot be summed.`);
+  }
+
+  const fingerprints = described.map((item) => item.fingerprint).filter(Boolean);
+  const duplicate = fingerprints.find((value, index) => fingerprints.indexOf(value) !== index);
+  if (duplicate) {
+    throw new Error(`Cannot safely combine Search Console datasets: the same processed dataset was supplied more than once (fingerprint ${duplicate.slice(0, 12)}).`);
+  }
+
+  const unknown = described.filter((item) => !item.coverage);
+  if (unknown.length) {
+    throw new Error(`${UNKNOWN_COVERAGE_ERROR} ${unknown.map((item) => item.label).join(", ")} ${unknown.length === 1 ? "does" : "do"} not record an evidence period, so overlap cannot be ruled out.`);
+  }
+
+  const ordered = described
+    .map((item, index) => ({ ...item, index }))
+    .sort((left, right) => left.coverage.startDate.localeCompare(right.coverage.startDate)
+      || left.coverage.endDate.localeCompare(right.coverage.endDate)
+      || left.index - right.index);
+  let latest = ordered[0];
+  for (let index = 1; index < ordered.length; index += 1) {
+    const current = ordered[index];
+    if (current.coverage.startDate <= latest.coverage.endDate) {
+      throw new Error(`Cannot safely combine Search Console datasets with overlapping evidence periods (${latest.label}: ${latest.coverage.startDate} to ${latest.coverage.endDate}; ${current.label}: ${current.coverage.startDate} to ${current.coverage.endDate}). Overlapping exports double-count clicks and impressions and distort impression-weighted average position.`);
+    }
+    if (current.coverage.endDate > latest.coverage.endDate) latest = current;
+  }
+
+  return {
+    property: properties[0],
+    exportType: exportTypes[0],
+    datasets: described.length,
+    coverageKnown: true,
+  };
+}
+
 const sortByMetrics = (items) => [...items].sort((left, right) =>
   right.impressions - left.impressions ||
   right.clicks - left.clicks ||
@@ -189,6 +311,8 @@ export function analyzeSearchConsole({ datasets, inventory, options = {} } = {})
     throw new Error("Analysis thresholds must be non-negative numbers (nearRank must be at least 1).");
   }
 
+  assertDatasetsAggregable(datasets);
+
   const records = datasets.flatMap((dataset) => dataset.records ?? []);
   const queryRecords = aggregate(records.filter((record) => record.query), ["query"]);
   const queryPages = decorateQueryPages({
@@ -219,7 +343,10 @@ export function analyzeSearchConsole({ datasets, inventory, options = {} } = {})
   };
 
   const primaryQueryPages = queryPages.filter((item) => item.ownershipRole === "primary" && item.seoEligible !== false && !item.redirected);
-  const opportunitySource = primaryQueryPages.length
+  // Fall back to blended query-level metrics only when the evidence carries no page dimension at all.
+  // When page-level evidence exists but every relation is redirected or SEO-ineligible, the correct
+  // result is an empty opportunity set, not a blended query position.
+  const opportunitySource = queryPages.length
     ? primaryQueryPages
     : queryRecords.map((item) => ({ ...item, route: null, canonicalRoute: null, signal: signalFor(item) }));
   const highImpressionLowClick = sortByMetrics(opportunitySource.filter((item) => item.impressions >= thresholds.highImpressions && item.clicks <= thresholds.lowClicks));
