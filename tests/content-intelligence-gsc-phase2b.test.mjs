@@ -204,10 +204,10 @@ test("GSC fetch validates strict request flags and persists API responses", asyn
   } finally { await rm(rootDir, { recursive: true, force: true }); }
 });
 
-test("analysis accepts mixed API and CSV evidence but guards truncated API results", () => {
+test("analysis accepts compatible non-overlapping API and CSV evidence but guards truncated API results", () => {
   const inventory = { articles: [] };
-  const csv = { property: "sc-domain:example.com", exportType: "query", baselineOnly: false, baseline: { warning: null }, provenance: { source: "google-search-console", sourceFilename: "query.csv" }, records: [{ query: "beaches", clicks: 1, impressions: 2, ctr: 0.5, position: 3 }] };
-  const api = { property: "sc-domain:example.com", exportType: "query", baselineOnly: false, baseline: { warning: null }, complete: false, provenance: { source: "google-search-console-api", truncated: true }, records: [{ query: "villages", clicks: 1, impressions: 2, ctr: 0.5, position: 3 }] };
+  const csv = { property: "sc-domain:example.com", exportType: "query", baselineOnly: false, baseline: { startDate: "2026-05-01", endDate: "2026-05-31", days: 31, warning: null }, provenance: { source: "google-search-console", property: "sc-domain:example.com", coverageStart: "2026-05-01", coverageEnd: "2026-05-31", sourceFilename: "query.csv" }, records: [{ query: "beaches", clicks: 1, impressions: 2, ctr: 0.5, position: 3 }] };
+  const api = { property: "sc-domain:example.com", exportType: "query", baselineOnly: false, baseline: { startDate: "2026-06-01", endDate: "2026-06-30", days: 30, warning: null }, complete: false, provenance: { source: "google-search-console-api", property: "sc-domain:example.com", coverageStart: "2026-06-01", coverageEnd: "2026-06-30", truncated: true }, records: [{ query: "villages", clicks: 1, impressions: 2, ctr: 0.5, position: 3 }] };
   const result = analyzeSearchConsole({ datasets: [csv, api], inventory });
   assert.equal(result.searchConsoleEvidence.baseline.complete, false);
   assert.match(result.searchConsoleEvidence.baseline.warning, /incomplete/);
