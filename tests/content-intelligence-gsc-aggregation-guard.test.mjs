@@ -182,3 +182,32 @@ test("a rejected dataset set produces no analysis output at all", () => {
   assert.throws(() => { result = analyse(datasets); });
   assert.equal(result, "unset");
 });
+
+test("overlap detection uses a running maximum end date, not only adjacent pairs", () => {
+  const datasets = [
+    dataset({ startDate: "2026-01-01", endDate: "2026-03-31", fingerprint: "1".repeat(64), sourceFilename: "q1.csv" }),
+    dataset({ startDate: "2026-02-01", endDate: "2026-02-15", fingerprint: "2".repeat(64), sourceFilename: "feb.csv" }),
+    dataset({ startDate: "2026-04-01", endDate: "2026-04-30", fingerprint: "3".repeat(64), sourceFilename: "apr.csv" }),
+  ];
+  assert.throws(() => assertDatasetsAggregable(datasets), /overlapping evidence periods/);
+});
+
+test("a later dataset overlapping an earlier long range is rejected even when an intervening range ends first", () => {
+  const datasets = [
+    dataset({ startDate: "2026-01-01", endDate: "2026-06-30", fingerprint: "4".repeat(64), sourceFilename: "h1.csv" }),
+    dataset({ startDate: "2026-01-05", endDate: "2026-01-10", fingerprint: "5".repeat(64), sourceFilename: "early.csv" }),
+    dataset({ startDate: "2026-05-01", endDate: "2026-05-31", fingerprint: "6".repeat(64), sourceFilename: "may.csv" }),
+  ];
+  assert.throws(() => assertDatasetsAggregable(datasets), /overlapping evidence periods/);
+});
+
+test("three adjacent non-overlapping periods from one property remain aggregable", () => {
+  const datasets = [
+    dataset({ startDate: "2026-01-01", endDate: "2026-01-31", fingerprint: "7".repeat(64) }),
+    dataset({ startDate: "2026-02-01", endDate: "2026-02-28", fingerprint: "8".repeat(64) }),
+    dataset({ startDate: "2026-03-01", endDate: "2026-03-31", fingerprint: "9".repeat(64) }),
+  ];
+  const summary = assertDatasetsAggregable(datasets);
+  assert.equal(summary.datasets, 3);
+  assert.equal(summary.coverageKnown, true);
+});

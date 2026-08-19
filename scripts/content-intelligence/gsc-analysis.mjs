@@ -199,6 +199,61 @@ function signalFor(item) {
   return "multi-impression";
 }
 
+// Search Console reports one production page under every source URL that ranked for a query
+// (host variants, http/https, and historical URLs that now redirect). Those rows must be merged
+// into one canonical relation before ownership is decided, otherwise every row except the
+// highest-impression one is discarded from opportunity analysis.
+function mergeByCanonicalRoute(base) {
+  const groups = new Map();
+  for (const item of base) {
+    const key = `${item.query}\u0000${item.canonicalRoute}`;
+    if (!groups.has(key)) groups.set(key, []);
+    groups.get(key).push(item);
+  }
+  return [...groups.values()].map((contributors) => {
+    const ordered = [...contributors].sort((left, right) =>
+      right.impressions - left.impressions ||
+      right.clicks - left.clicks ||
+      left.position - right.position ||
+      String(left.route ?? "").localeCompare(String(right.route ?? "")) ||
+      String(left.page ?? "").localeCompare(String(right.page ?? ""))
+    );
+    const lead = ordered[0];
+    const clicks = contributors.reduce((total, item) => total + item.clicks, 0);
+    const impressions = contributors.reduce((total, item) => total + item.impressions, 0);
+    const weightedPosition = contributors.reduce((total, item) => total + item.position * item.impressions, 0);
+    const positions = contributors.reduce((total, item) => total + item.position, 0);
+    const merged = {
+      query: lead.query,
+      page: lead.page,
+      route: lead.route,
+      canonicalRoute: lead.canonicalRoute,
+      clicks,
+      impressions,
+      ctr: impressions ? number(clicks / impressions) : 0,
+      position: number(impressions ? weightedPosition / impressions : positions / contributors.length),
+      redirected: contributors.every((item) => item.redirected === true),
+      sourceRoutes: [...new Set(contributors.map((item) => item.route))].sort(),
+      sources: ordered.map((item) => ({
+        route: item.route,
+        page: item.page,
+        redirected: item.redirected,
+        clicks: item.clicks,
+        impressions: item.impressions,
+        ctr: item.ctr,
+        position: item.position,
+      })),
+      existingPageFirst: lead.existingPageFirst,
+      existingPage: lead.existingPage,
+      pageType: lead.pageType,
+      seoEligible: lead.seoEligible,
+      topicalSimilarity: lead.topicalSimilarity,
+    };
+    return { ...merged, signal: signalFor(merged) };
+  }).sort((left, right) =>
+    left.query.localeCompare(right.query) || left.canonicalRoute.localeCompare(right.canonicalRoute));
+}
+
 function decorateQueryPages({ queryPages, inventory }) {
   const pages = publishedSitePages(inventory);
   const pageByRoute = new Map(pages.map((page) => [normalizeRoute(page.route), page]));
@@ -225,13 +280,15 @@ function decorateQueryPages({ queryPages, inventory }) {
     };
   });
 
+  const merged = mergeByCanonicalRoute(base);
+
   const groups = new Map();
-  for (const item of base) {
+  for (const item of merged) {
     if (!groups.has(item.query)) groups.set(item.query, []);
     groups.get(item.query).push(item);
   }
 
-  return base.map((item) => {
+  return merged.map((item) => {
     const group = groups.get(item.query);
     const ordered = [...group].sort((left, right) =>
       right.impressions - left.impressions ||
@@ -342,7 +399,10 @@ export function analyzeSearchConsole({ datasets, inventory, options = {} } = {})
     })).sort((left, right) => `${left.property}:${left.provenance.sourceFilename ?? left.provenance.sourceFile}`.localeCompare(`${right.property}:${right.provenance.sourceFilename ?? right.provenance.sourceFile}`)),
   };
 
-  const primaryQueryPages = queryPages.filter((item) => item.ownershipRole === "primary" && item.seoEligible !== false && !item.redirected);
+  // Fail closed: an opportunity target must be a recognised production page. Unmatched legacy or
+  // wildcard-redirected URLs stay in relationships as evidence but never become actionable leads.
+  const primaryQueryPages = queryPages.filter((item) =>
+    item.ownershipRole === "primary" && item.seoEligible !== false && !item.redirected && item.existingPageFirst);
   // Fall back to blended query-level metrics only when the evidence carries no page dimension at all.
   // When page-level evidence exists but every relation is redirected or SEO-ineligible, the correct
   // result is an empty opportunity set, not a blended query position.
@@ -423,7 +483,7 @@ export function searchConsoleMarkdown(analysis) {
     ...analysis.relationships.queryOwnership.map((item) => `- ${item.query} → ${item.primary.canonicalRoute} (primary: ${item.primary.impressions} impressions, position ${item.primary.position})${item.secondary.length ? `; secondary: ${item.secondary.map((secondary) => `${secondary.canonicalRoute} (${secondary.impressions})`).join(", ")}` : ""}${item.overlapEvidence.level === "MULTIPLE_RANKING_URLS" ? " — multiple ranking URLs observed" : ""}`),
     "",
     "## Existing-page-first relationships",
-    ...analysis.relationships.queryPages.map((item) => `- ${item.query} → ${item.route}${item.redirected ? ` → ${item.canonicalRoute} (redirect target)` : ""}${item.existingPageFirst ? ` (${item.pageType ?? "page"}; ${item.ownershipRole})` : " (not found in production inventory)"}${item.overlapEvidence.level === "MULTIPLE_RANKING_URLS" ? " — multiple ranking URLs observed; review manually" : ""}`),
+    ...analysis.relationships.queryPages.map((item) => `- ${item.query} → ${item.route}${item.route !== item.canonicalRoute ? ` → ${item.canonicalRoute} (redirect target)` : ""}${item.existingPageFirst ? ` (${item.pageType ?? "page"}; ${item.ownershipRole})` : " (not found in production inventory)"}${item.overlapEvidence.level === "MULTIPLE_RANKING_URLS" ? " — multiple ranking URLs observed; review manually" : ""}`),
     "",
     "## Guarded gaps",
     `Status: ${analysis.gaps.status}`,

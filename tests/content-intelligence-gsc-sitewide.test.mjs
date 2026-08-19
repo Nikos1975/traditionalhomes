@@ -94,3 +94,125 @@ test("exact redirects resolve old ranking URLs to their production target", () =
   assert.equal(relation.existingPageFirst, true);
   assert.equal(result.opportunities.nearRank.length, 0);
 });
+
+test("host variants that redirect to one production route merge into a single canonical relation", () => {
+  const inventory = {
+    articles: [],
+    sitePages: [{ route: "/en/", title: "Home", type: "homepage", published: true, seoEligible: true, keywords: ["elounda"] }],
+    redirects: [{ from: "/", to: "/en/", status: 301 }],
+  };
+  const result = analyzeSearchConsole({ datasets: [dataset([
+    { query: "elounda traditional homes", page: "https://traditional-homes.gr/en/", clicks: 2, impressions: 60, ctr: 0.033333, position: 6.2 },
+    { query: "elounda traditional homes", page: "http://www.traditional-homes.gr/", clicks: 0, impressions: 45, ctr: 0, position: 7.9 },
+  ])], inventory, options: { highImpressions: 100, lowClicks: 5, nearRank: 10 } });
+
+  assert.equal(result.relationships.queryPages.length, 1);
+  const relation = result.relationships.queryPages[0];
+  assert.equal(relation.canonicalRoute, "/en/");
+  assert.equal(relation.impressions, 105);
+  assert.equal(relation.clicks, 2);
+  assert.equal(relation.ctr, 0.019048);
+  assert.equal(relation.position, 6.928571);
+  assert.equal(relation.redirected, false);
+  assert.equal(relation.existingPageFirst, true);
+  assert.deepEqual(relation.sourceRoutes, ["/", "/en/"]);
+  assert.equal(relation.sources.length, 2);
+  assert.deepEqual(relation.sources.map((source) => source.redirected), [false, true]);
+  assert.deepEqual(relation.sources.map((source) => source.impressions), [60, 45]);
+
+  const ownership = result.relationships.queryOwnership[0];
+  assert.equal(ownership.primary.canonicalRoute, "/en/");
+  assert.equal(ownership.primary.impressions, 105);
+  assert.equal(ownership.secondary.length, 0);
+  assert.equal(ownership.overlapEvidence.level, "NO_MULTI_URL_EVIDENCE");
+  assert.deepEqual(ownership.overlapEvidence.rankingRoutes, ["/en/"]);
+
+  assert.equal(result.opportunities.highImpressionLowClick.length, 1);
+  assert.equal(result.opportunities.highImpressionLowClick[0].impressions, 105);
+});
+
+test("a redirecting source with more impressions cannot drop the query from opportunity analysis", () => {
+  const inventory = {
+    articles: [],
+    sitePages: [{ route: "/en/", title: "Home", type: "homepage", published: true, seoEligible: true, keywords: ["elounda"] }],
+    redirects: [{ from: "/", to: "/en/", status: 301 }],
+  };
+  const result = analyzeSearchConsole({ datasets: [dataset([
+    { query: "traditional homes crete", page: "http://www.traditional-homes.gr/", clicks: 1, impressions: 90, ctr: 0.011111, position: 5 },
+    { query: "traditional homes crete", page: "https://traditional-homes.gr/en/", clicks: 0, impressions: 30, ctr: 0, position: 6 },
+  ])], inventory, options: { highImpressions: 50, lowClicks: 5, nearRank: 10 } });
+
+  assert.equal(result.relationships.queryPages.length, 1);
+  const relation = result.relationships.queryPages[0];
+  assert.equal(relation.canonicalRoute, "/en/");
+  assert.equal(relation.impressions, 120);
+  assert.equal(relation.clicks, 1);
+  assert.equal(relation.ctr, 0.008333);
+  assert.equal(relation.position, 5.25);
+  assert.equal(relation.redirected, false, "a live contributing source must keep the merged relation actionable");
+  assert.equal(relation.ownershipRole, "primary");
+
+  assert.equal(result.opportunities.highImpressionLowClick.length, 1);
+  assert.equal(result.opportunities.highImpressionLowClick[0].impressions, 120);
+  assert.equal(result.opportunities.nearRank.length, 1);
+  assert.equal(result.opportunities.nearRank[0].canonicalRoute, "/en/");
+});
+
+test("a relation whose sources all redirect stays out of opportunity analysis", () => {
+  const inventory = {
+    articles: [],
+    sitePages: [{ route: "/en/", title: "Home", type: "homepage", published: true, seoEligible: true, keywords: [] }],
+    redirects: [{ from: "/", to: "/en/", status: 301 }],
+  };
+  const result = analyzeSearchConsole({ datasets: [dataset([
+    { query: "leonidas", page: "http://www.traditional-homes.gr/", clicks: 0, impressions: 200, ctr: 0, position: 4 },
+  ])], inventory, options: { highImpressions: 100, lowClicks: 5, nearRank: 10 } });
+  assert.equal(result.relationships.queryPages[0].redirected, true);
+  assert.equal(result.opportunities.highImpressionLowClick.length, 0);
+  assert.equal(result.opportunities.nearRank.length, 0);
+});
+
+test("distinct production routes still report MULTIPLE_RANKING_URLS after canonical merging", () => {
+  const inventory = {
+    articles: [],
+    sitePages: [
+      { route: "/en/", title: "Home", type: "homepage", published: true, seoEligible: true, keywords: [] },
+      { route: "/en/blog/elounda-guide/", title: "Elounda guide", type: "blog", published: true, seoEligible: true, keywords: [] },
+    ],
+    redirects: [{ from: "/", to: "/en/", status: 301 }],
+  };
+  const result = analyzeSearchConsole({ datasets: [dataset([
+    { query: "elounda", page: "https://traditional-homes.gr/en/", clicks: 3, impressions: 40, ctr: 0.075, position: 4 },
+    { query: "elounda", page: "http://www.traditional-homes.gr/", clicks: 0, impressions: 10, ctr: 0, position: 9 },
+    { query: "elounda", page: "https://traditional-homes.gr/en/blog/elounda-guide/", clicks: 1, impressions: 20, ctr: 0.05, position: 7 },
+  ])], inventory });
+  assert.equal(result.relationships.queryPages.length, 2);
+  const ownership = result.relationships.queryOwnership[0];
+  assert.equal(ownership.overlapEvidence.level, "MULTIPLE_RANKING_URLS");
+  assert.deepEqual(ownership.overlapEvidence.rankingRoutes, ["/en/", "/en/blog/elounda-guide/"]);
+  assert.equal(ownership.primary.canonicalRoute, "/en/");
+  assert.equal(ownership.primary.impressions, 50);
+  assert.equal(ownership.secondary.length, 1);
+  assert.equal(ownership.secondary[0].impressions, 20);
+});
+
+test("a legacy URL absent from the production inventory never becomes an actionable lead", () => {
+  const inventory = {
+    articles: [{ title: "Elounda beaches", route: "/en/blog/elounda-beaches/", internalLinks: [], keywords: ["elounda", "beaches"] }],
+    sitePages: [
+      { route: "/en/", title: "Home", type: "homepage", published: true, seoEligible: true, keywords: [] },
+      { route: "/en/blog/elounda-beaches/", title: "Elounda beaches", type: "blog", published: true, seoEligible: true, keywords: ["elounda", "beaches"] },
+    ],
+    redirects: [{ from: "/", to: "/en/", status: 301 }],
+  };
+  const result = analyzeSearchConsole({ datasets: [dataset([
+    { query: "elounda beaches", page: "https://traditional-homes.gr/blog/elounda-beaches/", clicks: 0, impressions: 120, ctr: 0, position: 8.4 },
+  ])], inventory, options: { highImpressions: 100, lowClicks: 5, nearRank: 10 } });
+
+  const relation = result.relationships.queryPages[0];
+  assert.equal(relation.canonicalRoute, "/blog/elounda-beaches/", "the wildcard redirect is intentionally not in the exact redirect map");
+  assert.equal(relation.existingPageFirst, false);
+  assert.equal(result.opportunities.highImpressionLowClick.length, 0, "an unmatched route must not be an opportunity target");
+  assert.equal(result.opportunities.nearRank.length, 0);
+  assert.equal(result.internalLinkSuggestions.some((item) => item.to === "/blog/elounda-beaches/"), false);
+});
