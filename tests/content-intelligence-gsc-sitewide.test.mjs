@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { buildInventory } from "../scripts/content-intelligence/inventory.mjs";
+import { buildInventory, deriveRoute } from "../scripts/content-intelligence/inventory.mjs";
 import { analyzeSearchConsole } from "../scripts/content-intelligence/gsc-analysis.mjs";
 
 const warning = "Limited Search Console history. Use for current query/page observations, not seasonality or long-term trend conclusions.";
@@ -215,4 +215,56 @@ test("a legacy URL absent from the production inventory never becomes an actiona
   assert.equal(result.opportunities.highImpressionLowClick.length, 0, "an unmatched route must not be an opportunity target");
   assert.equal(result.opportunities.nearRank.length, 0);
   assert.equal(result.internalLinkSuggestions.some((item) => item.to === "/blog/elounda-beaches/"), false);
+});
+
+test("blog routes use the canonical casing Astro publishes, not the source filename casing", () => {
+  assert.equal(deriveRoute("Mavrikiano-Distances-And-Guide"), "/en/blog/mavrikiano-distances-and-guide/");
+  assert.equal(deriveRoute("elounda-beaches"), "/en/blog/elounda-beaches/");
+  assert.equal(deriveRoute("Welcome To Elounda"), "/en/blog/welcome-to-elounda/");
+});
+
+test("a mixed-case Markdown filename produces the lowercase published route without changing its slug", async () => {
+  const inventory = await buildInventory({ rootDir: process.cwd(), includeDrafts: true });
+  const article = inventory.articles.find((item) => item.slug === "Mavrikiano-Distances-And-Guide");
+  assert.ok(article, "the mixed-case source article must still be discovered");
+  assert.equal(article.route, "/en/blog/mavrikiano-distances-and-guide/");
+  assert.equal(article.slug, "Mavrikiano-Distances-And-Guide", "the slug must stay the on-disk basename so the source file remains readable");
+
+  const entries = inventory.sitePages.filter((page) => page.route === "/en/blog/mavrikiano-distances-and-guide/");
+  assert.equal(entries.length, 1, "case normalization must not create a duplicate site page");
+  assert.equal(entries[0].type, "blog");
+  assert.equal(entries[0].published, true);
+  assert.equal(entries[0].seoEligible, true);
+  assert.equal(inventory.sitePages.some((page) => page.route === "/en/blog/Mavrikiano-Distances-And-Guide/"), false);
+});
+
+test("existing lowercase blog routes are unchanged and every blog route is canonical", async () => {
+  const inventory = await buildInventory({ rootDir: process.cwd(), includeDrafts: true });
+  const beaches = inventory.articles.find((item) => item.slug === "elounda-beaches");
+  assert.ok(beaches);
+  assert.equal(beaches.route, "/en/blog/elounda-beaches/");
+  for (const page of inventory.sitePages.filter((item) => item.type === "blog")) {
+    assert.match(page.route, /^\/en\/blog\/[a-z0-9\-_]+\/$/, `non-canonical blog route ${page.route}`);
+  }
+  assert.equal(inventory.sitePages.length, new Set(inventory.sitePages.map((page) => page.route)).size, "site page routes must be unique");
+});
+
+test("real Search Console evidence for the published mavrikiano URL resolves to the production page", async () => {
+  const inventory = await buildInventory({ rootDir: process.cwd(), includeDrafts: true });
+  const result = analyzeSearchConsole({ datasets: [dataset([
+    { query: "mavrikiano distances", page: "https://traditional-homes.gr/en/blog/mavrikiano-distances-and-guide/", clicks: 0, impressions: 140, ctr: 0, position: 8.1 },
+  ])], inventory, options: { highImpressions: 100, lowClicks: 5, nearRank: 10 } });
+
+  const relation = result.relationships.queryPages[0];
+  assert.equal(relation.canonicalRoute, "/en/blog/mavrikiano-distances-and-guide/");
+  assert.equal(relation.existingPageFirst, true);
+  assert.notEqual(relation.existingPage, null);
+  assert.equal(relation.existingPage.route, "/en/blog/mavrikiano-distances-and-guide/");
+  assert.equal(relation.pageType, "blog");
+  assert.equal(relation.seoEligible, true);
+  assert.equal(relation.redirected, false);
+
+  assert.equal(result.opportunities.highImpressionLowClick.length, 1, "a recognised production page must remain an eligible opportunity target");
+  assert.equal(result.opportunities.highImpressionLowClick[0].canonicalRoute, "/en/blog/mavrikiano-distances-and-guide/");
+  assert.equal(result.opportunities.nearRank[0].canonicalRoute, "/en/blog/mavrikiano-distances-and-guide/");
 });

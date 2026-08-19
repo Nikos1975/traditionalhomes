@@ -20,7 +20,21 @@ const list = (value) => (value?.match(/\[([^\]]*)\]/)?.[1] ?? "")
   .map((item) => item.trim())
   .filter(Boolean);
 
-export const deriveRoute = (slug) => `/en/blog/${slug}/`;
+// Astro's content loader derives each blog entry id by slugging the source filename, so a
+// mixed-case Markdown file such as Mavrikiano-Distances-And-Guide.md publishes at
+// /en/blog/mavrikiano-distances-and-guide/. Derive the same canonical casing here so the
+// inventory route matches the generated production route. Only blog slugs are canonicalised;
+// every other URL is left exactly as authored.
+const canonicalBlogSlug = (slug) => String(slug ?? "").trim().replace(/\s+/g, "-").toLowerCase();
+
+export const deriveRoute = (slug) => `/en/blog/${canonicalBlogSlug(slug)}/`;
+
+// Canonicalise the slug segment of an authored blog link without altering anything else about it,
+// so internal-link matching uses the same route as Search Console evidence and the site inventory.
+const canonicalBlogLink = (value) => {
+  const match = /^\/en\/blog\/([^/]+)(\/?)$/.exec(value);
+  return match ? `/en/blog/${canonicalBlogSlug(match[1])}${match[2]}` : value;
+};
 
 const normalizeRoute = (value) => {
   if (!value || typeof value !== "string") return value;
@@ -203,7 +217,7 @@ export async function buildInventory({ rootDir, includeDrafts = true }) {
         break;
       } catch {}
     }
-    const internalLinks = [...body.matchAll(/\]\((\/en\/[^)]+)\)/g)].map((match) => match[1]).sort();
+    const internalLinks = [...body.matchAll(/\]\((\/en\/[^)]+)\)/g)].map((match) => canonicalBlogLink(match[1])).sort();
     const entities = (brand.entityVocabulary ?? []).filter((entity) => new RegExp(`\\b${entity}\\b`, "i").test(`${data.title ?? ""} ${body}`));
     const keywords = [...new Set([...(data.tags ? list(data.tags) : []), ...entities.map((entity) => entity.toLowerCase())])].sort();
     articles.push({
