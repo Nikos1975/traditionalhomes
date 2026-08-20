@@ -43,10 +43,16 @@ async function markdownFiles(directory) {
   return files;
 }
 
-test("blog entry-point instructions require the persistent orchestrator", async () => {
-  for (const file of ["AGENTS.md", "CLAUDE.md"]) {
-    assert.match(await readRepositoryFile(file), /BLOG_ORCHESTRATOR\.md/);
-  }
+test("blog entry-point routing reaches the persistent orchestrator through the ICM router", async () => {
+  const claude = await readRepositoryFile("CLAUDE.md");
+  assert.match(claude, /CONTEXT\.md/);
+
+  const rootRouter = await readRepositoryFile("CONTEXT.md");
+  assert.match(rootRouter, /BLOG_ORCHESTRATOR\.md/);
+
+  const agents = await readRepositoryFile("AGENTS.md");
+  assert.match(agents, /BLOG_ORCHESTRATOR\.md/);
+
   const skill = await readRepositoryFile(".agents/skills/blog-research-article/SKILL.md");
   const requiredReading = skill.slice(skill.indexOf("## Required reading"), skill.indexOf("## Topic brief"));
   assert.match(requiredReading, /BLOG_ORCHESTRATOR\.md/);
