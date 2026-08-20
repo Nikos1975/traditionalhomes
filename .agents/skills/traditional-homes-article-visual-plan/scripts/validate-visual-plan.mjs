@@ -181,6 +181,17 @@ export function validateVisualPlan(markdown, { expectedSlug } = {}) {
       if (!new Set(["approved", "not-applicable"]).has(fields.get("Rights status"))) {
         errors.push(`Visual ${index + 1}: an approved plan cannot retain blocked rights.`);
       }
+
+      const sourceClass = fields.get("Source class");
+      if (
+        new Set(["owned", "licensed-third-party", "public-domain"]).has(sourceClass) &&
+        fields.get("Rights status") !== "approved"
+      ) {
+        errors.push(
+          `Visual ${index + 1}: approved ${sourceClass} sources require Rights status "approved".`,
+        );
+      }
+
       if (!/^(none|not applicable)$/i.test(fields.get("Blockers") ?? "")) {
         errors.push(`Visual ${index + 1}: an approved plan cannot retain blockers.`);
       }
@@ -203,9 +214,25 @@ export function validateVisualPlan(markdown, { expectedSlug } = {}) {
     errors.push(`Approval Summary: blocked count ${blockedCount} does not match ${actualBlocked} blocked visuals.`);
   }
 
-  for (const field of ["Rights review complete", "Evidence review complete", "Crop review complete"]) {
+  const reviewFields = [
+    "Rights review complete",
+    "Evidence review complete",
+    "Crop review complete",
+  ];
+
+  for (const field of reviewFields) {
     const value = (summary.get(field) ?? "").toLowerCase();
     requireAllowed(errors, value, YES_NO, field, "Approval Summary");
+  }
+
+  if (planStatus === "approved" && visuals.length > 0) {
+    for (const field of reviewFields) {
+      if ((summary.get(field) ?? "").toLowerCase() !== "yes") {
+        errors.push(
+          `Approval Summary: approved plans with visuals require "${field}" to be "yes".`,
+        );
+      }
+    }
   }
   for (const field of [
     "Article edits authorized",

@@ -24,6 +24,9 @@ function plan({
   approved = 0,
   blocked = 0,
   generationAuthorized = "no",
+  rightsReviewComplete = "no",
+  evidenceReviewComplete = "no",
+  cropReviewComplete = "no",
   includeVisual = true,
 } = {}) {
   const visual = includeVisual
@@ -92,9 +95,9 @@ Exclude decorative resort imagery and unsupported historical reconstruction.
 | Proposed visuals | ${proposed} |
 | Approved visuals | ${approved} |
 | Blocked visuals | ${blocked} |
-| Rights review complete | no |
-| Evidence review complete | no |
-| Crop review complete | no |
+| Rights review complete | ${rightsReviewComplete} |
+| Evidence review complete | ${evidenceReviewComplete} |
+| Crop review complete | ${cropReviewComplete} |
 | Article edits authorized | no |
 | Image generation authorized | ${generationAuthorized} |
 | Image processing authorized | no |
@@ -179,4 +182,54 @@ test("the plan cannot authorize generation or other downstream actions", () => {
   const result = validateVisualPlan(plan({ generationAuthorized: "yes" }));
   assert.equal(result.ok, false);
   assert.match(result.errors.join("\n"), /"Image generation authorized" must remain "no"/);
+});
+test("rejects an approved visual plan before rights evidence and crop reviews are complete", () => {
+  const result = validateVisualPlan(
+    plan({
+      status: "approved",
+      approvalState: "approved",
+      approved: 1,
+    }),
+  );
+
+  assert.equal(result.ok, false);
+  assert.match(result.errors.join("\n"), /Rights review complete/);
+  assert.match(result.errors.join("\n"), /Evidence review complete/);
+  assert.match(result.errors.join("\n"), /Crop review complete/);
+});
+
+test("rejects not-applicable rights for approved owned licensed or public-domain sources", () => {
+  const result = validateVisualPlan(
+    plan({
+      status: "approved",
+      rightsStatus: "not-applicable",
+      approvalState: "approved",
+      approved: 1,
+      rightsReviewComplete: "yes",
+      evidenceReviewComplete: "yes",
+      cropReviewComplete: "yes",
+    }),
+  );
+
+  assert.equal(result.ok, false);
+  assert.match(
+    result.errors.join("\n"),
+    /approved owned sources require Rights status "approved"/,
+  );
+});
+
+test("accepts a fully reviewed approved visual plan", () => {
+  const result = validateVisualPlan(
+    plan({
+      status: "approved",
+      rightsStatus: "approved",
+      approvalState: "approved",
+      approved: 1,
+      rightsReviewComplete: "yes",
+      evidenceReviewComplete: "yes",
+      cropReviewComplete: "yes",
+    }),
+  );
+
+  assert.equal(result.ok, true, result.errors.join("\n"));
 });
