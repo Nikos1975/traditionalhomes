@@ -1,67 +1,39 @@
-# Codex Prompt: Translate One Language
+# Superseded: Translate One Language Prompt
 
-Repo:
-`D:\_projects\_traditional-homes`
+This file is retained for history only. Do not use it as the active translation procedure.
 
-Language:
-`<target language>`
+The repository now routes multilingual work through the ICM control plane:
 
-Locale code:
-`<de|fr|ru|zh|ar|he>`
+```text
+CONTEXT.md
+  → .agents/workspaces/i18n/CONTEXT.md
+      → stages/01_infrastructure/CONTEXT.md   (when route/rendering infrastructure is required)
+      → review gate
+      → stages/02_translation/CONTEXT.md      (for localization of an already-supported route)
+```
 
-Scope:
-`<page, section, or content collection>`
+The active Layer 3 translation procedure is:
 
-Goal:
-Translate one approved language scope from the English source only.
+`.agents/skills/traditional-homes-i18n-translation/SKILL.md`
 
-Before editing:
+The active infrastructure procedure is:
 
-- Read `AGENTS.md`.
-- Read `CLAUDE.md`.
-- Read `docs/i18n/00_I18N_MASTER_PLAN.md`.
-- Read `docs/i18n/01_TRANSLATION_STYLE_GUIDE.md`.
-- Read `docs/i18n/03_TRANSLATION_STATUS.md`.
-- Read `docs/i18n/04_QA_CHECKLIST.md`.
-- Read the English source files for the requested scope.
+`.agents/skills/traditional-homes-astro-i18n-infrastructure/SKILL.md`
 
-Translation rules:
+Why this prompt was retired:
 
-- Translate from English source only.
-- Preserve facts exactly.
-- Preserve slugs.
-- Preserve property names unless an approved naming rule says otherwise.
-- Do not invent amenities, distances, access details, views, square metres, history, exclusivity, or suitability claims.
-- Do not add luxury exaggeration.
-- Do not add generic tourist language.
-- Keep the tone clear, quiet, accurate, and hospitality-oriented.
-- Report unclear English phrases instead of guessing.
-- Keep gallery image paths shared.
+- it instructed agents to load a broad fixed document set instead of letting the Layer 2 stage contract select only relevant context;
+- it incorrectly said to preserve public slugs rather than separating stable internal identities from locale-specific public URLs;
+- it did not include generated visible-language completeness checks;
+- it did not encode the facts-vs-presentation boundary proven by the German reference implementation;
+- it mixed translation instructions with infrastructure and operational safety rules that now belong to separate scoped layers.
 
-Implementation rules:
+Do not delete this file until the ICM migration is complete and all active references to it have been removed.
 
-- Work on one locale only.
-- Work on the requested scope only.
-- Keep `/en/` behavior unchanged.
-- Keep contact form behavior unchanged.
-- Do not change DNS.
-- Do not touch Cloudflare variables.
-- Do not touch Gmail/email setup.
-- Do not change `functions/api/contact.js` behavior.
-- Do not deploy.
-- Do not commit or push without approval.
+---
 
-Validation:
+## Historical prompt
 
-- Run `git diff --check`.
-- Run the relevant build/check command for the changed files.
-- Run the relevant parts of `docs/i18n/04_QA_CHECKLIST.md`.
-- Show `git status --short`.
+The former procedure translated one approved language scope from English, preserved factual parity, avoided unsupported claims, kept shared media paths, protected contact/Cloudflare/email behavior, ran relevant validation, and reported changed files and unresolved facts.
 
-Final report:
-
-- Files changed.
-- Translation scope completed.
-- Any unclear phrases or facts needing owner confirmation.
-- QA checklist results.
-- Confirmation that slugs, facts, contact behavior, DNS, Cloudflare variables, email setup, deploy, commit, and push were not changed.
+Those durable requirements have been moved into the current Stage 02 contract and translation skill. Future changes should be made at those canonical sources rather than editing this historical prompt.
