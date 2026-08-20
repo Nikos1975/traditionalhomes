@@ -56,6 +56,16 @@ test('ICM audit accepts a layered fixture with live routers, stage contract, L3 
   });
 });
 
+test('ICM audit ignores descriptive bare filenames that are not routed paths', () => {
+  withFixture((root) => {
+    const router = path.join(root, '.agents/workspaces/i18n/CONTEXT.md');
+    fs.appendFileSync(router, '\nKeep one global `llms.txt`; the stage owns any concrete `public/llms.txt` path.\n', 'utf8');
+    write(root, 'public/llms.txt', '# Agent index\n');
+    const result = runAudit(root);
+    assert.equal(result.status, 0, result.stderr || result.stdout);
+  });
+});
+
 test('ICM audit rejects a stage missing a required contract section', () => {
   withFixture((root) => {
     const stage = path.join(root, '.agents/workspaces/i18n/stages/01_example/CONTEXT.md');
