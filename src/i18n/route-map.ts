@@ -70,14 +70,14 @@ export const routeMap = {
     dynamic: true,
     content: {
       argyro: { en: 'argyro', de: 'argyro' },
-      // The remaining houses have no German page yet, so no German slug is declared.
+      // A German slug is declared only when complete German content exists.
       clio: { en: 'clio' },
       demetra: { en: 'demetra' },
       efterpi: { en: 'efterpi' },
       erato: { en: 'erato' },
       kalliopi: { en: 'kalliopi' },
       leonidas: { en: 'leonidas' },
-      margarita: { en: 'margarita' },
+      margarita: { en: 'margarita', de: 'margarita' },
       monastiri: { en: 'monastiri' },
       penelope: { en: 'penelope' },
     },
