@@ -65,9 +65,19 @@ function extractBacktickRefs(markdown) {
 function looksLikeRepoReference(value) {
   if (!value || /\s/.test(value) || /[<>*]/.test(value)) return false;
   if (/^(?:https?:|mailto:|npm$|node$)/i.test(value)) return false;
+
+  const rootFiles = new Set(['CLAUDE.md', 'AGENTS.md', 'CONTEXT.md', 'BLOG_ORCHESTRATOR.md', 'package.json']);
+  if (rootFiles.has(value)) return true;
+
   if (/^\/(?!\.agents\/|docs\/|\.ai\/|src\/|scripts\/|tests\/|public\/|functions\/)/.test(value)) return false;
   if (/^(?:\.agents|docs|\.ai|src|scripts|tests|public|functions)\//.test(value)) return true;
   if (/^(?:stages|references|templates|examples)\//.test(value)) return true;
+
+  // Bare descriptive filenames such as `llms.txt` are often mentioned as
+  // concepts rather than routed repository paths. Only treat other relative
+  // file references as paths when they include an explicit directory segment.
+  if (!value.includes('/')) return false;
+
   return /\.(?:md|json|ts|astro|mjs|js|txt)$/i.test(value) || value.endsWith('/');
 }
 
