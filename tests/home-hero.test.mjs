@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import test from 'node:test';
 
-const pagePath = new URL('../src/pages/en/index.astro', import.meta.url);
+const pagePath = new URL('../src/components/pages/HomePage.astro', import.meta.url);
 
 test('homepage hero uses an eager responsive picture while preserving its visual contract', async () => {
   const page = await readFile(pagePath, 'utf8');

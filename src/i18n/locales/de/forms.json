@@ -4,7 +4,13 @@
     "arrival": "Anreise",
     "nights": "Nächte",
     "adults": "Erwachsene",
-    "check": "Prüfen"
+    "check": "Prüfen",
+    "defaultTitle": "Verfügbarkeit prüfen",
+    "defaultDescription": "Wählen Sie Ihre Termine und wechseln Sie zu unserem gesicherten Buchungssystem.",
+    "checkAvailability": "Verfügbarkeit prüfen",
+    "searchAllAvailableProperties": "Alle verfügbaren Unterkünfte durchsuchen",
+    "finalAvailabilityNote": "Endgültige Verfügbarkeit, Preise und Alternativen folgen in WebHotelier.",
+    "checkDates": "Termine prüfen"
   },
   "contact": {
     "openChatLabel": "Chat öffnen",

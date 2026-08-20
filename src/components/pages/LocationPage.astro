@@ -1,0 +1,317 @@
+---
+import Base from '../../layouts/Base.astro';
+import siteCopyData from '../../data/siteCopy.json';
+import MasterLocationMap from '../maps/MasterLocationMap.astro';
+import inventory from '../../inventory/inventory.json';
+import { locations } from '../../data/locations';
+import type { Locale } from '../../i18n/config';
+import { housePath, villaPath } from '../../i18n/routes';
+import { assertRoute, resolveLocalizedLink, routeAlternates, routePath } from '../../i18n/route-map';
+import { canonicalUrl, getPageSeo } from '../../i18n/seo';
+import { getLocationCopy } from '../../i18n/translate';
+import type { InventoryUnit, SiteCopy } from '../../types';
+
+interface Props {
+  /** Active locale. Always passed explicitly by the route file, never inferred from route state. */
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+
+assertRoute(locale, 'location');
+
+const units = inventory as InventoryUnit[];
+const siteCopy = siteCopyData as SiteCopy;
+const pageSeo = getPageSeo(locale, 'location');
+const copy = getLocationCopy(locale);
+
+const alternates = routeAlternates('location');
+const homeLink = resolveLocalizedLink(locale, 'home');
+const contactLink = resolveLocalizedLink(locale, 'contact');
+const mavrikianoGuideLink = resolveLocalizedLink(locale, 'guide', 'mavrikiano');
+const eloundaPillarLink = resolveLocalizedLink(locale, 'blogArticle', 'elounda-and-mirabello-bay');
+
+// Map Data Integration
+const mapMarkers = locations.map(loc => {
+  const unit = units.find(u => u.slug === loc.slug);
+  return {
+    ...loc,
+    name: unit?.name || loc.title,
+    type: unit?.type || 'house'
+  };
+});
+
+const badgeStyles = {
+  sand: 'bg-[#f4eddf] border-[#e8dccb] text-stone-600',
+  terracotta: 'bg-[#f3e2d9] border-[#e7c9bc] text-[#8a4a35]',
+  sage: 'bg-accent-sage-soft border-accent-sage/50 text-stone-700',
+  stone: 'bg-white border-stone-200 text-stone-500',
+  blueGrey: 'bg-[#e8edf0] border-[#d7e0e4] text-slate-600',
+};
+
+type BadgeTone = keyof typeof badgeStyles;
+
+const collectionGroups = [
+  {
+    label: copy.collection.groups.seaViewStandalone,
+    slugs: ['argyro', 'leonidas', 'margarita', 'monastiri'],
+  },
+  {
+    label: copy.collection.groups.paired,
+    slugs: ['efterpi', 'kalliopi'],
+  },
+  {
+    label: copy.collection.groups.sharedPool,
+    slugs: ['demetra', 'penelope'],
+  },
+  {
+    label: copy.collection.groups.privatePoolUpperPair,
+    slugs: ['erato', 'clio'],
+  },
+  {
+    label: copy.collection.groups.vrouchasVilla,
+    slugs: ['almond-tree-villa'],
+  },
+];
+
+const collectionMetadata: Record<string, { label: string; tone: BadgeTone }[]> = {
+  argyro: [
+    { label: copy.collection.badges.seaView, tone: 'sand' },
+    { label: copy.collection.badges.standalone, tone: 'stone' },
+  ],
+  leonidas: [
+    { label: copy.collection.badges.seaView, tone: 'sand' },
+    { label: copy.collection.badges.standalone, tone: 'stone' },
+  ],
+  margarita: [
+    { label: copy.collection.badges.seaView, tone: 'sand' },
+    { label: copy.collection.badges.standalone, tone: 'stone' },
+  ],
+  monastiri: [
+    { label: copy.collection.badges.seaView, tone: 'sand' },
+    { label: copy.collection.badges.privatePool, tone: 'terracotta' },
+  ],
+  efterpi: [
+    { label: copy.collection.badges.groundFloor, tone: 'stone' },
+  ],
+  kalliopi: [
+    { label: copy.collection.badges.firstFloor, tone: 'stone' },
+  ],
+  demetra: [
+    { label: copy.collection.badges.groundFloor, tone: 'stone' },
+    { label: copy.collection.badges.sharedPool, tone: 'sage' },
+  ],
+  penelope: [
+    { label: copy.collection.badges.firstFloor, tone: 'stone' },
+    { label: copy.collection.badges.sharedPool, tone: 'sage' },
+  ],
+  erato: [
+    { label: copy.collection.badges.groundFloor, tone: 'stone' },
+    { label: copy.collection.badges.privatePool, tone: 'terracotta' },
+  ],
+  clio: [
+    { label: copy.collection.badges.firstFloor, tone: 'stone' },
+    { label: copy.collection.badges.noPool, tone: 'stone' },
+  ],
+  'almond-tree-villa': [
+    { label: copy.collection.badges.vrouchas, tone: 'blueGrey' },
+    { label: copy.collection.badges.privateVilla, tone: 'blueGrey' },
+  ],
+};
+
+const unitBySlug = new Map(units.map((unit) => [unit.slug, unit]));
+
+---
+
+<Base
+  title={pageSeo.title}
+  description={pageSeo.description}
+  canonicalUrl={canonicalUrl(routePath(locale, 'location'))}
+  locale={locale}
+>
+  {
+    alternates.length > 1 && (
+      <Fragment slot="head">
+        {alternates.map((alternate) => (
+          <link rel="alternate" hreflang={alternate.hreflang} href={canonicalUrl(alternate.path)} />
+        ))}
+      </Fragment>
+    )
+  }
+
+  <div class="site-max site-pad py-16 md:py-24">
+
+    {/* BREADCRUMB */}
+    <nav class="text-[10px] uppercase tracking-[0.4em] text-stone-400 mb-12 font-bold" aria-label={copy.breadcrumb.ariaLabel}>
+      <ol class="flex items-center gap-2" role="list">
+        <li><a href={homeLink.href} hreflang={homeLink.hreflang} class="hover:text-stone-900 transition-colors">{copy.breadcrumb.home}</a></li>
+        <li aria-hidden="true" class="text-stone-200">/</li>
+        <li class="text-stone-900" aria-current="page">{copy.breadcrumb.current}</li>
+      </ol>
+    </nav>
+
+    <header class="max-w-4xl mb-20">
+      <h1 class="font-serif text-5xl md:text-8xl text-stone-950 mb-8 leading-tight tracking-tight">
+        {copy.heading.lead} <span class="italic text-stone-400">{copy.heading.emphasis}</span>
+      </h1>
+      <p class="text-2xl text-stone-500 font-light leading-relaxed font-serif italic max-w-2xl">
+        {copy.intro}
+      </p>
+    </header>
+
+    <a href={eloundaPillarLink.href} hreflang={eloundaPillarLink.hreflang} class="mb-20 inline-flex text-xs font-bold uppercase tracking-[0.2em] text-stone-500 underline decoration-stone-300 underline-offset-4 transition-colors hover:text-stone-900 hover:decoration-stone-900">
+      {copy.pillarLinkLabel}
+    </a>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 mb-32">
+
+      {/* MAIN CONTENT */}
+      <div class="lg:col-span-7 space-y-20">
+
+        <section id="mavrikiano" aria-labelledby="mavrikiano-heading">
+          <div class="flex items-center gap-4 mb-6">
+             <span class="text-[10px] font-bold text-primary tracking-widest uppercase">{copy.villages.kickerPrefix} 01</span>
+             <h2 id="mavrikiano-heading" class="font-serif text-4xl text-stone-950">{copy.villages.mavrikiano.name}</h2>
+          </div>
+          <div class="prose prose-stone text-stone-600 font-light text-lg leading-relaxed space-y-6">
+            {copy.villages.mavrikiano.paragraphs.map((paragraph) => (<p>{paragraph}</p>))}
+            <a href={mavrikianoGuideLink.href} hreflang={mavrikianoGuideLink.hreflang} class="inline-flex items-center gap-2 text-stone-950 font-bold text-xs uppercase tracking-[0.2em] border-b border-stone-200 hover:border-primary transition-all pb-1 group">
+              {copy.villages.mavrikiano.guideLinkLabel}
+              <svg class="group-hover:translate-x-1 transition-transform" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </a>
+          </div>
+        </section>
+
+        <section id="vrouchas" aria-labelledby="vrouchas-heading" class="pt-16 border-t border-stone-100">
+          <div class="flex items-center gap-4 mb-6">
+             <span class="text-[10px] font-bold text-primary tracking-widest uppercase">{copy.villages.kickerPrefix} 02</span>
+             <h2 id="vrouchas-heading" class="font-serif text-4xl text-stone-950">{copy.villages.vrouchas.name}</h2>
+          </div>
+          <div class="prose prose-stone text-stone-600 font-light text-lg leading-relaxed space-y-6">
+            {copy.villages.vrouchas.paragraphs.map((paragraph) => (<p>{paragraph}</p>))}
+          </div>
+        </section>
+
+        <section id="distances" aria-labelledby="distances-heading" class="pt-16 border-t border-stone-100">
+          <h2 id="distances-heading" class="font-serif text-3xl text-stone-950 mb-10">{copy.distances.heading}</h2>
+
+          <div class="grid sm:grid-cols-2 gap-12">
+            <div>
+              <h3 class="text-[10px] uppercase tracking-[0.3em] text-primary font-bold mb-6">{copy.distances.fromMavrikiano}</h3>
+              <div class="space-y-4">
+                {[
+                  { label: copy.distances.labels.schismaHarbour, minutes: 3 },
+                  { label: copy.distances.labels.plaka, minutes: 7 },
+                  { label: copy.distances.labels.agiosNikolaos, minutes: 19 },
+                  { label: copy.distances.labels.heraklionAirport, minutes: 62 },
+                ].map(({ label, minutes }) => (
+                  <div class="flex justify-between items-baseline py-2 border-b border-stone-50 text-sm">
+                    <span class="text-stone-400 font-light">{label}</span>
+                    <span class="font-serif text-lg text-stone-900">{`${minutes} ${copy.distances.minutesUnit}`}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <h3 class="text-[10px] uppercase tracking-[0.3em] text-primary font-bold mb-6">{copy.distances.fromVrouchas}</h3>
+              <div class="space-y-4">
+                {[
+                  { label: copy.distances.labels.plakaShoreline, minutes: 5 },
+                  { label: copy.distances.labels.schismaHarbour, minutes: 12 },
+                  { label: copy.distances.labels.agiosNikolaos, minutes: 25 },
+                  { label: copy.distances.labels.heraklionAirport, minutes: 75 },
+                ].map(({ label, minutes }) => (
+                  <div class="flex justify-between items-baseline py-2 border-b border-stone-50 text-sm">
+                    <span class="text-stone-400 font-light">{label}</span>
+                    <span class="font-serif text-lg text-stone-900">{`${minutes} ${copy.distances.minutesUnit}`}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      {/* SIDEBAR */}
+      <aside class="lg:col-span-5 space-y-12 lg:sticky lg:top-32">
+
+        {/* House Quick-List */}
+        <div class="bg-stone-50 rounded-[3rem] p-10 border border-stone-100 shadow-sm">
+          <h3 class="font-serif text-2xl text-stone-950 mb-8">{copy.collection.heading}</h3>
+          <div class="space-y-8">
+            {collectionGroups.map((group) => (
+              <section aria-label={group.label}>
+                <h4 class="mb-3 text-[9px] font-bold uppercase tracking-[0.24em] text-stone-400">{group.label}</h4>
+                <ul class="space-y-4">
+                  {group.slugs.map((slug) => {
+                    const unit = unitBySlug.get(slug);
+                    if (!unit) return null;
+
+                    const link = unit.type === 'villa'
+                      ? resolveLocalizedLink(locale, 'villa', unit.slug)
+                      : resolveLocalizedLink(locale, 'house', unit.slug);
+
+                    return (
+                      <li>
+                        <a href={link.href} hreflang={link.hreflang} class="group inline-flex max-w-full items-center gap-4 py-2 pr-2">
+                          <div class="min-w-0">
+                            <span class="block text-sm font-bold text-stone-900 group-hover:text-primary transition-colors">{unit.name}</span>
+                            <span class="mt-2 flex flex-wrap items-center gap-1.5">
+                              {collectionMetadata[unit.slug]?.map((badge) => (
+                                <span class={`rounded-full border px-2 py-0.5 text-[9px] font-bold uppercase tracking-[0.14em] ${badgeStyles[badge.tone]}`}>
+                                  {badge.label}
+                                </span>
+                              ))}
+                            </span>
+                          </div>
+                          <div class="w-8 h-8 shrink-0 rounded-full border border-stone-200 flex items-center justify-center group-hover:bg-primary group-hover:border-primary transition-all">
+                            <svg class="text-stone-400 group-hover:text-white transition-colors" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                          </div>
+                        </a>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </section>
+            ))}
+          </div>
+        </div>
+
+        {/* ARRIVAL BLOCK */}
+        <div class="bg-accent-sage-soft text-stone-800 border border-accent-sage/60 rounded-[3rem] p-10 shadow-premium relative overflow-hidden group">
+          <div class="relative z-10">
+            <h4 class="font-serif text-2xl mb-4 italic text-stone-950">{copy.welcome.heading}</h4>
+            <p class="text-sm text-stone-700 leading-relaxed mb-8 font-light">
+              {copy.welcome.body} <strong>{siteCopy.arrival.hostName}</strong> {copy.welcome.hostSuffix}
+            </p>
+            <a href={contactLink.href} hreflang={contactLink.hreflang} class="inline-block w-full py-4 bg-accent-sage text-stone-900 text-center rounded-2xl text-[10px] font-bold uppercase tracking-[0.3em] hover:bg-accent-sage-hover hover:text-stone-900 transition-all duration-300">
+              {copy.welcome.ctaLabel}
+            </a>
+          </div>
+        </div>
+
+      </aside>
+    </div>
+
+    {/* MAP SECTION */}
+    <section id="map-section" class="pt-24 border-t border-stone-100">
+      <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+        <div>
+          <h2 class="font-serif text-4xl md:text-6xl text-stone-950 mb-4 tracking-tight">Village <span class="italic text-stone-400">Map</span></h2>
+          <p class="text-stone-500 font-light italic">{copy.map.caption}</p>
+        </div>
+        <div class="px-6 py-2 rounded-full border border-stone-100 bg-stone-50 text-[10px] font-bold uppercase tracking-[0.2em] text-stone-400 flex items-center gap-3">
+          <span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+          {units.length} Properties Mapped
+        </div>
+      </div>
+
+      <div class="rounded-[4rem] overflow-hidden shadow-premium border border-stone-200 min-h-[700px] relative bg-stone-100">
+        <MasterLocationMap locale={locale} locations={mapMarkers} />
+      </div>
+    </section>
+
+  </div>
+
+</Base>

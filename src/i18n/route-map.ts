@@ -59,14 +59,31 @@ export type RouteDefinition = {
  * The single source of truth for public URLs.
  *
  * Current English URLs are frozen: every `en` entry reproduces the URL that is
- * live today. German currently owns exactly one route, the Stage 3 pilot.
+ * live today. German owns the routes whose complete German pages exist.
  */
 export const routeMap = {
-  home: { segments: { en: [] } },
-  houses: { segments: { en: ['houses'] } },
-  house: { segments: { en: ['houses'] }, dynamic: true },
+  home: { segments: { en: [], de: [] } },
+  houses: { segments: { en: ['houses'], de: ['ferienhaeuser'] } },
+  house: {
+    // Generic segment localized; property names keep their stable slug.
+    segments: { en: ['houses'], de: ['ferienhaeuser'] },
+    dynamic: true,
+    content: {
+      argyro: { en: 'argyro', de: 'argyro' },
+      // The remaining houses have no German page yet, so no German slug is declared.
+      clio: { en: 'clio' },
+      demetra: { en: 'demetra' },
+      efterpi: { en: 'efterpi' },
+      erato: { en: 'erato' },
+      kalliopi: { en: 'kalliopi' },
+      leonidas: { en: 'leonidas' },
+      margarita: { en: 'margarita' },
+      monastiri: { en: 'monastiri' },
+      penelope: { en: 'penelope' },
+    },
+  },
   villa: { segments: { en: ['villa'] }, dynamic: true },
-  location: { segments: { en: ['location'] } },
+  location: { segments: { en: ['location'], de: ['lage'] } },
   contact: { segments: { en: ['contact'] } },
   faq: { segments: { en: ['faq'] } },
   about: { segments: { en: ['about'] } },

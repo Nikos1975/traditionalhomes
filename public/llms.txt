@@ -39,4 +39,8 @@ The website provides official accommodation descriptions, location information, 
 
 ## Language versions
 
-- [Vrouchas Reiseführer](https://traditional-homes.gr/de/reisefuehrer/vrouchas/): German-language version of the Vrouchas guide. The rest of the site is currently English only.
+- [Startseite](https://traditional-homes.gr/de/): German homepage.
+- [Ferienhäuser](https://traditional-homes.gr/de/ferienhaeuser/): German collection page for the stone houses and the villa.
+- [Haus Argyro](https://traditional-homes.gr/de/ferienhaeuser/argyro/): German page for House Argyro.
+- [Lage](https://traditional-homes.gr/de/lage/): German location page for Mavrikiano and Vrouchas.
+- [Vrouchas Reiseführer](https://traditional-homes.gr/de/reisefuehrer/vrouchas/): German version of the Vrouchas guide. Other pages are currently English only.

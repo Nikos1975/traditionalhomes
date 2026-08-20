@@ -33,11 +33,11 @@ source through the documented partial-overlay fallback in
 
 | Area | EN source frozen | DE | FR | RU | ZH | AR | HE | QA status | Notes |
 |---|---|---|---|---|---|---|---|---|---|
-| Homepage | Source present | Not started | Not started | Not started | Not started | Not started | Not started | Not started | Current source at `/en/`; long-form homepage copy remains in the page file. |
-| Houses index | Source present | Not started | Not started | Not started | Not started | Not started | Not started | Not started | Current source at `/en/houses/`; filter/card labels remain in source components. |
-| House detail pages | Source present | Not started | Not started | Not started | Not started | Not started | Not started | Not started | Stable slugs should be preserved. |
+| Homepage | Source present | Localized | Not started | Not started | Not started | Not started | Not started | Ready for QA | `/de/` renders the shared `HomePage.astro`; copy in `home.json`. |
+| Houses index | Source present | Localized | Not started | Not started | Not started | Not started | Not started | Ready for QA | `/de/ferienhaeuser/` renders the shared `CollectionPage.astro`; copy in `properties.json`. Filtering logic is shared, not forked. |
+| House detail pages | Source present | Partial | Not started | Not started | Not started | Not started | Not started | Ready for QA | Argyro only, at `/de/ferienhaeuser/argyro/`, as the reference house. The other nine have no German content and therefore no German route. |
 | Villa page | Source present | Not started | Not started | Not started | Not started | Not started | Not started | Not started | Stable slug should be preserved. |
-| Location page | Source present | Not started | Not started | Not started | Not started | Not started | Not started | Not started | Map/sidebar layout needs locale QA. |
+| Location page | Source present | Localized | Not started | Not started | Not started | Not started | Not started | Ready for QA | `/de/lage/` renders the shared `LocationPage.astro`; copy in `location.json`. |
 | Contact page | Source present | Not started | Not started | Not started | Not started | Not started | Not started | Not started | Contact form must keep posting to `/api/contact`. |
 | FAQ page | Source present | Not started | Not started | Not started | Not started | Not started | Not started | Not started | Long bodies may need content collection handling. |
 | Policies page | Source present | Not started | Not started | Not started | Not started | Not started | Not started | Not started | Long bodies may need content collection handling. |
@@ -126,3 +126,36 @@ applied to every locale at once.
 | Boat "€10 to €12 round trip, every 30 minutes" | Operator-specific and volatile; no official source consulted | — |
 | "Limited service runs between Elounda and Agios Nikolaos" | Not checked against the current [KTEL Heraklion–Lasithi](https://www.ktelherlas.gr/en/timetables) timetable | — |
 | Section titled "(2026 Season)" | Dated section title will need an annual review in both languages | — |
+
+## German cluster (reference implementation)
+
+| Internal route id | Content id | English URL | German URL |
+|---|---|---|---|
+| `home` | — | `/en/` | `/de/` |
+| `houses` | — | `/en/houses/` | `/de/ferienhaeuser/` |
+| `house` | `argyro` | `/en/houses/argyro/` | `/de/ferienhaeuser/argyro/` |
+| `location` | — | `/en/location/` | `/de/lage/` |
+| `guide` | `vrouchas` | `/en/guide/vrouchas/` | `/de/reisefuehrer/vrouchas/` |
+
+Shared renderers in `src/components/pages/`: `HomePage`, `CollectionPage`,
+`LocationPage`, `HouseDetailPage`, `GuidePage`. Every route file is a thin
+wrapper that passes `locale` explicitly. There is no parallel German
+implementation and no client-side translation runtime.
+
+Locale resources added for German: `home.json`, `location.json`,
+`properties.json`, `seo.json`, plus additions to `forms.json`. Long-form
+property copy lives in `src/content/houses/de/`, not in a translation resource.
+`src/inventory/inventory.json` remains the single factual source; the German
+house page reads the same `sleeps`, `bedrooms`, `pool` and access values as the
+English page, and only its display title comes from the German content entry.
+
+Not yet German: the remaining nine houses, Almond Tree Villa, contact, FAQ,
+policies, about, and all blog articles. Those links appear on German pages with
+their English URL and an explicit `hreflang="en"`.
+
+### Deferred: language switcher
+
+Not implemented in this stage. The route map already answers "does an
+equivalent page exist in locale X" through `routeLocales`, so a switcher is a
+small component rather than an architectural change. It was deferred to keep
+this stage to the four reference routes.

@@ -1,0 +1,27 @@
+{
+  "defaultOgImage": "/images/brand/home-hero-spinalonga-1024.webp",
+  "templates": {
+    "guideTitle": "{title} | Elounda Traditional Homes",
+    "property": {
+      "in": "in",
+      "sleeps": "Platz für",
+      "bedroom": "Schlafzimmer",
+      "bedrooms": "Schlafzimmer",
+      "tail": "Traditionelles kretisches Haus in Elounda."
+    }
+  },
+  "pages": {
+    "home": {
+      "title": "Ferienhäuser in Elounda, Kreta | Elounda Traditional Homes",
+      "description": "Zehn traditionelle Steinhäuser in Mavrikiano und eine Villa in Vrouchas, oberhalb von Elounda auf Kreta. Ruhig, traditionell, direkt buchbar."
+    },
+    "houses": {
+      "title": "Ferienhäuser & Villa in Elounda | Elounda Traditional Homes",
+      "description": "Alle zehn traditionellen Steinhäuser in Mavrikiano, Elounda, im Überblick. Filtern Sie nach Größe, Pool und Zugang. Direkt buchen."
+    },
+    "location": {
+      "title": "Lage — Mavrikiano & Vrouchas bei Elounda | Elounda Traditional Homes",
+      "description": "Mavrikiano und Vrouchas liegen oberhalb der Bucht von Elounda im Nordosten Kretas. Fünf Minuten zum Meer, abseits des Trubels."
+    }
+  }
+}

@@ -1,0 +1,175 @@
+---
+import Base from '../../layouts/Base.astro';
+import UnitCard from '../UnitCard.astro';
+import GroupCard from '../GroupCard.astro';
+import FilterBar from '../FilterBar.astro';
+import BookingHandoffForm from '../booking/BookingHandoffForm.astro';
+import inventory from '../../inventory/inventory.json';
+import groupsData from '../../inventory/groups.json';
+import siteCopyData from '../../data/siteCopy.json';
+import { validateInventory } from '../../utils/validateInventory';
+import type { InventoryUnit, SiteCopy } from '../../types';
+import type { ListingItem } from '../../utils/filters';
+import type { Locale } from '../../i18n/config';
+import { assertRoute, resolveAuthoredHref, resolveLocalizedLink, routeAlternates, routePath } from '../../i18n/route-map';
+import { canonicalUrl, getPageSeo } from '../../i18n/seo';
+import { getPropertiesCopy } from '../../i18n/translate';
+
+interface Props {
+  /** Active locale. Always passed explicitly by the route file, never inferred from route state. */
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+
+assertRoute(locale, 'houses');
+
+// 1. DATA VALIDATION & TYPE CASTING — inventory stays the factual source of truth.
+const units = inventory as InventoryUnit[];
+validateInventory(units);
+const siteCopy = siteCopyData as SiteCopy;
+const pageSeo = getPageSeo(locale, 'houses');
+const copy = getPropertiesCopy(locale).collection;
+
+const houses = units.filter((u) => u.type === 'house');
+const villa = units.find((u) => u.type === 'villa');
+
+// 2. FILTERING LOGIC
+const allItems: ListingItem[] = [
+  ...units.map((unit) => ({
+    id: unit.slug,
+    type: unit.type as 'house' | 'villa',
+    name: unit.name,
+    sleepsMax: unit.sleeps,
+    bedrooms: unit.bedrooms,
+    seaView: unit.view.toLowerCase().includes('sea') || unit.view.toLowerCase().includes('bay'),
+    pool: unit.pool,
+    internalStairs: unit.internalStairs,
+    entryLevel: null,
+  })),
+  ...(groupsData as ListingItem[])
+];
+
+const totalCount = units.length;
+
+const alternates = routeAlternates('houses');
+const homeLink = resolveLocalizedLink(locale, 'home');
+const accessLink = resolveAuthoredHref(locale, siteCopy.accessAnchorUrl);
+---
+
+<Base
+  title={pageSeo.title}
+  description={pageSeo.description}
+  canonicalUrl={canonicalUrl(routePath(locale, 'houses'))}
+  locale={locale}
+>
+  {
+    alternates.length > 1 && (
+      <Fragment slot="head">
+        {alternates.map((alternate) => (
+          <link rel="alternate" hreflang={alternate.hreflang} href={canonicalUrl(alternate.path)} />
+        ))}
+      </Fragment>
+    )
+  }
+
+  <div class="site-max site-pad py-16 md:py-24">
+
+    {/* BREADCRUMBS & HEADER */}
+    <header class="mb-20 text-center md:text-left">
+      <nav class="text-[10px] uppercase tracking-[0.4em] text-stone-400 mb-8 font-bold" aria-label={copy.breadcrumb.ariaLabel}>
+        <ol class="flex items-center justify-center md:justify-start gap-3" role="list">
+          <li><a href={homeLink.href} hreflang={homeLink.hreflang} class="hover:text-stone-900 transition-colors">{copy.breadcrumb.home}</a></li>
+          <li aria-hidden="true" class="text-stone-200">/</li>
+          <li class="text-stone-900" aria-current="page">{copy.breadcrumb.current}</li>
+        </ol>
+      </nav>
+
+      <h1 class="font-serif text-6xl md:text-8xl text-stone-900 mb-8 leading-[1.1] tracking-tight">
+        {copy.heading}
+      </h1>
+
+      <p class="text-stone-500 max-w-2xl text-xl leading-relaxed font-serif italic">
+        {copy.introBeforeCount} {houses.length} {copy.introAfterCount} {villa ? villa.name : copy.introVillaFallback}
+        {copy.introTail}
+      </p>
+    </header>
+
+    <section class="mb-14" aria-label={copy.booking.sectionAriaLabel}>
+      <BookingHandoffForm
+        bookingBaseUrl={siteCopy.bookingEngineUrl}
+        itemName={copy.booking.itemName}
+        maxAdults={10}
+        title={copy.booking.title}
+        description={copy.booking.description}
+        submitLabel={copy.booking.submitLabel}
+        locale={locale}
+        compact
+      />
+    </section>
+
+    {/* INTERACTIVE FILTER BAR */}
+    {/* Added top-24 to offset our taller premium header */}
+    <div class="mb-16 sticky top-24 z-30 pointer-events-none">
+      <div class="pointer-events-auto">
+        <FilterBar items={allItems} locale={locale} />
+      </div>
+    </div>
+
+    {/* THE PROPERTY GRID */}
+    <div
+      id="listing-grid"
+      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-14"
+      aria-label={`${copy.gridAriaLabelBefore} ${totalCount} ${copy.gridAriaLabelAfter}`}
+    >
+      {/* Individual Units */}
+      {units.map((unit, index) => (
+        <UnitCard unit={unit} priority={index < 3} locale={locale} />
+      ))}
+
+      {/* Group/Bundled Units */}
+      {groupsData.map((group, index) => (
+        <GroupCard group={group as ListingItem} priority={index < 3} locale={locale} />
+      ))}
+    </div>
+
+    {/* ACCESS NOTE */}
+    <aside class="mt-20 p-8 md:p-10 bg-stone-50 rounded-3xl border border-stone-100 flex flex-col md:flex-row items-start gap-6 shadow-sm" aria-labelledby="collection-access-note">
+      <div class="w-12 h-12 rounded-full bg-white flex items-center justify-center text-stone-400 flex-shrink-0 shadow-sm border border-stone-100">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
+        </svg>
+      </div>
+      <div>
+        <h2 id="collection-access-note" class="font-serif text-2xl md:text-3xl text-stone-950 mb-3">
+          {copy.accessNote.title}
+        </h2>
+        <p class="text-stone-600 leading-relaxed font-light max-w-3xl mb-4">
+          {copy.accessNote.body}
+        </p>
+        <a href={accessLink.href} hreflang={accessLink.hreflang} class="text-stone-900 font-bold text-xs uppercase tracking-widest border-b-2 border-stone-200 hover:border-stone-900 transition-all pb-1">
+          {copy.accessNote.linkLabel}
+        </a>
+      </div>
+    </aside>
+
+  </div>
+
+</Base>
+
+<style is:global>
+  /* Ensure the grid feels smooth during filtering */
+  #listing-grid {
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Fade in animation for the whole page */
+  main {
+    animation: fadeIn 0.8s ease-out;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>

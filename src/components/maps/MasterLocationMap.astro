@@ -2,13 +2,26 @@
 import LeafletMap from './LeafletMap.astro';
 import { locations } from '../../data/locations';
 import inventory from '../../inventory/inventory.json';
-import { housePath, villaPath } from '../../i18n/routes';
-import { defaultLocale } from '../../i18n/config';
+import { resolveLocalizedLink } from '../../i18n/route-map';
+import { defaultLocale, type Locale } from '../../i18n/config';
 import { getCommonCopy } from '../../i18n/translate';
 import type { InventoryUnit } from '../../types';
 
+interface Props {
+  /** Active locale, passed explicitly by the page renderer. */
+  locale?: Locale;
+  /**
+   * Accepted for call-site compatibility and deliberately unused: this
+   * component reads `src/data/locations` and the inventory directly so map
+   * markers always come from the same source of truth.
+   */
+  locations?: unknown;
+}
+
+const { locale = defaultLocale } = Astro.props;
+
 const units = inventory as InventoryUnit[];
-const mapCopy = getCommonCopy(defaultLocale).ui.map;
+const mapCopy = getCommonCopy(locale).ui.map;
 
 /** * 1. ASSET RESOLUTION
  * This finds every image in your /src/assets/images/ folder. 
@@ -20,11 +33,13 @@ const allImages = import.meta.glob('/src/assets/images/**/*.{webp,jpg,jpeg,png}'
 // We combine the map coordinates with the actual names/labels from your inventory
 const allLocs = locations.filter(l => l.lat && l.lng).map(loc => {
   const unit = units.find(u => u.slug === loc.slug);
-  const detailsUrl = unit
+  const detailsLink = unit
     ? unit.type === 'villa'
-      ? villaPath(unit.slug, defaultLocale)
-      : housePath(unit.slug, defaultLocale)
+      ? resolveLocalizedLink(locale, 'villa', unit.slug)
+      : resolveLocalizedLink(locale, 'house', unit.slug)
     : undefined;
+  const detailsUrl = detailsLink?.href;
+  const detailsHreflang = detailsLink?.hreflang;
   
   // Find the hero image in the assets folder for this specific slug
   const propertyFolder = `/src/assets/images/${loc.slug}/`;
@@ -40,6 +55,7 @@ const allLocs = locations.filter(l => l.lat && l.lng).map(loc => {
     type: unit?.type ?? loc.type,
     locationLabel: unit ? `${unit.location}, ${unit.area}` : loc.locationLabel,
     detailsUrl,
+    detailsHreflang,
     // Use optimized path, fallback to static path, then to placeholder
     finalImage: optimizedHero?.src || loc.image || "/images/brand/placeholder.webp" 
   };
@@ -112,7 +128,7 @@ const markers = allLocs.map(loc => {
                 <div class="flex gap-4">
                   <a href={loc.googleMapsUrl} target="_blank" class="text-[10px] font-bold uppercase tracking-widest text-stone-400 hover:text-primary transition-colors">{mapCopy.actions.map}</a>
                   {loc.detailsUrl && (
-                    <a href={loc.detailsUrl} class="text-[10px] font-bold uppercase tracking-widest text-primary">{mapCopy.actions.details}</a>
+                    <a href={loc.detailsUrl} hreflang={loc.detailsHreflang} class="text-[10px] font-bold uppercase tracking-widest text-primary">{mapCopy.actions.details}</a>
                   )}
                 </div>
               </div>
@@ -125,7 +141,7 @@ const markers = allLocs.map(loc => {
 
   {/* Interactive Map Column */}
   <div class="w-full lg:w-2/3 rounded-3xl overflow-hidden shadow-2xl bg-stone-100 z-10 border border-stone-200">
-    <LeafletMap markers={markers} height="650px" mapId="master-map" />
+    <LeafletMap markers={markers} height="650px" mapId="master-map" locale={locale} />
   </div>
 </div>
 

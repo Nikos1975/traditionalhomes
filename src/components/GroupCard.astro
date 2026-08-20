@@ -2,6 +2,7 @@
 import { Image } from 'astro:assets';
 import { defaultLocale, type Locale } from '../i18n/config';
 import { housePath } from '../i18n/routes';
+import { resolveLocalizedLink } from '../i18n/route-map';
 import { getCommonCopy } from '../i18n/translate';
 import { formatPropertyCount } from '../i18n/property-counts';
 import type { ListingItem } from '../utils/filters';
@@ -37,8 +38,8 @@ const units = inventory as InventoryUnit[];
 const memberNames = group.members?.map(m => units.find(u => u.slug === m)?.name ?? m).join(' & ');
 const nameA = units.find(u => u.slug === firstMemberSlug)?.name ?? firstMemberSlug ?? '';
 const nameB = units.find(u => u.slug === secondMemberSlug)?.name ?? secondMemberSlug ?? '';
-const detailPathA = firstMemberSlug ? housePath(firstMemberSlug, locale) : '#';
-const detailPathB = secondMemberSlug ? housePath(secondMemberSlug, locale) : '#';
+const detailLinkA = firstMemberSlug ? resolveLocalizedLink(locale, 'house', firstMemberSlug) : null;
+const detailLinkB = secondMemberSlug ? resolveLocalizedLink(locale, 'house', secondMemberSlug) : null;
 ---
 
 <article
@@ -147,10 +148,10 @@ const detailPathB = secondMemberSlug ? housePath(secondMemberSlug, locale) : '#'
 
     {/* ACTIONS */}
     <div class="pt-6 border-t border-stone-100 grid grid-cols-1 sm:grid-cols-3 gap-3">
-      <a href={detailPathA} class="btn-outline py-3 px-0 text-center rounded-xl bg-white shadow-sm hover:shadow-md transition-shadow">
+      <a href={detailLinkA?.href ?? '#'} hreflang={detailLinkA?.hreflang} class="btn-outline py-3 px-0 text-center rounded-xl bg-white shadow-sm hover:shadow-md transition-shadow">
         {propertyCopy.group.view} {nameA}
       </a>
-      <a href={detailPathB} class="btn-outline py-3 px-0 text-center rounded-xl bg-white shadow-sm hover:shadow-md transition-shadow">
+      <a href={detailLinkB?.href ?? '#'} hreflang={detailLinkB?.hreflang} class="btn-outline py-3 px-0 text-center rounded-xl bg-white shadow-sm hover:shadow-md transition-shadow">
         {propertyCopy.group.view} {nameB}
       </a>
       <a 

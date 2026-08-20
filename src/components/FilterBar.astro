@@ -1,14 +1,16 @@
 ---
 import type { ListingItem } from '../utils/filters';
-import { defaultLocale } from '../i18n/config';
+import { defaultLocale, type Locale } from '../i18n/config';
 import { getCommonCopy } from '../i18n/translate';
 
 interface Props {
   items: ListingItem[];
+  /** Active locale, passed explicitly by the page renderer. */
+  locale?: Locale;
 }
 
-const { items } = Astro.props;
-const filterCopy = getCommonCopy(defaultLocale).ui.filters;
+const { items, locale = defaultLocale } = Astro.props;
+const filterCopy = getCommonCopy(locale).ui.filters;
 const filterLabels = {
   countSingle: filterCopy.countSingle,
   countPlural: filterCopy.countPlural,

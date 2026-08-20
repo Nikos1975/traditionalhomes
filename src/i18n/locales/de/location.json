@@ -1,0 +1,69 @@
+{
+  "breadcrumb": { "ariaLabel": "Brotkrümelnavigation", "home": "Startseite", "current": "Lage" },
+  "heading": { "lead": "Die", "emphasis": "Lage" },
+  "intro": "Mavrikiano und Vrouchas liegen am Hang oberhalb von Elounda — mit Dorfwegen, Meerblick, geregelten Parkmöglichkeiten und Stränden in kurzer Fahrdistanz.",
+  "pillarLinkLabel": "Zum Gebietsführer über Elounda und die Bucht von Mirabello",
+  "villages": {
+    "kickerPrefix": "Dorf",
+    "mavrikiano": {
+      "name": "Mavrikiano",
+      "paragraphs": [
+        "Mavrikiano ist ein Hangdorf oberhalb von Schisma, dem Hafenzentrum von Elounda. Unsere zehn Steinhäuser stehen mitten im gewachsenen Dorf, verbunden durch Steinwege und ruhige Gassen.",
+        "Im Dorf gibt es Lokale zum Essen und Trinken, darunter Kantouni, To Rakadiko tou Kamari, Despoina Tavern und BeeRaki. Der Hafen von Elounda mit Geschäften, Märkten und weiteren Tavernen liegt etwa drei Fahrminuten entfernt — oder für viele Gäste zehn Minuten bergab zu Fuß."
+      ],
+      "guideLinkLabel": "Zum Gebietsführer für Mavrikiano"
+    },
+    "vrouchas": {
+      "name": "Vrouchas",
+      "paragraphs": [
+        "Vrouchas liegt weiter nördlich und höher; das Dorf ist ruhiger und blickt auf das Kretische Meer, Olivenhaine und die umliegenden Berge. Im Sommer ist es hier wegen der Höhenlage und der offenen Exposition oft einige Grad kühler als in Plaka.",
+        "Die Almond Tree Villa steht im Dorf selbst. Rund 50 Meter vom Haus entfernt liegt ein kleines Kafenion, geführt von Herrn Xenos, einem einheimischen Fotografen, und seiner französischen Frau. Dort gibt es Raki, kleine Mezedes und einfache kretische Hausmannskost; ein bis zwei Gerichte kocht häufig die Mutter von Herrn Xenos.",
+        "Die Umgebung gehört zur wilderen Nordseite von Mirabello, nahe an geschützten Natura-2000-Gebieten. Fünf Fahrminuten bergab liegen das Fischerdorf Plaka und seine Tavernen am Wasser."
+      ]
+    }
+  },
+  "distances": {
+    "heading": "Fahrzeiten",
+    "fromMavrikiano": "Ab den Häusern in Mavrikiano",
+    "fromVrouchas": "Ab der Villa in Vrouchas",
+    "minutesUnit": "Min.",
+    "labels": {
+      "schismaHarbour": "Schisma / Hafen von Elounda",
+      "plaka": "Plaka",
+      "plakaShoreline": "Küste von Plaka",
+      "agiosNikolaos": "Agios Nikolaos",
+      "heraklionAirport": "Flughafen Heraklion"
+    }
+  },
+  "collection": {
+    "heading": "Unsere Ferienhäuser",
+    "groups": {
+      "seaViewStandalone": "Freistehende Häuser mit Meerblick",
+      "paired": "Häuserpaare",
+      "sharedPool": "Häuser mit gemeinsamem Pool",
+      "privatePoolUpperPair": "Privater Pool / oberes Häuserpaar",
+      "vrouchasVilla": "Villa in Vrouchas"
+    },
+    "badges": {
+      "seaView": "Meerblick",
+      "standalone": "Freistehend",
+      "privatePool": "Privater Pool",
+      "sharedPool": "Gemeinsamer Pool",
+      "noPool": "Kein Pool",
+      "groundFloor": "Erdgeschoss",
+      "firstFloor": "Obergeschoss",
+      "vrouchas": "Vrouchas",
+      "privateVilla": "Private Villa"
+    }
+  },
+  "welcome": {
+    "heading": "Persönlicher Empfang",
+    "body": "In traditionellen Dörfern ist die Orientierung nicht immer einfach. Wir empfangen alle Gäste persönlich an unserem Parkplatz.",
+    "hostSuffix": "bringt Sie zu Ihrem Haus und hilft bei der Ankunft.",
+    "ctaLabel": "Kontakt zum Gästeservice"
+  },
+  "map": {
+    "villageLabel": "Dorf",
+    "caption": "Interaktive Ansicht unserer Unterkünfte am Hang über Elounda."
+  }
+}

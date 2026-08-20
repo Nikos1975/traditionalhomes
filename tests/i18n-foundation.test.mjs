@@ -40,9 +40,9 @@ describe('Stage 1 i18n foundation', () => {
     const seoCopy = await readJson('src/i18n/locales/en/seo.json');
     const seo = await readText('src/i18n/seo.ts');
     const pages = {
-      home: await readText('src/pages/en/index.astro'),
-      houses: await readText('src/pages/en/houses/index.astro'),
-      location: await readText('src/pages/en/location.astro'),
+      home: await readText('src/components/pages/HomePage.astro'),
+      houses: await readText('src/components/pages/CollectionPage.astro'),
+      location: await readText('src/components/pages/LocationPage.astro'),
       contact: await readText('src/pages/en/contact.astro'),
       faq: await readText('src/pages/en/faq.astro'),
       policies: await readText('src/pages/en/policies.astro'),
@@ -91,7 +91,9 @@ describe('Stage 1 i18n foundation', () => {
     assert.match(seo, /return getSeoCopy\(locale\)\.pages\[page\]/);
 
     for (const [key, page] of Object.entries(pages)) {
-      assert.match(page, new RegExp(`getPageSeo\\(defaultLocale, '${key}'\\)`));
+      // Shared renderers take the locale as a prop; single-locale pages still
+      // pass the default locale explicitly.
+      assert.match(page, new RegExp(`getPageSeo\\((?:defaultLocale|locale), '${key}'\\)`));
       assert.doesNotMatch(page, /metaDescription(?:Home|Houses|Location|Contact|Faq|Policies|About)/);
     }
   });
@@ -108,7 +110,7 @@ describe('Stage 1 i18n foundation', () => {
   it('formats dynamic English SEO through helpers without moving facts into translations', async () => {
     const seoCopy = await readJson('src/i18n/locales/en/seo.json');
     const seo = await readText('src/i18n/seo.ts');
-    const housePage = await readText('src/pages/en/houses/[slug].astro');
+    const housePage = await readText('src/components/pages/HouseDetailPage.astro');
     const villaPage = await readText('src/pages/en/villa/[slug].astro');
     const mavrikianoGuide = await readText('src/pages/en/guide/mavrikiano.astro');
     // The Vrouchas route is a thin wrapper since the Stage 3 pilot; its SEO is
@@ -124,7 +126,12 @@ describe('Stage 1 i18n foundation', () => {
     assert.match(mavrikianoGuide, /getGuideSeo\(/);
     assert.match(guidePage, /getGuideSeo\(locale, frontmatter, fallbackDescription\)/);
 
-    assert.doesNotMatch(JSON.stringify(seoCopy), /sleeps|bedrooms|bathrooms|private 9 m/);
+    // SEO copy may carry the *labels* ("sleeps", "bedrooms") because the
+    // description template assembles them; it must never carry inventory values.
+    const seoText = JSON.stringify(seoCopy);
+    assert.doesNotMatch(seoText, /\b\d+\s*(?:m²|m2|guests?|bedrooms?|bathrooms?)\b/i);
+    assert.doesNotMatch(seoText, /private 9 m/);
+    assert.doesNotMatch(seoText, /argyro|almond-tree-villa|roomCode|bookingId/i);
   });
 
   it('keeps current English Header labels and links in navigation.json', async () => {
@@ -264,16 +271,20 @@ describe('Stage 1 i18n foundation', () => {
     assert.match(base, /bookingCopy\.quickSearchAriaLabel/);
     assert.match(base, /contactCopy\.chatPopupBeforeEmail/);
     assert.match(base, /common\.brand\.name/);
-    assert.match(filterBar, /getCommonCopy\(defaultLocale\)/);
+    assert.match(filterBar, /getCommonCopy\(locale\)/);
+    assert.match(filterBar, /locale = defaultLocale/);
     assert.match(filterBar, /filterCopy\.viewTabs\.all/);
     assert.match(filterBar, /filterLabels = /);
     assert.match(galleryA, /getCommonCopy\(defaultLocale\)/);
     assert.match(galleryA, /galleryCopy\.previousPhoto/);
-    assert.match(houseGallery, /getCommonCopy\(defaultLocale\)/);
+    assert.match(houseGallery, /getCommonCopy\(locale\)/);
+    assert.match(houseGallery, /locale = defaultLocale/);
     assert.match(houseGallery, /galleryCopy\.viewAllPhotos/);
-    assert.match(mapPreview, /getCommonCopy\(defaultLocale\)/);
+    assert.match(mapPreview, /getCommonCopy\(locale\)/);
+    assert.match(mapPreview, /locale = defaultLocale/);
     assert.match(mapPreview, /mapCopy\.actions\.exploreInteractiveMap/);
-    assert.match(masterLocationMap, /getCommonCopy\(defaultLocale\)/);
+    assert.match(masterLocationMap, /getCommonCopy\(locale\)/);
+    assert.match(masterLocationMap, /locale = defaultLocale/);
     assert.match(masterLocationMap, /mapCopy\.exploreArea/);
     assert.match(leafletMap, /mapLabels/);
     assert.match(leafletMap, /viewDetails: mapCopy\.actions\.viewDetails/);
@@ -388,7 +399,7 @@ describe('Stage 1 i18n foundation', () => {
     const atAGlance = await readText('src/components/AtAGlance.astro');
     const unitCard = await readText('src/components/UnitCard.astro');
     const groupCard = await readText('src/components/GroupCard.astro');
-    const housePage = await readText('src/pages/en/houses/[slug].astro');
+    const housePage = await readText('src/components/pages/HouseDetailPage.astro');
     const villaPage = await readText('src/pages/en/villa/[slug].astro');
     const blogIndex = await readText('src/pages/en/blog/index.astro');
     const blogPost = await readText('src/pages/en/blog/[...slug].astro');
@@ -401,7 +412,7 @@ describe('Stage 1 i18n foundation', () => {
       assert.match(component, /getCommonCopy\(locale\)\.ui\.property/);
     }
 
-    assert.match(housePage, /getCommonCopy\(defaultLocale\)\.ui\.property/);
+    assert.match(housePage, /getCommonCopy\(locale\)\.ui\.property/);
     assert.match(villaPage, /getCommonCopy\(defaultLocale\)\.ui\.property/);
     assert.match(blogIndex, /blogArticlePath\(post\.id, defaultLocale\)/);
     assert.match(blogPost, /blogIndexPath\(defaultLocale\)/);
@@ -420,9 +431,9 @@ describe('Stage 1 i18n foundation', () => {
       masterLocationMap: await readText('src/components/maps/MasterLocationMap.astro'),
       singlePinMap: await readText('src/components/maps/SinglePinMap.astro'),
       unitCard: await readText('src/components/UnitCard.astro'),
-      housePage: await readText('src/pages/en/houses/[slug].astro'),
+      housePage: await readText('src/components/pages/HouseDetailPage.astro'),
       villaPage: await readText('src/pages/en/villa/[slug].astro'),
-      locationPage: await readText('src/pages/en/location.astro'),
+      locationPage: await readText('src/components/pages/LocationPage.astro'),
       blogIndex: await readText('src/pages/en/blog/index.astro'),
       blogPost: await readText('src/pages/en/blog/[...slug].astro'),
     };
@@ -444,14 +455,14 @@ describe('Stage 1 i18n foundation', () => {
     }
 
     assert.match(files.atAGlance, /housePath\(slug, locale\)/);
-    assert.match(files.groupCard, /housePath\(firstMemberSlug, locale\)/);
-    assert.match(files.mapPreview, /localizedPath\(defaultLocale, 'location'\)/);
-    assert.match(files.masterLocationMap, /unit\.type === 'villa'[\s\S]*villaPath\(unit\.slug, defaultLocale\)[\s\S]*housePath\(unit\.slug, defaultLocale\)/);
-    assert.match(files.singlePinMap, /location\.type === 'villa'[\s\S]*villaPath\(location\.slug, defaultLocale\)[\s\S]*housePath\(location\.slug, defaultLocale\)/);
-    assert.match(files.unitCard, /unit\.type === "villa"[\s\S]*villaPath\(unit\.slug, locale\)[\s\S]*housePath\(unit\.slug, locale\)/);
-    assert.match(files.housePage, /localizedCanonical\(defaultLocale, housePath\(slug, defaultLocale\)\)/);
+    assert.match(files.groupCard, /resolveLocalizedLink\(locale, 'house', firstMemberSlug\)/);
+    assert.match(files.mapPreview, /resolveLocalizedLink\(locale, 'location'\)/);
+    assert.match(files.masterLocationMap, /unit\.type === 'villa'[\s\S]*resolveLocalizedLink\(locale, 'villa', unit\.slug\)[\s\S]*resolveLocalizedLink\(locale, 'house', unit\.slug\)/);
+    assert.match(files.singlePinMap, /location\.type === 'villa'[\s\S]*villaPath\(location\.slug, locale\)[\s\S]*housePath\(location\.slug, locale\)/);
+    assert.match(files.unitCard, /unit\.type === "villa"[\s\S]*resolveLocalizedLink\(locale, 'villa', unit\.slug\)[\s\S]*resolveLocalizedLink\(locale, 'house', unit\.slug\)/);
+    assert.match(files.housePage, /canonicalUrl\(routePath\(locale, 'house', slug\)\)/);
     assert.match(files.villaPage, /Astro\.redirect\(localizedPath\(defaultLocale, 'houses'\), 302\)/);
-    assert.match(files.locationPage, /unit\.type === 'villa'[\s\S]*villaPath\(unit\.slug, defaultLocale\)[\s\S]*housePath\(unit\.slug, defaultLocale\)/);
+    assert.match(files.locationPage, /unit\.type === 'villa'[\s\S]*resolveLocalizedLink\(locale, 'villa', unit\.slug\)[\s\S]*resolveLocalizedLink\(locale, 'house', unit\.slug\)/);
 
     for (const file of helperManagedFiles) {
       assert.doesNotMatch(file, /\b(?:housePath|villaPath)\([^,)]*\)/);
@@ -463,12 +474,13 @@ describe('Stage 1 i18n foundation', () => {
 
   it('uses route and SEO helpers on static English pages without changing blog or contact endpoints', async () => {
     const staticPages = {
-      home: await readText('src/pages/en/index.astro'),
+      homePage: await readText('src/components/pages/HomePage.astro'),
       about: await readText('src/pages/en/about.astro'),
       contact: await readText('src/pages/en/contact.astro'),
       faq: await readText('src/pages/en/faq.astro'),
       policies: await readText('src/pages/en/policies.astro'),
       housesIndex: await readText('src/pages/en/houses/index.astro'),
+      collectionPage: await readText('src/components/pages/CollectionPage.astro'),
       mavrikianoGuide: await readText('src/pages/en/guide/mavrikiano.astro'),
       vrouchasGuide: await readText('src/pages/en/guide/vrouchas.astro'),
       guidePage: await readText('src/components/pages/GuidePage.astro'),
@@ -481,15 +493,15 @@ describe('Stage 1 i18n foundation', () => {
       assert.doesNotMatch(page, hardcodedEnglishRoute);
     }
 
-    assert.match(staticPages.home, /localizedCanonical\(defaultLocale, localizedPath\(defaultLocale\)\)/);
-    assert.match(staticPages.home, /housePath\('argyro', defaultLocale\)/);
-    assert.match(staticPages.home, /villaPath\(villa\.slug, defaultLocale\)/);
+    assert.match(staticPages.homePage, /canonicalUrl\(routePath\(locale, 'home'\)\)/);
+    assert.match(staticPages.homePage, /resolveLocalizedLink\(locale, 'house', 'argyro'\)/);
+    assert.match(staticPages.homePage, /resolveLocalizedLink\(locale, 'villa', villa\.slug\)/);
     assert.match(staticPages.about, /localizedCanonical\(defaultLocale, localizedPath\(defaultLocale, 'about'\)\)/);
     assert.match(staticPages.contact, /action="\/api\/contact"/);
     assert.match(staticPages.contact, /contactSentPath = `\$\{localizedPath\(defaultLocale, 'contact'\)\}\?sent=1`/);
     assert.match(staticPages.contact, /<script define:vars=\{\{ contactSentPath \}\}>/);
     assert.match(staticPages.faq, /localizedPath\(defaultLocale, 'policies'\)\}\#access/);
-    assert.match(staticPages.housesIndex, /localizedCanonical\(defaultLocale, localizedPath\(defaultLocale, 'houses'\)\)/);
+    assert.match(staticPages.collectionPage, /canonicalUrl\(routePath\(locale, 'houses'\)\)/);
     assert.match(staticPages.mavrikianoGuide, /guidePath\('mavrikiano'\)/);
     assert.match(staticPages.guidePage, /routePath\(locale, 'guide', guideId\)/);
 

@@ -50,14 +50,16 @@ export function getPropertySeo(
   unit: PropertySeoUnit,
   poolLabel: string,
 ): PageSeoMeta {
-  const titleSuffix = getSeoCopy(locale).templates.titleSuffix;
-  const bedroomLabel = unit.bedrooms === 1 ? 'bedroom' : 'bedrooms';
+  const templates = getSeoCopy(locale).templates;
+  const titleSuffix = templates.titleSuffix;
+  const property = templates.property;
+  const bedroomLabel = unit.bedrooms === 1 ? property.bedroom : property.bedrooms;
 
   return {
     title: `${unit.name} — ${unit.location} | ${titleSuffix}`,
-    description: `${unit.name} in ${unit.location} — sleeps ${unit.sleeps}, ${unit.bedrooms} ${bedroomLabel}${
+    description: `${unit.name} ${property.in} ${unit.location} — ${property.sleeps} ${unit.sleeps}, ${unit.bedrooms} ${bedroomLabel}${
       unit.pool !== 'none' ? `, ${poolLabel.toLowerCase()}` : ''
-    }. Traditional Cretan home in Elounda.`,
+    }. ${property.tail}`,
   };
 }
 

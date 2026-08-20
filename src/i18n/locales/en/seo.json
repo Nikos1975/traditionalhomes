@@ -4,7 +4,14 @@
   "templates": {
     "titleSuffix": "Elounda Traditional Homes",
     "propertyTitle": "{name} | Elounda Traditional Homes",
-    "guideTitle": "{title} | Elounda Traditional Homes"
+    "guideTitle": "{title} | Elounda Traditional Homes",
+    "property": {
+      "in": "in",
+      "sleeps": "sleeps",
+      "bedroom": "bedroom",
+      "bedrooms": "bedrooms",
+      "tail": "Traditional Cretan home in Elounda."
+    }
   },
   "pages": {
     "home": {

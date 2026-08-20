@@ -113,11 +113,17 @@ describe('Stage 3 German route pilot — route map', () => {
   it('returns null instead of guessing a URL for a locale that has no page', async () => {
     const { routeMap } = await loadModules();
 
-    for (const locale of [...UNBUILT_LOCALES, 'de']) {
+    for (const locale of UNBUILT_LOCALES) {
       assert.equal(routeMap.resolveRoute(locale, 'houses'), null);
       assert.equal(routeMap.resolveRoute(locale, 'house', 'argyro'), null);
       assert.equal(routeMap.resolveRoute(locale, 'blogArticle', 'elounda-guide'), null);
     }
+
+    // German owns the cluster routes only; everything else still resolves to null.
+    assert.equal(routeMap.resolveRoute('de', 'blogArticle', 'elounda-guide'), null);
+    assert.equal(routeMap.resolveRoute('de', 'villa', 'almond-tree-villa'), null);
+    assert.equal(routeMap.resolveRoute('de', 'contact'), null);
+    assert.equal(routeMap.resolveRoute('de', 'house', 'leonidas'), null);
 
     // German owns the guide segment but only the Vrouchas guide itself.
     assert.equal(routeMap.resolveRoute('de', 'guide', 'mavrikiano'), null);
@@ -130,7 +136,13 @@ describe('Stage 3 German route pilot — route map', () => {
 
     assert.deepEqual(routeMap.routeLocales('guide', 'vrouchas'), ['en', 'de']);
     assert.deepEqual(routeMap.routeLocales('guide', 'mavrikiano'), ['en']);
-    assert.deepEqual(routeMap.routeLocales('houses'), ['en']);
+    assert.deepEqual(routeMap.routeLocales('houses'), ['en', 'de']);
+    assert.deepEqual(routeMap.routeLocales('home'), ['en', 'de']);
+    assert.deepEqual(routeMap.routeLocales('location'), ['en', 'de']);
+    assert.deepEqual(routeMap.routeLocales('house', 'argyro'), ['en', 'de']);
+    // Houses without German content stay English-only.
+    assert.deepEqual(routeMap.routeLocales('house', 'leonidas'), ['en']);
+    assert.deepEqual(routeMap.routeLocales('villa', 'almond-tree-villa'), ['en']);
 
     assert.deepEqual(routeMap.routeAlternates('guide', 'vrouchas'), [
       { locale: 'en', hreflang: 'en', path: EN_PILOT },
@@ -155,9 +167,13 @@ describe('Stage 3 German route pilot — route map', () => {
     assert.deepEqual(routeMap.matchDefaultLocalePath('/en/'), { routeId: 'home' });
     assert.equal(routeMap.matchDefaultLocalePath('https://traditional-homes.gr'), null);
 
-    // German has no houses page, so the link stays English and says so.
-    const german = routeMap.resolveAuthoredHref('de', '/en/houses/');
-    assert.deepEqual(german, { href: '/en/houses/', locale: 'en', isFallback: true, hreflang: 'en' });
+    // German now owns /de/ferienhaeuser/, so the authored English href resolves German.
+    const germanCollection = routeMap.resolveAuthoredHref('de', '/en/houses/');
+    assert.deepEqual(germanCollection, { href: '/de/ferienhaeuser/', locale: 'de', isFallback: false });
+
+    // A section German does not own still falls back, and says so.
+    const germanFallback = routeMap.resolveAuthoredHref('de', '/en/contact/');
+    assert.deepEqual(germanFallback, { href: '/en/contact/', locale: 'en', isFallback: true, hreflang: 'en' });
 
     // English pages are never marked as falling back.
     const english = routeMap.resolveAuthoredHref('en', '/en/policies/#access');
@@ -180,7 +196,8 @@ describe('Stage 3 German route pilot — route map', () => {
     assert.equal(routes.guidePath('mavrikiano'), '/en/guide/mavrikiano/');
     assert.equal(routes.guidePath('vrouchas', 'de'), DE_PILOT);
     // Helpers never fabricate a locale URL: they fall back to the English page.
-    assert.equal(routes.housePath('argyro', 'de'), '/en/houses/argyro/');
+    assert.equal(routes.housePath('argyro', 'de'), '/de/ferienhaeuser/argyro/');
+    assert.equal(routes.housePath('leonidas', 'de'), '/en/houses/leonidas/');
   });
 });
 
@@ -189,6 +206,8 @@ describe('Stage 3 German route pilot — source contracts', () => {
     const map = await readText('src/i18n/route-map.ts');
 
     assert.match(map, /segments: \{ en: \['guide'\], de: \['reisefuehrer'\] \}/);
+    assert.match(map, /segments: \{ en: \['houses'\], de: \['ferienhaeuser'\] \}/);
+    assert.match(map, /location: \{ segments: \{ en: \['location'\], de: \['lage'\] \} \}/);
 
     for (const locale of UNBUILT_LOCALES) {
       assert.doesNotMatch(map, new RegExp(`\\b${locale}: \\[`), `${locale} must not own a route before its pages exist`);
@@ -208,7 +227,10 @@ describe('Stage 3 German route pilot — source contracts', () => {
         if (locale === 'en') continue;
 
         if (!definition.dynamic) {
-          declared.add(`${locale}/${[...segments].join('/')}`);
+          // The locale root is `src/pages/<locale>/index.astro`; a nested
+          // section is `src/pages/<locale>/<segments>.astro` or its index.
+          const path = [...segments].join('/');
+          declared.add(path ? `${locale}/${path}` : `${locale}/index`);
           continue;
         }
 
@@ -219,9 +241,19 @@ describe('Stage 3 German route pilot — source contracts', () => {
       }
     }
 
-    // Every declared non-default locale route has a real page file.
+    // Every declared non-default locale route has a real page file, either as
+    // `<route>.astro` or as `<route>/index.astro`.
     for (const route of declared) {
-      assert.ok(await exists(`src/pages/${route}.astro`), `route map declares /${route}/ but src/pages/${route}.astro is missing`);
+      const parent = route.replace(/\/[^/]+$/, '');
+      const candidates = [
+        `src/pages/${route}.astro`,
+        `src/pages/${route}/index.astro`,
+        // Dynamic routes are generated from one `[slug].astro` file whose
+        // getStaticPaths is itself driven by the route map.
+        `src/pages/${parent}/[slug].astro`,
+      ];
+      const found = await Promise.all(candidates.map((candidate) => exists(candidate)));
+      assert.ok(found.some(Boolean), `route map declares /${route}/ but no page file exists for it`);
     }
 
     // Every non-default locale page file is declared in the route map.
@@ -238,7 +270,14 @@ describe('Stage 3 German route pilot — source contracts', () => {
         const absolute = join(page.parentPath ?? page.path, page.name);
         const route = relative(pagesRoot, absolute).replace(/\\/g, '/').replace(/\.astro$/, '');
 
-        assert.ok(declared.has(route), `src/pages/${route}.astro exists but is not declared in routeMap`);
+        const normalised = route.replace(/\/index$/, '') || route;
+        const isDynamic = route.includes('[');
+        const dynamicPrefix = route.replace(/\/\[[^\]]+\]$/, '');
+        const covered = isDynamic
+          ? [...declared].some((declaredRoute) => declaredRoute.startsWith(`${dynamicPrefix}/`))
+          : declared.has(route) || declared.has(`${normalised}/index`) || declared.has(normalised);
+
+        assert.ok(covered, `src/pages/${route}.astro exists but is not declared in routeMap`);
       }
     }
   });
@@ -326,9 +365,13 @@ describe('Stage 3 German route pilot — source contracts', () => {
     const formsDe = JSON.parse(await readText('src/i18n/locales/de/forms.json'));
     assert.ok(!('defaultItemName' in formsDe.booking), 'analytics item name must stay untranslated');
     assert.ok(!('chatPopupEmail' in formsDe.contact), 'contact address must stay untranslated');
-    // German reuses the shared brand title template; the page title and
-    // description themselves are German and live in the guide frontmatter.
-    assert.equal(await exists('src/i18n/locales/de/seo.json'), false, 'German reuses the shared brand SEO template');
+    // German now ships its own page SEO metadata for the routes it owns.
+    assert.equal(await exists('src/i18n/locales/de/seo.json'), true, 'German page SEO metadata must exist');
+    const seoDe = JSON.parse(await readText('src/i18n/locales/de/seo.json'));
+    assert.deepEqual(Object.keys(seoDe.pages).sort(), ['home', 'houses', 'location']);
+    for (const page of Object.values(seoDe.pages)) {
+      assert.ok(page.title.length > 0 && page.description.length > 0);
+    }
   });
 
   it('keeps inventory facts out of the German locale resources', async () => {
@@ -424,7 +467,7 @@ describe('Stage 3 German route pilot — generated output', async () => {
   });
 
   it('emits no hreflang for locales without a page', async () => {
-    for (const route of ['en/guide/vrouchas', 'de/reisefuehrer/vrouchas', 'en', 'en/blog', 'en/guide/mavrikiano']) {
+    for (const route of ['en/guide/vrouchas', 'de/reisefuehrer/vrouchas', 'en', 'en/blog', 'en/guide/mavrikiano', 'de', 'de/ferienhaeuser', 'de/lage', 'de/ferienhaeuser/argyro']) {
       const html = await page(route);
 
       for (const { hreflang, href } of alternates(html)) {
@@ -435,7 +478,7 @@ describe('Stage 3 German route pilot — generated output', async () => {
   });
 
   it('does not emit hreflang on pages that have no translated equivalent', async () => {
-    for (const route of ['en', 'en/blog', 'en/guide/mavrikiano', 'en/houses', 'en/contact']) {
+    for (const route of ['en/blog', 'en/guide/mavrikiano', 'en/contact', 'en/faq']) {
       assert.deepEqual(alternates(await page(route)), [], `${route} should not advertise alternates`);
     }
   });
@@ -656,7 +699,7 @@ describe('Stage 3 German route pilot — generated output', async () => {
     const links = [...llms.matchAll(/\[[^\]]+\]\(([^\s)]+)\)/g)].map(([, url]) => url);
 
     assert.ok(links.includes(`${SITE}${DE_PILOT}`), 'llms.txt must list the real German route');
-    assert.equal(links.filter((url) => url.startsWith(`${SITE}/de/`)).length, 1, 'only real German routes belong in llms.txt');
+    assert.equal(links.filter((url) => url.startsWith(`${SITE}/de/`)).length, 5, 'only real German routes belong in llms.txt');
 
     // One global file: no per-language llms variants.
     assert.equal(await exists('public/llms-de.txt'), false);
@@ -674,6 +717,147 @@ describe('Stage 3 German route pilot — generated output', async () => {
     assert.ok(children.every((url) => /sitemap-\d+\.xml$/.test(url)), 'no language-specific sitemaps');
     await access(join(outputPath, 'sitemap-index.xml'));
     assert.equal(await exists('public/sitemap-de.xml'), false);
+  });
+
+  it('renders the four German cluster routes with German metadata', async () => {
+    const expected = [
+      { route: 'de', path: '/de/', titleStart: 'Ferienhäuser in Elounda', h1: 'Wohnen im' },
+      { route: 'de/ferienhaeuser', path: '/de/ferienhaeuser/', titleStart: 'Ferienhäuser', h1: 'Unsere Ferienhäuser' },
+      { route: 'de/lage', path: '/de/lage/', titleStart: 'Lage', h1: 'Die' },
+      { route: 'de/ferienhaeuser/argyro', path: '/de/ferienhaeuser/argyro/', titleStart: 'Haus Argyro', h1: 'Haus Argyro' },
+    ];
+
+    for (const { route, path, titleStart, h1 } of expected) {
+      const html = await page(route);
+
+      assert.match(html, /<html lang="de" dir="ltr">/, `${path} must be German and LTR`);
+      assert.equal(canonicalOf(html), `${SITE}${path}`, `${path} must self-canonicalise`);
+
+      const title = html.match(/<title>([\s\S]*?)<\/title>/)?.[1] ?? '';
+      assert.ok(title.startsWith(titleStart), `${path} title was ${title}`);
+
+      const heading = (html.match(/<h1[^>]*>([\s\S]*?)<\/h1>/)?.[1] ?? '').replace(/<[^>]+>/g, ' ').trim();
+      assert.ok(heading.startsWith(h1), `${path} H1 was ${heading}`);
+      assert.equal((html.match(/<h1[\s>]/g) ?? []).length, 1, `${path} must have exactly one H1`);
+
+      const description = html.match(/<meta name="description" content="([^"]*)"/)?.[1] ?? '';
+      assert.ok(description.length > 0 && description.length <= 200);
+    }
+  });
+
+  it('gives every German cluster route reciprocal EN/DE alternates', async () => {
+    const pairs = [
+      ['de', 'en', '/de/', '/en/'],
+      ['de/ferienhaeuser', 'en/houses', '/de/ferienhaeuser/', '/en/houses/'],
+      ['de/lage', 'en/location', '/de/lage/', '/en/location/'],
+      ['de/ferienhaeuser/argyro', 'en/houses/argyro', '/de/ferienhaeuser/argyro/', '/en/houses/argyro/'],
+    ];
+
+    for (const [deRoute, enRoute, dePath, enPath] of pairs) {
+      const expected = [
+        { hreflang: 'en', href: `${SITE}${enPath}` },
+        { hreflang: 'de', href: `${SITE}${dePath}` },
+        { hreflang: 'x-default', href: `${SITE}${enPath}` },
+      ];
+
+      assert.deepEqual(alternates(await page(deRoute)), expected, `${dePath} alternates`);
+      assert.deepEqual(alternates(await page(enRoute)), expected, `${enPath} alternates`);
+    }
+  });
+
+  it('prefers real German equivalents and marks every English fallback', async () => {
+    const germanRoutes = ['de', 'de/ferienhaeuser', 'de/lage', 'de/ferienhaeuser/argyro', 'de/reisefuehrer/vrouchas'];
+    const germanEquivalents = ['/en/', '/en/houses/', '/en/location/', '/en/houses/argyro/'];
+
+    for (const route of germanRoutes) {
+      const html = await page(route);
+
+      for (const { href, hreflang } of anchors(html)) {
+        if (!href?.startsWith('/')) continue;
+
+        const pathname = href.split('#')[0].split('?')[0];
+        await access(join(outputPath, pathname, 'index.html'));
+
+        if (pathname.startsWith('/de/')) {
+          assert.equal(hreflang, undefined, `${route}: ${href} is in-locale and must not carry hreflang`);
+        } else {
+          assert.equal(hreflang, 'en', `${route}: ${href} leaves German and must carry hreflang="en"`);
+          assert.ok(
+            !germanEquivalents.includes(pathname),
+            `${route}: ${href} has a real German equivalent and must not fall back`,
+          );
+        }
+      }
+    }
+  });
+
+  it('serialises only the active locale into client-side script payloads', async () => {
+    const german = await page('de');
+    const english = await page('en');
+
+    const germanScripts = (german.match(/<script[\s\S]*?<\/script>/g) ?? []).join(' ');
+    const englishScripts = (english.match(/<script[\s\S]*?<\/script>/g) ?? []).join(' ');
+
+    // Compare serialised *string values*, not identifiers that merely contain
+    // the word (`maxAdults` is a DOM variable, not a shipped label).
+    const serialisedValues = (scripts) =>
+      new Set([...scripts.matchAll(/&quot;([^&]{2,60})&quot;|"([^"\\]{2,60})"/g)].map(([, a, b]) => a ?? b));
+
+    const germanValues = serialisedValues(germanScripts);
+    const englishValues = serialisedValues(englishScripts);
+
+    for (const englishOnly of ['Check Dates', 'Search all available properties', 'Arrival', 'Nights', 'Adults']) {
+      assert.ok(!germanValues.has(englishOnly), `German payload leaks English string: ${englishOnly}`);
+    }
+    for (const germanOnly of ['Verfügbarkeit prüfen', 'Nächte', 'Erwachsene', 'Anreise']) {
+      assert.ok(!englishValues.has(germanOnly), `English payload leaks German string: ${germanOnly}`);
+    }
+
+    // The German page does ship its own German labels.
+    assert.ok(germanValues.has('Erwachsene') || germanScripts.includes('Erwachsene'));
+  });
+
+  it('keeps inventory the single factual source for the German house page', async () => {
+    const html = await page('de/ferienhaeuser/argyro');
+    const inventory = JSON.parse(await readText('src/inventory/inventory.json'));
+    const units = Array.isArray(inventory) ? inventory : Object.values(inventory).find(Array.isArray);
+    const argyro = units.find((unit) => unit.slug === 'argyro');
+
+    // Facts come from inventory, and the German page shows the same numbers.
+    assert.ok(html.includes(String(argyro.sleeps)));
+    assert.ok(html.includes(String(argyro.bedrooms)));
+
+    // Locale resources must not carry inventory values.
+    for (const file of ['common', 'navigation', 'forms', 'guide', 'properties', 'home', 'location', 'seo']) {
+      const contents = await readText(`src/i18n/locales/de/${file}.json`);
+      assert.doesNotMatch(contents, /"bookingId"|"roomCode"|"latitude"|"longitude"|reserve-online/i, `de/${file}.json`);
+    }
+  });
+
+  it('lists every real German route in the sitemap and nothing else', async () => {
+    const sitemap = await readFile(join(outputPath, 'sitemap-0.xml'), 'utf8');
+    const urls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(([, url]) => url);
+    const german = urls.filter((url) => url.startsWith(`${SITE}/de/`)).sort();
+
+    assert.deepEqual(german, [
+      `${SITE}/de/`,
+      `${SITE}/de/ferienhaeuser/`,
+      `${SITE}/de/ferienhaeuser/argyro/`,
+      `${SITE}/de/lage/`,
+      `${SITE}/de/reisefuehrer/vrouchas/`,
+    ]);
+
+    for (const url of urls) {
+      await access(join(outputPath, new URL(url).pathname, 'index.html'));
+    }
+  });
+
+  it('generates no German page for a house without German content', async () => {
+    for (const slug of ['leonidas', 'margarita', 'clio', 'monastiri']) {
+      await assert.rejects(access(join(outputPath, 'de', 'ferienhaeuser', slug, 'index.html')));
+    }
+    await assert.rejects(access(join(outputPath, 'de', 'villa', 'almond-tree-villa', 'index.html')));
+    await assert.rejects(access(join(outputPath, 'de', 'kontakt', 'index.html')));
   });
 
   it('keeps the blog canonical contract unchanged', async () => {
