@@ -63,11 +63,12 @@ test("the orchestrator routes every mode to a canonical skill and retains manual
     ".agents/skills/blog-revise-draft/SKILL.md",
     ".agents/skills/blog-content-audit/SKILL.md",
     ".agents/skills/blog-publication/SKILL.md",
+    ".agents/skills/traditional-homes-article-visual-plan/SKILL.md",
     ".agents/skills/traditional-homes-image-pipeline/SKILL.md",
   ]) {
     assert.match(orchestrator, new RegExp(file.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")));
   }
-  for (const mode of ["new-article", "revise-draft", "audit", "publication", "image-only"]) {
+  for (const mode of ["new-article", "revise-draft", "audit", "publication", "visual-plan", "image-only"]) {
     assert.match(orchestrator, new RegExp(`\\b${mode}\\b`));
   }
   assert.match(orchestrator, /no automatic publication/i);

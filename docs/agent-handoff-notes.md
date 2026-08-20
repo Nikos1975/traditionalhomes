@@ -30,12 +30,19 @@
 - Not verified here: `npm run seo:links` fails with `[502] /` on this branch and identically on unmodified `origin/main` in the same sandbox because its loopback crawl is intercepted by an egress proxy. It must be re-run on the project workstation.
 - Remaining: no live Search Console acquisition was performed. The sandbox has no Google ADC and no route to the Search Console API, so `content:gsc:properties`, `content:gsc:fetch`, `content:gsc:status` and `content:gsc:analyze` against `sc-domain:traditional-homes.gr` are still outstanding and must run on the workstation. No merge, deployment or public content change was made.
 
+### 2026-08-16 - Article visual-plan skill pilot
+
+- Added a project-local planning-only skill for evidence-led article visuals, with a fixed `docs/research/blog/<slug>/visual-plan.md` contract and deterministic validator.
+- Added a `visual-plan` Blog Orchestrator mode, lifecycle and operating-model documentation, and focused tests for text-only decisions, rights blockers, generated-image disclosure, downstream-action prohibition, and orchestration routing.
+- The skill does not generate, process, insert, publish, deploy, post, or merge anything. A separate explicit approval remains required before the existing image pipeline may act.
+
 ### 2026-08-08 - Search Console Phase 2B
 
 - Added local-user ADC Search Console property discovery and paginated Search Analytics acquisition.
 - API datasets are normalized and persisted privately alongside CSV imports; acquisitions reaching the 100-batch safety cap are marked incomplete and analysis remains guarded.
 - Added focused coverage for authentication redaction, transport behavior, property validation, one/multi-page pagination, cap truncation, persistence, CLI validation, and mixed CSV/API analysis.
 - Remaining: run `gcloud auth application-default login --scopes=https://www.googleapis.com/auth/webmasters.readonly` locally before using live acquisition, if ADC is not already configured.
+
 
 ### 2026-08-08 - Search Console Phase 2B design only
 
