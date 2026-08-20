@@ -2,9 +2,11 @@
 
 ## Objective
 
-Prepare multilingual support for the Astro website while keeping the current English-first site stable. This document is the control source for all multilingual route, page, and translation work.
+Build multilingual support for `traditional-homes.gr` without weakening the English site, duplicating factual sources, or publishing locale routes that do not really exist.
 
-## Approved Locale Strategy
+This document defines durable multilingual policy. Live route availability is owned by `src/i18n/route-map.ts`.
+
+## Locale strategy
 
 ```ts
 defaultLocale: 'en'
@@ -14,130 +16,117 @@ routing: {
 }
 ```
 
-- English remains the default locale.
-- English remains publicly prefixed at `/en/`.
-- Slugs stay stable across languages for now.
+- English remains the default locale and stays publicly under `/en/`.
 - Greek is not the default locale.
 - Do not use `prefixDefaultLocale: false`.
-- Do not use Weglot or a Google Translate widget.
+- Do not use Weglot, Google Translate widgets, automatic browser/IP redirects, or a client-side machine-translation runtime.
+- Arabic and Hebrew require explicit RTL QA before launch.
 
-## Non-Negotiables
+## Core architecture
 
-- Keep `/en/` as the canonical English route.
-- Preserve current English behavior during foundation work.
-- Do not translate the full website during foundation work.
-- Keep `src/inventory/inventory.json` as the factual source of truth.
-- Preserve stable property and guide slugs across locales until a later approved slug strategy exists.
-- Treat `/en/blog/` as the canonical English blog; `/blog/**` is redirect-only.
-- Keep contact form behavior unchanged.
+### Stable identity, localized public URLs
 
-## Current Route Summary
+Internal route/content identities are stable and locale-independent. Public path segments and editorial slugs may differ by locale.
 
-- `/` redirects to `/en/`.
-- `/en/` is the homepage.
-- `/en/houses/`
-- `/en/houses/[slug]/`
-- `/en/villa/[slug]/`
-- `/en/location/`
-- `/en/contact/`
-- `/en/faq/`
-- `/en/policies/`
-- `/en/about/`
-- `/en/guide/mavrikiano/`
-- `/en/guide/vrouchas/`
-- `/en/blog/` is the English blog index; legacy `/blog/**` redirects permanently to it.
+Examples proven by the German reference implementation:
 
-## Future Route Target
+| Internal identity | English | German |
+| --- | --- | --- |
+| `home` | `/en/` | `/de/` |
+| `houses` | `/en/houses/` | `/de/ferienhaeuser/` |
+| `house/argyro` | `/en/houses/argyro/` | `/de/ferienhaeuser/argyro/` |
+| `location` | `/en/location/` | `/de/lage/` |
+| `guide/vrouchas` | `/en/guide/vrouchas/` | `/de/reisefuehrer/vrouchas/` |
 
-Top-level locale roots:
+Do not assume the same public slug in every language. Proper names normally remain unchanged; generic route segments and editorial slugs may localize naturally.
 
-- `/en/`
+### Fail closed
+
+A non-default-locale route exists only when the route map explicitly declares it and the page can render substantive localized content. Do not infer, machine-translate, or fabricate future locale URLs.
+
+### Shared rendering
+
+Equivalent locale pages should share page renderers where their structure is the same. Thin route wrappers pass `locale` explicitly. Do not fork complete page markup per language unless structural divergence is genuinely required.
+
+### Facts and presentation are separate
+
+`src/inventory/inventory.json` remains the factual property source of truth. Other structured factual files keep ownership of their own values. Locale resources may describe how a fact is presented, but must not become a second factual inventory.
+
+English is the verified factual master for substantive copy. Suspected factual errors become cross-language corrections; they are not silently fixed in one locale.
+
+### Static-first delivery
+
+Select locale content at build time and serve static HTML. Browser payloads should contain only the active locale's client-side labels when client code needs localized strings.
+
+## SEO contract
+
+- Every real localized page is self-canonical.
+- Emit reciprocal hreflang only for real equivalent routes.
+- `x-default` points to English when an alternate set exists.
+- Do not emit hreflang for an unbuilt locale.
+- Prefer a real same-locale internal link; otherwise link to the real English page and mark the fallback as English.
+- Keep one global sitemap entry point.
+- Keep one global `/llms.txt`.
+- Add localized sitemap/LLM entries only when the corresponding page actually builds.
+- `/en/blog/` remains the canonical English blog; legacy `/blog/**` remains redirect-only unless a separate approved blog migration changes that contract.
+
+## Content placement
+
+Use locale JSON/TypeScript resources for reusable presentation strings such as:
+
+- navigation and footer labels;
+- buttons, forms, filters, maps and breadcrumbs;
+- derived display text;
+- SEO templates;
+- localized presentation of descriptive structured values.
+
+Use locale-specific Markdown/content entries for long-form content such as:
+
+- house and villa descriptions;
+- guides;
+- long location/editorial bodies;
+- future translated blog articles.
+
+Share media paths where practical. Alt text and captions may localize as presentation while the underlying asset remains shared.
+
+## German reference implementation
+
+PR #59 proves the reference architecture on five German routes:
+
 - `/de/`
-- `/fr/`
-- `/ru/`
-- `/zh/`
-- `/ar/`
-- `/he/`
+- `/de/ferienhaeuser/`
+- `/de/ferienhaeuser/argyro/`
+- `/de/lage/`
+- `/de/reisefuehrer/vrouchas/`
 
-Stable slug examples:
+This is not a sitewide German launch. The route map remains the live authority for what exists on the current branch.
 
-- `/en/houses/argyro/`
-- `/de/houses/argyro/`
-- `/fr/houses/argyro/`
-- `/ru/houses/argyro/`
-- `/zh/houses/argyro/`
-- `/ar/houses/argyro/`
-- `/he/houses/argyro/`
+## Expansion order
 
-## Content Strategy
+1. Prove infrastructure and complete visible-language QA on a bounded reference scope.
+2. Scale German one route/content unit at a time without further broad renderer refactors.
+3. Add a language switcher only after enough real equivalents exist to make it useful.
+4. Expand to French, Russian, Simplified Chinese, Arabic and Hebrew only after the German pattern remains stable.
+5. Run explicit RTL layout and interaction QA for Arabic and Hebrew.
+6. Translate blog content only under a separately approved editorial/SEO plan.
 
-Use JSON or TypeScript locale files for short interface strings:
+## Non-negotiables
 
-- navigation
-- buttons
-- breadcrumbs
-- forms
-- footer
-- labels
-- SEO templates
+- Preserve `/en/` public URLs and behavior unless a cross-language correction is explicitly approved.
+- Keep `src/inventory/inventory.json` as the factual property authority.
+- Do not create phantom routes, sitemap entries or hreflang entries.
+- Do not independently correct facts in one locale.
+- Keep contact submission behavior and `/api/contact` unchanged during translation work.
+- Do not merge, deploy, publish, change DNS, Cloudflare variables, email routing, or production state without explicit approval.
 
-Use Markdown or content collections for long-form content:
+## Protected operational files/settings
 
-- house descriptions
-- villa descriptions
-- location pages
-- guides
-- blog posts
-- long FAQ and policy bodies where needed
-
-Inventory rules:
-
-- `src/inventory/inventory.json` remains the factual source of truth.
-- Translated display strings should live beside inventory, keyed by stable slug.
-- Do not duplicate factual inventory values into translation files unless they are display labels.
-- Gallery image paths remain shared.
-- Gallery alt text and captions may be localized later.
-
-## Migration Order
-
-1. Document route, content, and QA rules.
-2. Add i18n foundation helpers and English locale files.
-3. Convert shared UI strings in Header and Footer only.
-4. Add route/file structure for one non-English locale after English is stable.
-5. Translate one language at a time from the English source.
-6. Add localized long-form content collections after shared UI is stable.
-7. Add locale-aware SEO, canonicals, hreflang, and sitemap checks.
-8. Maintain the approved `/blog/**` to `/en/blog/**` redirect and canonical contract.
-9. Complete RTL-specific review for Arabic and Hebrew.
-
-## Launch Order
-
-1. English foundation
-2. German
-3. French
-4. Russian
-5. Simplified Chinese
-6. Arabic with RTL QA
-7. Hebrew with RTL QA after route scaffolding is approved
-
-## Risks
-
-- Accidentally changing `/en/` behavior while adding i18n helpers.
-- Duplicating inventory facts in translation files and creating factual drift.
-- Migrating `/blog/` without a redirect/canonical plan.
-- Breaking contact form behavior while changing form labels.
-- Adding locale routes before shared rendering and fallback rules are clear.
-- Missing `dir="rtl"` layout issues for Arabic or Hebrew.
-- Generating sitemap or hreflang entries before all target routes exist.
-- Publishing translated claims that expand beyond the English source.
-
-## Files Not To Touch Without Explicit Approval
+Do not change without explicit approval:
 
 - `functions/api/contact.js`
 - Cloudflare Pages variables
-- Cloudflare DNS settings
-- Cloudflare Email Service configuration
-- Gmail or email routing setup
-- Deployment configuration
-- Production deployment state
-- Existing contact endpoint behavior at `/api/contact`
+- Cloudflare DNS
+- Cloudflare Email Service
+- Gmail/email routing
+- deployment configuration
+- production deployment state
