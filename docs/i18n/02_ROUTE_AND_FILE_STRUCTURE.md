@@ -1,86 +1,79 @@
-# Route And File Structure
+# Route and File Structure
 
-This document records the proposed future i18n structure. It is a plan, not a statement that these files or routes already exist.
+This document records the durable multilingual route/rendering contract. `src/i18n/route-map.ts` is the live authority for which localized public routes actually exist on the current branch.
 
-## Implemented Route Map (Stage 3)
+## Stable internal identity vs public URL
 
-Public URLs are derived from stable internal identifiers, never assumed to be
-the same string in every language. `src/i18n/route-map.ts` is the single source
-of truth.
+Public URLs are resolved from stable internal route/content identities. Do not assume that an internal id, English segment or English editorial slug must appear in every locale URL.
 
-```ts
-routeMap = {
-  guide: {
-    segments: { en: ['guide'], de: ['reisefuehrer'] },
-    dynamic: true,
-    content: {
-      vrouchas: { en: 'vrouchas', de: 'vrouchas' },
-      mavrikiano: { en: 'mavrikiano' },
-    },
-  },
-}
-```
+Two layers may localize independently:
 
-Two independent layers may be localized:
+1. **generic route segments** — for example `houses` → German `ferienhaeuser`, `location` → `lage`, `guide` → `reisefuehrer`;
+2. **public content slugs** — property/place names commonly remain unchanged, while editorial article slugs may later localize.
 
-1. **Route segments** — the generic part of the path (`houses`, `location`,
-   `guide`). A locale that owns a route declares its own segments.
-2. **Content slugs** — the public slug for an internal content id. Place and
-   property names normally keep their internal slug in every locale
-   (`argyro`, `vrouchas`, `mavrikiano`); editorial article slugs may differ.
+Reference examples:
 
-Resolution rules:
+| Internal identity | EN | DE |
+| --- | --- | --- |
+| `home` | `/en/` | `/de/` |
+| `houses` | `/en/houses/` | `/de/ferienhaeuser/` |
+| `house/argyro` | `/en/houses/argyro/` | `/de/ferienhaeuser/argyro/` |
+| `location` | `/en/location/` | `/de/lage/` |
+| `guide/vrouchas` | `/en/guide/vrouchas/` | `/de/reisefuehrer/vrouchas/` |
 
-- Default locale: any content id is routable; its public slug is the declared
-  value, or the internal id when nothing is declared.
-- Every other locale: content is routable only when the map names a slug for it.
-  Nothing is inferred and nothing is machine-translated.
-- `resolveRoute` returns `null` rather than a guessed URL; `routePath` and
-  `assertRoute` throw, so the build fails instead of emitting a locale route
-  that does not exist.
-- `routeAlternates` returns alternates only for locales that really render the
-  route, and adds `x-default` only when a translation exists.
-- `matchDefaultLocalePath` / `resolveAuthoredHref` resolve navigation and footer
-  links that are still authored as English paths through the same map, so a
-  locale that owns a translated route gets its own URL and everything else keeps
-  the English URL tagged with `hreflang`.
+## Route-map contract
 
-Worked example of the target shape:
+`src/i18n/route-map.ts` decides route availability.
+
+Required behavior:
+
+- default-locale routes remain available under `/en/`;
+- a non-default locale is routable only when explicitly declared;
+- missing locale routes resolve to `null`/fail closed rather than being guessed;
+- route helpers that require a real route should throw rather than emit a phantom URL;
+- alternates are produced only for real equivalent routes;
+- authored English links resolve to a same-locale equivalent when one exists;
+- otherwise the real English URL is retained and marked as an English fallback.
+
+`src/i18n/routes.ts` remains a low-level path primitive/helper layer. It does not decide which translated pages exist.
+
+## Shared page rendering
+
+The German reference implementation proves the shared-renderer pattern with:
 
 ```text
-internal id          EN                              DE
-guide/vrouchas       /en/guide/vrouchas/             /de/reisefuehrer/vrouchas/
-house/argyro         /en/houses/argyro/              /de/ferienhaeuser/argyro/
-location             /en/location/                   /de/lage/
-blogArticle/
-  elounda-beaches    /en/blog/elounda-beaches/       /de/blog/straende-in-elounda/
+src/components/pages/
+  HomePage.astro
+  CollectionPage.astro
+  LocationPage.astro
+  HouseDetailPage.astro
+  GuidePage.astro
 ```
 
-Only the first row exists today. The rest are covered by unit tests against a
-fixture map so the capability is proven without creating German URLs.
+Equivalent locale route files should be thin wrappers that:
 
-`src/i18n/routes.ts` remains the low-level path primitive plus thin,
-route-map-backed helpers. It never decides which routes exist.
+1. select the locale;
+2. resolve the internal route/content id;
+3. load the required localized content;
+4. pass `locale` and data explicitly into the shared renderer.
 
-## Proposed Locale Helper Structure
+Reusable components should receive locale/data explicitly where practical. Do not infer locale from browser state when static build context already knows it.
+
+Do not duplicate a complete German/French/etc page implementation when one shared renderer can serve the equivalent page.
+
+## Locale helper structure
+
+Current multilingual helpers live under:
 
 ```text
 src/i18n/
   config.ts
   routes.ts
+  route-map.ts
   translate.ts
   seo.ts
   locales/
     en/
-      common.json
-      navigation.json
-      forms.json
-      seo.json
-      properties.json
-      home.json
-      location.json
-      faq.json
-      policies.json
     de/
     fr/
     ru/
@@ -91,97 +84,67 @@ src/i18n/
 
 Responsibilities:
 
-- `config.ts`: supported locales, default locale, locale labels, and text direction.
-- `routes.ts`: locale-aware route builders and stable slug helpers.
-- `translate.ts`: translation lookup and fallback helpers.
-- `seo.ts`: locale-aware SEO, canonical, and hreflang helpers.
-- `locales/*/*.json`: short interface strings and SEO templates.
+- `config.ts` — supported locales, default locale, labels and direction;
+- `route-map.ts` — route/content identity → real localized public path;
+- `routes.ts` — low-level path helpers;
+- `translate.ts` — locale overlay/fallback helpers;
+- `seo.ts` — canonical, metadata and alternate helpers;
+- `locales/<locale>/` — reusable presentation copy and SEO templates.
 
-## Proposed Content Collection Structure
+Do not create empty locale resources merely to imply completion.
 
-```text
-src/content/
-  houses/
-    en/
-    de/
-    fr/
-    ru/
-    zh/
-    ar/
-    he/
-  villa/
-    en/
-    de/
-    fr/
-    ru/
-    zh/
-    ar/
-    he/
-  guides/
-    en/
-    de/
-    fr/
-    ru/
-    zh/
-    ar/
-    he/
-  blog/
-    en/
-    de/
-    fr/
-    ru/
-    zh/
-    ar/
-    he/
-```
+## Long-form localized content
 
-Long-form content should move into locale-specific content folders only after the English foundation and shared rendering approach are stable.
+Use locale-specific content entries for substantive page bodies rather than large strings embedded in UI dictionaries.
 
-## Proposed Shared Page Components
-
-Route files should later become thin wrappers. Shared page rendering should move into page-level components such as:
+Current reference patterns include:
 
 ```text
-src/components/pages/
-  HomePage.astro
-  CollectionPage.astro
-  HouseDetailPage.astro
-  VillaDetailPage.astro
-  LocationPage.astro
-  ContactPage.astro
-  FaqPage.astro
-  PoliciesPage.astro
-  BlogIndexPage.astro
-  BlogArticlePage.astro
+src/content/houses/de/argyro.md
+src/guides/de/Vrouchas-Guide.md
 ```
 
-## Route File Principles
+A non-default-locale detail route should not build unless the corresponding substantive localized content is present.
 
-- Route files should load locale, route params, and content.
-- Route files should pass data into shared page components.
-- Route files should avoid duplicating page markup per locale.
-- Shared components should receive resolved strings and content rather than reading route state implicitly where possible.
-- Internal links should be built through locale-aware route helpers.
+Future content collections/localized folders should be added only when the route being implemented needs them. Do not scaffold all future languages in advance.
 
-## Future Translated-Route Contract
+## Facts vs presentation
 
-- English remains under `/en/`, and every current English URL is frozen.
-- Public path segments and public content slugs are locale-specific by design. Do not assume one slug across locales.
-- Internal content and route identifiers are stable and locale-independent, and never appear in a URL directly.
-- A translated route must pass its locale explicitly to shared page renderers and reusable components; components must not infer locale from route state.
-- Locale resources contain reusable interface copy and SEO templates, not inventory facts, property names, slugs, identifiers, coordinates, or operational data.
-- `/en/blog/` is the canonical English-only blog route; `/blog/**` is redirect-only.
-- Adding translated routes, hreflang output, a language selector, or sitemap locale expansion requires a separate approved stage.
-- `GuidePage.astro` is implemented as of Stage 3 and is the first shared page renderer. `src/pages/en/guide/vrouchas.astro` and `src/pages/de/reisefuehrer/vrouchas.astro` are thin wrappers over it.
-- The remaining page renderers listed above are still proposals.
+Structured factual data keeps one owner.
 
-## Blog Migration Note
+Examples:
 
-The blog is canonically under `/en/blog/`. Do not add translated blog routes without a separately approved stage.
+- `src/inventory/inventory.json` — property facts;
+- `src/data/locations.ts` — location facts;
+- `src/inventory/groups.json` — group definitions;
+- `src/inventory/suggested-pairings.json` — pairing facts.
 
-Before migrating blog routes, prepare:
+Locale presentation may map descriptive values by stable slug/id/semantic key or exact English source string, but must not restate the factual dataset.
 
-- redirect rules from legacy unprefixed blog URLs
-- canonical URL rules
-- sitemap expectations
-- checks for existing published and hidden/noindex articles
+PR #59's visible-language completion proves this pattern with locale presentation mappings and localized gallery vocabulary while preserving the factual source files unchanged. Branches predating that commit may not yet contain every presentation helper; treat the architecture as the reference contract, not as permission to assume a file exists without checking.
+
+## SEO and fallback structure
+
+- Every real locale page is self-canonical.
+- Equivalent EN/locale pages emit reciprocal hreflang only when both exist.
+- `x-default` points to English for an alternate set.
+- Unbuilt locales receive no hreflang, sitemap entry or fake route.
+- German pages may link to English-only pages; those are intentional fallbacks and should carry `hreflang="en"` where supported.
+- Keep one global sitemap entry point.
+- Keep one global `/llms.txt`.
+- Preserve `/en/blog/` as the canonical English blog and `/blog/**` as redirect-only until a separate translated-blog stage is approved.
+
+## Scaling contract
+
+The architecture is considered scalable only when the next localized page of an existing structural type mostly requires:
+
+- route-map availability;
+- localized long-form content when needed;
+- locale presentation entries for genuinely new values;
+- focused tests.
+
+If the second property or equivalent page still requires a broad shared-renderer refactor, stop and treat that as an infrastructure deficiency before scaling further.
+
+## Language switcher
+
+A switcher is intentionally deferred. When implemented, it must derive available destinations from real route availability. It must not offer a locale destination that does not exist.
