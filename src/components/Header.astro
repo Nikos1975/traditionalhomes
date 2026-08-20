@@ -1,5 +1,6 @@
 ---
 import { defaultLocale, type Locale } from '../i18n/config';
+import { resolveAuthoredHref } from '../i18n/route-map';
 import { getCommonCopy, getNavigationCopy } from '../i18n/translate';
 
 interface Props {
@@ -9,7 +10,17 @@ interface Props {
 const { locale = defaultLocale } = Astro.props;
 const common = getCommonCopy(locale);
 const navigation = getNavigationCopy(locale);
-const navLinks = navigation.main;
+
+// Authored hrefs are resolved through the route map, so a locale that owns a
+// translated route gets its own public URL. Sections with no page in the active
+// locale keep the default-locale URL and are tagged with hreflang, which keeps
+// the fallback explicit instead of silent.
+const navLinks = navigation.main.map((link) => {
+  const resolved = resolveAuthoredHref(locale, link.href);
+
+  return { label: link.label, href: resolved.href, hreflang: resolved.hreflang };
+});
+const brandLink = resolveAuthoredHref(locale, navigation.brand.homeHref);
 
 const currentPath = Astro.url.pathname;
 const bookingUrl = 'https://traditionalhomes.reserve-online.net/';
@@ -24,7 +35,8 @@ const bookingUrl = 'https://traditionalhomes.reserve-online.net/';
 
     {/* BRANDING / MASTHEAD */}
     <a
-      href={navigation.brand.homeHref}
+      href={brandLink.href}
+      hreflang={brandLink.hreflang}
       class="group flex min-w-0 flex-shrink items-center gap-3 sm:gap-4"
       aria-label={navigation.brand.homeAriaLabel}
     >
@@ -47,11 +59,12 @@ const bookingUrl = 'https://traditionalhomes.reserve-online.net/';
 
     {/* DESKTOP NAVIGATION */}
     <nav class="hidden xl:flex items-center gap-2" aria-label={navigation.mainAriaLabel}>
-      {navLinks.map(({ label, href }) => {
+      {navLinks.map(({ label, href, hreflang }) => {
         const isActive = currentPath === href || currentPath.startsWith(href.replace(/\/$/, '') + '/');
         return (
           <a
             href={href}
+            hreflang={hreflang}
             class:list={[
               'font-sans text-[11px] uppercase tracking-[0.2em] px-4 py-2 rounded-full transition-all duration-300 font-bold',
               isActive
@@ -119,12 +132,13 @@ const bookingUrl = 'https://traditionalhomes.reserve-online.net/';
     </div>
 
     <ul class="min-h-0 flex-1 space-y-2 overflow-y-auto overscroll-contain px-4 py-4" role="list">
-      {navLinks.map(({ label, href }) => {
+      {navLinks.map(({ label, href, hreflang }) => {
         const isActive = currentPath === href || currentPath.startsWith(href.replace(/\/$/, '') + '/');
         return (
           <li>
             <a
               href={href}
+              hreflang={hreflang}
               class:list={[
                 'block font-serif text-3xl px-4 py-3 rounded-xl transition-all duration-300',
                 isActive

@@ -1,0 +1,15 @@
+{
+  "booking": {
+    "quickSearchAriaLabel": "Schnelle Verfügbarkeitssuche",
+    "arrival": "Anreise",
+    "nights": "Nächte",
+    "adults": "Erwachsene",
+    "check": "Prüfen"
+  },
+  "contact": {
+    "openChatLabel": "Chat öffnen",
+    "chatTitle": "Fragen? Schreiben Sie uns",
+    "chatPopupBeforeEmail": "Für Buchungsanfragen nutzen Sie bitte die Verfügbarkeitssuche oder schreiben Sie an",
+    "chatPopupAfterEmail": "Chat folgt in Kürze."
+  }
+}

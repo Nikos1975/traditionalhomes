@@ -1,0 +1,70 @@
+{
+  "brand": {
+    "kicker": "Mavrikiano & Vrouchas · Kreta",
+    "markAlt": "Logo von Elounda Traditional Homes"
+  },
+  "footer": {
+    "description": "Eine familiengeführte Sammlung traditioneller Steinhäuser in Mavrikiano und eine größere Villa in Vrouchas, oberhalb von Elounda.",
+    "collection": {
+      "heading": "Häuser & Villa",
+      "links": [
+        {
+          "label": "Alle Steinhäuser",
+          "href": "/en/houses/"
+        },
+        {
+          "label": "Almond Tree Villa",
+          "href": "/en/villa/almond-tree-villa/"
+        }
+      ],
+      "availabilityLabel": "Verfügbarkeit prüfen"
+    },
+    "information": {
+      "heading": "Informationen",
+      "links": [
+        {
+          "label": "Lage & Anreise",
+          "href": "/en/location/"
+        },
+        {
+          "label": "Blog",
+          "href": "/en/blog/"
+        },
+        {
+          "label": "Fragen & Antworten",
+          "href": "/en/faq/"
+        },
+        {
+          "label": "Hausordnung",
+          "href": "/en/policies/"
+        },
+        {
+          "label": "Über uns",
+          "href": "/en/about/"
+        },
+        {
+          "label": "Kontakt",
+          "href": "/en/contact/"
+        }
+      ]
+    },
+    "rights": "Alle Rechte vorbehalten.",
+    "legal": {
+      "ariaLabel": "Rechtliche Navigation",
+      "links": [
+        {
+          "label": "Richtlinien",
+          "href": "/en/policies/"
+        },
+        {
+          "label": "Barrierefreiheit",
+          "href": "/en/policies/#access"
+        },
+        {
+          "label": "traditional-homes.gr",
+          "href": "https://traditional-homes.gr"
+        }
+      ]
+    }
+  }
+}

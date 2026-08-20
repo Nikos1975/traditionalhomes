@@ -1,0 +1,44 @@
+{
+  "brand": {
+    "homeAriaLabel": "Elounda Traditional Homes — Startseite"
+  },
+  "mainAriaLabel": "Hauptnavigation",
+  "mobileAriaLabel": "Mobile Navigation",
+  "mobileDialogLabel": "Navigationsmenü",
+  "menuLabel": "Menü",
+  "openMenuLabel": "Navigationsmenü öffnen",
+  "closeMenuLabel": "Navigationsmenü schließen",
+  "actions": {
+    "checkDates": "Verfügbarkeit prüfen"
+  },
+  "main": [
+    {
+      "label": "Häuser",
+      "href": "/en/houses/"
+    },
+    {
+      "label": "Villa",
+      "href": "/en/villa/almond-tree-villa/"
+    },
+    {
+      "label": "Lage",
+      "href": "/en/location/"
+    },
+    {
+      "label": "FAQ",
+      "href": "/en/faq/"
+    },
+    {
+      "label": "Über uns",
+      "href": "/en/about/"
+    },
+    {
+      "label": "Blog",
+      "href": "/en/blog/"
+    },
+    {
+      "label": "Kontakt",
+      "href": "/en/contact/"
+    }
+  ]
+}

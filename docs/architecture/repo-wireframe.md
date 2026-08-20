@@ -26,7 +26,7 @@ flowchart TD
   src --> components["components<br/>cards, maps, gallery, booking"]
   src --> content["content<br/>houses, villa, blog"]
   src --> inventory["inventory<br/>inventory.json, groups, pairings"]
-  src --> i18n["i18n<br/>locale config, routes, translations, SEO helpers"]
+  src --> i18n["i18n<br/>locale config, route map, routes, translations, SEO helpers"]
   src --> data["data<br/>siteCopy, gallery, locations"]
   src --> utils["utils<br/>validation, gallery sorting, filters, maps"]
   src --> styles["styles/global.css"]
@@ -46,6 +46,9 @@ flowchart TD
   pages --> villaDetail["/en/villa/[slug]/"]
   pages --> blogRoutes["/en/blog/ + /en/blog/[slug]<br/>/blog/** redirects (301)"]
   pages --> infoPages["about, faq, policies, location, contact, guides"]
+  pages --> guidePilot["/en/guide/vrouchas/ + /de/reisefuehrer/vrouchas/<br/>shared GuidePage renderer (i18n pilot)"]
+  guidePilot --> guidePage["components/pages/GuidePage.astro"]
+  guidePage --> i18n
 
   home --> inventory
   collection --> inventory
@@ -86,7 +89,9 @@ flowchart TD
   functions --> apiContact
   apiContact --> cloudflareEmail["Cloudflare Email REST API"]
 
-  i18n --> enLocale["English locale JSON<br/>common, navigation, forms, seo"]
+  i18n --> routeMap["route-map.ts<br/>internal route ids to localized public paths"]
+  i18n --> enLocale["English locale JSON<br/>common, navigation, forms, seo, guide"]
+  i18n --> deLocale["German locale JSON overlay<br/>partial, falls back to English"]
 
   public --> publicImages["images<br/>houses, villa, blog, about, brand"]
   public --> fonts["fonts/"]

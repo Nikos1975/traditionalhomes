@@ -25,8 +25,15 @@ describe('English blog canonical route migration', () => {
 
     assert.match(routes, /export function blogIndexPath\(locale: Locale\): string/);
     assert.match(routes, /export function blogArticlePath\(slug: string, locale: Locale\): string/);
-    assert.match(routes, /return localizedPath\(locale, 'blog'\)/);
-    assert.match(routes, /return localizedPath\(locale, `blog\/\$\{slug\}`\)/);
+
+    // Since the Stage 3 route map, blog paths are resolved from the internal
+    // route id rather than assembled from a hardcoded public segment.
+    assert.match(routes, /return resolveLocalizedLink\(locale, 'blog'\)\.href/);
+    assert.match(routes, /return resolveLocalizedLink\(locale, 'blogArticle', slug\)\.href/);
+
+    const routeMap = await readText('src/i18n/route-map.ts');
+    assert.match(routeMap, /blog: \{ segments: \{ en: \['blog'\] \} \}/);
+    assert.match(routeMap, /blogArticle: \{ segments: \{ en: \['blog'\] \}, dynamic: true \}/);
   });
 
   it('renders the blog only under the English locale route', async () => {

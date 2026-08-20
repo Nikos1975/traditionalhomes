@@ -1,0 +1,12 @@
+---
+import GuidePage from '../../../components/pages/GuidePage.astro';
+import * as Guide from '../../../guides/de/Vrouchas-Guide.md';
+import { guideFrontmatter } from '../../../guides/frontmatter';
+
+const { Content, frontmatter } = Guide;
+const guide = guideFrontmatter(frontmatter, 'src/guides/de/Vrouchas-Guide.md');
+---
+
+<GuidePage locale="de" guideId="vrouchas" frontmatter={guide}>
+  <Content />
+</GuidePage>

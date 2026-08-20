@@ -111,7 +111,9 @@ describe('Stage 1 i18n foundation', () => {
     const housePage = await readText('src/pages/en/houses/[slug].astro');
     const villaPage = await readText('src/pages/en/villa/[slug].astro');
     const mavrikianoGuide = await readText('src/pages/en/guide/mavrikiano.astro');
-    const vrouchasGuide = await readText('src/pages/en/guide/vrouchas.astro');
+    // The Vrouchas route is a thin wrapper since the Stage 3 pilot; its SEO is
+    // formatted by the shared renderer it delegates to.
+    const guidePage = await readText('src/components/pages/GuidePage.astro');
 
     assert.match(seo, /export function getPropertySeo\(/);
     assert.match(seo, /export function getVillaSeo\(/);
@@ -120,7 +122,7 @@ describe('Stage 1 i18n foundation', () => {
     assert.match(housePage, /getPropertySeo\(/);
     assert.match(villaPage, /getVillaSeo\(/);
     assert.match(mavrikianoGuide, /getGuideSeo\(/);
-    assert.match(vrouchasGuide, /getGuideSeo\(/);
+    assert.match(guidePage, /getGuideSeo\(locale, frontmatter, fallbackDescription\)/);
 
     assert.doesNotMatch(JSON.stringify(seoCopy), /sleeps|bedrooms|bathrooms|private 9 m/);
   });
@@ -469,6 +471,7 @@ describe('Stage 1 i18n foundation', () => {
       housesIndex: await readText('src/pages/en/houses/index.astro'),
       mavrikianoGuide: await readText('src/pages/en/guide/mavrikiano.astro'),
       vrouchasGuide: await readText('src/pages/en/guide/vrouchas.astro'),
+      guidePage: await readText('src/components/pages/GuidePage.astro'),
     };
 
     const hardcodedEnglishRoute =
@@ -488,6 +491,7 @@ describe('Stage 1 i18n foundation', () => {
     assert.match(staticPages.faq, /localizedPath\(defaultLocale, 'policies'\)\}\#access/);
     assert.match(staticPages.housesIndex, /localizedCanonical\(defaultLocale, localizedPath\(defaultLocale, 'houses'\)\)/);
     assert.match(staticPages.mavrikianoGuide, /guidePath\('mavrikiano'\)/);
+    assert.match(staticPages.guidePage, /routePath\(locale, 'guide', guideId\)/);
 
     const navigation = await readJson('src/i18n/locales/en/navigation.json');
     assert.equal(navigation.main.find((link) => link.label === 'Blog')?.href, '/en/blog/');

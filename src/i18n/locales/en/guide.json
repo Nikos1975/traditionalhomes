@@ -1,0 +1,11 @@
+{
+  "breadcrumb": {
+    "ariaLabel": "Breadcrumb",
+    "home": "Home",
+    "location": "Location"
+  },
+  "actions": {
+    "backToMap": "Back to Interactive Map",
+    "viewProperties": "View Properties"
+  }
+}

@@ -1,0 +1,90 @@
+---
+import Base from '../../layouts/Base.astro';
+import type { Locale } from '../../i18n/config';
+import { assertRoute, resolveLocalizedLink, routeAlternates, routePath } from '../../i18n/route-map';
+import { canonicalUrl, getGuideSeo } from '../../i18n/seo';
+import { getGuideCopy } from '../../i18n/translate';
+
+interface Props {
+  /** Active locale. Always passed explicitly by the route file, never inferred from route state. */
+  locale: Locale;
+  /** Stable internal guide id. Never a public slug: the route map derives that. */
+  guideId: string;
+  frontmatter: {
+    title: string;
+    description?: string;
+  };
+  fallbackDescription?: string;
+}
+
+const { locale, guideId, frontmatter, fallbackDescription = '' } = Astro.props;
+
+// Fails the build rather than silently emitting a locale route that the route
+// map does not declare.
+assertRoute(locale, 'guide', guideId);
+
+const guideCopy = getGuideCopy(locale);
+const pageSeo = getGuideSeo(locale, frontmatter, fallbackDescription);
+
+// Self-referencing canonical, built from this locale's own public path.
+const canonical = canonicalUrl(routePath(locale, 'guide', guideId));
+
+// Only locales that really render this route produce an alternate.
+const alternates = routeAlternates('guide', guideId);
+
+// Sections without a page in the active locale resolve to the default locale
+// and carry hreflang, so the fallback is explicit rather than accidental.
+const homeLink = resolveLocalizedLink(locale, 'home');
+const locationLink = resolveLocalizedLink(locale, 'location');
+const housesLink = resolveLocalizedLink(locale, 'houses');
+---
+
+<Base title={pageSeo.title} description={pageSeo.description} canonicalUrl={canonical} locale={locale}>
+  {
+    alternates.length > 1 && (
+      <Fragment slot="head">
+        {alternates.map((alternate) => (
+          <link rel="alternate" hreflang={alternate.hreflang} href={canonicalUrl(alternate.path)} />
+        ))}
+      </Fragment>
+    )
+  }
+
+  <div class="site-max site-pad py-12 md:py-20 min-h-[70vh]">
+    <nav class="text-xs text-muted mb-8" aria-label={guideCopy.breadcrumb.ariaLabel}>
+      <ol class="flex items-center gap-1.5" role="list">
+        <li><a href={homeLink.href} hreflang={homeLink.hreflang} class="hover:text-body-text transition-colors duration-150">{guideCopy.breadcrumb.home}</a></li>
+        <li aria-hidden="true">›</li>
+        <li><a href={locationLink.href} hreflang={locationLink.hreflang} class="hover:text-body-text transition-colors duration-150">{guideCopy.breadcrumb.location}</a></li>
+        <li aria-hidden="true">›</li>
+        <li class="text-body-text font-medium" aria-current="page">{frontmatter.title}</li>
+      </ol>
+    </nav>
+
+    <div class="max-w-3xl mx-auto">
+      <article class="prose prose-stone prose-lg max-w-none text-stone-700 leading-relaxed font-sans
+                      prose-headings:font-serif prose-headings:font-normal prose-headings:text-stone-900
+                      prose-h1:text-4xl md:prose-h1:text-5xl prose-h1:mb-8
+                      prose-h2:text-2xl prose-h2:mt-12 prose-h2:mb-6 prose-h2:border-b prose-h2:border-stone-200 prose-h2:pb-2
+                      prose-h3:text-xl prose-h3:mt-8
+                      prose-a:text-amber-800 prose-a:underline hover:prose-a:text-amber-600
+                      prose-strong:font-semibold prose-strong:text-stone-900
+                      prose-ul:list-disc prose-ul:pl-6 prose-li:my-1
+                      prose-blockquote:border-l-4 prose-blockquote:border-amber-200 prose-blockquote:bg-amber-50 prose-blockquote:py-2 prose-blockquote:px-5 prose-blockquote:rounded-r prose-blockquote:not-italic prose-blockquote:text-stone-800
+                      prose-img:rounded-xl prose-img:shadow-md">
+        <slot />
+      </article>
+
+      <div class="mt-16 pt-8 border-t border-stone-200 flex flex-col sm:flex-row gap-4 justify-between items-center">
+        <a href={locationLink.href} hreflang={locationLink.hreflang} class="btn-outline flex items-center justify-center gap-2 w-full sm:w-auto">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+          {guideCopy.actions.backToMap}
+        </a>
+        <a href={housesLink.href} hreflang={housesLink.hreflang} class="btn-cta flex items-center justify-center gap-2 w-full sm:w-auto">
+          {guideCopy.actions.viewProperties}
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</Base>
