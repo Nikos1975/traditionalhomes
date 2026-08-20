@@ -1,161 +1,127 @@
 # Translation Status
 
-Status values:
+This file records the current multilingual scope and reference implementation. It is intentionally concise so routine translation stages do not load historical detail they do not need.
 
-- `Source present`: current English source exists on the live English-first site.
-- `Partially extracted`: some shared English UI strings have been moved into locale JSON, while page/body copy remains in source files or content files.
-- `Extracted`: English source for this shared area is now in locale JSON.
-- `Not started`: no approved translation work has started.
-- `Pending`: work is planned but not complete.
-- `Ready for QA`: translation is complete and awaiting checks.
-- `Approved`: translation has passed QA.
-- `Pilot`: a single route is implemented to prove the shared rendering and locale-routing architecture. It is not a sitewide translation and must not be read as one.
-- `Localized`: the route is a complete, faithful localization of the English master and is the pattern later locales should follow.
+`src/i18n/route-map.ts` remains the live authority for routes on the current branch.
+
+## Status values
+
+- `Source present` — approved English source exists.
+- `Not started` — no approved translation work exists.
+- `Partial` — only part of the scope is localized.
+- `Localized` — substantive target-language content exists for the declared route/scope.
+- `Ready for QA` — implementation is complete enough for the current review gate.
+- `Approved` — owner/review process has explicitly approved the scope.
 
 ## Localization contract
 
-English is the verified factual master. A translated page carries **the same
-facts as its English counterpart** — same dates, distances, descriptions,
-historical statements, practical and visitor information, and the same degree of
-certainty. Translators localize wording, headings, SEO metadata and route
-segments; they do not reconcile, correct, qualify or drop factual claims in one
-language only.
+English is the verified factual master. A localized page must preserve the same facts, qualifications, cautions and degree of certainty as the English source.
 
-If an English claim looks wrong or outdated, it is raised as a proposed
-**cross-language correction** and applied to English and every locale together
-once approved. Until then the locales stay factually aligned. Open proposals are
-listed at the end of this document.
+Target-language work may localize:
 
-German is **not** translated sitewide. As of Stage 3 German owns exactly one
-public route, listed below. Every other German string resolves to the English
-source through the documented partial-overlay fallback in
-`src/i18n/translate.ts`.
+- wording and sentence structure;
+- headings;
+- reusable UI labels;
+- title/meta/H1;
+- generic public route segments;
+- editorial slugs where approved;
+- presentation of descriptive structured values;
+- gallery alt/caption text.
 
-| Area | EN source frozen | DE | FR | RU | ZH | AR | HE | QA status | Notes |
-|---|---|---|---|---|---|---|---|---|---|
-| Homepage | Source present | Localized | Not started | Not started | Not started | Not started | Not started | Ready for QA | `/de/` renders the shared `HomePage.astro`; copy in `home.json`. |
-| Houses index | Source present | Localized | Not started | Not started | Not started | Not started | Not started | Ready for QA | `/de/ferienhaeuser/` renders the shared `CollectionPage.astro`; copy in `properties.json`. Filtering logic is shared, not forked. |
-| House detail pages | Source present | Partial | Not started | Not started | Not started | Not started | Not started | Ready for QA | Argyro only, at `/de/ferienhaeuser/argyro/`, as the reference house. The other nine have no German content and therefore no German route. |
-| Villa page | Source present | Not started | Not started | Not started | Not started | Not started | Not started | Not started | Stable slug should be preserved. |
-| Location page | Source present | Localized | Not started | Not started | Not started | Not started | Not started | Ready for QA | `/de/lage/` renders the shared `LocationPage.astro`; copy in `location.json`. |
-| Contact page | Source present | Not started | Not started | Not started | Not started | Not started | Not started | Not started | Contact form must keep posting to `/api/contact`. |
-| FAQ page | Source present | Not started | Not started | Not started | Not started | Not started | Not started | Not started | Long bodies may need content collection handling. |
-| Policies page | Source present | Not started | Not started | Not started | Not started | Not started | Not started | Not started | Long bodies may need content collection handling. |
-| About page | Source present | Not started | Not started | Not started | Not started | Not started | Not started | Not started | Keep factual claims conservative. |
-| Mavrikiano guide | Source present | Not started | Not started | Not started | Not started | Not started | Not started | Not started | Area guides follow the blog editorial system. |
-| Vrouchas guide | Source present | Localized | Not started | Not started | Not started | Not started | Not started | Ready for QA | German pilot at `/de/reisefuehrer/vrouchas/`; bounded German extract only (access note + distance table + pointer to the English guide). Long-form sections remain English. |
-| Blog index | Source present | Not started | Not started | Not started | Not started | Not started | Not started | Not started | English-only canonical route is `/en/blog/`; legacy `/blog/` redirects permanently. |
-| Blog posts | Source present | Not started | Not started | Not started | Not started | Not started | Not started | Not started | English-only canonical article routes are `/en/blog/<slug>/`; no translated routes exist. |
-| Header/Footer | Extracted | Pilot | Not started | Not started | Not started | Not started | Not started | Ready for QA | German labels exist in the `de` overlay for the chrome the pilot renders. Hrefs still resolve through the route map, so untranslated sections keep their English URL and carry `hreflang="en"`. |
-| Booking/contact UI | Partially extracted | Pilot | Not started | Not started | Not started | Not started | Not started | Ready for QA | German labels cover only the mobile booking bar and chat trigger rendered on the pilot page. `defaultItemName` (analytics) and `chatPopupEmail` deliberately stay English. Contact page copy and `/api/contact` are untouched. |
-| SEO/meta | Source present | Not started | Not started | Not started | Not started | Not started | Not started | Not started | SEO strings remain split between page files, `siteCopy.json`, and `seo.json`; canonical, hreflang, and sitemap require QA. |
-| Gallery alt/captions | Source present | Not started | Not started | Not started | Not started | Not started | Not started | Not started | Image paths stay shared; text may localize later. |
+It must not silently add, remove or correct facts in only one locale.
 
-## Stage 3 pilot scope
+If a factual issue is discovered, use `docs/i18n/cross-language-corrections.md` and stop the locale-only correction.
 
-| Item | Value |
-|---|---|
-| Internal route id | `guide` |
-| Internal content id | `vrouchas` |
-| English URL | `/en/guide/vrouchas/` (unchanged) |
-| German URL | `/de/reisefuehrer/vrouchas/` |
-| Shared renderer | `src/components/pages/GuidePage.astro` |
-| German content | `src/guides/de/Vrouchas-Guide.md` |
-| German locale overlays | `common.json`, `navigation.json`, `forms.json`, `guide.json` (all partial) |
+## Facts and presentation are separate
 
-Not implemented in this stage: any other German route, a language switcher,
-German SEO templates, translated blog or property routes, and RTL routes for
-`ar` / `he`. `src/inventory/inventory.json` remains the factual source of truth
-and no inventory value was copied into a locale file.
+Factual ownership remains outside translation resources:
 
-## German Vrouchas guide
+- `src/inventory/inventory.json` — property facts;
+- `src/data/locations.ts` — location facts;
+- `src/inventory/groups.json` — group facts;
+- `src/inventory/suggested-pairings.json` — pairing facts.
 
-| Item | Value |
-|---|---|
-| Internal route id | `guide` |
-| Internal content id | `vrouchas` |
-| English URL | `/en/guide/vrouchas/` (unchanged) |
-| German URL | `/de/reisefuehrer/vrouchas/` |
-| German title | Vrouchas auf Kreta: Lage, Anreise & Tipps |
-| German H1 | Vrouchas auf Kreta: Lage, Anreise und praktische Informationen |
-| German content | `src/guides/de/Vrouchas-Guide.md` |
-| German locale overlays | `common.json`, `navigation.json`, `forms.json`, `guide.json` (all partial) |
+Localized presentation may use stable ids/slugs, semantic keys or an exact English source phrase to render those facts naturally. It must not create a second German (or other locale) inventory.
 
-Section parity with `src/guides/Vrouchas-Guide.md`, asserted by test:
+The German visible-language completion in PR #59 demonstrates this separation and adds deterministic tests binding presentation mappings back to factual sources.
 
-| English section | German section |
-|---|---|
-| Distances from Almond Tree Villa, Vrouchas | Entfernungen ab der Almond Tree Villa, Vrouchas |
-| Beaches of the Area | Strände in der Umgebung |
-| Historical Sites & Landmarks | Historische Stätten und Sehenswürdigkeiten |
-| Transport & Practical Information | Verkehr und praktische Hinweise |
-| Recommended Day-Trip Itinerary: The Mirabello Circuit | Vorschlag für einen Tagesausflug: die Mirabello-Runde |
-| Essential Packing List | Packliste |
-| Spinalonga Visitor Information (2026 Season) | Besucherinformationen zu Spinalonga (Saison 2026) |
-| — Operating Hours | — Öffnungszeiten |
-| — Site Entrance Tickets | — Eintrittskarten |
-| — Boat Transfers from Plaka | — Bootstransfer ab Plaka |
+## German reference implementation
 
-The only editorial deviation is the middle table column header, rendered as
-"Beschreibung" rather than a literal translation of "National Geographic Style
-Description". That header is an internal authoring label, not a fact; every
-description in the column is localized in full.
+PR #59 validates the current reference architecture on five German routes:
 
-Not implemented: any other German route, a language switcher, German SEO
-templates, translated blog or property routes, RTL routes for `ar` / `he`.
-`src/inventory/inventory.json` remains the factual source of truth and no
-inventory value was copied into a locale file.
+| Internal route/content id | English | German | Status |
+| --- | --- | --- | --- |
+| `home` | `/en/` | `/de/` | Localized / Ready for QA |
+| `houses` | `/en/houses/` | `/de/ferienhaeuser/` | Localized / Ready for QA |
+| `house/argyro` | `/en/houses/argyro/` | `/de/ferienhaeuser/argyro/` | Localized / Ready for QA |
+| `location` | `/en/location/` | `/de/lage/` | Localized / Ready for QA |
+| `guide/vrouchas` | `/en/guide/vrouchas/` | `/de/reisefuehrer/vrouchas/` | Localized / Ready for QA |
 
-## Proposed cross-language corrections — NOT applied
+Reference shared renderers:
 
-Raised for review only. English and German currently state all of these
-identically, and they must stay aligned until a correction is approved and
-applied to every locale at once.
+- `HomePage.astro`
+- `CollectionPage.astro`
+- `HouseDetailPage.astro`
+- `LocationPage.astro`
+- `GuidePage.astro`
 
-| Claim (English master, mirrored in German) | Concern | Repository evidence |
-|---|---|---|
-| Spinalonga "leper colony (1903–1957)" | The colony start year may be 1904 | `docs/research/blog/spinalonga-multiple-lives/contradiction-register.md`: "The first residents arrived in 1904"; the day and count are blocked, the year is secure |
-| Spinalonga fortress "built 1579" | Works *began* June 1579; construction was not completed that year | `claim-verification-register.md`, S01, status Verified |
-| Olous as "an ancient Minoan metropolis" / "Minoan-era foundations" | Published repository content never describes Olous as Minoan | `src/content/blog/elounda-and-mirabello-bay.md` |
-| Elounda Canal "built by French military engineers in 1897–98" | The published article explicitly declines to assign a construction date or responsible authority; the French attribution survives only in the unpublished `elounda-guide-style-*` drafts | `src/content/blog/elounda-and-mirabello-bay.md` |
-| Elounda Salt Pans "Venetian-era" | The Ephorate of Antiquities of Lasithi records possible Byzantine origin, with Venetian use from the early period of their rule | `src/content/blog/elounda-salt-pans-and-poros-windmills.md` |
-| Salt pans "a notable and serene spot for birdwatching" | Not present in any verified repository content | — |
-| Gournia "the only fully excavated Minoan city in Crete" | Not present in any verified repository content | — |
-| Paleochristian Basilica of Poros mosaics | Not present in any verified repository content | — |
-| Spinalonga admission €20 / €10, free under 25 (EU) | Two official sources currently disagree: the [Ephorate of Antiquities of Lasithi](https://spinalonga-island.gr/infos/?lang=en) publishes €20/€10, while the [Ministry of Culture Odysseus page](http://odysseus.culture.gr/h/3/eh355.jsp?obj_id=2607) publishes €8/€4. The Ephorate states reduced admission for EU citizens over 65 from 1 October to 31 May, which does not match the under-25 free-admission wording | Both sources checked 2026-08-20 |
-| Boat "€10 to €12 round trip, every 30 minutes" | Operator-specific and volatile; no official source consulted | — |
-| "Limited service runs between Elounda and Agios Nikolaos" | Not checked against the current [KTEL Heraklion–Lasithi](https://www.ktelherlas.gr/en/timetables) timetable | — |
-| Section titled "(2026 Season)" | Dated section title will need an annual review in both languages | — |
+The Vrouchas German guide is a complete faithful localization of the English master, not an excerpt. Argyro is the reference house; the remaining houses do not acquire German routes merely because the collection page is German.
 
-## German cluster (reference implementation)
+## Visible-language completeness
 
-| Internal route id | Content id | English URL | German URL |
-|---|---|---|---|
-| `home` | — | `/en/` | `/de/` |
-| `houses` | — | `/en/houses/` | `/de/ferienhaeuser/` |
-| `house` | `argyro` | `/en/houses/argyro/` | `/de/ferienhaeuser/argyro/` |
-| `location` | — | `/en/location/` | `/de/lage/` |
-| `guide` | `vrouchas` | `/en/guide/vrouchas/` | `/de/reisefuehrer/vrouchas/` |
+A declared localized route must be checked at generated-HTML level, not only by inspecting locale dictionaries.
 
-Shared renderers in `src/components/pages/`: `HomePage`, `CollectionPage`,
-`LocationPage`, `HouseDetailPage`, `GuidePage`. Every route file is a thin
-wrapper that passes `locale` explicitly. There is no parallel German
-implementation and no client-side translation runtime.
+The German reference suite checks:
 
-Locale resources added for German: `home.json`, `location.json`,
-`properties.json`, `seo.json`, plus additions to `forms.json`. Long-form
-property copy lives in `src/content/houses/de/`, not in a translation resource.
-`src/inventory/inventory.json` remains the single factual source; the German
-house page reads the same `sleeps`, `bedrooms`, `pool` and access values as the
-English page, and only its display title comes from the German content entry.
+1. visible EN↔DE parity to catch untranslated strings;
+2. target-language rendering of inventory-derived descriptions and map cards;
+3. localized gallery captions;
+4. preservation of English master wording;
+5. presentation mappings remaining bound to real factual source values.
 
-Not yet German: the remaining nine houses, Almond Tree Villa, contact, FAQ,
-policies, about, and all blog articles. Those links appear on German pages with
-their English URL and an explicit `hreflang="en"`.
+Legitimate shared strings include proper names, brands, airport codes, URLs, machine-facing identifiers and intentional links to English-only routes.
 
-### Deferred: language switcher
+Do not use a blanket "English word" rejection rule.
 
-Not implemented in this stage. The route map already answers "does an
-equivalent page exist in locale X" through `routeLocales`, so a switcher is a
-small component rather than an architectural change. It was deferred to keep
-this stage to the four reference routes.
+## Current broader status
+
+| Area | DE | FR | RU | ZH | AR | HE | Notes |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Homepage | Localized | Not started | Not started | Not started | Not started | Not started | German reference route only. |
+| Houses collection | Localized | Not started | Not started | Not started | Not started | Not started | German collection exists. |
+| House detail pages | Partial | Not started | Not started | Not started | Not started | Not started | Argyro only. |
+| Villa | Not started | Not started | Not started | Not started | Not started | Not started | No German villa route declared. |
+| Location | Localized | Not started | Not started | Not started | Not started | Not started | `/de/lage/`. |
+| Vrouchas guide | Localized | Not started | Not started | Not started | Not started | Not started | Full German guide. |
+| Mavrikiano guide | Not started | Not started | Not started | Not started | Not started | Not started | No German route. |
+| Contact | Not started | Not started | Not started | Not started | Not started | Not started | `/api/contact` behavior remains unchanged. |
+| FAQ | Not started | Not started | Not started | Not started | Not started | Not started | — |
+| Policies | Not started | Not started | Not started | Not started | Not started | Not started | — |
+| About | Not started | Not started | Not started | Not started | Not started | Not started | — |
+| Blog index/posts | Not started | Not started | Not started | Not started | Not started | Not started | English canonical remains `/en/blog/`. |
+
+## Deferred
+
+- remaining German houses;
+- Almond Tree Villa;
+- German Mavrikiano guide;
+- contact/FAQ/policies/about;
+- translated blog routes;
+- language switcher;
+- all FR/RU/ZH/AR/HE public routes;
+- RTL launch QA.
+
+Do not infer any deferred route from this list. The route map decides what exists.
+
+## Reference validation snapshot
+
+The German visible-language completion of PR #59 was validated on the workstation with:
+
+- `node --test`: 344/344 passed;
+- `npm run typecheck`: 3 existing errors, 0 warnings, 3 hints;
+- `npm run build`: 41 pages;
+- `npm run seo:links`: passed;
+- `git diff --check`: passed;
+- clean working tree.
+
+Treat this as a historical reference baseline only. Every new stage must compare against its own current branch state rather than assuming these numbers remain valid.
