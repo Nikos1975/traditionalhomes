@@ -1,6 +1,6 @@
 ---
 name: traditional-homes-i18n-translation
-description: Project-local translation/localization skill for traditional-homes.gr. Use for translating an already-supported route from the verified English master into a target locale, including natural wording, title/meta/H1, UI strings, alt/captions, terminology, and visible-language completeness. Do not use to redesign multilingual infrastructure.
+description: Project-local translation/localization skill for traditional-homes.gr. Use for translating an already-supported route family from the verified English master into a target locale, including natural wording, target-locale content availability for an existing dynamic route, title/meta/H1, UI strings, alt/captions, terminology, and visible-language completeness. Do not use to redesign multilingual infrastructure.
 ---
 
 # Traditional Homes I18N Translation
@@ -34,14 +34,15 @@ The current German reference is `references/locales/de.md`. Do not load it for a
 6. Localize generic route/UI terminology, headings, title/meta/H1, accessibility text, image captions, and descriptive presentation strings.
 7. Do not create a second factual inventory. Presentation mappings may localize how factual values are rendered, but facts remain owned by their structured sources.
 8. A page declared as translated must not leave substantive visible interface/content text in English, except proper names, brands, codes, URLs, bare technical identifiers, or intentional English fallback links.
-9. If the target route does not exist, stop and route to Stage 01 infrastructure.
-10. If an English fact appears wrong or outdated, record a proposed cross-language correction. Do not fix only the translation.
+9. The target locale must already have the required route family, generic path segments, route wrapper and shared renderer. For an existing dynamic route family, this stage may add the target-locale `routeMap.content` slug for the new content id, but only in the same bounded change as the complete localized page.
+10. If a new route family, generic segment, wrapper, renderer or fallback architecture is required, stop and route to Stage 01 infrastructure.
+11. If an English fact appears wrong or outdated, record a proposed cross-language correction. Do not fix only the translation.
 
 ## Workflow
 
-### 1. Confirm the route exists
+### 1. Confirm the route family exists
 
-Use `src/i18n/route-map.ts` and the built route source. If the target locale page is not explicitly supported, stop.
+Use `src/i18n/route-map.ts` and the built route source. The locale must already have the dynamic route family and rendering architecture. A content id that is not yet localized may be activated here by adding its locale slug only when the complete translation ships in the same change. Never create a phantom route.
 
 ### 2. Load the exact English source and target working files
 
@@ -96,9 +97,10 @@ Report:
 
 Stop when:
 
-- the locale route does not exist;
+- the locale route family does not exist;
+- a new generic route segment, wrapper, renderer, or route architecture is required;
 - the English source is ambiguous or factually disputed;
-- translation would require a new route/rendering architecture;
+- translation would require a new rendering architecture;
 - structured facts would be duplicated into locale resources;
 - English output changes unexpectedly;
 - validation worsens;
