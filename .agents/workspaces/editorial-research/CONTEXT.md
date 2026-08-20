@@ -28,7 +28,7 @@ Use this workspace for research-led blog and guide work after `BLOG_ORCHESTRATOR
 - Draft only from claims that the research packet supports at the required confidence.
 - Do not change publication state, merge, deploy, or publish without explicit approval.
 - Keep geographic scope and article angle explicit; do not let background research turn into a generic history of the wider subject.
-- Existing durable research lives under `docs/research/`; operational run state remains under `.blog-runs/` and is not imported globally.
+- Existing durable research lives under `docs/research/`; operational run state remains under .blog-runs/ and is not imported globally.
 
 ## Review boundaries
 
