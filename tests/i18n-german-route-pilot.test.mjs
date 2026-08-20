@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import { execFile } from 'node:child_process';
 import { access, mkdtemp, readdir, readFile, rm, writeFile } from 'node:fs/promises';
 import { join, relative } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { promisify } from 'node:util';
 import { after, describe, it } from 'node:test';
 
@@ -224,6 +225,10 @@ describe('Stage 3 German route pilot — source contracts', () => {
     }
 
     // Every non-default locale page file is declared in the route map.
+    // `fileURLToPath` is required here: a URL `pathname` is `/D:/...` on Windows,
+    // which `path.relative` cannot compare against a native path.
+    const pagesRoot = fileURLToPath(new URL('src/pages/', root));
+
     for (const locale of localeDirectories) {
       const pages = await readdir(new URL(`src/pages/${locale}/`, root), { recursive: true, withFileTypes: true });
 
@@ -231,7 +236,7 @@ describe('Stage 3 German route pilot — source contracts', () => {
         if (!page.isFile() || !page.name.endsWith('.astro')) continue;
 
         const absolute = join(page.parentPath ?? page.path, page.name);
-        const route = relative(new URL('src/pages/', root).pathname, absolute).replace(/\\/g, '/').replace(/\.astro$/, '');
+        const route = relative(pagesRoot, absolute).replace(/\\/g, '/').replace(/\.astro$/, '');
 
         assert.ok(declared.has(route), `src/pages/${route}.astro exists but is not declared in routeMap`);
       }
