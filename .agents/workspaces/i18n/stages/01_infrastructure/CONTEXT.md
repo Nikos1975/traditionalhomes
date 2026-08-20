@@ -6,6 +6,7 @@ One job: implement or validate the Astro multilingual infrastructure required by
 
 | Layer | Source | Use |
 | --- | --- | --- |
+| L3 | `.agents/skills/traditional-homes-astro-i18n-infrastructure/SKILL.md` | project-local infrastructure procedure |
 | L3 | `docs/i18n/00_I18N_MASTER_PLAN.md` | approved multilingual intent and protected boundaries |
 | L3 | `docs/i18n/02_ROUTE_AND_FILE_STRUCTURE.md` | route/rendering design reference |
 | L3 | `docs/i18n/04_QA_CHECKLIST.md` | existing QA gates |
@@ -18,20 +19,21 @@ During the current migration, `src/i18n/route-map.ts` is authoritative for route
 
 ## Process
 
-1. Identify the smallest infrastructure change required.
-2. Preserve English output and factual data ownership.
-3. Keep route files thin and locale explicit; do not create a locale route without complete corresponding page support.
-4. Keep canonical, hreflang, sitemap, fallback, and generated-link behavior tied to real routes only.
-5. Do not translate long-form content beyond the minimum fixture text needed to prove infrastructure.
+1. Read the infrastructure skill, then only the additional references required by the exact task.
+2. Identify the smallest infrastructure change required.
+3. Preserve English output and factual data ownership.
+4. Keep route files thin and locale explicit; do not create a locale route without complete corresponding page support.
+5. Keep canonical, hreflang, sitemap, fallback, and generated-link behavior tied to real routes only.
+6. Do not translate long-form content beyond the minimum fixture text needed to prove infrastructure.
 
 ## Outputs
 
 - exact source/test/doc changes required for the bounded infrastructure scope;
-- a concise stage report containing base SHA, routes affected, files changed, validation, unresolved issues, and the next allowed stage.
+- a concise stage report containing base SHA, routes affected, Layer 3 references loaded, Layer 4 inputs inspected, files changed, validation, unresolved issues, and the next allowed stage.
 
 ## Verify
 
-Run the smallest focused i18n tests first, then the repository tests required by the change, `npm run typecheck`, `npm run build`, `npm run seo:links`, and `git diff --check`. Compare typecheck against the known baseline.
+Run the smallest focused i18n tests first, then the repository tests required by the change, `npm run typecheck`, `npm run build`, `npm run seo:links`, the skill's structural validator, and `git diff --check`. Compare typecheck against the known baseline.
 
 ## Stop conditions
 
