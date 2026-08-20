@@ -1,0 +1,67 @@
+{
+  "units": {
+    "argyro": {
+      "view": "Meerblick von der Veranda im ersten Stock",
+      "parking": "Gemeinsamer privater Gästeparkplatz in der Nähe (~80 m); bei Belegung kostenloses Parken im Dorf",
+      "pets": "Kleine Haustiere (≤5 kg) auf Anfrage",
+      "kitchen": "Vollküche + Außenküchenzeile",
+      "amenities": [
+        "Klimaanlage und Temperaturregelung",
+        "Voll ausgestattete Küche und Außenküchenzeile",
+        "Möblierte Veranda mit Meerblick",
+        "Essbereich im Freien",
+        "WLAN inklusive"
+      ],
+      "hardConstraints": [
+        "Nicht stufenfrei — mindestens eine Stufe vom Weg zum Eingang",
+        "Innentreppe ins Obergeschoss"
+      ],
+      "name": "Haus Argyro"
+    },
+    "almond-tree-villa": {
+      "accessDetail": "Hanglage im Dorf Vrouchas, Elounda. Die Villa eignet sich am besten für Gäste, die mit Stufen, Dorfwegen und Innentreppen zurechtkommen.",
+      "name": "Almond Tree Villa"
+    },
+    "leonidas": {
+      "name": "Haus Leonidas"
+    },
+    "margarita": {
+      "name": "Haus Margarita"
+    },
+    "demetra": {
+      "name": "Haus Demetra"
+    },
+    "penelope": {
+      "name": "Haus Penelope"
+    },
+    "erato": {
+      "name": "Haus Erato"
+    },
+    "clio": {
+      "name": "Haus Clio"
+    },
+    "efterpi": {
+      "name": "Haus Efterpi"
+    },
+    "kalliopi": {
+      "name": "Haus Kalliopi"
+    },
+    "monastiri": {
+      "name": "Haus Monastiri"
+    }
+  },
+  "locations": {
+    "private-car-parking": {
+      "title": "Gemeinsamer Gästeparkplatz"
+    }
+  },
+  "locationPhrases": {
+    "🚶 10 min walk to Elounda center": "🚶 10 Min. zu Fuß ins Zentrum von Elounda",
+    "🚗 5 min drive to Plaka beach": "🚗 5 Min. Fahrt zum Strand von Plaka"
+  },
+  "pairings": {
+    "A nearby combination suitable for larger families or friends travelling together.": "Eine Kombination benachbarter Häuser, geeignet für größere Familien oder Freunde, die zusammen reisen.",
+    "A nearby two-home option for extended families or friends.": "Zwei benachbarte Häuser für größere Familien oder Freunde.",
+    "A suggested three-home cluster in close proximity for larger groups.": "Drei nah beieinander liegende Häuser, vorgeschlagen für größere Gruppen."
+  }
+}

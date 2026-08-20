@@ -3,6 +3,7 @@ import LeafletMap from './LeafletMap.astro';
 import { locations } from '../../data/locations';
 import inventory from '../../inventory/inventory.json';
 import { resolveLocalizedLink } from '../../i18n/route-map';
+import { locationText, unitName } from '../../i18n/inventory-display';
 import { defaultLocale, type Locale } from '../../i18n/config';
 import { getCommonCopy } from '../../i18n/translate';
 import type { InventoryUnit } from '../../types';
@@ -51,9 +52,10 @@ const allLocs = locations.filter(l => l.lat && l.lng).map(loc => {
 
   return {
     ...loc,
-    title: unit?.name || loc.title,
+    title: unit ? unitName(locale, unit.slug, unit.name) : (locationText(locale, loc.id, 'title', loc.title) ?? loc.title),
     type: unit?.type ?? loc.type,
     locationLabel: unit ? `${unit.location}, ${unit.area}` : loc.locationLabel,
+    distanceTag: locationText(locale, loc.id, 'distanceTag', loc.distanceTag) ?? loc.distanceTag,
     detailsUrl,
     detailsHreflang,
     // Use optimized path, fallback to static path, then to placeholder
@@ -119,7 +121,7 @@ const markers = allLocs.map(loc => {
             <div class="relative z-10">
               <div class="flex justify-between items-start mb-1">
                 <h4 class="font-serif text-xl text-body-text group-hover/card:text-primary transition-colors">{loc.title}</h4>
-                <span class="text-[9px] uppercase tracking-widest font-bold text-stone-400 bg-stone-50 px-2 py-0.5 rounded-full">{loc.type}</span>
+                <span class="text-[9px] uppercase tracking-widest font-bold text-stone-400 bg-stone-50 px-2 py-0.5 rounded-full">{mapCopy.types[loc.type] ?? loc.type}</span>
               </div>
               <p class="text-[11px] text-muted uppercase tracking-wider mb-4">{loc.locationLabel}</p>
               

@@ -26,10 +26,30 @@ If an English claim looks wrong or outdated, it is raised as a proposed
 once approved. Until then the locales stay factually aligned. Open proposals are
 listed at the end of this document.
 
-German is **not** translated sitewide. As of Stage 3 German owns exactly one
-public route, listed below. Every other German string resolves to the English
-source through the documented partial-overlay fallback in
-`src/i18n/translate.ts`.
+German is **not** translated sitewide. German owns the five public routes
+listed in "German cluster" below. Every other German string resolves to the
+English source through the documented partial-overlay fallback in
+`src/i18n/translate.ts`, and every link to a page German does not own carries an
+explicit `hreflang="en"`.
+
+### Facts and presentation are separate
+
+A locale never restates a fact. `src/inventory/inventory.json`,
+`src/data/locations.ts`, `src/inventory/groups.json` and
+`src/inventory/suggested-pairings.json` own every number, enum, slug,
+coordinate and boolean. `src/i18n/inventory-display.ts` owns only how one locale
+*renders* a descriptive value the factual source stores in English, keyed by a
+stable identifier — a unit slug, a location id, or the exact English source
+string when the factual source repeats one line across many ids. The default
+locale always renders the factual value verbatim, so English can never drift,
+and an unmapped value falls back to it. There is no second German inventory.
+
+Display strings a component *derives* from stable facts (a layout summary, an
+access summary, a region name) live in locale resources keyed by a stable
+semantic key, never by their English text. `tests/i18n-german-visible-language.test.mjs`
+asserts that every number in a German mapping also appears in the English source
+it presents, that mapped slugs and ids really exist, and that a list mapping
+keeps the length of the factual list.
 
 | Area | EN source frozen | DE | FR | RU | ZH | AR | HE | QA status | Notes |
 |---|---|---|---|---|---|---|---|---|---|
@@ -43,13 +63,13 @@ source through the documented partial-overlay fallback in
 | Policies page | Source present | Not started | Not started | Not started | Not started | Not started | Not started | Not started | Long bodies may need content collection handling. |
 | About page | Source present | Not started | Not started | Not started | Not started | Not started | Not started | Not started | Keep factual claims conservative. |
 | Mavrikiano guide | Source present | Not started | Not started | Not started | Not started | Not started | Not started | Not started | Area guides follow the blog editorial system. |
-| Vrouchas guide | Source present | Localized | Not started | Not started | Not started | Not started | Not started | Ready for QA | German pilot at `/de/reisefuehrer/vrouchas/`; bounded German extract only (access note + distance table + pointer to the English guide). Long-form sections remain English. |
+| Vrouchas guide | Source present | Localized | Not started | Not started | Not started | Not started | Not started | Ready for QA | Complete faithful localization at `/de/reisefuehrer/vrouchas/`: all seven sections and three subsections of the English master, same facts. |
 | Blog index | Source present | Not started | Not started | Not started | Not started | Not started | Not started | Not started | English-only canonical route is `/en/blog/`; legacy `/blog/` redirects permanently. |
 | Blog posts | Source present | Not started | Not started | Not started | Not started | Not started | Not started | Not started | English-only canonical article routes are `/en/blog/<slug>/`; no translated routes exist. |
 | Header/Footer | Extracted | Pilot | Not started | Not started | Not started | Not started | Not started | Ready for QA | German labels exist in the `de` overlay for the chrome the pilot renders. Hrefs still resolve through the route map, so untranslated sections keep their English URL and carry `hreflang="en"`. |
 | Booking/contact UI | Partially extracted | Pilot | Not started | Not started | Not started | Not started | Not started | Ready for QA | German labels cover only the mobile booking bar and chat trigger rendered on the pilot page. `defaultItemName` (analytics) and `chatPopupEmail` deliberately stay English. Contact page copy and `/api/contact` are untouched. |
 | SEO/meta | Source present | Not started | Not started | Not started | Not started | Not started | Not started | Not started | SEO strings remain split between page files, `siteCopy.json`, and `seo.json`; canonical, hreflang, and sitemap require QA. |
-| Gallery alt/captions | Source present | Not started | Not started | Not started | Not started | Not started | Not started | Not started | Image paths stay shared; text may localize later. |
+| Gallery alt/captions | Source present | Localized | Not started | Not started | Not started | Not started | Not started | Ready for QA | An authored alt is the English master and renders verbatim in English. Other locales render the same picture through the shared vocabulary in `src/i18n/locales/<locale>/gallery-tokens.json` via `localizedAlt`. |
 
 ## Stage 3 pilot scope
 
@@ -148,6 +168,24 @@ property copy lives in `src/content/houses/de/`, not in a translation resource.
 `src/inventory/inventory.json` remains the single factual source; the German
 house page reads the same `sleeps`, `bedrooms`, `pool` and access values as the
 English page, and only its display title comes from the German content entry.
+
+### Visible-language completeness
+
+All five German routes were audited against their rendered HTML, not against the
+translation payload. Two checks run in `tests/i18n-german-visible-language.test.mjs`:
+
+1. **EN↔DE parity.** A visible string — text node, `aria-label`, `alt`, `title`
+   or `placeholder` — that is identical on the German page and on its English
+   counterpart is a suspected leak unless it matches an explicit allow-list of
+   proper names, place names, brands, airport codes and bare numbers. This is
+   never a blanket "reject every English word".
+2. **English master preserved.** The same suite asserts that the English routes
+   still render the English wording, so localizing a shared component cannot
+   silently change English output.
+
+Legitimately untranslated on a German page: proper and place names, brand names,
+`WebHotelier` item identifiers such as `data-item-name`, airport codes, URLs, and
+links to routes German does not own — those carry `hreflang="en"` by design.
 
 Not yet German: the remaining nine houses, Almond Tree Villa, contact, FAQ,
 policies, about, and all blog articles. Those links appear on German pages with

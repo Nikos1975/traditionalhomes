@@ -324,6 +324,38 @@ describe('Stage 1 i18n foundation', () => {
         sleeps: { other: 'Sleeps {count}' },
       },
       basics: { house: 'House Basics', villa: 'Villa Basics' },
+      // Display strings a component derives from stable inventory facts. Keyed by
+      // a stable semantic key, never by the English text itself.
+      derived: {
+        bathroom: {
+          showerRoom: 'Shower room',
+          viaCourtyard: 'Accessed via courtyard area',
+        },
+        layout: {
+          splitLevelVilla: 'Split-level traditional villa',
+          connectedLevelsOntas: 'Connected levels with ontas',
+          mainLevelOntas: 'Main level + ontas',
+          mainLivingSpaceOntas: 'Main living space + ontas',
+          courtyardLevelOntas: 'Courtyard level + ontas',
+          firstFloorAboveEfterpiOntas: 'First-floor house above Efterpi + ontas',
+          multiLevelInternalStairs: 'Multi-level house with internal stairs',
+          groundFloor: 'Ground floor',
+          groundAndFirstFloor: 'Ground floor + first floor',
+        },
+        access: {
+          internalStairsSteppedLevels: 'Internal stairs and stepped levels',
+          entranceStepInternalStairs: 'Entrance step + internal stairs',
+          stoneStepsInternalWoodenStairs: 'Stone steps to entrance; internal wooden stairs',
+          externalStepsInternalStairsToOntas: 'External steps + internal stairs to ontas',
+          courtyardEntryInternalStairs: 'Courtyard entry + internal stairs',
+          stepsDownToCourtyardStairToOntas: 'Steps down to courtyard; internal stair to ontas',
+          stoneStairsBalconyEntrance: 'Stone stairs to balcony entrance',
+          courtyardEntranceInternalStairs: 'Courtyard entrance + internal stairs',
+          stepFree: 'Step-free',
+          internalStairsEntranceViaStairsDown: 'Internal stairs; entrance via stairs down',
+          internalStairs: 'Internal stairs',
+        },
+      },
       card: {
         photoComingSoon: 'Photo Coming Soon',
         villa: 'Villa',
@@ -348,6 +380,8 @@ describe('Stage 1 i18n foundation', () => {
         editorNote: "Editor's Note:",
         view: 'View',
         checkDates: 'Check Dates',
+        note: 'Select both properties for the exact same dates on our booking engine to secure this group estate.',
+        viewProperty: 'View {name}',
       },
       detail: {
         breadcrumbs: { ariaLabel: 'Breadcrumb', home: 'Home', houses: 'Houses' },

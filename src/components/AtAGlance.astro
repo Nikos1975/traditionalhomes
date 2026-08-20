@@ -1,6 +1,7 @@
 ---
 import { housePath } from '../i18n/routes';
 import { defaultLocale, type Locale } from '../i18n/config';
+import { unitList, unitText } from '../i18n/inventory-display';
 import { getCommonCopy } from '../i18n/translate';
 import { formatPropertyCount } from '../i18n/property-counts';
 import type { InventoryUnit } from '../types';
@@ -12,16 +13,19 @@ interface Props {
 
 const { unit, locale = defaultLocale } = Astro.props;
 const propertyCopy = getCommonCopy(locale).ui.property;
+const derivedCopy = propertyCopy.derived;
 
-// Determine if there's a custom bathroom constraint (e.g. courtyard access)
-const bathroomConstraint = unit.hardConstraints.find(c => c.toLowerCase().includes('bathroom'));
+// Determine if there's a custom bathroom constraint (e.g. courtyard access).
+// The constraint itself is a factual inventory value, so it is read back through
+// the locale's presentation of that same list rather than re-authored here.
+const localizedConstraints = unitList(locale, unit.slug, 'hardConstraints', unit.hardConstraints);
+const bathroomConstraintIndex = unit.hardConstraints.findIndex(c => c.toLowerCase().includes('bathroom'));
+const bathroomConstraint = bathroomConstraintIndex >= 0 ? unit.hardConstraints[bathroomConstraintIndex] : undefined;
 let bathroomLabel = '';
 if (bathroomConstraint) {
-  if (bathroomConstraint.toLowerCase().includes('courtyard')) {
-    bathroomLabel = 'Accessed via courtyard area';
-  } else {
-    bathroomLabel = bathroomConstraint;
-  }
+  bathroomLabel = bathroomConstraint.toLowerCase().includes('courtyard')
+    ? derivedCopy.bathroom.viaCourtyard
+    : localizedConstraints[bathroomConstraintIndex] ?? bathroomConstraint;
 }
 
 // Casing normalizations
@@ -37,40 +41,44 @@ const formatParking = (str: string) => {
 };
 
 const formatBathroom = (unit: InventoryUnit) => {
-  if (unit.slug === 'clio') return 'Shower room';
-  if (unit.slug === 'erato') return '1 bathroom';
-  if (unit.slug === 'almond-tree-villa') return '2 bathrooms';
+  if (unit.slug === 'clio') return derivedCopy.bathroom.showerRoom;
+  // These two spell the count out in full rather than using the compact label.
+  if (unit.slug === 'erato' || unit.slug === 'almond-tree-villa') {
+    return formatPropertyCount(locale, unit.bathrooms, propertyCopy.counts.bathrooms);
+  }
   return formatPropertyCount(locale, unit.bathrooms, propertyCopy.counts.bathroomsCompact);
 };
 
 const formatLayout = (unit: InventoryUnit) => {
-  if (unit.slug === 'almond-tree-villa') return 'Split-level traditional villa';
-  if (unit.slug === 'clio' || unit.slug === 'erato') return 'Connected levels with ontas';
-  if (unit.slug === 'penelope') return 'Main level + ontas';
-  if (unit.slug === 'leonidas') return 'Main living space + ontas';
-  if (unit.slug === 'efterpi') return 'Courtyard level + ontas';
-  if (unit.slug === 'kalliopi') return 'First-floor house above Efterpi + ontas';
-  if (unit.slug === 'monastiri') return 'Multi-level house with internal stairs';
-  return unit.floors === 1 ? 'Ground floor' : 'Ground floor + first floor';
+  const layout = derivedCopy.layout;
+
+  if (unit.slug === 'almond-tree-villa') return layout.splitLevelVilla;
+  if (unit.slug === 'clio' || unit.slug === 'erato') return layout.connectedLevelsOntas;
+  if (unit.slug === 'penelope') return layout.mainLevelOntas;
+  if (unit.slug === 'leonidas') return layout.mainLivingSpaceOntas;
+  if (unit.slug === 'efterpi') return layout.courtyardLevelOntas;
+  if (unit.slug === 'kalliopi') return layout.firstFloorAboveEfterpiOntas;
+  if (unit.slug === 'monastiri') return layout.multiLevelInternalStairs;
+  return unit.floors === 1 ? layout.groundFloor : layout.groundAndFirstFloor;
 };
 
 const formatAccess = (unit: InventoryUnit) => {
-  if (unit.slug === 'almond-tree-villa') return 'Internal stairs and stepped levels';
-  if (unit.slug === 'clio') return 'Entrance step + internal stairs';
-  if (unit.slug === 'leonidas') return 'Stone steps to entrance; internal wooden stairs';
-  if (unit.slug === 'penelope') return 'External steps + internal stairs to ontas';
-  if (unit.slug === 'margarita') return 'Courtyard entry + internal stairs';
-  if (unit.slug === 'efterpi') return 'Steps down to courtyard; internal stair to ontas';
-  if (unit.slug === 'kalliopi') return 'Stone stairs to balcony entrance';
-  if (unit.slug === 'monastiri') return 'Courtyard entrance + internal stairs';
-  if (!unit.internalStairs) return 'Step-free';
+  const access = derivedCopy.access;
+
+  if (unit.slug === 'almond-tree-villa') return access.internalStairsSteppedLevels;
+  if (unit.slug === 'clio') return access.entranceStepInternalStairs;
+  if (unit.slug === 'leonidas') return access.stoneStepsInternalWoodenStairs;
+  if (unit.slug === 'penelope') return access.externalStepsInternalStairsToOntas;
+  if (unit.slug === 'margarita') return access.courtyardEntryInternalStairs;
+  if (unit.slug === 'efterpi') return access.stepsDownToCourtyardStairToOntas;
+  if (unit.slug === 'kalliopi') return access.stoneStairsBalconyEntrance;
+  if (unit.slug === 'monastiri') return access.courtyardEntranceInternalStairs;
+  if (!unit.internalStairs) return access.stepFree;
   const hasStairsDownEntrance = unit.hardConstraints.some((constraint) =>
     constraint.toLowerCase().includes('stairs down')
   );
 
-  return hasStairsDownEntrance
-    ? 'Internal stairs; entrance via stairs down'
-    : 'Internal stairs';
+  return hasStairsDownEntrance ? access.internalStairsEntranceViaStairsDown : access.internalStairs;
 };
 ---
 
@@ -156,7 +164,7 @@ const formatAccess = (unit: InventoryUnit) => {
         </div>
         <div>
           <span class="block text-[10px] text-muted uppercase tracking-[0.05em] font-medium mb-0.5">{propertyCopy.labels.view}</span>
-          <span class="block text-xl font-serif text-body-text leading-tight">{formatView(unit.view)}</span>
+          <span class="block text-xl font-serif text-body-text leading-tight">{formatView(unitText(locale, unit.slug, 'view', unit.view) ?? unit.view)}</span>
         </div>
       </div>
 
@@ -193,7 +201,7 @@ const formatAccess = (unit: InventoryUnit) => {
         </div>
         <div>
           <span class="block text-[10px] text-muted uppercase tracking-[0.05em] font-medium mb-0.5">{propertyCopy.labels.parking}</span>
-          <span class="block text-xl font-serif text-body-text leading-tight">{formatParking(unit.parking)}</span>
+          <span class="block text-xl font-serif text-body-text leading-tight">{formatParking(unitText(locale, unit.slug, 'parking', unit.parking) ?? unit.parking)}</span>
         </div>
       </div>
     </div>

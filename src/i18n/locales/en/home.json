@@ -7,7 +7,8 @@
     "imageAlt": "View from the hillside properties above Elounda",
     "ctaCollection": "Explore the Collection",
     "ctaAvailability": "Check Availability",
-    "scrollLabel": "Explore"
+    "scrollLabel": "Explore",
+    "subline": "Quiet, traditional, direct."
   },
   "overview": {
     "ariaLabel": "Houses and Villa overview",
@@ -44,7 +45,21 @@
     "body": "The stone houses are in Mavrikiano, above Schisma, the harbour centre of Elounda. Almond Tree Villa is in Vrouchas, higher on the hillside and closer to Plaka. A car is recommended for beaches, tavernas, luggage, and evening meals.",
     "ctaLocation": "Location & Travel",
     "ctaGuide": "Local Guide",
-    "ctaPillar": "Understand the wider area"
+    "ctaPillar": "Understand the wider area",
+    "distances": [
+      {
+        "label": "Schisma / Elounda harbour → Mavrikiano",
+        "time": "3 min drive"
+      },
+      {
+        "label": "Schisma / Elounda harbour → Heraklion Airport (HER)",
+        "time": "1 hr 8 min · 66.9 km"
+      },
+      {
+        "label": "Schisma / Elounda harbour → Sitia Airport (JSH)",
+        "time": "1 hr 23 min · 76.0 km"
+      }
+    ]
   },
   "booking": {
     "heading": "Check dates for your stay.",

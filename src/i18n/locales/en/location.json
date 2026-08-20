@@ -1,6 +1,13 @@
 {
-  "breadcrumb": { "ariaLabel": "Breadcrumb", "home": "Home", "current": "Location" },
-  "heading": { "lead": "The", "emphasis": "Setting" },
+  "breadcrumb": {
+    "ariaLabel": "Breadcrumb",
+    "home": "Home",
+    "current": "Location"
+  },
+  "heading": {
+    "lead": "The",
+    "emphasis": "Setting"
+  },
   "intro": "Mavrikiano and Vrouchas sit on the hillside above Elounda, with village paths, sea views, parking details, and beaches close by car.",
   "pillarLinkLabel": "Read the area guide to Elounda and Mirabello Bay",
   "villages": {
@@ -63,7 +70,11 @@
     "ctaLabel": "Contact Guest Relations"
   },
   "map": {
-    "villageLabel": "Village",
-    "caption": "Interactive view of our properties across the Elounda hillside."
+    "heading": {
+      "lead": "Village",
+      "emphasis": "Map"
+    },
+    "caption": "Interactive view of our properties across the Elounda hillside.",
+    "mappedSuffix": "Properties Mapped"
   }
 }

@@ -1,8 +1,15 @@
 {
-  "breadcrumb": { "ariaLabel": "Brotkrümelnavigation", "home": "Startseite", "current": "Lage" },
-  "heading": { "lead": "Die", "emphasis": "Lage" },
+  "breadcrumb": {
+    "ariaLabel": "Navigationspfad",
+    "home": "Startseite",
+    "current": "Lage"
+  },
+  "heading": {
+    "lead": "Die",
+    "emphasis": "Lage"
+  },
   "intro": "Mavrikiano und Vrouchas liegen am Hang oberhalb von Elounda — mit Dorfwegen, Meerblick, geregelten Parkmöglichkeiten und Stränden in kurzer Fahrdistanz.",
-  "pillarLinkLabel": "Zum Gebietsführer über Elounda und die Bucht von Mirabello",
+  "pillarLinkLabel": "Zum Reiseführer für Elounda und die Bucht von Mirabello",
   "villages": {
     "kickerPrefix": "Dorf",
     "mavrikiano": {
@@ -11,7 +18,7 @@
         "Mavrikiano ist ein Hangdorf oberhalb von Schisma, dem Hafenzentrum von Elounda. Unsere zehn Steinhäuser stehen mitten im gewachsenen Dorf, verbunden durch Steinwege und ruhige Gassen.",
         "Im Dorf gibt es Lokale zum Essen und Trinken, darunter Kantouni, To Rakadiko tou Kamari, Despoina Tavern und BeeRaki. Der Hafen von Elounda mit Geschäften, Märkten und weiteren Tavernen liegt etwa drei Fahrminuten entfernt — oder für viele Gäste zehn Minuten bergab zu Fuß."
       ],
-      "guideLinkLabel": "Zum Gebietsführer für Mavrikiano"
+      "guideLinkLabel": "Zum Reiseführer für Mavrikiano"
     },
     "vrouchas": {
       "name": "Vrouchas",
@@ -59,11 +66,18 @@
   "welcome": {
     "heading": "Persönlicher Empfang",
     "body": "In traditionellen Dörfern ist die Orientierung nicht immer einfach. Wir empfangen alle Gäste persönlich an unserem Parkplatz.",
+    "hostNames": {
+      "Mrs. Olga": "Frau Olga"
+    },
     "hostSuffix": "bringt Sie zu Ihrem Haus und hilft bei der Ankunft.",
     "ctaLabel": "Kontakt zum Gästeservice"
   },
   "map": {
-    "villageLabel": "Dorf",
-    "caption": "Interaktive Ansicht unserer Unterkünfte am Hang über Elounda."
+    "heading": {
+      "lead": "Die",
+      "emphasis": "Dorfkarte"
+    },
+    "caption": "Interaktive Ansicht unserer Unterkünfte am Hang über Elounda.",
+    "mappedSuffix": "Unterkünfte auf der Karte"
   }
 }

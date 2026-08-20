@@ -50,6 +50,21 @@ const dictionaries = {
 type SourceDictionary = (typeof dictionaries)['en'];
 type OverlayLocale = Exclude<keyof typeof dictionaries, 'en'>;
 
+/**
+ * An overlay may translate part of a namespace, so every level is optional —
+ * a plain `Partial` would only make the top-level namespaces optional.
+ */
+type DeepPartial<T> = T extends readonly unknown[]
+  ? T
+  : T extends object
+    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    : T;
+
+type DictionaryOverlay = DeepPartial<SourceDictionary>;
+
+const overlayFor = (locale: string): DictionaryOverlay | undefined =>
+  dictionaries[locale as OverlayLocale] as DictionaryOverlay | undefined;
+
 const isPlainObject = (value: unknown): value is Record<string, unknown> =>
   typeof value === 'object' && value !== null && !Array.isArray(value);
 
@@ -89,7 +104,7 @@ export function getTranslations(locale: string | undefined = defaultLocale): Sou
     return cached;
   }
 
-  const overlay = dictionaries[safeLocale as OverlayLocale] as Partial<SourceDictionary> | undefined;
+  const overlay = overlayFor(safeLocale);
   const resolved = overlay ? mergeDictionary(dictionaries.en, overlay) : dictionaries.en;
 
   resolvedDictionaries.set(safeLocale, resolved);
@@ -103,7 +118,7 @@ export function getTranslations(locale: string | undefined = defaultLocale): Sou
  */
 export function hasTranslations(locale: string | undefined, namespace: keyof SourceDictionary): boolean {
   const safeLocale = normalizeLocale(locale);
-  const overlay = dictionaries[safeLocale as OverlayLocale] as Partial<SourceDictionary> | undefined;
+  const overlay = overlayFor(safeLocale);
 
   return safeLocale === defaultLocale || Boolean(overlay && namespace in overlay);
 }
