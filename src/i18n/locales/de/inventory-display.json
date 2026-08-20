@@ -26,6 +26,22 @@
       "name": "Haus Leonidas"
     },
     "margarita": {
+      "view": "Meerblick von der Veranda im ersten Stock",
+      "parking": "Gemeinsamer privater Gästeparkplatz in der Nähe (~70 m); bei Belegung kostenloses Parken im Dorf",
+      "pets": "Kleine Haustiere (≤5 kg) auf Anfrage",
+      "kitchen": "Hauptküche + Außenküchenzeile",
+      "amenities": [
+        "Klimaanlage und Temperaturregelung (Erdgeschoss + Zweibettzimmer im ersten Stock)",
+        "Voll ausgestattete Küche und Außenküchenzeile",
+        "Großzügige Veranda mit Meerblick",
+        "Essbereich im Freien",
+        "WLAN inklusive"
+      ],
+      "hardConstraints": [
+        "Nicht stufenfrei — Zugang durch den gewölbten Innenhof und Innentreppen",
+        "Innentreppe vom Erdgeschoss ins Obergeschoss",
+        "Das Badezimmer ist über den Innenhof zugänglich"
+      ],
       "name": "Haus Margarita"
     },
     "demetra": {
