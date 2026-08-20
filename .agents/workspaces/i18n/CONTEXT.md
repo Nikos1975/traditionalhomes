@@ -6,10 +6,12 @@ This workspace governs multilingual implementation for `traditional-homes.gr`. R
 
 | Requested outcome | Stage |
 | --- | --- |
-| Add/change locale routes, route-map entries, shared page renderers, locale-aware component behavior, fallback rules, canonical/hreflang, sitemap, or `llms.txt` infrastructure | `stages/01_infrastructure/CONTEXT.md` |
-| Translate/localize an already-supported route, including UI copy, long-form copy, title/meta/H1, terminology, and visible-language completeness | `stages/02_translation/CONTEXT.md` |
-| Both infrastructure and translation are required | Run Stage 01 first, stop for review, then Stage 02 |
+| Add/change locale route families, localized generic path segments, shared page renderers, locale-aware component behavior, fallback rules, canonical/hreflang, sitemap, or `llms.txt` infrastructure | `stages/01_infrastructure/CONTEXT.md` |
+| Translate/localize an already-supported route family, including declaring a target-locale content id/slug inside an existing dynamic route family, UI copy, long-form copy, title/meta/H1, terminology, and visible-language completeness | `stages/02_translation/CONTEXT.md` |
+| Both new route-family infrastructure and translation are required | Run Stage 01 first, stop for review, then Stage 02 |
 | A factual correction to the English master is required | Stop and record it as a cross-language correction; do not fix one locale independently |
+
+For a dynamic route family that already exists for the target locale (for example `/de/ferienhaeuser/[slug]`), adding another fully translated content id is a Stage 02 availability declaration, not a new infrastructure stage. The locale-specific `routeMap.content` entry must be added in the same bounded change as the complete localized content; never declare it early as a phantom route.
 
 ## Shared invariants
 
@@ -24,4 +26,4 @@ This workspace governs multilingual implementation for `traditional-homes.gr`. R
 
 ## Review boundaries
 
-Stage 01 and Stage 02 are separate mental modes. Do not combine renderer/route architecture work with broad translation in one undifferentiated pass. Each stage must leave a reviewable result before the next stage begins.
+Stage 01 and Stage 02 are separate mental modes. Do not combine renderer/route-family architecture work with broad translation in one undifferentiated pass. Each stage must leave a reviewable result before the next stage begins.
