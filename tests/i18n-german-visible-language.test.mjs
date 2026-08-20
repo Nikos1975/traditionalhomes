@@ -22,6 +22,7 @@ const ROUTE_PAIRS = [
   ['de/ferienhaeuser', 'en/houses'],
   ['de/lage', 'en/location'],
   ['de/ferienhaeuser/argyro', 'en/houses/argyro'],
+  ['de/ferienhaeuser/margarita', 'en/houses/margarita'],
   ['de/reisefuehrer/vrouchas', 'en/guide/vrouchas'],
 ];
 
@@ -150,6 +151,21 @@ describe('German visible-language completeness — generated output', async () =
     assert.match(html, /data-item-name="House Argyro"/);
   });
 
+  it('renders German inventory-derived descriptions on Margarita without renderer changes', async () => {
+    const html = await page('de/ferienhaeuser/margarita');
+
+    assert.match(html, /Haus Margarita/);
+    assert.match(html, /Erdgeschoss \+ Obergeschoss/);
+    assert.match(html, /Zugang durch den gewölbten Innenhof und Innentreppen/);
+    assert.match(html, /Das Badezimmer ist über den Innenhof zugänglich/);
+    assert.match(html, /Gemeinsamer privater Gästeparkplatz in der Nähe \(~70 m\)/);
+    assert.doesNotMatch(html, /House Margarita|Ground floor \+ first floor|Bathroom accessed via the courtyard area|Shared private guest parking nearby/);
+
+    const visible = [...visibleStrings(html)].filter((value) => value.includes('House Margarita'));
+    assert.deepEqual(visible, [], `Visible English unit name: ${visible.join(' | ')}`);
+    assert.match(html, /data-item-name="House Margarita"/);
+  });
+
   it('renders German for the map cards on the German location page', async () => {
     const html = await page('de/lage');
 
@@ -165,20 +181,25 @@ describe('German visible-language completeness — generated output', async () =
     assert.doesNotMatch(html, /Mrs\. Olga/);
   });
 
-  it('renders German gallery captions on the German house page', async () => {
-    const html = await page('de/ferienhaeuser/argyro');
-    const offenders = altTexts(html).filter((alt) =>
-      ENGLISH_GALLERY_WORDS.some((word) => alt.toLowerCase().includes(word)),
-    );
+  it('renders German gallery captions on the German house pages', async () => {
+    for (const [route, expected] of [
+      ['de/ferienhaeuser/argyro', ['Veranda mit Meerblick', 'Wohnzimmer mit Kamin']],
+      ['de/ferienhaeuser/margarita', ['Badezimmer mit Badewanne', 'Essbereich auf der Terrasse mit Meerblick']],
+    ]) {
+      const html = await page(route);
+      const offenders = altTexts(html).filter((alt) =>
+        ENGLISH_GALLERY_WORDS.some((word) => alt.toLowerCase().includes(word)),
+      );
 
-    assert.deepEqual(offenders, [], `English gallery captions: ${offenders.join(' | ')}`);
-    assert.match(html, /alt="Veranda mit Meerblick"/);
-    assert.match(html, /alt="Wohnzimmer mit Kamin"/);
+      assert.deepEqual(offenders, [], `${route} English gallery captions: ${offenders.join(' | ')}`);
+      for (const label of expected) assert.ok(altTexts(html).includes(label), `${route} is missing gallery label: ${label}`);
+    }
   });
 
   it('keeps the English master wording on the English routes', async () => {
-    const [house, location, erato] = await Promise.all([
+    const [house, margarita, location, erato] = await Promise.all([
       page('en/houses/argyro'),
+      page('en/houses/margarita'),
       page('en/location'),
       page('en/houses/erato'),
     ]);
@@ -189,6 +210,9 @@ describe('German visible-language completeness — generated output', async () =
     assert.match(house, /aria-label="Hero photo of House Argyro"/);
     assert.match(house, /aria-label="Select /);
     assert.match(house, /We personally meet our guests at the parking area/);
+    assert.match(margarita, /House Margarita/);
+    assert.match(margarita, /Bathroom accessed via the courtyard area/);
+    assert.match(margarita, /Shared private guest parking nearby \(~70 m\)/);
     assert.match(location, /Village <span[^>]*>Map<\/span>/);
     assert.match(location, /Mrs\. Olga/);
     assert.match(erato, />1 bathroom</);
