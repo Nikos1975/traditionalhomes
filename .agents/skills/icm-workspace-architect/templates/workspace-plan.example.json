@@ -1,0 +1,25 @@
+{
+  "project_name": "Example Research Pipeline",
+  "root_map": "AGENTS.md",
+  "root_context": true,
+  "stages": [
+    {
+      "number": 1,
+      "name": "research",
+      "purpose": "Collect and verify source material."
+    },
+    {
+      "number": 2,
+      "name": "analysis",
+      "purpose": "Synthesize approved research into findings."
+    },
+    {
+      "number": 3,
+      "name": "delivery",
+      "purpose": "Prepare the final deliverable from approved analysis."
+    }
+  ],
+  "shared_reference_dirs": [
+    "_config/shared"
+  ]
+}
