@@ -13,6 +13,7 @@ interface Props {
   frontmatter: {
     title: string;
     description?: string;
+    breadcrumbLabel?: string;
   };
   fallbackDescription?: string;
 }
@@ -34,6 +35,8 @@ const alternates = routeAlternates('guide', guideId);
 
 // Sections without a page in the active locale resolve to the default locale
 // and carry hreflang, so the fallback is explicit rather than accidental.
+const breadcrumbLabel = frontmatter.breadcrumbLabel ?? frontmatter.title;
+
 const homeLink = resolveLocalizedLink(locale, 'home');
 const locationLink = resolveLocalizedLink(locale, 'location');
 const housesLink = resolveLocalizedLink(locale, 'houses');
@@ -57,7 +60,7 @@ const housesLink = resolveLocalizedLink(locale, 'houses');
         <li aria-hidden="true">›</li>
         <li><a href={locationLink.href} hreflang={locationLink.hreflang} class="hover:text-body-text transition-colors duration-150">{guideCopy.breadcrumb.location}</a></li>
         <li aria-hidden="true">›</li>
-        <li class="text-body-text font-medium" aria-current="page">{frontmatter.title}</li>
+        <li class="text-body-text font-medium" aria-current="page">{breadcrumbLabel}</li>
       </ol>
     </nav>
 

@@ -10,6 +10,21 @@ Status values:
 - `Ready for QA`: translation is complete and awaiting checks.
 - `Approved`: translation has passed QA.
 - `Pilot`: a single route is implemented to prove the shared rendering and locale-routing architecture. It is not a sitewide translation and must not be read as one.
+- `Localized`: the route is a complete, faithful localization of the English master and is the pattern later locales should follow.
+
+## Localization contract
+
+English is the verified factual master. A translated page carries **the same
+facts as its English counterpart** — same dates, distances, descriptions,
+historical statements, practical and visitor information, and the same degree of
+certainty. Translators localize wording, headings, SEO metadata and route
+segments; they do not reconcile, correct, qualify or drop factual claims in one
+language only.
+
+If an English claim looks wrong or outdated, it is raised as a proposed
+**cross-language correction** and applied to English and every locale together
+once approved. Until then the locales stay factually aligned. Open proposals are
+listed at the end of this document.
 
 German is **not** translated sitewide. As of Stage 3 German owns exactly one
 public route, listed below. Every other German string resolves to the English
@@ -28,7 +43,7 @@ source through the documented partial-overlay fallback in
 | Policies page | Source present | Not started | Not started | Not started | Not started | Not started | Not started | Not started | Long bodies may need content collection handling. |
 | About page | Source present | Not started | Not started | Not started | Not started | Not started | Not started | Not started | Keep factual claims conservative. |
 | Mavrikiano guide | Source present | Not started | Not started | Not started | Not started | Not started | Not started | Not started | Area guides follow the blog editorial system. |
-| Vrouchas guide | Source present | Pilot | Not started | Not started | Not started | Not started | Not started | Ready for QA | German pilot at `/de/reisefuehrer/vrouchas/`; bounded German extract only (access note + distance table + pointer to the English guide). Long-form sections remain English. |
+| Vrouchas guide | Source present | Localized | Not started | Not started | Not started | Not started | Not started | Ready for QA | German pilot at `/de/reisefuehrer/vrouchas/`; bounded German extract only (access note + distance table + pointer to the English guide). Long-form sections remain English. |
 | Blog index | Source present | Not started | Not started | Not started | Not started | Not started | Not started | Not started | English-only canonical route is `/en/blog/`; legacy `/blog/` redirects permanently. |
 | Blog posts | Source present | Not started | Not started | Not started | Not started | Not started | Not started | Not started | English-only canonical article routes are `/en/blog/<slug>/`; no translated routes exist. |
 | Header/Footer | Extracted | Pilot | Not started | Not started | Not started | Not started | Not started | Ready for QA | German labels exist in the `de` overlay for the chrome the pilot renders. Hrefs still resolve through the route map, so untranslated sections keep their English URL and carry `hreflang="en"`. |
@@ -52,3 +67,62 @@ Not implemented in this stage: any other German route, a language switcher,
 German SEO templates, translated blog or property routes, and RTL routes for
 `ar` / `he`. `src/inventory/inventory.json` remains the factual source of truth
 and no inventory value was copied into a locale file.
+
+## German Vrouchas guide
+
+| Item | Value |
+|---|---|
+| Internal route id | `guide` |
+| Internal content id | `vrouchas` |
+| English URL | `/en/guide/vrouchas/` (unchanged) |
+| German URL | `/de/reisefuehrer/vrouchas/` |
+| German title | Vrouchas auf Kreta: Lage, Anreise & Tipps |
+| German H1 | Vrouchas auf Kreta: Lage, Anreise und praktische Informationen |
+| German content | `src/guides/de/Vrouchas-Guide.md` |
+| German locale overlays | `common.json`, `navigation.json`, `forms.json`, `guide.json` (all partial) |
+
+Section parity with `src/guides/Vrouchas-Guide.md`, asserted by test:
+
+| English section | German section |
+|---|---|
+| Distances from Almond Tree Villa, Vrouchas | Entfernungen ab der Almond Tree Villa, Vrouchas |
+| Beaches of the Area | Strände in der Umgebung |
+| Historical Sites & Landmarks | Historische Stätten und Sehenswürdigkeiten |
+| Transport & Practical Information | Verkehr und praktische Hinweise |
+| Recommended Day-Trip Itinerary: The Mirabello Circuit | Vorschlag für einen Tagesausflug: die Mirabello-Runde |
+| Essential Packing List | Packliste |
+| Spinalonga Visitor Information (2026 Season) | Besucherinformationen zu Spinalonga (Saison 2026) |
+| — Operating Hours | — Öffnungszeiten |
+| — Site Entrance Tickets | — Eintrittskarten |
+| — Boat Transfers from Plaka | — Bootstransfer ab Plaka |
+
+The only editorial deviation is the middle table column header, rendered as
+"Beschreibung" rather than a literal translation of "National Geographic Style
+Description". That header is an internal authoring label, not a fact; every
+description in the column is localized in full.
+
+Not implemented: any other German route, a language switcher, German SEO
+templates, translated blog or property routes, RTL routes for `ar` / `he`.
+`src/inventory/inventory.json` remains the factual source of truth and no
+inventory value was copied into a locale file.
+
+## Proposed cross-language corrections — NOT applied
+
+Raised for review only. English and German currently state all of these
+identically, and they must stay aligned until a correction is approved and
+applied to every locale at once.
+
+| Claim (English master, mirrored in German) | Concern | Repository evidence |
+|---|---|---|
+| Spinalonga "leper colony (1903–1957)" | The colony start year may be 1904 | `docs/research/blog/spinalonga-multiple-lives/contradiction-register.md`: "The first residents arrived in 1904"; the day and count are blocked, the year is secure |
+| Spinalonga fortress "built 1579" | Works *began* June 1579; construction was not completed that year | `claim-verification-register.md`, S01, status Verified |
+| Olous as "an ancient Minoan metropolis" / "Minoan-era foundations" | Published repository content never describes Olous as Minoan | `src/content/blog/elounda-and-mirabello-bay.md` |
+| Elounda Canal "built by French military engineers in 1897–98" | The published article explicitly declines to assign a construction date or responsible authority; the French attribution survives only in the unpublished `elounda-guide-style-*` drafts | `src/content/blog/elounda-and-mirabello-bay.md` |
+| Elounda Salt Pans "Venetian-era" | The Ephorate of Antiquities of Lasithi records possible Byzantine origin, with Venetian use from the early period of their rule | `src/content/blog/elounda-salt-pans-and-poros-windmills.md` |
+| Salt pans "a notable and serene spot for birdwatching" | Not present in any verified repository content | — |
+| Gournia "the only fully excavated Minoan city in Crete" | Not present in any verified repository content | — |
+| Paleochristian Basilica of Poros mosaics | Not present in any verified repository content | — |
+| Spinalonga admission €20 / €10, free under 25 (EU) | Two official sources currently disagree: the [Ephorate of Antiquities of Lasithi](https://spinalonga-island.gr/infos/?lang=en) publishes €20/€10, while the [Ministry of Culture Odysseus page](http://odysseus.culture.gr/h/3/eh355.jsp?obj_id=2607) publishes €8/€4. The Ephorate states reduced admission for EU citizens over 65 from 1 October to 31 May, which does not match the under-25 free-admission wording | Both sources checked 2026-08-20 |
+| Boat "€10 to €12 round trip, every 30 minutes" | Operator-specific and volatile; no official source consulted | — |
+| "Limited service runs between Elounda and Agios Nikolaos" | Not checked against the current [KTEL Heraklion–Lasithi](https://www.ktelherlas.gr/en/timetables) timetable | — |
+| Section titled "(2026 Season)" | Dated section title will need an annual review in both languages | — |

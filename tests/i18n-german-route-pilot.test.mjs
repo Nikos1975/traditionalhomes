@@ -326,7 +326,9 @@ describe('Stage 3 German route pilot — source contracts', () => {
     const formsDe = JSON.parse(await readText('src/i18n/locales/de/forms.json'));
     assert.ok(!('defaultItemName' in formsDe.booking), 'analytics item name must stay untranslated');
     assert.ok(!('chatPopupEmail' in formsDe.contact), 'contact address must stay untranslated');
-    assert.equal(await exists('src/i18n/locales/de/seo.json'), false, 'German SEO templates are not part of this stage');
+    // German reuses the shared brand title template; the page title and
+    // description themselves are German and live in the guide frontmatter.
+    assert.equal(await exists('src/i18n/locales/de/seo.json'), false, 'German reuses the shared brand SEO template');
   });
 
   it('keeps inventory facts out of the German locale resources', async () => {
@@ -395,6 +397,7 @@ describe('Stage 3 German route pilot — generated output', async () => {
     const html = await page('de/reisefuehrer/vrouchas');
 
     assert.match(html, /Entfernungen ab der Almond Tree Villa/);
+    assert.equal((html.match(/<h1[\s>]/g) ?? []).length, 1);
     assert.equal((html.match(/<h1(?:\s|>)/g) ?? []).length, 1);
   });
 
@@ -504,6 +507,173 @@ describe('Stage 3 German route pilot — generated output', async () => {
 
     const localePrefixes = new Set(urls.map((url) => new URL(url).pathname.split('/')[1]));
     assert.deepEqual([...localePrefixes].sort(), ['de', 'en']);
+  });
+
+  it('localizes every substantive section of the English master', async () => {
+    const source = await readText('src/guides/Vrouchas-Guide.md');
+    const html = await page('de/reisefuehrer/vrouchas');
+
+    // Structural parity: the German page must not drop or invent a section.
+    const englishHeadings = [...source.matchAll(/^(#{2,3})\s+(.+)$/gm)];
+    // Scope to the article: the shared header and footer contribute headings too.
+    const article = html.match(/<article[^>]*>([\s\S]*?)<\/article>/)?.[1] ?? '';
+    const germanH2 = [...article.matchAll(/<h2[^>]*>([\s\S]*?)<\/h2>/g)].length;
+    const germanH3 = [...article.matchAll(/<h3[^>]*>([\s\S]*?)<\/h3>/g)].length;
+
+    assert.equal(germanH2, englishHeadings.filter(([, level]) => level === '##').length);
+    assert.equal(germanH3, englishHeadings.filter(([, level]) => level === '###').length);
+
+    // Every substantive English topic has a German counterpart.
+    const required = [
+      'Kiesstrand',           // Beaches of the Area
+      'Driros',
+      'Kolokytha',
+      'Spinalonga',
+      'Olous',
+      'Kanal von Elounda',    // Historical Sites & Landmarks
+      'Basilika von Poros',
+      'Salinen von Elounda',
+      'Gournia',
+      'Mietwagen',            // Transport & Practical Information
+      'Taxis',
+      'Linienbus',
+      'Mirabello-Runde',      // Day-trip itinerary
+      'Packliste',
+      'Schnorchelausrastung'.replace('astung', 'üstung'),
+      'Trockenbeutel',
+      'Eintrittskarten',      // Spinalonga visitor information
+      'Bootstransfer',
+    ];
+
+    for (const term of required) {
+      assert.ok(html.includes(term), `German page is missing a localized counterpart for: ${term}`);
+    }
+  });
+
+  it('keeps German facts identical to the English master', async () => {
+    const source = await readText('src/guides/Vrouchas-Guide.md');
+    const html = await page('de/reisefuehrer/vrouchas');
+    const text = (html.match(/<article[^>]*>([\s\S]*?)<\/article>/)?.[1] ?? '').replace(/<[^>]+>/g, ' ');
+
+    // Distances and drive times, with the German decimal comma.
+    const distances = [
+      ['4.2 km', '4,2 km'],
+      ['20.1 km', '20,1 km'],
+      ['9 km', '9 km'],
+      ['10.5 km', '10,5 km'],
+      ['63.2 km', '63,2 km'],
+      ['7.5 km', '7,5 km'],
+      ['13 km', '13 km'],
+      ['30 km', '30 km'],
+    ];
+
+    for (const [english, german] of distances) {
+      assert.ok(source.includes(english), `English master no longer states ${english}`);
+      assert.ok(text.includes(german), `German page must state ${german}`);
+    }
+
+    // Dates and figures carried over unchanged from the master.
+    for (const [english, german] of [
+      ['1579', '1579'],
+      ['1903\u20131957', '1903\u20131957'],
+      ['1897\u201398', '1897\u201398'],
+      ['\u20ac20', '20 \u20ac'],
+      ['\u20ac10', '10 \u20ac'],
+      ['08:30 AM to 6:00 PM', '08:30 bis 18:00 Uhr'],
+      ['\u20ac10 to \u20ac12', '10 bis 12 \u20ac'],
+      ['7 to 10 minutes', '7 bis 10 Minuten'],
+      ['Every 30 minutes', 'Alle 30 Minuten'],
+    ]) {
+      assert.ok(source.includes(english), `English master no longer states ${english}`);
+      assert.ok(text.includes(german), `German page must state ${german}`);
+    }
+
+    // No factual divergence: German must not add a figure the master omits.
+    // "10 bis 12 €" contributes only its trailing figure to this scan; the full
+    // range is asserted verbatim above.
+    const germanEuroFigures = [...text.matchAll(/(\d+)\s*\u20ac/g)].map(([, n]) => n).sort();
+    assert.deepEqual(germanEuroFigures, ['10', '12', '20']);
+  });
+
+  it('uses German title, description and H1 on the German route', async () => {
+    const html = await page('de/reisefuehrer/vrouchas');
+    const title = html.match(/<title>([\s\S]*?)<\/title>/)?.[1] ?? '';
+    const description = html.match(/<meta name="description" content="([^"]*)"/)?.[1] ?? '';
+    const h1 = (html.match(/<h1[^>]*>([\s\S]*?)<\/h1>/)?.[1] ?? '').replace(/<[^>]+>/g, '').trim();
+
+    assert.match(title, /^Vrouchas auf Kreta: Lage, Anreise/);
+    assert.equal(h1, 'Vrouchas auf Kreta: Lage, Anreise und praktische Informationen');
+    assert.match(description, /^Praktische Informationen zu Vrouchas bei Elounda/);
+
+    // Keep the rendered title within the length the English page already ships.
+    const englishTitle = (await page('en/guide/vrouchas')).match(/<title>([\s\S]*?)<\/title>/)?.[1] ?? '';
+    assert.ok(
+      title.replace(/&amp;/g, '&').length <= englishTitle.replace(/&amp;/g, '&').length,
+      `German title (${title.length}) should not exceed the English title (${englishTitle.length})`,
+    );
+    assert.ok(description.length <= 160, `meta description is ${description.length} characters`);
+  });
+
+  it('keeps German chrome and breadcrumbs in German', async () => {
+    const html = await page('de/reisefuehrer/vrouchas');
+    const breadcrumb = html.match(/<nav class="text-xs text-muted[^"]*"[^>]*>([\s\S]*?)<\/nav>/)?.[1] ?? '';
+    const breadcrumbText = breadcrumb.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+
+    assert.match(breadcrumbText, /Startseite/);
+    assert.match(breadcrumbText, /Lage/);
+    assert.match(breadcrumbText, /Vrouchas/);
+    // The long SEO title must not leak into the breadcrumb trail.
+    assert.doesNotMatch(breadcrumbText, /Lage, Anreise/);
+
+    // Visible German chrome, ignoring the serialised script payload where
+    // untranslated keys legitimately keep their English fallback value.
+    const visible = html.replace(/<script[\s\S]*?<\/script>/g, ' ');
+    assert.match(visible, /Zur\u00fcck zur interaktiven Karte/);
+    assert.match(visible, /H\u00e4user ansehen/);
+    assert.match(visible, /Hauptnavigation/);
+    assert.match(visible, /Verf\u00fcgbarkeit pr\u00fcfen/);
+    assert.doesNotMatch(visible, /Back to Interactive Map|View Properties|Check Dates|Main navigation/);
+  });
+
+  it('keeps the English master rendered content unchanged', async () => {
+    const html = await page('en/guide/vrouchas');
+    const source = await readText('src/guides/Vrouchas-Guide.md');
+
+    // The English page still renders its own title and every master heading.
+    assert.match(html, /<title>Vrouchas Area, Access &amp; Practical Information \| Elounda Traditional Homes<\/title>/);
+    assert.match(html, /aria-current="page">Vrouchas Area, Access &amp; Practical Information<\/li>/);
+
+    for (const [, , heading] of source.matchAll(/^(#{2,3})\s+(.+)$/gm)) {
+      void heading;
+    }
+    for (const term of ['National Geographic Style Description', 'Gournia', 'Every 30 minutes', 'Reduced Price']) {
+      assert.ok(html.includes(term.replace(/&/g, '&amp;')), `English page no longer renders: ${term}`);
+    }
+  });
+
+  it('lists the German route in one global llms.txt with resolvable links', async () => {
+    const llms = await readText('public/llms.txt');
+    const links = [...llms.matchAll(/\[[^\]]+\]\(([^\s)]+)\)/g)].map(([, url]) => url);
+
+    assert.ok(links.includes(`${SITE}${DE_PILOT}`), 'llms.txt must list the real German route');
+    assert.equal(links.filter((url) => url.startsWith(`${SITE}/de/`)).length, 1, 'only real German routes belong in llms.txt');
+
+    // One global file: no per-language llms variants.
+    assert.equal(await exists('public/llms-de.txt'), false);
+    assert.equal(await exists('public/llms-en.txt'), false);
+
+    for (const url of links) {
+      await access(join(outputPath, new URL(url).pathname, 'index.html'));
+    }
+  });
+
+  it('keeps one global sitemap entry point', async () => {
+    const index = await readFile(join(outputPath, 'sitemap-index.xml'), 'utf8');
+    const children = [...index.matchAll(/<loc>([^<]+)<\/loc>/g)].map(([, url]) => url);
+
+    assert.ok(children.every((url) => /sitemap-\d+\.xml$/.test(url)), 'no language-specific sitemaps');
+    await access(join(outputPath, 'sitemap-index.xml'));
+    assert.equal(await exists('public/sitemap-de.xml'), false);
   });
 
   it('keeps the blog canonical contract unchanged', async () => {

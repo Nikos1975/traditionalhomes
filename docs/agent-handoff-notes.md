@@ -1,5 +1,20 @@
 # Agent Handoff Notes
 
+### 2026-08-20 - German Vrouchas guide: faithful localization of the English master (PR #58)
+
+- Replaced the Stage 3 German excerpt with a complete faithful localization at `/de/reisefuehrer/vrouchas/`. All seven sections and three subsections of `src/guides/Vrouchas-Guide.md` are present in German with the same facts, dates, distances, descriptions, historical statements, transport notes, itinerary, packing list and Spinalonga visitor information, including hours and prices.
+- The governing rule is now recorded in `docs/i18n/03_TRANSLATION_STATUS.md`: English is the verified factual master, a locale carries the same facts, and a suspected error is raised as a cross-language correction applied to every locale at once rather than fixed in one language. An earlier draft of this page corrected several English claims in German only; that divergence was reverted.
+- Twelve claims are listed there as proposed cross-language corrections and deliberately left unchanged in both languages, among them the 1903 colony start year (the repository register says 1904), Olous described as Minoan, the 1897-98 French canal attribution, "Venetian-era" salt pans, and the Spinalonga admission prices, where the Ephorate of Antiquities of Lasithi and the Ministry of Culture Odysseus page currently publish different figures.
+- Only editorial deviation: the middle distance-table column header renders as "Beschreibung" rather than a literal translation of "National Geographic Style Description". That header is an internal authoring label; every description in the column is localized in full.
+- German SEO: title `Vrouchas auf Kreta: Lage, Anreise & Tipps` (69 characters rendered, against 73 on the English page), H1 `Vrouchas auf Kreta: Lage, Anreise und praktische Informationen`, meta description 148 characters. No German `seo.json` was needed - the brand title template is shared.
+- Added an optional `breadcrumbLabel` to guide frontmatter so a locale can carry a long SEO title without a long breadcrumb. It defaults to `title`, so the English page renders exactly as before.
+- `public/llms.txt` gained one restrained `## Language versions` entry. One global file only; no per-language llms variants and no language-specific sitemap. The existing llms.txt test builds the site and resolves every listed URL.
+- No structured data added: the repository has no JSON-LD anywhere, so there was nothing to localize, and no FAQPage markup was introduced.
+- Route architecture unchanged. Internal ids stay stable; `/de/ferienhaeuser/`, `/de/lage/` and `/de/kontakt/` remain expressible in the route map but are deliberately not created.
+- Verified in a clean Linux checkout: `node --test` 321 tests with 320 passing and the single pre-existing `warns when WebP is larger than a practical PNG source` failure that also fails on unmodified `origin/main` here. 33 tests in `tests/i18n-german-route-pilot.test.mjs`, including section-parity and fact-parity checks against the English master. `astro check` 3 errors, 0 warnings, 3 hints - unchanged. `npm run build` produced 37 pages. `git diff --check` passed. An independent walk of `dist` found 0 broken internal links and 0 broken fragments.
+- Not verified here: `npm run seo:links` still fails with `[502] /` in this sandbox and fails identically on unmodified `origin/main`, because its loopback crawl is intercepted by the egress proxy. Re-run it on the workstation.
+- Remaining: the proposed cross-language corrections need a decision. A language switcher, German SEO templates and any further German route are later stages. No merge, no deployment, no Cloudflare, DNS or email change.
+
 ### 2026-08-20 - i18n Stage 3: locale route map and German guide pilot
 
 - Objective: prove the shared page-rendering and locale-routing architecture with one non-English route, without translating the site. Branch `codex/i18n-stage-3-german-route-pilot`, based on `de7bc95` (PR #57).
