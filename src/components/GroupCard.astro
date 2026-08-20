@@ -2,6 +2,7 @@
 import { Image } from 'astro:assets';
 import { defaultLocale, type Locale } from '../i18n/config';
 import { resolveLocalizedLink } from '../i18n/route-map';
+import { unitName } from '../i18n/inventory-display';
 import { getCommonCopy } from '../i18n/translate';
 import { formatPropertyCount } from '../i18n/property-counts';
 import type { ListingItem } from '../utils/filters';
@@ -34,9 +35,11 @@ const imgB = getHeroAsset(secondMemberSlug);
 
 // 2. DATA MAPPING
 const units = inventory as InventoryUnit[];
-const memberNames = group.members?.map(m => units.find(u => u.slug === m)?.name ?? m).join(' & ');
-const nameA = units.find(u => u.slug === firstMemberSlug)?.name ?? firstMemberSlug ?? '';
-const nameB = units.find(u => u.slug === secondMemberSlug)?.name ?? secondMemberSlug ?? '';
+const memberNames = group.members
+  ?.map(m => unitName(locale, m, units.find(u => u.slug === m)?.name ?? m))
+  .join(' & ');
+const nameA = firstMemberSlug ? unitName(locale, firstMemberSlug, units.find(u => u.slug === firstMemberSlug)?.name ?? firstMemberSlug) : '';
+const nameB = secondMemberSlug ? unitName(locale, secondMemberSlug, units.find(u => u.slug === secondMemberSlug)?.name ?? secondMemberSlug) : '';
 const detailLinkA = firstMemberSlug ? resolveLocalizedLink(locale, 'house', firstMemberSlug) : null;
 const detailLinkB = secondMemberSlug ? resolveLocalizedLink(locale, 'house', secondMemberSlug) : null;
 ---
@@ -141,17 +144,17 @@ const detailLinkB = secondMemberSlug ? resolveLocalizedLink(locale, 'house', sec
     {/* BOOKING INSTRUCTIONS (Editorial Note Style) */}
     <div class="mb-8 p-4 bg-amber-50/50 border border-amber-100 rounded-2xl mt-auto">
       <p class="text-[11px] text-amber-900/80 leading-relaxed italic">
-        <strong>{propertyCopy.group.editorNote}</strong> Select both properties for the exact same dates on our booking engine to secure this group estate.
+        <strong>{propertyCopy.group.editorNote}</strong> {propertyCopy.group.note}
       </p>
     </div>
 
     {/* ACTIONS */}
     <div class="pt-6 border-t border-stone-100 grid grid-cols-1 sm:grid-cols-3 gap-3">
       <a href={detailLinkA?.href ?? '#'} hreflang={detailLinkA?.hreflang} class="btn-outline py-3 px-0 text-center rounded-xl bg-white shadow-sm hover:shadow-md transition-shadow">
-        {propertyCopy.group.view} {nameA}
+        {propertyCopy.group.viewProperty.replace('{name}', nameA)}
       </a>
       <a href={detailLinkB?.href ?? '#'} hreflang={detailLinkB?.hreflang} class="btn-outline py-3 px-0 text-center rounded-xl bg-white shadow-sm hover:shadow-md transition-shadow">
-        {propertyCopy.group.view} {nameB}
+        {propertyCopy.group.viewProperty.replace('{name}', nameB)}
       </a>
       <a 
         href="https://traditionalhomes.reserve-online.net/" 

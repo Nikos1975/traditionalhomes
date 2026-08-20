@@ -105,7 +105,15 @@
       "hidePhotoGallery": "Hide photo gallery",
       "closeViewer": "Close photo viewer",
       "previousPhoto": "Previous photo",
-      "nextPhoto": "Next photo"
+      "nextPhoto": "Next photo",
+      "photosOf": "Photos of {name}",
+      "viewPhoto": "View {label}",
+      "selectPhoto": "Select {label}",
+      "viewAllOf": "View all {count} {photos} of {name}",
+      "photoNumbered": "Photo {n}",
+      "heroPhotoOf": "Hero photo of {name}",
+      "mainViewOf": "Main view of {name}",
+      "photoOfNumbered": "{name} — photo {n}"
     },
     "map": {
       "villages": {
@@ -133,7 +141,12 @@
         "viewMap": "View map"
       },
       "fallbackSubtitle": "Traditional Home",
-      "unavailable": "Map coordinates unavailable"
+      "unavailable": "Map coordinates unavailable",
+      "types": {
+        "house": "house",
+        "villa": "villa",
+        "parking": "parking"
+      }
     },
     "property": {
       "labels": {
@@ -156,15 +169,59 @@
         "seaView": "Sea view"
       },
       "counts": {
-        "guestsUpTo": { "one": "Up to {count} Guest", "other": "Up to {count} Guests" },
-        "bedrooms": { "one": "{count} Bedroom", "other": "{count} Bedrooms" },
-        "bathrooms": { "one": "{count} bathroom", "other": "{count} bathrooms" },
-        "bathroomsCompact": { "one": "{count} Bath", "other": "{count} Baths" },
-        "sleeps": { "other": "Sleeps {count}" }
+        "guestsUpTo": {
+          "one": "Up to {count} Guest",
+          "other": "Up to {count} Guests"
+        },
+        "bedrooms": {
+          "one": "{count} Bedroom",
+          "other": "{count} Bedrooms"
+        },
+        "bathrooms": {
+          "one": "{count} bathroom",
+          "other": "{count} bathrooms"
+        },
+        "bathroomsCompact": {
+          "one": "{count} Bath",
+          "other": "{count} Baths"
+        },
+        "sleeps": {
+          "other": "Sleeps {count}"
+        }
       },
       "basics": {
         "house": "House Basics",
         "villa": "Villa Basics"
+      },
+      "derived": {
+        "bathroom": {
+          "showerRoom": "Shower room",
+          "viaCourtyard": "Accessed via courtyard area"
+        },
+        "layout": {
+          "splitLevelVilla": "Split-level traditional villa",
+          "connectedLevelsOntas": "Connected levels with ontas",
+          "mainLevelOntas": "Main level + ontas",
+          "mainLivingSpaceOntas": "Main living space + ontas",
+          "courtyardLevelOntas": "Courtyard level + ontas",
+          "firstFloorAboveEfterpiOntas": "First-floor house above Efterpi + ontas",
+          "multiLevelInternalStairs": "Multi-level house with internal stairs",
+          "groundFloor": "Ground floor",
+          "groundAndFirstFloor": "Ground floor + first floor"
+        },
+        "access": {
+          "internalStairsSteppedLevels": "Internal stairs and stepped levels",
+          "entranceStepInternalStairs": "Entrance step + internal stairs",
+          "stoneStepsInternalWoodenStairs": "Stone steps to entrance; internal wooden stairs",
+          "externalStepsInternalStairsToOntas": "External steps + internal stairs to ontas",
+          "courtyardEntryInternalStairs": "Courtyard entry + internal stairs",
+          "stepsDownToCourtyardStairToOntas": "Steps down to courtyard; internal stair to ontas",
+          "stoneStairsBalconyEntrance": "Stone stairs to balcony entrance",
+          "courtyardEntranceInternalStairs": "Courtyard entrance + internal stairs",
+          "stepFree": "Step-free",
+          "internalStairsEntranceViaStairsDown": "Internal stairs; entrance via stairs down",
+          "internalStairs": "Internal stairs"
+        }
       },
       "card": {
         "photoComingSoon": "Photo Coming Soon",
@@ -189,7 +246,9 @@
         "privatePoolsIncluded": "Private Pools Included",
         "editorNote": "Editor's Note:",
         "view": "View",
-        "checkDates": "Check Dates"
+        "checkDates": "Check Dates",
+        "note": "Select both properties for the exact same dates on our booking engine to secure this group estate.",
+        "viewProperty": "View {name}"
       },
       "detail": {
         "breadcrumbs": {

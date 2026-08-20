@@ -14,6 +14,7 @@ import { defaultLocale, type Locale } from '../../i18n/config';
 import { assertRoute, resolveLocalizedLink, routeAlternates, routePath } from '../../i18n/route-map';
 import { canonicalUrl, getPropertySeo } from '../../i18n/seo';
 import { getCommonCopy, getPropertiesCopy } from '../../i18n/translate';
+import { pairingText, unitList, unitName, unitText } from '../../i18n/inventory-display';
 import { formatPropertyCount } from '../../i18n/property-counts';
 import { sortGalleryImages } from '../../utils/sortGalleryImages';
 import type { InventoryUnit, SiteCopy, GalleryImage } from '../../types';
@@ -35,6 +36,7 @@ const detailCopy = getPropertiesCopy(locale).detail;
 const units = inventory as InventoryUnit[];
 const siteCopy = siteCopyData as SiteCopy;
 const propertyCopy = getCommonCopy(locale).ui.property;
+const galleryCopy = getCommonCopy(locale).ui.gallery;
 
 // GALLERY & HERO
 const rawGallery = (galleryData as Record<string, GalleryImage[]>)[slug] ?? [];
@@ -194,7 +196,7 @@ const contactLink = resolveLocalizedLink(locale, 'contact');
         class="absolute inset-0 bg-center bg-cover"
         style={`background-image: url('${heroSrc}'); background-position: ${heroPosition};`}
         role="img"
-        aria-label={`Hero photo of ${unit.name}`}
+        aria-label={galleryCopy.heroPhotoOf.replace('{name}', displayName)}
       ></div>
     )}
     <div class="relative z-20 site-max site-pad h-full flex flex-col justify-end pb-10 md:pb-14">
@@ -209,7 +211,7 @@ const contactLink = resolveLocalizedLink(locale, 'contact');
         {displayName}
       </h1>
       <p class="text-white/80 text-sm md:text-base font-light tracking-wide">
-        {displayLocation} &mdash; {unit.area}, Crete
+        {displayLocation} &mdash; {unit.area}, {detailCopy.regionName}
       </p>
     </div>
   </header>
@@ -268,7 +270,7 @@ const contactLink = resolveLocalizedLink(locale, 'contact');
 
         {/* 3a. Gallery */}
         <section aria-label={propertyCopy.detail.sections.propertyPhotosAria}>
-          <HouseGallery locale={locale} images={gallery} unitName={unit.name} />
+          <HouseGallery locale={locale} images={gallery} unitName={displayName} />
         </section>
 
         {/* 3b. At a Glance */}
@@ -293,7 +295,7 @@ const contactLink = resolveLocalizedLink(locale, 'contact');
         <section class="border-t border-stone-100 pt-12" aria-label={propertyCopy.detail.sections.amenitiesAria}>
           <h2 class="font-serif text-2xl text-body-text mb-8">{propertyCopy.detail.sections.included}</h2>
           <ul class="grid grid-cols-1 sm:grid-cols-2 gap-y-3 gap-x-8">
-            {unit.amenities.map((amenity) => (
+            {unitList(locale, slug, 'amenities', unit.amenities).map((amenity) => (
               <li class="flex items-center gap-3 text-sm text-stone-600 border-b border-stone-50 pb-3">
                 <svg class="text-primary/70 shrink-0" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
                   <polyline points="20 6 9 17 4 12"/>
@@ -314,7 +316,7 @@ const contactLink = resolveLocalizedLink(locale, 'contact');
               <div class="bg-accent-sage-soft text-stone-800 border border-accent-sage/60 rounded-2xl p-6 space-y-5">
                 <h3 class="font-serif text-lg text-stone-950">{propertyCopy.detail.location.howToArrive}</h3>
                 <p class="text-sm text-stone-700 leading-relaxed">
-                  {siteCopy.arrival.instructions}
+                  {detailCopy.arrivalInstructions}
                 </p>
                 <div class="space-y-3 text-[11px] uppercase tracking-widest font-bold text-stone-800">
                   {parkingLoc?.googleMapsUrl && (
@@ -357,7 +359,7 @@ const contactLink = resolveLocalizedLink(locale, 'contact');
 
         {/* Booking card */}
         <div class="bg-white rounded-2xl border border-stone-200 p-7 shadow-card">
-          <p class="font-serif text-2xl text-body-text mb-1">{unit.name}</p>
+          <p class="font-serif text-2xl text-body-text mb-1">{displayName}</p>
           <p class="text-xs text-muted mb-6 uppercase tracking-wider">{displayLocation} &middot; {propertyCopy.labels.sleeps} {unit.sleeps}</p>
 
           <div class="space-y-0 mb-6 divide-y divide-stone-100 text-sm">
@@ -389,7 +391,7 @@ const contactLink = resolveLocalizedLink(locale, 'contact');
             </div>
             <div class="flex justify-between py-2.5">
               <span class="text-muted">{propertyCopy.labels.pets}</span>
-              <span class="font-medium">{unit.pets}</span>
+              <span class="font-medium">{unitText(locale, slug, 'pets', unit.pets)}</span>
             </div>
           </div>
 
@@ -419,16 +421,16 @@ const contactLink = resolveLocalizedLink(locale, 'contact');
               {propertyCopy.detail.booking.beforeYouBook}
             </h3>
             <ul class="space-y-2">
-              {unit.hardConstraints.map((c) => (
+              {unitList(locale, slug, 'hardConstraints', unit.hardConstraints).map((c) => (
                 <li class="flex items-start gap-2 text-xs text-amber-900/80 leading-relaxed">
                   <span class="mt-1.5 w-1 h-1 rounded-full bg-amber-400 flex-shrink-0"></span>
                   {c}
                 </li>
               ))}
             </ul>
-            {unit.accessDetail && (
+            {unitText(locale, slug, 'accessDetail', unit.accessDetail) && (
               <p class="mt-4 pt-4 border-t border-amber-200 text-xs text-amber-800/70 italic leading-relaxed">
-                {unit.accessDetail}
+                {unitText(locale, slug, 'accessDetail', unit.accessDetail)}
               </p>
             )}
           </div>
@@ -446,7 +448,7 @@ const contactLink = resolveLocalizedLink(locale, 'contact');
                   class="group flex items-center justify-between bg-white p-4 rounded-xl border border-stone-200 hover:border-primary transition-all shadow-sm"
                 >
                   <div>
-                    <span class="block font-serif text-base text-body-text group-hover:text-primary transition-colors">{near.name}</span>
+                    <span class="block font-serif text-base text-body-text group-hover:text-primary transition-colors">{unitName(locale, near.slug, near.name)}</span>
                     <span class="block text-[10px] uppercase tracking-widest text-muted mt-0.5">
                       {getNearbyMeta(near)}
                     </span>
@@ -469,12 +471,14 @@ const contactLink = resolveLocalizedLink(locale, 'contact');
             <div class="space-y-4">
               {suggestedPairings.map((pairing) => {
                 const memberNames = pairing.members
-                  .map((memberSlug) => units.find((u) => u.slug === memberSlug)?.name ?? memberSlug)
+                  .map((memberSlug) =>
+                    unitName(locale, memberSlug, units.find((u) => u.slug === memberSlug)?.name ?? memberSlug),
+                  )
                   .join(' + ');
                 return (
                   <article class="bg-white p-4 rounded-xl border border-stone-200 shadow-sm">
                     <p class="font-serif text-base text-body-text">{pairing.name}</p>
-                    <p class="text-xs text-stone-600 mt-1 leading-relaxed">{pairing.summary}</p>
+                    <p class="text-xs text-stone-600 mt-1 leading-relaxed">{pairingText(locale, pairing.summary)}</p>
                     <p class="text-[11px] text-stone-500 mt-2">
                       {propertyCopy.detail.nearby.includes} {memberNames}
                     </p>
@@ -482,14 +486,14 @@ const contactLink = resolveLocalizedLink(locale, 'contact');
                       {pairing.members.map((memberSlug) => {
                         if (memberSlug === slug) return null;
                         const memberUnit = units.find((u) => u.slug === memberSlug);
-                        const memberLabel = memberUnit?.name ?? memberSlug;
+                        const memberLabel = unitName(locale, memberSlug, memberUnit?.name ?? memberSlug);
                         return (
                           <a
                             href={resolveLocalizedLink(locale, 'house', memberSlug).href}
                             hreflang={resolveLocalizedLink(locale, 'house', memberSlug).hreflang}
                             class="inline-flex items-center px-3 py-1.5 text-[11px] font-medium text-stone-700 bg-stone-50 border border-stone-200 rounded-full hover:border-primary hover:text-primary transition-colors"
                           >
-                            {propertyCopy.detail.nearby.view} {memberLabel}
+                            {propertyCopy.group.viewProperty.replace('{name}', memberLabel)}
                           </a>
                         );
                       })}

@@ -26,6 +26,7 @@
     }
   },
   "detail": {
+    "regionName": "Crete",
     "pool": {
       "clioSeparate": "No pool access when booked separately",
       "dipping": "Private dipping pool",
@@ -55,6 +56,7 @@
     },
     "access": {
       "clioParking": "About 10 m from parking"
-    }
+    },
+    "arrivalInstructions": "We personally meet our guests at the parking area to assist with luggage and guide you to your home."
   }
 }

@@ -128,7 +128,7 @@ const chooseStayOptions = [
           {copy.hero.headingLead} <br/> <span class="italic font-light text-stone-200">{copy.hero.headingEmphasis}</span>
         </h1>
         <p class="font-serif italic text-xl md:text-2xl text-stone-300 max-w-xl leading-relaxed mb-10 font-light">
-          {siteCopy.heroSubline}
+          {copy.hero.subline}
         </p>
         <div class="flex flex-wrap gap-4">
           <a href={housesLink.href} hreflang={housesLink.hreflang} class="btn-cta bg-white text-stone-950 border-white hover:bg-primary hover:text-white hover:border-primary px-8 py-4">
@@ -148,7 +148,7 @@ const chooseStayOptions = [
 
     {/* Scroll Indicator */}
     <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 opacity-40 animate-bounce">
-      <span class="text-[9px] uppercase tracking-[0.3em] text-white font-bold">Explore</span>
+      <span class="text-[9px] uppercase tracking-[0.3em] text-white font-bold">{copy.hero.scrollLabel}</span>
       <div class="w-px h-10 bg-gradient-to-b from-white to-transparent"></div>
     </div>
   </section>
@@ -230,7 +230,7 @@ const chooseStayOptions = [
                 rel="noopener noreferrer"
                 class="btn-cta booking-cta flex-1 py-3 px-0 text-center rounded-xl shadow-sm hover:shadow-md transition-shadow"
               >
-                Check dates
+                {copy.villa.ctaDates}
               </a>
             </div>
           </div>
@@ -261,9 +261,7 @@ const chooseStayOptions = [
 
         <ul class="space-y-6 mb-12 border-t border-stone-800 pt-10">
           {[
-            { label: 'Schisma / Elounda harbour → Mavrikiano', time: '3 min drive' },
-            { label: 'Schisma / Elounda harbour → Heraklion Airport (HER)', time: '1 hr 8 min · 66.9 km' },
-            { label: 'Schisma / Elounda harbour → Sitia Airport (JSH)', time: '1 hr 23 min · 76.0 km' }
+            ...copy.setting.distances
           ].map(item => (
             <li class="flex items-center justify-between text-sm">
               <span class="text-stone-100 font-medium tracking-wide">{item.label}</span>
@@ -312,7 +310,7 @@ const chooseStayOptions = [
           bookingBaseUrl={siteCopy.bookingEngineUrl}
           itemName={copy.booking.itemName}
           maxAdults={10}
-          title="Check dates"
+          title={copy.villa.ctaDates}
           description={copy.booking.description}
           submitLabel={copy.booking.submitLabel}
           compact
