@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "test": "node --test",
+    "context:audit": "node scripts/context/validate-icm.mjs",
     "dev": "astro dev",
     "build": "astro build",
     "image:process": "node scripts/images/process-image.mjs",
