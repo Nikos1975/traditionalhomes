@@ -25,6 +25,7 @@ During the current migration, `src/i18n/route-map.ts` is authoritative for route
 4. Keep route files thin and locale explicit; do not create a locale route without complete corresponding page support.
 5. Keep canonical, hreflang, sitemap, fallback, and generated-link behavior tied to real routes only.
 6. Do not translate long-form content beyond the minimum fixture text needed to prove infrastructure.
+7. If the target locale already has the dynamic route family, generic segments, wrapper and shared renderer, and the only change is adding another fully localized content id/slug, hand off to Stage 02 instead of changing infrastructure here.
 
 ## Outputs
 
