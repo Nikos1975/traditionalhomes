@@ -1,7 +1,7 @@
 {
   "collection": {
     "breadcrumb": {
-      "ariaLabel": "Brotkrümelnavigation",
+      "ariaLabel": "Navigationspfad",
       "home": "Startseite",
       "current": "Unsere Ferienhäuser"
     },
@@ -25,6 +25,7 @@
     }
   },
   "detail": {
+    "regionName": "Kreta",
     "pool": {
       "clioSeparate": "Kein Poolzugang bei separater Buchung",
       "dipping": "Privater Tauchpool",
@@ -54,6 +55,7 @@
     },
     "access": {
       "clioParking": "Etwa 10 m vom Parkplatz"
-    }
+    },
+    "arrivalInstructions": "Wir empfangen unsere Gäste persönlich am Parkplatz, helfen beim Gepäck und bringen Sie zu Ihrem Haus."
   }
 }

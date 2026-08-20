@@ -1,3 +1,5 @@
+import { defaultLocale, type Locale } from '../i18n/config';
+import { localizeGalleryLabel } from '../i18n/inventory-display';
 /**
  * Extract the first (smallest) URL from a srcset string.
  *
@@ -64,7 +66,7 @@ function reorderViewPhrase(tokens: string[]): string[] {
   return tokens;
 }
 
-export function filenameLabel(src: string, fallback = "Photo"): string {
+export function filenameLabel(src: string, fallback = "Photo", locale: Locale = defaultLocale): string {
   const filePath = safeDecode(src.split(/[?#]/)[0] ?? "");
   const fileName = filePath.split("/").pop() ?? "";
   const baseName = fileName.replace(/\.[^.]+$/, "");
@@ -97,5 +99,26 @@ export function filenameLabel(src: string, fallback = "Photo"): string {
     .replace(/\bview sea\b/g, "sea view")
     .replace(/\bsea view\b/g, "sea-view")
     .trim();
-  return sentenceCase(label || fallback);
+  return sentenceCase(localizeGalleryLabel(locale, label || fallback));
+}
+
+/**
+ * Image alt text for the active locale.
+ *
+ * An authored alt is the English master and is rendered verbatim in the default
+ * locale. Another locale renders the same picture through the shared gallery
+ * vocabulary, so a German page never falls back to an English caption.
+ * When no alt exists at all, the caller's already-localized fallback is used.
+ */
+export function localizedAlt(
+  src: string,
+  alt: string | undefined,
+  fallback: string,
+  locale: Locale = defaultLocale,
+): string {
+  if (!alt) {
+    return fallback;
+  }
+
+  return locale === defaultLocale ? alt : filenameLabel(src, alt, locale);
 }

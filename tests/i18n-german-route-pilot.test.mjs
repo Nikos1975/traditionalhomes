@@ -384,8 +384,16 @@ describe('Stage 3 German route pilot — source contracts', () => {
 
     for (const file of files) {
       const contents = await readText(file);
+      // Route hrefs legitimately contain a unit slug; copy must not.
+      const copyOnly = contents.replace(/"href":\s*"[^"]*"/g, '"href": ""');
 
-      assert.doesNotMatch(contents, /sleeps|bedrooms|bathrooms|roomCode|bookingId|coordinates|latitude|longitude/i);
+      // Label *keys* mirror the English source (`sleeps`, `bedrooms`), so the
+      // rule is the same one `tests/i18n-foundation.test.mjs` applies to English:
+      // no unit identity, no booking identifiers, no coordinates.
+      assert.doesNotMatch(
+        copyOnly,
+        /argyro|almond-tree-villa|roomCode|bookingId|coordinates|latitude|longitude/i,
+      );
       assert.doesNotMatch(contents, /"\/de\//, `${file} must not link to locale routes that do not exist`);
     }
   });

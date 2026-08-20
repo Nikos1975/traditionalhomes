@@ -3,6 +3,7 @@ import { Image } from "astro:assets";
 import siteCopy from "../data/siteCopy.json";
 import { defaultLocale, type Locale } from "../i18n/config";
 import { resolveLocalizedLink } from '../i18n/route-map';
+import { unitName, unitText } from '../i18n/inventory-display';
 import { getCommonCopy } from "../i18n/translate";
 import { formatPropertyCount } from "../i18n/property-counts";
 import type { InventoryUnit } from "../types";
@@ -80,7 +81,7 @@ const homepageFeatureLabel = homepageFeatureKey ? propertyCopy.card.features[hom
       featuredImgAsset ? (
         <Image
           src={featuredImgAsset}
-          alt={unit.name}
+          alt={unitName(locale, unit.slug, unit.name)}
           widths={[320, 480, 672, 768]}
           quality={68}
           sizes="
@@ -113,7 +114,7 @@ const homepageFeatureLabel = homepageFeatureKey ? propertyCopy.card.features[hom
           href={unitPageLink.href} hreflang={unitPageLink.hreflang}
           class="font-serif text-3xl text-body-text group-hover:text-primary transition-colors leading-tight block"
         >
-          {unit.name}
+          {unitName(locale, unit.slug, unit.name)}
         </a>
       </div>
       {
@@ -179,10 +180,10 @@ const homepageFeatureLabel = homepageFeatureKey ? propertyCopy.card.features[hom
 
     {/* ACCESS ALERT (Editorial Note Style) */}
     {
-      unit.accessDetail && (
+      unitText(locale, unit.slug, 'accessDetail', unit.accessDetail) && (
         <div class="mb-8 p-4 bg-amber-50/50 border border-amber-100 rounded-2xl">
           <p class="text-[11px] text-amber-900/80 leading-relaxed italic">
-            <strong>{propertyCopy.card.editorNote}</strong> {unit.accessDetail}
+            <strong>{propertyCopy.card.editorNote}</strong> {unitText(locale, unit.slug, 'accessDetail', unit.accessDetail)}
           </p>
         </div>
       )
