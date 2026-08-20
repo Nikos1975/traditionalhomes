@@ -119,11 +119,12 @@ describe('Stage 3 German route pilot — route map', () => {
       assert.equal(routeMap.resolveRoute(locale, 'blogArticle', 'elounda-guide'), null);
     }
 
-    // German owns the cluster routes only; everything else still resolves to null.
+    // German owns the translated cluster routes only; everything else still resolves to null.
     assert.equal(routeMap.resolveRoute('de', 'blogArticle', 'elounda-guide'), null);
     assert.equal(routeMap.resolveRoute('de', 'villa', 'almond-tree-villa'), null);
     assert.equal(routeMap.resolveRoute('de', 'contact'), null);
     assert.equal(routeMap.resolveRoute('de', 'house', 'leonidas'), null);
+    assert.equal(routeMap.resolveRoute('de', 'house', 'margarita'), '/de/ferienhaeuser/margarita/');
 
     // German owns the guide segment but only the Vrouchas guide itself.
     assert.equal(routeMap.resolveRoute('de', 'guide', 'mavrikiano'), null);
@@ -140,6 +141,7 @@ describe('Stage 3 German route pilot — route map', () => {
     assert.deepEqual(routeMap.routeLocales('home'), ['en', 'de']);
     assert.deepEqual(routeMap.routeLocales('location'), ['en', 'de']);
     assert.deepEqual(routeMap.routeLocales('house', 'argyro'), ['en', 'de']);
+    assert.deepEqual(routeMap.routeLocales('house', 'margarita'), ['en', 'de']);
     // Houses without German content stay English-only.
     assert.deepEqual(routeMap.routeLocales('house', 'leonidas'), ['en']);
     assert.deepEqual(routeMap.routeLocales('villa', 'almond-tree-villa'), ['en']);
@@ -171,6 +173,9 @@ describe('Stage 3 German route pilot — route map', () => {
     const germanCollection = routeMap.resolveAuthoredHref('de', '/en/houses/');
     assert.deepEqual(germanCollection, { href: '/de/ferienhaeuser/', locale: 'de', isFallback: false });
 
+    const germanMargarita = routeMap.resolveAuthoredHref('de', '/en/houses/margarita/');
+    assert.deepEqual(germanMargarita, { href: '/de/ferienhaeuser/margarita/', locale: 'de', isFallback: false });
+
     // A section German does not own still falls back, and says so.
     const germanFallback = routeMap.resolveAuthoredHref('de', '/en/contact/');
     assert.deepEqual(germanFallback, { href: '/en/contact/', locale: 'en', isFallback: true, hreflang: 'en' });
@@ -195,8 +200,9 @@ describe('Stage 3 German route pilot — route map', () => {
     assert.equal(routes.blogArticlePath('elounda-guide', 'en'), '/en/blog/elounda-guide/');
     assert.equal(routes.guidePath('mavrikiano'), '/en/guide/mavrikiano/');
     assert.equal(routes.guidePath('vrouchas', 'de'), DE_PILOT);
-    // Helpers never fabricate a locale URL: they fall back to the English page.
+    // Helpers never fabricate a locale URL: they fall back to English only when the localized content is absent.
     assert.equal(routes.housePath('argyro', 'de'), '/de/ferienhaeuser/argyro/');
+    assert.equal(routes.housePath('margarita', 'de'), '/de/ferienhaeuser/margarita/');
     assert.equal(routes.housePath('leonidas', 'de'), '/en/houses/leonidas/');
   });
 });
@@ -475,7 +481,7 @@ describe('Stage 3 German route pilot — generated output', async () => {
   });
 
   it('emits no hreflang for locales without a page', async () => {
-    for (const route of ['en/guide/vrouchas', 'de/reisefuehrer/vrouchas', 'en', 'en/blog', 'en/guide/mavrikiano', 'de', 'de/ferienhaeuser', 'de/lage', 'de/ferienhaeuser/argyro']) {
+    for (const route of ['en/guide/vrouchas', 'de/reisefuehrer/vrouchas', 'en', 'en/blog', 'en/guide/mavrikiano', 'de', 'de/ferienhaeuser', 'de/lage', 'de/ferienhaeuser/argyro', 'de/ferienhaeuser/margarita']) {
       const html = await page(route);
 
       for (const { hreflang, href } of alternates(html)) {
@@ -576,23 +582,23 @@ describe('Stage 3 German route pilot — generated output', async () => {
 
     // Every substantive English topic has a German counterpart.
     const required = [
-      'Kiesstrand',           // Beaches of the Area
+      'Kiesstrand',
       'Driros',
       'Kolokytha',
       'Spinalonga',
       'Olous',
-      'Kanal von Elounda',    // Historical Sites & Landmarks
+      'Kanal von Elounda',
       'Basilika von Poros',
       'Salinen von Elounda',
       'Gournia',
-      'Mietwagen',            // Transport & Practical Information
+      'Mietwagen',
       'Taxis',
       'Linienbus',
-      'Mirabello-Runde',      // Day-trip itinerary
+      'Mirabello-Runde',
       'Packliste',
       'Schnorchelausrastung'.replace('astung', 'üstung'),
       'Trockenbeutel',
-      'Eintrittskarten',      // Spinalonga visitor information
+      'Eintrittskarten',
       'Bootstransfer',
     ];
 
@@ -606,7 +612,6 @@ describe('Stage 3 German route pilot — generated output', async () => {
     const html = await page('de/reisefuehrer/vrouchas');
     const text = (html.match(/<article[^>]*>([\s\S]*?)<\/article>/)?.[1] ?? '').replace(/<[^>]+>/g, ' ');
 
-    // Distances and drive times, with the German decimal comma.
     const distances = [
       ['4.2 km', '4,2 km'],
       ['20.1 km', '20,1 km'],
@@ -623,15 +628,14 @@ describe('Stage 3 German route pilot — generated output', async () => {
       assert.ok(text.includes(german), `German page must state ${german}`);
     }
 
-    // Dates and figures carried over unchanged from the master.
     for (const [english, german] of [
       ['1579', '1579'],
       ['1903\u20131957', '1903\u20131957'],
       ['1897\u201398', '1897\u201398'],
-      ['\u20ac20', '20 \u20ac'],
-      ['\u20ac10', '10 \u20ac'],
+      ['€20', '20 €'],
+      ['€10', '10 €'],
       ['08:30 AM to 6:00 PM', '08:30 bis 18:00 Uhr'],
-      ['\u20ac10 to \u20ac12', '10 bis 12 \u20ac'],
+      ['€10 to €12', '10 bis 12 €'],
       ['7 to 10 minutes', '7 bis 10 Minuten'],
       ['Every 30 minutes', 'Alle 30 Minuten'],
     ]) {
@@ -639,10 +643,7 @@ describe('Stage 3 German route pilot — generated output', async () => {
       assert.ok(text.includes(german), `German page must state ${german}`);
     }
 
-    // No factual divergence: German must not add a figure the master omits.
-    // "10 bis 12 €" contributes only its trailing figure to this scan; the full
-    // range is asserted verbatim above.
-    const germanEuroFigures = [...text.matchAll(/(\d+)\s*\u20ac/g)].map(([, n]) => n).sort();
+    const germanEuroFigures = [...text.matchAll(/(\d+)\s*€/g)].map(([, n]) => n).sort();
     assert.deepEqual(germanEuroFigures, ['10', '12', '20']);
   });
 
@@ -656,7 +657,6 @@ describe('Stage 3 German route pilot — generated output', async () => {
     assert.equal(h1, 'Vrouchas auf Kreta: Lage, Anreise und praktische Informationen');
     assert.match(description, /^Praktische Informationen zu Vrouchas bei Elounda/);
 
-    // Keep the rendered title within the length the English page already ships.
     const englishTitle = (await page('en/guide/vrouchas')).match(/<title>([\s\S]*?)<\/title>/)?.[1] ?? '';
     assert.ok(
       title.replace(/&amp;/g, '&').length <= englishTitle.replace(/&amp;/g, '&').length,
@@ -673,16 +673,13 @@ describe('Stage 3 German route pilot — generated output', async () => {
     assert.match(breadcrumbText, /Startseite/);
     assert.match(breadcrumbText, /Lage/);
     assert.match(breadcrumbText, /Vrouchas/);
-    // The long SEO title must not leak into the breadcrumb trail.
     assert.doesNotMatch(breadcrumbText, /Lage, Anreise/);
 
-    // Visible German chrome, ignoring the serialised script payload where
-    // untranslated keys legitimately keep their English fallback value.
     const visible = html.replace(/<script[\s\S]*?<\/script>/g, ' ');
-    assert.match(visible, /Zur\u00fcck zur interaktiven Karte/);
-    assert.match(visible, /H\u00e4user ansehen/);
+    assert.match(visible, /Zurück zur interaktiven Karte/);
+    assert.match(visible, /Häuser ansehen/);
     assert.match(visible, /Hauptnavigation/);
-    assert.match(visible, /Verf\u00fcgbarkeit pr\u00fcfen/);
+    assert.match(visible, /Verfügbarkeit prüfen/);
     assert.doesNotMatch(visible, /Back to Interactive Map|View Properties|Check Dates|Main navigation/);
   });
 
@@ -690,7 +687,6 @@ describe('Stage 3 German route pilot — generated output', async () => {
     const html = await page('en/guide/vrouchas');
     const source = await readText('src/guides/Vrouchas-Guide.md');
 
-    // The English page still renders its own title and every master heading.
     assert.match(html, /<title>Vrouchas Area, Access &amp; Practical Information \| Elounda Traditional Homes<\/title>/);
     assert.match(html, /aria-current="page">Vrouchas Area, Access &amp; Practical Information<\/li>/);
 
@@ -702,14 +698,14 @@ describe('Stage 3 German route pilot — generated output', async () => {
     }
   });
 
-  it('lists the German route in one global llms.txt with resolvable links', async () => {
+  it('lists the German routes in one global llms.txt with resolvable links', async () => {
     const llms = await readText('public/llms.txt');
     const links = [...llms.matchAll(/\[[^\]]+\]\(([^\s)]+)\)/g)].map(([, url]) => url);
 
-    assert.ok(links.includes(`${SITE}${DE_PILOT}`), 'llms.txt must list the real German route');
-    assert.equal(links.filter((url) => url.startsWith(`${SITE}/de/`)).length, 5, 'only real German routes belong in llms.txt');
+    assert.ok(links.includes(`${SITE}${DE_PILOT}`), 'llms.txt must list the real German guide route');
+    assert.ok(links.includes(`${SITE}/de/ferienhaeuser/margarita/`), 'llms.txt must list German Margarita');
+    assert.equal(links.filter((url) => url.startsWith(`${SITE}/de/`)).length, 6, 'only real German routes belong in llms.txt');
 
-    // One global file: no per-language llms variants.
     assert.equal(await exists('public/llms-de.txt'), false);
     assert.equal(await exists('public/llms-en.txt'), false);
 
@@ -727,12 +723,13 @@ describe('Stage 3 German route pilot — generated output', async () => {
     assert.equal(await exists('public/sitemap-de.xml'), false);
   });
 
-  it('renders the four German cluster routes with German metadata', async () => {
+  it('renders the German cluster routes with German metadata', async () => {
     const expected = [
       { route: 'de', path: '/de/', titleStart: 'Ferienhäuser in Elounda', h1: 'Wohnen im' },
       { route: 'de/ferienhaeuser', path: '/de/ferienhaeuser/', titleStart: 'Ferienhäuser', h1: 'Unsere Ferienhäuser' },
       { route: 'de/lage', path: '/de/lage/', titleStart: 'Lage', h1: 'Die' },
       { route: 'de/ferienhaeuser/argyro', path: '/de/ferienhaeuser/argyro/', titleStart: 'Haus Argyro', h1: 'Haus Argyro' },
+      { route: 'de/ferienhaeuser/margarita', path: '/de/ferienhaeuser/margarita/', titleStart: 'Haus Margarita', h1: 'Haus Margarita' },
     ];
 
     for (const { route, path, titleStart, h1 } of expected) {
@@ -759,6 +756,7 @@ describe('Stage 3 German route pilot — generated output', async () => {
       ['de/ferienhaeuser', 'en/houses', '/de/ferienhaeuser/', '/en/houses/'],
       ['de/lage', 'en/location', '/de/lage/', '/en/location/'],
       ['de/ferienhaeuser/argyro', 'en/houses/argyro', '/de/ferienhaeuser/argyro/', '/en/houses/argyro/'],
+      ['de/ferienhaeuser/margarita', 'en/houses/margarita', '/de/ferienhaeuser/margarita/', '/en/houses/margarita/'],
     ];
 
     for (const [deRoute, enRoute, dePath, enPath] of pairs) {
@@ -774,8 +772,8 @@ describe('Stage 3 German route pilot — generated output', async () => {
   });
 
   it('prefers real German equivalents and marks every English fallback', async () => {
-    const germanRoutes = ['de', 'de/ferienhaeuser', 'de/lage', 'de/ferienhaeuser/argyro', 'de/reisefuehrer/vrouchas'];
-    const germanEquivalents = ['/en/', '/en/houses/', '/en/location/', '/en/houses/argyro/'];
+    const germanRoutes = ['de', 'de/ferienhaeuser', 'de/lage', 'de/ferienhaeuser/argyro', 'de/ferienhaeuser/margarita', 'de/reisefuehrer/vrouchas'];
+    const germanEquivalents = ['/en/', '/en/houses/', '/en/location/', '/en/houses/argyro/', '/en/houses/margarita/'];
 
     for (const route of germanRoutes) {
       const html = await page(route);
@@ -806,8 +804,6 @@ describe('Stage 3 German route pilot — generated output', async () => {
     const germanScripts = (german.match(/<script[\s\S]*?<\/script>/g) ?? []).join(' ');
     const englishScripts = (english.match(/<script[\s\S]*?<\/script>/g) ?? []).join(' ');
 
-    // Compare serialised *string values*, not identifiers that merely contain
-    // the word (`maxAdults` is a DOM variable, not a shipped label).
     const serialisedValues = (scripts) =>
       new Set([...scripts.matchAll(/&quot;([^&]{2,60})&quot;|"([^"\\]{2,60})"/g)].map(([, a, b]) => a ?? b));
 
@@ -821,21 +817,20 @@ describe('Stage 3 German route pilot — generated output', async () => {
       assert.ok(!englishValues.has(germanOnly), `English payload leaks German string: ${germanOnly}`);
     }
 
-    // The German page does ship its own German labels.
     assert.ok(germanValues.has('Erwachsene') || germanScripts.includes('Erwachsene'));
   });
 
-  it('keeps inventory the single factual source for the German house page', async () => {
-    const html = await page('de/ferienhaeuser/argyro');
+  it('keeps inventory the single factual source for the German house pages', async () => {
     const inventory = JSON.parse(await readText('src/inventory/inventory.json'));
     const units = Array.isArray(inventory) ? inventory : Object.values(inventory).find(Array.isArray);
-    const argyro = units.find((unit) => unit.slug === 'argyro');
 
-    // Facts come from inventory, and the German page shows the same numbers.
-    assert.ok(html.includes(String(argyro.sleeps)));
-    assert.ok(html.includes(String(argyro.bedrooms)));
+    for (const slug of ['argyro', 'margarita']) {
+      const html = await page(`de/ferienhaeuser/${slug}`);
+      const unit = units.find((candidate) => candidate.slug === slug);
+      assert.ok(html.includes(String(unit.sleeps)));
+      assert.ok(html.includes(String(unit.bedrooms)));
+    }
 
-    // Locale resources must not carry inventory values.
     for (const file of ['common', 'navigation', 'forms', 'guide', 'properties', 'home', 'location', 'seo']) {
       const contents = await readText(`src/i18n/locales/de/${file}.json`);
       assert.doesNotMatch(contents, /"bookingId"|"roomCode"|"latitude"|"longitude"|reserve-online/i, `de/${file}.json`);
@@ -851,6 +846,7 @@ describe('Stage 3 German route pilot — generated output', async () => {
       `${SITE}/de/`,
       `${SITE}/de/ferienhaeuser/`,
       `${SITE}/de/ferienhaeuser/argyro/`,
+      `${SITE}/de/ferienhaeuser/margarita/`,
       `${SITE}/de/lage/`,
       `${SITE}/de/reisefuehrer/vrouchas/`,
     ]);
@@ -861,7 +857,7 @@ describe('Stage 3 German route pilot — generated output', async () => {
   });
 
   it('generates no German page for a house without German content', async () => {
-    for (const slug of ['leonidas', 'margarita', 'clio', 'monastiri']) {
+    for (const slug of ['leonidas', 'clio', 'monastiri']) {
       await assert.rejects(access(join(outputPath, 'de', 'ferienhaeuser', slug, 'index.html')));
     }
     await assert.rejects(access(join(outputPath, 'de', 'villa', 'almond-tree-villa', 'index.html')));
