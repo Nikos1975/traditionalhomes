@@ -159,7 +159,10 @@ describe('German visible-language completeness — generated output', async () =
     assert.match(html, /Zugang durch den gewölbten Innenhof und Innentreppen/);
     assert.match(html, /Das Badezimmer ist über den Innenhof zugänglich/);
     assert.match(html, /Gemeinsamer privater Gästeparkplatz in der Nähe \(~70 m\)/);
-    assert.doesNotMatch(html, /House Margarita|Ground floor \+ first floor|Bathroom accessed via the courtyard area|Shared private guest parking nearby/);
+    assert.doesNotMatch(
+      [...visibleStrings(html)].join(' | '),
+      /House Margarita|Ground floor \+ first floor|Bathroom accessed via the courtyard area|Shared private guest parking nearby/,
+    );
 
     const visible = [...visibleStrings(html)].filter((value) => value.includes('House Margarita'));
     assert.deepEqual(visible, [], `Visible English unit name: ${visible.join(' | ')}`);
