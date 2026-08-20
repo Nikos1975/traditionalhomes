@@ -1,133 +1,40 @@
-# Project
+# Workspace Identity
 
-- Astro website
-- Static-first
-- Tailwind CSS
-- Content-driven structure
-- No heavy JS
-- For repo structure, see docs/architecture/repo-wireframe.md.
-- For the Mermaid source, see docs/architecture/repo-wireframe.mmd.
+This repository is the production source for the Elounda Traditional Homes website.
 
-# Working rules
+- Astro 5, static-first output, Tailwind CSS.
+- Content-driven architecture; avoid heavy client-side JavaScript and unnecessary dependencies.
+- Production site: `https://traditional-homes.gr`.
+- Current public behavior, routes, CI, publication controls, and deployment behavior are protected unless the task explicitly authorizes a change.
 
-- Keep code simple
-- Avoid unnecessary dependencies
-- Use structured content, not hardcoded text
-- Maintain performance and SEO
-- See `docs/operations/agent-operating-model.md` and `docs/operations/repeated-failures-playbook.md` for process rules and known failure handling.
-- Prefer minimal changes before broad refactors
-- Separate environment/cache issues from real code/content issues
-- Do not start consolidation refactors unless explicitly asked
-- Never place AGENTS.md or internal instruction markdown under src/pages/
-- Astro treats markdown under src/pages/ as public routes
-- When work is multi-step, paused, or important for future agents, update `docs/agent-handoff-notes.md` with what changed, what was verified, what remains, and any blockers
-- Keep handoff notes short and factual; do not duplicate every diff
+## Global invariants
 
-## Agent efficiency
+- Prefer the smallest safe change. Do not broaden scope or start consolidation/refactor work unless requested.
+- `src/inventory/inventory.json` is the factual source of truth for property capacity, bedrooms, bathrooms, floors, stairs, pools, views, parking, access, constraints, booking identifiers, official groups, and structured relationships.
+- Structured factual sources beat marketing or narrative copy. Flag unsupported facts instead of guessing.
+- Never place `AGENTS.md`, `CONTEXT.md`, or internal instruction Markdown under `src/pages/`; Astro treats Markdown there as public routes.
+- Preserve the static-first architecture and performance/SEO characteristics.
+- Do not change `functions/api/contact.js`, Cloudflare DNS/variables, email routing, deployment configuration, or production deployment state unless explicitly authorized.
+- Never publish, merge, deploy, delete tracked production material, send external messages, or push directly to `main` without explicit authorization.
+- Keep changes reviewable and reversible. Do not use `git add .`, `git add -A`, or destructive reset/cleanup commands.
 
-- Reuse context already loaded in the current session. Reread files only when they changed or a specific unresolved question requires it.
-- Read only the skill and instruction files relevant to the task; do not repeatedly reload them in the same session.
-- Prefer targeted `rg`, focused diffs, and small line ranges over dumping whole files.
-- For complex multi-file exploration, prefer an existing fresh Graphify graph before broad grep or file reads, including a matching graph held in a separate worktree only when its source SHA matches the relevant repository base.
-- Use a small Graphify query budget (normally 1000–1500 tokens); treat its results as navigation evidence and verify the exact source before editing.
-- Do not use Graphify for obvious single-file or local tasks, and do not automatically rebuild graphs during ordinary work.
-- Do not trigger semantic or LLM extraction unless explicitly required.
-- If the graph is missing, stale, incomplete, or does not cover the relevant files, fall back to targeted `rg` and source reads.
-- Graphify never overrides correctness, protected-file rules, or source verification; keep its output local and untracked.
-- Check repository/worktree state at the start, before commit, and after commit unless there is a concrete reason to recheck sooner.
-- During implementation, run the smallest relevant tests first; run the full validation suite once after the change is complete unless a failure requires another run.
-- Group safe shell commands and avoid narrating routine command execution. Report material findings, decisions, and concrete blockers only.
-- Do not repeat the task specification, rediscover known branch/worktree facts, or print large generated files when targeted field checks, hashes, parsers, or tests are sufficient.
-- Do not pause only to report partial progress. Continue until completion or a genuine blocker.
-- Keep final reports concise: changed scope, validation, commit/PR state, and remaining issues.
-- Token efficiency never overrides correctness, safety, protected-file rules, verification gates, or required approvals.
+## Context loading
 
-## Documentation update rules
+Read `CONTEXT.md` after this file and route the task before loading detailed instructions.
 
-When adding, removing, renaming, or significantly changing a website section, route, component, content collection, data file, API function, or user-facing flow, update the relevant documentation in the same task.
+Use the repository as an ICM workspace:
 
-Minimum documentation updates:
+- Layer 0: this file — identity and global invariants.
+- Layer 1: `CONTEXT.md` and nested workspace routers — where to go.
+- Layer 2: stage `CONTEXT.md` files or the routed project skill — exact Inputs, Process, Outputs, Verify, and Stop conditions.
+- Layer 3: stable references such as architecture decisions, brand/editorial rules, i18n rules, and project-local skills.
+- Layer 4: current source files, research packets, diffs, PR state, validation reports, and other run-specific working material.
 
-* Update `docs/agent-handoff-notes.md` with what changed, what was verified, and what remains.
-* Update `docs/architecture/repo-wireframe.md` and `docs/architecture/repo-wireframe.mmd` if the repo structure, route structure, main flows, or component relationships changed.
-* Update any relevant operational docs under `docs/operations/` if the change affects build, deploy, debugging, or known failure handling.
-* If a new public page/route is added, document its purpose, route path, source files, and any data dependencies.
+Do not automatically load `.ai/memory/current-task.md`, the full `docs/agent-handoff-notes.md`, or unrelated workspace instructions. Load only the context named by the routed stage.
 
-Do not update architecture documentation for tiny copy edits or cosmetic-only changes unless the change affects structure or future agent understanding.
+## Validation and stop conditions
 
-Before finishing, report whether documentation was updated or why no documentation update was needed.
-
-# Build/debug workflow
-
-1. First classify the issue:
-   - content/schema validation
-   - code/type/build logic
-   - Windows filesystem/cache lock
-2. Fix environment/cache issues before touching architecture
-3. Prefer the smallest safe fix
-4. Run the build after changes when the environment supports Node/npm
-5. If build passes, stop and report Phase 2 separately
-
-# Commit policy
-
-- Keep product code changes separate from local workflow/tooling files
-- Do not commit temporary artifacts such as dist_old_* or cache leftovers
-- Do not commit .claude/, temporary AI scratch files, or local agent outputs unless explicitly requested. CLAUDE.md and AGENTS.md are committed project instruction files.
-
-# Brand voice
-
-- Calm, precise, understated
-- No hype, urgency, or sales language
-- No clichés, booking language, or generic luxury/travel phrasing
-- Use concrete details over adjectives
-- Prefer trust, clarity, control, and factual tone
-- Do not make unsupported claims
-
-# House page rules
-
-- Preserve existing house-page structure unless a change is clearly required
-- Hero selection should be data-driven, not filename-driven
-- Suggested pairings are recommendation-only, not filterable inventory
-- Official groups and suggested pairings must remain separate
-- Prefer factual, low-risk UI changes over broader refactors
-- Describe layout, setting, view, privacy, access, and practical use clearly
-- Use `src/inventory/inventory.json` as the source of truth for sleeps, bedrooms, bathrooms, floors, stairs, pool, view, parking, access notes, constraints, official groups, and suggested pairings
-- Do not publish placeholders, bracketed draft copy, or conditional notes
-- Mark unsupported square-metre, history, distance, and exclusivity claims for verification instead of guessing
-- When auditing or rewriting property pages, use the project skill `.agents/skills/property-content-audit/SKILL.md`
-
-# Blog and guide rules
-
-For every blog post, area guide, village guide, historical article, blog revision, blog audit, publication, or blog-image task, read `BLOG_ORCHESTRATOR.md` before researching, drafting, editing, validating, processing media, or publishing.
-
-- Keep writing observational, grounded, useful, and non-promotional
-- If a fact is uncertain, leave it out or mark it for verification
-- Do not turn blog posts or guides into booking copy
-- Start with a clear scene, fact, or grounded context
-- Prefer place, distance, atmosphere, and practical relevance
-- Keep paragraphs readable and specific
-- Avoid generic destination-guide phrasing
-- Use quiet, factual endings rather than promotional conclusions
-
-# Editorial routing
-
-- `.ai/brand/website-brand-style-guide.md` is the shared source of truth for website and blog tone
-- For property pages, homepage sections, collection copy, and property-related location copy, use `.ai/prompts/website-editorial-system.md`
-- For blog posts, area guides, village guides, and broader place-based editorial content, use `.ai/prompts/blog-editorial-system.md`
-- Area guides follow the blog editorial system unless the task is explicitly property-page copy
-- Do not duplicate these instruction files into page content or local task notes unless explicitly requested
-
-# SEO/content rules
-
-- Keep titles and headings clear and specific
-- Avoid clickbait
-- Prefer durable content over trend-driven content
-- Make sure each article matches the actual page/topic precisely
-
-# Project memory imports
-
-@.ai/memory/conventions.md
-@.ai/memory/current-task.md
-@.ai/memory/decisions.md
-@.ai/memory/bugs.md
-@.ai/memory/handoff.md
+- For source, component, content, route, media-reference, package, or dependency changes, run the relevant focused tests plus the repository validation required by the routed stage. Compare `npm run typecheck` with the known baseline rather than claiming unrelated existing diagnostics are new.
+- For docs/control-plane-only changes, validate structure and diffs; a production build is not required unless the change affects executable behavior.
+- Stop on an unexpected file, unsupported factual claim, missing approval, source-of-truth conflict, or real validation failure.
+- Keep documentation changes proportional: update durable architecture/operations docs when structure or behavior changes; do not inflate historical handoff notes for routine work.

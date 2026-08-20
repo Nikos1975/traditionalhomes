@@ -1,0 +1,23 @@
+# Repository Context Router
+
+Route the task before loading detailed project context. Load only the selected route plus the exact Layer 3 references and Layer 4 working files named there.
+
+| Primary task | Load next |
+| --- | --- |
+| Multilingual translation, localization, locale SEO copy, visible-language QA | `.agents/workspaces/i18n/CONTEXT.md` |
+| Multilingual routes, shared renderers, locale-aware components, canonical/hreflang/sitemap/llms infrastructure | `.agents/workspaces/i18n/CONTEXT.md` |
+| Blog post, area/village guide, historical article, blog revision, content audit, publication, article visual plan, or blog image work | `BLOG_ORCHESTRATOR.md` |
+| Property facts or property-page factual audit | `docs/architecture/source-of-truth.md`, then the relevant property/content files |
+| Website/home/collection/property/location editorial copy | `.ai/brand/website-brand-style-guide.md` and `.ai/prompts/website-editorial-system.md` |
+| General blog/guide editorial judgment | `.ai/brand/website-brand-style-guide.md` and `.ai/prompts/blog-editorial-system.md` |
+| Build/debug/Windows cache or repeat-failure handling | `docs/operations/repeated-failures-playbook.md` and only the affected source files |
+| Architecture/source-of-truth/media/slug decision | the relevant file under `docs/architecture/` |
+| General Astro/UI implementation not covered above | affected `src/` files plus only the relevant architecture/operations reference |
+
+## Routing rules
+
+- Choose one primary route. Supporting validation does not create a second workflow.
+- For mixed multilingual work, run infrastructure first, stop at its review boundary, then run translation.
+- Do not load all of `docs/`, `.ai/`, `.agents/skills/`, or historical handoff material by default.
+- If the task does not fit a route cleanly, inspect the smallest relevant architecture/operations reference and stop if scope remains ambiguous.
+- Existing project-local publication and approval controls remain authoritative and must not be bypassed by this router.
