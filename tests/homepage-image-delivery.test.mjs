@@ -5,8 +5,8 @@ import test from 'node:test';
 import sharp from 'sharp';
 
 const unitCardPath = new URL('../src/components/UnitCard.astro', import.meta.url);
-const homepagePath = new URL('../src/pages/en/index.astro', import.meta.url);
-const housesPath = new URL('../src/pages/en/houses/index.astro', import.meta.url);
+const homepagePath = new URL('../src/components/pages/HomePage.astro', import.meta.url);
+const housesPath = new URL('../src/components/pages/CollectionPage.astro', import.meta.url);
 const headerPath = new URL('../src/components/Header.astro', import.meta.url);
 const footerPath = new URL('../src/components/Footer.astro', import.meta.url);
 const markPath = new URL('../public/images/brand/eh-mark-144.webp', import.meta.url);
@@ -27,8 +27,8 @@ test('homepage card image delivery keeps listing priority isolated from the home
   assert.match(unitCard, /\(min-width: 640px\) calc\(\(100vw - 88px\) \/ 2\)/);
   assert.match(unitCard, /calc\(100vw - 32px\)/);
 
-  assert.doesNotMatch(homepage, /<UnitCard\s+unit=\{unit\}\s+priority=\{index < 3\}/);
-  assert.match(houses, /<UnitCard\s+unit=\{unit\}\s+priority=\{index < 3\}/);
+  assert.doesNotMatch(homepage, /<UnitCard unit=\{unit\} priority=\{index < 3\} locale=\{locale\}/);
+  assert.match(houses, /<UnitCard unit=\{unit\} priority=\{index < 3\} locale=\{locale\}/);
 });
 
 test('brand mark uses the approved 144px WebP asset', async () => {

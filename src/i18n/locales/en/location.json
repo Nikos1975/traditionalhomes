@@ -1,0 +1,69 @@
+{
+  "breadcrumb": { "ariaLabel": "Breadcrumb", "home": "Home", "current": "Location" },
+  "heading": { "lead": "The", "emphasis": "Setting" },
+  "intro": "Mavrikiano and Vrouchas sit on the hillside above Elounda, with village paths, sea views, parking details, and beaches close by car.",
+  "pillarLinkLabel": "Read the area guide to Elounda and Mirabello Bay",
+  "villages": {
+    "kickerPrefix": "Village",
+    "mavrikiano": {
+      "name": "Mavrikiano",
+      "paragraphs": [
+        "Mavrikiano is a hillside village above Schisma, the harbour centre of Elounda. Our ten stone houses sit within the existing village fabric, connected by stone paths and quiet lanes.",
+        "The village has local places to eat and drink, including Kantouni, To Rakadiko tou Kamari, Despoina Tavern, and BeeRaki, while Elounda’s harbour, shops, local markets, and further tavernas are about a 3-minute drive away, or a 10-minute downhill walk for many guests."
+      ],
+      "guideLinkLabel": "Explore the Mavrikiano Guide"
+    },
+    "vrouchas": {
+      "name": "Vrouchas",
+      "paragraphs": [
+        "Located further north and higher in elevation, Vrouchas has a quieter hillside setting with views toward the Cretan Sea, olive groves, and the surrounding mountains. In summer, the village often feels several degrees cooler than Plaka because of its elevation and exposure.",
+        "Almond Tree Villa sits within the village. About 50 metres from the house, there is a small kafeneion run by Mr Xenos, a local photographer, and his French wife. Guests can stop there for raki, small meze dishes, and simple Cretan home cooking, with one or two dishes often prepared daily by Mr Xenos’s mother.",
+        "The surrounding landscape is part of the wilder northern side of Mirabello, close to protected Natura 2000 areas. A five-minute drive takes you down to the fishing village of Plaka and its waterfront tavernas."
+      ]
+    }
+  },
+  "distances": {
+    "heading": "Driving Distances",
+    "fromMavrikiano": "From Mavrikiano Houses",
+    "fromVrouchas": "From Vrouchas Villa",
+    "minutesUnit": "min",
+    "labels": {
+      "schismaHarbour": "Schisma / Elounda Harbour",
+      "plaka": "Plaka",
+      "plakaShoreline": "Plaka Shoreline",
+      "agiosNikolaos": "Agios Nikolaos",
+      "heraklionAirport": "Heraklion Airport"
+    }
+  },
+  "collection": {
+    "heading": "The Collection",
+    "groups": {
+      "seaViewStandalone": "Sea-view standalone houses",
+      "paired": "Paired houses",
+      "sharedPool": "Shared-pool houses",
+      "privatePoolUpperPair": "Private-pool / upper house pair",
+      "vrouchasVilla": "Vrouchas villa"
+    },
+    "badges": {
+      "seaView": "Sea view",
+      "standalone": "Standalone",
+      "privatePool": "Private pool",
+      "sharedPool": "Shared pool",
+      "noPool": "No pool",
+      "groundFloor": "Ground floor",
+      "firstFloor": "First floor",
+      "vrouchas": "Vrouchas",
+      "privateVilla": "Private villa"
+    }
+  },
+  "welcome": {
+    "heading": "A Personal Welcome",
+    "body": "Navigating traditional villages can be a challenge. We personally meet all guests at our designated parking area.",
+    "hostSuffix": "will guide you to your home and assist with your arrival.",
+    "ctaLabel": "Contact Guest Relations"
+  },
+  "map": {
+    "villageLabel": "Village",
+    "caption": "Interactive view of our properties across the Elounda hillside."
+  }
+}

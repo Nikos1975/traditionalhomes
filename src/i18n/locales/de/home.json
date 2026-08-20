@@ -1,0 +1,73 @@
+{
+  "hero": {
+    "ariaLabel": "Startbereich",
+    "kicker": "Gegr. 1994 · Elounda, Kreta",
+    "headingLead": "Wohnen im",
+    "headingEmphasis": "kretischen Dorf",
+    "imageAlt": "Blick von den Häusern am Hang oberhalb von Elounda",
+    "ctaCollection": "Unsere Ferienhäuser ansehen",
+    "ctaAvailability": "Verfügbarkeit prüfen",
+    "scrollLabel": "Mehr"
+  },
+  "overview": {
+    "ariaLabel": "Überblick über Häuser und Villa",
+    "headingLead": "Zehn Häuser.",
+    "headingEmphasis": "Eine Villa.",
+    "body": "Zehn traditionelle Steinhäuser in Mavrikiano. Eine größere Villa in Vrouchas. Wählen Sie nach Meerblick, Pool, Außenbereich, Zugang und Gruppengröße.",
+    "ctaCompare": "Alle Unterkünfte vergleichen"
+  },
+  "choose": {
+    "heading": "Die passende Unterkunft finden",
+    "subheading": "Beginnen Sie mit dem, was Ihnen am wichtigsten ist.",
+    "openFilters": "Filter öffnen",
+    "groups": {
+      "seaView": "Häuser mit Meerblick",
+      "pool": "Unterkünfte mit Pool",
+      "access": "Leichter Zugang",
+      "larger": "Größere Gruppen"
+    },
+    "clioLabel": "Clio, etwa 10 m vom Parkplatz"
+  },
+  "villa": {
+    "kicker": "Private Villa · Vrouchas",
+    "heading": "Almond Tree Villa in Vrouchas",
+    "body": "Eine größere Villa mit 230 m² für bis zu 10 Gäste: fünf Schlafräume, zwei Bäder, ein privater Pool von 9 m × 4 m, schilfbeschattete Balkone, Garten und Blick auf das Kretische Meer, den Garten, den Pool und die Berge.",
+    "imageAlt": "Garten und privater Pool der Almond Tree Villa in Vrouchas",
+    "ctaView": "Villa ansehen",
+    "ctaDates": "Termine prüfen"
+  },
+  "setting": {
+    "ariaLabel": "Lage im Überblick",
+    "kicker": "Die Lage",
+    "headingLead": "Mavrikiano",
+    "headingEmphasis": "und Vrouchas",
+    "body": "Die Steinhäuser stehen in Mavrikiano, oberhalb von Schisma, dem Hafenzentrum von Elounda. Die Almond Tree Villa liegt in Vrouchas, höher am Hang und näher an Plaka. Für Strände, Tavernen, Gepäck und Abendessen ist ein Auto zu empfehlen.",
+    "ctaLocation": "Lage & Anreise",
+    "ctaGuide": "Gebietsführer",
+    "ctaPillar": "Die weitere Umgebung verstehen"
+  },
+  "booking": {
+    "heading": "Prüfen Sie die Termine für Ihren Aufenthalt.",
+    "body": "Buchungen laufen über unser gesichertes Verfügbarkeitssystem. Wählen Sie Unterkunft und Datum, um fortzufahren.",
+    "description": "Suchen Sie in unserem Angebot und wählen Sie anschließend in WebHotelier die passende Unterkunft.",
+    "submitLabel": "Verfügbarkeit prüfen",
+    "ctaAll": "Alle Unterkünfte ansehen"
+  },
+  "info": {
+    "faq": {
+      "title": "Häufige Fragen",
+      "desc": "Hinweise zu WLAN, Zugang im Dorf, Haustierregelung und gemeinsam genutzten Pools.",
+      "label": "Zu den FAQ"
+    },
+    "about": {
+      "title": "Unsere Geschichte",
+      "desc": "Ein Familienbetrieb, der seit 1994 Steinhäuser restauriert und kretische Gastfreundschaft lebt.",
+      "label": "Über uns"
+    },
+    "policies": {
+      "title": "Richtlinien",
+      "desc": "Klare Angaben zu Check-in, Ruhezeiten und Hausordnung.",
+      "label": "Zu den Richtlinien"
+    }
+  }
+}

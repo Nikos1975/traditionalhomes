@@ -1,5 +1,21 @@
 # Agent Handoff Notes
 
+### 2026-08-20 - German core cluster: shared page renderers and four reference routes (PR #58)
+
+- Added `/de/`, `/de/ferienhaeuser/`, `/de/lage/` and `/de/ferienhaeuser/argyro/` on top of the existing `/de/reisefuehrer/vrouchas/`. Argyro is the reference house; the other nine houses and Almond Tree Villa are deliberately not localized yet.
+- Extracted four shared page renderers into `src/components/pages/`: `HomePage`, `CollectionPage`, `LocationPage`, `HouseDetailPage`. Together with `GuidePage` these serve both locales. Every route file under `src/pages/` is now a thin wrapper that passes `locale` explicitly; no renderer reads `Astro.url`, `Astro.params` or `Astro.currentLocale` for locale.
+- Made the components these four routes need locale-aware by adding an explicit optional `locale` prop defaulting to `defaultLocale`: `FilterBar`, `HouseGallery`, `MapPreview`, `MasterLocationMap`, `SinglePinMap`, `LeafletMap`, plus fallback-marking in `UnitCard` and `GroupCard`. `GalleryA` was deliberately left alone — no page renders it.
+- Client-side payloads carry one locale only. Each page serialises the active locale's strings at build time; a test asserts the German page ships no English label values and the English page ships no German ones. No i18n client library was added.
+- Every internal link resolves through the route map. German pages now link to German equivalents where they exist, and every remaining English link carries `hreflang="en"` — verified at zero unmarked fallbacks across all five German pages.
+- New German locale resources: `home.json`, `location.json`, `properties.json`, `seo.json`, and additions to `forms.json`. `getPropertySeo` was templatized so the property description assembles from locale strings instead of hardcoded English.
+- German long-form property copy lives in `src/content/houses/de/argyro.md`, a faithful localization of the English entry. `HouseDetailPage` requires a locale content entry for any non-default locale and throws otherwise, so a German route cannot exist without German content.
+- English output preserved: 34 of 35 pages are byte-identical to `origin/main` after normalising Astro's scoped-style hash. The one difference is `/en/location/`, where paragraph whitespace inside `<p>` changed because the village paragraphs now render from an array; the text is identical.
+- Verified in a clean Linux checkout: `node --test` 328 tests with 327 passing and the single pre-existing `warns when WebP is larger than a practical PNG source` failure that also fails on unmodified `origin/main` here. `astro check` 3 errors, 0 warnings — the same three unrelated errors — and 9 hints, up from 3 because the same inline scripts now live in renderer components. `npm run build` produced 41 pages. `git diff --check` passed. An independent walk of `dist` checked 2661 internal links with 0 broken targets, 0 broken fragments and 0 phantom locale links.
+- Not verified here: `npm run seo:links` still fails with `[502] /` in this sandbox and fails identically on unmodified `origin/main`, because its loopback crawl is intercepted by the egress proxy. Re-run it on the workstation.
+- Six existing test files were repointed at the shared renderers because the code they grepped moved: `i18n-foundation`, `i18n-german-route-pilot`, `home-hero`, `homepage-image-delivery`, `labrica-repair-batch-1`. All behavioural assertions were kept.
+- Deferred: the language switcher. `routeLocales` already answers "does an equivalent exist in locale X", so it is a small component, not an architectural change.
+- Remaining: nine houses, the villa, contact/FAQ/policies/about, blog. No merge, no deployment, no Cloudflare, DNS, booking-provider or contact-backend change.
+
 ### 2026-08-20 - German Vrouchas guide: faithful localization of the English master (PR #58)
 
 - Replaced the Stage 3 German excerpt with a complete faithful localization at `/de/reisefuehrer/vrouchas/`. All seven sections and three subsections of `src/guides/Vrouchas-Guide.md` are present in German with the same facts, dates, distances, descriptions, historical statements, transport notes, itinerary, packing list and Spinalonga visitor information, including hours and prices.

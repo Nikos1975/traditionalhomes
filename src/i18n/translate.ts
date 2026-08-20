@@ -2,12 +2,19 @@ import { defaultLocale, normalizeLocale } from './config';
 import commonEn from './locales/en/common.json';
 import formsEn from './locales/en/forms.json';
 import guideEn from './locales/en/guide.json';
+import homeEn from './locales/en/home.json';
+import locationEn from './locales/en/location.json';
 import navigationEn from './locales/en/navigation.json';
+import propertiesEn from './locales/en/properties.json';
 import seoEn from './locales/en/seo.json';
 import commonDe from './locales/de/common.json';
 import formsDe from './locales/de/forms.json';
 import guideDe from './locales/de/guide.json';
+import homeDe from './locales/de/home.json';
+import seoDe from './locales/de/seo.json';
+import locationDe from './locales/de/location.json';
 import navigationDe from './locales/de/navigation.json';
+import propertiesDe from './locales/de/properties.json';
 
 /**
  * English is the complete source dictionary. Every other locale is a partial
@@ -24,12 +31,19 @@ const dictionaries = {
     forms: formsEn,
     seo: seoEn,
     guide: guideEn,
+    properties: propertiesEn,
+    location: locationEn,
+    home: homeEn,
   },
   de: {
     common: commonDe,
     navigation: navigationDe,
     forms: formsDe,
     guide: guideDe,
+    properties: propertiesDe,
+    location: locationDe,
+    home: homeDe,
+    seo: seoDe,
   },
 } as const;
 
@@ -112,4 +126,16 @@ export function getSeoCopy(locale: string | undefined = defaultLocale) {
 
 export function getGuideCopy(locale: string | undefined = defaultLocale) {
   return getTranslations(locale).guide;
+}
+
+export function getPropertiesCopy(locale: string | undefined = defaultLocale) {
+  return getTranslations(locale).properties;
+}
+
+export function getLocationCopy(locale: string | undefined = defaultLocale) {
+  return getTranslations(locale).location;
+}
+
+export function getHomeCopy(locale: string | undefined = defaultLocale) {
+  return getTranslations(locale).home;
 }
