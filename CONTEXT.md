@@ -10,9 +10,9 @@ Route the task before loading detailed project context. Load only the selected r
 | Property facts or property-page factual audit | `docs/architecture/source-of-truth.md`, then the relevant property/content files |
 | Website/home/collection/property/location editorial copy | `.ai/brand/website-brand-style-guide.md` and `.ai/prompts/website-editorial-system.md` |
 | General blog/guide editorial judgment | `.ai/brand/website-brand-style-guide.md` and `.ai/prompts/blog-editorial-system.md` |
-| Build/debug/Windows cache or repeat-failure handling | `docs/operations/repeated-failures-playbook.md` and only the affected source files |
-| Architecture/source-of-truth/media/slug decision | the relevant file under `docs/architecture/` |
-| General Astro/UI implementation not covered above | affected `src/` files plus only the relevant architecture/operations reference |
+| Astro/UI/site implementation, shared UI behavior, Tailwind/CSS, client-side behavior, forms, non-i18n routes, image-delivery integration | `.agents/workspaces/site-engineering/CONTEXT.md` |
+| Build, runtime, browser, type or test-regression debugging, including Windows cache and repeat-failure handling | `.agents/workspaces/site-engineering/CONTEXT.md` |
+| Architecture/source-of-truth/media/slug decision with no implementation authorized yet | the relevant file under `docs/architecture/` |
 
 ## Routing rules
 
@@ -20,4 +20,5 @@ Route the task before loading detailed project context. Load only the selected r
 - For mixed multilingual work, run infrastructure first, stop at its review boundary, then run translation.
 - Do not load all of `docs/`, `.ai/`, `.agents/skills/`, or historical handoff material by default.
 - If the task does not fit a route cleanly, inspect the smallest relevant architecture/operations reference and stop if scope remains ambiguous.
+- Site engineering consumes property facts, media rules and i18n contracts but never becomes their authority; it does not absorb SEO/content-intelligence, social publication, or deployment operations.
 - Existing project-local publication and approval controls remain authoritative and must not be bypassed by this router.

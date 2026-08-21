@@ -10,7 +10,7 @@ After reading it, read `CONTEXT.md` and route the task before loading detailed i
 - Blog, guide, historical article, blog audit, publication, article visual-plan, or blog-image work: `BLOG_ORCHESTRATOR.md`.
 - Property factual work: `docs/architecture/source-of-truth.md` plus the exact affected property files.
 - Editorial work: use the exact brand/editorial source selected by `CONTEXT.md`.
-- Build/debug failures: use `docs/operations/repeated-failures-playbook.md` plus the affected files.
+- General Astro/UI/site implementation and build, runtime, browser, type or regression debugging: `.agents/workspaces/site-engineering/CONTEXT.md`.
 
 Do not load unrelated skills, the entire docs tree, `.ai/memory/current-task.md`, or the full historical `docs/agent-handoff-notes.md` by default.
 
