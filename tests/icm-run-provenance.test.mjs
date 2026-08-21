@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 import { spawnSync } from 'node:child_process';
 
 const testDir = path.dirname(fileURLToPath(import.meta.url));
@@ -175,7 +175,7 @@ test('traversal and unsafe run ids are refused', () => {
 
 test('writes outside .agent/icm are refused', async () => {
   const root = tempRoot();
-  const module = await import(path.join(repoRoot, 'scripts', 'context', 'icm-run.mjs'));
+  const module = await import(pathToFileURL(cli).href);
 
   assert.throws(() => module.runArtifactPath(root, module.generateRunId(), '../../run.json'), /unsafe artifact name/);
   assert.throws(() => module.runArtifactPath(root, module.generateRunId(), '/etc/passwd'), /unsafe artifact name/);
