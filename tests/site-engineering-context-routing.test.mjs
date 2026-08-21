@@ -121,7 +121,8 @@ test('SEO/content-intelligence, social publication and deployment operations are
   ]) {
     const row = rows.find((cells) => subject.test(cells[0]));
     assert.ok(row, `site-engineering workspace does not disclaim ${subject}`);
-    assert.match(row[1], /no ICM workspace yet/);
+    assert.match(row[1], /`\.agents\/workspaces\/operations-deployment\/CONTEXT\.md`/);
+    assert.match(row[1], /site engineering never deploys or changes Cloudflare/);
   }
 
   // Social publication now has an owner. Naming it is still a disclaimer: site

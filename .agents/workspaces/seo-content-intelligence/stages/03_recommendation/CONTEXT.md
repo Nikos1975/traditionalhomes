@@ -39,7 +39,7 @@ Every recommendation states: 1. evidence; 2. finding; 3. recommended action; 4. 
 | A change to a property fact | `.agents/workspaces/property-content/CONTEXT.md`, fact-correction stage, on an explicit authoritative correction only |
 | Route, component, template, title and meta implementation, canonical or redirect implementation | `.agents/workspaces/site-engineering/CONTEXT.md` |
 | Localized SEO, hreflang, locale canonical and sitemap infrastructure, localized titles and meta | `.agents/workspaces/i18n/CONTEXT.md` |
-| Deployment, Cloudflare account, DNS and edge redirect administration | no ICM workspace yet; stop and report |
+| Deployment, Cloudflare account, DNS and edge redirect administration | `.agents/workspaces/operations-deployment/CONTEXT.md`, on an explicit deployment or Cloudflare authorization only |
 
 ## Outputs
 

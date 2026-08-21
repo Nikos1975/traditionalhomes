@@ -16,6 +16,8 @@ Route the task before loading detailed project context. Load only the selected r
 | Explicit approval, live publication, or reconciliation of an unknown social publication outcome | `.agents/workspaces/social-publishing/CONTEXT.md` |
 | Astro/UI/site implementation, shared UI behavior, Tailwind/CSS, client-side behavior, forms, non-i18n routes, image-delivery integration | `.agents/workspaces/site-engineering/CONTEXT.md` |
 | Build, runtime, browser, type or test-regression debugging, including Windows cache and repeat-failure handling | `.agents/workspaces/site-engineering/CONTEXT.md` |
+| Inspect Cloudflare configuration or deployment state, prepare a deployment or Cloudflare configuration change, or diagnose a Cloudflare Pages operational issue | `.agents/workspaces/operations-deployment/CONTEXT.md` |
+| Deploy an approved revision, update approved Cloudflare production configuration, or verify a completed production deployment | `.agents/workspaces/operations-deployment/CONTEXT.md` |
 | Architecture/source-of-truth/media/slug decision with no implementation or content editing authorized yet | the relevant file under `docs/architecture/` |
 
 ## Routing rules
@@ -28,4 +30,5 @@ Route the task before loading detailed project context. Load only the selected r
 - Google Search Console is the authoritative source for current organic-search performance. SEO evidence may recommend a change; it never authorizes the change, and an older SEO report is never current truth.
 - Site engineering consumes property facts, media rules and i18n contracts but never becomes their authority; it does not absorb SEO/content-intelligence, social publication, or deployment operations.
 - Social publication has one owner. Preparation, approval, live publication and reconciliation are separate permissions there, and completing one never authorizes the next.
+- Deployment and Cloudflare operations have one owner. Inspecting, preparing, applying and verifying are separate permissions there, and no production mutation is ever inferred from a review, a prepared change, a passing test, a successful build or a merged commit.
 - Existing project-local publication and approval controls remain authoritative and must not be bypassed by this router.

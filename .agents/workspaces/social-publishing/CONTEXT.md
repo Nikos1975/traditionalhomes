@@ -44,7 +44,7 @@ NO LIVE PUBLICATION BY DEFAULT. A request to prepare a post, draft platform copy
 | Localized routes, hreflang, locale canonical and sitemap infrastructure | `.agents/workspaces/i18n/CONTEXT.md` |
 | Route, component, template and site implementation, including image-delivery integration | `.agents/workspaces/site-engineering/CONTEXT.md` |
 | Article image generation, processing and visual planning | `.agents/skills/traditional-homes-image-pipeline/SKILL.md` and `.agents/skills/traditional-homes-article-visual-plan/SKILL.md` |
-| Deployment, Cloudflare account, DNS and edge administration, and production deployment state | no ICM workspace yet; stop and report |
+| Deployment, Cloudflare account, DNS and edge administration, and production deployment state | `.agents/workspaces/operations-deployment/CONTEXT.md`; publishing a post never deploys the site |
 
 Consuming a published article, a fact or a media rule is allowed. Becoming its authority is not. A weak social post is never repaired by editing the website article from here.
 

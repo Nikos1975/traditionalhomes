@@ -27,7 +27,7 @@ Astro component, page and layout implementation; shared UI behavior; Tailwind/CS
 | Media placement and image-rights authority | `docs/architecture/media-ownership.md` |
 | Search Console analysis, topic scoring, content-gap analysis, editorial SEO planning | `.agents/workspaces/seo-content-intelligence/CONTEXT.md`; an SEO recommendation is not an authorization to implement it here |
 | Social publication preparation, approval, live publication and reconciliation | `.agents/workspaces/social-publishing/CONTEXT.md`; site engineering never publishes to a social platform |
-| Deployment, Cloudflare account/DNS/redirect administration, production deployment state | no ICM workspace yet; stop and report. Only source-code engineering under `functions/` is routed here |
+| Deployment, Cloudflare account/DNS/redirect administration, production deployment state | `.agents/workspaces/operations-deployment/CONTEXT.md`; only source-code engineering under `functions/` is routed here, and site engineering never deploys or changes Cloudflare |
 
 Consuming a fact, a media rule or an i18n contract is allowed. Becoming its authority is not.
 

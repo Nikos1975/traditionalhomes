@@ -13,6 +13,7 @@ After reading it, read `CONTEXT.md` and route the task before loading detailed i
 - General Astro/UI/site implementation and build, runtime, browser, type or regression debugging: `.agents/workspaces/site-engineering/CONTEXT.md`.
 - Search Console evidence, SEO performance/overlap/content-gap analysis and SEO recommendation planning: `.agents/workspaces/seo-content-intelligence/CONTEXT.md`.
 - Social publication preparation, approval, live publication and reconciliation for an already-published article: `.agents/workspaces/social-publishing/CONTEXT.md`.
+- Cloudflare Pages operations, deployment execution, production runtime configuration and post-deployment verification: `.agents/workspaces/operations-deployment/CONTEXT.md`. Deployment and Cloudflare mutations require an exact explicit authorization and are never inferred.
 
 Do not load unrelated skills, the entire docs tree, `.ai/memory/current-task.md`, or the full historical `docs/agent-handoff-notes.md` by default.
 

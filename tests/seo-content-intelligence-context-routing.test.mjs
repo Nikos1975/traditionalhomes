@@ -226,8 +226,11 @@ test('approved implementations route to the workspace that owns them', () => {
   assert.match(owner(/A change to a property fact/), /fact-correction stage, on an explicit authoritative correction only/);
   assert.match(owner(/Route, component, template, title and meta implementation, canonical or redirect implementation/), /`\.agents\/workspaces\/site-engineering\/CONTEXT\.md`/);
   assert.match(owner(/Localized SEO, hreflang, locale canonical and sitemap infrastructure/), /`\.agents\/workspaces\/i18n\/CONTEXT\.md`/);
-  assert.match(owner(/Deployment, Cloudflare account, DNS and edge redirect administration/), /no ICM workspace yet/);
-  assert.ok(!rows.some((cells) => /social/i.test(cells[0]) && !/no ICM workspace yet/.test(cells[1])));
+  assert.match(
+    owner(/Deployment, Cloudflare account, DNS and edge redirect administration/),
+    /`\.agents\/workspaces\/operations-deployment\/CONTEXT\.md`/,
+  );
+  assert.ok(!rows.some((cells) => /^Social publication/.test(cells[0])));
 });
 
 test('property facts stay with property content and cannot be created by SEO', () => {

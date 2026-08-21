@@ -388,7 +388,8 @@ test('deployment stays outside the social workspace and other workspaces route s
   const deployment = tableRows(read(workspacePath)).find((cells) => /^Deployment, Cloudflare account/.test(cells[0]));
 
   assert.ok(deployment, 'the social workspace does not disclaim deployment');
-  assert.match(deployment[1], /no ICM workspace yet; stop and report/);
+  assert.match(deployment[1], /`\.agents\/workspaces\/operations-deployment\/CONTEXT\.md`/);
+  assert.match(deployment[1], /publishing a post never deploys the site/);
 
   for (const otherWorkspace of [
     '.agents/workspaces/site-engineering/CONTEXT.md',
