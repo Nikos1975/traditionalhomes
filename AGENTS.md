@@ -18,3 +18,5 @@ After reading it, read `CONTEXT.md` and route the task before loading detailed i
 Do not load unrelated skills, the entire docs tree, `.ai/memory/current-task.md`, or the full historical `docs/agent-handoff-notes.md` by default.
 
 Project-local safety, publication, merge, deploy, source-of-truth, and validation controls take precedence over generic/external workflows.
+
+Current repository continuity: `docs/handoff/current.md`. Reference only; workspace and stage `CONTEXT.md` contracts remain authoritative. The historical archive `docs/agent-handoff-notes.md` is not startup context.

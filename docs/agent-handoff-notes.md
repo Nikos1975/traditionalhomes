@@ -1,5 +1,7 @@
 # Agent Handoff Notes
 
+> Historical archive. Do not load by default. Use `docs/handoff/current.md` for active repository state.
+
 ### 2026-08-21 - ICM Phase 10: property-content workspace (branch `chore/icm-phase10-property-content-workspace`)
 
 - Objective: give property facts and property-facing content one ICM owner so a description edit, a factual correction and a page audit stop being ad-hoc reads of inventory, Markdown, handoff notes and remembered facts. Branch base is the Phase 9 head `f61b7b172a724892663a5df3db6e4b000b904cbd`. No property data, property content, component, route, translation or configuration file was changed.

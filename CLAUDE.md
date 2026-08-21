@@ -32,6 +32,8 @@ Use the repository as an ICM workspace:
 
 Do not automatically load `.ai/memory/current-task.md`, the full `docs/agent-handoff-notes.md`, or unrelated workspace instructions. Load only the context named by the routed stage.
 
+Current repository continuity: `docs/handoff/current.md` — current baseline, working-tree preservation, known diagnostics and planned work. It is reference context, not an execution authority, and it does not replace the routed stage contract.
+
 ## Validation and stop conditions
 
 - For source, component, content, route, media-reference, package, or dependency changes, run the relevant focused tests plus the repository validation required by the routed stage. Compare `npm run typecheck` with the known baseline rather than claiming unrelated existing diagnostics are new.

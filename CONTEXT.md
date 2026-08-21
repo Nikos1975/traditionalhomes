@@ -32,3 +32,9 @@ Route the task before loading detailed project context. Load only the selected r
 - Social publication has one owner. Preparation, approval, live publication and reconciliation are separate permissions there, and completing one never authorizes the next.
 - Deployment and Cloudflare operations have one owner. Inspecting, preparing, applying and verifying are separate permissions there, and no production mutation is ever inferred from a review, a prepared change, a passing test, a successful build or a merged commit.
 - Existing project-local publication and approval controls remain authoritative and must not be bypassed by this router.
+
+## Current continuity
+
+Current repository state — baseline, working-tree preservation, active owners, known diagnostics and planned work — is recorded in `docs/handoff/current.md`. Read it for continuity, not for authorization: it routes no task and never overrides this router or a workspace stage contract.
+
+`docs/agent-handoff-notes.md` is the historical archive. It is not startup context and is loaded only when a specific historical question requires it.

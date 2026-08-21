@@ -1,0 +1,149 @@
+# Current Repository Handoff
+
+Continuity and reference only. This file records current repository state so a new
+agent does not have to reconstruct it. It is **not** an execution authority:
+`CLAUDE.md`, `CONTEXT.md` and the workspace/stage `CONTEXT.md` contracts remain
+authoritative for what a task may do.
+
+Historical detail lives in `docs/agent-handoff-notes.md`. That archive is not part
+of startup context and is loaded only when a specific historical question requires it.
+
+## Current Baseline
+
+- Current validated phase: ICM Phase 13 (operations-deployment workspace).
+- Phase 14 base branch/head: `chore/icm-phase13-operations-deployment-workspace`
+  at `3a04378a184d3cab473134dfecd1e5c33c3e7293`.
+- Runtime stack: Astro 5 static-first output, TypeScript, Tailwind CSS, Node test
+  runner (`node --test`), no heavy client-side JavaScript.
+- Deployment model: Cloudflare Pages built from the connected GitHub repository.
+  Production host is `https://traditional-homes.gr`. A local build proves nothing
+  about production; deployment and Cloudflare mutations are separately authorized.
+
+## Working Tree Preservation
+
+Two tracked files are expected to be modified in the working tree across phases:
+
+- `data/content-intelligence/inventory.json`
+- `data/content-intelligence/inventory.md`
+
+Do not stage, restore, regenerate, overwrite, revert or commit them without an
+explicit instruction naming them. A clean phase ends with exactly these two files
+still showing as modified.
+
+## Active ICM Owners
+
+Seven workspaces own the repository's work. Route to exactly one.
+
+| Owner | Scope |
+| --- | --- |
+| `.agents/workspaces/i18n/CONTEXT.md` | Multilingual implementation, locale routes, shared renderers, canonical/hreflang/sitemap infrastructure, translation and visible-language QA. |
+| `BLOG_ORCHESTRATOR.md` and `.agents/workspaces/editorial-research/CONTEXT.md` | Blog, guide and historical article work: research, drafting, revision, audit, visual plans and publication routing. |
+| `.agents/workspaces/property-content/CONTEXT.md` | Property facts and property-facing content; the only owner allowed to change a canonical property fact. |
+| `.agents/workspaces/site-engineering/CONTEXT.md` | Non-i18n Astro/UI implementation and build, runtime, browser, type and regression debugging. |
+| `.agents/workspaces/seo-content-intelligence/CONTEXT.md` | Search Console evidence, SEO performance/gap/overlap analysis and SEO recommendation planning. |
+| `.agents/workspaces/social-publishing/CONTEXT.md` | Preparation, approval, live publication and reconciliation of social posts for an already-published article. |
+| `.agents/workspaces/operations-deployment/CONTEXT.md` | Cloudflare Pages operations, deployment execution, production runtime configuration and post-deployment verification. |
+
+Stage contracts are not reproduced here. Load the stage from its workspace router.
+
+## Permission Boundaries
+
+- Research is not drafting, and drafting is not publication.
+- A recommendation is not an implementation.
+- Prepare, approve and publish are three separate permissions.
+- Inspect, prepare, apply and verify are four separate permissions.
+- A source bug is not a deployment permission; a passing test, a successful build
+  and a merged commit never authorize a production mutation.
+- No merge, deploy, publish, push to `main` or force-push without explicit
+  authorization for that exact action.
+- Ownership boundaries are exact: a workspace consumes another owner's outputs and
+  never becomes their authority.
+- Secrets, tokens and credentials never enter tracked context, reports or commits.
+
+## Known Baselines
+
+`npm run typecheck` baseline, unresolved and accepted:
+
+- 3 errors
+- 0 warnings
+- 3 hints
+
+Known error locations:
+
+- `src/components/UnitCard.astro`
+- `src/components/booking/BookingHandoffForm.astro`
+- `src/pages/en/guide/mavrikiano.astro`
+
+Do not repair these opportunistically inside unrelated work. Compare a run against
+the current baseline instead of claiming pre-existing diagnostics are new.
+
+Dependency vulnerabilities are known and tracked. They are out of scope for
+unrelated phases and are not fixed as a side effect.
+
+## Current Validation Baseline
+
+- Phase 13 native context audit passed (`npm run context:audit`).
+- Phase 13 native full `node --test` suite passed.
+- Latest native suite result at Phase 13: 473 pass, 0 fail.
+- `git fsck` connectivity healthy; two harmless dangling trees may remain.
+
+473 is a recorded observation, not a required count. The gate is fail 0 and
+cancelled 0.
+
+The desktop-bridge environment cannot run the full native suite reliably: the
+mount forbids `unlink` and the installed `sharp` binary is win32. Run the full
+suite natively on Windows.
+
+## Git Safety
+
+- Inspect `git status --short` before starting and before committing.
+- Never `git reset --hard`; never `git add .` or `git add -A`. Stage exact paths.
+- Preserve backup refs and existing worktrees; do not reuse a worktree whose
+  branch and purpose do not match the current task.
+- Inspect a stale lock before removing it; confirm no git process is running.
+- The Claude desktop bridge may leave `tmp_obj_*` objects or `.git/*.lock`
+  artifacts behind after an interrupted command.
+- Do not run `git gc --prune=now` as routine validation.
+- Do not write commit hashes into `.git/refs/` by hand.
+
+## Current Product / Site Constraints
+
+- Astro + Tailwind + TypeScript, static-first.
+- Cloudflare Pages deploys from the connected GitHub repository.
+- English is the factual master; German is the current reference implementation
+  for localization.
+- No fabricated property facts. `src/inventory/inventory.json` is the canonical
+  property source of truth.
+- Google Search Console is authoritative for current organic search performance.
+- Editorial style is factual, direct and specific, with no hype and no invented
+  history.
+- Positioning is authentic traditional Cretan houses, not luxury.
+
+## Current Planned Work
+
+Immediate roadmap:
+
+- Phase 15: stale routing and document cleanup.
+- Phase 16: provenance and run-identity reports under untracked `.agent/icm/`.
+- Phase 17: edit-source principle.
+
+Larger unfinished streams, recorded without detail:
+
+- Finish the German implementation before starting other locales.
+- German keyword and SERP research before broader metadata changes.
+- Remaining typecheck baseline.
+- Dependency vulnerabilities.
+- Deferred research and article work.
+- Social live configuration, only under explicit authorization.
+
+## Resume Procedure
+
+1. Read `CLAUDE.md`.
+2. Read `CONTEXT.md`.
+3. Read this file, `docs/handoff/current.md`.
+4. Run `git status --short` and confirm the expected working tree.
+5. Identify exactly one workspace owner for the task.
+6. Load only that workspace router and its one routed stage contract.
+7. Preserve the two known modified content-intelligence files.
+8. Validate with the focused tests named by that stage before anything broader.
+9. Stop at every review, approval and permission gate.
