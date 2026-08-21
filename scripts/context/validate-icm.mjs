@@ -6,6 +6,7 @@ import { fileURLToPath } from 'node:url';
 
 const scriptDir = path.dirname(fileURLToPath(import.meta.url));
 const defaultRoot = path.resolve(scriptDir, '../..');
+const rootFiles = new Set(['CLAUDE.md', 'AGENTS.md', 'CONTEXT.md', 'BLOG_ORCHESTRATOR.md', 'package.json']);
 
 function parseArgs(argv) {
   let root = defaultRoot;
@@ -66,7 +67,6 @@ function looksLikeRepoReference(value) {
   if (!value || /\s/.test(value) || /[<>*]/.test(value)) return false;
   if (/^(?:https?:|mailto:|npm$|node$)/i.test(value)) return false;
 
-  const rootFiles = new Set(['CLAUDE.md', 'AGENTS.md', 'CONTEXT.md', 'BLOG_ORCHESTRATOR.md', 'package.json']);
   if (rootFiles.has(value)) return true;
 
   if (/^\/(?!\.agents\/|docs\/|\.ai\/|src\/|scripts\/|tests\/|public\/|functions\/)/.test(value)) return false;
@@ -83,6 +83,13 @@ function looksLikeRepoReference(value) {
 
 function resolveReference(repoRoot, sourceFile, ref) {
   const clean = ref.replace(/^\//, '');
+
+  // These names are repository control-plane files wherever they are cited.
+  // Treat them as root-relative instead of relative to a nested workspace.
+  if (rootFiles.has(clean)) {
+    return path.join(repoRoot, clean);
+  }
+
   if (/^(?:\.agents|docs|\.ai|src|scripts|tests|public|functions)\//.test(clean)) {
     return path.join(repoRoot, clean);
   }
