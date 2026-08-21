@@ -32,6 +32,7 @@ Route the task before loading detailed project context. Load only the selected r
 - Social publication has one owner. Preparation, approval, live publication and reconciliation are separate permissions there, and completing one never authorizes the next.
 - Deployment and Cloudflare operations have one owner. Inspecting, preparing, applying and verifying are separate permissions there, and no production mutation is ever inferred from a review, a prepared change, a passing test, a successful build or a merged commit.
 - Existing project-local publication and approval controls remain authoritative and must not be bypassed by this router.
+- Before editing a requested artifact, determine whether it is the authoritative edit source or a derived/generated product. If derived, route the edit to the owning source and use the existing derivation path; do not hand-edit the product to repair its source. If the edit source cannot be established, stop and report. See `docs/operations/edit-source-principle.md`.
 
 ## Current continuity
 

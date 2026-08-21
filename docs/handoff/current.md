@@ -10,9 +10,10 @@ of startup context and is loaded only when a specific historical question requir
 
 ## Current Baseline
 
-- Current validated phase: ICM Phase 16 (local provenance and run identity).
-- Phase 16 branch/base: `chore/icm-phase16-provenance-run-identity` branched from the
-  Phase 15 head `e165e7ea77cb68860e64971ffee5214efa2c2ef3`.
+- Current validated phase: ICM Phase 17 (edit-source principle).
+- Phase 17 branch/base: `chore/icm-phase17-edit-source-principle` branched from the
+  Phase 16 head `765abe5086a9181cf53cbabddaa0c890aeefd905`.
+- Phase 17 is the final planned ICM phase. The ICM migration is complete.
 - Runtime stack: Astro 5 static-first output, TypeScript, Tailwind CSS, Node test
   runner (`node --test`), no heavy client-side JavaScript.
 - Deployment model: Cloudflare Pages built from the connected GitHub repository.
@@ -69,6 +70,9 @@ social publication. Recording that an authorized action happened is not granting
   authorization for that exact action.
 - Ownership boundaries are exact: a workspace consumes another owner's outputs and
   never becomes their authority.
+- Before editing a derived artifact, identify and edit its authoritative source;
+  generated products are verification outputs, not substitute edit surfaces. The
+  method is `docs/operations/edit-source-principle.md`; it creates no new authority.
 - Secrets, tokens and credentials never enter tracked context, reports or commits.
 
 ## Known Baselines
@@ -94,6 +98,9 @@ unrelated phases and are not fixed as a side effect.
 ## Current Validation Baseline
 
 - Context audit passes (`npm run context:audit`).
+- Phase 17 ran focused validation only: the context audit plus the edit-source,
+  ICM routing and current-handoff tests. Claude did not run the full suite in the
+  desktop-bridge environment; Nikos runs the native full suite afterwards.
 - Last full native `node --test` suite: Phase 16 — 514 tests, 514 pass,
   0 fail, 0 cancelled.
 - Phase 16 focused provenance, current-handoff and ICM routing validation also
@@ -140,9 +147,7 @@ full-suite validation natively on Windows when a future phase requires it.
 
 ## Current Planned Work
 
-Immediate roadmap:
-
-- Phase 17: edit-source principle.
+No ICM phase remains planned; Phase 17 closed the migration.
 
 Larger unfinished streams, recorded without detail:
 
