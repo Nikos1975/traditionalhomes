@@ -33,7 +33,7 @@ Three stages, because the permission boundary is the point of this workspace: St
 | A renderer, component, layout or route displaying the wrong canonical value | `.agents/workspaces/site-engineering/CONTEXT.md` |
 | Blog posts, village and area guides, historical articles and their research | `BLOG_ORCHESTRATOR.md` |
 | Home, collection and location editorial copy that is not property-specific | `.ai/brand/website-brand-style-guide.md` with `.ai/prompts/website-editorial-system.md` |
-| Search Console analysis, topic scoring, content-gap analysis, editorial SEO planning | no ICM workspace yet; such a recommendation is never evidence of a property fact |
+| Search Console analysis, topic scoring, content-gap analysis, editorial SEO planning | `.agents/workspaces/seo-content-intelligence/CONTEXT.md`; such a recommendation is never evidence of a property fact |
 | Ownership or architecture design decisions with no content editing authorized | the relevant file under `docs/architecture/` |
 
 ## Shared invariants

@@ -76,6 +76,31 @@ test('ICM audit resolves repository control-plane filenames from nested workspac
   });
 });
 
+test('ICM audit resolves generated-data and config paths from nested workspaces', () => {
+  withFixture((root) => {
+    write(root, 'data/content-intelligence/search-console/processed/.gitkeep', '');
+    write(root, 'config/content-intelligence/scoring-rules.json', '{}\n');
+    const router = path.join(root, '.agents/workspaces/i18n/CONTEXT.md');
+    fs.appendFileSync(
+      router,
+      '\nEvidence lives under `data/content-intelligence/search-console/processed/` and is configured by `config/content-intelligence/scoring-rules.json`.\n',
+      'utf8',
+    );
+    const result = runAudit(root);
+    assert.equal(result.status, 0, result.stderr || result.stdout);
+  });
+});
+
+test('ICM audit still rejects a dead generated-data reference', () => {
+  withFixture((root) => {
+    const router = path.join(root, '.agents/workspaces/i18n/CONTEXT.md');
+    fs.appendFileSync(router, '\nEvidence lives under `data/content-intelligence/missing/`.\n', 'utf8');
+    const result = runAudit(root);
+    assert.equal(result.status, 1);
+    assert.match(result.stderr, /dead routed reference: \.agents\/workspaces\/i18n\/CONTEXT\.md -> data\/content-intelligence\/missing\//);
+  });
+});
+
 test('ICM audit rejects a stage missing a required contract section', () => {
   withFixture((root) => {
     const stage = path.join(root, '.agents/workspaces/i18n/stages/01_example/CONTEXT.md');

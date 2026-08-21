@@ -107,7 +107,7 @@ function resolveReference(repoRoot, sourceFile, ref) {
     return path.join(repoRoot, clean);
   }
 
-  if (/^(?:\.agents|docs|\.ai|src|scripts|tests|public|functions)\//.test(clean)) {
+  if (/^(?:\.agents|docs|\.ai|src|scripts|tests|public|functions|data|config)\//.test(clean)) {
     return path.join(repoRoot, clean);
   }
   return path.resolve(path.dirname(sourceFile), clean);

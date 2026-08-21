@@ -117,7 +117,6 @@ test('SEO/content-intelligence, social publication and deployment operations are
   const rows = tableRows(read(workspacePath));
 
   for (const subject of [
-    /Search Console analysis/,
     /Social publication workflows/,
     /Deployment, Cloudflare account\/DNS\/redirect administration/,
   ]) {
@@ -125,6 +124,13 @@ test('SEO/content-intelligence, social publication and deployment operations are
     assert.ok(row, `site-engineering workspace does not disclaim ${subject}`);
     assert.match(row[1], /no ICM workspace yet/);
   }
+
+  // SEO/content intelligence now has an owner. Naming it is still a disclaimer,
+  // not an absorption: an SEO recommendation never authorizes engineering work here.
+  const seoRow = rows.find((cells) => /Search Console analysis/.test(cells[0]));
+  assert.ok(seoRow, 'site-engineering workspace does not disclaim SEO/content intelligence');
+  assert.match(seoRow[1], /`\.agents\/workspaces\/seo-content-intelligence\/CONTEXT\.md`/);
+  assert.match(seoRow[1], /not an authorization to implement it here/);
 
   assert.match(
     read('CONTEXT.md'),

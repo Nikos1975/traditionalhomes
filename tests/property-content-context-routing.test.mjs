@@ -111,7 +111,7 @@ test('SEO and content intelligence cannot redefine a property fact', () => {
   const seoRow = tableRows(read(workspacePath)).find((cells) => /Search Console analysis/.test(cells[0]));
 
   assert.ok(seoRow, 'the workspace does not disclaim SEO/content intelligence');
-  assert.match(seoRow[1], /no ICM workspace yet/);
+  assert.match(seoRow[1], /`\.agents\/workspaces\/seo-content-intelligence\/CONTEXT\.md`/);
   assert.match(seoRow[1], /never evidence of a property fact/);
   assert.match(read(correctionStagePath), /not an inference, a search result, an SEO recommendation, or prose that merely disagrees/);
 });
