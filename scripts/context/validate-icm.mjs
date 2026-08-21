@@ -7,6 +7,23 @@ import { fileURLToPath } from 'node:url';
 const scriptDir = path.dirname(fileURLToPath(import.meta.url));
 const defaultRoot = path.resolve(scriptDir, '../..');
 const rootFiles = new Set(['CLAUDE.md', 'AGENTS.md', 'CONTEXT.md', 'BLOG_ORCHESTRATOR.md', 'package.json']);
+const globalControlPlaneFiles = ['CLAUDE.md', 'AGENTS.md', 'CONTEXT.md', 'BLOG_ORCHESTRATOR.md'];
+const topicRegistryName = 'topic-contexts.md';
+const topicContextSections = [
+  'Scope',
+  'Inputs',
+  'Source priority',
+  'Open verification targets',
+  'Exclusions',
+  'Outputs',
+  'Review gate',
+  'Stop conditions',
+];
+const topicContextPattern = /^docs\/.+\/CONTEXT\.md$/;
+const stageContextPattern = /^\.agents\/workspaces\/[^/]+\/stages\/[^/]+\/CONTEXT\.md$/;
+const bareFilePattern = /^[^/]+\.(?:md|json|ts|astro|mjs|js|txt)$/i;
+const topicResearchEvidencePattern = /^docs\/research\/.+/;
+const noDraftingPattern = /\b(?:do(?:es)? not|must not|may not|cannot|never)\b[^.\n]*\bdraft/i;
 
 function parseArgs(argv) {
   let root = defaultRoot;
@@ -96,7 +113,8 @@ function resolveReference(repoRoot, sourceFile, ref) {
   return path.resolve(path.dirname(sourceFile), clean);
 }
 
-function sizeThreshold(relativePath) {
+function sizeThreshold(relativePath, activeTopicContexts) {
+  if (activeTopicContexts && activeTopicContexts.has(relativePath)) return 8_000;
   if (relativePath === 'CLAUDE.md') return 12_000;
   if (relativePath === 'CONTEXT.md') return 8_000;
   if (/^\.agents\/workspaces\/[^/]+\/CONTEXT\.md$/.test(relativePath)) return 8_000;
@@ -152,6 +170,64 @@ function runAudit(repoRoot) {
     if (!/\|\s*L4\s*\|/i.test(text)) failures.push(`${rel} Inputs do not declare Layer 4 working material`);
   }
 
+  // Layer 2.5: only topic contracts that a stage registry explicitly routes to
+  // become active control plane. Everything else under docs/research stays inert
+  // Layer 4 evidence and is never loaded or validated because it exists.
+  const topicRegistryFiles = walkFiles(workspacesRoot).filter((file) => path.basename(file) === topicRegistryName);
+  const activeTopicContexts = new Map();
+
+  for (const registryFile of topicRegistryFiles) {
+    const registryRel = relative(repoRoot, registryFile);
+    const stageContext = path.join(path.dirname(registryFile), 'CONTEXT.md');
+    const stageRel = relative(repoRoot, stageContext);
+    if (!fs.existsSync(stageContext) || !readUtf8(stageContext).includes(topicRegistryName)) {
+      failures.push(`topic-context registry is not routed by its stage contract: ${registryRel}`);
+      continue;
+    }
+    for (const ref of extractBacktickRefs(readUtf8(registryFile))) {
+      const clean = ref.replace(/^\//, '');
+      if (!topicContextPattern.test(clean)) continue;
+      if (!activeTopicContexts.has(clean)) activeTopicContexts.set(clean, new Set());
+      activeTopicContexts.get(clean).add(stageRel);
+    }
+  }
+
+  const topicContextFiles = [];
+  for (const [rel, owningStages] of activeTopicContexts) {
+    const target = path.join(repoRoot, rel);
+    if (rel.startsWith('src/pages/')) {
+      failures.push(`registered topic context would become a public route: ${rel}`);
+      continue;
+    }
+    if (!fs.existsSync(target)) continue; // reported as a dead routed reference from the registry
+    topicContextFiles.push(target);
+    const text = readUtf8(target);
+
+    for (const heading of topicContextSections) {
+      if (!hasHeading(text, heading)) failures.push(`${rel} is missing required topic-contract section: ## ${heading}`);
+    }
+    if (!/\|\s*L3\s*\|/i.test(text)) failures.push(`${rel} Inputs do not declare Layer 3 references`);
+    if (!/\|\s*L4\s*\|/i.test(text)) failures.push(`${rel} Inputs do not declare Layer 4 working material`);
+    if (!/research-only/i.test(text) || !noDraftingPattern.test(text)) {
+      failures.push(`${rel} does not keep research-only work out of article drafting`);
+    }
+
+    let namesOwningStage = false;
+    for (const ref of extractBacktickRefs(text)) {
+      const clean = ref.replace(/^\//, '');
+      if (stageContextPattern.test(clean)) {
+        if (owningStages.has(clean)) namesOwningStage = true;
+        else failures.push(`${rel} routes outside its owning stage: ${clean}`);
+        continue;
+      }
+      if (rootFiles.has(clean)) continue;
+      if (bareFilePattern.test(clean)) {
+        failures.push(`${rel} references a bare filename instead of a repository-root-relative path: ${clean}`);
+      }
+    }
+    if (!namesOwningStage) failures.push(`${rel} does not name the stage contract that owns it`);
+  }
+
   const activeFiles = [
     'CLAUDE.md',
     'AGENTS.md',
@@ -161,6 +237,8 @@ function runAudit(repoRoot) {
     .map((item) => path.join(repoRoot, item))
     .filter((file) => fs.existsSync(file));
   activeFiles.push(...workspaceContextFiles);
+  activeFiles.push(...topicRegistryFiles);
+  activeFiles.push(...topicContextFiles);
 
   const seenReferenceFailures = new Set();
   for (const sourceFile of activeFiles) {
@@ -178,6 +256,17 @@ function runAudit(repoRoot) {
     }
   }
 
+  for (const item of globalControlPlaneFiles) {
+    const file = path.join(repoRoot, item);
+    if (!fs.existsSync(file)) continue;
+    for (const ref of extractBacktickRefs(readUtf8(file))) {
+      const clean = ref.replace(/^\//, '');
+      if (topicResearchEvidencePattern.test(clean)) {
+        failures.push(`topic research material referenced from the global control plane: ${item} -> ${clean}`);
+      }
+    }
+  }
+
   const pagesRoot = path.join(repoRoot, 'src', 'pages');
   for (const file of walkFiles(pagesRoot)) {
     if (file.toLowerCase().endsWith('.md')) {
@@ -188,13 +277,14 @@ function runAudit(repoRoot) {
   const structuralFiles = [
     ...activeFiles,
     ...stageFiles,
+    ...topicContextFiles,
   ];
   const seenStructural = new Set();
   for (const file of structuralFiles) {
     const rel = relative(repoRoot, file);
     if (seenStructural.has(rel)) continue;
     seenStructural.add(rel);
-    const threshold = sizeThreshold(rel);
+    const threshold = sizeThreshold(rel, activeTopicContexts);
     if (!threshold) continue;
     const length = readUtf8(file).length;
     if (length > threshold) warnings.push(`${rel} is ${length} characters; review whether context should be split (threshold ${threshold})`);

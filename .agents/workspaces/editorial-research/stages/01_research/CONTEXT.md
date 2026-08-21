@@ -10,10 +10,22 @@ One job: build or review the evidence packet for a bounded article/topic. Do not
 | L3 | `.ai/brand/website-brand-style-guide.md` | project voice and positioning constraints relevant to research framing |
 | L3 | `.ai/prompts/blog-editorial-system.md` | editorial scope, evidence and article-angle rules |
 | L3 | `docs/architecture/source-of-truth.md` | ownership boundaries for property/site facts when relevant |
+| L2.5 | `.agents/workspaces/editorial-research/stages/01_research/topic-contexts.md` | registry of research projects that own a topic-local control contract |
 | L4 | initiating research prompt/topic brief | exact question, angle, geography, exclusions and requested deliverables |
 | L4 | exact topic folder under `docs/research/` when it exists | durable research packet and prior decisions |
 | L4 | exact user-provided files, source URLs, archival records or current web evidence required by the topic | evidence under review |
 | L4 | closely related live/source articles only when overlap must be assessed | duplication and angle control |
+
+## Topic-local research context
+
+A substantial or persistent research project may own one small control contract at `docs/research/blog/<slug>/CONTEXT.md`, beside the evidence it routes to. It is a Layer 2.5 control point between this stage and the topic’s Layer 4 material, and it is optional.
+
+- Resolve the path from the topic slug already used by the research folder. Load a contract only when `.agents/workspaces/editorial-research/stages/01_research/topic-contexts.md` registers it; an unregistered folder under `docs/research/` is inert evidence and is never loaded because it exists.
+- Use a contract when scoped context materially improves the workflow: a multi-file evidence packet, an open acquisition programme, contested or unresolved claims, controlled image rights, or a published article awaiting evidence-triggered revision. A single-run or small topic does not need one.
+- A missing contract is not a failure. Continue from the initiating brief and this stage. Propose registering a contract only when the task scope allows it.
+- A contract narrows this stage for one project. It may not widen stage permissions, authorise drafting, or route to `.agents/workspaces/editorial-research/stages/02_drafting/CONTEXT.md`. `research-only` still stops at this stage.
+- A contract routes to evidence instead of restating it. Dossiers, source notes, claim registers, bibliographies, image records and article prose stay in Layer 4 files, named by exact repository-root-relative path.
+- Keep topic detail out of this stage, the workspace router, `CONTEXT.md` and `CLAUDE.md`.
 
 ## Process
 
@@ -39,7 +51,7 @@ Produce only the research artifacts required by the topic, normally including:
 - requested chronology, entity/person register, image-rights plan or other structured research tables;
 - concise stage report listing Layer 3 references loaded, Layer 4 evidence reviewed, research gaps, and the next allowed action.
 
-Phase 8 may add a topic-local `CONTEXT.md` that narrows these outputs for one article. Until then, the initiating brief defines the exact deliverables.
+A registered topic-local `CONTEXT.md` narrows these outputs and names the exact output files for one project. Without one, the initiating brief defines the exact deliverables.
 
 ## Verify
 

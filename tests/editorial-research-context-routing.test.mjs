@@ -43,7 +43,8 @@ test('research stage is evidence-only and stops before article drafting', async 
   assert.match(stage, /rejected/);
   assert.match(stage, /unresolved/);
   assert.match(stage, /For `research-only`, stop here/);
-  assert.match(stage, /Phase 8 may add a topic-local `CONTEXT\.md`/);
+  assert.match(stage, /A registered topic-local `CONTEXT\.md` narrows these outputs/);
+  assert.match(stage, /`research-only` still stops at this stage/);
 });
 
 test('drafting stage requires reviewed evidence and keeps publication separate', async () => {
