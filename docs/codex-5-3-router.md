@@ -2,6 +2,8 @@
 
 Use this file when GPT-5.5 is coordinating and Codex 5.3 is executing implementation tasks.
 
+This is a helper for that two-agent setup. It is not a routing or execution authority: `CLAUDE.md` -> `CONTEXT.md` -> one workspace -> one stage remains authoritative, and this file never overrides a routed stage contract.
+
 ## Required Methodology
 
 Use the `Superpowers` Codex plugin from `obra/superpowers` for the working method whenever the task matches an available Superpowers skill.
@@ -14,7 +16,7 @@ https://github.com/obra/superpowers/tree/main/.codex-plugin
 
 The plugin is available in the Codex app as `Superpowers`. Project instructions still take priority:
 
-1. User instructions and project rules in `AGENTS.md`, `CLAUDE.md`, and `docs/agent-handoff-notes.md`.
+1. User instructions and project rules in `CLAUDE.md`, `CONTEXT.md`, `AGENTS.md`, and the routed workspace/stage contract.
 2. Project skills under `.agents/skills/`.
 3. Superpowers process skills.
 4. Default Codex behavior.
@@ -72,9 +74,9 @@ Every task packet to Codex 5.3 must include:
 Work in D:\_projects\_traditional-homes.
 
 Read first:
-- AGENTS.md
 - CLAUDE.md
-- docs/agent-handoff-notes.md
+- CONTEXT.md
+- AGENTS.md
 
 Do not use git add .
 Do not commit .agent/, .ai/, .claude/, .codex/, CLAUDE.md, or package-lock.json unless explicitly requested.
@@ -94,8 +96,8 @@ Use for research-to-blog work.
 Required skill/context:
 
 ```text
-Use .agents/skills/blog-research-article/SKILL.md.
-Use .agents/skills/brand-content-audit-and-rewrite/SKILL.md.
+Route blog work through BLOG_ORCHESTRATOR.md.
+Use the skill that route names, for example .agents/skills/blog-research-article/SKILL.md.
 ```
 
 Allowed files:
@@ -121,8 +123,8 @@ Use for blog index, categories, card display, article metadata, and internal lin
 Allowed files:
 
 ```text
-src/pages/blog/index.astro
-src/pages/blog/[...slug].astro
+src/pages/en/blog/index.astro
+src/pages/en/blog/[...slug].astro
 src/content/blog/**
 src/content.config.ts
 docs/agent-handoff-notes.md
@@ -142,7 +144,7 @@ Use for house/villa copy or inventory-based property facts.
 Required skill/context:
 
 ```text
-Use .agents/skills/property-content-audit/SKILL.md.
+Route property work through .agents/workspaces/property-content/CONTEXT.md.
 Use src/inventory/inventory.json as source of truth.
 ```
 
@@ -221,9 +223,9 @@ Work in D:\_projects\_traditional-homes.
 Task type: <Blog Content | Blog Structure And SEO | Property Content | UI Or Map Behavior | Build Or Deploy Tooling>
 
 Read first:
-- AGENTS.md
 - CLAUDE.md
-- docs/agent-handoff-notes.md
+- CONTEXT.md
+- AGENTS.md
 - <relevant skill files>
 - <relevant source files>
 

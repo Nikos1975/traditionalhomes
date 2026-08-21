@@ -2,11 +2,15 @@
 
 This document explains how agents should work in this repo before editing, staging, or committing.
 
+It is supporting Layer 3 reference material selected by a routed stage. It does not route tasks and it is not an execution authority. Routing stays `CLAUDE.md` -> `CONTEXT.md` -> one workspace -> one stage.
+
 ## 1. Instruction hierarchy
 
-`CLAUDE.md` is canonical for this repo. It controls the project rules, build/debug workflow, commit policy, brand voice, content rules, and source-of-truth expectations.
+`CLAUDE.md` is Layer 0. It controls project identity, global invariants, commit policy, content rules, and source-of-truth expectations.
 
-`AGENTS.md` is a wrapper for non-Claude agents. It should stay minimal and point agents to `CLAUDE.md` and the editorial routing files.
+`CONTEXT.md` is Layer 1, the repository router. It selects exactly one workspace under `.agents/workspaces/`, and that workspace selects exactly one stage contract. The stage contract is authoritative for Inputs, Process, Outputs, Verify and Stop conditions.
+
+`AGENTS.md` is a wrapper for non-Claude agents. It should stay minimal and point agents to `CLAUDE.md`, `CONTEXT.md`, and the editorial routing files.
 
 `.ai/brand/website-brand-style-guide.md` controls shared tone.
 
@@ -18,7 +22,7 @@ This document explains how agents should work in this repo before editing, stagi
 
 `docs/architecture/*` defines repo decisions that agents must not override casually, including source-of-truth, media ownership, and slug decisions.
 
-If instructions appear to conflict, follow `CLAUDE.md` first, then the relevant architecture document, then the relevant skill or editorial prompt for the task.
+If instructions appear to conflict, follow `CLAUDE.md` first, then `CONTEXT.md` and the routed workspace/stage contract, then the relevant architecture document, then the relevant skill or editorial prompt for the task.
 
 ### External / generic workflows and Superpowers Ultra
 
@@ -52,7 +56,10 @@ Planning and token minimization must not override repo-local instructions, file 
 | File or folder | Read always? | Read when? | Purpose |
 |---|---:|---|---|
 | `CLAUDE.md` | Yes | Before any repo task | Canonical project, build, content, and commit rules. |
-| `AGENTS.md` | Yes | Before any repo task | Wrapper that routes agents to `CLAUDE.md` and editorial systems. |
+| `AGENTS.md` | Yes | Before any repo task | Wrapper that routes agents to `CLAUDE.md`, `CONTEXT.md` and editorial systems. |
+| `CONTEXT.md` | Yes | Before any repo task, after `CLAUDE.md` | Layer 1 router; selects exactly one workspace and one stage. |
+| `.agents/workspaces/` | No | Only the one workspace and stage selected by `CONTEXT.md` | Layer 2 execution contracts. |
+| `docs/handoff/current.md` | No | Continuity check when resuming work | Current baseline and known diagnostics; reference only, never an authority. |
 | `.ai/brand/` | No | Public-facing copy, editorial review, tone decisions | Shared brand voice and tone source. |
 | `.ai/prompts/` | No | Website copy, blog posts, guides, property content | Editorial systems by content type. |
 | `.agents/skills/` | No | When a task matches a skill description | Procedural workflows for builds, content audits, commits, and research articles. |
@@ -62,14 +69,14 @@ Planning and token minimization must not override repo-local instructions, file 
 
 ## 3. Skills routing
 
-| Skill | When to use | When not to use | Required inputs | Expected output |
-|---|---|---|---|---|
-| `astro-build-triage` | Astro build failures, content validation, Windows cache locks, minimal repair work | Broad redesigns, copy rewrites, commit planning | Current repo state, build error, affected files | Root-cause classification, smallest safe fix, build result. |
-| `blog-research-article` | Creating or revising Astro blog articles from `docs/research`, especially Elounda history, guide, tourism, or local context posts | Property pages, pure UI work, unrelated docs | Topic brief, research folder, content schema, existing posts, brand/editorial rules | Claim-reviewed `source-notes.md`, a validated `draft: true` article, and a draft PR for manual approval. |
-| `traditional-homes-article-visual-plan` | Planning evidence-led visuals for a blog post or guide before image work | Image generation, processing, article integration, publication, or social posting | Article/topic brief, research packet, claim register, image-rights register, brand/editorial rules | A validated `docs/research/blog/<slug>/visual-plan.md` with purpose, evidence, rights, placement, accessibility, crop, destination, approval, and blockers. |
-| `brand-content-audit-and-rewrite` | Rewriting or auditing public-facing copy for brand voice | Pure code/build tasks, commit-only tasks | Existing copy, content type, factual sources | Revised copy, edits made, removed unsupported claims, remaining gaps. |
-| `clean-commit-planner` | Dirty working trees, mixed changes, commit grouping, pathspec staging plans | Single-file investigation where no staging is planned | `git status`, generated commit-plan groups, reviewed diffs | Clean commit groups, explicit staging scope, build/typecheck guidance. |
-| `property-content-audit` | House or villa page audits, rewrites, inventory accuracy checks | Blog posts, general UI-only work | `src/inventory/inventory.json`, relevant house/villa content | Fact-checked property copy or audit checklist with unsupported claims flagged. |
+Skills are Layer 3. They are selected by the routed workspace stage, never chosen from this file.
+
+- Blog, guide, revision, audit, publication, visual-plan and blog-image work: route through `BLOG_ORCHESTRATOR.md`.
+- Multilingual infrastructure and translation: route through `.agents/workspaces/i18n/CONTEXT.md`.
+- Property facts and property-facing copy: route through `.agents/workspaces/property-content/CONTEXT.md`.
+- Astro/UI implementation, build, runtime, type and regression debugging: route through `.agents/workspaces/site-engineering/CONTEXT.md`.
+
+The live skill set is `.agents/skills/`. Load only the skill named by the routed stage, and do not invoke a skill name that no longer exists there.
 
 ## 4. Plugins/tools/integrations routing
 

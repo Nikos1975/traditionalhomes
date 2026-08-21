@@ -10,9 +10,9 @@ of startup context and is loaded only when a specific historical question requir
 
 ## Current Baseline
 
-- Current validated phase: ICM Phase 13 (operations-deployment workspace).
-- Phase 14 base branch/head: `chore/icm-phase13-operations-deployment-workspace`
-  at `3a04378a184d3cab473134dfecd1e5c33c3e7293`.
+- Current validated phase: ICM Phase 15 (stale routing and document cleanup).
+- Phase 15 branch/base: `chore/icm-phase15-stale-routing-cleanup` branched from the
+  Phase 14 head `fa5d8f077137ba012a5dce94570a950d71c17a92`.
 - Runtime stack: Astro 5 static-first output, TypeScript, Tailwind CSS, Node test
   runner (`node --test`), no heavy client-side JavaScript.
 - Deployment model: Cloudflare Pages built from the connected GitHub repository.
@@ -82,9 +82,10 @@ unrelated phases and are not fixed as a side effect.
 
 ## Current Validation Baseline
 
-- Phase 13 native context audit passed (`npm run context:audit`).
-- Phase 13 native full `node --test` suite passed.
-- Latest native suite result at Phase 13: 473 pass, 0 fail.
+- Context audit passes (`npm run context:audit`).
+- Last full native `node --test` suite: Phase 13, 473 pass, 0 fail.
+- Phase 15 ran the context audit plus the focused ICM routing, current-handoff and
+  stale-routing-cleanup tests only. Run the full native suite on Windows.
 - `git fsck` connectivity healthy; two harmless dangling trees may remain.
 
 473 is a recorded observation, not a required count. The gate is fail 0 and
@@ -123,7 +124,6 @@ suite natively on Windows.
 
 Immediate roadmap:
 
-- Phase 15: stale routing and document cleanup.
 - Phase 16: provenance and run-identity reports under untracked `.agent/icm/`.
 - Phase 17: edit-source principle.
 

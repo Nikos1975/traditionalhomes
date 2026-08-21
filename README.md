@@ -52,7 +52,7 @@ Do not commit real `.env` files or API tokens.
 
 ### Unit properties (sleeps, pool, stairs, amenities, etc.)
 
-Edit **`src/data/inventory.json`** — one object per property.
+Edit **`src/inventory/inventory.json`** — one object per property. It is the canonical property source of truth; property-fact work is routed through `CONTEXT.md` to `.agents/workspaces/property-content/CONTEXT.md`.
 
 Key fields:
 
