@@ -102,6 +102,39 @@ test('the current handoff records known diagnostics without authorizing opportun
   assert.match(current, /fail 0/i);
 });
 
+test('the current validation baseline is current and count-agnostic', () => {
+  const current = read(CURRENT);
+
+  const phaseMatch = /Current validated phase:[^\n]*Phase\s+(\d+)/.exec(current);
+  assert.ok(phaseMatch, 'the current handoff does not name a current validated phase');
+
+  const section = /## Current Validation Baseline\n([\s\S]*?)\n## /.exec(current);
+  assert.ok(section, 'the current handoff has no Current Validation Baseline section');
+  const baseline = section[1];
+
+  // The baseline must state where the current phase stands, so a stale claim from
+  // an older phase cannot silently remain the only validation statement.
+  assert.match(
+    baseline,
+    new RegExp(`Phase\\s+${phaseMatch[1]}\\b`),
+    `the validation baseline does not state the status of the current phase (Phase ${phaseMatch[1]})`,
+  );
+
+  // The last full native run names a phase and a pass count; the count is never
+  // asserted literally, only that the section stays internally consistent.
+  const fullRun = /Last full native[^\n]*Phase\s+\d+[^\n]*?(\d+)\s+pass/.exec(baseline);
+  assert.ok(fullRun, 'the validation baseline does not record a full native run as "Phase N ... N pass"');
+  assert.match(
+    baseline,
+    new RegExp(`\\b${fullRun[1]}\\b[^\\n]*observed baseline`),
+    `the recorded pass count ${fullRun[1]} is not framed as an observed baseline`,
+  );
+
+  // The permanent gate is the pass/cancel result, not the count.
+  assert.match(baseline, /not a permanently required test count/i);
+  assert.match(baseline, /permanent\s+gate is fail 0 and\s+cancelled 0/i);
+});
+
 test('the current handoff stays small enough to load routinely', () => {
   const current = read(CURRENT);
   assert.ok(current.length <= 12_000, `current handoff is ${current.length} characters; keep it under 12000`);

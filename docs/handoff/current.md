@@ -83,13 +83,15 @@ unrelated phases and are not fixed as a side effect.
 ## Current Validation Baseline
 
 - Context audit passes (`npm run context:audit`).
-- Last full native `node --test` suite: Phase 13, 473 pass, 0 fail.
-- Phase 15 ran the context audit plus the focused ICM routing, current-handoff and
-  stale-routing-cleanup tests only. Run the full native suite on Windows.
+- Last full native `node --test` suite: Phase 14 — 484 tests, 484 pass,
+  0 fail, 0 cancelled.
+- Phase 15 has so far run the context audit plus the focused ICM routing,
+  current-handoff and stale-routing-cleanup tests only. Run the full native suite
+  on Windows before Phase 15 review closes.
 - `git fsck` connectivity healthy; two harmless dangling trees may remain.
 
-473 is a recorded observation, not a required count. The gate is fail 0 and
-cancelled 0.
+484 is an observed baseline, not a permanently required test count. The permanent
+gate is fail 0 and cancelled 0.
 
 The desktop-bridge environment cannot run the full native suite reliably: the
 mount forbids `unlink` and the installed `sharp` binary is win32. Run the full
