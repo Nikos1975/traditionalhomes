@@ -94,14 +94,12 @@ unrelated phases and are not fixed as a side effect.
 ## Current Validation Baseline
 
 - Context audit passes (`npm run context:audit`).
-- Phase 16 focused validation: 40 tests, 40 pass, 0 fail, 0 cancelled across
-  `tests/icm-run-provenance.test.mjs`, `tests/current-handoff-context.test.mjs`
-  and `tests/icm-context-routing.test.mjs`. The full native suite has not been
-  run for Phase 16.
-- Last full native `node --test` suite: Phase 15 — 498 tests, 498 pass,
+- Last full native `node --test` suite: Phase 16 — 514 tests, 514 pass,
   0 fail, 0 cancelled.
-- Phase 15 focused ICM routing, current-handoff and stale-routing-cleanup
-  validation also passes: 37 tests, 37 pass, 0 fail, 0 cancelled.
+- Phase 16 focused provenance, current-handoff and ICM routing validation also
+  passes: 40 tests, 40 pass, 0 fail, 0 cancelled.
+- The Windows-specific provenance containment test was corrected without changing
+  provenance implementation behavior.
 - `git diff --check` passes.
 - `git fsck --connectivity-only` is healthy; two harmless dangling trees remain:
   `8ae35ff27fe2836e646c16b17364d17792e2bcd3` and
@@ -109,12 +107,11 @@ unrelated phases and are not fixed as a side effect.
 - Final Phase 16 working-tree status contains only the two protected
   content-intelligence modifications documented above.
 
-498 is an observed baseline, not a permanently required test count. The permanent
+514 is an observed baseline, not a permanently required test count. The permanent
 gate is fail 0 and cancelled 0.
 
-The desktop-bridge environment cannot run the full native suite reliably: the
-mount forbids `unlink` and the installed `sharp` binary is win32. Run full-suite
-validation natively on Windows when a future phase requires it.
+The desktop-bridge environment cannot run the full native suite reliably. Run
+full-suite validation natively on Windows when a future phase requires it.
 
 ## Git Safety
 
