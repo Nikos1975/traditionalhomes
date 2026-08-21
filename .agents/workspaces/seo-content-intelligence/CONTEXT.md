@@ -49,7 +49,7 @@ Multiple ranking URLs are an observation, not a diagnosis. Classify overlap as s
 | Route, component, template, title/meta implementation, canonical or redirect implementation | `.agents/workspaces/site-engineering/CONTEXT.md` |
 | Localized SEO, hreflang, locale canonical and sitemap infrastructure, localized titles and meta | `.agents/workspaces/i18n/CONTEXT.md` |
 | Deployment, Cloudflare account, DNS and edge redirect administration | no ICM workspace yet; stop and report |
-| Social publication workflows | no ICM workspace yet; stop and report |
+| Social publication preparation, approval, live publication and reconciliation | `.agents/workspaces/social-publishing/CONTEXT.md`; an SEO finding is not an authorization to publish anything there |
 
 Consuming a fact, a route or an editorial contract is allowed. Becoming its authority is not.
 

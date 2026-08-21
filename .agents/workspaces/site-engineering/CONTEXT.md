@@ -26,7 +26,7 @@ Astro component, page and layout implementation; shared UI behavior; Tailwind/CS
 | Property factual authority and property-page content | `.agents/workspaces/property-content/CONTEXT.md`, whose authority is `docs/architecture/source-of-truth.md` with `src/inventory/inventory.json` |
 | Media placement and image-rights authority | `docs/architecture/media-ownership.md` |
 | Search Console analysis, topic scoring, content-gap analysis, editorial SEO planning | `.agents/workspaces/seo-content-intelligence/CONTEXT.md`; an SEO recommendation is not an authorization to implement it here |
-| Social publication workflows | no ICM workspace yet; stop and report |
+| Social publication preparation, approval, live publication and reconciliation | `.agents/workspaces/social-publishing/CONTEXT.md`; site engineering never publishes to a social platform |
 | Deployment, Cloudflare account/DNS/redirect administration, production deployment state | no ICM workspace yet; stop and report. Only source-code engineering under `functions/` is routed here |
 
 Consuming a fact, a media rule or an i18n contract is allowed. Becoming its authority is not.

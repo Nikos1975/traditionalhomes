@@ -12,6 +12,8 @@ Route the task before loading detailed project context. Load only the selected r
 | Website/home/collection/location editorial copy that is not property-specific | `.ai/brand/website-brand-style-guide.md` and `.ai/prompts/website-editorial-system.md` |
 | General blog/guide editorial judgment | `.ai/brand/website-brand-style-guide.md` and `.ai/prompts/blog-editorial-system.md` |
 | Search Console acquisition, SEO performance analysis, query/page analysis, SEO opportunity scoring, content-gap or content-overlap analysis, SEO recommendation planning, or reassessing an older SEO report against current evidence | `.agents/workspaces/seo-content-intelligence/CONTEXT.md` |
+| Social publication preparation, platform drafts, or social publication status for an already-published article | `.agents/workspaces/social-publishing/CONTEXT.md` |
+| Explicit approval, live publication, or reconciliation of an unknown social publication outcome | `.agents/workspaces/social-publishing/CONTEXT.md` |
 | Astro/UI/site implementation, shared UI behavior, Tailwind/CSS, client-side behavior, forms, non-i18n routes, image-delivery integration | `.agents/workspaces/site-engineering/CONTEXT.md` |
 | Build, runtime, browser, type or test-regression debugging, including Windows cache and repeat-failure handling | `.agents/workspaces/site-engineering/CONTEXT.md` |
 | Architecture/source-of-truth/media/slug decision with no implementation or content editing authorized yet | the relevant file under `docs/architecture/` |
@@ -25,4 +27,5 @@ Route the task before loading detailed project context. Load only the selected r
 - Property facts have one authority; content, translations, components and SEO analysis consume them and never redefine them.
 - Google Search Console is the authoritative source for current organic-search performance. SEO evidence may recommend a change; it never authorizes the change, and an older SEO report is never current truth.
 - Site engineering consumes property facts, media rules and i18n contracts but never becomes their authority; it does not absorb SEO/content-intelligence, social publication, or deployment operations.
+- Social publication has one owner. Preparation, approval, live publication and reconciliation are separate permissions there, and completing one never authorizes the next.
 - Existing project-local publication and approval controls remain authoritative and must not be bypassed by this router.

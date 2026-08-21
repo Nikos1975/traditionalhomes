@@ -117,13 +117,19 @@ test('SEO/content-intelligence, social publication and deployment operations are
   const rows = tableRows(read(workspacePath));
 
   for (const subject of [
-    /Social publication workflows/,
     /Deployment, Cloudflare account\/DNS\/redirect administration/,
   ]) {
     const row = rows.find((cells) => subject.test(cells[0]));
     assert.ok(row, `site-engineering workspace does not disclaim ${subject}`);
     assert.match(row[1], /no ICM workspace yet/);
   }
+
+  // Social publication now has an owner. Naming it is still a disclaimer: site
+  // engineering consumes nothing from it and never publishes to a platform.
+  const socialRow = rows.find((cells) => /Social publication preparation/.test(cells[0]));
+  assert.ok(socialRow, 'site-engineering workspace does not disclaim social publication');
+  assert.match(socialRow[1], /`\.agents\/workspaces\/social-publishing\/CONTEXT\.md`/);
+  assert.match(socialRow[1], /never publishes to a social platform/);
 
   // SEO/content intelligence now has an owner. Naming it is still a disclaimer,
   // not an absorption: an SEO recommendation never authorizes engineering work here.
