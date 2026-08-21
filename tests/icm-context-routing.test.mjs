@@ -66,6 +66,16 @@ test('ICM audit ignores descriptive bare filenames that are not routed paths', (
   });
 });
 
+test('ICM audit resolves repository control-plane filenames from nested workspaces', () => {
+  withFixture((root) => {
+    write(root, 'BLOG_ORCHESTRATOR.md', '# Blog Orchestrator\n');
+    const router = path.join(root, '.agents/workspaces/i18n/CONTEXT.md');
+    fs.appendFileSync(router, '\nReturn publication work to `BLOG_ORCHESTRATOR.md`.\n', 'utf8');
+    const result = runAudit(root);
+    assert.equal(result.status, 0, result.stderr || result.stdout);
+  });
+});
+
 test('ICM audit rejects a stage missing a required contract section', () => {
   withFixture((root) => {
     const stage = path.join(root, '.agents/workspaces/i18n/stages/01_example/CONTEXT.md');
