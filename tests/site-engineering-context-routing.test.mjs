@@ -97,7 +97,7 @@ test('property-fact authority stays outside the site-engineering workspace', () 
   const row = tableRows(read('CONTEXT.md')).find((cells) => /^Property facts/.test(cells[0]));
 
   assert.ok(row, 'root CONTEXT.md lost its property-fact route');
-  assert.match(row[1], /docs\/architecture\/source-of-truth\.md/);
+  assert.match(row[1], /\.agents\/workspaces\/property-content\/CONTEXT\.md/);
   assert.doesNotMatch(row[1], /site-engineering/);
 
   const workspace = read(workspacePath);

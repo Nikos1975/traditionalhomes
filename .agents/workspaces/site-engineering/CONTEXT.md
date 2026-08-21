@@ -23,7 +23,7 @@ Astro component, page and layout implementation; shared UI behavior; Tailwind/CS
 | --- | --- |
 | Multilingual translation, localized public routes, locale-aware renderers, locale SEO, hreflang/canonical/sitemap locale infrastructure | `.agents/workspaces/i18n/CONTEXT.md` |
 | Blog/guide research, drafting, revision, content audit, publication, article visual plans, blog images | `BLOG_ORCHESTRATOR.md` |
-| Property factual authority | `docs/architecture/source-of-truth.md` with `src/inventory/inventory.json` |
+| Property factual authority and property-page content | `.agents/workspaces/property-content/CONTEXT.md`, whose authority is `docs/architecture/source-of-truth.md` with `src/inventory/inventory.json` |
 | Media placement and image-rights authority | `docs/architecture/media-ownership.md` |
 | Search Console analysis, topic scoring, content-gap analysis, editorial SEO planning | no ICM workspace yet; stop and report instead of absorbing it here |
 | Social publication workflows | no ICM workspace yet; stop and report |

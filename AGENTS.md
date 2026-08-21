@@ -8,7 +8,7 @@ After reading it, read `CONTEXT.md` and route the task before loading detailed i
 
 - Multilingual translation or Astro i18n infrastructure: `.agents/workspaces/i18n/CONTEXT.md`.
 - Blog, guide, historical article, blog audit, publication, article visual-plan, or blog-image work: `BLOG_ORCHESTRATOR.md`.
-- Property factual work: `docs/architecture/source-of-truth.md` plus the exact affected property files.
+- Property facts, property-page copy, factual corrections and property audits: `.agents/workspaces/property-content/CONTEXT.md`.
 - Editorial work: use the exact brand/editorial source selected by `CONTEXT.md`.
 - General Astro/UI/site implementation and build, runtime, browser, type or regression debugging: `.agents/workspaces/site-engineering/CONTEXT.md`.
 
