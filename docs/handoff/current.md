@@ -10,9 +10,9 @@ of startup context and is loaded only when a specific historical question requir
 
 ## Current Baseline
 
-- Current validated phase: ICM Phase 15 (stale routing and document cleanup).
-- Phase 15 branch/base: `chore/icm-phase15-stale-routing-cleanup` branched from the
-  Phase 14 head `fa5d8f077137ba012a5dce94570a950d71c17a92`.
+- Current validated phase: ICM Phase 16 (local provenance and run identity).
+- Phase 16 branch/base: `chore/icm-phase16-provenance-run-identity` branched from the
+  Phase 15 head `e165e7ea77cb68860e64971ffee5214efa2c2ef3`.
 - Runtime stack: Astro 5 static-first output, TypeScript, Tailwind CSS, Node test
   runner (`node --test`), no heavy client-side JavaScript.
 - Deployment model: Cloudflare Pages built from the connected GitHub repository.
@@ -45,6 +45,17 @@ Seven workspaces own the repository's work. Route to exactly one.
 | `.agents/workspaces/operations-deployment/CONTEXT.md` | Cloudflare Pages operations, deployment execution, production runtime configuration and post-deployment verification. |
 
 Stage contracts are not reproduced here. Load the stage from its workspace router.
+
+## Local Run Provenance
+
+`scripts/context/icm-run.mjs` records local ICM run provenance — branch, base and
+current commit, workspace, stage, task, changed files, commands actually run and the
+validation results observed — under the untracked directory .agent/icm/.
+
+That material is Layer 4 local evidence only. It is never committed, never a source of
+truth for repository state, and never execution authority: a run record does not
+authorize a merge, push, force push, deployment, Cloudflare mutation, publication or
+social publication. Recording that an authorized action happened is not granting it.
 
 ## Permission Boundaries
 
@@ -83,6 +94,10 @@ unrelated phases and are not fixed as a side effect.
 ## Current Validation Baseline
 
 - Context audit passes (`npm run context:audit`).
+- Phase 16 focused validation: 40 tests, 40 pass, 0 fail, 0 cancelled across
+  `tests/icm-run-provenance.test.mjs`, `tests/current-handoff-context.test.mjs`
+  and `tests/icm-context-routing.test.mjs`. The full native suite has not been
+  run for Phase 16.
 - Last full native `node --test` suite: Phase 15 — 498 tests, 498 pass,
   0 fail, 0 cancelled.
 - Phase 15 focused ICM routing, current-handoff and stale-routing-cleanup
@@ -91,7 +106,7 @@ unrelated phases and are not fixed as a side effect.
 - `git fsck --connectivity-only` is healthy; two harmless dangling trees remain:
   `8ae35ff27fe2836e646c16b17364d17792e2bcd3` and
   `eb6491def4c113ac7fbe99625d6b2a900d6b8fad`.
-- Final Phase 15 working-tree status contains only the two protected
+- Final Phase 16 working-tree status contains only the two protected
   content-intelligence modifications documented above.
 
 498 is an observed baseline, not a permanently required test count. The permanent
@@ -130,7 +145,6 @@ validation natively on Windows when a future phase requires it.
 
 Immediate roadmap:
 
-- Phase 16: provenance and run-identity reports under untracked `.agent/icm/`.
 - Phase 17: edit-source principle.
 
 Larger unfinished streams, recorded without detail:

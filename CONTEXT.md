@@ -37,4 +37,8 @@ Route the task before loading detailed project context. Load only the selected r
 
 Current repository state — baseline, working-tree preservation, active owners, known diagnostics and planned work — is recorded in `docs/handoff/current.md`. Read it for continuity, not for authorization: it routes no task and never overrides this router or a workspace stage contract.
 
+Local run provenance is written by `scripts/context/icm-run.mjs` into the untracked
+directory .agent/icm/. Those records are local evidence only: they document what a
+run observed and never authorize an edit, merge, push, deployment or publication.
+
 `docs/agent-handoff-notes.md` is the historical archive. It is not startup context and is loaded only when a specific historical question requires it.
