@@ -98,27 +98,23 @@ unrelated phases and are not fixed as a side effect.
 ## Current Validation Baseline
 
 - Context audit passes (`npm run context:audit`).
-- Phase 17 ran focused validation only: the context audit plus the edit-source,
-  ICM routing and current-handoff tests. Claude did not run the full suite in the
-  desktop-bridge environment; Nikos runs the native full suite afterwards.
-- Last full native `node --test` suite: Phase 16 — 514 tests, 514 pass,
+- Last full native `node --test` suite: Phase 17 — 531 tests, 531 pass,
   0 fail, 0 cancelled.
-- Phase 16 focused provenance, current-handoff and ICM routing validation also
-  passes: 40 tests, 40 pass, 0 fail, 0 cancelled.
-- The Windows-specific provenance containment test was corrected without changing
-  provenance implementation behavior.
+- Phase 17 focused edit-source, ICM routing and current-handoff validation also
+  passes: 41 tests, 41 pass, 0 fail, 0 cancelled.
+- The first full Phase 17 suite exposed a transient Astro `.astro` cache rename
+  failure in `tests/llms-txt.test.mjs`; after removing the generated `.astro`
+  cache, the isolated test and the complete native suite both passed.
 - `git diff --check` passes.
-- `git fsck --connectivity-only` is healthy; two harmless dangling trees remain:
-  `8ae35ff27fe2836e646c16b17364d17792e2bcd3` and
-  `eb6491def4c113ac7fbe99625d6b2a900d6b8fad`.
-- Final Phase 16 working-tree status contains only the two protected
+- `git fsck --connectivity-only` is healthy; two harmless dangling trees may remain.
+- Final Phase 17 working-tree status contains only the two protected
   content-intelligence modifications documented above.
 
-514 is an observed baseline, not a permanently required test count. The permanent
+531 is an observed baseline, not a permanently required test count. The permanent
 gate is fail 0 and cancelled 0.
 
 The desktop-bridge environment cannot run the full native suite reliably. Run
-full-suite validation natively on Windows when a future phase requires it.
+full-suite validation natively on Windows when future repository work requires it.
 
 ## Git Safety
 
