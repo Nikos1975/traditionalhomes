@@ -24,7 +24,7 @@ breadcrumbLabel: "Vrouchas"
 * **Strand von Plaka:** 4,2 km ab Vrouchas. Unberührter Kiesstrand mit direktem, eindrucksvollem Blick auf Spinalonga.
 * **Strand von Driros:** 7,5 km. Ein naturbelassener, ruhiger Ort zwischen Elounda und Plaka.
 * **Öffentlicher Strand von Elounda (Schisma):** 9 km. Eine belebte, sonnige Sandbucht mit flachem Einstieg, Cafés, Liegenverleih und Wassersport.
-* **Strand von Kolokytha:** 13 km. Eine abgelegene, flache türkisfarbene Bucht auf einer rauen Halbinsel, erreichbar per Boot oder über einen landschaftlich reizvollen, unbefestigten Fußweg.
+* **Strand von Kolokytha:** 13 km. Eine abgelegene, flache türkisfarbene Bucht, versteckt auf einer rauen Halbinsel, erreichbar per Boot oder über einen landschaftlich reizvollen, unbefestigten Fußweg.
 
 ---
 
@@ -53,11 +53,11 @@ breadcrumbLabel: "Vrouchas"
 Dieser Ablauf nutzt die kühleren Morgenstunden für die historischen Ziele und legt die Nachmittagshitze auf das Baden.
 
 * **08:30 Uhr | Fahrt nach Plaka:** Früh von Vrouchas nach Plaka hinunterfahren, um der Mittagshitze und den größeren Reisegruppen zuvorzukommen.
-* **09:00 Uhr | Spinalonga erkunden:** Eines der ersten Boote von Plaka nach Spinalonga nehmen. Etwa 1,5 bis 2 Stunden für die Wege über die Insel einplanen.
-* **11:30 Uhr | Mittagessen am Wasser in Plaka:** Eine traditionelle Taverne an der Uferpromenade von Plaka wählen und frischen Fisch mit Blick auf die Festung essen.
+* **09:00 Uhr | Spinalonga erkunden:** Eines der ersten Boote von Plaka nach Spinalonga nehmen. Etwa 1,5 bis 2 Stunden für die Steinwege der Insel einplanen.
+* **11:30 Uhr | Mittagessen am Wasser in Plaka:** Eine traditionelle Taverne an der Uferpromenade von Plaka wählen und frisch gefangenen Fisch und Meeresfrüchte mit Blick auf die Festung essen.
 * **13:30 Uhr | Baden am Strand von Plaka:** Abkühlung im klaren Wasser des Kiesstrands direkt neben dem Ort.
 * **15:00 Uhr | Versunkene Stadt Olous:** Südwärts durch Elounda zur Landenge fahren. In der Nähe der Windmühlen parken und über den versunkenen Ruinen schnorcheln.
-* **19:00 Uhr | Rückfahrt nach Vrouchas:** Zurück den Hügel hinauf zur Villa, um sich vor einem ruhigen Abend unter freiem Himmel frisch zu machen.
+* **19:00 Uhr | Rückfahrt nach Vrouchas:** Zurück den Hügel hinauf zur Villa, um sich vor einem ruhigen Abend unter dem Sternenhimmel frisch zu machen.
 
 ---
 

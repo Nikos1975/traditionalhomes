@@ -7,12 +7,12 @@
     },
     "heading": "Unsere Ferienhäuser",
     "introBeforeCount": "Zur Auswahl stehen",
-    "introAfterCount": "traditionelle Steinhäuser in Mavrikiano sowie",
-    "introVillaFallback": "eine Villa",
+    "introAfterCount": "traditionelle Steinhäuser in Mavrikiano sowie die",
+    "introVillaFallback": "Villa",
     "introTail": "in Vrouchas. Vergleichen Sie Größe, Pool, Aussicht, Treppen und Parkmöglichkeiten, bevor Sie sich für eine Unterkunft entscheiden.",
     "booking": {
       "sectionAriaLabel": "Verfügbarkeit suchen",
-      "title": "Verfügbarkeit aller Häuser prüfen",
+      "title": "Alle Unterkünfte durchsuchen",
       "description": "Wählen Sie Datum und Personenzahl, um zur aktuellen Verfügbarkeit in WebHotelier zu gelangen.",
       "submitLabel": "Verfügbarkeit prüfen"
     },
