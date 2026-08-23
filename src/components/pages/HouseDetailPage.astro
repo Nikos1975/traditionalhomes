@@ -231,7 +231,7 @@ const contactLink = resolveLocalizedLink(locale, 'contact');
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" class="text-stone-400 shrink-0">
           <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
         </svg>
-        {propertyCopy.labels.sleeps} {unit.sleeps}
+        {formatPropertyCount(locale, unit.sleeps, propertyCopy.counts.sleeps)}
       </span>
 
       {unit.pool !== 'none' && (
@@ -360,7 +360,7 @@ const contactLink = resolveLocalizedLink(locale, 'contact');
         {/* Booking card */}
         <div class="bg-white rounded-2xl border border-stone-200 p-7 shadow-card">
           <p class="font-serif text-2xl text-body-text mb-1">{displayName}</p>
-          <p class="text-xs text-muted mb-6 uppercase tracking-wider">{displayLocation} &middot; {propertyCopy.labels.sleeps} {unit.sleeps}</p>
+          <p class="text-xs text-muted mb-6 uppercase tracking-wider">{displayLocation} &middot; {formatPropertyCount(locale, unit.sleeps, propertyCopy.counts.sleeps)}</p>
 
           <div class="space-y-0 mb-6 divide-y divide-stone-100 text-sm">
             <div class="flex justify-between py-2.5">

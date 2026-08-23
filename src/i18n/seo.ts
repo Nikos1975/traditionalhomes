@@ -1,4 +1,4 @@
-import { getLocaleMeta, isLocale, normalizeLocale, type Locale } from './config';
+import { defaultLocale, getLocaleMeta, isLocale, normalizeLocale, type Locale } from './config';
 import { getSeoCopy } from './translate';
 
 const siteUrl = 'https://traditional-homes.gr';
@@ -54,11 +54,13 @@ export function getPropertySeo(
   const titleSuffix = templates.titleSuffix;
   const property = templates.property;
   const bedroomLabel = unit.bedrooms === 1 ? property.bedroom : property.bedrooms;
+  // Only English lowercases a mid-sentence label. German nouns keep their capital.
+  const poolText = normalizeLocale(locale) === defaultLocale ? poolLabel.toLowerCase() : poolLabel;
 
   return {
     title: `${unit.name} — ${unit.location} | ${titleSuffix}`,
     description: `${unit.name} ${property.in} ${unit.location} — ${property.sleeps} ${unit.sleeps}, ${unit.bedrooms} ${bedroomLabel}${
-      unit.pool !== 'none' ? `, ${poolLabel.toLowerCase()}` : ''
+      unit.pool !== 'none' ? `, ${poolText}` : ''
     }. ${property.tail}`,
   };
 }

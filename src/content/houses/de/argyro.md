@@ -6,11 +6,11 @@ summary: "Ein 85 m² großes Steinhaus mit zwei Schlafzimmern in Mavrikiano für
 
 Haus Argyro ist ein traditionelles kretisches Steinhaus im Hangdorf Mavrikiano oberhalb der Bucht von Elounda. Es wurde 1905 erbaut und über Generationen weiterentwickelt; erhaltener architektonischer Charakter verbindet sich hier mit einer ruhigen Dorflage nahe Elounda.
 
-**85 m² · Platz für 4 · 2 Schlafzimmer · Mehrere Ebenen · Veranda mit Meerblick · Privater Innenhof**
+**85 m² · Platz für 4 Personen · 2 Schlafzimmer · Mehrere Ebenen · Veranda mit Meerblick · Privater Innenhof**
 
 ## Aufteilung des Hauses
 
-Haus Argyro erstreckt sich über mehrere Ebenen, wie es für ältere kretische Häuser typisch ist. Auf der Eingangsebene liegen Küche und Bad. Eine Ebene höher folgt der Wohn- und Essbereich. Dazwischen liegt ein halboffener Schlafbereich mit zwei Einzelbetten unter einem Steinbogen. Im Obergeschoss befindet sich das Hauptschlafzimmer mit direktem Zugang zur Veranda mit Meerblick.
+Haus Argyro erstreckt sich über mehrere Ebenen, wie es für ältere kretische Häuser typisch ist. Auf der Eingangsebene liegen Küche und Bad. Eine Ebene höher folgt der Wohn- und Essbereich. Dazwischen liegt ein teilweise abgetrennter Schlafbereich mit zwei Einzelbetten unter einem Steinbogen. Im Obergeschoss befindet sich das Hauptschlafzimmer mit Doppelbett, das direkt auf die Veranda mit Meerblick führt.
 
 ## Im Inneren
 
@@ -22,7 +22,7 @@ Die Veranda mit Meerblick ist der wichtigste Außenbereich des Hauses. Hier befi
 
 ## Lage
 
-Haus Argyro liegt in Mavrikiano, etwa zehn Gehminuten von Strand, Hafen, Tavernen und Geschäften in Elounda entfernt. Die erhöhte Lage sorgt für eine ruhigere Atmosphäre, ohne dass die Uferpromenade weit entfernt wäre. Der gemeinsame private Gästeparkplatz liegt in der Nähe, rund 80 Meter vom Haus, mit Platz für insgesamt bis zu fünf Autos; ist er belegt, lässt sich im Dorf in der Regel kostenlos parken.
+Haus Argyro liegt in Mavrikiano, etwa zehn Gehminuten von Strand, Hafen, Tavernen und Geschäften in Elounda entfernt. Die erhöhte Lage sorgt für eine ruhigere Atmosphäre, ohne dass das Ufer weit entfernt wäre. Der gemeinsame private Gästeparkplatz liegt in der Nähe, rund 80 Meter vom Haus, mit Platz für insgesamt bis zu fünf Autos; ist er belegt, lässt sich im Dorf in der Regel kostenlos parken.
 
 ## Für wen das Haus passt
 
