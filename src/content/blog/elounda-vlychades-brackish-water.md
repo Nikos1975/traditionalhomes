@@ -82,6 +82,22 @@ The Elounda or Schisma *vlychada* is beside Poulis Restaurant and opposite the F
 
 Here the present movement of the water is especially clear. An owner-recorded video from 23 August 2026 shows visibly moving water at the identified outlet area. The recording establishes that direct present-day observation, but not the water's underground route, geological origin, chemistry, potability, historical flow or continuity through the year.
 
+<figure>
+  <video
+    controls
+    playsinline
+    preload="metadata"
+    poster="/images/blog/elounda-vlychades-brackish-water/schisma-outlet-1600.webp"
+    width="720"
+    height="1280"
+    style="display: block; width: min(100%, 30rem); height: auto; aspect-ratio: 9 / 16; margin-inline: auto; background: #1c1917; object-fit: cover;"
+  >
+    <source src="/videos/blog/elounda-vlychades-brackish-water/schisma-vlychada-spring-water.mp4" type="video/mp4" />
+    Your browser does not support embedded video.
+  </video>
+  <figcaption>Water moving at the Schisma vlychada, recorded on 23 August 2026. Provided by Elounda Traditional Homes.</figcaption>
+</figure>
+
 The human memory attached to Schisma comes from local reporting. In 2023, Anatoli attributed to Katerina Lempidaki a memory of her mother washing μαλλιά at this outlet. A 2025 Anatoli report also says that μαλλιά were washed there in earlier years.
 
 The material meant by μαλλιά and the full process remain undefined. The reports do not provide a date, frequency, tools or a complete routine. They nevertheless place a remembered person and a practical act beside the water.
