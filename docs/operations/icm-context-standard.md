@@ -19,7 +19,7 @@ A new agent should follow:
 ```text
 AGENTS.md / CLAUDE.md
         ↓
-route the current task
+classify and route the current task
         ↓
 relevant local context only
         ↓
@@ -29,6 +29,18 @@ current working artifact(s)
 ```
 
 Do not recursively read all repository instructions, skills, references, research folders, or historical work by default.
+
+## Traditional Homes routing map
+
+| Task class | First route | Then load only what is needed |
+| --- | --- | --- |
+| Repository architecture, folder/context design, workflow organization | `.agents/skills/icm-workspace-architect/ICM_RULES.md` | Relevant architecture files and current task artifacts |
+| Blog, area guide, village guide, historical article, revision, audit, publication, or blog image | `BLOG_ORCHESTRATOR.md` | One routed blog skill, `docs/operations/blog-production.md`, then only required research/editorial references |
+| Multilingual routes, pages, or translations | `docs/i18n/00_I18N_MASTER_PLAN.md` | Relevant locale, route-map, page, and translation files only |
+| Property facts or property copy | `CLAUDE.md` house/editorial rules | `src/inventory/inventory.json`, the exact property content/page, and `.ai/prompts/website-editorial-system.md` when copy judgment is required |
+| UI/component/code work | `CLAUDE.md` | Exact source/component files; architecture docs only when the change is structural |
+| Build, commit, branch, or debugging process | `docs/operations/agent-operating-model.md` | `docs/operations/repeated-failures-playbook.md` only after a matching failure or known failure class appears |
+| Historical task context | targeted search in `docs/agent-handoff-notes.md` | Exact matching section for the topic, slug, PR, command, or failure; never the full archive by default |
 
 ## Context layers
 
@@ -51,6 +63,12 @@ The layers are reasoning boundaries, not mandatory physical folders.
 - Prefer descriptive procedure filenames when runtime constraints allow them.
 - Use deterministic scripts/tests for mechanical repeatable work.
 - Create new workspaces or stages only when they reduce context leakage or clarify a real handoff.
+- Treat the actual `.agents/skills/` directory as authoritative for installed project-local skills. Do not infer that a skill exists only because an older document names it.
+- Model-specific or coordinator-specific routing documents are not universal project routers; use them only when that specific workflow is explicitly requested.
+
+## Handoff archive rule
+
+`docs/agent-handoff-notes.md` is a historical archive, not cold-start context. Search it by exact task identifier and read the smallest matching section. Current root/project rules, architecture docs, source-of-truth data, and routed skills take precedence over old handoff entries when they differ.
 
 ## Change rule
 
