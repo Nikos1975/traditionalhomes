@@ -14,6 +14,7 @@
 - Avoid unnecessary dependencies
 - Use structured content, not hardcoded text
 - Maintain performance and SEO
+- Always use ICM reasoning for repository architecture, context loading, workspace/stage boundaries, and reusable workflow organization. Read `.agents/skills/icm-workspace-architect/ICM_RULES.md`; do not force a fixed folder structure.
 - See `docs/operations/agent-operating-model.md` and `docs/operations/repeated-failures-playbook.md` for process rules and known failure handling.
 - Prefer minimal changes before broad refactors
 - Separate environment/cache issues from real code/content issues
