@@ -7,20 +7,43 @@ description: Design, audit, refactor, or scaffold folder-based AI workspaces usi
 
 Build the context architecture before building automation.
 
-This skill adapts the Clief Notes / Interpretable Context Methodology into a reusable, cross-agent workspace design process. Preserve the core method: explicit routing, narrow context, visible intermediate files, stage contracts, human review, and deterministic code for mechanical work.
+## Canonical standard
+
+Read `ICM_RULES.md` first.
+
+Always apply ICM reasoning. Do not force a fixed ICM folder structure.
+
+The package adapts the Clief Notes / Interpretable Context Methodology into a reusable, cross-agent workspace design process. Preserve the core method: explicit routing, narrow context, visible intermediate files, stage contracts when justified, human review, and deterministic code for mechanical work.
 
 ## Core rules
 
 1. **Do not redesign blindly.** Inspect the existing tree and existing instruction/context files first.
 2. **Ask before writing.** Diagnose, propose the architecture, then wait for explicit approval before creating, moving, renaming, or deleting files.
-3. **Use the smallest architecture that works.** Start with 2–4 workspaces or stages. Do not create a large taxonomy up front.
+3. **Use the smallest architecture that works.** Start with the minimum number of workspaces or stages justified by real context or handoff boundaries.
 4. **Separate mental modes from pipeline stages.** A workspace is a different mode of work; a stage is a sequential transformation with a handoff.
 5. **Load only what the current task needs.** Never tell the agent to read the entire repository by default.
 6. **Keep stable rules separate from run-specific material.** Stable references constrain behavior; working artifacts are transformed.
-7. **Every stage output must be inspectable.** Prefer Markdown/JSON/text handoffs that a human can review or edit before the next stage.
+7. **Every meaningful stage output must be inspectable.** Prefer Markdown/JSON/text handoffs that a human can review or edit before the next stage.
 8. **Keep human judgment at explicit gates.** Do not automate approval, publication, deployment, deletion, or other consequential actions unless the user has deliberately designed that boundary.
 9. **Use deterministic tooling for deterministic work.** File moves, parsing, validation, formatting, checksums, and repetitive transforms belong in scripts when worthwhile.
 10. **Do not turn unresolved process into a skill.** Stabilize the manual workflow first; package it only when the repeatable pattern is understood.
+
+## Cold-start execution protocol
+
+For an unfamiliar project or materially different task:
+
+1. Read the established root instruction/map file.
+2. Route the task to the smallest relevant workspace or stage.
+3. Read that local context only if needed.
+4. Read only the exact stable rules, references, procedures, and current artifacts required for the task.
+5. Do not recursively load sibling workspaces, all skills, all references, or historical run artifacts.
+6. Reuse context already loaded in the current session unless it changed or an unresolved question requires rereading.
+
+The target path is:
+
+```text
+root map -> route task -> local context -> exact procedure/references -> current artifacts
+```
 
 ## Architecture model
 
@@ -29,7 +52,7 @@ Use two compatible views of the method.
 ### Simple view — Map / Rooms / Tools
 
 - **Map:** the root instruction file. It answers: what is this project, where is everything, and where should each task go?
-- **Rooms:** workspace-level `CONTEXT.md` files. Each room describes one mental mode, its process, local files, and quality bar.
+- **Rooms:** workspace-level `CONTEXT.md` files when a distinct mental mode needs local context.
 - **Tools:** reusable skills/scripts attached only to the rooms that need them.
 
 Use this for repositories where work is mostly parallel: planning, code, docs, operations; or research, writing, distribution.
@@ -37,12 +60,12 @@ Use this for repositories where work is mostly parallel: planning, code, docs, o
 ### Full ICM view — L0 through L4
 
 - **L0 — Root map:** global identity, folder map, routing, naming, critical guardrails.
-- **L1 — Root context:** workspace-level routing and shared resources.
-- **L2 — Stage contract:** exact Inputs → Process → Outputs → Done criteria → Review gate.
+- **L1 — Workspace context:** local rules and resources for one distinct mental mode.
+- **L2 — Procedure/stage contract:** exact Inputs → Process → Outputs → Done criteria → Review gate.
 - **L3 — Reference material:** stable rules, style guides, schemas, conventions, skills, templates.
 - **L4 — Working artifacts:** source material and outputs specific to this run.
 
-Use this when the work is sequential and one step hands an artifact to the next.
+Use the layers conceptually in every project. Create physical folders/files only when they improve routing, context isolation, handoffs, or maintenance.
 
 ## Runtime adapter
 
@@ -64,7 +87,7 @@ If the repository is available, inspect it first and answer as many questions as
 ### Required diagnostics
 
 1. **Outcome:** What durable work does this workspace support?
-2. **Work modes:** What 2–4 kinds of work require different thinking, rules, or tools?
+2. **Work modes:** What kinds of work require different thinking, rules, or tools?
 3. **Sequence:** Which activities are true sequential handoffs versus independent workspaces?
 4. **Stable context:** What rules, brand standards, schemas, conventions, or domain references persist across runs?
 5. **Working artifacts:** What changes each run — source docs, research, drafts, specs, code changes, reports?
@@ -77,7 +100,7 @@ Do not ask a long questionnaire when the answers are already visible in the repo
 
 ## Decide the shape
 
-Choose one of these shapes.
+Choose one of these shapes only after diagnostics.
 
 ### A. Workspace architecture
 
@@ -133,16 +156,16 @@ Example: `/content` may contain `01_research → 02_draft → 03_publish-prep`, 
 
 Keep it short. Include:
 
-- 1–3 sentence project identity
-- compact folder map
-- routing table
-- naming conventions
-- critical non-negotiable rules
-- commands only if they materially affect routing or validation
+- project identity;
+- compact folder map when useful;
+- routing table;
+- naming conventions that materially affect navigation;
+- critical non-negotiable rules;
+- commands only if they materially affect routing or validation.
 
 The root map is not the place for detailed project history, voice rules, architecture essays, or long SOPs. Move those into the relevant room or reference file.
 
-A routing table is mandatory for non-trivial workspaces:
+A routing table is recommended for non-trivial workspaces:
 
 ```markdown
 | Task | Go to | Read | Skills / tools |
@@ -152,19 +175,19 @@ A routing table is mandatory for non-trivial workspaces:
 | Validate release | /ops | CONTEXT.md | deployment-check |
 ```
 
-### L1 — Root `CONTEXT.md`
+### L1 — Workspace context
 
-Use only when the project benefits from a shared workspace-level control file. It should explain:
+Use only when a workspace benefits from a local control file. It should explain:
 
-- the overall workflow
-- shared resources
-- stage/workspace relationships
-- global handoff rules
-- what must not be loaded globally
+- the workspace purpose;
+- local resources;
+- relationships to adjacent workspaces/stages;
+- handoff rules when relevant;
+- what must not be loaded globally.
 
 Do not duplicate L0.
 
-### L2 — Stage/workspace `CONTEXT.md`
+### L2 — Procedure or stage contract
 
 For sequential stages, use a strict contract:
 
@@ -203,33 +226,33 @@ Stop here for human review before the next stage when required.
 - forbidden actions
 ```
 
-For non-sequential rooms, adapt the same structure but omit artificial handoff language.
+For non-sequential procedures, adapt the same contract without artificial handoff language.
 
 ### L3 — Stable references
 
 Put here things that should remain valid across many runs:
 
-- style/voice constraints
-- schemas and data contracts
-- brand rules
-- architectural conventions
-- reusable templates
-- domain reference notes
-- reusable skills
+- style/voice constraints;
+- schemas and data contracts;
+- brand rules;
+- architectural conventions;
+- reusable templates;
+- domain reference notes;
+- reusable skills/procedures.
 
-Prefer several focused files over one giant reference dump.
+Prefer focused files over one giant reference dump.
 
 ### L4 — Working artifacts
 
 Put here material specific to the current run:
 
-- source documents
-- research output
-- drafts
-- specs
-- generated plans
-- intermediate JSON
-- review notes
+- source documents;
+- research output;
+- drafts;
+- specs;
+- generated plans;
+- intermediate JSON;
+- review notes.
 
 Do not mix these into long-lived configuration files.
 
@@ -254,7 +277,7 @@ Create a **reference file** when:
 - the information persists across runs;
 - it constrains behavior rather than being transformed.
 
-Create a **skill** when:
+Create a **skill/procedure** when:
 
 - the same how-to process repeats across tasks/projects;
 - the process is stable enough to encode;
@@ -273,7 +296,7 @@ If a folder has no distinct rule, owner, input/output boundary, or retrieval pur
 Use the framework as a design check, not as a rigid numeric budget.
 
 - **60 — deterministic layer:** scripts, database queries, parsers, validators, file operations, calculations.
-- **30 — rule layer:** routing, schemas, templates, checklists, stage contracts, skills.
+- **30 — rule layer:** routing, schemas, templates, checklists, stage contracts, skills/procedures.
 - **10 — judgment layer:** synthesis, ambiguity resolution, creative choices, strategy.
 
 Ask: can a lower layer perform this step more reliably and cheaply? If yes, move it down.
@@ -286,21 +309,24 @@ Review gates are first-class architecture. Add them where:
 - a stakeholder must be able to explain the decision;
 - the action is hard to reverse;
 - the model may fill missing facts with assumptions;
-- the domain expert's judgment is part of the value.
+- domain-expert judgment is part of the value.
 
 A stage may prepare an action without performing it.
 
 ## Naming rules
 
-Choose one convention and document it in L0. Prefer names that are sortable and meaningful without a database.
+Choose one convention and document it when needed. Prefer descriptive filenames that reveal purpose without opening the file.
 
 Examples:
 
+- `summary_structured.md`
+- `meeting_takeaways.md`
 - `topic_draft.md`
-- `topic_final.md`
 - `feature_spec.md`
 - `2026-08-20_decision-title.md`
 - numbered stages: `01_research`, `02_analysis`, `03_delivery`
+
+If a runtime requires a generic discovery filename such as `SKILL.md`, keep it as a thin runtime entrypoint and place substantial procedure content in descriptively named files when that materially improves navigation.
 
 Avoid ambiguous buckets such as `misc/`, `stuff/`, `new/`, or multiple competing `final-final` filenames.
 
@@ -308,9 +334,9 @@ Avoid ambiguous buckets such as `misc/`, `stuff/`, `new/`, or multiple competing
 
 After diagnostics:
 
-1. Show the proposed tree.
-2. For each top-level folder, state the boundary it enforces.
-3. Show the routing table.
+1. Show the proposed tree or minimal-change architecture.
+2. For each proposed boundary, state what it isolates.
+3. Show the routing table when useful.
 4. Identify L3 stable references and L4 working artifacts.
 5. Mark human review gates.
 6. Identify deterministic steps suitable for scripts.
@@ -339,26 +365,28 @@ Prefer refactoring over replacement.
 
 Before declaring the architecture complete, verify:
 
+- [ ] A cold-start agent has an obvious entrypoint.
 - [ ] Every common task has one obvious route.
 - [ ] No two root instruction files contain conflicting rules.
 - [ ] Root map is compact and does not hide workspace context inside it.
+- [ ] The agent does not need to preload unrelated workspaces.
 - [ ] Each workspace/stage has one clear job.
 - [ ] Sequential stages have explicit inputs and outputs.
 - [ ] L3 stable references are separate from L4 run artifacts.
-- [ ] Skills are wired only where needed.
+- [ ] Skills/procedures are loaded only where needed.
 - [ ] Human review gates are explicit.
 - [ ] Destructive or publishing actions are not implied by folder traversal.
-- [ ] Naming conventions are documented and consistent.
+- [ ] Naming conventions are documented and consistent where needed.
 - [ ] Mechanical work is scripted where that reduces repeated AI effort.
-- [ ] The user can understand the workflow by opening the folder tree and context files.
+- [ ] The user can understand the workflow by opening the routing and local context files.
 
 ## Output format when designing
 
 Return, in this order:
 
-1. **Architecture decision** — why this is workspace, staged, or hybrid.
-2. **Proposed tree** — concise filesystem tree.
-3. **Routing table** — task → folder → context → skills/tools.
+1. **Architecture decision** — why this is workspace, staged, hybrid, or no structural change.
+2. **Proposed tree or minimal-change map** — concise filesystem view.
+3. **Routing table** — task → folder → context → skills/tools, when useful.
 4. **Context plan** — L0–L4 mapping.
 5. **Review and automation boundaries** — where humans and scripts sit.
 6. **Change plan** — create / modify / move / preserve.
@@ -370,6 +398,7 @@ After approval, implement and report exact created/changed paths plus validation
 
 Read only as needed:
 
+- `ICM_RULES.md` — canonical always-on ICM reasoning and cold-start/token-efficiency rules.
 - `references/decision-rules.md` — boundary and architecture decision rules.
 - `references/runtime-adapters.md` — root-instruction strategy across agent runtimes.
 - `templates/` — reusable file templates.
