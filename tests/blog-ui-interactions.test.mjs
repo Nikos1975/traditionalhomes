@@ -55,6 +55,36 @@ describe('blog featured slider interactions', () => {
   });
 });
 
+describe('blog index image delivery', () => {
+  it('prioritizes only the initial featured hero and defers inactive hero sources', async () => {
+    const source = await readSource('src/pages/en/blog/index.astro');
+
+    assert.match(source, /loading=\{index === 0 \? 'eager' : 'lazy'\}/);
+    assert.match(source, /fetchpriority=\{index === 0 \? 'high' : undefined\}/);
+    assert.match(source, /src=\{index === 0 \? featuredImage\.src : undefined\}/);
+    assert.match(source, /data-src=\{index > 0 \? featuredImage\.src : undefined\}/);
+    assert.match(source, /const loadSlideImage = \(slide: Element\) =>/);
+    assert.match(source, /loadSlideImage\(slides\[activeIndex\]\)/);
+  });
+
+  it('uses the existing 480px blog derivatives for featured selectors', async () => {
+    const source = await readSource('src/pages/en/blog/index.astro');
+
+    assert.match(source, /src=\{featuredImage\.thumbnailSrc\}/);
+    assert.match(source, /sizes="72px"/);
+    assert.match(source, /width="480"/);
+    assert.match(source, /height=\{featuredImage\.thumbnailHeight\}/);
+    assert.doesNotMatch(source, /<img src=\{post\.data\.image\} alt="" loading="lazy"/);
+  });
+
+  it('does not embed article hero URLs as decorative card backgrounds', async () => {
+    const source = await readSource('src/pages/en/blog/index.astro');
+
+    assert.doesNotMatch(source, /background-image:\s*url\(/);
+    assert.doesNotMatch(source, /style=\{`background-image:/);
+  });
+});
+
 describe('shared blog article availability CTA', () => {
   it('renders one CTA after article content and before related reading', async () => {
     const source = await readSource('src/pages/en/blog/[...slug].astro');
