@@ -14,7 +14,8 @@
 - Avoid unnecessary dependencies
 - Use structured content, not hardcoded text
 - Maintain performance and SEO
-- See `docs/operations/agent-operating-model.md` and `docs/operations/repeated-failures-playbook.md` for process rules and known failure handling.
+- Always use ICM reasoning for repository architecture, context loading, workspace/stage boundaries, and reusable workflow organization. Read `.agents/skills/icm-workspace-architect/ICM_RULES.md`; do not force a fixed folder structure.
+- Load `docs/operations/agent-operating-model.md` only for process, commit, build, branch, or debugging work that needs it. Load `docs/operations/repeated-failures-playbook.md` only after a matching failure or known failure class appears.
 - Prefer minimal changes before broad refactors
 - Separate environment/cache issues from real code/content issues
 - Do not start consolidation refactors unless explicitly asked
@@ -27,6 +28,7 @@
 
 - Reuse context already loaded in the current session. Reread files only when they changed or a specific unresolved question requires it.
 - Read only the skill and instruction files relevant to the task; do not repeatedly reload them in the same session.
+- Do not read `docs/agent-handoff-notes.md` wholesale. Search it for the exact topic, slug, PR, command, or failure only when historical task context is required.
 - Prefer targeted `rg`, focused diffs, and small line ranges over dumping whole files.
 - For complex multi-file exploration, prefer an existing fresh Graphify graph before broad grep or file reads, including a matching graph held in a separate worktree only when its source SHA matches the relevant repository base.
 - Use a small Graphify query budget (normally 1000–1500 tokens); treat its results as navigation evidence and verify the exact source before editing.
@@ -94,7 +96,6 @@ Before finishing, report whether documentation was updated or why no documentati
 - Use `src/inventory/inventory.json` as the source of truth for sleeps, bedrooms, bathrooms, floors, stairs, pool, view, parking, access notes, constraints, official groups, and suggested pairings
 - Do not publish placeholders, bracketed draft copy, or conditional notes
 - Mark unsupported square-metre, history, distance, and exclusivity claims for verification instead of guessing
-- When auditing or rewriting property pages, use the project skill `.agents/skills/property-content-audit/SKILL.md`
 
 # Blog and guide rules
 
