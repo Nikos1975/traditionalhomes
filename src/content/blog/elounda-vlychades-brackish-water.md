@@ -18,132 +18,205 @@ imageCaption: "The locally identified Mavrikiano vlychada outlet area at Kato Fo
 imageCredit: "Provided by Elounda Traditional Homes"
 ---
 
-Elounda’s waterfront is usually understood through the sea: the sheltered bay, the shallow ground around Poros, and the road north towards Spinalonga. Yet another kind of water has been identified beside this coast. It is neither ordinary freshwater nor seawater, but water described locally as *vlychades*—brackish underground flows moving towards the waterfront.
+The water has not disappeared. At Schisma and Mavrikiano, two places known locally as *vlychades*, water remains visible beside the shore. At Schisma, an owner-recorded video shows it clearly moving. At Mavrikiano, it remains within the old covered structure at the water's edge.
 
-That small local term opens a larger question. In a dry coastal landscape, water was not simply present or absent. Its quality mattered. Rainwater, groundwater, seawater and brackish water could have different uses, different limits and different routes through daily life.
+What has changed is the life around it.
 
-This is not a complete history of Elounda’s water supply. The historical record remains uneven, especially for household water, washing places and the two flows themselves. It is, instead, an account of what can be said with care: about a local word, coastal groundwater, rainwater storage and the practical distinction between water that could be stored for drinking and water that could not.
+There was a time when water did not simply appear from a tap inside the house. In a dry part of eastern Crete, households had to think about water differently: where it came from, how much was available, what quality it had and which work justified using it.
+
+Local accounts preserve a small part of that older world. At Schisma, an attributed family memory records μαλλιά being washed at the *vlychada*. At Mavrikiano, a local newspaper records women from Elounda coming to the covered *vlychada* during periods of water scarcity to rinse laundry.
+
+These are modest fragments of evidence, but they change how the places can be understood. The *vlychades* were not simply waters beside the sea. They entered daily life. Today the water remains, while the household work that once brought people to it has passed out of ordinary use.
 
 For the wider geographical setting, see [Elounda and Mirabello Bay](/en/blog/elounda-and-mirabello-bay/).
 
-## What does “vlychada” mean?
+## What is a vlychada?
 
-The local plural, *vlychades* (βλυχάδες), belongs to an older Greek family of terms including βλυχός, γλυφός and γλυχός. These words have been used for water with a slightly salty or brackish character: water that is not fully marine, but is not ordinary fresh water either.
+The word *vlychada*—βλυχάδα—belongs to an old Greek family of words connected with water that is slightly salty or brackish. The Centre for the Greek Language records the related forms βλυχός, γλυφός and γλυχός. In different local settings, related words can refer to brackish water, a shallow well or outlet, the place where such water is reached, or eventually a place name.
 
-A *vlychada* can refer, depending on local usage, to a brackish-water place, flow, spring or toponym. That distinction matters in Elounda. The presently available record does not establish whether the term historically meant the underground source, the point where water emerged, a pool, a section of shore or the water itself.
+That wider history matters because the *vlychades* are not an Elounda invention. They belong to a vocabulary formed in places where the distinction between fresh and salt water was not always simple.
 
-It is therefore better not to force a single definition onto the word. Nor is there adequate support for the proposed derivation from γλυκάζω, “to sweeten”. The available lexicographic evidence supports the word family and its association with brackishness; the precise historical path into Elounda speech remains unresolved.
+The clearest comparison in the available research comes from Lefkada. Its dialect lexicon defines *vlyches* (βλύχες) as shallow wells in the town, usually containing brackish water because of infiltration from the nearby sea. It also records their household value: homes and businesses used them for practical work while drinking water came from neighbourhood taps. The Municipality of Lefkada separately connects the name Vlycho with the numerous local *vlyches* from which water emerges along the foot of Mount Amali.
 
-## Two vlychades on the Elounda waterfront
+Lefkada and Elounda should not be treated as identical cases. The comparison shows something narrower and more useful: Greek coastal communities developed related words for waters that sat between simple categories and could become part of household geography.
 
-A 2025 local report discussed two underground brackish flows in Elounda: one near the Community Office and another before Mavrikiano. The report described both as moving towards the waterfront. It also recorded local concern about brackish borehole water and a proposal to make practical use of water intercepted farther upstream.
+In Elounda, the surviving record does not settle whether *vlychada* historically meant the water itself, its underground source, an outlet, a pool, a built access point or a section of shore. The word now identifies the two locally recognised shoreline waters at Schisma and Mavrikiano, together with the places formed around them.
 
-Two locally recognised *vlychada* outlet areas have now been field-identified along the Elounda waterfront.
+## A landscape of different waters
 
-The first is the Elounda or Schisma *vlychada*, beside Poulis Restaurant and opposite the First Port Department of Elounda: [Vlychada 1 on the Schisma waterfront](https://www.google.com/maps/search/?api=1&query=35.2616194%2C25.7245278), at approximately 35°15'41.83"N, 25°43'28.30"E.
+Elounda sits where sea, rock and dry ground meet closely. The difficulty of living here was not simply that there was no water. The more exact problem was that not all available water could serve the same purpose.
+
+Rainwater could be captured and stored. Wells and boreholes could reach groundwater. Water could emerge naturally near the shore. Seawater lay immediately beside the settlements. Around Poros, seawater was deliberately managed through channels and salt pans. Later, piped supply brought another relationship between water and the home.
+
+A household therefore lived among several kinds of water, but they were not interchangeable. Better-quality water had greater value for uses that required it. Water unsuitable for drinking could still be useful for other work.
+
+That distinction makes the *vlychades* easier to understand.
+
+<figure>
+  <img src="/images/blog/elounda-vlychades-brackish-water/schisma-shoreline-setting-1600.webp" alt="Rocky shallows opening into Elounda Bay, with a small boat and low hills across the water." loading="lazy" />
+  <figcaption>The Schisma shoreline, where shallow coastal water meets Elounda Bay. Provided by Elounda Traditional Homes.</figcaption>
+</figure>
+
+Brackish water can form near a coast when groundwater and seawater mix. Rainfall, drought, pumping and underground pathways can affect that balance. Research elsewhere in Crete and the Mediterranean supports those general processes, but no site-specific survey has mapped the underground routes, geological origins or chemistry of the Schisma and Mavrikiano waters.
+
+For the history of daily life, the important point is simpler. Water beside the sea could still have practical value even when it was not water a household would choose for drinking.
+
+The wider Mirabello landscape shows how seriously earlier communities had to manage supply. Nearby Spinalonga provides the clearest surviving example of a different strategy. Because the island had no natural springs, roofs, vaults, roads and conduits directed rainfall into cisterns, including large vaulted reservoirs documented by the Ephorate of Antiquities of Lasithi. This is evidence for Spinalonga, not proof that mainland households used the same system. It demonstrates the wider principle that water had to be captured, stored and allocated.
+
+The old landscape can therefore be read as a set of different responses. Cisterns stored rainfall. Wells and boreholes reached groundwater. The *vlychades* offered locally reported brackish shoreline water. The salt pans worked deliberately with seawater. For the separate history of that engineered saline landscape, see [Elounda’s salt pans and Poros windmills](/en/blog/elounda-salt-pans-and-poros-windmills/).
+
+## Two waters, two working places
+
+Two locally recognised *vlychada* outlet areas have been field-identified along the Elounda waterfront. A 2025 local report also discussed two underground brackish flows, one near the Community Office and another before Mavrikiano, and described both as moving towards the waterfront.
+
+They lie only a short distance apart, but they are physically different and preserve different kinds of evidence.
+
+### Schisma: moving water and an attributed memory
+
+The Elounda or Schisma *vlychada* is beside Poulis Restaurant and opposite the First Port Department of Elounda: [Vlychada 1 on the Schisma waterfront](https://www.google.com/maps/search/?api=1&query=35.2616194%2C25.7245278), at approximately 35°15'41.83"N, 25°43'28.30"E.
 
 <figure>
   <img src="/images/blog/elounda-vlychades-brackish-water/schisma-waterfront-1600.webp" alt="Stone-edged water beside the Schisma waterfront in Elounda, with the bay and lower village beyond." loading="lazy" />
   <figcaption>The present Schisma outlet area on the Elounda waterfront. Provided by Elounda Traditional Homes.</figcaption>
 </figure>
 
-The second is the Mavrikiano *vlychada*, locally identified as κάτω Φούρνου (Kato Fournou): [Vlychada 2 at Mavrikiano](https://www.google.com/maps/search/?api=1&query=35.2680083%2C25.7215611), at approximately 35°16'04.83"N, 25°43'17.62"E.
+Here the present movement of the water is especially clear. An owner-recorded video from 23 August 2026 shows visibly moving water at the identified outlet area. The recording establishes that direct present-day observation, but not the water's underground route, geological origin, chemistry, potability, historical flow or continuity through the year.
 
-<figure>
-  <img src="/images/blog/elounda-vlychades-brackish-water/mavrikiano-covered-structure-1600.webp" alt="The covered stone-and-concrete structure and waterfront steps at the locally identified Mavrikiano vlychada." loading="lazy" />
-  <figcaption>The covered Mavrikiano outlet area and its present waterfront steps. Provided by Elounda Traditional Homes.</figcaption>
-</figure>
+The human memory attached to Schisma comes from local reporting. In 2023, Anatoli attributed to Katerina Lempidaki a memory of her mother washing μαλλιά at this outlet. A 2025 Anatoli report also says that μαλλιά were washed there in earlier years.
 
-These coordinates identify the locally recognised outlet areas. They do not establish the complete underground course, recharge area, flow rate, seasonal behaviour, chemistry, potability or formal hydrogeological classification of either flow.
-
-The 2025 report is documentary evidence that the two flows were publicly discussed. The present locations are based on owner-supplied local field identification, rather than confirmation by an official authority, engineer, geologist or laboratory. The flows should not be treated as drinking-water sources, and their wider historical uses remain unresolved.
-
-## How coastal water becomes brackish
-
-The following is a general scientific explanation, not a measured cross-section of Elounda.
-
-Rain falling on higher ground can enter permeable soil, fractured rock or other underground pathways. It then moves gradually towards the coast. Near sea level, freshwater and seawater can meet. Where they mix, the result may be water with a salinity between freshwater and seawater: brackish water.
-
-The balance can change. Winter rain may increase freshwater recharge. Drought may reduce it. Pumping from groundwater can also affect the pressure that keeps seawater from moving inland or upward. Fractures and geological structures may provide routes for groundwater or saline water to move.
-
-Research elsewhere in Crete and the Mediterranean shows that these processes occur in coastal aquifers. It does not prove the precise mechanism at either Elounda flow. Safe wording is therefore simple: the flows may reflect groundwater moving through fractured or permeable coastal formations and mixing with seawater.
-
-## Spring, well, cistern or salt pan?
-
-Several water features can sit close together on the same coast while having entirely different origins.
-
-A coastal spring is groundwater emerging at or near the shore. A submarine spring emerges below sea level. A shallow coastal well is an excavated or drilled opening into near-surface groundwater. A salinised borehole is a borehole whose water has become saline, whether through natural conditions, seawater intrusion or another cause.
-
-A rainwater cistern is different again. It is built to collect and store rainfall. A salt pan or lagoon channel is a surface-water landscape connected with seawater circulation, evaporation or drainage.
-
-These distinctions are especially important around Elounda. The salt pans and the Poros landscape are documented parts of a saline, engineered shoreline. They should not be confused with groundwater discharge, or called *vlychades* without specific local evidence. [Elounda’s salt pans and Poros windmills](/en/blog/elounda-salt-pans-and-poros-windmills/) explain that separate working landscape.
-
-<figure>
-  <img src="/images/blog/elounda-vlychades-brackish-water/mavrikiano-water-detail-1600.webp" alt="Clear shallow water against layered red and grey rock inside the covered Mavrikiano outlet area." loading="lazy" />
-  <figcaption>Water inside the locally identified Mavrikiano outlet area. The photograph does not establish its chemistry or underground course. Provided by Elounda Traditional Homes.</figcaption>
-</figure>
-
-## Saving rainwater in the Elounda–Spinalonga landscape
-
-The strongest local evidence for historical water storage comes from nearby Spinalonga. Official archaeological documentation records that the island had no natural springs and depended on captured rainwater. Roofs, vaults, roads and other surfaces directed runoff through conduits into cisterns.
-
-The surviving system includes vaulted and semi-subterranean tanks, drawing openings and substantial storage chambers integrated into the fortified settlement. The Riva cistern and other tanks show that rainwater collection was not an occasional household measure but an essential element of the island’s water infrastructure.
-
-This is official evidence from Spinalonga and should be understood in that context. It does not demonstrate that every historic house in Mavrikiano had a cistern, or that every underground chamber in an older stone building was used for water storage. The Traditional Homes collection may be mentioned as part of Mavrikiano’s surviving stone-house fabric, but no individual house should be said to contain an original cistern without physical verification.
-
-## Different water for different needs
-
-The practical question was not only how to obtain water, but how to preserve the best water for the most important uses.
-
-Stored rainwater on Spinalonga was necessary because there were no springs. In mainland Elounda, the exact historical balance between cisterns, wells, small springs, transported water and later piped supply still needs to be reconstructed. Even so, the distinction is clear in principle: water suitable for drinking and cooking was not necessarily the water available for gardens, animals, cleaning or other work.
-
-The two reported *vlychades* should not be described as potable. The local report calls them brackish, but provides no laboratory analysis. Brackish water can be useful in some circumstances without being safe or desirable for drinking. Its value lies partly in that distinction: it may have reduced the pressure on more limited sources of fresh water, but the precise Elounda history remains to be established.
-
-## What the local reports record
-
-The two Anatoli reports are published local reporting, rather than a field survey or historical study. They identify a larger *vlychada* below Mavrikiano, “at Fournos”, and a smaller one in front of the Community Office at Schisma. Their location descriptions support the distinction between the two sites, but not their exact coordinates or underground courses.
-
-According to a local account reported by Anatoli in 2023, the speaker remembered her mother washing μαλλιά at the Schisma outlet. Anatoli's 2025 report also says that μαλλιά were washed there in earlier years. Neither report specifies the material, process or date. They do not establish the same use at Mavrikiano.
+The material meant by μαλλιά and the full process remain undefined. The reports do not provide a date, frequency, tools or a complete routine. They nevertheless place a remembered person and a practical act beside the water.
 
 <figure>
   <img src="/images/blog/elounda-vlychades-brackish-water/schisma-outlet-1600.webp" alt="Shallow clear water beside the shaded Schisma waterfront enclosure and stone steps." loading="lazy" />
   <figcaption>The Schisma outlet area as photographed in August 2026. This present-day view does not establish earlier use or water chemistry. Provided by Elounda Traditional Homes.</figcaption>
 </figure>
 
-A local press report concerns the covered brackish *vlychada* beside the boatyard on the road from Elounda towards Plaka. It states that, during earlier periods of water scarcity, women from Elounda came there to rinse their laundry. This provides local press support for laundry use at the Mavrikiano/Fournos site. It does not establish the same use at the Schisma *vlychada*, nor does it document the complete washing process.
+### Mavrikiano: water inside a former working place
+
+Farther north is the Mavrikiano *vlychada*, locally identified as κάτω Φούρνου (Kato Fournou): [Vlychada 2 at Mavrikiano](https://www.google.com/maps/search/?api=1&query=35.2680083%2C25.7215611), at approximately 35°16'04.83"N, 25°43'17.62"E.
+
+Here the relationship between water and human intervention is more visible. A covered stone-and-concrete structure sits immediately beside the shore. Steps descend towards the water, which remains visible within and around this built space.
+
+<figure>
+  <img src="/images/blog/elounda-vlychades-brackish-water/mavrikiano-covered-structure-1600.webp" alt="The covered stone-and-concrete structure and waterfront steps at the locally identified Mavrikiano vlychada." loading="lazy" />
+  <figcaption>The covered Mavrikiano outlet area and its present waterfront steps. Provided by Elounda Traditional Homes.</figcaption>
+</figure>
+
+A 2022 report in Patris preserves the clearest account of its former practical role. During earlier periods of water scarcity, it says, women from Elounda came to this covered brackish *vlychada* to rinse laundry.
+
+That short statement tells us three important things. There was a task. There were people responsible for it. And there were circumstances in which travelling to this particular water was worthwhile.
 
 <figure>
   <img src="/images/blog/elounda-vlychades-brackish-water/mavrikiano-interior-1600.webp" alt="View from inside the covered Mavrikiano outlet area towards the sea and stone waterfront steps." loading="lazy" />
   <figcaption>Inside the covered Mavrikiano outlet area, looking towards the sea. The present structure is not evidence of its date or historic use. Provided by Elounda Traditional Homes.</figcaption>
 </figure>
 
-Older residents may still remember other uses, seasonal changes, access routes or the arrival of piped water. Until such accounts are recorded, compared and located on the ground, those matters remain research questions. There is no basis here to reconstruct gatherings, tools, routes, drying places or a standard washing process.
+The structure raises a human question: why was access organised around this water? The present evidence cannot answer in full. We do not yet know when the enclosure was built, whether it replaced earlier forms or which parts belong to the period remembered in the newspaper account.
 
-## Why ordinary soap struggles in brackish water
+The combination of water, shelter and steps is nevertheless important when read beside the reported laundry use. Mavrikiano is not only a point on the shore. It is the surviving physical remnant of a working place.
 
-Olive-oil soap is a true soap, made from fatty-acid salts. In water containing calcium and magnesium, some of those soap molecules form poorly soluble compounds instead of remaining available for cleaning. Foam is reduced, residues may form and more mechanical work or more soap may be needed.
+The coordinates for both *vlychades* come from owner-supplied local field identification. They locate the present recognised outlet areas; they do not map complete underground flows or prove that the historically used water was reached in exactly the same physical form.
 
-Brackishness and hardness are related but not identical. Brackish water contains a mixture of freshwater and seawater salts; its exact effect on soap depends on its chemistry. No conclusion about washing performance can be drawn simply from the name *vlychada*.
+## Taking the work to the water
 
-Brackish water could still be used for practical cleaning, particularly when combined with rubbing or beating, but ordinary soap would generally perform less efficiently than in soft freshwater. That is a chemical explanation, not evidence that such washing occurred at Elounda’s reported flows.
+Modern domestic water reverses an older relationship.
 
-## From local water sources to modern supply networks
+Today, water travels to the household. A pipe brings it through the wall. A tap releases it where it is needed. A washing machine combines water, movement and drainage inside the home.
 
-Water infrastructure remains a current public issue. In January 2026, the Municipality of Agios Nikolaos announced a tender for conveyance pipelines from the Aposelemis reservoir serving Elounda and several other settlements. The total announced budget was €14.8 million before VAT.
+Earlier household work could involve the opposite movement. The work had to travel to the water.
 
-The project shows that water supply is still being strengthened across the municipality. It does not prove that Elounda has no adequate potable supply, nor does it establish a direct connection with the old *vlychades*. Its relevance is more measured: the move from small, local and variable water sources towards wider supply networks is still incomplete as a historical story, but modern water infrastructure continues to change the landscape.
+The Mavrikiano report makes that relationship visible. Women came to the shoreline because the water there was useful for part of the work they had to perform. The account does not reconstruct every stage, but it identifies the journey to the water as part of the task.
 
-For the chronological context of the shoreline, see [A Short Chronological History of Elounda](/en/blog/elounda-history-through-its-shoreline/). For present-day orientation between the hillside village and waterfront, see [the location guide](/en/location/) and [the Mavrikiano guide](/en/guide/mavrikiano/).
+It is easy to underestimate what this meant physically. Water had weight. Wet textiles had weight. Washing required time, movement and dependable access to a sufficient supply. When suitable water was not available inside the house, the practical geography of the household extended outwards to the places where water could be reached.
 
-## What remains unresolved
+The *vlychada* therefore belonged not only to the coast but to the working geography of the settlement. House, path, water and shoreline were connected through necessity.
 
-The *vlychades* are valuable precisely because they resist a simple story. They suggest a coastal landscape where water quality, not only water quantity, mattered. They also show how little is yet known about particular local sources once their outlets have been altered, covered or absorbed into modern infrastructure.
+<figure>
+  <img src="/images/blog/elounda-vlychades-brackish-water/schisma-roadside-access-1600.webp" alt="Clear shallow water and a stone-edged channel beneath a low concrete roadside structure, with steps at the right." loading="lazy" />
+  <figcaption>The roadside edge above the Schisma outlet, showing the relationship between the covered water, steps and street. Provided by Elounda Traditional Homes.</figcaption>
+</figure>
 
-The next evidence should come from careful local work: municipal and utility records, a field survey of the two identified outlet areas, seasonal water analysis, building surveys and recorded interviews with residents. That work may clarify whether these waters were used for gardens, animals, cleaning or other tasks. It may also show how older water systems changed as pipes and household appliances became common.
+The missing details should not be invented. The sources do not tell us on which days people came, precisely what they carried, which tools they used, where laundry was dried or how often the journey was made.
 
-Until then, the most accurate conclusion is modest. Elounda’s *vlychades* are locally recognised brackish-flow outlet areas at the edge of a dry coastal landscape. Alongside the documented cisterns of Spinalonga, they point to a history in which water had to be identified, separated, stored and used with care.
+No invented scene is needed to understand the basic relationship. The water was somewhere else. People had to go to it.
 
-The [Traditional Homes collection](/en/houses/) remains part of Mavrikiano’s surviving stone-house landscape, but the water systems of individual houses require their own evidence.
+## Women and household labour
+
+The surviving reports also preserve something about who carried part of this burden. At Mavrikiano, the people explicitly remembered coming to rinse laundry were women. At Schisma, the memory reaches the present through Katerina Lempidaki remembering her mother.
+
+These fragments place the *vlychades* within the history of women's household labour. They do not support a claim that every water-related task followed the same division, but they keep the people named by the evidence visible.
+
+Much household labour leaves less formal documentation than major infrastructure. Public works may produce plans, contracts and engineering records. Repeated work within and around the home is more likely to survive through remembered practice, local words and the physical arrangement of a place.
+
+That is why the two short newspaper references matter. They restore human activity to waters that could otherwise be described only through geology. The water was part of the natural landscape. The working place was made through human need and repeated use.
+
+## Different water for different purposes
+
+Calling a *vlychada* brackish can make the water sound useless. That would misunderstand the older economy of water.
+
+Water did not need to be suitable for every purpose to have value. Households living with limited supply could reserve better water for uses that required it and use other water for work that did not. The exact division of water within historical Elounda still needs further oral and archival research, but the Mavrikiano account already shows that locally reported brackish water could be worth using to rinse laundry during scarcity.
+
+<figure>
+  <img src="/images/blog/elounda-vlychades-brackish-water/mavrikiano-water-detail-1600.webp" alt="Clear shallow water against layered red and grey rock inside the covered Mavrikiano outlet area." loading="lazy" />
+  <figcaption>Water inside the locally identified Mavrikiano outlet area. The photograph does not establish its chemistry or underground course. Provided by Elounda Traditional Homes.</figcaption>
+</figure>
+
+No laboratory analysis has been located for either Elounda outlet, and neither should be described as potable. There is also no evidence that brackish water made soap work better. Its historical value does not depend on either claim.
+
+The principle is more ordinary. People use limited materials according to what each can do. Water that was not chosen for drinking could still reduce the amount of better water consumed by another task. The use recorded at Mavrikiano is a small example of environmental adaptation carried through household routine.
+
+## Elounda as a landscape of water and work
+
+Seen this way, the *vlychades* belong to a larger Elounda story. Only a short distance separates very different water landscapes.
+
+At Poros, seawater fed a productive system of salt pans. At Spinalonga, rain falling on roofs and paved surfaces was directed into cisterns. Along the mainland shore, the two *vlychades* marked places where locally reported brackish water could be reached. Elsewhere, wells and later boreholes reached groundwater below the surface.
+
+Each system answered a different practical question. How could rainfall be stored? Where could groundwater be reached? Which water could serve household work? How could seawater become salt?
+
+The coast was therefore more than an edge between land and sea. It was a working environment in which different waters were recognised and used differently. The *vlychades* formed one small part of that larger pattern.
+
+## When water entered the home
+
+At some point, the practical geography began to change. Piped supply brought water closer to, and eventually inside, homes. Domestic appliances changed the physical organisation of washing. Work that had required access to an outside water source could increasingly be performed without leaving the house.
+
+The exact chronology in Elounda has not yet been reconstructed. There is no verified date for when particular parts of Schisma and Mavrikiano received household connections, when supply became consistently dependable or when washing machines became common.
+
+The transition may have been gradual, with old and new arrangements overlapping. That is a historical interpretation rather than a documented local sequence. A water source can remain useful after pipes arrive, and an established routine can continue while a new system spreads unevenly.
+
+What the available evidence does show is the direction of change. The water did not need to disappear for the *vlychades* to lose their old household function. Water increasingly travelled to the work. People no longer had the same reason to take the work to the shore.
+
+## From working place to memory
+
+By the early 2020s, local newspaper reports were no longer describing the *vlychades* as ordinary places of household work. They were discussing memory, physical condition and safety.
+
+In 2022, Patris contrasted the earlier laundry-rinsing use at Mavrikiano with concern about the deteriorating cover and danger at the site. In 2023, Anatoli discussed the condition of both *vlychades* and called for attention to them.
+
+The emphasis had moved from use to memory and maintenance. Yet the water remained. At Schisma, the 2026 video shows it visibly moving. At Mavrikiano, water remains visible beneath and around the covered structure.
+
+<figure>
+  <img src="/images/blog/elounda-vlychades-brackish-water/mavrikiano-exterior-scale-1600.webp" alt="Stone-and-concrete enclosure beside broad stone steps and shallow seawater, with hillside buildings behind." loading="lazy" />
+  <figcaption>The Mavrikiano vlychada enclosure between the shoreline steps and lower hillside. Provided by Elounda Traditional Homes.</figcaption>
+</figure>
+
+Most former working places are understood through a building that survives after the work has stopped: a mill without grain, a factory without workers, a warehouse without goods. The *vlychades* preserve a different contrast. The water that gave the places value is still present. What has fallen out of ordinary use is the human routine organised around it.
+
+Mavrikiano can therefore be read as a small piece of vernacular infrastructure. There is water, enclosure, steps and the sea immediately outside. There is also a local account explaining why women once came there. No single element tells the whole story. Together they show how a natural feature became a working place because human need gave it a function.
+
+For the wider chronological transformation of the shoreline, see [A Short Chronological History of Elounda](/en/blog/elounda-history-through-its-shoreline/). For the relationship between the hillside settlement and waterfront today, see [the Mavrikiano guide](/en/guide/mavrikiano/) and [the location guide](/en/location/).
+
+## Two histories moving at different speeds
+
+The *vlychades* contain two kinds of time.
+
+One belongs to water moving through the landscape. At Schisma, direct present-day evidence shows that movement continuing. At Mavrikiano, water and the covered structure remain visible, although the present photographs do not establish the character or continuity of the flow.
+
+The other is human. A place becomes useful. Work grows around it. People go there because they need what it provides. Infrastructure and domestic technology change. The routine weakens, and eventually the same place survives without the activity that once made it part of ordinary life.
+
+At Schisma and Mavrikiano, those histories now sit beside each other. The water remains. The women preserved in the local accounts no longer need to come to these places for household work. The covered structure at Mavrikiano remains beside the road and sea, while the water at Schisma is still visibly moving.
+
+The *vlychades* have not disappeared. They have passed through a cycle as human places: from useful waters, to working places, to physical remnants of a change in daily life.
+
+The water continues. What has passed into memory is the life that once surrounded it.
 
 ## Sources
 
@@ -152,8 +225,10 @@ The [Traditional Homes collection](/en/houses/) remains part of Mavrikiano’s s
 - [Anatoli: “Οι δύο βλυχάδες της Ελούντας, στο Μαυρικιανό και στο Σχίσμα” (The two vlychades of Elounda, at Mavrikiano and Schisma)](https://www.anatolh.com/topikanea/agiosnikolaos/oi-dyo-vlychades-tis-elountas/).
 - [Patris: “Πολύ επικίνδυνο, δεν το βλέπουν;” (A dangerous covered brackish source beside the boatyard)](https://www.patris.gr/stiles/chthes-simera-afrio/poly-epikindyno-den-to-vlepoyn/).
 - [Centre for the Greek Language: Kriaras Dictionary of Medieval Vernacular Greek](https://www.greek-language.gr/).
+- [Centre for the Greek Language: *γλυφός* and related forms](https://www.greek-language.gr/greekLang/modern_greek/tools/lexica/triantafyllides/search.html?dq=&lq=%CE%B3%CE%BB%CF%85%CF%86%CF%8C%CF%82).
+- [Lefkada Dialect Dictionary: *βλύχα*](https://lexikolefkadas.gr/vlycha-i/).
+- [Municipality of Lefkada: Vlycho](https://lefkada.gov.gr/dimotikes-enotites-ellomenou-vliho/).
 - [Ephorate of Antiquities of Lasithi: vaulted cisterns of Spinalonga](https://spinalonga-island.gr/monuments/spinalonga/%CE%BA%CF%84%CE%AE%CF%81%CE%B9%CE%B1-%CE%B5%CE%BD%CE%B5%CF%84%CE%B9%CE%BA%CE%BF%CF%8D-%CF%83%CF%84%CF%81%CE%B1%CF%84%CE%BF%CF%80%CE%AD%CE%B4%CE%BF%CF%85/%CE%BF%CE%B9-%CE%B4%CE%B5%CE%BE%CE%B1%CE%BC%CE%B5%CE%BD%CE%AD%CF%82-%CF%83%CF%85%CE%BB%CE%BB%CE%BF%CE%B3%CE%AE%CF%82-%CE%BD%CE%B5%CF%81%CE%BF%CF%8D/?lang=en).
 - Voudouris, K. S. (2021), [“Status and codification of karst aquifer systems in Greece”](https://doi.org/10.12681/bgsg.25471).
 - Kalisperi, D. et al. (2018), [“A Transient ElectroMagnetic Method Survey in North-Central Coast of Crete”](https://doi.org/10.3390/geosciences8040107).
-- [Chemistry LibreTexts: the effect of hard water on soap](https://chem.libretexts.org/).
 - [Municipality of Agios Nikolaos: January 2026 Aposelemis-conveyance tender](https://www.agiosnikolaos.gr/2026/01/14/prokirychthike-o-diagonismos-gia-to-ergo-kataskevis-agogon-prosagogis-nerou-apo-to-fragma-aposelemi-pros-neapoli-sisi-milato-nikithiano-limnes-kasteli-fourni-choumeriako-lakonia-kri/).
