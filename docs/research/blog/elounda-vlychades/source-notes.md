@@ -43,10 +43,38 @@ This is direct local press reporting. It describes a covered brackish *vlychada*
 
 Safe wording is: “An owner-recorded video from 23 August 2026 shows visibly moving water at the identified Elounda/Schisma outlet area.” The recording supports present-day visible emergence only. It does not establish the underground route, geological origin, recharge area, formal spring classification, chemistry, potability, historical use, historical flow rate or continuous year-round behaviour. The video is an evidence record, not a committed publication asset.
 
+## Linguistic and comparative evidence
+
+### Centre for the Greek Language
+
+- **Resource:** Dictionary of Standard Modern Greek entry for `γλυφός`, with Kriaras cross-reference from `βλυχός`
+- **URLs:** https://www.greek-language.gr/greekLang/modern_greek/tools/lexica/triantafyllides/search.html?dq=&lq=%CE%B3%CE%BB%CF%85%CF%86%CF%8C%CF%82 and https://www.greek-language.gr/greekLang/modern_greek/tools/lexica/search.html?lq=%CE%B2%CE%BB%CF%85%CF%87%CF%8C%CF%82
+
+The entries support the related forms `βλυχός`, `γλυφός` and medieval `γλυχός` in connection with brackish or slightly salty water. They support a readable word-family explanation, not a complete historical etymology of the Elounda place-name usage.
+
+### Lefkada Dialect Dictionary: βλύχα
+
+- **Resource:** `βλύχα (η)`, Lefkada Dialect Dictionary, drawing on the dictionaries of Pantazis Kontomichis, Chará Papadatou and Christoforos Lazaris
+- **URL:** https://lexikolefkadas.gr/vlycha-i/
+
+The entry describes `βλύχες` in Lefkada town as shallow wells, usually with brackish water because of nearby seawater infiltration. It states that houses and businesses used them for household work while drinking water came from neighbourhood taps. This supports Lefkada as a comparison for vocabulary, shallow brackish water points and household allocation of water. It does not establish identical physical form, chronology or practice in Elounda.
+
+### Municipality of Lefkada: Vlycho
+
+- **Resource:** official municipal page for Vlycho
+- **URL:** https://lefkada.gov.gr/dimotikes-enotites-ellomenou-vliho/
+
+The municipality connects the settlement name Vlycho with approximately thirty local `βλύχες` from which water emerges along the foot of Mount Amali. This supports the place-name comparison only; it does not establish that those waters had the same chemistry or household use as the Elounda outlets.
+
+No publication-ready source was located in the controlled repository packet for the proposed 1883 `βλυχάδι` quotation or for the suggested Laconia, Chania and Santorini occurrences. Those examples remain excluded from the article.
+
 ## Material claims
 
 | Claim | Source | Evidence type | Status | Safe public wording | Limitations |
 | --- | --- | --- | --- | --- | --- |
+| `βλυχός`, `γλυφός` and `γλυχός` belong to a related word family associated with brackish or slightly salty water | Centre for the Greek Language dictionary entries | Lexicographic evidence | Supported | The words belong to a related Greek word family connected with brackish or slightly salty water. | Does not by itself establish the exact historical meaning of *vlychada* at either Elounda site. |
+| Lefkada `βλύχες` were shallow, usually brackish wells used for household work, while drinking water came from neighbourhood taps | Lefkada Dialect Dictionary, entry `βλύχα` | Published dialect lexicography | Supported as a Lefkada comparison | In Lefkada, dialect sources describe `βλύχες` as shallow brackish water points used for household work. | Lefkada is comparative evidence only; do not transfer its chronology, built form or exact household practices to Elounda. |
+| The name Vlycho is locally connected with numerous `βλύχες` | Municipality of Lefkada | Official local place-name account | Supported as a place-name comparison | The Municipality of Lefkada connects Vlycho's name with numerous local `βλύχες`. | Supports the place-name relationship only. |
 | Two *vlychades* are described on the Elounda waterfront | Anatoli 2023 and 2025; owner-supplied field identification, 4 August 2026 | Direct local reporting plus verified local field identification | Supported | Two locally recognised *vlychada* outlet areas have been field-identified on the Elounda waterfront. | Reporting and field identification do not establish hydrology. |
 | Vlychada 1 is the Elounda/Schisma waterfront outlet | Owner-supplied local field identification, 4 August 2026; Anatoli 2023 and 2025 | Verified local field identification; direct local reporting | Verified local field identification | The Elounda or Schisma *vlychada* is beside Poulis Restaurant and opposite the First Port Department. | The reports name the Community Office/Schisma area but do not provide exact coordinates. |
 | Visibly moving water is present at the identified Schisma outlet | Owner-supplied video, recorded 23 August 2026 | Direct present-day field documentation | Directly observed | An owner-recorded video from 23 August 2026 shows visibly moving water at the identified Elounda/Schisma outlet area. | Present-day visible emergence only; no inference about hydrogeology, chemistry, potability, historical use, past flow or year-round continuity. |
@@ -91,6 +119,10 @@ Both supplied JPEGs were opened successfully, are upright JPEGs (EXIF orientatio
 
 | Claim | Status |
 | --- | --- |
+| The Greek forms `βλυχός`, `γλυφός` and `γλυχός` are associated with brackish or slightly salty water | Supported by Centre for the Greek Language dictionary entries |
+| Lefkada `βλύχες` provide a supported comparison for shallow brackish household water points | Supported by the Lefkada Dialect Dictionary; comparative evidence only |
+| The Municipality of Lefkada connects Vlycho's name with numerous local `βλύχες` | Supported as a place-name comparison |
+| The proposed 1883 quotation and Laconia, Chania and Santorini occurrences | Unverified in the controlled packet; excluded |
 | Two vlychades exist on the Elounda waterfront | Supported by local reporting and local field identification |
 | Vlychada 1 is the Schisma/Elounda waterfront outlet | Verified local field identification |
 | Visibly moving water is present at the identified Schisma outlet on 23 August 2026 | Directly observed in owner-supplied field video; hydrogeological and historical inference excluded |
