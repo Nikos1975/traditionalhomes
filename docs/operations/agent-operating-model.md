@@ -6,7 +6,9 @@ This document explains how agents should work in this repo before editing, stagi
 
 `CLAUDE.md` is canonical for this repo. It controls the project rules, build/debug workflow, commit policy, brand voice, content rules, and source-of-truth expectations.
 
-`AGENTS.md` is a wrapper for non-Claude agents. It should stay minimal and point agents to `CLAUDE.md` and the editorial routing files.
+`AGENTS.md` is a thin wrapper for non-Claude agents. It should stay minimal and point agents to `CLAUDE.md` and task-specific routing files.
+
+`.agents/skills/icm-workspace-architect/ICM_RULES.md` is the canonical context-architecture standard. Always use ICM reasoning for context loading, workspace/stage boundaries, and reusable workflow organization; do not force a fixed folder tree.
 
 `.ai/brand/website-brand-style-guide.md` controls shared tone.
 
@@ -14,11 +16,11 @@ This document explains how agents should work in this repo before editing, stagi
 
 `.ai/prompts/blog-editorial-system.md` controls blog, guide, village-guide, and area-guide copy unless the task is explicitly property-page copy.
 
-`.agents/skills/*/SKILL.md` files are task-triggered procedural workflows. Use the relevant skill when the task matches its description.
+`.agents/skills/*/SKILL.md` files are task-triggered procedural workflows. Treat the actual `.agents/skills/` directory as authoritative for which project-local skills are installed.
 
 `docs/architecture/*` defines repo decisions that agents must not override casually, including source-of-truth, media ownership, and slug decisions.
 
-If instructions appear to conflict, follow `CLAUDE.md` first, then the relevant architecture document, then the relevant skill or editorial prompt for the task.
+If instructions appear to conflict, follow `CLAUDE.md` first, then the relevant architecture document, then the relevant routed skill or editorial prompt for the task.
 
 ### External / generic workflows and Superpowers Ultra
 
@@ -26,7 +28,7 @@ Repo-local instructions and repo-local skills take precedence over external, gen
 
 External process skills may be used as background methodology, but they must not override this repo's file scope, build rules, commit rules, media rules, source-of-truth rules, or copy/factual-claim rules.
 
-When available, agents should use Superpowers Ultra or an equivalent token-minimizing workflow as the default execution mode. This means:
+When available, agents may use Superpowers Ultra or an equivalent token-minimizing workflow as an execution aid. This means:
 
 - Prefer targeted reads over broad file dumps.
 - Summarize long files instead of repeating them.
@@ -43,7 +45,7 @@ Plan Mode, writing-plans, or an equivalent planning workflow should be used for 
 
 Do not over-plan exact-scope tasks. For one-line edits, simple image path fixes, already-classified docs-only commits, and direct user-approved exact-path commits, agents should execute directly while still following required reads, staged-file checks, build rules, and stop conditions.
 
-If a concrete Superpowers Plan Mode tool is available in the environment, agents may use it as an efficiency layer. If it is not available, agents should apply the same behavior manually: plan briefly, read only targeted files, avoid repeated rediscovery, and keep output concise and action-focused.
+If a concrete planning tool is available in the environment, agents may use it as an efficiency layer. If it is not available, agents should apply the same behavior manually: plan briefly, read only targeted files, avoid repeated rediscovery, and keep output concise and action-focused.
 
 Planning and token minimization must not override repo-local instructions, file scope, build requirements, commit rules, or stop conditions.
 
@@ -51,25 +53,34 @@ Planning and token minimization must not override repo-local instructions, file 
 
 | File or folder | Read always? | Read when? | Purpose |
 |---|---:|---|---|
-| `CLAUDE.md` | Yes | Before any repo task | Canonical project, build, content, and commit rules. |
-| `AGENTS.md` | Yes | Before any repo task | Wrapper that routes agents to `CLAUDE.md` and editorial systems. |
+| Runtime root adapter (`AGENTS.md` or native `CLAUDE.md`) | Yes | At task start if the runtime has not already loaded it | Enter the project instruction hierarchy. |
+| `CLAUDE.md` | Yes for project rules | Non-Claude agents reach it through `AGENTS.md`; native Claude runtimes may already have it loaded | Canonical project, build, content, and commit rules. |
+| `.agents/skills/icm-workspace-architect/ICM_RULES.md` | No | Architecture, context-loading, workspace/stage, or reusable-workflow decisions | Canonical ICM reasoning standard. |
+| `BLOG_ORCHESTRATOR.md` | No | Blog, guide, historical article, blog audit/revision/publication/image work | Routes to exactly one blog procedure. |
 | `.ai/brand/` | No | Public-facing copy, editorial review, tone decisions | Shared brand voice and tone source. |
 | `.ai/prompts/` | No | Website copy, blog posts, guides, property content | Editorial systems by content type. |
-| `.agents/skills/` | No | When a task matches a skill description | Procedural workflows for builds, content audits, commits, and research articles. |
+| `.agents/skills/` | No | When the task matches an installed skill | Procedural workflows. |
 | `docs/architecture/` | No | Source-of-truth, media, slug, routing, or structural decisions | Durable repo architecture decisions. |
 | `src/inventory/inventory.json` | No | House or villa facts, access, capacity, parking, groups, constraints | Canonical structured property facts. |
-| `docs/operations/` | No | Agent process, known failure handling, commit workflow | Operating model and repeated-failures playbook. |
+| `docs/operations/agent-operating-model.md` | No | Process, commit, build, branch, or debugging work | Operational rules. |
+| `docs/operations/repeated-failures-playbook.md` | No | Only after a matching failure or known failure class appears | Known failure handling. |
+| `docs/agent-handoff-notes.md` | No | Targeted historical lookup by topic, slug, PR, command, or failure | Historical archive; never cold-start context. |
+
+Do not reread unchanged root instructions inside the same task merely because a routed procedure links back to them.
 
 ## 3. Skills routing
 
+The installed project-local skill inventory is the `.agents/skills/` directory. The table below reflects the current routed procedures; if the directory and this table ever differ, the directory plus each skill's frontmatter is authoritative.
+
 | Skill | When to use | When not to use | Required inputs | Expected output |
 |---|---|---|---|---|
-| `astro-build-triage` | Astro build failures, content validation, Windows cache locks, minimal repair work | Broad redesigns, copy rewrites, commit planning | Current repo state, build error, affected files | Root-cause classification, smallest safe fix, build result. |
-| `blog-research-article` | Creating or revising Astro blog articles from `docs/research`, especially Elounda history, guide, tourism, or local context posts | Property pages, pure UI work, unrelated docs | Topic brief, research folder, content schema, existing posts, brand/editorial rules | Claim-reviewed `source-notes.md`, a validated `draft: true` article, and a draft PR for manual approval. |
-| `traditional-homes-article-visual-plan` | Planning evidence-led visuals for a blog post or guide before image work | Image generation, processing, article integration, publication, or social posting | Article/topic brief, research packet, claim register, image-rights register, brand/editorial rules | A validated `docs/research/blog/<slug>/visual-plan.md` with purpose, evidence, rights, placement, accessibility, crop, destination, approval, and blockers. |
-| `brand-content-audit-and-rewrite` | Rewriting or auditing public-facing copy for brand voice | Pure code/build tasks, commit-only tasks | Existing copy, content type, factual sources | Revised copy, edits made, removed unsupported claims, remaining gaps. |
-| `clean-commit-planner` | Dirty working trees, mixed changes, commit grouping, pathspec staging plans | Single-file investigation where no staging is planned | `git status`, generated commit-plan groups, reviewed diffs | Clean commit groups, explicit staging scope, build/typecheck guidance. |
-| `property-content-audit` | House or villa page audits, rewrites, inventory accuracy checks | Blog posts, general UI-only work | `src/inventory/inventory.json`, relevant house/villa content | Fact-checked property copy or audit checklist with unsupported claims flagged. |
+| `blog-research-article` | New research-led blog, guide, or historical article work routed by `BLOG_ORCHESTRATOR.md` | Property pages, pure UI work, publication-only tasks | Topic brief/research packet, content schema, brand/editorial rules | Claim-reviewed draft-stage article artifacts under the blog workflow. |
+| `blog-revise-draft` | Revising an existing draft article | New research-only work, publication-only tasks | Existing draft, research packet, claim evidence, editorial rules | Revised draft with unresolved factual issues surfaced rather than invented. |
+| `blog-content-audit` | Auditing existing blog/guide content | Drafting a new article from scratch | Existing article/content, relevant research/source material, editorial rules | Bounded audit findings and recommended corrections. |
+| `blog-publication` | Publication preparation after editorial approval | Research, drafting, or unapproved publication | Approved article state and required validation inputs | Publication-stage changes with explicit approval and validation gates. |
+| `traditional-homes-article-visual-plan` | Planning evidence-led visuals for a blog post or guide before image work | Image generation, processing, article integration, publication, or social posting | Article/topic brief, research packet, claim register, image-rights register | Validated `docs/research/blog/<slug>/visual-plan.md` with evidence, rights, placement, accessibility, crop, approval, and blockers. |
+| `traditional-homes-image-pipeline` | Approved image processing/integration tasks routed by the blog workflow | Visual planning, unsupported acquisition, unapproved generation/publication | Approved visual/image inputs and exact destination scope | Deterministically processed image artifacts within the approved boundary. |
+| `icm-workspace-architect` | Repository/workspace/context architecture audits, routing design, staged workflow design | Ordinary single-file code/content edits with no architecture question | Existing tree/instructions and current workflow requirements | Minimal-change ICM architecture proposal or approved scaffolding. |
 
 ## 4. Plugins/tools/integrations routing
 
@@ -127,7 +138,7 @@ PowerShell cleanup commands are allowed only for generated output or caches when
 - Use one phase per commit.
 - Do not use `git add .`.
 - Do not use `git add -A`.
-- Stage explicit paths only, or a reviewed pathspec file generated by the clean-commit planner.
+- Stage explicit paths only, or a reviewed pathspec list/file prepared for the exact approved scope.
 - Verify staged files with `git diff --cached --name-only` before committing.
 - Build is required for source, component, content, media-reference, package, and dependency changes.
 - Docs-only commits may skip build if the staged list is exact and the only blocker is known Windows `EPERM` on generated output.
