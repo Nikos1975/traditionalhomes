@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { mkdtemp, readFile, rm, stat, writeFile } from "node:fs/promises";
+import { cp, mkdtemp, readFile, rm, stat, writeFile } from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
 import { loadConfig } from "../scripts/content-intelligence/config.mjs";
@@ -18,7 +18,36 @@ test("uses the exact approved seven-factor scoring configuration", async () => {
 test("penalties and evidence gates keep a sensational low-evidence topic below a supported local topic", async () => { const { scoring } = await loadConfig(rootDir); const low = scoreTopic({ scores: Object.fromEntries(Object.keys(scoring.weights).map((key) => [key, 5])), evidenceState: "none", overlapState: "clear", imageRightsState: "cleared", numericalPrecisionState: "qualified", framing: "sensational", confidentialityState: "clear" }, scoring); const strong = scoreTopic({ scores: Object.fromEntries(Object.keys(scoring.weights).map((key) => [key, 4])), evidenceState: "usable", overlapState: "clear", imageRightsState: "cleared", numericalPrecisionState: "qualified", framing: "specific", confidentialityState: "clear" }, scoring); assert.equal(low.recommendedStatus, "research first"); assert.ok(strong.finalScore > low.finalScore); assert.equal(scoreTopic({ scores: {}, evidenceState: "usable", overlapState: "clear", imageRightsState: "cleared", numericalPrecisionState: "qualified", framing: "specific", confidentialityState: "unresolved" }, scoring).recommendedStatus, "hold"); });
 test("inventory is complete and deterministic", async () => { const inventory = await buildInventory({ rootDir, includeDrafts: true }); const article = inventory.articles.find((item) => item.slug === "spinalonga-why-fortified-changing-uses"); for (const key of ["wordCount", "internalLinks", "entities", "relatedResearchDirectory", "videoReadiness", "sourceFingerprint"]) assert.ok(key in article); assert.ok(article.wordCount > 0); assert.ok(article.internalLinks.length > 0); assert.deepEqual(inventory, await buildInventory({ rootDir, includeDrafts: true })); });
 test("seed discovery and September selection are structured and relevant", async () => { const config = await loadConfig(rootDir); const inventory = await buildInventory({ rootDir, includeDrafts: true }); const candidates = discoverTopics({ inventory, rules: config.scoring, seeds: config.seeds, calendar: config.seasonal, month: 9 }); const walking = candidates.find((item) => item.slug === "elounda-autumn-walking-routes"); assert.ok(walking.finalScore > candidates.find((item) => item.slug === "spinalonga-archival-supply-records").finalScore); const plan = seasonalPlan({ inventory, calendar: config.seasonal, month: 9, candidates }); assert.ok(plan.recommendations["resurface existing article"].some((item) => /walking/i.test(item.slug))); assert.deepEqual(plan.recommendations["practical seasonal content"], []); });
-test("CLI writes complete Markdown outputs and rejects invalid arguments", async () => { for (const [command, argv] of [["inventory", []], ["discover", ["--month", "9"]], ["seasonal", ["--month", "9"]], ["video", ["--slug", "spinalonga-why-fortified-changing-uses"]]]) await runContentCli({ command, argv, rootDir }); for (const file of ["inventory.md", "discovery/2026-09.md", "seasonal/2026-09.md", "video-plans/spinalonga-why-fortified-changing-uses.md"]) assert.ok((await readFile(path.join(rootDir, "data", "content-intelligence", file), "utf8")).length > 100); await assert.rejects(runContentCli({ command: "discover", argv: ["--unexpected"], rootDir }), /Invalid argument/); await assert.rejects(runContentCli({ command: "video", argv: ["--slug", "../article"], rootDir }), /kebab-case/); });
+test("CLI writes complete Markdown outputs without changing canonical repository artifacts", async () => {
+  const generatedRootDir = await mkdtemp(path.join(os.tmpdir(), "content-intelligence-output-"));
+  const canonicalFiles = ["inventory.json", "inventory.md"].map((file) => path.join(rootDir, "data", "content-intelligence", file));
+  const before = await Promise.all(canonicalFiles.map(async (file) => ({ body: await readFile(file, "utf8"), mtimeMs: (await stat(file)).mtimeMs })));
+  try {
+    for (const [command, argv] of [["inventory", []], ["discover", ["--month", "9"]], ["seasonal", ["--month", "9"]], ["video", ["--slug", "spinalonga-why-fortified-changing-uses"]]]) {
+      await runContentCli({ command, argv, rootDir, generatedRootDir });
+    }
+    for (const file of ["inventory.md", "discovery/2026-09.md", "seasonal/2026-09.md", "video-plans/spinalonga-why-fortified-changing-uses.md"]) {
+      assert.ok((await readFile(path.join(generatedRootDir, "data", "content-intelligence", file), "utf8")).length > 100);
+    }
+    assert.deepEqual(await Promise.all(canonicalFiles.map(async (file) => ({ body: await readFile(file, "utf8"), mtimeMs: (await stat(file)).mtimeMs }))), before);
+    await assert.rejects(runContentCli({ command: "discover", argv: ["--unexpected"], rootDir, generatedRootDir }), /Invalid argument/);
+    await assert.rejects(runContentCli({ command: "video", argv: ["--slug", "../article"], rootDir, generatedRootDir }), /kebab-case/);
+  } finally {
+    await rm(generatedRootDir, { recursive: true, force: true });
+  }
+});
+test("explicit inventory regeneration still writes canonical artifacts", async () => {
+  const fixtureRoot = await mkdtemp(path.join(os.tmpdir(), "content-inventory-regeneration-"));
+  try {
+    await cp(path.join(rootDir, "config"), path.join(fixtureRoot, "config"), { recursive: true });
+    await runContentCli({ command: "inventory", argv: [], rootDir: fixtureRoot });
+    const generated = path.join(fixtureRoot, "data", "content-intelligence");
+    assert.equal(JSON.parse(await readFile(path.join(generated, "inventory.json"), "utf8")).schemaVersion, 3);
+    assert.match(await readFile(path.join(generated, "inventory.md"), "utf8"), /^# Content inventory/);
+  } finally {
+    await rm(fixtureRoot, { recursive: true, force: true });
+  }
+});
 test("status has readable and JSON modes without mutation", async () => { const target = path.join(rootDir, "data", "content-intelligence", "inventory.json"); const before = (await stat(target)).mtimeMs; const readable = await runContentCli({ command: "status", argv: [], rootDir }); const json = await runContentCli({ command: "status", argv: ["--json"], rootDir }); assert.match(readable, /Content intelligence status/); assert.equal(typeof json, "object"); assert.equal((await stat(target)).mtimeMs, before); await assert.rejects(runContentCli({ command: "status", argv: ["--unexpected"], rootDir }), /Invalid argument/); });
 test("video plan uses structured claims and preserves Spinalonga safeguards", async () => { const plan = await createVideoPlan({ rootDir, slug: "spinalonga-why-fortified-changing-uses" }); assert.equal(plan.publicationReadiness.requiresHumanReview, true); assert.match(JSON.stringify(plan), /Tentative List/); assert.match(JSON.stringify(plan), /withdrawn at the request of the State Party/); assert.ok(plan.editorialCore.factualScope.some((claim) => /withdrawn at the request of the State Party/.test(claim.claim) && claim.parseState === "review required")); assert.match(JSON.stringify(plan), /Modern context only/); assert.match(plan.youtubeMetadata.imageCreditBlock, /^Photo: Nikos Pasparakis \/ Elounda Traditional Homes of Crete$/); assert.equal("finalVoiceOverScript" in plan, false); });
 test("path traversal and invalid months are rejected", () => { assert.throws(() => assertMonth(0)); assert.throws(() => assertSlug("../article")); assert.throws(() => contentPath(rootDir, "..", "escape")); });
