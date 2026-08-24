@@ -1,21 +1,37 @@
-# ICM Workspace Architect Skill
+# ICM Workspace Architect
 
-A reusable agent skill for designing folder-based AI workspaces from the Clief Notes / Interpretable Context Methodology (ICM) principles.
+A reusable agent package for applying Clief Notes / Interpretable Context Methodology (ICM) reasoning to repositories and file-based workflows.
+
+## Permanent rule
+
+**Always use ICM reasoning. Do not force a fixed ICM folder structure.**
+
+Read `ICM_RULES.md` as the canonical reasoning standard. The methodology should govern context routing, workspace/stage boundaries, stable-vs-working context, human review, and deterministic-vs-AI work even when a project keeps its existing folder layout.
 
 ## What it does
 
 - audits an existing repository before reorganizing it;
 - decides between workspace, sequential-stage, and hybrid architectures;
-- creates a compact root routing map;
-- writes focused workspace/stage `CONTEXT.md` contracts;
+- creates compact routing rather than broad context loading;
+- writes focused workspace/stage `CONTEXT.md` contracts when justified;
 - separates stable reference context (L3) from per-run working artifacts (L4);
 - makes human review gates explicit;
 - identifies deterministic steps that should become scripts rather than repeated AI work;
 - can scaffold an approved architecture without overwriting existing files.
 
+## Cold-start objective
+
+A new agent should be able to enter a project and follow:
+
+```text
+root map -> route task -> local context -> exact procedure/references -> current artifacts
+```
+
+It should not need to recursively read the repository or rediscover unrelated project rules before acting.
+
 ## Install
 
-Place the whole `icm-workspace-architect` folder in the skill directory used by your agent runtime.
+Place the whole `icm-workspace-architect` folder in the skill/procedure directory used by the agent runtime.
 
 Examples:
 
@@ -23,15 +39,23 @@ Examples:
 .claude/skills/icm-workspace-architect/
 ```
 
-or, where the repository already uses a generic agent-skill convention:
+or, where the repository already uses a generic agent convention:
 
 ```text
 .agents/skills/icm-workspace-architect/
 ```
 
-Keep the repository's existing convention rather than creating a second competing skill system.
+Keep the repository's existing convention rather than creating a second competing system.
 
-## Typical triggers
+For repositories where ICM should always govern architecture decisions, add a thin pointer in the canonical root instruction file to:
+
+```text
+.agents/skills/icm-workspace-architect/ICM_RULES.md
+```
+
+Do not copy the full ICM rules into multiple runtime adapters.
+
+## Typical triggers for the architect procedure
 
 - "Organize this repo using ICM."
 - "Audit my folder structure and context loading."
@@ -40,9 +64,11 @@ Keep the repository's existing convention rather than creating a second competin
 - "My AGENTS.md/CLAUDE.md is too large — restructure it."
 - "Separate stable context from working files."
 
+ICM reasoning itself is broader than these triggers and should remain the default architecture lens whenever the package is wired into a project.
+
 ## Safe default
 
-The skill proposes first and writes second. It should not move, delete, or overwrite project files without explicit approval.
+The architect proposes first and writes second. It should not move, delete, or overwrite project files without explicit approval.
 
 ## Optional scaffolder
 
