@@ -18,6 +18,7 @@ const REQUIRED_HEADINGS = [
   "# Facts Supplied by Nikos",
   "# Source Requirements",
   "# Claims That Must Not Be Published Without Verification",
+  "# Editorial Interpretation",
   "# Image Plan and Rights",
   "# Required Internal Links",
   "# Target Article Path",
@@ -88,6 +89,18 @@ test("subordinate workflow activities do not require a second initial mode", asy
   assert.match(orchestrator, /Choose the mode that matches the requested primary outcome\./);
   assert.match(orchestrator, /Supporting activities such as claim review, validation, and image processing do not create a second mode\./);
   assert.match(orchestrator, /Stop only when the outcome is genuinely ambiguous\./);
+});
+
+test("historical drafting requires editorial interpretation between claim review and draft", async () => {
+  const lifecycle = await readRepositoryFile("docs/operations/blog-lifecycle.md");
+  const skill = await readRepositoryFile(".agents/skills/blog-research-article/SKILL.md");
+  const editorial = await readRepositoryFile(".ai/prompts/blog-editorial-system.md");
+
+  assert.match(lifecycle, /claim review → editorial interpretation → draft/);
+  assert.match(skill, /## Editorial-interpretation gate for historical \/ cultural articles/);
+  assert.match(skill, /Do not draft until this interpretation forms a coherent story\./);
+  assert.match(editorial, /## Historical \/ Cultural Microhistory Baseline/);
+  assert.match(editorial, /The dossier constrains the story; it should not dictate the narrative structure\./);
 });
 
 test("new topic briefs contain the required orchestration headings", async (t) => {
