@@ -52,6 +52,11 @@ A household therefore lived among several kinds of water, but they were not inte
 
 That distinction makes the *vlychades* easier to understand.
 
+<figure>
+  <img src="/images/blog/elounda-vlychades-brackish-water/schisma-shoreline-setting-1600.webp" alt="Rocky shallows opening into Elounda Bay, with a small boat and low hills across the water." loading="lazy" />
+  <figcaption>The Schisma shoreline, where shallow coastal water meets Elounda Bay. Provided by Elounda Traditional Homes.</figcaption>
+</figure>
+
 Brackish water can form near a coast when groundwater and seawater mix. Rainfall, drought, pumping and underground pathways can affect that balance. Research elsewhere in Crete and the Mediterranean supports those general processes, but no site-specific survey has mapped the underground routes, geological origins or chemistry of the Schisma and Mavrikiano waters.
 
 For the history of daily life, the important point is simpler. Water beside the sea could still have practical value even when it was not water a household would choose for drinking.
@@ -126,6 +131,11 @@ It is easy to underestimate what this meant physically. Water had weight. Wet te
 
 The *vlychada* therefore belonged not only to the coast but to the working geography of the settlement. House, path, water and shoreline were connected through necessity.
 
+<figure>
+  <img src="/images/blog/elounda-vlychades-brackish-water/schisma-roadside-access-1600.webp" alt="Clear shallow water and a stone-edged channel beneath a low concrete roadside structure, with steps at the right." loading="lazy" />
+  <figcaption>The roadside edge above the Schisma outlet, showing the relationship between the covered water, steps and street. Provided by Elounda Traditional Homes.</figcaption>
+</figure>
+
 The missing details should not be invented. The sources do not tell us on which days people came, precisely what they carried, which tools they used, where laundry was dried or how often the journey was made.
 
 No invented scene is needed to understand the basic relationship. The water was somewhere else. People had to go to it.
@@ -182,6 +192,11 @@ By the early 2020s, local newspaper reports were no longer describing the *vlych
 In 2022, Patris contrasted the earlier laundry-rinsing use at Mavrikiano with concern about the deteriorating cover and danger at the site. In 2023, Anatoli discussed the condition of both *vlychades* and called for attention to them.
 
 The emphasis had moved from use to memory and maintenance. Yet the water remained. At Schisma, the 2026 video shows it visibly moving. At Mavrikiano, water remains visible beneath and around the covered structure.
+
+<figure>
+  <img src="/images/blog/elounda-vlychades-brackish-water/mavrikiano-exterior-scale-1600.webp" alt="Stone-and-concrete enclosure beside broad stone steps and shallow seawater, with hillside buildings behind." loading="lazy" />
+  <figcaption>The Mavrikiano vlychada enclosure between the shoreline steps and lower hillside. Provided by Elounda Traditional Homes.</figcaption>
+</figure>
 
 Most former working places are understood through a building that survives after the work has stopped: a mill without grain, a factory without workers, a warehouse without goods. The *vlychades* preserve a different contrast. The water that gave the places value is still present. What has fallen out of ordinary use is the human routine organised around it.
 
