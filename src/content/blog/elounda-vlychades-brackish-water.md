@@ -22,7 +22,7 @@ Before water could be assumed to be available inside the home, the practical que
 
 The surviving evidence from Elounda is narrow but significant. Published local testimony records washing μαλλιά at the Schisma *vlychada*. A separate local press report states that women from Elounda went to the covered *vlychada* at Mavrikiano during earlier periods of water scarcity to rinse laundry. These accounts place the two shoreline waters within household work, not only within geology.
 
-The record does not describe a complete washing routine or establish when these uses ended. It does, however, preserve a change in the meaning of the places. Reports of earlier use concern practical work. Present-day photographs and video show water and surviving structures, while recent reporting discusses their condition rather than continued household work.
+The record does not describe a complete washing routine or establish when these uses ended. It does, however, preserve a change in the meaning of the places. Reports of earlier use concern practical work. Present-day photographs and video show water and surviving structures, while recent reporting discusses memory, condition and safety rather than continued household work. The water is still present; the practical need to come to these places is no longer documented as part of ordinary household life.
 
 For the wider geographical setting, see [Elounda and Mirabello Bay](/en/blog/elounda-and-mirabello-bay/).
 
@@ -30,9 +30,9 @@ For the wider geographical setting, see [Elounda and Mirabello Bay](/en/blog/elo
 
 The exact history of household water supply in Elounda and Mavrikiano has not yet been reconstructed. There is no verified local chronology showing when particular houses received piped water, which earlier sources they used, or when washing machines became common.
 
-What can be established is more specific. The Mavrikiano account connects laundry rinsing with earlier periods of water scarcity. Nearby Spinalonga provides independently documented evidence of another response to limited freshwater: because the island had no natural springs, roofs, vaults, roads and conduits directed rainfall into cisterns. That system is evidence for Spinalonga, not proof that every mainland house had a cistern.
+What can be established is more specific. The Mavrikiano account connects laundry rinsing with earlier periods of water scarcity. Nearby Spinalonga shows a different response to limited water: because the island had no natural springs, roofs, vaults, roads and conduits directed rainfall into cisterns. That island system provides wider context for water scarcity, not evidence that mainland Elounda households used the same method.
 
-Together, these sources show why the quality and intended use of water mattered. Rainwater stored for essential needs, groundwater reached through wells or boreholes, brackish shoreline water and seawater were not interchangeable. The evidence does not reveal the complete Elounda system, but it does show that a brackish source could have practical value when better water was limited.
+The quality and intended use of water therefore mattered. Stored rainwater, groundwater reached through wells or boreholes, brackish shoreline water and seawater were not interchangeable. The evidence does not reveal the complete Elounda system, but it does show that locally reported brackish water could have practical value for work that did not require drinking water.
 
 ## Two working places on the shoreline
 
@@ -82,7 +82,7 @@ The two reports document different things. At Schisma there is an attributed fam
 
 Within those limits, the reports place the water within women's household labour. The Mavrikiano account in particular shows a task that required people to go to the water. It suggests that brackish water could still have practical value for a specific stage of household work, even though it should not be treated as drinking water.
 
-Nothing in the available record supports reconstructing a social scene around that work. There is no evidence here for regular washing days, gatherings, shared rituals, gossip, transport routes, washing stones, beating tools, soap practices, drying grounds or a standard division of labour. Those details remain questions for oral history rather than material for narrative reconstruction.
+The available record does not support reconstructing a wider social scene or complete routine around that work. Those details remain questions for oral history rather than material for narrative reconstruction.
 
 ## Different water for different purposes
 
@@ -101,33 +101,23 @@ No laboratory analysis has been located for either outlet, and neither should be
 
 ## What changed—and what the record does not date
 
-The historical-use accounts speak in the past tense. In 2022, Patris contrasted the earlier Mavrikiano laundry-rinsing use with concern about the deteriorated cover and present safety. In 2023, Anatoli discussed the poor condition of both outlet areas and called for work at the sites. By then, the reports treated the *vlychades* as physical places needing attention, not as continuing locations of ordinary household work.
+By the early 2020s, local reports described the *vlychades* through memory, physical condition and safety rather than as places of continuing household work. In 2022, Patris contrasted the earlier Mavrikiano laundry-rinsing use with concern about the deteriorated cover and present safety. In 2023, Anatoli discussed the condition of both outlet areas and called for work at the sites.
 
 That change in reporting supports a loss of documented practical function. It does not identify a date or a single cause. The research has not established when piped water reached each settlement, when household supply became reliable, when washing machines became common or when the last household use of either *vlychada* occurred.
 
-Later water infrastructure may have reduced reliance on older sources, and domestic appliances may have moved washing work into the home. For Elounda, that remains contextual interpretation rather than a verified sequence. The exact transition requires municipal and utility records together with dated local testimony.
-
-Modern networks are themselves still changing. In January 2026, the Municipality of Agios Nikolaos announced a tender for Aposelemis-reservoir conveyance pipelines serving Elounda and several other settlements. That project shows continuing investment in wider supply infrastructure; it does not date the disappearance of *vlychada* use or prove a direct connection with it.
+Piped household water and domestic appliances may have reduced the practical need to use older water sources, but the Elounda chronology has not yet been established. The exact transition requires municipal and utility records together with dated local testimony.
 
 ## From working place to surviving remnant
 
-The present evidence makes the contrast visible without completing the history. At Schisma, the August 2026 photographs show the identified outlet enclosure, and the owner-recorded video shows water moving there. At Mavrikiano, the covered structure, steps and water remain visible in the supplied photographs.
-
-The local reports preserve the earlier human relationship: μαλλιά washed at Schisma according to attributed memory, and laundry rinsed by women at Mavrikiano during water-scarcity periods. The same reports and present field documentation show physical places that survive after that household role ceased to be documented as ordinary practice.
-
-This does not prove that the structures have kept their historical form, that the flow has remained constant or that no one has used the water since. It establishes a narrower microhistory: water that once had a reported practical relationship to household work is still present at places now discussed mainly through memory, condition and safety.
+The present evidence makes the contrast visible without completing the history. At Schisma, the August 2026 photographs show the identified outlet enclosure, and the owner-recorded video shows visibly moving water there. At Mavrikiano, the covered structure, steps and water remain visible in the supplied photographs. Present observation does not establish historical form or flow, but it does show that the water source itself has not disappeared.
 
 For the chronological context of the shoreline, see [A Short Chronological History of Elounda](/en/blog/elounda-history-through-its-shoreline/). For present-day orientation between the hillside village and waterfront, see [the location guide](/en/location/) and [the Mavrikiano guide](/en/guide/mavrikiano/).
 
-## What survives
+The local reports preserve the earlier human relationship: μαλλιά washed at Schisma according to attributed memory, and laundry rinsed by women at Mavrikiano during water-scarcity periods. The evidence is fragmentary, but it is enough to place people and practical use at the centre of this microhistory without inventing the missing routine.
 
-The *vlychades* matter not only because brackish water reaches the coast, but because local reporting connects that water to practical household work. The evidence is fragmentary: one attributed memory at Schisma and one stronger press account of laundry rinsing at Mavrikiano. It is enough to restore people and use to the centre of the story, but not enough to invent the missing routine.
+The water remains visible at the identified outlets. At Mavrikiano, the covered structure also survives. What has disappeared from the documented record is the ordinary household reason for coming to these places.
 
-The water remains visible at the identified outlets. At Mavrikiano, the covered physical fabric also survives. What is no longer documented as part of ordinary daily life is the reason people once had to come to these places for household work. How that relationship ended—through pipes, appliances, other changes or a combination of them—remains unresolved.
-
-Further evidence should come from municipal and utility records, field survey, seasonal water analysis and recorded interviews. Those sources may establish the water-supply chronology, the form of the historical access points and the last stages of practical use. Until then, the surviving water and structures should be read alongside the limits of the record, not as permission to complete the story by assumption.
-
-The [Traditional Homes collection](/en/houses/) remains part of Mavrikiano’s surviving stone-house landscape, but the water systems of individual houses require their own evidence.
+How that relationship ended—through piped household supply, domestic appliances, other changes or a combination of them—remains to be established. At Schisma, the direct present-day evidence still shows visibly moving water: it is the former household function, not the water source itself, that has fallen out of ordinary use.
 
 ## Sources
 
