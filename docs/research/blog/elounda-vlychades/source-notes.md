@@ -2,7 +2,7 @@
 
 ## Evidence rule
 
-The ChatGPT research dossier is the primary evidential authority for the article's linguistic, hydrogeological and chemistry claims. The Gemini dossier supplied research leads only; claims it presents as local fact are not used unless independently supported by the primary dossier or owner-supplied field identification. The Anatoli articles below are evidence of published local reporting and, where identified, attributed local testimony. They are not hydrogeological surveys.
+The ChatGPT research dossier is the primary evidential authority for the article's linguistic, hydrogeological and chemistry claims. The Gemini dossier supplied research leads only; claims it presents as local fact are not used unless independently supported by the primary dossier or owner-supplied field identification. The Anatoli articles below are evidence of published local reporting and, where identified, attributed local testimony. They are not hydrogeological surveys. Owner-supplied present-day field documentation establishes only what is directly visible at the identified outlet areas.
 
 ## Anatoli: Η υφάλμυρη βλυχάδα της Ελούντας
 
@@ -20,7 +20,7 @@ The article directly reports a brackish-water *vlychada* on the Elounda waterfro
 - **Published:** 9 December 2023
 - **URL:** https://www.anatolh.com/topikanea/agiosnikolaos/oi-dyo-vlychades-tis-elountas/
 
-The article directly reports two Elounda *vlychades*: the larger below Mavrikiano, “at Fournos”, and the smaller in front of the Community Office, “at Schisma”. It attributes to Katerina Lempidaki, president of the Elounda Cultural Association, a memory that her mother washed μαλλιά at the Schisma outlet. This is attributed local testimony, not independent evidence of a general practice, a date, a material, or identical use at Mavrikiano.
+The article directly reports two Elounda *vlychades*: the larger below Mavrikiano, “at Fournos”, and the smaller in front of the Community Office, “at Schisma”. It attributes to Katerina Lempidaki, president of the Elounda Cultural Association, a memory that her mother washed μαλλιά at the Schisma outlet. This is attributed local testimony, not independent evidence of a general practice, a date, a material, or identical use at Mavrikiano. The reporter also criticises the appearance of both outlets and calls for work at the sites. That is evidence of the report's 2023 assessment, not an engineering survey or a dated record of when practical use ended.
 
 ## Patris: Πολύ επικίνδυνο, δεν το βλέπουν;
 
@@ -29,7 +29,19 @@ The article directly reports two Elounda *vlychades*: the larger below Mavrikian
 - **Published:** 27 August 2022, 10:30
 - **URL:** https://www.patris.gr/stiles/chthes-simera-afrio/poly-epikindyno-den-to-vlepoyn/
 
-This is direct local press reporting. It describes a covered brackish *vlychada* beside the boatyard on the Elounda-to-Plaka road, and states that in earlier water-scarcity periods women from Elounda came there to rinse their laundry. It supports that limited historical use at the Mavrikiano/Fournos site only. It is not a scientific or archival record, and does not establish laundry use at Schisma, the complete washing process, water chemistry or underground origin.
+This is direct local press reporting. It describes a covered brackish *vlychada* beside the boatyard on the Elounda-to-Plaka road, and states that in earlier water-scarcity periods women from Elounda came there to rinse their laundry. It supports that limited historical use at the Mavrikiano/Fournos site only. The report describes the cover as deteriorated and dangerous in 2022, contrasting present safety concerns with the former household use. That condition assessment is reporting, not an engineering survey. The article does not establish laundry use at Schisma, the complete washing process, water chemistry, underground origin, a cessation date or the cause of the change in use.
+
+## Owner-supplied video: Schisma outlet, 23 August 2026
+
+- **Source:** owner-supplied present-day field documentation; source file retained outside the repository
+- **File:** `vlychada_elounda_spring_water.MP4`
+- **Recorded:** 23 August 2026
+- **Duration:** 13.2 seconds
+- **Location:** identified Elounda/Schisma *vlychada* outlet area
+- **Direct observation:** visibly moving water is present at the outlet
+- **Provenance:** recorded and supplied by the owner; SHA-256 `9B3140B3FFCE32081B81BFA00B45513325864A6F3E9A74C816F0403874264EB9`
+
+Safe wording is: “An owner-recorded video from 23 August 2026 shows visibly moving water at the identified Elounda/Schisma outlet area.” The recording supports present-day visible emergence only. It does not establish the underground route, geological origin, recharge area, formal spring classification, chemistry, potability, historical use, historical flow rate or continuous year-round behaviour. The video is an evidence record, not a committed publication asset.
 
 ## Material claims
 
@@ -37,10 +49,12 @@ This is direct local press reporting. It describes a covered brackish *vlychada*
 | --- | --- | --- | --- | --- | --- |
 | Two *vlychades* are described on the Elounda waterfront | Anatoli 2023 and 2025; owner-supplied field identification, 4 August 2026 | Direct local reporting plus verified local field identification | Supported | Two locally recognised *vlychada* outlet areas have been field-identified on the Elounda waterfront. | Reporting and field identification do not establish hydrology. |
 | Vlychada 1 is the Elounda/Schisma waterfront outlet | Owner-supplied local field identification, 4 August 2026; Anatoli 2023 and 2025 | Verified local field identification; direct local reporting | Verified local field identification | The Elounda or Schisma *vlychada* is beside Poulis Restaurant and opposite the First Port Department. | The reports name the Community Office/Schisma area but do not provide exact coordinates. |
+| Visibly moving water is present at the identified Schisma outlet | Owner-supplied video, recorded 23 August 2026 | Direct present-day field documentation | Directly observed | An owner-recorded video from 23 August 2026 shows visibly moving water at the identified Elounda/Schisma outlet area. | Present-day visible emergence only; no inference about hydrogeology, chemistry, potability, historical use, past flow or year-round continuity. |
 | Vlychada 2 is at Mavrikiano, κάτω Φούρνου | Anatoli 2023; Patris 2022; owner-supplied local field identification, 4 August 2026; labelled supplied photograph | Direct local reporting; verified local field identification; documentary image | Supported | The Mavrikiano *vlychada* is locally identified as κάτω Φούρνου (Kato Fournou). | The photograph and reporting do not establish the flow's underground course. |
 | The coordinates identify present locally recognised outlet areas | Owner-supplied local field identification, 4 August 2026 | Verified local field identification | Verified local field identification | The coordinates locate the present locally recognised outlet areas. | They are not legal boundaries or scientifically surveyed spring origins. |
 | The Schisma outlet was used to wash μαλλιά | Anatoli 2023; Anatoli 2025 | Attributed local testimony (2023); direct published local reporting without identified witness (2025) | Limited support | According to local reporting by Anatoli, μαλλιά were washed at the Schisma outlet. | The sources do not specify the material, process, date, frequency or use at Mavrikiano; do not broaden this into a general laundry history. |
 | Women historically rinsed laundry at the covered Mavrikiano/Fournos *vlychada* | Patris 2022 | Direct local press reporting | Supported by local press reporting | A local press report states that women from Elounda came to rinse laundry there during earlier water-scarcity periods. | This is not a scientific or archival record; it does not establish use at Schisma or the complete washing process. |
+| Recent reporting treats the outlets through condition and safety rather than continued household work | Patris 2022; Anatoli 2023 | Direct local reporting and editorial assessment | Supported as a description of the reports | By 2022–2023, local reports discussed the outlets' physical condition and safety while describing household use as earlier or remembered practice. | This supports a change in documented function, not an exact cessation date, a complete abandonment history or a cause such as pipes or washing machines. |
 | Complete underground routes are known | No site-specific survey located | No supporting evidence | Unverified | Do not state this. | No tracing, geophysical study, borehole correlation or site-specific hydrogeological survey establishes either route. |
 | Both flows are scientifically confirmed karst springs | No site-specific survey located | No supporting evidence | Unverified | Do not state this. | Their formal hydrogeological classification is unknown. |
 | Site-specific chemistry has been measured | No laboratory dataset located | No supporting evidence | Unverified | Do not state this. | “Brackish” is a local reported description; no publication-ready analytical values are available. |
@@ -79,6 +93,7 @@ Both supplied JPEGs were opened successfully, are upright JPEGs (EXIF orientatio
 | --- | --- |
 | Two vlychades exist on the Elounda waterfront | Supported by local reporting and local field identification |
 | Vlychada 1 is the Schisma/Elounda waterfront outlet | Verified local field identification |
+| Visibly moving water is present at the identified Schisma outlet on 23 August 2026 | Directly observed in owner-supplied field video; hydrogeological and historical inference excluded |
 | Vlychada 2 is at Mavrikiano, κάτω Φούρνου | Supported by local field identification and labelled photograph |
 | Women historically rinsed laundry at the covered Mavrikiano/Fournos vlychada | Supported by local press reporting |
 | Both vlychades were laundry sites | Unverified |
