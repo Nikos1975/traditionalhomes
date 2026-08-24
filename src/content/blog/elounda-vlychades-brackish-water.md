@@ -1,8 +1,8 @@
 ---
 title: "The Vlychades of Elounda: Between Fresh Water and the Sea"
 description: "A research-based account of Elounda’s vlychades: locally named brackish water flows, coastal groundwater, rainwater cisterns and the difficult history of managing water in Mirabello."
-pubDate: 2026-08-04
-draft: true
+pubDate: 2026-08-24
+draft: false
 category: "History"
 region: "Elounda and Mirabello Bay, Lasithi, Eastern Crete"
 tags:
