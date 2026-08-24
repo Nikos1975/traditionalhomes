@@ -17,8 +17,9 @@ Choose the mode that matches the requested primary outcome. Supporting activitie
 
 ## Universal controls
 
-- Read `AGENTS.md`, `CLAUDE.md`, this file, the routed skill, and `docs/operations/blog-production.md` before acting. Read the brand and blog editorial sources when the routed skill requires editorial judgment.
+- Assume the runtime has already loaded the root project instructions. Do not reread unchanged `AGENTS.md` or `CLAUDE.md` inside the same task. Read this file, the one routed skill, and `docs/operations/blog-production.md`; load brand/editorial references only when the routed skill or editorial judgment requires them.
 - Use the existing topic brief and research packet as the source of truth when they exist. A new-article run may scaffold its packet before it exists; all other modes stop and report a missing record rather than inventing one.
+- Search `docs/agent-handoff-notes.md` only for the exact article slug, PR, or blocker when historical context is required. Do not read the full handoff archive by default.
 - Manual editorial approval is required before a publication workflow can change draft state. There is no automatic publication and no automatic merge.
 - Keep an exact approved file scope. Stop on an unsupported claim, unclear image rights or attribution, unexpected files, missing required approval, or a failed required validation gate.
 
