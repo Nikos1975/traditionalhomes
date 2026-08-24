@@ -10,6 +10,7 @@ const scriptRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '.
 
 function parseArgs(argv) {
   let root = scriptRoot;
+  let expectedAhead;
 
   for (let index = 0; index < argv.length; index += 1) {
     if (argv[index] === '--root' && argv[index + 1]) {
@@ -17,10 +18,22 @@ function parseArgs(argv) {
       index += 1;
       continue;
     }
-    throw new Error(`usage: node scripts/pr-preflight.mjs [--root <worktree>]`);
+    if (argv[index] === '--expected-ahead' && argv[index + 1]) {
+      const raw = argv[index + 1];
+      const parsed = Number(raw);
+      if (!/^\d+$/.test(raw) || !Number.isSafeInteger(parsed) || parsed < 1) {
+        throw new Error('--expected-ahead must be a positive integer');
+      }
+      expectedAhead = parsed;
+      index += 1;
+      continue;
+    }
+    throw new Error(
+      'usage: node scripts/pr-preflight.mjs [--root <worktree>] [--expected-ahead <positive integer>]',
+    );
   }
 
-  return { root };
+  return { expectedAhead, root };
 }
 
 function git(root, args, { input } = {}) {
@@ -84,9 +97,10 @@ function printFailure(errors) {
 }
 
 function main() {
+  let expectedAhead;
   let root;
   try {
-    ({ root } = parseArgs(process.argv.slice(2)));
+    ({ expectedAhead, root } = parseArgs(process.argv.slice(2)));
   } catch (error) {
     printFailure([['USAGE', error.message]]);
     return;
@@ -166,7 +180,15 @@ function main() {
   if (!Number.isInteger(ahead) || !Number.isInteger(behind)) {
     errors.push(['DIVERGENCE_COUNT', `could not compare ${BASE}...HEAD`]);
   } else {
-    if (ahead !== 1) errors.push(['AHEAD_EXPECTED_ONE', `expected exactly 1 commit ahead of ${BASE}, found ${ahead}`]);
+    if (expectedAhead === undefined && ahead < 1) {
+      errors.push(['AHEAD_REQUIRED', `expected at least 1 commit ahead of ${BASE}, found ${ahead}`]);
+    }
+    if (expectedAhead !== undefined && ahead !== expectedAhead) {
+      errors.push([
+        'AHEAD_EXPECTED_COUNT',
+        `expected exactly ${expectedAhead} commit(s) ahead of ${BASE}, found ${ahead}`,
+      ]);
+    }
     if (behind !== 0) errors.push(['BEHIND_MAIN', `branch is ${behind} commit(s) behind ${BASE}`]);
   }
 

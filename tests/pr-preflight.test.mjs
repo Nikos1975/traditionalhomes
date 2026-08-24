@@ -63,8 +63,8 @@ function fixture() {
   return { remote, seed, worktree };
 }
 
-function preflight(root) {
-  return spawnSync(process.execPath, [cli, '--root', root], {
+function preflight(root, args = []) {
+  return spawnSync(process.execPath, [cli, '--root', root, ...args], {
     cwd: repoRoot,
     encoding: 'utf8',
   });
@@ -93,18 +93,65 @@ test('passes a clean one-commit branch and reports exact PR scope separately fro
   assert.match(result.stdout, /PR PREFLIGHT: PASS\s*$/);
 });
 
-test('fails inherited history when the branch is more than one commit ahead', () => {
+test('passes a clean multi-commit branch when no expected ahead count is supplied', () => {
   const { worktree } = fixture();
-  commit(worktree, 'first.txt', 'first\n', 'first inherited commit');
-  commit(worktree, 'second.txt', 'second\n', 'second inherited commit');
+  commit(worktree, 'first.txt', 'first\n', 'first feature commit');
+  commit(worktree, 'second.txt', 'second\n', 'second feature commit');
+
+  const result = preflight(worktree);
+
+  assert.equal(result.status, 0, result.stderr || result.stdout);
+  assert.match(result.stdout, /^AHEAD\s+2$/m);
+  assert.match(result.stdout, /^FILES\s+2$/m);
+  assert.match(result.stdout, /PR PREFLIGHT: PASS\s*$/);
+});
+
+test('--expected-ahead 1 rejects a clean two-commit branch', () => {
+  const { worktree } = fixture();
+  commit(worktree, 'first.txt', 'first\n', 'first feature commit');
+  commit(worktree, 'second.txt', 'second\n', 'second feature commit');
+
+  const result = preflight(worktree, ['--expected-ahead', '1']);
+
+  assert.notEqual(result.status, 0);
+  assert.match(result.stdout, /^AHEAD\s+2$/m);
+  assert.match(result.stdout, /^ERROR\s+AHEAD_EXPECTED_COUNT\b/m);
+  assert.match(result.stdout, /expected exactly 1 commit\(s\) ahead of origin\/main, found 2/);
+  assert.match(result.stdout, /PR PREFLIGHT: FAIL\s*$/);
+});
+
+test('--expected-ahead 2 accepts a clean two-commit branch', () => {
+  const { worktree } = fixture();
+  commit(worktree, 'first.txt', 'first\n', 'first feature commit');
+  commit(worktree, 'second.txt', 'second\n', 'second feature commit');
+
+  const result = preflight(worktree, ['--expected-ahead', '2']);
+
+  assert.equal(result.status, 0, result.stderr || result.stdout);
+  assert.match(result.stdout, /^AHEAD\s+2$/m);
+  assert.match(result.stdout, /PR PREFLIGHT: PASS\s*$/);
+});
+
+test('requires at least one commit ahead when --expected-ahead is omitted', () => {
+  const { worktree } = fixture();
 
   const result = preflight(worktree);
 
   assert.notEqual(result.status, 0);
-  assert.match(result.stdout, /^AHEAD\s+2$/m);
-  assert.match(result.stdout, /^FILES\s+2$/m);
-  assert.match(result.stdout, /^ERROR\s+AHEAD_EXPECTED_ONE\b/m);
-  assert.match(result.stdout, /PR PREFLIGHT: FAIL\s*$/);
+  assert.match(result.stdout, /^AHEAD\s+0$/m);
+  assert.match(result.stdout, /^ERROR\s+AHEAD_REQUIRED\b/m);
+});
+
+test('--expected-ahead accepts only positive integers', () => {
+  const { worktree } = fixture();
+  commit(worktree, 'feature.txt', 'feature\n', 'feature commit');
+
+  for (const invalid of ['0', '-1', '1.5', 'not-a-number']) {
+    const result = preflight(worktree, ['--expected-ahead', invalid]);
+    assert.notEqual(result.status, 0, `accepted --expected-ahead ${invalid}`);
+    assert.match(result.stdout, /^ERROR\s+USAGE\b/m);
+    assert.match(result.stdout, /--expected-ahead must be a positive integer/);
+  }
 });
 
 test('reports staged changes independently and fails a dirty worktree', () => {
