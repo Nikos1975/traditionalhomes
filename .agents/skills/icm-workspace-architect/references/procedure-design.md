@@ -20,6 +20,8 @@ A reusable procedure or meaningful sequential stage should define:
 - review boundary; and
 - next allowed action.
 
+When safe scope is not already obvious—especially for autonomous, broad, or optimization work—the contract should distinguish what may be inspected, the smallest surface that may be modified, protected or read-only state, and actions requiring approval. Do not require file-by-file enumeration when existing boundaries are sufficient.
+
 ## Separate-file test
 
 Do not add a new ICM file unless it:

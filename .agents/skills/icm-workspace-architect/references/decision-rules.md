@@ -12,6 +12,8 @@ A stage is a sequential transformation. Create one when it consumes a defined ar
 
 Add a boundary only when it solves an observed routing, context, handoff, ownership, or validation problem. Preserve working conventions and prefer the fewest boundaries that clearly isolate context.
 
+When capability and correctness are equivalent, prefer the option with lower total implementation, context, routing, maintenance, abstraction, and operational cost. A small gain should justify the complexity it adds.
+
 ## Stable reference vs working artifact
 
 Use L3 for persistent constraints and reusable patterns such as schemas, style rules, conventions, and reusable procedures.
@@ -23,6 +25,10 @@ A useful test: will this file be reused substantially unchanged across many futu
 ## Deterministic mechanism, procedure, or judgment
 
 Use a deterministic script or test when correct behavior is mechanical and testable, including parsing, normalization, validation, indexing, checksums, and repeatable file operations.
+
+When success is mechanically testable, prefer success criteria and evaluation mechanisms that are not modified by the same candidate change. If tests, benchmarks, or acceptance criteria must change, make that explicit task scope rather than silently redefining success.
+
+For verbose deterministic processes, capture complete output outside active model context when practical; load the smallest summary needed for the current decision, then expand only into relevant diagnostics if the summary is insufficient or indicates failure.
 
 Use a stable rule, template, or procedure when the reusable value is workflow logic, constraints, or a repeatable decision process that still requires contextual execution.
 

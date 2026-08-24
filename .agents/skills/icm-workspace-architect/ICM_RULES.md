@@ -21,7 +21,7 @@ When entering an unfamiliar project or beginning a materially different task:
 
 ## Selective context loading
 
-Route before loading detailed context. Every additional instruction, reference, procedure, or skill read must answer a specific unresolved question required to execute the active task. Stop loading context once the task can be performed correctly.
+Route before loading detailed context. Every context load must answer a current unresolved question required to execute the active task. Stop loading context once the task can be performed correctly.
 
 - Do not read sibling procedures or references speculatively or preload context for possible future use.
 - Do not read compatibility or discovery wrappers when authoritative routing has already resolved the route.
