@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "test": "node --test",
+    "pr:preflight": "node scripts/pr-preflight.mjs",
     "dev": "astro dev",
     "build": "astro build",
     "image:process": "node scripts/images/process-image.mjs",
