@@ -27,3 +27,7 @@ The website provides official accommodation descriptions, location information, 
 - [Walking around Elounda](https://traditional-homes.gr/en/blog/walking-around-elounda/): Walking landscapes, route conditions, and practical safety.
 - [Elounda history through its shoreline](https://traditional-homes.gr/en/blog/elounda-history-through-its-shoreline/): Historical overview of the Elounda coastline.
 - [Elounda salt pans and Poros windmills](https://traditional-homes.gr/en/blog/elounda-salt-pans-and-poros-windmills/): History of the salt pans and windmills.
+
+## Language versions
+
+- [Vrouchas Reiseführer](https://traditional-homes.gr/de/reisefuehrer/vrouchas/): German-language version of the Vrouchas guide. The rest of the site is currently English only.

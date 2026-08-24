@@ -1,5 +1,6 @@
 ---
 import { defaultLocale, type Locale } from '../i18n/config';
+import { resolveAuthoredHref } from '../i18n/route-map';
 import { getCommonCopy } from '../i18n/translate';
 
 interface Props {
@@ -8,6 +9,22 @@ interface Props {
 
 const { locale = defaultLocale } = Astro.props;
 const common = getCommonCopy(locale);
+
+// Authored hrefs are resolved through the route map, so a locale that owns a
+// translated route gets its own public URL. Sections with no page in the active
+// locale keep the default-locale URL and are tagged with hreflang, which keeps
+// the fallback explicit instead of silent.
+const withHreflang = <T extends { href: string; label: string }>(links: readonly T[]) =>
+  links.map((link) => {
+    const resolved = resolveAuthoredHref(locale, link.href);
+
+    return { label: link.label, href: resolved.href, hreflang: resolved.hreflang };
+  });
+
+const collectionLinks = withHreflang(common.footer.collection.links);
+const informationLinks = withHreflang(common.footer.information.links);
+const legalLinks = withHreflang(common.footer.legal.links);
+
 const currentYear = new Date().getFullYear();
 const bookingUrl = 'https://traditionalhomes.reserve-online.net/';
 ---
@@ -43,8 +60,8 @@ const bookingUrl = 'https://traditionalhomes.reserve-online.net/';
       <div class="md:col-span-3 lg:col-span-3">
         <h3 class="font-sans font-bold text-stone-50 text-[10px] uppercase tracking-[0.2em] mb-6">{common.footer.collection.heading}</h3>
         <ul class="space-y-4 text-sm font-light">
-          {common.footer.collection.links.map((link) => (
-            <li><a href={link.href} class="hover:text-stone-50 transition-colors duration-300">{link.label}</a></li>
+          {collectionLinks.map((link) => (
+            <li><a href={link.href} hreflang={link.hreflang} class="hover:text-stone-50 transition-colors duration-300">{link.label}</a></li>
           ))}
           <li class="pt-2">
             <a
@@ -64,8 +81,8 @@ const bookingUrl = 'https://traditionalhomes.reserve-online.net/';
       <div class="md:col-span-4 lg:col-span-3">
         <h3 class="font-sans font-bold text-stone-50 text-[10px] uppercase tracking-[0.2em] mb-6">{common.footer.information.heading}</h3>
         <ul class="space-y-4 text-sm font-light">
-          {common.footer.information.links.map((link) => (
-            <li><a href={link.href} class="hover:text-stone-50 transition-colors duration-300">{link.label}</a></li>
+          {informationLinks.map((link) => (
+            <li><a href={link.href} hreflang={link.hreflang} class="hover:text-stone-50 transition-colors duration-300">{link.label}</a></li>
           ))}
         </ul>
       </div>
@@ -78,8 +95,8 @@ const bookingUrl = 'https://traditionalhomes.reserve-online.net/';
         &copy; {currentYear} {common.brand.name}. {common.footer.rights}
       </p>
       <nav class="flex flex-wrap items-center gap-x-6 gap-y-3 text-[11px] font-light tracking-wide md:justify-end" aria-label={common.footer.legal.ariaLabel}>
-        {common.footer.legal.links.map((link) => (
-          <a href={link.href} class:list={[
+        {legalLinks.map((link) => (
+          <a href={link.href} hreflang={link.hreflang} class:list={[
             'transition-colors duration-300',
             link.href.startsWith('https://') ? 'whitespace-nowrap text-stone-400 hover:text-stone-200' : 'text-stone-400/85 hover:text-stone-200'
           ]}>{link.label}</a>

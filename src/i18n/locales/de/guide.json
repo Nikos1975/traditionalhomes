@@ -1,0 +1,11 @@
+{
+  "breadcrumb": {
+    "ariaLabel": "Brotkrümelnavigation",
+    "home": "Startseite",
+    "location": "Lage"
+  },
+  "actions": {
+    "backToMap": "Zurück zur interaktiven Karte",
+    "viewProperties": "Häuser ansehen"
+  }
+}
