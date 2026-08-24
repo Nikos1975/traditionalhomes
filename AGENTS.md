@@ -2,6 +2,8 @@
 
 Use `CLAUDE.md` as the canonical project instruction file.
 
+For repository architecture, context loading, folder/workspace/stage design, and reusable workflow organization, always apply ICM reasoning from `.agents/skills/icm-workspace-architect/ICM_RULES.md`. Do not force a fixed folder tree.
+
 For every blog post, area guide, village guide, historical article, blog revision, blog audit, publication, or blog-image task, read `BLOG_ORCHESTRATOR.md` before researching, drafting, editing, validating, processing media, or publishing.
 
 For all multilingual work, follow docs/i18n/00_I18N_MASTER_PLAN.md before changing routes, pages, or translation files.
