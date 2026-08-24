@@ -6,9 +6,11 @@ This repository uses Interpretable Context Methodology (ICM) reasoning as the de
 
 Always use ICM reasoning. Do not force a fixed ICM folder structure.
 
-The canonical reusable standard is:
+The runtime-local standard is:
 
 `.agents/skills/icm-workspace-architect/ICM_RULES.md`
+
+The cross-project upstream is the pinned shared skill in `Nikos1975/nikos-agent-skills`. The source commit, path, and canonical-rules hash are recorded in `.agents/skills.lock.yaml`. Runtime work uses the local copy; it does not require access to the shared repository.
 
 `CLAUDE.md` remains the canonical project instruction file. `AGENTS.md` remains a thin wrapper for non-Claude agents. ICM does not replace either file; it governs how context is routed and how new workspace/stage boundaries are evaluated.
 
@@ -65,6 +67,10 @@ The layers are reasoning boundaries, not mandatory physical folders.
 - Create new workspaces or stages only when they reduce context leakage or clarify a real handoff.
 - Treat the actual `.agents/skills/` directory as authoritative for installed project-local skills. Do not infer that a skill exists only because an older document names it.
 - Model-specific or coordinator-specific routing documents are not universal project routers; use them only when that specific workflow is explicitly requested.
+
+## Shared-skill maintenance
+
+Shared skills are vendored locally and updated only through explicit review. Do not point runtime instructions at a floating shared branch. A shared upstream update becomes active in this project only after the local installed copy and `.agents/skills.lock.yaml` are deliberately updated together.
 
 ## Handoff archive rule
 
