@@ -23,10 +23,60 @@ const preferredFeaturedIds = [
   'elounda-history-through-its-shoreline',
   'elounda-salt-pans-and-poros-windmills',
 ];
+const featuredImageDelivery = {
+  '/images/blog/elounda-and-mirabello-bay/hero-1600.webp': {
+    src: '/images/blog/elounda-and-mirabello-bay/hero-1600.webp',
+    srcset: '/images/blog/elounda-and-mirabello-bay/hero-480.webp 480w, /images/blog/elounda-and-mirabello-bay/hero-768.webp 768w, /images/blog/elounda-and-mirabello-bay/hero-1200.webp 1200w, /images/blog/elounda-and-mirabello-bay/hero-1600.webp 1600w, /images/blog/elounda-and-mirabello-bay/hero-2400.webp 2400w',
+    width: 1600,
+    height: 900,
+    thumbnailSrc: '/images/blog/elounda-and-mirabello-bay/hero-480.webp',
+    thumbnailHeight: 270,
+  },
+  '/images/blog/elounda-beaches/hero-1600.webp': {
+    src: '/images/blog/elounda-beaches/hero-1600.webp',
+    srcset: '/images/blog/elounda-beaches/hero-480.webp 480w, /images/blog/elounda-beaches/hero-768.webp 768w, /images/blog/elounda-beaches/hero-1200.webp 1200w, /images/blog/elounda-beaches/hero-1600.webp 1600w, /images/blog/elounda-beaches/hero-2400.webp 2400w',
+    width: 1600,
+    height: 1200,
+    thumbnailSrc: '/images/blog/elounda-beaches/hero-480.webp',
+    thumbnailHeight: 360,
+  },
+  '/images/blog/welcome-to-elounda/mavrikiano-elounda-1200.webp': {
+    src: '/images/blog/welcome-to-elounda/mavrikiano-elounda-1200.webp',
+    srcset: '/images/blog/welcome-to-elounda/mavrikiano-elounda-480.webp 480w, /images/blog/welcome-to-elounda/mavrikiano-elounda-768.webp 768w, /images/blog/welcome-to-elounda/mavrikiano-elounda-1200.webp 1200w',
+    width: 1200,
+    height: 838,
+    thumbnailSrc: '/images/blog/welcome-to-elounda/mavrikiano-elounda-480.webp',
+    thumbnailHeight: 335,
+  },
+  '/images/blog/elounda-history-through-its-shoreline/elounda-gulf-1600.webp': {
+    src: '/images/blog/elounda-history-through-its-shoreline/elounda-gulf-1600.webp',
+    srcset: '/images/blog/elounda-history-through-its-shoreline/elounda-gulf-480.webp 480w, /images/blog/elounda-history-through-its-shoreline/elounda-gulf-768.webp 768w, /images/blog/elounda-history-through-its-shoreline/elounda-gulf-1200.webp 1200w, /images/blog/elounda-history-through-its-shoreline/elounda-gulf-1600.webp 1600w, /images/blog/elounda-history-through-its-shoreline/elounda-gulf-2400.webp 2400w',
+    width: 1600,
+    height: 900,
+    thumbnailSrc: '/images/blog/elounda-history-through-its-shoreline/elounda-gulf-480.webp',
+    thumbnailHeight: 270,
+  },
+  '/images/blog/elounda-salt-pans/elounda-salt-pans-poros-windmills.jfif': {
+    src: '/images/blog/elounda-salt-pans/elounda-salt-pans-poros-windmills.jfif',
+    srcset: '/images/blog/elounda-salt-pans/elounda-salt-pans-poros-windmills-480.webp 480w, /images/blog/elounda-salt-pans/elounda-salt-pans-poros-windmills.jfif 2048w',
+    width: 2048,
+    height: 1535,
+    thumbnailSrc: '/images/blog/elounda-salt-pans/elounda-salt-pans-poros-windmills-480.webp',
+    thumbnailHeight: 360,
+  },
+} as const;
+const featuredImageSizes = '(min-width: 1280px) 1216px, (min-width: 1024px) calc(100vw - 64px), (min-width: 640px) calc(100vw - 48px), calc(100vw - 32px)';
 const featuredPosts = preferredFeaturedIds
   .map(id => posts.find(post => post.id.toLowerCase() === id.toLowerCase() && post.data.image?.startsWith('/')))
   .filter((post): post is typeof posts[number] => Boolean(post))
   .slice(0, 5);
+const featuredItems = featuredPosts
+  .map(post => {
+    const image = featuredImageDelivery[post.data.image as keyof typeof featuredImageDelivery];
+    return image ? { post, image } : undefined;
+  })
+  .filter((item): item is NonNullable<typeof item> => Boolean(item));
+const initialFeaturedImage = featuredItems[0]?.image;
 const categories = Array.from(new Set(posts.map(post => categoryLabel(post.data.category))));
 const postsByCategory = categories.map(category => ({
   category,
@@ -39,6 +89,19 @@ const postsByCategory = categories.map(category => ({
   description="Stories, travel guides, and updates from Elounda Traditional Homes in Crete."
   canonicalUrl={`https://traditional-homes.gr${blogIndexPath(defaultLocale)}`}
 >
+  <Fragment slot="head">
+    {initialFeaturedImage && (
+      <link
+        rel="preload"
+        as="image"
+        href={initialFeaturedImage.src}
+        imagesrcset={initialFeaturedImage.srcset}
+        imagesizes={featuredImageSizes}
+        fetchpriority="high"
+      />
+    )}
+  </Fragment>
+
   <div class="site-max site-pad pb-16 pt-20 md:pb-24 md:pt-28">
 
     <nav class="text-[10px] uppercase tracking-[0.4em] text-stone-400 mb-12 font-bold" aria-label="Breadcrumb">
@@ -60,11 +123,11 @@ const postsByCategory = categories.map(category => ({
       <p class="text-stone-400 text-lg">No posts yet. Check back soon.</p>
     ) : (
       <div class="space-y-16">
-        {featuredPosts.length > 0 && (
+        {featuredItems.length > 0 && (
           <section class="blog-featured-hero" aria-labelledby="featured-article-heading" data-blog-hero>
             <div class="relative overflow-hidden rounded-xl border border-stone-200 bg-stone-100 shadow-sm">
               <div class="blog-featured-stage relative min-h-[34rem] overflow-hidden bg-stone-200 md:min-h-[38rem]" data-blog-featured-stage>
-                {featuredPosts.map((post, index) => (
+                {featuredItems.map(({ post, image: featuredImage }, index) => (
                   <article
                     class="blog-featured-slide absolute inset-0"
                     data-blog-slide
@@ -72,9 +135,18 @@ const postsByCategory = categories.map(category => ({
                   >
                     <a href={blogArticlePath(post.id, defaultLocale)} class="group/hero block h-full">
                       <img
-                        src={post.data.image}
+                        src={index === 0 ? featuredImage.src : undefined}
+                        srcset={index === 0 ? featuredImage.srcset : undefined}
+                        data-src={index > 0 ? featuredImage.src : undefined}
+                        data-srcset={index > 0 ? featuredImage.srcset : undefined}
+                        data-blog-slide-image
+                        sizes={featuredImageSizes}
                         alt={post.data.imageAlt ?? ''}
+                        width={featuredImage.width}
+                        height={featuredImage.height}
                         loading={index === 0 ? 'eager' : 'lazy'}
+                        fetchpriority={index === 0 ? 'high' : undefined}
+                        decoding="async"
                         class="absolute inset-0 h-full w-full object-cover transition-transform duration-[1200ms] ease-out motion-safe:group-hover/hero:scale-[1.025]"
                       />
                       <div class="absolute inset-0 bg-gradient-to-t from-stone-950/55 via-stone-900/18 to-transparent" aria-hidden="true"></div>
@@ -103,10 +175,10 @@ const postsByCategory = categories.map(category => ({
                 ))}
 
                 <div class="absolute right-4 top-4 z-20 flex items-center gap-2 rounded-full border border-white/30 bg-stone-50/85 px-3 py-2 text-xs font-semibold text-stone-700 shadow-sm backdrop-blur-sm sm:right-6 sm:top-6">
-                  <span data-blog-counter>1 / {featuredPosts.length}</span>
+                  <span data-blog-counter>1 / {featuredItems.length}</span>
                 </div>
 
-                {featuredPosts.length > 1 && (
+                {featuredItems.length > 1 && (
                   <div class="absolute bottom-5 right-5 z-20 flex items-center gap-2 sm:bottom-8 sm:right-8">
                     <button type="button" class="blog-featured-control" data-blog-prev aria-label="Show previous featured article">
                       <span aria-hidden="true">&larr;</span>
@@ -118,9 +190,9 @@ const postsByCategory = categories.map(category => ({
                 )}
               </div>
 
-              {featuredPosts.length > 1 && (
+              {featuredItems.length > 1 && (
                 <div class="blog-featured-tablist flex gap-2 overflow-x-auto overscroll-x-contain border-t border-stone-200 bg-stone-50 p-3 snap-x snap-mandatory touch-pan-x sm:grid sm:grid-cols-2 sm:overflow-visible sm:overscroll-auto sm:snap-none sm:touch-auto lg:grid-cols-5" role="tablist" aria-label="Featured articles">
-                  {featuredPosts.map((post, index) => (
+                  {featuredItems.map(({ post, image: featuredImage }, index) => (
                     <button
                       type="button"
                       class="blog-featured-thumb group/thumb grid w-[min(78vw,17rem)] shrink-0 snap-start grid-cols-[4.5rem_minmax(0,1fr)] items-center gap-3 rounded-lg border border-transparent p-2 text-left transition-colors hover:border-primary/40 hover:bg-white focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 sm:w-auto sm:shrink sm:basis-auto"
@@ -131,7 +203,16 @@ const postsByCategory = categories.map(category => ({
                       role="tab"
                     >
                       <span class="relative block aspect-[4/3] overflow-hidden rounded-md bg-stone-200">
-                        <img src={post.data.image} alt="" loading="lazy" class="h-full w-full object-cover transition-transform duration-500 group-hover/thumb:scale-105" />
+                        <img
+                          src={featuredImage.thumbnailSrc}
+                          alt=""
+                          width="480"
+                          height={featuredImage.thumbnailHeight}
+                          sizes="72px"
+                          loading="lazy"
+                          decoding="async"
+                          class="h-full w-full object-cover transition-transform duration-500 group-hover/thumb:scale-105"
+                        />
                       </span>
                       <span class="min-w-0">
                         <span class="mb-1 block text-[10px] font-bold uppercase tracking-[0.18em] text-primary">{String(index + 1).padStart(2, '0')}</span>
@@ -167,13 +248,6 @@ const postsByCategory = categories.map(category => ({
             <div class="grid grid-cols-1 items-stretch gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-8">
               {categoryPosts.map(post => (
                 <a href={blogArticlePath(post.id, defaultLocale)} class="group/card blog-card relative flex h-full min-h-[21rem] flex-col overflow-hidden rounded-lg border border-stone-200/90 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-stone-300 hover:shadow-card-hover focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/35">
-                  {post.data.image && (
-                    <div
-                      class="absolute inset-0 z-[1] bg-cover bg-center opacity-0 transition-opacity duration-700 group-hover/card:opacity-[0.11]"
-                      style={`background-image: url('${post.data.image}')`}
-                      aria-hidden="true"
-                    ></div>
-                  )}
                   <div class="absolute inset-0 z-0 bg-gradient-to-br from-white via-white/95 to-stone-50/90 transition-colors duration-300 group-hover/card:from-white/95 group-hover/card:via-stone-50/92 group-hover/card:to-stone-100/86" aria-hidden="true"></div>
                   <div class="relative z-10 flex h-full flex-col p-6 sm:p-7">
                     <div class="mb-6 flex items-start justify-between gap-4 text-[10px] uppercase tracking-[0.18em]">
@@ -241,10 +315,26 @@ const postsByCategory = categories.map(category => ({
     let suppressNextLinkClick = false;
     let suppressLinkClickTimer = 0;
 
+    const loadSlideImage = (slide: Element) => {
+      const image = slide.querySelector('[data-blog-slide-image]');
+      if (!(image instanceof HTMLImageElement)) return;
+
+      if (image.dataset.srcset) {
+        image.srcset = image.dataset.srcset;
+        delete image.dataset.srcset;
+      }
+
+      if (image.dataset.src) {
+        image.src = image.dataset.src;
+        delete image.dataset.src;
+      }
+    };
+
     const setActiveSlide = (nextIndex: number) => {
       if (slides.length === 0) return;
 
       activeIndex = (nextIndex + slides.length) % slides.length;
+      loadSlideImage(slides[activeIndex]);
 
       slides.forEach((slide, index) => {
         slide.setAttribute('aria-hidden', index === activeIndex ? 'false' : 'true');
