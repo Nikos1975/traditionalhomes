@@ -23,10 +23,19 @@ The website provides official accommodation descriptions, location information, 
 
 - [Blog](https://traditional-homes.gr/en/blog/): Articles about Elounda, East Crete, history, landscapes, and local life.
 - [Elounda and Mirabello Bay](https://traditional-homes.gr/en/blog/elounda-and-mirabello-bay/): Geographic orientation to Elounda and Mirabello Bay.
+- [Welcome to Elounda Traditional Homes](https://traditional-homes.gr/en/blog/welcome-to-elounda/): Introduction to the restored stone houses in Mavrikiano and Vrouchas and their village setting above Elounda Bay.
+- [Where the Sea Holds Memory](https://traditional-homes.gr/en/blog/elounda-guide/): Long-form destination essay about Elounda, Mavrikiano, Olous, Spinalonga, and the surrounding landscape.
+- [Mavrikiano Distances and Area Guide](https://traditional-homes.gr/en/blog/mavrikiano-distances-and-guide/): Driving and walking notes from Mavrikiano to Elounda, Plaka, Spinalonga, Olous, and nearby beaches.
 - [Elounda beaches](https://traditional-homes.gr/en/blog/elounda-beaches/): Practical guide to Schisma, Chiona, Kolokytha, Plaka and the distinctions between public beaches and hotel-managed sectors.
 - [Walking around Elounda](https://traditional-homes.gr/en/blog/walking-around-elounda/): Walking landscapes, route conditions, and practical safety.
 - [Elounda history through its shoreline](https://traditional-homes.gr/en/blog/elounda-history-through-its-shoreline/): Historical overview of the Elounda coastline.
 - [Elounda salt pans and Poros windmills](https://traditional-homes.gr/en/blog/elounda-salt-pans-and-poros-windmills/): History of the salt pans and windmills.
+- [How Elounda's Visitor Economy Changed](https://traditional-homes.gr/en/blog/elounda-visitor-economy/): How coastal geography, hotels, and public image shaped Elounda's modern visitor economy.
+- [Key Phases in Elounda's Hotel Development](https://traditional-homes.gr/en/blog/key-phases-in-elounda-hotel-development/): Timeline of Elounda's hotel development, from early coastal resorts to later hotel and residence projects.
+- [Elounda, Spinalonga, and Wartime Memory](https://traditional-homes.gr/en/blog/elounda-wartime-memory/): Account of Elounda, Spinalonga, and Mirabello Bay within the wider wartime history and memory of Crete.
+- [Spinalonga: Why It Was Fortified and How the Island's Uses Changed](https://traditional-homes.gr/en/blog/spinalonga-why-fortified-changing-uses/): History of Spinalonga's fortifications and its changing uses as a defended island, Ottoman town, compulsory Hansen's disease settlement, and heritage site.
+- [Moni Aretiou: A Historic Monastery Inland from Elounda](https://traditional-homes.gr/en/blog/areti-monastery-mirabello-crete/): History and architecture of Moni Aretiou in the countryside inland from Elounda, between Karydi and Fourni.
+- [The Vlychades of Elounda: Between Fresh Water and the Sea](https://traditional-homes.gr/en/blog/elounda-vlychades-brackish-water/): Research-based account of Elounda's brackish coastal water flows, cisterns, and local practices around water use.
 
 ## Language versions
 

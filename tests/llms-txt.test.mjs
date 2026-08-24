@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { execFileSync } from 'node:child_process';
-import { mkdtempSync, existsSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { mkdtempSync, existsSync, readFileSync, readdirSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { basename, join, relative, resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
@@ -9,6 +9,7 @@ import test from 'node:test';
 const repoRoot = resolve(import.meta.dirname, '..');
 const siteOrigin = 'https://traditional-homes.gr';
 const llmsSourcePath = join(repoRoot, 'public', 'llms.txt');
+const blogSourceDirectory = join(repoRoot, 'src', 'content', 'blog');
 const approvedH1 = '# Elounda Traditional Homes of Crete';
 
 function markdownLinks(content) {
@@ -21,6 +22,25 @@ function generatedPathForUrl(buildDir, url) {
   return join(buildDir, ...pathname.split('/').filter(Boolean), 'index.html');
 }
 
+function publishedSubstantiveBlogArticles() {
+  return readdirSync(blogSourceDirectory, { withFileTypes: true })
+    .filter((entry) => entry.isFile() && entry.name.endsWith('.md'))
+    .map((entry) => {
+      const sourcePath = join(blogSourceDirectory, entry.name);
+      const source = readFileSync(sourcePath, 'utf8');
+      const id = basename(entry.name, '.md').toLowerCase();
+
+      return {
+        route: `/en/blog/${id}/`,
+        sourcePath: relative(repoRoot, sourcePath).replaceAll('\\', '/'),
+        draft: /^draft:\s*true\s*$/m.test(source),
+        noindexTestVariant: id.startsWith('elounda-guide-style-'),
+      };
+    })
+    .filter((article) => !article.draft && !article.noindexTestVariant)
+    .sort((a, b) => a.route.localeCompare(b.route));
+}
+
 test('publishes a compliant agent-readable site index', () => {
   assert.ok(existsSync(llmsSourcePath), 'public/llms.txt must exist');
 
@@ -29,6 +49,7 @@ test('publishes a compliant agent-readable site index', () => {
   const nonEmptyLines = content.split(/\r?\n/).filter((line) => line.trim());
   const h1Lines = nonEmptyLines.filter((line) => /^#\s+/.test(line));
   const links = markdownLinks(content);
+  const publishedArticles = publishedSubstantiveBlogArticles();
 
   assert.equal(nonEmptyLines[0], approvedH1);
   assert.deepEqual(h1Lines, [approvedH1]);
@@ -40,6 +61,15 @@ test('publishes a compliant agent-readable site index', () => {
     const parsed = new URL(link);
     assert.equal(parsed.origin, siteOrigin);
     assert.ok(parsed.pathname.endsWith('/'), `${link} must retain its trailing slash`);
+  }
+
+  for (const article of publishedArticles) {
+    const canonicalUrl = `${siteOrigin}${article.route}`;
+    assert.equal(
+      links.filter((link) => link === canonicalUrl).length,
+      1,
+      `${article.sourcePath} must be represented once in llms.txt as ${canonicalUrl}`,
+    );
   }
 
   const buildRoot = mkdtempSync(join(tmpdir(), 'traditional-homes-llms-'));
@@ -67,6 +97,11 @@ test('publishes a compliant agent-readable site index', () => {
     for (const link of links) {
       const generatedPath = generatedPathForUrl(buildDir, link);
       assert.ok(existsSync(generatedPath), `${link} must resolve to ${basename(generatedPath)}`);
+    }
+
+    for (const article of publishedArticles) {
+      const generatedPath = generatedPathForUrl(buildDir, `${siteOrigin}${article.route}`);
+      assert.ok(existsSync(generatedPath), `${article.sourcePath} must generate ${article.route}`);
     }
   } finally {
     rmSync(buildRoot, { force: true, recursive: true });
