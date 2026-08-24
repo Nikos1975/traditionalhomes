@@ -12,6 +12,10 @@ tags:
   - mirabello
   - cisterns
   - coastal-groundwater
+image: "/images/blog/elounda-vlychades-brackish-water/hero-1600.webp"
+imageAlt: "The covered Mavrikiano vlychada beside the shoreline at Kato Fournou, with steps and small boats along Elounda Bay."
+imageCaption: "The locally identified Mavrikiano vlychada outlet area at Kato Fournou."
+imageCredit: "Provided by Elounda Traditional Homes"
 ---
 
 Elounda’s waterfront is usually understood through the sea: the sheltered bay, the shallow ground around Poros, and the road north towards Spinalonga. Yet another kind of water has been identified beside this coast. It is neither ordinary freshwater nor seawater, but water described locally as *vlychades*—brackish underground flows moving towards the waterfront.
@@ -38,7 +42,17 @@ Two locally recognised *vlychada* outlet areas have now been field-identified al
 
 The first is the Elounda or Schisma *vlychada*, beside Poulis Restaurant and opposite the First Port Department of Elounda: [Vlychada 1 on the Schisma waterfront](https://www.google.com/maps/search/?api=1&query=35.2616194%2C25.7245278), at approximately 35°15'41.83"N, 25°43'28.30"E.
 
+<figure>
+  <img src="/images/blog/elounda-vlychades-brackish-water/schisma-waterfront-1600.webp" alt="Stone-edged water beside the Schisma waterfront in Elounda, with the bay and lower village beyond." loading="lazy" />
+  <figcaption>The present Schisma outlet area on the Elounda waterfront. Provided by Elounda Traditional Homes.</figcaption>
+</figure>
+
 The second is the Mavrikiano *vlychada*, locally identified as κάτω Φούρνου (Kato Fournou): [Vlychada 2 at Mavrikiano](https://www.google.com/maps/search/?api=1&query=35.2680083%2C25.7215611), at approximately 35°16'04.83"N, 25°43'17.62"E.
+
+<figure>
+  <img src="/images/blog/elounda-vlychades-brackish-water/mavrikiano-covered-structure-1600.webp" alt="The covered stone-and-concrete structure and waterfront steps at the locally identified Mavrikiano vlychada." loading="lazy" />
+  <figcaption>The covered Mavrikiano outlet area and its present waterfront steps. Provided by Elounda Traditional Homes.</figcaption>
+</figure>
 
 These coordinates identify the locally recognised outlet areas. They do not establish the complete underground course, recharge area, flow rate, seasonal behaviour, chemistry, potability or formal hydrogeological classification of either flow.
 
@@ -64,6 +78,11 @@ A rainwater cistern is different again. It is built to collect and store rainfal
 
 These distinctions are especially important around Elounda. The salt pans and the Poros landscape are documented parts of a saline, engineered shoreline. They should not be confused with groundwater discharge, or called *vlychades* without specific local evidence. [Elounda’s salt pans and Poros windmills](/en/blog/elounda-salt-pans-and-poros-windmills/) explain that separate working landscape.
 
+<figure>
+  <img src="/images/blog/elounda-vlychades-brackish-water/mavrikiano-water-detail-1600.webp" alt="Clear shallow water against layered red and grey rock inside the covered Mavrikiano outlet area." loading="lazy" />
+  <figcaption>Water inside the locally identified Mavrikiano outlet area. The photograph does not establish its chemistry or underground course. Provided by Elounda Traditional Homes.</figcaption>
+</figure>
+
 ## Saving rainwater in the Elounda–Spinalonga landscape
 
 The strongest local evidence for historical water storage comes from nearby Spinalonga. Official archaeological documentation records that the island had no natural springs and depended on captured rainwater. Roofs, vaults, roads and other surfaces directed runoff through conduits into cisterns.
@@ -86,7 +105,17 @@ The two Anatoli reports are published local reporting, rather than a field surve
 
 According to a local account reported by Anatoli in 2023, the speaker remembered her mother washing μαλλιά at the Schisma outlet. Anatoli's 2025 report also says that μαλλιά were washed there in earlier years. Neither report specifies the material, process or date. They do not establish the same use at Mavrikiano.
 
+<figure>
+  <img src="/images/blog/elounda-vlychades-brackish-water/schisma-outlet-1600.webp" alt="Shallow clear water beside the shaded Schisma waterfront enclosure and stone steps." loading="lazy" />
+  <figcaption>The Schisma outlet area as photographed in August 2026. This present-day view does not establish earlier use or water chemistry. Provided by Elounda Traditional Homes.</figcaption>
+</figure>
+
 A local press report concerns the covered brackish *vlychada* beside the boatyard on the road from Elounda towards Plaka. It states that, during earlier periods of water scarcity, women from Elounda came there to rinse their laundry. This provides local press support for laundry use at the Mavrikiano/Fournos site. It does not establish the same use at the Schisma *vlychada*, nor does it document the complete washing process.
+
+<figure>
+  <img src="/images/blog/elounda-vlychades-brackish-water/mavrikiano-interior-1600.webp" alt="View from inside the covered Mavrikiano outlet area towards the sea and stone waterfront steps." loading="lazy" />
+  <figcaption>Inside the covered Mavrikiano outlet area, looking towards the sea. The present structure is not evidence of its date or historic use. Provided by Elounda Traditional Homes.</figcaption>
+</figure>
 
 Older residents may still remember other uses, seasonal changes, access routes or the arrival of piped water. Until such accounts are recorded, compared and located on the ground, those matters remain research questions. There is no basis here to reconstruct gatherings, tools, routes, drying places or a standard washing process.
 

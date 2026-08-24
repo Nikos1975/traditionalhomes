@@ -49,6 +49,23 @@ This is direct local press reporting. It describes a covered brackish *vlychada*
 
 ## Image records and rights gate
 
+### Approved Elounda Traditional Homes field photographs
+
+Publication permission for the field photographs below was confirmed by the user on 24 August 2026. The photographs are to use the credit “Provided by Elounda Traditional Homes”; no personal name is to appear. The untouched raw files remain outside the repository, while the blog pipeline preserves one repository source copy and creates metadata-stripped WebP derivatives.
+
+| Publication source | Original raw file | Dimensions | Depicted location | Rights and permission status | Required credit |
+| --- | --- | --- | --- | --- | --- |
+| `hero.jpg` | `vlychada_mavrikiano_14.JPG` | 3264 × 2448 px | Mavrikiano / Kato Fournou, wide shoreline context | Provided by Elounda Traditional Homes; approved for publication on traditional-homes.gr, 24 August 2026 | Provided by Elounda Traditional Homes |
+| `schisma-waterfront.jpg` | `vlychada_elounda_07.JPG` | 3264 × 2448 px | Schisma outlet area and waterfront context | Provided by Elounda Traditional Homes; approved for publication on traditional-homes.gr, 24 August 2026 | Provided by Elounda Traditional Homes |
+| `schisma-outlet.jpg` | `vlychada_elounda_03.JPG` | 3264 × 2448 px | Schisma water and present outlet enclosure | Provided by Elounda Traditional Homes; approved for publication on traditional-homes.gr, 24 August 2026 | Provided by Elounda Traditional Homes |
+| `mavrikiano-covered-structure.jpg` | `vlychada_mavrikiano_11.JPG` | 3264 × 2448 px | Mavrikiano covered structure and steps | Provided by Elounda Traditional Homes; approved for publication on traditional-homes.gr, 24 August 2026 | Provided by Elounda Traditional Homes |
+| `mavrikiano-interior.jpg` | `vlychada_mavrikiano_09.JPG` | 3264 × 2448 px | Interior of the Mavrikiano covered structure, looking towards the sea | Provided by Elounda Traditional Homes; approved for publication on traditional-homes.gr, 24 August 2026; location remains based on folder and capture-sequence provenance rather than embedded GPS | Provided by Elounda Traditional Homes |
+| `mavrikiano-water-detail.jpg` | `vlychada_mavrikiano_08.JPG` | 4000 × 3000 px | Water and rock detail inside the Mavrikiano covered structure | Provided by Elounda Traditional Homes; approved for publication on traditional-homes.gr, 24 August 2026; location remains provisional because the file has no usable GPS | Provided by Elounda Traditional Homes |
+
+`vlychada_elounda_04.JPG` was inspected but excluded because the operator shadow occupies a substantial central part of the frame. The permitted alternate `vlychada_elounda_03.JPG` replaced it. No other alternate was opened.
+
+### Unresolved third-party reference photographs
+
 | Image | Source | Dimensions | Depicted location | Embedded label | Rights holder | Permission status | Required credit |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | `vlychada_elounda.jpg` (supplied resized JPEG; not committed) | Anatoli-supplied documentary photograph; relevant reporting: https://www.anatolh.com/topikanea/agiosnikolaos/i-yfalmyri-vlychada-tis-eloyntas/ | Published source: 800 × 360 px; supplied file: 2400 × 1080 px | Elounda/Schisma outlet | Βλυχάδα Ελούντας | Anatoli | Not documented; no written reuse permission was supplied. | If permission is later documented: “Photograph: Anatoli. Used with permission.” |
