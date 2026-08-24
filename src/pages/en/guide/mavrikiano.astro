@@ -8,7 +8,15 @@ import { getGuideSeo, localizedCanonical } from '../../../i18n/seo';
 const { Content, frontmatter } = Guide;
 
 // SEO & Data Prep
-const pageSeo = getGuideSeo(defaultLocale, frontmatter, "Practical information for your stay in Mavrikiano.");
+if (typeof frontmatter.title !== 'string') {
+  throw new TypeError('Mavrikiano guide frontmatter requires a title.');
+}
+
+const guideFrontmatter = {
+  title: frontmatter.title,
+  description: typeof frontmatter.description === 'string' ? frontmatter.description : undefined,
+};
+const pageSeo = getGuideSeo(defaultLocale, guideFrontmatter, "Practical information for your stay in Mavrikiano.");
 ---
 
 <Base 

@@ -6,7 +6,15 @@ import { guidePath, localizedPath } from '../../../i18n/routes';
 import { getGuideSeo, localizedCanonical } from '../../../i18n/seo';
 
 const { Content, frontmatter } = Guide;
-const pageSeo = getGuideSeo(defaultLocale, frontmatter);
+if (typeof frontmatter.title !== 'string') {
+  throw new TypeError('Vrouchas guide frontmatter requires a title.');
+}
+
+const guideFrontmatter = {
+  title: frontmatter.title,
+  description: typeof frontmatter.description === 'string' ? frontmatter.description : undefined,
+};
+const pageSeo = getGuideSeo(defaultLocale, guideFrontmatter);
 ---
 
 <Base 

@@ -3,6 +3,7 @@ export interface InventoryUnit {
   type: 'house' | 'villa';
   name: string;
   location: string;
+  village: string;
   area: string;
   areaSqm: number;
   sleeps: number;
