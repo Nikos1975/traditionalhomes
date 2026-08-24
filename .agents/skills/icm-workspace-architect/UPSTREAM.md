@@ -6,7 +6,7 @@ Canonical upstream:
 
 - repository: `Nikos1975/nikos-agent-skills`
 - path: `skills/shared/icm-workspace-architect/`
-- pinned source commit: `0cefb42806bee1d917e98031669b1f4c55c6801d`
+- pinned source commit: `3aba17b045993fceb58d6a78be9175f4e720aed1`
 
 The canonical cross-project rules file is `ICM_RULES.md`. Its pinned SHA-256 is recorded in `.agents/skills.lock.yaml`.
 

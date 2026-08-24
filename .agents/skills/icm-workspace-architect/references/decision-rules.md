@@ -1,113 +1,43 @@
 # ICM Decision Rules
 
-Use this reference when the correct folder boundary is unclear.
+Use this reference when the correct architecture boundary is unclear.
 
-## 1. The unit of organization is a decision boundary
+## Workspace vs stage
 
-Do not create folders merely because a topic has a name. Create them when the folder changes what context, rules, tools, or handoffs should apply.
+A workspace is a different mode of work. Create one when context, rules, tools, audience, or quality criteria differ materially and fixed execution order is not inherent.
 
-## 2. Workspace vs stage
+A stage is a sequential transformation. Create one when it consumes a defined artifact, produces a defined artifact, order matters, and the next step intentionally depends on that output.
 
-### Workspace
-A workspace is a different mode of work.
+## Architecture boundaries
 
-Signals:
-- different quality criteria;
-- different tools/skills;
-- different audience;
-- context from another area would be distracting;
-- order relative to other workspaces is not inherently fixed.
+Add a boundary only when it solves an observed routing, context, handoff, ownership, or validation problem. Preserve working conventions and prefer the fewest boundaries that clearly isolate context.
 
-Examples: planning, source code, documentation, operations.
+When capability and correctness are equivalent, prefer the option with lower total implementation, context, routing, maintenance, abstraction, and operational cost. A small gain should justify the complexity it adds.
 
-### Stage
-A stage is a sequential transformation.
+## Stable reference vs working artifact
 
-Signals:
-- it consumes a defined artifact;
-- it produces a defined artifact;
-- the next stage depends on that output;
-- order matters;
-- there is a natural review checkpoint.
+Use L3 for persistent constraints and reusable patterns such as schemas, style rules, conventions, and reusable procedures.
 
-Examples: research → analysis → draft → release preparation.
+Use L4 for current-run sources, research, drafts, plans, generated data, and review notes.
 
-## 3. Stable reference vs working artifact
+A useful test: will this file be reused substantially unchanged across many future runs? If yes, it is probably L3. If not, it is probably L4.
 
-### Stable reference (L3)
-Use when the information is a persistent rule or reusable pattern.
+## Deterministic mechanism, procedure, or judgment
 
-Examples: brand voice, data schema, editorial policy, architectural conventions, source-evaluation rubric.
+Use a deterministic script or test when correct behavior is mechanical and testable, including parsing, normalization, validation, indexing, checksums, and repeatable file operations.
 
-### Working artifact (L4)
-Use when the file belongs to this specific run.
+When success is mechanically testable, prefer success criteria and evaluation mechanisms that are not modified by the same candidate change. If tests, benchmarks, or acceptance criteria must change, make that explicit task scope rather than silently redefining success.
 
-Examples: this article's research, this feature's spec, this client's intake, this deployment's incident log.
+For verbose deterministic processes, capture complete output outside active model context when practical; load the smallest summary needed for the current decision, then expand only into relevant diagnostics if the summary is insufficient or indicates failure.
 
-A useful test: **Will this file be reused substantially unchanged next month?** If yes, it is probably L3. If no, it is probably L4.
+Use a stable rule, template, or procedure when the reusable value is workflow logic, constraints, or a repeatable decision process that still requires contextual execution.
 
-## 4. Context loading rule
+Use AI judgment for ambiguity, synthesis, interpretation, strategy, and language where controlled variability is useful.
 
-The stage contract must name what to read. Avoid phrases such as:
+## Review-boundary placement
 
-- "read everything relevant"
-- "scan the whole repo"
-- "use all project context"
+Place the review or approval gate immediately before the consequential action, not merely at the beginning of a multi-stage workflow.
 
-Prefer explicit paths and scopes.
+Define what is being reviewed, the evidence available, unresolved issues, the allowed next action, and whether approval authorizes only the current stage or a named downstream action.
 
-## 5. Routing rule
-
-For every high-frequency request, there should be one obvious row in the root routing table.
-
-If two rows could both match, improve the task labels or merge the workspaces.
-
-## 6. Skill boundary
-
-A process should become a skill when the reusable value is **how to do the work**, not the project facts.
-
-Keep project-specific facts in the project. Keep reusable procedures in the skill.
-
-Bad skill: `traditional-homes-current-priorities`.
-Good skill: `historical-claim-verification`.
-
-## 7. Script boundary
-
-Move a step to a script when the correct behavior can be tested mechanically.
-
-Good candidates:
-- parse or normalize input;
-- copy/create folders;
-- validate schema;
-- check links or filenames;
-- calculate hashes;
-- run builds/tests;
-- generate deterministic indexes.
-
-Keep AI for ambiguity, synthesis, judgment, and language where variability is valuable.
-
-## 8. Review gate rule
-
-Insert a human review gate before:
-
-- publication;
-- deployment;
-- sending external communication;
-- irreversible/destructive actions;
-- accepting a factual or legal claim that needs accountability;
-- crossing from analysis into commitment.
-
-## 9. Minimal architecture rule
-
-Start with the fewest rooms/stages that cleanly separate context. Add a new one only after an actual collision appears.
-
-## 10. Migration rule
-
-Do not reorganize an existing repository by aesthetics. Every move needs one of these reasons:
-
-- clearer routing;
-- narrower context loading;
-- explicit handoff;
-- reduced duplication;
-- stronger ownership or review boundary;
-- deterministic automation support.
+Require accountable review when factual uncertainty materially affects a public, destructive, financially significant, hard-to-reverse, or commitment-making action.

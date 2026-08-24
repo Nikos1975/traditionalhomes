@@ -2,7 +2,7 @@
 
 Use `CLAUDE.md` as the canonical project instruction file.
 
-For repository architecture, context loading, folder/workspace/stage design, and reusable workflow organization, always apply ICM reasoning from `.agents/skills/icm-workspace-architect/ICM_RULES.md`. Do not force a fixed folder tree.
+For repository architecture, context loading, folder/workspace/stage design, and reusable workflow organization, follow the ICM route in `CLAUDE.md`. Do not force a fixed folder tree.
 
 ## Task routing
 

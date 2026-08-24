@@ -12,13 +12,24 @@ The goal is to give an agent the minimum context required to perform the current
 
 When entering an unfamiliar project or beginning a materially different task:
 
-1. Read the repository's established root instruction/map file.
-2. Route the task to the smallest relevant workspace or stage.
-3. Read that workspace/stage context only when it is needed.
-4. Read only the stable rules, references, procedures, and current artifacts required by the active task.
-5. Follow links outward only when the active context identifies them as necessary.
-6. Do not recursively read sibling workspaces or the entire repository by default.
-7. Reuse context already loaded in the current session unless it changed or an unresolved question requires rereading.
+1. Read the runtime-required root adapter.
+2. Use the authoritative project route already provided by the active parent context. If it does not resolve the task, read the smallest relevant canonical routing map.
+3. If the task involves architecture, context, routing, workspace, or procedure design, load the project's local pinned copy of these ICM rules.
+4. Route to one workspace or procedure.
+5. Load only the L3 rules and references required by that route.
+6. Load the current L4 artifacts required for the task.
+
+## Selective context loading
+
+Route before loading detailed context. Every context load must answer a current unresolved question required to execute the active task. Stop loading context once the task can be performed correctly.
+
+- Do not read sibling procedures or references speculatively or preload context for possible future use.
+- Do not read compatibility or discovery wrappers when authoritative routing has already resolved the route.
+- Do not load inventory or registry documentation unless the task concerns inventory, installation, discovery metadata, validation, publishing, or registration.
+- Do not load ICM files for ordinary non-ICM tasks merely because ICM is installed. Load them only when ICM-specific architecture, context, routing, workspace, stage, or procedure-design reasoning is required.
+- Reuse authoritative routing and context already provided by the active parent context unless it has changed or conflicts with the current task.
+- An unresolved ambiguity, conflict, or missing target is a valid reason to read one additional relevant file.
+- Do not load sibling workspaces, all skills, historical outputs, or the entire repository.
 
 ## ICM layers
 
@@ -26,11 +37,13 @@ Classify context conceptually as:
 
 - **L0 — Map / routing:** project identity, task routing, critical global constraints.
 - **L1 — Workspace context:** rules and resources for one distinct mental mode.
-- **L2 — Procedure or stage contract:** Inputs → Process → Outputs → Done criteria → Review boundary.
+- **L2 — Procedure or stage contract:** reusable workflow or sequential handoff contract.
 - **L3 — Stable references:** schemas, conventions, style rules, reusable procedures, templates, domain references.
 - **L4 — Working artifacts:** current-run sources, research, drafts, plans, generated data, review notes, outputs.
 
 Do not mix long-lived L3 rules with run-specific L4 material.
+
+These layers are conceptual boundaries, not mandatory folder or filename conventions. A small project may legitimately use only `CLAUDE.md`, `instructions/`, `src/`, and `tests/`. Do not require `CONTEXT.md`, `stages/`, `_config/`, or numbered folders unless the actual work justifies those boundaries.
 
 ## Routing rules
 
@@ -40,24 +53,6 @@ Do not mix long-lived L3 rules with run-specific L4 material.
 - The root map should route, not contain every detailed rule.
 - Do not load sibling workspace context unless the task genuinely crosses that boundary.
 
-## Workspace and stage rules
-
-Create a **workspace** only when the thinking mode, rules, tools, or required context changes materially.
-
-Create a **stage** only when order matters and one step intentionally produces an artifact consumed by the next step.
-
-For a meaningful sequential stage, define:
-
-- inputs;
-- process;
-- outputs;
-- done criteria;
-- unresolved issues;
-- review gate;
-- next allowed action.
-
-Do not create artificial numbered stages for a simple single transformation.
-
 ## Stable rules versus working state
 
 Use stable reference files for constraints expected to remain substantially valid across many runs.
@@ -66,36 +61,9 @@ Keep current task material in working artifacts or the repository's existing run
 
 Do not promote temporary observations, drafts, or unresolved assumptions into stable project rules.
 
-## Deterministic versus judgment work
-
-Prefer the lowest reliable layer:
-
-- deterministic scripts/tests for mechanical, repeatable, testable work;
-- rules/templates/procedures for stable workflow logic;
-- AI judgment for interpretation, ambiguity, synthesis, and strategy.
-
-Do not repeatedly spend model tokens on work a small deterministic script can perform more reliably.
-
 ## Human review
 
-Keep consequential handoffs visible and inspectable.
-
-Require explicit review or approval before actions that are public, destructive, financially consequential, hard to reverse, or dependent on unresolved factual judgment.
-
-Approval of one stage does not automatically authorize downstream stages.
-
-## Existing-project rule
-
-When applying ICM to an existing project:
-
-1. inspect the current architecture first;
-2. preserve what already works;
-3. identify routing gaps, context leaks, duplication, and mixed state;
-4. propose the smallest material improvement;
-5. wait for approval before moving, renaming, deleting, or broadly restructuring files;
-6. migrate incrementally and validate routing after each approved change.
-
-Do not redesign a repository merely to resemble an example ICM tree.
+Consequential, destructive, public, financially significant, hard-to-reverse, or factually unresolved actions require an explicit review or approval boundary.
 
 ## Token-efficiency invariant
 
