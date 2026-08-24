@@ -33,15 +33,33 @@ This is direct local press reporting. It describes a covered brackish *vlychada*
 
 ## Owner-supplied video: Schisma outlet, 23 August 2026
 
-- **Source:** owner-supplied present-day field documentation; source file retained outside the repository
-- **File:** `vlychada_elounda_spring_water.MP4`
-- **Recorded:** 23 August 2026
-- **Duration:** 13.2 seconds
-- **Location:** identified Elounda/Schisma *vlychada* outlet area
-- **Direct observation:** visibly moving water is present at the outlet
-- **Provenance:** recorded and supplied by the owner; SHA-256 `9B3140B3FFCE32081B81BFA00B45513325864A6F3E9A74C816F0403874264EB9`
+### Original evidence file
 
-Safe wording is: “An owner-recorded video from 23 August 2026 shows visibly moving water at the identified Elounda/Schisma outlet area.” The recording supports present-day visible emergence only. It does not establish the underground route, geological origin, recharge area, formal spring classification, chemistry, potability, historical use, historical flow rate or continuous year-round behaviour. The video is an evidence record, not a committed publication asset.
+- **Source:** owner-supplied present-day field documentation; archival source retained outside the public repository
+- **Original file:** `vlychada_elounda_spring_water.MP4`
+- **Recorded:** 23 August 2026
+- **Location:** identified Elounda/Schisma *vlychada* outlet area
+- **Duration:** 13.206 seconds
+- **Video:** HEVC Main, stored at 1920 × 1080 px with a -90° display rotation; correctly displayed at 1080 × 1920 px; nominal 30 fps
+- **Audio:** AAC-LC, 48 kHz stereo, approximately 192 kb/s
+- **File size:** 27,522,060 bytes
+- **Original metadata:** retains the capture timestamp, GPS location and Android/Xiaomi device fields as archival provenance; none of these fields are copied to the public derivative
+- **Direct observation:** visibly moving water is present at the outlet
+- **Provenance and rights:** recorded and supplied by the owner; publication rights held by Elounda Traditional Homes; SHA-256 `9B3140B3FFCE32081B81BFA00B45513325864A6F3E9A74C816F0403874264EB9`
+
+### Public derivative
+
+- **Public path:** `public/videos/blog/elounda-vlychades-brackish-water/schisma-vlychada-spring-water.mp4`
+- **Video:** H.264 High Profile, 720 × 1280 px, yuv420p, BT.709, nominal 30 fps
+- **Duration:** 13.167 seconds
+- **File size:** 6,105,848 bytes, 77.8% smaller than the archival original
+- **Audio:** removed because the quiet incidental recording contributes no evidence that is not already conveyed visually and in the surrounding text
+- **Delivery:** MP4 fast-start enabled for web streaming; article uses `preload="metadata"`, native controls and an existing Schisma still as the poster
+- **Metadata:** archival GPS, capture timestamp, operating-system, manufacturer and device-model metadata stripped; only generic codec/muxer identifiers remain
+- **Credit:** Provided by Elounda Traditional Homes
+- **SHA-256:** `549038D2D9338DF35AD142A3FDB8D1195BFF64D7D8007A220A7896D3C4049AD2`
+
+Safe wording is: “An owner-recorded video from 23 August 2026 shows visibly moving water at the identified Elounda/Schisma outlet area.” The recording supports present-day visible emergence only. It does not establish the underground route, geological origin, recharge area, formal spring classification, chemistry, potability, historical use, historical flow rate or continuous year-round behaviour. The archival original remains an evidence file outside the repository; the optimized MP4 is the bounded public derivative.
 
 ## Linguistic and comparative evidence
 
