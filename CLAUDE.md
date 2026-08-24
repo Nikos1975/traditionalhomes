@@ -14,7 +14,11 @@
 - Avoid unnecessary dependencies
 - Use structured content, not hardcoded text
 - Maintain performance and SEO
-- Always use ICM reasoning for repository architecture, context loading, workspace/stage boundaries, and reusable workflow organization. Read `.agents/skills/icm-workspace-architect/ICM_RULES.md`; do not force a fixed folder structure.
+- For ICM-specific repository architecture, context loading, routing, workspace/stage boundaries, and reusable workflow organization, read `.agents/skills/icm-workspace-architect/ICM_RULES.md`, then continue to the exact procedure:
+  - existing-project ICM audit or refinement: `.agents/skills/icm-workspace-architect/icm_existing_project_audit.md`
+  - new-project ICM adoption: `.agents/skills/icm-workspace-architect/icm_new_project_bootstrap.md`
+  - general ICM architecture, context, routing, workspace, stage, or procedure design: `.agents/skills/icm-workspace-architect/icm_workspace_architect.md`
+- Load ICM references only when the selected procedure identifies a concrete unresolved question. Do not force a fixed folder structure.
 - Load `docs/operations/agent-operating-model.md` only for process, commit, build, branch, or debugging work that needs it. Load `docs/operations/repeated-failures-playbook.md` only after a matching failure or known failure class appears.
 - Prefer minimal changes before broad refactors
 - Separate environment/cache issues from real code/content issues

@@ -2,12 +2,12 @@ version: 1
 shared_skills:
   icm-workspace-architect:
     source_repository: Nikos1975/nikos-agent-skills
-    source_commit: 0cefb42806bee1d917e98031669b1f4c55c6801d
+    source_commit: 786b382aab6fe65f6b45df882a4aadef195b5f1f
     source_path: skills/shared/icm-workspace-architect
     install_path: .agents/skills/icm-workspace-architect
     install_mode: vendored_copy
     update_policy: manual_review
     canonical_rules_file: ICM_RULES.md
-    canonical_rules_sha256: a08e7b4bf585489841a617101ab4249f1364dfcc60f34ae1f4e9a814d793ec4c
+    canonical_rules_sha256: afb32407093be01dee734418e8db4b6e88d23b926926854f22f49b108da37652
     local_extensions_allowed: true
     runtime_network_dependency: false

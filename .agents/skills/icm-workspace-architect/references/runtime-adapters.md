@@ -1,81 +1,41 @@
-# Runtime Adapters
+# ICM Runtime Adapters
 
-ICM is independent of a specific model runtime. The invariant is semantic: one canonical map routes the task, deeper context is loaded selectively, and runtime-specific files remain thin adapters.
+ICM is runtime-independent. The semantic invariant is one canonical project map, selective context loading, and thin runtime-specific adapters.
 
-## Universal rule
-
-When a project adopts this package as an always-on standard, its canonical root instruction file should point to `ICM_RULES.md` rather than duplicate the rules.
-
-Preferred behavior:
+## General pattern
 
 ```text
-runtime adapter -> canonical project map -> routed local context -> exact procedure/references -> current artifacts
+runtime root instruction
+  -> canonical project map/routing
+  -> routed workspace or procedure
+  -> exact stable references
+  -> current artifacts
 ```
 
-Do not make every runtime read every context file at startup.
+Do not make runtime compatibility create duplicated instruction systems.
 
 ## Claude Code
 
-Use `CLAUDE.md` as the L0 root map when that is the repository's established convention.
+If `CLAUDE.md` is already the canonical project file, keep it as the root map. Add only a short pointer to the locally installed `ICM_RULES.md` when ICM should govern architecture reasoning.
 
-Typical skill path:
+## AGENTS.md projects
 
-```text
-.claude/skills/icm-workspace-architect/
-```
-
-If ICM should govern architecture decisions globally in the project, add one short rule in `CLAUDE.md` pointing to the installed `ICM_RULES.md`.
-
-## Repositories using AGENTS.md
-
-If `AGENTS.md` is already authoritative, treat it as L0. Do not create a parallel `CLAUDE.md` containing competing rules.
-
-Typical project-local path may be:
-
-```text
-.agents/skills/icm-workspace-architect/
-```
-
-The exact discovery path is runtime-specific; preserve the repository's existing convention.
+If `AGENTS.md` is authoritative, keep it as the root map. Do not introduce a parallel root authority only to match an example structure.
 
 ## Mixed runtimes
 
-Prefer one canonical semantic map and thin adapters.
+Prefer one canonical semantic map and thin wrappers for each runtime. If the repository already has one canonical file and one wrapper, preserve that pattern.
 
-Example:
+## OpenCode and other runtimes
 
-```text
-project/
-├── PROJECT-MAP.md      # canonical semantic map
-├── AGENTS.md           # thin adapter: read PROJECT-MAP.md
-└── CLAUDE.md           # thin adapter: read PROJECT-MAP.md
-```
+Use the runtime's established project-instruction convention. The important behavior is routing and selective reads, not the filename.
 
-Use this only when both runtimes genuinely require their own root files. Do not copy detailed rules into both adapters.
+## Shared-skill installation
 
-If the repository already has one canonical file and one wrapper, preserve that pattern instead of introducing `PROJECT-MAP.md` merely for symmetry.
+Cross-project shared skills should be vendored or deterministically copied into the project's established skill directory and pinned to a reviewed source commit. The project root should point to the local installed copy.
 
-## Browser/project workspaces
+Avoid floating-branch runtime dependencies. A project should remain operable even when the shared repository is unavailable.
 
-When there is no filesystem-aware root-file convention, use the same information model as project instructions/knowledge:
+## Token efficiency
 
-- root map = project instructions;
-- room/stage contexts = uploaded/reference files;
-- stable references = persistent project knowledge;
-- working artifacts = files attached to the current task or run.
-
-The architecture remains useful even if routing is manual.
-
-## Token-efficiency rule
-
-Runtime compatibility must not turn into context duplication.
-
-A cold-start agent should read only:
-
-1. the runtime-required root adapter;
-2. the canonical project map it points to, if separate;
-3. the routed workspace/stage context;
-4. the exact stable rules/procedure required for the task;
-5. the current working artifact(s).
-
-Do not recursively preload sibling workspaces, all skills, all references, or historical run artifacts.
+A cold-start agent should normally read only the runtime-required root file, the selected router/context, the exact procedure or stable rules needed for the task, and the current artifacts. Do not preload sibling workspaces or the full shared-skill catalog.
