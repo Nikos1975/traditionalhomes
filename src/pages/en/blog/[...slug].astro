@@ -4,6 +4,10 @@ import { getCollection, render } from 'astro:content';
 import siteCopy from '../../../data/siteCopy.json';
 import { defaultLocale } from '../../../i18n/config';
 import { blogArticlePath, blogIndexPath } from '../../../i18n/routes';
+import {
+  blogArticleImageSizes,
+  getBlogArticleImageDelivery,
+} from '../../../utils/blogArticleImages.mjs';
 
 export async function getStaticPaths() {
   const posts = (await getCollection('blog')).filter(p => !p.data.draft);
@@ -20,6 +24,9 @@ const category = entry.data.category ?? 'Updates';
 const leadImageCaption = entry.data.imageCaption ?? entry.data.imageAlt;
 const leadImageCredit = entry.data.imageCredit;
 const leadImageCreditUrl = entry.data.imageCreditUrl;
+const leadImage = entry.data.image
+  ? await getBlogArticleImageDelivery(entry.data.image)
+  : undefined;
 const isEloundaGuideTest = entry.id.startsWith('elounda-guide-style-');
 const hasMarkdownSubtitle = entry.id === 'elounda-guide' || isEloundaGuideTest;
 const guideStyleVariant = isEloundaGuideTest ? entry.id.replace('elounda-guide-', '') : null;
@@ -63,6 +70,18 @@ const relatedPosts = (await getCollection('blog'))
   ogImage={entry.data.image}
   noindex={isEloundaGuideTest}
 >
+  {leadImage && (
+    <link
+      slot="head"
+      rel="preload"
+      as="image"
+      href={leadImage.src}
+      imagesrcset={leadImage.srcset}
+      imagesizes={blogArticleImageSizes}
+      fetchpriority="high"
+    />
+  )}
+
   <div class="site-pad py-12 md:py-20">
     <div class="mx-auto max-w-[46rem]">
 
@@ -106,13 +125,19 @@ const relatedPosts = (await getCollection('blog'))
         )}
       </header>
 
-      {entry.data.image && (
+      {leadImage && (
         <figure class="blog-lead-image mb-12">
           <div class="overflow-hidden rounded-xl border border-stone-200 bg-stone-100">
             <img
-              src={entry.data.image}
+              src={leadImage.src}
+              srcset={leadImage.srcset}
+              sizes={blogArticleImageSizes}
               alt={entry.data.imageAlt ?? ''}
+              width={leadImage.width}
+              height={leadImage.height}
               loading="eager"
+              fetchpriority="high"
+              decoding="async"
               class="h-full w-full object-cover"
             />
           </div>
