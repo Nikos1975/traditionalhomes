@@ -70,3 +70,20 @@ test('header renders compact desktop and native-label mobile language selectors'
   assert.match(enNavigation, /"languageSwitcherLabel": "Language"/);
   assert.match(deNavigation, /"languageSwitcherLabel": "Sprache"/);
 });
+
+test('German primary navigation exposes only routes that currently have German pages', async () => {
+  const navigation = JSON.parse(await readText('src/i18n/locales/de/navigation.json'));
+
+  assert.deepEqual(
+    navigation.main.map(({ label, href }) => ({ label, href })),
+    [
+      { label: 'Häuser', href: '/en/houses/' },
+      { label: 'Lage', href: '/en/location/' },
+    ],
+  );
+
+  const authoredFallbacks = navigation.main.filter(({ href }) =>
+    ['/en/villa/', '/en/faq/', '/en/about/', '/en/blog/', '/en/contact/'].some((prefix) => href.startsWith(prefix)),
+  );
+  assert.deepEqual(authoredFallbacks, []);
+});
