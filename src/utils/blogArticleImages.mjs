@@ -10,6 +10,17 @@ export const blogArticleImageSizes =
   "(min-width: 1056px) 1024px, calc(100vw - 32px)";
 
 /**
+ * Sizes for inline body images inside a blog article.
+ *
+ * Inline images sit in the prose column (`max-w-[46rem]` inside `site-pad`),
+ * not the full-bleed lead figure, so they must not reuse
+ * `blogArticleImageSizes`. Article Markdown embeds this literal value in raw
+ * `<img sizes="...">` attributes; this constant is the canonical source.
+ */
+export const blogInlineImageSizes =
+  "(min-width: 784px) 736px, (min-width: 640px) calc(100vw - 48px), calc(100vw - 32px)";
+
+/**
  * @typedef {object} BlogArticleImageDelivery
  * @property {string} src
  * @property {string} [srcset]

@@ -54,7 +54,16 @@ The practical point is simply to keep names clear. The local Poros channel and c
 Kolokytha is an unorganised beach in a small bay, with a downhill path forming the final part of the approach. The approach road is rocky, rough and mostly single-lane, with occasional passing places. The parking area is an informal, uneven open area in the natural landscape rather than a surfaced or organised car park.
 
 <figure>
-  <img src="/images/blog/elounda-beaches/kolokytha-beach-1600.webp" alt="Kolokytha beach in its natural, unorganised setting on the peninsula near Elounda." loading="lazy" />
+  <img
+    src="/images/blog/elounda-beaches/kolokytha-beach-1600.webp"
+    srcset="/images/blog/elounda-beaches/kolokytha-beach-480.webp 480w, /images/blog/elounda-beaches/kolokytha-beach-768.webp 768w, /images/blog/elounda-beaches/kolokytha-beach-1200.webp 1200w, /images/blog/elounda-beaches/kolokytha-beach-1600.webp 1600w"
+    sizes="(min-width: 784px) 736px, (min-width: 640px) calc(100vw - 48px), calc(100vw - 32px)"
+    alt="Kolokytha beach in its natural, unorganised setting on the peninsula near Elounda."
+    width="1600"
+    height="1197"
+    loading="lazy"
+    decoding="async"
+  />
   <figcaption>Kolokytha’s natural shoreline. Photograph: Elounda Traditional Homes of Crete.</figcaption>
 </figure>
 
@@ -79,12 +88,30 @@ The shoreline can also be approached independently from the church side. The fac
 The main Plaka beach is public and organised. Its character is different from central Elounda: it is a village shoreline on the coast facing Spinalonga. The public village beach is separate from the hotel-managed beach sections farther along the shoreline.
 
 <figure>
-  <img src="/images/blog/elounda-beaches/plaka-pebble-1600.webp" alt="Pebble shore and swimmers at Plaka, with the coast beyond." loading="lazy" />
+  <img
+    src="/images/blog/elounda-beaches/plaka-pebble-1600.webp"
+    srcset="/images/blog/elounda-beaches/plaka-pebble-480.webp 480w, /images/blog/elounda-beaches/plaka-pebble-768.webp 768w, /images/blog/elounda-beaches/plaka-pebble-1200.webp 1200w, /images/blog/elounda-beaches/plaka-pebble-1600.webp 1600w, /images/blog/elounda-beaches/plaka-pebble-2400.webp 2400w"
+    sizes="(min-width: 784px) 736px, (min-width: 640px) calc(100vw - 48px), calc(100vw - 32px)"
+    alt="Pebble shore and swimmers at Plaka, with the coast beyond."
+    width="1600"
+    height="1200"
+    loading="lazy"
+    decoding="async"
+  />
   <figcaption>Plaka’s pebble shoreline. Photograph: Elounda Traditional Homes of Crete.</figcaption>
 </figure>
 
 <figure>
-  <img src="/images/blog/elounda-beaches/plaka-organised-1600.webp" alt="Pebble shore at the public organised section of Plaka beach, with umbrellas and Spinalonga beyond." loading="lazy" />
+  <img
+    src="/images/blog/elounda-beaches/plaka-organised-1600.webp"
+    srcset="/images/blog/elounda-beaches/plaka-organised-480.webp 480w, /images/blog/elounda-beaches/plaka-organised-768.webp 768w, /images/blog/elounda-beaches/plaka-organised-1200.webp 1200w, /images/blog/elounda-beaches/plaka-organised-1600.webp 1600w, /images/blog/elounda-beaches/plaka-organised-2400.webp 2400w"
+    sizes="(min-width: 784px) 736px, (min-width: 640px) calc(100vw - 48px), calc(100vw - 32px)"
+    alt="Pebble shore at the public organised section of Plaka beach, with umbrellas and Spinalonga beyond."
+    width="1600"
+    height="1200"
+    loading="lazy"
+    decoding="async"
+  />
   <figcaption>The public organised section of Plaka beach. Photograph: Elounda Traditional Homes of Crete.</figcaption>
 </figure>
 
