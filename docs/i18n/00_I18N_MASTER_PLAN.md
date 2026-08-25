@@ -98,6 +98,15 @@ Inventory rules:
 - Gallery image paths remain shared.
 - Gallery alt text and captions may be localized later.
 
+## Language Selector Contract
+
+- Show only locales whose real homepage route exists in `routeMap`; configured future locales must stay hidden until they are actually launched.
+- Use text labels rather than flags. Compact desktop controls may use locale codes such as `EN` and `DE`; mobile controls should use native names such as `English` and `Deutsch`.
+- When the current page has a real equivalent in the target locale, switch directly to that equivalent route.
+- When no equivalent page exists, link to the target locale homepage rather than inventing a route or silently linking to a non-existent translation.
+- Language-switcher URLs must be derived from the same route map used by canonicals, hreflang, navigation and sitemap logic.
+- Adding a future locale homepage to the route map should make that locale eligible for the shared selector without a locale-specific UI rewrite.
+
 ## Migration Order
 
 1. Document route, content, and QA rules.
