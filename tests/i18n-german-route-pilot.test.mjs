@@ -342,6 +342,23 @@ describe('Stage 3 German route pilot — source contracts', () => {
     // English source, so a typo can never become a silently missing string.
     const namespaces = ['common', 'navigation', 'forms', 'guide'];
 
+    /**
+     * Lists where a locale selects from the English inventory instead of
+     * translating it entry for entry.
+     *
+     * `navigation.main` is the locale's launch surface, not a translation list:
+     * English holds every primary route, and a locale publishes only the ones
+     * whose pages really exist. Entries are therefore matched by their stable
+     * authored `href` rather than by array index, so omitting one never shifts
+     * the meaning of the entries a locale does keep. Every other array stays
+     * under the whole-list-or-nothing rule below; membership here is explicit
+     * and per path, never inferred from an array's contents.
+     *
+     * Which routes German may expose is a separate question, owned by
+     * `tests/i18n-language-switcher.test.mjs`.
+     */
+    const LOCALE_SELECTION_LISTS = new Set(['navigation.main']);
+
     for (const namespace of namespaces) {
       const source = JSON.parse(await readText(`src/i18n/locales/en/${namespace}.json`));
       const overlay = JSON.parse(await readText(`src/i18n/locales/de/${namespace}.json`));
@@ -352,6 +369,36 @@ describe('Stage 3 German route pilot — source contracts', () => {
             Array.isArray(sourceValue) && Array.isArray(overlayValue),
             `de/${namespace}.json ${path} changes the shape of the English source`,
           );
+
+          if (LOCALE_SELECTION_LISTS.has(path)) {
+            const sourceByHref = new Map(sourceValue.map((item) => [item?.href, item]));
+            const claimed = new Set();
+
+            overlayValue.forEach((item, index) => {
+              const href = item?.href;
+
+              assert.equal(
+                typeof href,
+                'string',
+                `de/${namespace}.json ${path}[${index}] must carry the authored href it selects`,
+              );
+              assert.ok(
+                sourceByHref.has(href),
+                `de/${namespace}.json ${path} selects ${href}, which the English navigation does not offer`,
+              );
+              assert.ok(
+                !claimed.has(href),
+                `de/${namespace}.json ${path} selects ${href} more than once`,
+              );
+              claimed.add(href);
+
+              // The selected entry still has to match the English item's shape.
+              assertSubset(sourceByHref.get(href), item, `${path}[href=${href}]`);
+            });
+
+            return;
+          }
+
           assert.equal(
             overlayValue.length,
             sourceValue.length,
