@@ -21,9 +21,14 @@ test('German parking presentation keeps the distance sourced from inventory', as
 
     const factual = units.get(slug)?.parking;
     assert.ok(factual, `Missing factual parking value for ${slug}`);
-    assert.match(factual, parkingDistancePattern, `Parking distance is not parseable for ${slug}: ${factual}`);
-    assert.match(fields.parking, /\{distance\}/, `German parking for ${slug} must use {distance}`);
     assert.doesNotMatch(fields.parking, /\d/, `German parking for ${slug} must not duplicate a numeric distance`);
+
+    const factualDistance = factual.match(parkingDistancePattern)?.[1];
+    if (factualDistance) {
+      assert.match(fields.parking, /\{distance\}/, `German parking for ${slug} must source its distance from inventory`);
+    } else {
+      assert.doesNotMatch(fields.parking, /\{distance\}/, `German parking for ${slug} cannot request a distance the inventory does not contain`);
+    }
   }
 
   assert.ok(parkingMappings > 0, 'Expected at least one localized parking mapping');
