@@ -50,3 +50,36 @@ No dossier lead has supplied all required metadata. The historical-image and map
 ## Acquisition control — 2026-08-06
 
 Package G in [archive-acquisition-pack.md](archive-acquisition-pack.md) supplies unsent enquiry text for historical plans, maps, photographs and drawings held or potentially held by the Ephorate, Vikelaia, Historical Archive of Crete, Archivio di Stato di Venezia and Biblioteca Nazionale Marciana. Every request requires catalogue number, creator, date, rights holder, copy/high-resolution fee, commercial website and social-media permission, required credit, and crop/edit permission. No archival asset, licence or reproduction has been obtained; the six user-owned modern photographs remain the only cleared photographs in the research packet.
+
+## Additional approved use — 2026-08-25
+
+This section records a new publication use of an already-cleared asset. It does
+not alter any finding above.
+
+`SPN-OWN-002` (`spinalonga-island-close-view`) is now also published in
+`src/content/blog/elounda-wartime-memory.md`, as that article's lead image and
+as its single inline figure. It replaces
+`/images/blog/elounda-wartime-memory/spinalonga-venetian-fortifications.jfif`,
+a Getty-credited JFIF (`EJ_Rodriquez / Getty Images`, 2,048 × 1,367 px,
+619,662 bytes) for which the repository holds no licence, purchase record or
+publication permission. That file has been deleted from `public/`; no derivative
+of it was generated.
+
+| Field | Value |
+| --- | --- |
+| Rights identifier | SPN-OWN-002 |
+| Owner / creator | Nikos Pasparakis / Nikos Pasparakis |
+| Reuse status | Owned; commercial website use, editing, cropping, format conversion and related social-media use authorised by the photographer on 2026-08-06. Third-party syndication and resale are not authorised. |
+| Required credit | Photo: Nikos Pasparakis / Elounda Traditional Homes of Crete |
+| Deployed files | `public/images/blog/spinalonga-why-fortified-changing-uses/spinalonga-island-close-view{,-480,-768,-1200}.webp` |
+| New usage | `elounda-wartime-memory` lead image and inline figure; referenced at the existing paths, no binary duplicated, no new derivative generated |
+| Existing usage retained | `spinalonga-why-fortified-changing-uses` inline figure |
+
+Semantic basis for the new usage: the wartime article's subject is Spinalonga as
+an inhabited place inside Mirabello Bay — the leprosy hospital of 1903–1957, the
+Brotherhood of the Sick, and the deterioration of conditions under the Italian
+and German occupation — together with the bay's geography. SPN-OWN-002 shows the
+island's fortifications and its surviving settlement buildings across the water,
+which is that subject. It is a present-day photograph and both the lead caption
+and the figure caption say so explicitly, so it cannot be read as evidence of a
+wartime event. No historical meaning is claimed for it.

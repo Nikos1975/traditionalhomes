@@ -10,8 +10,10 @@ tags:
   - history
   - spinalonga
   - mirabello
-image: "/images/blog/elounda-wartime-memory/spinalonga-venetian-fortifications.jfif"
-imageAlt: "The Venetian fortifications of Spinalonga"
+image: "/images/blog/spinalonga-why-fortified-changing-uses/spinalonga-island-close-view.webp"
+imageAlt: "Spinalonga, its fortifications and surviving settlement buildings, seen across the water from the Elounda side."
+imageCaption: "Spinalonga seen from the Elounda side. Present-day view, not a wartime photograph."
+imageCredit: "Photo: Nikos Pasparakis / Elounda Traditional Homes of Crete"
 ---
 
 Elounda's wartime memory should be handled quietly. The bay is sheltered, Spinalonga is close to the shore, and the routes around Mirabello connect small settlements with the wider history of Crete. That is enough. The subject does not need dramatic language.
@@ -37,8 +39,17 @@ Spinalonga had its own modern history before the Second World War. The Ephorate 
 The same official account says that these efforts were interrupted by the Italian and German occupation of Crete, and that living conditions became difficult during the war years. For the longer shoreline chronology around Spinalonga, see [A Short Chronological History of Elounda](/en/blog/elounda-history-through-its-shoreline/). This is the kind of fact that should be stated plainly.
 
 <figure>
-  <img src="/images/blog/elounda-wartime-memory/spinalonga-venetian-fortifications.jfif" alt="The Venetian fortifications of Spinalonga" loading="lazy" />
-  <figcaption>The Venetian fortifications of Spinalonga. Source: EJ_Rodriquez / Getty Images.</figcaption>
+  <img
+    src="/images/blog/spinalonga-why-fortified-changing-uses/spinalonga-island-close-view.webp"
+    srcset="/images/blog/spinalonga-why-fortified-changing-uses/spinalonga-island-close-view-480.webp 480w, /images/blog/spinalonga-why-fortified-changing-uses/spinalonga-island-close-view-768.webp 768w, /images/blog/spinalonga-why-fortified-changing-uses/spinalonga-island-close-view-1200.webp 1200w, /images/blog/spinalonga-why-fortified-changing-uses/spinalonga-island-close-view.webp 1600w"
+    sizes="(min-width: 784px) 736px, (min-width: 640px) calc(100vw - 48px), calc(100vw - 32px)"
+    alt="Spinalonga, its fortifications and surviving settlement buildings, seen across the water from the Elounda side."
+    width="1600"
+    height="1197"
+    loading="lazy"
+    decoding="async"
+  />
+  <figcaption>Spinalonga today: the fortifications and the surviving settlement buildings, seen from the Elounda side. Present-day view, not a wartime photograph. Photo: Nikos Pasparakis / Elounda Traditional Homes of Crete</figcaption>
 </figure>
 
 ## How to Visit With Care
@@ -53,4 +64,4 @@ Elounda's wartime memory is strongest when it stays close to what can be known: 
 
 - [What Was the Battle of Crete?](https://www.iwm.org.uk/history/what-was-the-battle-of-crete), Imperial War Museums.
 - [Modern Times](https://spinalonga-island.gr/history/%CE%B7-%CF%83%CF%8D%CE%B3%CF%87%CF%81%CE%BF%CE%BD%CE%B7-%CF%80%CE%B5%CF%81%CE%AF%CE%BF%CE%B4%CE%BF%CF%82/?lang=en), Ephorate of Antiquities of Lasithi.
-- Image credit is shown in the article caption.
+- Photograph: Nikos Pasparakis / Elounda Traditional Homes of Crete. The credit is also shown in the article caption.

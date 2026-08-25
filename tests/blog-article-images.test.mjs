@@ -163,18 +163,11 @@ const blogContentDir = new URL("../src/content/blog/", import.meta.url);
 /**
  * Inline images that are audited, published and knowingly non-compliant.
  * Exact source matching only: a category-wide rule would defeat the guard.
- * Batch C resolves both entries and must then delete them from this list.
+ * Batch C resolved the last two entries, so this list is now empty and every
+ * published inline image must be compliant. Any new entry is a temporary,
+ * audited exception that its own batch must delete again.
  */
-const knownInlineImageExceptions = new Map([
-  [
-    "https://commons.wikimedia.org/wiki/Special:FilePath/Elounda%20and%20Spinalonga%20Crete.jpg?width=1400",
-    "EXTERNAL_ASSET_REVIEW: Wikimedia-hosted asset; no local derivative family exists yet.",
-  ],
-  [
-    "/images/blog/elounda-wartime-memory/spinalonga-venetian-fortifications.jfif",
-    "RIGHTS_BLOCKED: Getty-sourced JFIF; derivative generation is not cleared.",
-  ],
-]);
+const knownInlineImageExceptions = new Map([]);
 
 /** @param {string} markdown */
 function frontmatterBlock(markdown) {

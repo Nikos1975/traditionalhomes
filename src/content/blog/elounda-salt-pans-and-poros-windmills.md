@@ -22,8 +22,17 @@ The road from Elounda toward the Kolokytha side passes through one of the most u
 It is a modest place, but it explains more than a viewpoint alone. It shows Elounda as a working shoreline.
 
 <figure>
-  <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Elounda%20and%20Spinalonga%20Crete.jpg?width=1400" alt="Elounda Bay, the Spinalonga peninsula, and the island of Spinalonga from above" loading="lazy" />
-  <figcaption>Elounda Bay and the Spinalonga side of the coast. Photo: Wolfgang Moroder, CC BY-SA 3.0, via <a href="https://commons.wikimedia.org/wiki/File:Elounda_and_Spinalonga_Crete.jpg">Wikimedia Commons</a>.</figcaption>
+  <img
+    src="/images/blog/elounda-salt-pans/elounda-bay-and-spinalonga-from-above-1600.webp"
+    srcset="/images/blog/elounda-salt-pans/elounda-bay-and-spinalonga-from-above-480.webp 480w, /images/blog/elounda-salt-pans/elounda-bay-and-spinalonga-from-above-768.webp 768w, /images/blog/elounda-salt-pans/elounda-bay-and-spinalonga-from-above-1200.webp 1200w, /images/blog/elounda-salt-pans/elounda-bay-and-spinalonga-from-above-1600.webp 1600w, /images/blog/elounda-salt-pans/elounda-bay-and-spinalonga-from-above-2400.webp 2400w"
+    sizes="(min-width: 784px) 736px, (min-width: 640px) calc(100vw - 48px), calc(100vw - 32px)"
+    alt="Elounda Bay, the Spinalonga peninsula, and the island of Spinalonga from above"
+    width="1600"
+    height="849"
+    loading="lazy"
+    decoding="async"
+  />
+  <figcaption>Elounda Bay and the Spinalonga side of the coast. Photo: <a href="https://commons.wikimedia.org/wiki/User:Moroder">Wolfgang Moroder</a>, <a href="https://commons.wikimedia.org/wiki/File:Elounda_and_Spinalonga_Crete.jpg">Elounda and Spinalonga Crete</a>, <a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>, via Wikimedia Commons; resized and converted to WebP.</figcaption>
 </figure>
 
 ## Why Salt Mattered Here
