@@ -17,6 +17,9 @@ import galleryTokensDe from './locales/de/gallery-tokens.json';
  *   output can never drift.
  * - Any other locale renders its mapped presentation, or falls back to the
  *   factual source when nothing is mapped.
+ * - Parameterized mappings derive factual tokens from the factual source at
+ *   render time. If a required token cannot be extracted, they fail closed to
+ *   the factual source instead of emitting stale localized data.
  * - A mapping must preserve factual meaning. `tests/i18n-german-visible-language.test.mjs`
  *   asserts that every number in a German mapping also appears in the English
  *   source it presents.
@@ -58,6 +61,22 @@ const presentation: Partial<Record<Locale, LocalePresentation>> = {
   de: unitsDe as LocalePresentation,
 };
 
+const PARKING_DISTANCE_PATTERN = /\((~?\d+(?:[.,]\d+)?\s*(?:m|km))\)/i;
+
+function renderParameterizedUnitText(
+  field: keyof UnitPresentation,
+  mapped: string,
+  factual: string | null | undefined,
+): string | null | undefined {
+  if (field !== 'parking' || !mapped.includes('{distance}')) {
+    return mapped;
+  }
+
+  const distance = factual?.match(PARKING_DISTANCE_PATTERN)?.[1];
+
+  return distance ? mapped.replace('{distance}', distance) : factual;
+}
+
 /** Descriptive unit field as the locale renders it. */
 export function unitText(
   locale: Locale,
@@ -69,7 +88,9 @@ export function unitText(
     return factual;
   }
 
-  return presentation[locale]?.units?.[slug]?.[field] ?? factual;
+  const mapped = presentation[locale]?.units?.[slug]?.[field];
+
+  return mapped ? renderParameterizedUnitText(field, mapped, factual) : factual;
 }
 
 /** Descriptive unit list as the locale renders it, entry for entry. */
