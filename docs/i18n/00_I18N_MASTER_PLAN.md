@@ -107,6 +107,13 @@ Inventory rules:
 - Language-switcher URLs must be derived from the same route map used by canonicals, hreflang, navigation and sitemap logic.
 - Adding a future locale homepage to the route map should make that locale eligible for the shared selector without a locale-specific UI rewrite.
 
+## Localized Navigation Contract
+
+- A non-default locale's primary navigation must list only destinations that have real pages in that locale.
+- Do not present a translated navigation label that silently sends the visitor to an English fallback route.
+- Until a page is localized, omit it from that locale's primary navigation; the language selector remains the explicit path back to the full English site.
+- Once a localized route is launched, add its authored source href to that locale's navigation overlay so the shared route resolver produces the localized public URL.
+
 ## Migration Order
 
 1. Document route, content, and QA rules.
