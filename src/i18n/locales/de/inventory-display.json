@@ -2,7 +2,7 @@
   "units": {
     "argyro": {
       "view": "Meerblick von der Veranda im ersten Stock",
-      "parking": "Gemeinsamer privater Gästeparkplatz in der Nähe (~80 m); bei Belegung kostenloses Parken im Dorf",
+      "parking": "Gemeinsamer privater Gästeparkplatz in der Nähe ({distance}); bei Belegung kostenloses Parken im Dorf",
       "pets": "Kleine Haustiere (≤5 kg) auf Anfrage",
       "kitchen": "Vollküche + Außenküchenzeile",
       "amenities": [
