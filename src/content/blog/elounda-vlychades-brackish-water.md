@@ -53,7 +53,16 @@ A household therefore lived among several kinds of water, but they were not inte
 That distinction makes the *vlychades* easier to understand.
 
 <figure>
-  <img src="/images/blog/elounda-vlychades-brackish-water/schisma-shoreline-setting-1600.webp" alt="Rocky shallows opening into Elounda Bay, with a small boat and low hills across the water." loading="lazy" />
+  <img
+    src="/images/blog/elounda-vlychades-brackish-water/schisma-shoreline-setting-1600.webp"
+    srcset="/images/blog/elounda-vlychades-brackish-water/schisma-shoreline-setting-480.webp 480w, /images/blog/elounda-vlychades-brackish-water/schisma-shoreline-setting-768.webp 768w, /images/blog/elounda-vlychades-brackish-water/schisma-shoreline-setting-1200.webp 1200w, /images/blog/elounda-vlychades-brackish-water/schisma-shoreline-setting-1600.webp 1600w, /images/blog/elounda-vlychades-brackish-water/schisma-shoreline-setting-2400.webp 2400w"
+    sizes="(min-width: 784px) 736px, (min-width: 640px) calc(100vw - 48px), calc(100vw - 32px)"
+    alt="Rocky shallows opening into Elounda Bay, with a small boat and low hills across the water."
+    width="1600"
+    height="1200"
+    loading="lazy"
+    decoding="async"
+  />
   <figcaption>The Schisma shoreline, where shallow coastal water meets Elounda Bay. Provided by Elounda Traditional Homes.</figcaption>
 </figure>
 
@@ -76,7 +85,16 @@ They lie only a short distance apart, but they are physically different and pres
 The Elounda or Schisma *vlychada* is beside Poulis Restaurant and opposite the First Port Department of Elounda: [Vlychada 1 on the Schisma waterfront](https://www.google.com/maps/search/?api=1&query=35.2616194%2C25.7245278), at approximately 35°15'41.83"N, 25°43'28.30"E.
 
 <figure>
-  <img src="/images/blog/elounda-vlychades-brackish-water/schisma-waterfront-1600.webp" alt="Stone-edged water beside the Schisma waterfront in Elounda, with the bay and lower village beyond." loading="lazy" />
+  <img
+    src="/images/blog/elounda-vlychades-brackish-water/schisma-waterfront-1600.webp"
+    srcset="/images/blog/elounda-vlychades-brackish-water/schisma-waterfront-480.webp 480w, /images/blog/elounda-vlychades-brackish-water/schisma-waterfront-768.webp 768w, /images/blog/elounda-vlychades-brackish-water/schisma-waterfront-1200.webp 1200w, /images/blog/elounda-vlychades-brackish-water/schisma-waterfront-1600.webp 1600w, /images/blog/elounda-vlychades-brackish-water/schisma-waterfront-2400.webp 2400w"
+    sizes="(min-width: 784px) 736px, (min-width: 640px) calc(100vw - 48px), calc(100vw - 32px)"
+    alt="Stone-edged water beside the Schisma waterfront in Elounda, with the bay and lower village beyond."
+    width="1600"
+    height="1200"
+    loading="lazy"
+    decoding="async"
+  />
   <figcaption>The present Schisma outlet area on the Elounda waterfront. Provided by Elounda Traditional Homes.</figcaption>
 </figure>
 
@@ -103,7 +121,16 @@ The human memory attached to Schisma comes from local reporting. In 2023, Anatol
 The material meant by μαλλιά and the full process remain undefined. The reports do not provide a date, frequency, tools or a complete routine. They nevertheless place a remembered person and a practical act beside the water.
 
 <figure>
-  <img src="/images/blog/elounda-vlychades-brackish-water/schisma-outlet-1600.webp" alt="Shallow clear water beside the shaded Schisma waterfront enclosure and stone steps." loading="lazy" />
+  <img
+    src="/images/blog/elounda-vlychades-brackish-water/schisma-outlet-1600.webp"
+    srcset="/images/blog/elounda-vlychades-brackish-water/schisma-outlet-480.webp 480w, /images/blog/elounda-vlychades-brackish-water/schisma-outlet-768.webp 768w, /images/blog/elounda-vlychades-brackish-water/schisma-outlet-1200.webp 1200w, /images/blog/elounda-vlychades-brackish-water/schisma-outlet-1600.webp 1600w, /images/blog/elounda-vlychades-brackish-water/schisma-outlet-2400.webp 2400w"
+    sizes="(min-width: 784px) 736px, (min-width: 640px) calc(100vw - 48px), calc(100vw - 32px)"
+    alt="Shallow clear water beside the shaded Schisma waterfront enclosure and stone steps."
+    width="1600"
+    height="1200"
+    loading="lazy"
+    decoding="async"
+  />
   <figcaption>The Schisma outlet area as photographed in August 2026. This present-day view does not establish earlier use or water chemistry. Provided by Elounda Traditional Homes.</figcaption>
 </figure>
 
@@ -114,7 +141,16 @@ Farther north is the Mavrikiano *vlychada*, locally identified as κάτω Φο�
 Here the relationship between water and human intervention is more visible. A covered stone-and-concrete structure sits immediately beside the shore. Steps descend towards the water, which remains visible within and around this built space.
 
 <figure>
-  <img src="/images/blog/elounda-vlychades-brackish-water/mavrikiano-covered-structure-1600.webp" alt="The covered stone-and-concrete structure and waterfront steps at the locally identified Mavrikiano vlychada." loading="lazy" />
+  <img
+    src="/images/blog/elounda-vlychades-brackish-water/mavrikiano-covered-structure-1600.webp"
+    srcset="/images/blog/elounda-vlychades-brackish-water/mavrikiano-covered-structure-480.webp 480w, /images/blog/elounda-vlychades-brackish-water/mavrikiano-covered-structure-768.webp 768w, /images/blog/elounda-vlychades-brackish-water/mavrikiano-covered-structure-1200.webp 1200w, /images/blog/elounda-vlychades-brackish-water/mavrikiano-covered-structure-1600.webp 1600w, /images/blog/elounda-vlychades-brackish-water/mavrikiano-covered-structure-2400.webp 2400w"
+    sizes="(min-width: 784px) 736px, (min-width: 640px) calc(100vw - 48px), calc(100vw - 32px)"
+    alt="The covered stone-and-concrete structure and waterfront steps at the locally identified Mavrikiano vlychada."
+    width="1600"
+    height="1200"
+    loading="lazy"
+    decoding="async"
+  />
   <figcaption>The covered Mavrikiano outlet area and its present waterfront steps. Provided by Elounda Traditional Homes.</figcaption>
 </figure>
 
@@ -123,7 +159,16 @@ A 2022 report in Patris preserves the clearest account of its former practical r
 That short statement tells us three important things. There was a task. There were people responsible for it. And there were circumstances in which travelling to this particular water was worthwhile.
 
 <figure>
-  <img src="/images/blog/elounda-vlychades-brackish-water/mavrikiano-interior-1600.webp" alt="View from inside the covered Mavrikiano outlet area towards the sea and stone waterfront steps." loading="lazy" />
+  <img
+    src="/images/blog/elounda-vlychades-brackish-water/mavrikiano-interior-1600.webp"
+    srcset="/images/blog/elounda-vlychades-brackish-water/mavrikiano-interior-480.webp 480w, /images/blog/elounda-vlychades-brackish-water/mavrikiano-interior-768.webp 768w, /images/blog/elounda-vlychades-brackish-water/mavrikiano-interior-1200.webp 1200w, /images/blog/elounda-vlychades-brackish-water/mavrikiano-interior-1600.webp 1600w, /images/blog/elounda-vlychades-brackish-water/mavrikiano-interior-2400.webp 2400w"
+    sizes="(min-width: 784px) 736px, (min-width: 640px) calc(100vw - 48px), calc(100vw - 32px)"
+    alt="View from inside the covered Mavrikiano outlet area towards the sea and stone waterfront steps."
+    width="1600"
+    height="1200"
+    loading="lazy"
+    decoding="async"
+  />
   <figcaption>Inside the covered Mavrikiano outlet area, looking towards the sea. The present structure is not evidence of its date or historic use. Provided by Elounda Traditional Homes.</figcaption>
 </figure>
 
@@ -148,7 +193,16 @@ It is easy to underestimate what this meant physically. Water had weight. Wet te
 The *vlychada* therefore belonged not only to the coast but to the working geography of the settlement. House, path, water and shoreline were connected through necessity.
 
 <figure>
-  <img src="/images/blog/elounda-vlychades-brackish-water/schisma-roadside-access-1600.webp" alt="Clear shallow water and a stone-edged channel beneath a low concrete roadside structure, with steps at the right." loading="lazy" />
+  <img
+    src="/images/blog/elounda-vlychades-brackish-water/schisma-roadside-access-1600.webp"
+    srcset="/images/blog/elounda-vlychades-brackish-water/schisma-roadside-access-480.webp 480w, /images/blog/elounda-vlychades-brackish-water/schisma-roadside-access-768.webp 768w, /images/blog/elounda-vlychades-brackish-water/schisma-roadside-access-1200.webp 1200w, /images/blog/elounda-vlychades-brackish-water/schisma-roadside-access-1600.webp 1600w, /images/blog/elounda-vlychades-brackish-water/schisma-roadside-access-2400.webp 2400w"
+    sizes="(min-width: 784px) 736px, (min-width: 640px) calc(100vw - 48px), calc(100vw - 32px)"
+    alt="Clear shallow water and a stone-edged channel beneath a low concrete roadside structure, with steps at the right."
+    width="1600"
+    height="1200"
+    loading="lazy"
+    decoding="async"
+  />
   <figcaption>The roadside edge above the Schisma outlet, showing the relationship between the covered water, steps and street. Provided by Elounda Traditional Homes.</figcaption>
 </figure>
 
@@ -173,7 +227,16 @@ Calling a *vlychada* brackish can make the water sound useless. That would misun
 Water did not need to be suitable for every purpose to have value. Households living with limited supply could reserve better water for uses that required it and use other water for work that did not. The exact division of water within historical Elounda still needs further oral and archival research, but the Mavrikiano account already shows that locally reported brackish water could be worth using to rinse laundry during scarcity.
 
 <figure>
-  <img src="/images/blog/elounda-vlychades-brackish-water/mavrikiano-water-detail-1600.webp" alt="Clear shallow water against layered red and grey rock inside the covered Mavrikiano outlet area." loading="lazy" />
+  <img
+    src="/images/blog/elounda-vlychades-brackish-water/mavrikiano-water-detail-1600.webp"
+    srcset="/images/blog/elounda-vlychades-brackish-water/mavrikiano-water-detail-480.webp 480w, /images/blog/elounda-vlychades-brackish-water/mavrikiano-water-detail-768.webp 768w, /images/blog/elounda-vlychades-brackish-water/mavrikiano-water-detail-1200.webp 1200w, /images/blog/elounda-vlychades-brackish-water/mavrikiano-water-detail-1600.webp 1600w, /images/blog/elounda-vlychades-brackish-water/mavrikiano-water-detail-2400.webp 2400w"
+    sizes="(min-width: 784px) 736px, (min-width: 640px) calc(100vw - 48px), calc(100vw - 32px)"
+    alt="Clear shallow water against layered red and grey rock inside the covered Mavrikiano outlet area."
+    width="1600"
+    height="1200"
+    loading="lazy"
+    decoding="async"
+  />
   <figcaption>Water inside the locally identified Mavrikiano outlet area. The photograph does not establish its chemistry or underground course. Provided by Elounda Traditional Homes.</figcaption>
 </figure>
 
@@ -210,7 +273,16 @@ In 2022, Patris contrasted the earlier laundry-rinsing use at Mavrikiano with co
 The emphasis had moved from use to memory and maintenance. Yet the water remained. At Schisma, the 2026 video shows it visibly moving. At Mavrikiano, water remains visible beneath and around the covered structure.
 
 <figure>
-  <img src="/images/blog/elounda-vlychades-brackish-water/mavrikiano-exterior-scale-1600.webp" alt="Stone-and-concrete enclosure beside broad stone steps and shallow seawater, with hillside buildings behind." loading="lazy" />
+  <img
+    src="/images/blog/elounda-vlychades-brackish-water/mavrikiano-exterior-scale-1600.webp"
+    srcset="/images/blog/elounda-vlychades-brackish-water/mavrikiano-exterior-scale-480.webp 480w, /images/blog/elounda-vlychades-brackish-water/mavrikiano-exterior-scale-768.webp 768w, /images/blog/elounda-vlychades-brackish-water/mavrikiano-exterior-scale-1200.webp 1200w, /images/blog/elounda-vlychades-brackish-water/mavrikiano-exterior-scale-1600.webp 1600w, /images/blog/elounda-vlychades-brackish-water/mavrikiano-exterior-scale-2400.webp 2400w"
+    sizes="(min-width: 784px) 736px, (min-width: 640px) calc(100vw - 48px), calc(100vw - 32px)"
+    alt="Stone-and-concrete enclosure beside broad stone steps and shallow seawater, with hillside buildings behind."
+    width="1600"
+    height="1200"
+    loading="lazy"
+    decoding="async"
+  />
   <figcaption>The Mavrikiano vlychada enclosure between the shoreline steps and lower hillside. Provided by Elounda Traditional Homes.</figcaption>
 </figure>
 
