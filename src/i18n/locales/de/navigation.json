@@ -8,6 +8,7 @@
   "menuLabel": "Menü",
   "openMenuLabel": "Navigationsmenü öffnen",
   "closeMenuLabel": "Navigationsmenü schließen",
+  "languageSwitcherLabel": "Sprache",
   "actions": {
     "checkDates": "Verfügbarkeit prüfen"
   },
