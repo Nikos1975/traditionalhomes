@@ -66,5 +66,238 @@
         }
       ]
     }
+  },
+  "ui": {
+    "filters": {
+      "viewTabs": {
+        "all": "Alle Unterkünfte",
+        "houses": "Häuser",
+        "villa": "Villa",
+        "groups": "Gruppenunterkünfte"
+      },
+      "quick": {
+        "all": "Alle",
+        "sleeps3": "Für 3 Personen",
+        "sleeps4": "Ab 4 Personen",
+        "sleeps6": "Ab 6 Personen",
+        "sleeps8": "Ab 8 Personen",
+        "seaView": "Meerblick",
+        "privatePool": "Privater Pool",
+        "bedrooms2": "Ab 2 Schlafzimmer",
+        "bedrooms3": "Ab 3 Schlafzimmer",
+        "sharedPool": "Gemeinsamer Pool",
+        "noPool": "Kein Pool"
+      },
+      "clear": "Filter zurücksetzen",
+      "clearAriaLabel": "Alle aktiven Filter zurücksetzen",
+      "countSingle": "Unterkunft passt",
+      "countPlural": "Unterkünfte passen"
+    },
+    "gallery": {
+      "photoComingSoon": "Foto folgt",
+      "photoGallery": "Bildergalerie",
+      "photoViewer": "Bildansicht",
+      "photos": "Fotos",
+      "viewAll": "Alle ansehen",
+      "viewAllPhotos": "Alle Fotos ansehen",
+      "hidePhotos": "Fotos ausblenden",
+      "hidePhotoGallery": "Bildergalerie ausblenden",
+      "closeViewer": "Bildansicht schließen",
+      "previousPhoto": "Vorheriges Foto",
+      "nextPhoto": "Nächstes Foto",
+      "photosOf": "Fotos von {name}",
+      "viewPhoto": "{label} ansehen",
+      "selectPhoto": "{label} auswählen",
+      "viewAllOf": "Alle {count} {photos} von {name} ansehen",
+      "photoNumbered": "Foto {n}",
+      "heroPhotoOf": "Titelfoto von {name}",
+      "mainViewOf": "Hauptansicht von {name}",
+      "photoOfNumbered": "{name} — Foto {n}"
+    },
+    "map": {
+      "villages": {
+        "mavrikiano": "Mavrikiano",
+        "vrouchas": "Vrouchas"
+      },
+      "counts": {
+        "mavrikianoHouses": "10 Häuser",
+        "vrouchasVilla": "1 Villa"
+      },
+      "exploreArea": "Die Umgebung entdecken",
+      "filters": {
+        "all": "Alle",
+        "houses": "Häuser",
+        "villa": "Villa",
+        "mavrikiano": "Mavrikiano",
+        "vrouchas": "Vrouchas"
+      },
+      "actions": {
+        "map": "Karte",
+        "details": "Details",
+        "viewDetails": "Details ansehen",
+        "bookNow": "Jetzt buchen",
+        "exploreInteractiveMap": "Interaktive Karte öffnen",
+        "viewMap": "Karte ansehen"
+      },
+      "fallbackSubtitle": "Traditionelles Haus",
+      "unavailable": "Koordinaten nicht verfügbar",
+      "types": {
+        "house": "Haus",
+        "villa": "Villa",
+        "parking": "Parkplatz"
+      }
+    },
+    "property": {
+      "labels": {
+        "sleeps": "Personen",
+        "size": "Größe",
+        "bedroom": "Schlafzimmer",
+        "bedrooms": "Schlafzimmer",
+        "bathroom": "Bad",
+        "bathrooms": "Bäder",
+        "layout": "Aufteilung",
+        "view": "Aussicht",
+        "access": "Zugang",
+        "parking": "Parken",
+        "practicalUse": "Praktische Nutzung",
+        "outdoorSpace": "Außenbereich",
+        "pool": "Pool",
+        "wifi": "WLAN",
+        "pets": "Haustiere",
+        "included": "Inklusive",
+        "seaView": "Meerblick"
+      },
+      "counts": {
+        "guestsUpTo": {
+          "one": "Für {count} Person",
+          "other": "Für bis zu {count} Personen"
+        },
+        "bedrooms": {
+          "one": "{count} Schlafzimmer",
+          "other": "{count} Schlafzimmer"
+        },
+        "bathrooms": {
+          "one": "{count} Bad",
+          "other": "{count} Bäder"
+        },
+        "bathroomsCompact": {
+          "one": "{count} Bad",
+          "other": "{count} Bäder"
+        },
+        "sleeps": {
+          "other": "Für {count} Personen"
+        }
+      },
+      "basics": {
+        "house": "Das Haus in Kürze",
+        "villa": "Die Villa in Kürze"
+      },
+      "derived": {
+        "bathroom": {
+          "showerRoom": "Duschbad",
+          "viaCourtyard": "Zugang über den Innenhof"
+        },
+        "layout": {
+          "splitLevelVilla": "Traditionelle Villa auf versetzten Ebenen",
+          "connectedLevelsOntas": "Verbundene Ebenen mit Ontas",
+          "mainLevelOntas": "Hauptebene + Ontas",
+          "mainLivingSpaceOntas": "Hauptwohnraum + Ontas",
+          "courtyardLevelOntas": "Innenhofebene + Ontas",
+          "firstFloorAboveEfterpiOntas": "Haus im Obergeschoss über Efterpi + Ontas",
+          "multiLevelInternalStairs": "Haus auf mehreren Ebenen mit Innentreppe",
+          "groundFloor": "Erdgeschoss",
+          "groundAndFirstFloor": "Erdgeschoss + Obergeschoss"
+        },
+        "access": {
+          "internalStairsSteppedLevels": "Innentreppen und versetzte Ebenen",
+          "entranceStepInternalStairs": "Stufe am Eingang + Innentreppe",
+          "stoneStepsInternalWoodenStairs": "Steinstufen zum Eingang; innen eine Holztreppe",
+          "externalStepsInternalStairsToOntas": "Außenstufen + Innentreppe zum Ontas",
+          "courtyardEntryInternalStairs": "Zugang über den Innenhof + Innentreppe",
+          "stepsDownToCourtyardStairToOntas": "Stufen hinunter zum Innenhof; Innentreppe zum Ontas",
+          "stoneStairsBalconyEntrance": "Steintreppe zum Balkoneingang",
+          "courtyardEntranceInternalStairs": "Eingang über den Innenhof + Innentreppe",
+          "stepFree": "Stufenlos",
+          "internalStairsEntranceViaStairsDown": "Innentreppe; Eingang über Stufen hinunter",
+          "internalStairs": "Innentreppe"
+        }
+      },
+      "card": {
+        "photoComingSoon": "Foto folgt",
+        "villa": "Villa",
+        "editorNote": "Anmerkung der Redaktion:",
+        "details": "Details",
+        "checkDates": "Termine prüfen",
+        "features": {
+          "directSeaView": "Direkter Meerblick",
+          "directSeaViewPrivatePool": "Direkter Meerblick · Privater Pool",
+          "sharedPool": "Gemeinsamer Pool",
+          "privatePool": "Privater Pool",
+          "firstFloor": "Obergeschoss",
+          "groundFloor": "Erdgeschoss",
+          "privateVillaVrouchas": "Private Villa · Vrouchas"
+        }
+      },
+      "group": {
+        "privateEstate": "Privates Anwesen",
+        "includes": "Enthält:",
+        "exclusiveSharedPool": "Exklusiver Poolbereich des Anwesens",
+        "privatePoolsIncluded": "Private Pools inklusive",
+        "editorNote": "Anmerkung der Redaktion:",
+        "view": "Ansehen",
+        "checkDates": "Termine prüfen",
+        "note": "Wählen Sie beide Unterkünfte für exakt dieselben Termine in unserem Buchungssystem, um das gesamte Anwesen zu sichern.",
+        "viewProperty": "{name} ansehen"
+      },
+      "detail": {
+        "breadcrumbs": {
+          "ariaLabel": "Navigationspfad",
+          "home": "Startseite",
+          "houses": "Ferienhäuser"
+        },
+        "sections": {
+          "propertyPhotosAria": "Fotos der Unterkunft",
+          "atAGlance": "Auf einen Blick",
+          "aboutHouseAria": "Über dieses Haus",
+          "aboutVillaAria": "Über diese Villa",
+          "amenitiesAria": "Ausstattung",
+          "included": "Das ist inklusive",
+          "locationArrivalAria": "Lage und Anreise",
+          "locationArrival": "Lage & Anreise",
+          "neighbouringHouses": "Benachbarte Häuser",
+          "suggestedNearbyCombinationsAria": "Vorschläge für benachbarte Häuser",
+          "suggestedCombinations": "Sie reisen zu mehreren? Vorschläge für benachbarte Häuser"
+        },
+        "booking": {
+          "checkDates": "Termine prüfen",
+          "checkThisHouse": "Dieses Haus prüfen",
+          "description": "Wählen Sie Ihre Termine und sehen Sie die aktuelle Verfügbarkeit dieser Unterkunft.",
+          "askQuestion": "Frage stellen",
+          "beforeYouBook": "Vor der Buchung"
+        },
+        "location": {
+          "howToArrive": "So kommen Sie an",
+          "sharedGuestParking": "Gemeinsamer Gästeparkplatz",
+          "houseEntrance": "Hauseingang",
+          "locationNote": "Hinweis zur Lage",
+          "locationDetails": "Angaben zur Lage",
+          "viewVillaMap": "Karte der Villa ansehen",
+          "openInGoogleMaps": "In Google Maps öffnen"
+        },
+        "nearby": {
+          "includes": "Enthält:",
+          "view": "Ansehen",
+          "sleeps": "Personen",
+          "poolViewOnly": "Nur Poolblick",
+          "privateDippingPool": "Privater Tauchpool",
+          "privatePool": "Privater Pool",
+          "sharedPool": "Gemeinsamer Pool"
+        },
+        "guide": {
+          "vrouchasTitle": "Reiseführer Vrouchas",
+          "practicalAreaDetails": "Praktische Angaben zur Umgebung"
+        }
+      }
+    }
   }
 }

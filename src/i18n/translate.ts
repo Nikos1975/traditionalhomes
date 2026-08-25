@@ -2,12 +2,19 @@ import { defaultLocale, normalizeLocale } from './config';
 import commonEn from './locales/en/common.json';
 import formsEn from './locales/en/forms.json';
 import guideEn from './locales/en/guide.json';
+import homeEn from './locales/en/home.json';
+import locationEn from './locales/en/location.json';
 import navigationEn from './locales/en/navigation.json';
+import propertiesEn from './locales/en/properties.json';
 import seoEn from './locales/en/seo.json';
 import commonDe from './locales/de/common.json';
 import formsDe from './locales/de/forms.json';
 import guideDe from './locales/de/guide.json';
+import homeDe from './locales/de/home.json';
+import seoDe from './locales/de/seo.json';
+import locationDe from './locales/de/location.json';
 import navigationDe from './locales/de/navigation.json';
+import propertiesDe from './locales/de/properties.json';
 
 /**
  * English is the complete source dictionary. Every other locale is a partial
@@ -24,17 +31,39 @@ const dictionaries = {
     forms: formsEn,
     seo: seoEn,
     guide: guideEn,
+    properties: propertiesEn,
+    location: locationEn,
+    home: homeEn,
   },
   de: {
     common: commonDe,
     navigation: navigationDe,
     forms: formsDe,
     guide: guideDe,
+    properties: propertiesDe,
+    location: locationDe,
+    home: homeDe,
+    seo: seoDe,
   },
 } as const;
 
 type SourceDictionary = (typeof dictionaries)['en'];
 type OverlayLocale = Exclude<keyof typeof dictionaries, 'en'>;
+
+/**
+ * An overlay may translate part of a namespace, so every level is optional —
+ * a plain `Partial` would only make the top-level namespaces optional.
+ */
+type DeepPartial<T> = T extends readonly unknown[]
+  ? T
+  : T extends object
+    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    : T;
+
+type DictionaryOverlay = DeepPartial<SourceDictionary>;
+
+const overlayFor = (locale: string): DictionaryOverlay | undefined =>
+  dictionaries[locale as OverlayLocale] as DictionaryOverlay | undefined;
 
 const isPlainObject = (value: unknown): value is Record<string, unknown> =>
   typeof value === 'object' && value !== null && !Array.isArray(value);
@@ -75,7 +104,7 @@ export function getTranslations(locale: string | undefined = defaultLocale): Sou
     return cached;
   }
 
-  const overlay = dictionaries[safeLocale as OverlayLocale] as Partial<SourceDictionary> | undefined;
+  const overlay = overlayFor(safeLocale);
   const resolved = overlay ? mergeDictionary(dictionaries.en, overlay) : dictionaries.en;
 
   resolvedDictionaries.set(safeLocale, resolved);
@@ -89,7 +118,7 @@ export function getTranslations(locale: string | undefined = defaultLocale): Sou
  */
 export function hasTranslations(locale: string | undefined, namespace: keyof SourceDictionary): boolean {
   const safeLocale = normalizeLocale(locale);
-  const overlay = dictionaries[safeLocale as OverlayLocale] as Partial<SourceDictionary> | undefined;
+  const overlay = overlayFor(safeLocale);
 
   return safeLocale === defaultLocale || Boolean(overlay && namespace in overlay);
 }
@@ -112,4 +141,16 @@ export function getSeoCopy(locale: string | undefined = defaultLocale) {
 
 export function getGuideCopy(locale: string | undefined = defaultLocale) {
   return getTranslations(locale).guide;
+}
+
+export function getPropertiesCopy(locale: string | undefined = defaultLocale) {
+  return getTranslations(locale).properties;
+}
+
+export function getLocationCopy(locale: string | undefined = defaultLocale) {
+  return getTranslations(locale).location;
+}
+
+export function getHomeCopy(locale: string | undefined = defaultLocale) {
+  return getTranslations(locale).home;
 }

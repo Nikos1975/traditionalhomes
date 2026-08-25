@@ -37,6 +37,10 @@ flowchart TD
   pages --> infoPages["about, faq, policies, location, contact, guides"]
   pages --> guidePilot["/en/guide/vrouchas/ + /de/reisefuehrer/vrouchas/<br/>shared GuidePage renderer (i18n pilot)"]
   guidePilot --> guidePage["components/pages/GuidePage.astro"]
+  pages --> sharedRenderers["components/pages/<br/>HomePage, CollectionPage, LocationPage, HouseDetailPage, GuidePage"]
+  sharedRenderers --> i18n
+  pages --> deCluster["/de/ + /de/ferienhaeuser/ + /de/ferienhaeuser/argyro/ + /de/lage/<br/>German cluster (thin wrappers)"]
+  deCluster --> sharedRenderers
   guidePage --> i18n
 
   home --> inventory

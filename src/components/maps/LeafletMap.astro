@@ -1,5 +1,5 @@
 ---
-import { defaultLocale } from '../../i18n/config';
+import { defaultLocale, type Locale } from '../../i18n/config';
 import { getCommonCopy } from '../../i18n/translate';
 
 export interface MarkerData {
@@ -21,10 +21,12 @@ interface Props {
   height?: string;
   interactive?: boolean;
   mapId?: string;
+  /** Active locale, passed explicitly by the page renderer. */
+  locale?: Locale;
 }
 
-const { markers, zoom = 15, center, height = '400px', interactive = true, mapId = 'map' } = Astro.props;
-const mapCopy = getCommonCopy(defaultLocale).ui.map;
+const { markers, zoom = 15, center, height = '400px', interactive = true, mapId = 'map', locale = defaultLocale } = Astro.props;
+const mapCopy = getCommonCopy(locale).ui.map;
 const mapLabels = {
   fallbackSubtitle: mapCopy.fallbackSubtitle,
   viewDetails: mapCopy.actions.viewDetails,

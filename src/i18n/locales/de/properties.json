@@ -1,0 +1,61 @@
+{
+  "collection": {
+    "breadcrumb": {
+      "ariaLabel": "Navigationspfad",
+      "home": "Startseite",
+      "current": "Unsere Ferienhäuser"
+    },
+    "heading": "Unsere Ferienhäuser",
+    "introBeforeCount": "Zur Auswahl stehen",
+    "introAfterCount": "traditionelle Steinhäuser in Mavrikiano sowie die",
+    "introVillaFallback": "Villa",
+    "introTail": "in Vrouchas. Vergleichen Sie Größe, Pool, Aussicht, Treppen und Parkmöglichkeiten, bevor Sie sich für eine Unterkunft entscheiden.",
+    "booking": {
+      "sectionAriaLabel": "Verfügbarkeit suchen",
+      "title": "Alle Unterkünfte durchsuchen",
+      "description": "Wählen Sie Datum und Personenzahl, um zur aktuellen Verfügbarkeit in WebHotelier zu gelangen.",
+      "submitLabel": "Verfügbarkeit prüfen"
+    },
+    "gridAriaLabelBefore": "Liste aller",
+    "gridAriaLabelAfter": "Unterkünfte",
+    "accessNote": {
+      "title": "Gut zu wissen vor der Buchung",
+      "body": "Unsere Häuser liegen in traditionellen Hangdörfern mit unebenen Wegen und Stufen. Sie sind nicht stufenfrei, und bei den meisten Eingängen führt mindestens eine Stufe vom Weg oder Parkplatz zur Tür.",
+      "linkLabel": "Hinweise zur Barrierefreiheit"
+    }
+  },
+  "detail": {
+    "regionName": "Kreta",
+    "pool": {
+      "clioSeparate": "Kein Poolzugang bei separater Buchung",
+      "dipping": "Privater Tauchpool",
+      "private": "Privater Pool",
+      "shared": "Gemeinsamer Pool",
+      "none": "Kein Pool"
+    },
+    "view": {
+      "directSeaMaster": "Direkter Meerblick vom Hauptschlafzimmer",
+      "seaViewVeranda": "Veranda mit Meerblick",
+      "poolMountainOlive": "Blick auf Poolbereich, Berge und Olivenhaine",
+      "courtyardVillage": "Privater Innenhof / Dorflage",
+      "eloundaGulfBalconies": "Blick auf die Bucht von Elounda von den Balkonen"
+    },
+    "outdoor": {
+      "seaViewVeranda": "Veranda mit Meerblick",
+      "seaViewBalcony": "Balkon mit Meerblick",
+      "margaritaVeranda": "35 m² Veranda mit Außenküche",
+      "terraceSharedBbq": "Private Terrasse mit gemeinsamem Grillbereich",
+      "verandaOutdoorKitchen": "Veranda mit Außenküche",
+      "privatePoolTerrace": "Private Poolterrasse",
+      "privateBalcony": "Privater Balkon",
+      "courtyardKitchenBbq": "Privater Innenhof mit Außenküche und Grill",
+      "smallBalconyVillageMountain": "Kleiner Balkon mit Blick ins Dorf und auf die Berge",
+      "courtyardDippingBalconies": "Privater Innenhof, Tauchpool, Balkone",
+      "villageSetting": "Dorflage"
+    },
+    "access": {
+      "clioParking": "Etwa 10 m vom Parkplatz"
+    },
+    "arrivalInstructions": "Wir empfangen unsere Gäste persönlich am Parkplatz, helfen beim Gepäck und bringen Sie zu Ihrem Haus."
+  }
+}

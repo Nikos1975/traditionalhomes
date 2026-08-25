@@ -1,17 +1,20 @@
 ---
 import LeafletMap from './LeafletMap.astro';
 import type { LocationItem } from '../../data/locations';
-import { defaultLocale } from '../../i18n/config';
-import { housePath, localizedPath, villaPath } from '../../i18n/routes';
+import { defaultLocale, type Locale } from '../../i18n/config';
+import { housePath, villaPath } from '../../i18n/routes';
+import { resolveLocalizedLink } from '../../i18n/route-map';
 import { getCommonCopy } from '../../i18n/translate';
 
 interface Props {
   location: LocationItem;
   height?: string;
+  /** Active locale, passed explicitly by the page renderer. */
+  locale?: Locale;
 }
 
-const { location, height = '300px' } = Astro.props;
-const mapCopy = getCommonCopy(defaultLocale).ui.map;
+const { location, height = '300px', locale = defaultLocale } = Astro.props;
+const mapCopy = getCommonCopy(locale).ui.map;
 
 interface MarkerData {
   id: string;
@@ -25,8 +28,8 @@ interface MarkerData {
 let markers: MarkerData[] = [];
 if (location && location.lat && location.lng) {
   const propertyUrl = location.type === 'villa'
-    ? villaPath(location.slug, defaultLocale)
-    : housePath(location.slug, defaultLocale);
+    ? villaPath(location.slug, locale)
+    : housePath(location.slug, locale);
 
   markers.push({
     id: location.id,
@@ -38,11 +41,12 @@ if (location && location.lat && location.lng) {
   });
 }
 
-const locationMapPath = `${localizedPath(defaultLocale, 'location')}?id=${location.id}#map-section`;
+const locationLink = resolveLocalizedLink(locale, 'location');
+const locationMapPath = `${locationLink.href}?id=${location.id}#map-section`;
 ---
 {markers.length > 0 ? (
   <div class="single-pin-map relative border border-stone-200 rounded-xl overflow-hidden shadow-sm">
-    <LeafletMap markers={markers} zoom={16} height={height} mapId={`map-${location.id}`} />
+    <LeafletMap markers={markers} zoom={16} height={height} mapId={`map-${location.id}`} locale={locale} />
     <div class="bg-stone-50 border-t border-stone-200 px-4 py-3 flex justify-between items-center">
       <div class="text-xs text-stone-600">
         <span class="font-medium text-stone-800">{location.title}</span><br/>

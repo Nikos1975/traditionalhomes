@@ -1,0 +1,62 @@
+{
+  "collection": {
+    "breadcrumb": {
+      "ariaLabel": "Breadcrumb",
+      "home": "Home",
+      "current": "The Collection"
+    },
+    "heading": "The Collection",
+    "introBeforeCount": "Browse",
+    "introAfterCount": "traditional stone houses in Mavrikiano and",
+    "introVillaFallback": "a villa",
+    "introTail": "in Vrouchas. Compare size, pools, views, stairs, and parking before choosing the property that fits your stay.",
+    "booking": {
+      "sectionAriaLabel": "Search availability",
+      "itemName": "Elounda Traditional Homes Collection",
+      "title": "Search the collection",
+      "description": "Choose dates and guests to continue to live availability in WebHotelier.",
+      "submitLabel": "Search Availability"
+    },
+    "gridAriaLabelBefore": "List of all",
+    "gridAriaLabelAfter": "properties",
+    "accessNote": {
+      "title": "Good to know before booking",
+      "body": "Our homes are in traditional hillside villages with uneven paths and steps. They are not step-free, and most entrances involve at least one step from the path or parking area.",
+      "linkLabel": "Read accessibility details"
+    }
+  },
+  "detail": {
+    "regionName": "Crete",
+    "pool": {
+      "clioSeparate": "No pool access when booked separately",
+      "dipping": "Private dipping pool",
+      "private": "Private pool",
+      "shared": "Shared pool",
+      "none": "No pool"
+    },
+    "view": {
+      "directSeaMaster": "Direct sea view from master bedroom",
+      "seaViewVeranda": "Sea-view veranda",
+      "poolMountainOlive": "Pool area, mountain and olive-grove view",
+      "courtyardVillage": "Private courtyard / village setting",
+      "eloundaGulfBalconies": "Elounda Gulf view from balconies"
+    },
+    "outdoor": {
+      "seaViewVeranda": "Sea-view veranda",
+      "seaViewBalcony": "Sea-view balcony",
+      "margaritaVeranda": "35 m² veranda with outdoor mini kitchen",
+      "terraceSharedBbq": "Private terrace with shared BBQ area",
+      "verandaOutdoorKitchen": "Veranda with outdoor kitchen",
+      "privatePoolTerrace": "Private pool terrace",
+      "privateBalcony": "Private balcony",
+      "courtyardKitchenBbq": "Private courtyard with outdoor kitchen and barbecue",
+      "smallBalconyVillageMountain": "Small balcony with inner village and mountain view",
+      "courtyardDippingBalconies": "Private courtyard, dipping pool, balconies",
+      "villageSetting": "Village setting"
+    },
+    "access": {
+      "clioParking": "About 10 m from parking"
+    },
+    "arrivalInstructions": "We personally meet our guests at the parking area to assist with luggage and guide you to your home."
+  }
+}

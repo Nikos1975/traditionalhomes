@@ -1,0 +1,89 @@
+{
+  "hero": {
+    "ariaLabel": "Hero",
+    "kicker": "Est. 1994 · Elounda, Crete",
+    "headingLead": "The Art of",
+    "headingEmphasis": "Village Living",
+    "imageAlt": "View from the hillside properties above Elounda",
+    "ctaCollection": "Explore the Collection",
+    "ctaAvailability": "Check Availability",
+    "scrollLabel": "Explore",
+    "subline": "Quiet, traditional, direct."
+  },
+  "overview": {
+    "ariaLabel": "Houses and Villa overview",
+    "headingLead": "Ten houses.",
+    "headingEmphasis": "One villa.",
+    "body": "Ten traditional stone houses in Mavrikiano. One larger villa in Vrouchas. Choose by sea view, pool, outdoor space, access, and group size.",
+    "ctaCompare": "Compare all stays"
+  },
+  "choose": {
+    "heading": "Choose your stay",
+    "subheading": "Start with what matters most.",
+    "openFilters": "Open filters",
+    "groups": {
+      "seaView": "Sea-view houses",
+      "pool": "Pool stays",
+      "access": "Easy access",
+      "larger": "Larger groups"
+    },
+    "clioLabel": "Clio, about 10 m from parking"
+  },
+  "villa": {
+    "kicker": "Private Villa · Vrouchas",
+    "heading": "Almond Tree Villa in Vrouchas",
+    "body": "A larger 230 m² villa for up to 10 guests, with five sleeping rooms, two bathrooms, a private 9 m × 4 m pool, reed-shaded balconies, garden, and views toward the Cretan Sea, garden, pool, and mountains.",
+    "imageAlt": "Almond Tree Villa garden and private pool in Vrouchas",
+    "ctaView": "View villa",
+    "ctaDates": "Check dates"
+  },
+  "setting": {
+    "ariaLabel": "Location teaser",
+    "kicker": "The Setting",
+    "headingLead": "Mavrikiano",
+    "headingEmphasis": "and Vrouchas",
+    "body": "The stone houses are in Mavrikiano, above Schisma, the harbour centre of Elounda. Almond Tree Villa is in Vrouchas, higher on the hillside and closer to Plaka. A car is recommended for beaches, tavernas, luggage, and evening meals.",
+    "ctaLocation": "Location & Travel",
+    "ctaGuide": "Local Guide",
+    "ctaPillar": "Understand the wider area",
+    "distances": [
+      {
+        "label": "Schisma / Elounda harbour → Mavrikiano",
+        "time": "3 min drive"
+      },
+      {
+        "label": "Schisma / Elounda harbour → Heraklion Airport (HER)",
+        "time": "1 hr 8 min · 66.9 km"
+      },
+      {
+        "label": "Schisma / Elounda harbour → Sitia Airport (JSH)",
+        "time": "1 hr 23 min · 76.0 km"
+      }
+    ]
+  },
+  "booking": {
+    "heading": "Check dates for your stay.",
+    "body": "Bookings are managed through our secure availability system. Select your property and dates to proceed.",
+    "itemName": "Elounda Traditional Homes",
+    "description": "Search the collection, then choose the property that fits your stay in WebHotelier.",
+    "submitLabel": "Search Availability",
+    "ctaAll": "View All Properties"
+  },
+  "info": {
+    "faq": {
+      "title": "Frequently Asked",
+      "desc": "Details on Wi-Fi, village access, pet policies, and shared pool arrangements.",
+      "label": "Read FAQ"
+    },
+    "about": {
+      "title": "Our Story",
+      "desc": "A family-run legacy of stone restoration and traditional Cretan hospitality since 1994.",
+      "label": "About us"
+    },
+    "policies": {
+      "title": "Policies",
+      "desc": "Straightforward information on check-in, quiet hours, and house rules.",
+      "label": "View policies"
+    }
+  }
+}

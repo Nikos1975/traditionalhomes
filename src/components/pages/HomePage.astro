@@ -1,0 +1,355 @@
+---
+import Base from '../../layouts/Base.astro';
+import UnitCard from '../UnitCard.astro';
+import BookingHandoffForm from '../booking/BookingHandoffForm.astro';
+import MapPreview from '../maps/MapPreview.astro';
+import inventory from '../../inventory/inventory.json';
+import siteCopy from '../../data/siteCopy.json';
+import type { InventoryUnit } from '../../types';
+import { validateInventory } from '../../utils/validateInventory';
+import type { Locale } from '../../i18n/config';
+import { assertRoute, resolveLocalizedLink, routeAlternates, routePath } from '../../i18n/route-map';
+import { canonicalUrl, getPageSeo } from '../../i18n/seo';
+import { getHomeCopy } from '../../i18n/translate';
+
+interface Props {
+  /** Active locale. Always passed explicitly by the route file, never inferred from route state. */
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+
+assertRoute(locale, 'home');
+
+const units = inventory as InventoryUnit[];
+validateInventory(units);
+const houses = units.filter(u => u.type === 'house');
+const villa = units.find((u) => u.type === 'villa');
+const pageSeo = getPageSeo(locale, 'home');
+const copy = getHomeCopy(locale);
+
+const alternates = routeAlternates('home');
+const housesLink = resolveLocalizedLink(locale, 'houses');
+const locationLink = resolveLocalizedLink(locale, 'location');
+const faqLink = resolveLocalizedLink(locale, 'faq');
+const aboutLink = resolveLocalizedLink(locale, 'about');
+const policiesLink = resolveLocalizedLink(locale, 'policies');
+const mavrikianoGuideLink = resolveLocalizedLink(locale, 'guide', 'mavrikiano');
+const eloundaPillarLink = resolveLocalizedLink(locale, 'blogArticle', 'elounda-and-mirabello-bay');
+const villaLink = villa ? resolveLocalizedLink(locale, 'villa', villa.slug) : null;
+const chooseStayOptions = [
+  {
+    title: copy.choose.groups.seaView,
+    names: [
+      { label: 'Argyro', link: resolveLocalizedLink(locale, 'house', 'argyro') },
+      { label: 'Leonidas', link: resolveLocalizedLink(locale, 'house', 'leonidas') },
+      { label: 'Margarita', link: resolveLocalizedLink(locale, 'house', 'margarita') },
+      { label: 'Monastiri', link: resolveLocalizedLink(locale, 'house', 'monastiri') },
+    ],
+  },
+  {
+    title: copy.choose.groups.pool,
+    names: [
+      { label: 'Erato', link: resolveLocalizedLink(locale, 'house', 'erato') },
+      { label: 'Demetra', link: resolveLocalizedLink(locale, 'house', 'demetra') },
+      { label: 'Penelope', link: resolveLocalizedLink(locale, 'house', 'penelope') },
+      { label: 'Monastiri', link: resolveLocalizedLink(locale, 'house', 'monastiri') },
+      { label: 'Almond Tree Villa', link: resolveLocalizedLink(locale, 'villa', 'almond-tree-villa') },
+    ],
+  },
+  {
+    title: copy.choose.groups.access,
+    names: [
+      { label: copy.choose.clioLabel, link: resolveLocalizedLink(locale, 'house', 'clio') },
+    ],
+  },
+  {
+    title: copy.choose.groups.larger,
+    names: [
+      { label: 'Margarita', link: resolveLocalizedLink(locale, 'house', 'margarita') },
+      { label: 'Monastiri', link: resolveLocalizedLink(locale, 'house', 'monastiri') },
+      { label: 'Almond Tree Villa', link: resolveLocalizedLink(locale, 'villa', 'almond-tree-villa') },
+    ],
+  },
+];
+---
+
+<Base
+  title={pageSeo.title}
+  description={pageSeo.description}
+  canonicalUrl={canonicalUrl(routePath(locale, 'home'))}
+  locale={locale}
+>
+  <Fragment slot="head">
+    {alternates.length > 1 && alternates.map((alternate) => (
+      <link rel="alternate" hreflang={alternate.hreflang} href={canonicalUrl(alternate.path)} />
+    ))}
+    <link
+      rel="preload"
+      as="image"
+      href="/images/brand/home-hero-spinalonga-1920.webp"
+      imagesrcset="/images/brand/home-hero-spinalonga-480.webp 480w, /images/brand/home-hero-spinalonga-768.webp 768w, /images/brand/home-hero-spinalonga-1024.webp 1024w, /images/brand/home-hero-spinalonga-1440.webp 1440w, /images/brand/home-hero-spinalonga-1920.webp 1920w, /images/brand/home-hero-spinalonga-2400.webp 2400w"
+      imagesizes="100vw"
+      type="image/webp"
+      fetchpriority="high"
+    />
+  </Fragment>
+
+  {/* 1. EDITORIAL HERO SECTION */}
+  <section class="relative h-[85vh] min-h-[600px] w-full overflow-hidden flex items-center bg-stone-900" aria-label={copy.hero.ariaLabel}>
+    <div class="absolute inset-0 z-0">
+      <picture>
+        <source
+          type="image/webp"
+          srcset="/images/brand/home-hero-spinalonga-480.webp 480w, /images/brand/home-hero-spinalonga-768.webp 768w, /images/brand/home-hero-spinalonga-1024.webp 1024w, /images/brand/home-hero-spinalonga-1440.webp 1440w, /images/brand/home-hero-spinalonga-1920.webp 1920w, /images/brand/home-hero-spinalonga-2400.webp 2400w"
+          sizes="100vw"
+        />
+        <img
+          src="/images/brand/home-hero-spinalonga.jpg"
+          alt={copy.hero.imageAlt}
+          width="2400"
+          height="1350"
+          sizes="100vw"
+          loading="eager"
+          fetchpriority="high"
+          decoding="async"
+          class="h-full w-full object-cover object-center animate-slow-zoom opacity-70"
+        />
+      </picture>
+      <div class="absolute inset-0 bg-gradient-to-r from-stone-950/80 via-stone-950/20 to-transparent"></div>
+    </div>
+
+    <div class="relative z-10 site-max site-pad w-full">
+      <div class="max-w-3xl animate-in fade-in slide-in-from-left-8 duration-1000">
+        <p class="text-[10px] md:text-xs uppercase tracking-[0.5em] text-stone-300 font-bold mb-6">
+          {copy.hero.kicker}
+        </p>
+        <h1 class="font-serif text-5xl md:text-7xl lg:text-8xl text-white mb-8 leading-[1.1] tracking-tight">
+          {copy.hero.headingLead} <br/> <span class="italic font-light text-stone-200">{copy.hero.headingEmphasis}</span>
+        </h1>
+        <p class="font-serif italic text-xl md:text-2xl text-stone-300 max-w-xl leading-relaxed mb-10 font-light">
+          {copy.hero.subline}
+        </p>
+        <div class="flex flex-wrap gap-4">
+          <a href={housesLink.href} hreflang={housesLink.hreflang} class="btn-cta bg-white text-stone-950 border-white hover:bg-primary hover:text-white hover:border-primary px-8 py-4">
+            {copy.hero.ctaCollection}
+          </a>
+          <a
+            href={siteCopy.bookingEngineUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-cta booking-cta px-8 py-4"
+          >
+            {copy.hero.ctaAvailability}
+          </a>
+        </div>
+      </div>
+    </div>
+
+    {/* Scroll Indicator */}
+    <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 opacity-40 animate-bounce">
+      <span class="text-[9px] uppercase tracking-[0.3em] text-white font-bold">{copy.hero.scrollLabel}</span>
+      <div class="w-px h-10 bg-gradient-to-b from-white to-transparent"></div>
+    </div>
+  </section>
+
+  {/* 2. THE COLLECTION OVERVIEW */}
+  <section class="site-max site-pad py-20 md:py-32" aria-label={copy.overview.ariaLabel}>
+    <header class="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-20">
+      <div class="max-w-2xl">
+        <h2 class="font-serif text-4xl md:text-6xl text-stone-950 mb-6 leading-tight">{copy.overview.headingLead} <span class="italic text-stone-400">{copy.overview.headingEmphasis}</span></h2>
+        <p class="text-xl text-stone-500 font-light leading-relaxed">
+          {copy.overview.body}
+        </p>
+      </div>
+      <a href={housesLink.href} hreflang={housesLink.hreflang} class="text-stone-900 font-bold text-xs uppercase tracking-widest border-b-2 border-stone-200 hover:border-stone-950 transition-all pb-1 mb-2">
+        {copy.overview.ctaCompare}
+      </a>
+    </header>
+
+    <section class="mb-16" aria-labelledby="choose-your-stay">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8">
+        <div>
+          <p class="text-[10px] uppercase tracking-[0.3em] font-bold text-primary mb-3">{copy.choose.heading}</p>
+          <h3 id="choose-your-stay" class="font-serif text-3xl md:text-4xl text-stone-950">{copy.choose.subheading}</h3>
+        </div>
+        <a href={housesLink.href} hreflang={housesLink.hreflang} class="text-stone-900 font-bold text-xs uppercase tracking-widest border-b-2 border-stone-200 hover:border-stone-950 transition-all pb-1">
+          {copy.choose.openFilters}
+        </a>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        {chooseStayOptions.map((option) => (
+          <article class="border border-stone-200 bg-stone-50/70 rounded-2xl p-5">
+            <h4 class="font-serif text-xl text-stone-950 mb-3">{option.title}</h4>
+            <p class="text-sm text-stone-600 leading-relaxed">
+              {option.names.map((item, index) => (
+                <>
+                  <a href={item.link.href} hreflang={item.link.hreflang} class="font-medium text-stone-900 underline underline-offset-4 decoration-stone-300 hover:decoration-stone-900">
+                    {item.label}
+                  </a>{index < option.names.length - 1 && ', '}
+                </>
+              ))}
+            </p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    {/* THE GRID */}
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-12 mb-16">
+      {houses.map((unit) => (
+        <UnitCard locale={locale} unit={unit} />
+      ))}
+    </div>
+
+    {/* FEATURED VILLA SECTION */}
+    {villa && (
+      <div class="mt-20 pt-20 border-t border-stone-100" aria-labelledby="almond-feature-title">
+        <div class="almond-feature-panel grid grid-cols-1 lg:grid-cols-12 gap-0 overflow-hidden rounded-[2rem] border border-stone-100 bg-white shadow-premium">
+          <div class="lg:col-span-7 min-h-[300px] md:min-h-[360px] lg:min-h-[460px]">
+            <img
+              src="/images/villa/1024/almond-tree-villa-garden-pool-wide-01-1024.webp"
+              alt={copy.villa.imageAlt}
+              loading="lazy"
+              class="h-full w-full object-cover"
+            />
+          </div>
+          <div class="lg:col-span-5 p-8 md:p-10 lg:p-12 flex flex-col justify-center bg-white text-body-text">
+            <span class="text-[10px] uppercase tracking-[0.3em] font-bold text-stone-400 mb-4 block">{copy.villa.kicker}</span>
+            <h3 id="almond-feature-title" class="font-serif text-[30px] md:text-[36px] text-body-text mb-5 leading-tight">{copy.villa.heading}</h3>
+            <p class="almond-feature-body font-light text-base leading-[1.65] mb-8">
+              {copy.villa.body}
+            </p>
+            <div class="mt-auto pt-6 border-t border-stone-100 flex flex-col sm:flex-row gap-3">
+              <a href={villaLink?.href ?? housesLink.href} hreflang={villaLink?.hreflang} class="btn-outline flex-1 py-3 px-0 text-center rounded-xl bg-white shadow-sm hover:shadow-md transition-shadow">
+                {copy.villa.ctaView}
+              </a>
+              <a
+                href={siteCopy.bookingEngineUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn-cta booking-cta flex-1 py-3 px-0 text-center rounded-xl shadow-sm hover:shadow-md transition-shadow"
+              >
+                {copy.villa.ctaDates}
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    )}
+  </section>
+
+  {/* 3. LOCATION & LIFESTYLE */}
+  <section class="bg-stone-950 text-stone-400 overflow-hidden" aria-label={copy.setting.ariaLabel}>
+    <div class="site-max site-pad py-24 md:py-32 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+      <div class="order-2 lg:order-1 relative">
+         <div class="aspect-square rounded-[3rem] overflow-hidden shadow-2xl relative z-10">
+            <MapPreview locale={locale} />
+         </div>
+         {/* Decorative element */}
+         <div class="absolute -top-10 -left-10 w-40 h-40 bg-primary/10 rounded-full blur-3xl"></div>
+      </div>
+
+      <div class="order-1 lg:order-2">
+        <p class="text-[10px] font-bold uppercase tracking-[0.4em] text-primary mb-6">{copy.setting.kicker}</p>
+        <h2 class="font-serif text-4xl md:text-6xl text-white mb-8 leading-tight tracking-tight">
+          Mavrikiano <br/> <span class="italic text-stone-500">{copy.setting.headingEmphasis}</span>
+        </h2>
+        <p class="text-lg text-stone-400 font-light leading-relaxed mb-10">
+          {copy.setting.body}
+        </p>
+
+        <ul class="space-y-6 mb-12 border-t border-stone-800 pt-10">
+          {[
+            ...copy.setting.distances
+          ].map(item => (
+            <li class="flex items-center justify-between text-sm">
+              <span class="text-stone-100 font-medium tracking-wide">{item.label}</span>
+              <span class="text-stone-500 font-light uppercase tracking-widest text-[10px]">{item.time}</span>
+            </li>
+          ))}
+        </ul>
+
+        <div class="flex flex-wrap gap-4">
+          <a href={locationLink.href} hreflang={locationLink.hreflang} class="btn-cta border-stone-700 text-white hover:bg-white hover:text-stone-950">{copy.setting.ctaLocation}</a>
+          <a href={mavrikianoGuideLink.href} hreflang={mavrikianoGuideLink.hreflang} class="btn-cta bg-primary border-primary text-white hover:bg-amber-600">{copy.setting.ctaGuide}</a>
+          <a href={eloundaPillarLink.href} hreflang={eloundaPillarLink.hreflang} class="inline-flex items-center text-xs font-bold uppercase tracking-[0.2em] text-stone-400 underline decoration-stone-600 underline-offset-4 transition-colors hover:text-white hover:decoration-stone-300">{copy.setting.ctaPillar}</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* 4. UTILITY GRID (FAQ / ABOUT / POLICIES) */}
+  <section class="site-max site-pad py-24 md:py-32">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-16">
+      {[
+        { ...copy.info.faq, link: faqLink },
+        { ...copy.info.about, link: aboutLink },
+        { ...copy.info.policies, link: policiesLink }
+      ].map(item => (
+        <div class="group">
+          <h3 class="font-serif text-2xl text-stone-950 mb-4 group-hover:text-primary transition-colors">{item.title}</h3>
+          <p class="text-stone-500 font-light leading-relaxed mb-6 text-sm">{item.desc}</p>
+          <a href={item.link.href} hreflang={item.link.hreflang} class="text-[10px] uppercase tracking-[0.2em] font-bold text-stone-950 border-b border-stone-200 hover:border-stone-950 transition-all pb-1">
+            {item.label}
+          </a>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  {/* 5. FINAL MASTHEAD CTA */}
+  <section class="bg-stone-50 border-t border-stone-100">
+    <div class="site-max site-pad py-24 md:py-32 text-center">
+      <h2 class="font-serif text-5xl md:text-7xl text-stone-950 mb-8 leading-tight tracking-tight">{copy.booking.heading}</h2>
+      <p class="text-stone-500 text-lg md:text-xl font-light max-w-xl mx-auto mb-12">
+        {copy.booking.body}
+      </p>
+      <div class="max-w-3xl mx-auto mb-8 text-left">
+        <BookingHandoffForm locale={locale}
+          bookingBaseUrl={siteCopy.bookingEngineUrl}
+          itemName={copy.booking.itemName}
+          maxAdults={10}
+          title={copy.villa.ctaDates}
+          description={copy.booking.description}
+          submitLabel={copy.booking.submitLabel}
+          compact
+        />
+      </div>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href={housesLink.href} hreflang={housesLink.hreflang} class="btn-cta bg-transparent border-stone-200 text-stone-950 hover:bg-stone-100 px-12 py-5">
+          {copy.booking.ctaAll}
+        </a>
+      </div>
+    </div>
+  </section>
+
+</Base>
+
+<style>
+  .almond-feature-panel {
+    background: #FFFFFF;
+    border-color: #F7F4EE;
+    color: #2C2419;
+  }
+
+  .almond-feature-body {
+    color: #6B5F50;
+  }
+
+  .animate-slow-zoom {
+    animation: slowZoom 25s infinite alternate ease-in-out;
+  }
+
+  @media (max-width: 767px), (prefers-reduced-motion: reduce) {
+    .animate-slow-zoom {
+      animation: none;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes slowZoom {
+    from { transform: scale(1); }
+    to { transform: scale(1.15); }
+  }
+</style>

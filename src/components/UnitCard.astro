@@ -2,7 +2,8 @@
 import { Image } from "astro:assets";
 import siteCopy from "../data/siteCopy.json";
 import { defaultLocale, type Locale } from "../i18n/config";
-import { housePath, villaPath } from "../i18n/routes";
+import { resolveLocalizedLink } from '../i18n/route-map';
+import { unitName, unitText } from '../i18n/inventory-display';
 import { getCommonCopy } from "../i18n/translate";
 import { formatPropertyCount } from "../i18n/property-counts";
 import type { InventoryUnit } from "../types";
@@ -17,10 +18,10 @@ const { unit, priority = false, locale = defaultLocale } = Astro.props;
 const propertyCopy = getCommonCopy(locale).ui.property;
 
 // 1. PATH LOGIC (Matches your localized folder structure)
-const unitPagePath =
+const unitPageLink =
   unit.type === "villa"
-    ? villaPath(unit.slug, locale)
-    : housePath(unit.slug, locale);
+    ? resolveLocalizedLink(locale, 'villa', unit.slug)
+    : resolveLocalizedLink(locale, 'house', unit.slug);
 
 // 2. IMAGE AUTOMATION
 const allImages = import.meta.glob(
@@ -71,7 +72,7 @@ const homepageFeatureLabel = homepageFeatureKey ? propertyCopy.card.features[hom
 >
   {/* OPTIMIZED IMAGE SECTION */}
   <a
-    href={unitPagePath}
+    href={unitPageLink.href} hreflang={unitPageLink.hreflang}
     class="block relative overflow-hidden bg-stone-900 aspect-[4/3]"
     tabindex="-1"
     aria-hidden="true"
@@ -80,7 +81,7 @@ const homepageFeatureLabel = homepageFeatureKey ? propertyCopy.card.features[hom
       featuredImgAsset ? (
         <Image
           src={featuredImgAsset}
-          alt={unit.name}
+          alt={unitName(locale, unit.slug, unit.name)}
           widths={[320, 480, 672, 768]}
           quality={68}
           sizes="
@@ -110,10 +111,10 @@ const homepageFeatureLabel = homepageFeatureKey ? propertyCopy.card.features[hom
           {displayLocation}
         </p>
         <a
-          href={unitPagePath}
+          href={unitPageLink.href} hreflang={unitPageLink.hreflang}
           class="font-serif text-3xl text-body-text group-hover:text-primary transition-colors leading-tight block"
         >
-          {unit.name}
+          {unitName(locale, unit.slug, unit.name)}
         </a>
       </div>
       {
@@ -179,10 +180,10 @@ const homepageFeatureLabel = homepageFeatureKey ? propertyCopy.card.features[hom
 
     {/* ACCESS ALERT (Editorial Note Style) */}
     {
-      unit.accessDetail && (
+      unitText(locale, unit.slug, 'accessDetail', unit.accessDetail) && (
         <div class="mb-8 p-4 bg-amber-50/50 border border-amber-100 rounded-2xl">
           <p class="text-[11px] text-amber-900/80 leading-relaxed italic">
-            <strong>{propertyCopy.card.editorNote}</strong> {unit.accessDetail}
+            <strong>{propertyCopy.card.editorNote}</strong> {unitText(locale, unit.slug, 'accessDetail', unit.accessDetail)}
           </p>
         </div>
       )
@@ -191,7 +192,7 @@ const homepageFeatureLabel = homepageFeatureKey ? propertyCopy.card.features[hom
     {/* ACTION BUTTONS */}
     <div class="mt-auto pt-6 border-t border-stone-100 flex gap-3">
       <a
-        href={unitPagePath}
+        href={unitPageLink.href} hreflang={unitPageLink.hreflang}
         class="btn-outline flex-1 py-3 px-0 text-center rounded-xl bg-white shadow-sm hover:shadow-md transition-shadow"
       >
         {propertyCopy.card.details}

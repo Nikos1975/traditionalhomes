@@ -1,0 +1,512 @@
+---
+import Base from '../../layouts/Base.astro';
+import HouseGallery from '../gallery/HouseGallery.astro';
+import AtAGlance from '../AtAGlance.astro';
+import BookingHandoffForm from '../booking/BookingHandoffForm.astro';
+import SinglePinMap from '../maps/SinglePinMap.astro';
+import inventory from '../../inventory/inventory.json';
+import siteCopyData from '../../data/siteCopy.json';
+import { locations, parkingOnly } from '../../data/locations';
+import { getEntry, render } from 'astro:content';
+import galleryData from '../../data/gallery.json';
+import suggestedPairingsData from '../../inventory/suggested-pairings.json';
+import { defaultLocale, type Locale } from '../../i18n/config';
+import { assertRoute, resolveLocalizedLink, routeAlternates, routePath } from '../../i18n/route-map';
+import { canonicalUrl, getPropertySeo } from '../../i18n/seo';
+import { getCommonCopy, getPropertiesCopy } from '../../i18n/translate';
+import { pairingText, unitList, unitName, unitText } from '../../i18n/inventory-display';
+import { formatPropertyCount } from '../../i18n/property-counts';
+import { sortGalleryImages } from '../../utils/sortGalleryImages';
+import type { InventoryUnit, SiteCopy, GalleryImage } from '../../types';
+
+
+interface Props {
+  /** Active locale. Always passed explicitly by the route file, never inferred from route state. */
+  locale: Locale;
+  /** Inventory unit — the factual source of truth for this page. */
+  unit: InventoryUnit;
+}
+
+const { locale, unit } = Astro.props;
+const slug = unit.slug;
+
+assertRoute(locale, 'house', slug);
+
+const detailCopy = getPropertiesCopy(locale).detail;
+const units = inventory as InventoryUnit[];
+const siteCopy = siteCopyData as SiteCopy;
+const propertyCopy = getCommonCopy(locale).ui.property;
+const galleryCopy = getCommonCopy(locale).ui.gallery;
+
+// GALLERY & HERO
+const rawGallery = (galleryData as Record<string, GalleryImage[]>)[slug] ?? [];
+const gallery    = sortGalleryImages(rawGallery);
+const heroEntry  = gallery[0];
+const heroSrc    = heroEntry
+  ? heroEntry.src.replace('/1024/', '/1600/').replace('-1024.webp', '-1600.webp')
+  : '';
+const heroPosition = (slug === 'kalliopi' || slug === 'argyro') ? 'center 35%' : 'center';
+const ogImage = `/images/houses/${slug}/og.jpg`;
+
+// RELATIONS
+const nearUnits = (unit.locationRelations?.near ?? [])
+  .map((s) => units.find((u) => u.slug === s))
+  .filter(Boolean) as InventoryUnit[];
+
+const locData = locations.find((l) => l.slug === slug);
+const parkingLoc = parkingOnly[0];
+
+type SuggestedPairing = {
+  id: string;
+  name: string;
+  members: string[];
+  displayOn: string[];
+  kind: 'nearby_pairing' | 'nearby_cluster';
+  summary: string;
+  reasons: string[];
+};
+
+const suggestedPairings = (suggestedPairingsData as SuggestedPairing[])
+  .filter((pairing) => pairing.displayOn.includes(slug));
+
+// CONTENT
+// Long-form copy is locale-specific content, not a translation resource.
+// A non-default locale must ship its own entry: the route map only declares a
+// locale route once that content exists, and this fails the build otherwise.
+const entry = locale === defaultLocale
+  ? await getEntry('houses', slug)
+  : await getEntry('houses', `${locale}/${slug}`);
+
+if (!entry && locale !== defaultLocale) {
+  throw new Error(
+    `Missing "${locale}" content for house "${slug}". Add src/content/houses/${locale}/${slug}.md ` +
+      'before declaring the locale in routeMap (src/i18n/route-map.ts).',
+  );
+}
+
+const Content = entry ? (await render(entry)).Content : null;
+
+/**
+ * Display title comes from the locale's content entry when it has one, so a
+ * locale can write "Haus Argyro" without duplicating any inventory value.
+ * Falls back to the inventory name, which keeps English output unchanged.
+ */
+const displayName = (entry?.data as { title?: string } | undefined)?.title ?? unit.name;
+
+// HELPERS
+const isSeaView = unit.view.toLowerCase().includes('sea') || unit.view.toLowerCase().includes('bay');
+const poolLabel = unit.slug === 'clio'
+  ? detailCopy.pool.clioSeparate
+  : unit.slug === 'monastiri'
+    ? detailCopy.pool.dipping
+  : unit.pool === 'private'
+    ? detailCopy.pool.private
+    : unit.pool === 'shared'
+      ? detailCopy.pool.shared
+      : detailCopy.pool.none;
+const sidebarViewBySlug: Record<string, string> = {
+  argyro: detailCopy.view.directSeaMaster,
+  leonidas: detailCopy.view.directSeaMaster,
+  margarita: detailCopy.view.seaViewVeranda,
+  clio: detailCopy.view.poolMountainOlive,
+  efterpi: detailCopy.view.courtyardVillage,
+  monastiri: detailCopy.view.eloundaGulfBalconies,
+};
+const sidebarOutdoorBySlug: Record<string, string> = {
+  argyro: detailCopy.outdoor.seaViewVeranda,
+  leonidas: detailCopy.outdoor.seaViewBalcony,
+  margarita: detailCopy.outdoor.margaritaVeranda,
+  demetra: detailCopy.outdoor.terraceSharedBbq,
+  penelope: detailCopy.outdoor.verandaOutdoorKitchen,
+  erato: detailCopy.outdoor.privatePoolTerrace,
+  clio: detailCopy.outdoor.privateBalcony,
+  efterpi: detailCopy.outdoor.courtyardKitchenBbq,
+  kalliopi: detailCopy.outdoor.smallBalconyVillageMountain,
+  monastiri: detailCopy.outdoor.courtyardDippingBalconies,
+};
+const sidebarAccessBySlug: Record<string, string> = {
+  clio: detailCopy.access.clioParking,
+};
+const sidebarView = sidebarViewBySlug[unit.slug] ?? unit.view;
+const sidebarOutdoorSpace = sidebarOutdoorBySlug[unit.slug] ?? detailCopy.outdoor.villageSetting;
+const sidebarAccess = sidebarAccessBySlug[unit.slug];
+const positivePool = unit.pool !== 'none';
+const positiveText = 'font-medium text-success';
+const neutralText = 'font-medium text-stone-500';
+const displayLocation = unit.location === 'Mavrikiano Elounda'
+  ? 'Mavrikiano, Elounda'
+  : unit.location;
+const getNearbyMeta = (near: InventoryUnit) => {
+  const details = [formatPropertyCount(locale, near.sleeps, propertyCopy.counts.sleeps)];
+
+  if (unit.slug === 'erato' && near.slug === 'clio') {
+    details.push(propertyCopy.detail.nearby.poolViewOnly);
+  } else if (near.slug === 'monastiri') {
+    details.push(propertyCopy.detail.nearby.privateDippingPool);
+  } else if (near.pool === 'private') {
+    details.push(propertyCopy.detail.nearby.privatePool);
+  } else if (near.pool === 'shared') {
+    details.push(propertyCopy.detail.nearby.sharedPool);
+  }
+
+  return details.join(' · ');
+};
+
+const pageSeo = getPropertySeo(locale, { ...unit, name: displayName }, poolLabel);
+
+const alternates = routeAlternates('house', slug);
+const homeLink = resolveLocalizedLink(locale, 'home');
+const housesLink = resolveLocalizedLink(locale, 'houses');
+const contactLink = resolveLocalizedLink(locale, 'contact');
+---
+
+<Base
+  title={pageSeo.title}
+  description={pageSeo.description}
+  canonicalUrl={canonicalUrl(routePath(locale, 'house', slug))}
+  ogImage={ogImage}
+  locale={locale}
+>
+  {/* Preload the gallery hero image so the browser fetches it early,
+      before it encounters the <img> later in the DOM. */}
+  {alternates.length > 1 && (
+    <Fragment slot="head">
+      {alternates.map((alternate) => (
+        <link rel="alternate" hreflang={alternate.hreflang} href={canonicalUrl(alternate.path)} />
+      ))}
+    </Fragment>
+  )}
+
+  {heroEntry && (
+    <link
+      slot="head"
+      rel="preload"
+      as="image"
+      href={heroEntry.src}
+      imagesrcset={heroEntry.srcset}
+      imagesizes="(min-width:1280px) 900px, (min-width:1024px) 66vw, 100vw"
+    />
+  )}
+
+  {/* ── 1. HERO ───────────────────────────────────── */}
+  <header class="relative overflow-hidden bg-stone-900" style="height: 62vh; min-height: 420px; max-height: 780px;">
+    <div class="absolute inset-0 bg-gradient-to-b from-stone-900/30 via-transparent to-stone-900/70 z-10"></div>
+    {heroSrc && (
+      <div
+        class="absolute inset-0 bg-center bg-cover"
+        style={`background-image: url('${heroSrc}'); background-position: ${heroPosition};`}
+        role="img"
+        aria-label={galleryCopy.heroPhotoOf.replace('{name}', displayName)}
+      ></div>
+    )}
+    <div class="relative z-20 site-max site-pad h-full flex flex-col justify-end pb-10 md:pb-14">
+      <nav class="text-[10px] uppercase tracking-[0.35em] mb-5 text-white/70" aria-label={propertyCopy.detail.breadcrumbs.ariaLabel}>
+        <a href={homeLink.href} hreflang={homeLink.hreflang} class="hover:text-white transition-colors">{propertyCopy.detail.breadcrumbs.home}</a>
+        <span class="mx-2 opacity-50">/</span>
+        <a href={housesLink.href} hreflang={housesLink.hreflang} class="hover:text-white transition-colors">{propertyCopy.detail.breadcrumbs.houses}</a>
+        <span class="mx-2 opacity-50">/</span>
+        <span class="text-white/90">{displayName}</span>
+      </nav>
+      <h1 class="font-serif text-4xl md:text-6xl lg:text-7xl text-white leading-tight mb-3 drop-shadow-md">
+        {displayName}
+      </h1>
+      <p class="text-white/80 text-sm md:text-base font-light tracking-wide">
+        {displayLocation} &mdash; {unit.area}, {detailCopy.regionName}
+      </p>
+    </div>
+  </header>
+
+  {/* ── 2. ESSENTIAL FACTS BAR ───────────────────── */}
+  <div class="bg-white border-b border-stone-100 shadow-sm sticky top-0 z-30">
+    <div class="site-max site-pad py-4 flex items-center gap-6 md:gap-10 overflow-x-auto text-xs md:text-sm text-stone-600 font-medium whitespace-nowrap">
+
+      <span class="flex items-center gap-2">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" class="text-stone-400 shrink-0">
+          <path d="M2 4v16"/><path d="M2 8h18a2 2 0 0 1 2 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/>
+        </svg>
+        {formatPropertyCount(locale, unit.bedrooms, propertyCopy.counts.bedrooms)}
+      </span>
+
+      <span class="flex items-center gap-2">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" class="text-stone-400 shrink-0">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+        </svg>
+        {formatPropertyCount(locale, unit.sleeps, propertyCopy.counts.sleeps)}
+      </span>
+
+      {unit.pool !== 'none' && (
+        <span class="flex items-center gap-2">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" class="text-stone-400 shrink-0">
+            <path d="M2 12h20M2 12c0-5.5 4.5-10 10-10s10 4.5 10 10M2 12c0 5.5 4.5 10 10 10s10-4.5 10-10"/>
+          </svg>
+          {poolLabel}
+        </span>
+      )}
+
+      {isSeaView && (
+        <span class="flex items-center gap-2 text-sky-700 font-semibold">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" class="shrink-0">
+            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
+          </svg>
+          {propertyCopy.labels.seaView}
+        </span>
+      )}
+
+      <span class="flex items-center gap-2 ml-auto shrink-0">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" class="text-stone-400 shrink-0">
+          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
+        </svg>
+        {displayLocation}
+      </span>
+    </div>
+  </div>
+
+  {/* ── 3. MAIN CONTENT ──────────────────────────── */}
+  <main class="site-max site-pad py-12 md:py-16">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+
+      {/* LEFT — content column */}
+      <div class="lg:col-span-8 space-y-14">
+
+        {/* 3a. Gallery */}
+        <section aria-label={propertyCopy.detail.sections.propertyPhotosAria}>
+          <HouseGallery locale={locale} images={gallery} unitName={displayName} />
+        </section>
+
+        {/* 3b. At a Glance */}
+        <section aria-label={propertyCopy.detail.sections.atAGlance} class="border-t border-stone-100 pt-12">
+          <h2 class="font-serif text-2xl text-body-text mb-8">{propertyCopy.detail.sections.atAGlance}</h2>
+          <AtAGlance unit={unit} locale={locale} />
+        </section>
+
+        {/* 3c. Description / zones */}
+        {Content && (
+          <section class="border-t border-stone-100 pt-12" aria-label={propertyCopy.detail.sections.aboutHouseAria}>
+            <div class="prose prose-stone prose-lg max-w-none text-stone-700 leading-relaxed font-light
+              prose-headings:font-serif prose-headings:font-normal prose-headings:text-body-text
+              prose-h2:text-2xl prose-h3:text-xl prose-h3:mt-8
+              prose-p:leading-relaxed prose-li:leading-relaxed">
+              <Content />
+            </div>
+          </section>
+        )}
+
+        {/* 3d. Amenities */}
+        <section class="border-t border-stone-100 pt-12" aria-label={propertyCopy.detail.sections.amenitiesAria}>
+          <h2 class="font-serif text-2xl text-body-text mb-8">{propertyCopy.detail.sections.included}</h2>
+          <ul class="grid grid-cols-1 sm:grid-cols-2 gap-y-3 gap-x-8">
+            {unitList(locale, slug, 'amenities', unit.amenities).map((amenity) => (
+              <li class="flex items-center gap-3 text-sm text-stone-600 border-b border-stone-50 pb-3">
+                <svg class="text-primary/70 shrink-0" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"/>
+                </svg>
+                {amenity}
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        {/* 3e. Location & Map */}
+        {locData && (
+          <section class="border-t border-stone-100 pt-12 space-y-6" aria-label={propertyCopy.detail.sections.locationArrivalAria}>
+            <h2 class="font-serif text-2xl text-body-text">{propertyCopy.detail.sections.locationArrival}</h2>
+
+            <div class="grid md:grid-cols-2 gap-6">
+              {/* Arrival card */}
+              <div class="bg-accent-sage-soft text-stone-800 border border-accent-sage/60 rounded-2xl p-6 space-y-5">
+                <h3 class="font-serif text-lg text-stone-950">{propertyCopy.detail.location.howToArrive}</h3>
+                <p class="text-sm text-stone-700 leading-relaxed">
+                  {detailCopy.arrivalInstructions}
+                </p>
+                <div class="space-y-3 text-[11px] uppercase tracking-widest font-bold text-stone-800">
+                  {parkingLoc?.googleMapsUrl && (
+                    <a href={parkingLoc.googleMapsUrl} target="_blank" rel="noopener" class="flex items-center gap-3 hover:text-stone-950 transition-colors group">
+                      <span class="w-7 h-7 rounded-full border border-accent-sage flex items-center justify-center group-hover:bg-accent-sage text-xs">1</span>
+                      {propertyCopy.detail.location.sharedGuestParking}
+                    </a>
+                  )}
+                  <a href={locData.googleMapsUrl} target="_blank" rel="noopener" class="flex items-center gap-3 hover:text-stone-950 transition-colors group">
+                    <span class="w-7 h-7 rounded-full border border-accent-sage flex items-center justify-center group-hover:bg-accent-sage text-xs">2</span>
+                    {propertyCopy.detail.location.houseEntrance}
+                  </a>
+                </div>
+              </div>
+
+              {/* Map */}
+              <div class="rounded-2xl overflow-hidden border border-stone-200 min-h-[240px]">
+                <SinglePinMap locale={locale} location={locData} />
+              </div>
+            </div>
+
+            <a
+              href={locData.googleMapsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn-outline inline-flex items-center gap-2 text-sm"
+            >
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
+              </svg>
+              {propertyCopy.detail.location.openInGoogleMaps}
+            </a>
+          </section>
+        )}
+
+      </div>
+
+      {/* RIGHT — sticky sidebar */}
+      <aside class="lg:col-span-4 lg:sticky lg:top-20 space-y-6">
+
+        {/* Booking card */}
+        <div class="bg-white rounded-2xl border border-stone-200 p-7 shadow-card">
+          <p class="font-serif text-2xl text-body-text mb-1">{displayName}</p>
+          <p class="text-xs text-muted mb-6 uppercase tracking-wider">{displayLocation} &middot; {formatPropertyCount(locale, unit.sleeps, propertyCopy.counts.sleeps)}</p>
+
+          <div class="space-y-0 mb-6 divide-y divide-stone-100 text-sm">
+            <div class="flex justify-between py-2.5">
+              <span class="text-muted">{propertyCopy.labels.bedrooms}</span>
+              <span class="font-medium">{unit.bedrooms}</span>
+            </div>
+            <div class="flex justify-between gap-4 py-2.5">
+              <span class="text-muted">{propertyCopy.labels.view}</span>
+              <span class={positiveText + ' text-right'}>{sidebarView}</span>
+            </div>
+            <div class="flex justify-between gap-4 py-2.5">
+              <span class="text-muted">{propertyCopy.labels.outdoorSpace}</span>
+              <span class={positiveText + ' text-right'}>{sidebarOutdoorSpace}</span>
+            </div>
+            {sidebarAccess && (
+              <div class="flex justify-between gap-4 py-2.5">
+                <span class="text-muted">{propertyCopy.labels.access}</span>
+                <span class={positiveText + ' text-right'}>{sidebarAccess}</span>
+              </div>
+            )}
+            <div class="flex justify-between py-2.5">
+              <span class="text-muted">{propertyCopy.labels.pool}</span>
+              <span class={positivePool ? positiveText : neutralText}>{poolLabel}</span>
+            </div>
+            <div class="flex justify-between py-2.5">
+              <span class="text-muted">{propertyCopy.labels.wifi}</span>
+              <span class="font-medium text-success">{propertyCopy.labels.included}</span>
+            </div>
+            <div class="flex justify-between py-2.5">
+              <span class="text-muted">{propertyCopy.labels.pets}</span>
+              <span class="font-medium">{unitText(locale, slug, 'pets', unit.pets)}</span>
+            </div>
+          </div>
+
+          <BookingHandoffForm locale={locale}
+            bookingBaseUrl={siteCopy.bookingEngineUrl}
+            roomCode={unit.bookingId}
+            itemName={unit.name}
+            maxAdults={unit.sleeps}
+            title={unit.slug === 'erato' || unit.slug === 'clio' ? propertyCopy.detail.booking.checkDates : propertyCopy.detail.booking.checkThisHouse}
+            description={propertyCopy.detail.booking.description}
+            framed={false}
+            trackView
+          />
+          <a href={contactLink.href} hreflang={contactLink.hreflang} class="btn-outline w-full py-3 text-center block rounded-xl text-xs uppercase tracking-wider font-bold">
+            {propertyCopy.detail.booking.askQuestion}
+          </a>
+        </div>
+
+        {/* Before you book */}
+        {unit.hardConstraints.length > 0 && (
+          <div class="bg-amber-50 border border-amber-100 rounded-2xl p-6">
+            <h3 class="font-medium text-amber-900 mb-3 flex items-center gap-2 text-sm">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+                <line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>
+              </svg>
+              {propertyCopy.detail.booking.beforeYouBook}
+            </h3>
+            <ul class="space-y-2">
+              {unitList(locale, slug, 'hardConstraints', unit.hardConstraints).map((c) => (
+                <li class="flex items-start gap-2 text-xs text-amber-900/80 leading-relaxed">
+                  <span class="mt-1.5 w-1 h-1 rounded-full bg-amber-400 flex-shrink-0"></span>
+                  {c}
+                </li>
+              ))}
+            </ul>
+            {unitText(locale, slug, 'accessDetail', unit.accessDetail) && (
+              <p class="mt-4 pt-4 border-t border-amber-200 text-xs text-amber-800/70 italic leading-relaxed">
+                {unitText(locale, slug, 'accessDetail', unit.accessDetail)}
+              </p>
+            )}
+          </div>
+        )}
+
+        {/* Nearby properties */}
+        {nearUnits.length > 0 && (
+          <div class="p-6 bg-stone-50 rounded-2xl border border-stone-200">
+            <h4 class="text-[10px] uppercase tracking-widest text-muted font-bold mb-4">{propertyCopy.detail.sections.neighbouringHouses}</h4>
+            <div class="space-y-3">
+              {nearUnits.map((near) => (
+                <a
+                  href={resolveLocalizedLink(locale, 'house', near.slug).href}
+                  hreflang={resolveLocalizedLink(locale, 'house', near.slug).hreflang}
+                  class="group flex items-center justify-between bg-white p-4 rounded-xl border border-stone-200 hover:border-primary transition-all shadow-sm"
+                >
+                  <div>
+                    <span class="block font-serif text-base text-body-text group-hover:text-primary transition-colors">{unitName(locale, near.slug, near.name)}</span>
+                    <span class="block text-[10px] uppercase tracking-widest text-muted mt-0.5">
+                      {getNearbyMeta(near)}
+                    </span>
+                  </div>
+                  <svg class="text-stone-300 group-hover:text-primary group-hover:translate-x-0.5 transition-all" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="9 18 15 12 9 6"/>
+                  </svg>
+                </a>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Suggested recommendation-only combinations */}
+        {suggestedPairings.length > 0 && (
+          <section class="p-6 bg-stone-50 rounded-2xl border border-stone-200" aria-label={propertyCopy.detail.sections.suggestedNearbyCombinationsAria}>
+            <h4 class="text-[10px] uppercase tracking-widest text-muted font-bold mb-4">
+              {propertyCopy.detail.sections.suggestedCombinations}
+            </h4>
+            <div class="space-y-4">
+              {suggestedPairings.map((pairing) => {
+                const memberNames = pairing.members
+                  .map((memberSlug) =>
+                    unitName(locale, memberSlug, units.find((u) => u.slug === memberSlug)?.name ?? memberSlug),
+                  )
+                  .join(' + ');
+                return (
+                  <article class="bg-white p-4 rounded-xl border border-stone-200 shadow-sm">
+                    <p class="font-serif text-base text-body-text">{pairing.name}</p>
+                    <p class="text-xs text-stone-600 mt-1 leading-relaxed">{pairingText(locale, pairing.summary)}</p>
+                    <p class="text-[11px] text-stone-500 mt-2">
+                      {propertyCopy.detail.nearby.includes} {memberNames}
+                    </p>
+                    <div class="mt-3 flex flex-wrap gap-2">
+                      {pairing.members.map((memberSlug) => {
+                        if (memberSlug === slug) return null;
+                        const memberUnit = units.find((u) => u.slug === memberSlug);
+                        const memberLabel = unitName(locale, memberSlug, memberUnit?.name ?? memberSlug);
+                        return (
+                          <a
+                            href={resolveLocalizedLink(locale, 'house', memberSlug).href}
+                            hreflang={resolveLocalizedLink(locale, 'house', memberSlug).hreflang}
+                            class="inline-flex items-center px-3 py-1.5 text-[11px] font-medium text-stone-700 bg-stone-50 border border-stone-200 rounded-full hover:border-primary hover:text-primary transition-colors"
+                          >
+                            {propertyCopy.group.viewProperty.replace('{name}', memberLabel)}
+                          </a>
+                        );
+                      })}
+                    </div>
+                  </article>
+                );
+              })}
+            </div>
+          </section>
+        )}
+
+      </aside>
+    </div>
+  </main>
+
+</Base>
