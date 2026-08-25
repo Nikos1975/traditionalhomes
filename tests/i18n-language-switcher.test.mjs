@@ -67,6 +67,14 @@ test('header renders compact desktop and native-label mobile language selectors'
   assert.match(header, /data-language-switcher="mobile"/);
   assert.match(header, /\{link\.shortLabel\}/);
   assert.match(header, /\{link\.label\}/);
+
+  // Both selectors mark their anchors, so the navigation contract tests can tell a
+  // deliberate cross-locale link apart from an unwanted English fallback.
+  const [, desktopBlock, mobileBlock] = header.split(/data-language-switcher="(?:desktop|mobile)"/);
+
+  assert.match(desktopBlock, /<a\b[\s\S]*?data-language-switcher-link/, 'desktop selector anchor must be marked');
+  assert.match(mobileBlock, /<a\b[\s\S]*?data-language-switcher-link/, 'mobile selector anchor must be marked');
+  assert.equal((header.match(/data-language-switcher-link/g) ?? []).length, 2);
   assert.match(enNavigation, /"languageSwitcherLabel": "Language"/);
   assert.match(deNavigation, /"languageSwitcherLabel": "Sprache"/);
 });

@@ -27,10 +27,21 @@ const EN_PILOT = `/en/guide/${PILOT_ID}/`;
 const DE_PILOT = `/de/reisefuehrer/${PILOT_ID}/`;
 const UNBUILT_LOCALES = ['fr', 'ru', 'zh', 'ar', 'he'];
 
+/**
+ * Anchors, with the one distinction the navigation contract depends on.
+ *
+ * Ordinary navigation stays inside the active locale, or is marked as a
+ * deliberate English fallback. The language selector does the opposite on
+ * purpose: crossing locales is its entire function, so it carries a stable
+ * marker and is exempt from the fallback and in-locale hreflang rules. Its
+ * target must still be a page that really exists, and its own behaviour is
+ * covered by `tests/i18n-language-switcher.test.mjs`.
+ */
 const anchors = (html) =>
   [...html.matchAll(/<a\b([^>]*)>/g)].map(([, attrs]) => ({
     href: attrs.match(/\bhref="([^"]*)"/)?.[1],
     hreflang: attrs.match(/\bhreflang="([^"]*)"/)?.[1],
+    isLanguageSwitcher: /\bdata-language-switcher-link\b/.test(attrs),
   }));
 
 const alternates = (html) =>
@@ -508,11 +519,14 @@ describe('Stage 3 German route pilot — generated output', async () => {
   it('keeps every internal link on the German pilot pointing at a page that exists', async () => {
     const html = await page('de/reisefuehrer/vrouchas');
 
-    for (const { href, hreflang } of anchors(html)) {
+    for (const { href, hreflang, isLanguageSwitcher } of anchors(html)) {
       if (!href?.startsWith('/')) continue;
 
       const pathname = href.split('#')[0];
       await access(join(outputPath, pathname, 'index.html'));
+
+      // The language selector crosses locales by design; only its target is checked here.
+      if (isLanguageSwitcher) continue;
 
       // A link that leaves the active locale must say so.
       if (pathname.startsWith('/de/')) {
@@ -526,8 +540,15 @@ describe('Stage 3 German route pilot — generated output', async () => {
   it('keeps English internal links free of fallback markup', async () => {
     const html = await page('en/guide/vrouchas');
 
-    for (const { href, hreflang } of anchors(html)) {
+    for (const { href, hreflang, isLanguageSwitcher } of anchors(html)) {
       if (!href?.startsWith('/')) continue;
+
+      if (isLanguageSwitcher) {
+        // Still a real page, but a deliberate cross-locale link rather than a fallback.
+        await access(join(outputPath, href.split('#')[0].split('?')[0], 'index.html'));
+        continue;
+      }
+
       assert.equal(hreflang, undefined, `${href} on an English page should not be marked as a fallback`);
     }
   });
@@ -780,11 +801,15 @@ describe('Stage 3 German route pilot — generated output', async () => {
     for (const route of germanRoutes) {
       const html = await page(route);
 
-      for (const { href, hreflang } of anchors(html)) {
+      for (const { href, hreflang, isLanguageSwitcher } of anchors(html)) {
         if (!href?.startsWith('/')) continue;
 
         const pathname = href.split('#')[0].split('?')[0];
         await access(join(outputPath, pathname, 'index.html'));
+
+        // Switching language to the English equivalent is the selector's purpose,
+        // not an unwanted fallback from German navigation.
+        if (isLanguageSwitcher) continue;
 
         if (pathname.startsWith('/de/')) {
           assert.equal(hreflang, undefined, `${route}: ${href} is in-locale and must not carry hreflang`);
