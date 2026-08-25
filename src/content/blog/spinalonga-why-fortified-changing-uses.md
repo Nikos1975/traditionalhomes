@@ -22,7 +22,16 @@ Spinalonga is a rocky islet at the mouth of Elounda’s natural harbour. It face
 Ancient Olous belongs to the wider landscape around Elounda, not to a simple story of an ancient fortress on the islet. The Ephorate of Antiquities of Lasithi currently interprets an earlier wall on Spinalonga as probably seventh- or eighth-century CE. The safer conclusion is that the island mattered before Venice, while the exact earlier defensive history remains incomplete.
 
 <figure>
-  <img src="/images/blog/spinalonga-why-fortified-changing-uses/spinalonga-gulf-context.webp" alt="Spinalonga and the Gulf of Elounda seen from the hillside above the coast." loading="lazy" />
+  <img
+    src="/images/blog/spinalonga-why-fortified-changing-uses/spinalonga-gulf-context.webp"
+    srcset="/images/blog/spinalonga-why-fortified-changing-uses/spinalonga-gulf-context-480.webp 480w, /images/blog/spinalonga-why-fortified-changing-uses/spinalonga-gulf-context-768.webp 768w, /images/blog/spinalonga-why-fortified-changing-uses/spinalonga-gulf-context-1200.webp 1200w, /images/blog/spinalonga-why-fortified-changing-uses/spinalonga-gulf-context.webp 1600w"
+    sizes="(min-width: 784px) 736px, (min-width: 640px) calc(100vw - 48px), calc(100vw - 32px)"
+    alt="Spinalonga and the Gulf of Elounda seen from the hillside above the coast."
+    width="1600"
+    height="1197"
+    loading="lazy"
+    decoding="async"
+  />
   <figcaption>Spinalonga within the Gulf of Elounda. Photo: Nikos Pasparakis / Elounda Traditional Homes of Crete</figcaption>
 </figure>
 
@@ -35,7 +44,16 @@ Venice fortified Spinalonga within a wider late-sixteenth-century defensive prog
 The fortress followed the terrain and the needs of artillery warfare. Genese Bressani was associated with an initial coastal enclosure. In 1584, Latino Orsini judged that scheme vulnerable from the nearby peninsula; later work added a higher defensive line along the ridge, connected to the lower works by transverse walls. Shore defences, upper walls, batteries, gates and cisterns therefore formed a single system rather than a collection of isolated ruins.
 
 <figure>
-  <img src="/images/blog/spinalonga-why-fortified-changing-uses/spinalonga-coastal-fortifications.webp" alt="Venetian coastal fortifications along the rocky shoreline of Spinalonga." loading="lazy" />
+  <img
+    src="/images/blog/spinalonga-why-fortified-changing-uses/spinalonga-coastal-fortifications.webp"
+    srcset="/images/blog/spinalonga-why-fortified-changing-uses/spinalonga-coastal-fortifications-480.webp 480w, /images/blog/spinalonga-why-fortified-changing-uses/spinalonga-coastal-fortifications-768.webp 768w, /images/blog/spinalonga-why-fortified-changing-uses/spinalonga-coastal-fortifications-1200.webp 1200w, /images/blog/spinalonga-why-fortified-changing-uses/spinalonga-coastal-fortifications.webp 1600w"
+    sizes="(min-width: 784px) 736px, (min-width: 640px) calc(100vw - 48px), calc(100vw - 32px)"
+    alt="Venetian coastal fortifications along the rocky shoreline of Spinalonga."
+    width="1600"
+    height="1200"
+    loading="lazy"
+    decoding="async"
+  />
   <figcaption>Coastal fortifications along Spinalonga’s shoreline. Photo: Nikos Pasparakis / Elounda Traditional Homes of Crete</figcaption>
 </figure>
 
@@ -56,7 +74,16 @@ After 1715, Spinalonga did not become an empty relic. It developed into an inhab
 The precise scale of that town remains unsettled. UNESCO’s Tentative List submission reports 1,112 inhabitants in 1881, while published accounts sometimes give 1,111; the underlying census entry has not yet been inspected. Rather than select a disputed total, it is safer to say that the late-nineteenth-century settlement had more than a thousand residents. The same submission describes about 200 houses and 25 shops or workshops, figures that also await verification against census and property records.
 
 <figure>
-  <img src="/images/blog/spinalonga-why-fortified-changing-uses/spinalonga-fortress-and-settlement-close-view.webp" alt="Spinalonga’s fortifications and settlement buildings rising above the shoreline." loading="lazy" />
+  <img
+    src="/images/blog/spinalonga-why-fortified-changing-uses/spinalonga-fortress-and-settlement-close-view.webp"
+    srcset="/images/blog/spinalonga-why-fortified-changing-uses/spinalonga-fortress-and-settlement-close-view-480.webp 480w, /images/blog/spinalonga-why-fortified-changing-uses/spinalonga-fortress-and-settlement-close-view-768.webp 768w, /images/blog/spinalonga-why-fortified-changing-uses/spinalonga-fortress-and-settlement-close-view-1200.webp 1200w, /images/blog/spinalonga-why-fortified-changing-uses/spinalonga-fortress-and-settlement-close-view.webp 1920w"
+    sizes="(min-width: 784px) 736px, (min-width: 640px) calc(100vw - 48px), calc(100vw - 32px)"
+    alt="Spinalonga’s fortifications and settlement buildings rising above the shoreline."
+    width="1920"
+    height="1080"
+    loading="lazy"
+    decoding="async"
+  />
   <figcaption>Fortifications and settlement buildings on Spinalonga. Photo: Nikos Pasparakis / Elounda Traditional Homes of Crete</figcaption>
 </figure>
 
@@ -95,7 +122,16 @@ Spinalonga could never function without the mainland. Plaka, Elounda and the sur
 What has not yet been recovered is the detailed local record: boat licences, supply contracts, harbour registers, payrolls, family archives and named accounts of the people who did this work. It would be easy to fill the gap with familiar stories about boatmen or deliveries. The available evidence does not justify doing so. At the scale the sources support, the island depended on mainland connections, and Plaka and Elounda were shaped by their proximity to it.
 
 <figure>
-  <img src="/images/blog/spinalonga-why-fortified-changing-uses/spinalonga-boat-and-main-landing.webp" alt="Passenger boat approaching the fortified shoreline of Spinalonga." loading="lazy" />
+  <img
+    src="/images/blog/spinalonga-why-fortified-changing-uses/spinalonga-boat-and-main-landing.webp"
+    srcset="/images/blog/spinalonga-why-fortified-changing-uses/spinalonga-boat-and-main-landing-480.webp 480w, /images/blog/spinalonga-why-fortified-changing-uses/spinalonga-boat-and-main-landing-768.webp 768w, /images/blog/spinalonga-why-fortified-changing-uses/spinalonga-boat-and-main-landing-1200.webp 1200w, /images/blog/spinalonga-why-fortified-changing-uses/spinalonga-boat-and-main-landing.webp 1600w"
+    sizes="(min-width: 784px) 736px, (min-width: 640px) calc(100vw - 48px), calc(100vw - 32px)"
+    alt="Passenger boat approaching the fortified shoreline of Spinalonga."
+    width="1600"
+    height="900"
+    loading="lazy"
+    decoding="async"
+  />
   <figcaption>A modern passenger boat approaching Spinalonga. This is a contemporary view, not evidence of historic supply operations. Photo: Nikos Pasparakis / Elounda Traditional Homes of Crete</figcaption>
 </figure>
 
@@ -118,7 +154,16 @@ Today Spinalonga is an archaeological monument and a place of public memory. It 
 The island’s public interpretation has to hold several histories together. The Venetian works are visually dominant; the Ottoman town makes the interior legible as a settlement rather than only a garrison; and the leprosarium demands an account that is respectful without making illness the sole identity of every resident. Conservation cannot restore every lost layer, but it can make the succession of uses easier to read.
 
 <figure>
-  <img src="/images/blog/spinalonga-why-fortified-changing-uses/spinalonga-island-close-view.webp" alt="Closer view of Spinalonga’s fortifications and surviving settlement buildings." loading="lazy" />
+  <img
+    src="/images/blog/spinalonga-why-fortified-changing-uses/spinalonga-island-close-view.webp"
+    srcset="/images/blog/spinalonga-why-fortified-changing-uses/spinalonga-island-close-view-480.webp 480w, /images/blog/spinalonga-why-fortified-changing-uses/spinalonga-island-close-view-768.webp 768w, /images/blog/spinalonga-why-fortified-changing-uses/spinalonga-island-close-view-1200.webp 1200w, /images/blog/spinalonga-why-fortified-changing-uses/spinalonga-island-close-view.webp 1600w"
+    sizes="(min-width: 784px) 736px, (min-width: 640px) calc(100vw - 48px), calc(100vw - 32px)"
+    alt="Closer view of Spinalonga’s fortifications and surviving settlement buildings."
+    width="1600"
+    height="1197"
+    loading="lazy"
+    decoding="async"
+  />
   <figcaption>Closer view of surviving fortifications and settlement buildings. Photo: Nikos Pasparakis / Elounda Traditional Homes of Crete</figcaption>
 </figure>
 
