@@ -2,6 +2,8 @@
 
 Use `CLAUDE.md` as the canonical project instruction file.
 
+Before proposing or starting non-trivial work, read `docs/WORK-TABLE.md`. It is the authoritative operational source for current priorities, active tasks, the content freeze, blockers, and completion evidence. Follow an explicit instruction from Nikos when it differs, then update the work table if the priority changed materially. Do not create a parallel active task list.
+
 For repository architecture, context loading, folder/workspace/stage design, and reusable workflow organization, follow the ICM route in `CLAUDE.md`. Do not force a fixed folder tree.
 
 ## Task routing
