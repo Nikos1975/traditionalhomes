@@ -82,15 +82,20 @@ describe('Labrica repair batch 1', () => {
   });
 
   it('points the villa breadcrumb to the generated houses collection route', async () => {
-    const villaPage = await readText('src/pages/en/villa/[slug].astro');
+    // The villa route is a thin wrapper; the shared renderer owns the markup and
+    // resolves the collection through the route map, so the breadcrumb lands on
+    // the generated collection page in whichever locale is rendering.
+    const villaPage = await readText('src/components/pages/VillaDetailPage.astro');
 
     await access(new URL('../src/pages/en/houses/index.astro', import.meta.url));
+    assert.match(villaPage, /const housesLink = resolveLocalizedLink\(locale, 'houses'\);/);
     assert.match(
       villaPage,
-      /<a href=\{localizedPath\(defaultLocale, 'houses'\)}[^>]*>Houses<\/a>/,
+      /<a href=\{housesLink\.href\}[^>]*>\{propertyCopy\.detail\.breadcrumbs\.houses\}<\/a>/,
     );
     assert.doesNotMatch(villaPage, />Villa<\/a>/);
     assert.doesNotMatch(villaPage, /localizedPath\(defaultLocale, 'villa'\)/);
+    assert.doesNotMatch(villaPage, /resolveLocalizedLink\(locale, 'villa'\)/);
   });
 
   it('keeps the complete redirect table exact including the approved blog migration rules', async () => {

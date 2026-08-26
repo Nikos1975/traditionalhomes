@@ -17,12 +17,35 @@ const readJson = async (path) => JSON.parse(await readFile(new URL(path, root), 
  * translation payload, because a missing translation only becomes visible once
  * a component has rendered it.
  */
+const HOUSE_IDS = [
+  'argyro',
+  'leonidas',
+  'margarita',
+  'demetra',
+  'penelope',
+  'erato',
+  'clio',
+  'efterpi',
+  'kalliopi',
+  'monastiri',
+];
+const VILLA_ID = 'almond-tree-villa';
+
 const ROUTE_PAIRS = [
   ['de', 'en'],
   ['de/ferienhaeuser', 'en/houses'],
   ['de/lage', 'en/location'],
-  ['de/ferienhaeuser/argyro', 'en/houses/argyro'],
   ['de/reisefuehrer/vrouchas', 'en/guide/vrouchas'],
+  // Every property detail page, derived from the ids rather than listed twice,
+  // so a newly translated property cannot be added without being compared.
+  ...HOUSE_IDS.map((id) => [`de/ferienhaeuser/${id}`, `en/houses/${id}`]),
+  [`de/villa/${VILLA_ID}`, `en/villa/${VILLA_ID}`],
+  // The remaining non-blog informational pages.
+  ['de/reisefuehrer/mavrikiano', 'en/guide/mavrikiano'],
+  ['de/ueber-uns', 'en/about'],
+  ['de/kontakt', 'en/contact'],
+  ['de/faq', 'en/faq'],
+  ['de/richtlinien', 'en/policies'],
 ];
 
 /**
@@ -36,7 +59,9 @@ const IDENTICAL_BY_DESIGN = [
   /^(Almond Tree Villa|Elounda Traditional Homes|WebHotelier|Google Maps|traditional-homes\.gr)/,
   /Elounda Traditional Homes/,
   /^(Argyro|Clio|Demetra|Efterpi|Erato|Kalliopi|Leonidas|Margarita|Monastiri|Penelope)\b/,
-  /^(FAQ|Blog|Details|Pool|Villa|Balkon|Garten|Veranda|Terrasse|Filter|Taxis|WLAN|Info):?$/,
+  /^(FAQ|Blog|Details|Pool|Pools|Villa|Balkon|Garten|Veranda|Terrasse|Filter|Taxis|WLAN|Info|Name|Website):?$/,
+  // Contact addresses are identifiers, not copy, and stay untranslated by design.
+  /^[^@\s]+@[^@\s]+\.[a-z]{2,}$/,
   // Loanword compounds and counts that read the same in both languages.
   /^(Private Villa · Vrouchas|\d+ Villa)$/,
   /^(HER|JTR|SIT)$/,
@@ -178,15 +203,25 @@ describe('German visible-language completeness — generated output', async () =
     assert.doesNotMatch(html, /Mrs\. Olga/);
   });
 
-  it('renders German gallery captions on the German house page', async () => {
-    const html = await page('de/ferienhaeuser/argyro');
-    const offenders = altTexts(html).filter((alt) =>
-      ENGLISH_GALLERY_WORDS.some((word) => alt.toLowerCase().includes(word)),
-    );
+  it('renders German gallery captions on every German property page', async () => {
+    const routes = [...HOUSE_IDS.map((id) => `de/ferienhaeuser/${id}`), `de/villa/${VILLA_ID}`];
+    const offenders = [];
+
+    for (const route of routes) {
+      const html = await page(route);
+
+      for (const alt of altTexts(html)) {
+        if (ENGLISH_GALLERY_WORDS.some((word) => alt.toLowerCase().includes(word))) {
+          offenders.push(`${route}: ${alt}`);
+        }
+      }
+    }
 
     assert.deepEqual(offenders, [], `English gallery captions: ${offenders.join(' | ')}`);
-    assert.match(html, /alt="Veranda mit Meerblick"/);
-    assert.match(html, /alt="Wohnzimmer mit Kamin"/);
+
+    const argyro = await page('de/ferienhaeuser/argyro');
+    assert.match(argyro, /alt="Veranda mit Meerblick"/);
+    assert.match(argyro, /alt="Wohnzimmer mit Kamin"/);
   });
 
   it('keeps the English master wording on the English routes', async () => {

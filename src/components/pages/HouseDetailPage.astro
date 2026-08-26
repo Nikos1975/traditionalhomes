@@ -127,7 +127,10 @@ const sidebarOutdoorBySlug: Record<string, string> = {
 const sidebarAccessBySlug: Record<string, string> = {
   clio: detailCopy.access.clioParking,
 };
-const sidebarView = sidebarViewBySlug[unit.slug] ?? unit.view;
+// Slugs without a curated label fall back to the inventory value, rendered
+// through the locale's presentation of it so German never shows the English
+// source string. The default locale still renders the factual value verbatim.
+const sidebarView = sidebarViewBySlug[unit.slug] ?? unitText(locale, slug, 'view', unit.view) ?? unit.view;
 const sidebarOutdoorSpace = sidebarOutdoorBySlug[unit.slug] ?? detailCopy.outdoor.villageSetting;
 const sidebarAccess = sidebarAccessBySlug[unit.slug];
 const positivePool = unit.pool !== 'none';

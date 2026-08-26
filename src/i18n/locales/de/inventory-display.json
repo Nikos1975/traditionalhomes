@@ -20,33 +20,193 @@
     },
     "almond-tree-villa": {
       "accessDetail": "Hanglage im Dorf Vrouchas, Elounda. Die Villa eignet sich am besten für Gäste, die mit Stufen, Dorfwegen und Innentreppen zurechtkommen.",
+      "view": "Kretisches Meer, Olivenhaine, Garten, Pool, Berge",
+      "parking": "Kostenloses Parken an der Straße (~30 m)",
+      "pets": "Kleine Haustiere (≤5 kg) auf Anfrage",
+      "kitchen": "Hauptküche, Außenküche und Grill",
+      "amenities": [
+        "Klimaanlage",
+        "Hauptküche, Außenküche und Grill",
+        "Privater Pool, 9 m × 4 m",
+        "Poolterrasse mit Sonnenliegen",
+        "Essbereich im Freien",
+        "Smart-TV",
+        "Espressomaschine",
+        "WLAN inklusive",
+        "Kretischer Garten"
+      ],
+      "hardConstraints": [
+        "Parken und Zugang — kostenloses Parken an der öffentlichen Straße ist etwa 30 Meter vom Haus entfernt möglich; der Weg zur Villa führt über Dorfgelände und Stufen.",
+        "Nicht stufenfrei — vom Zugangspunkt bis zum Eingang führen mehrere Stufen.",
+        "Villa auf versetzten Ebenen — Schlaf- und Wohnbereiche sind durch Innentreppen und Höhenversätze verbunden.",
+        "Privater Pool — Kinder müssen beaufsichtigt werden."
+      ],
       "name": "Almond Tree Villa"
     },
     "leonidas": {
+      "view": "Meerblick",
+      "parking": "Gemeinsamer privater Gästeparkplatz in der Nähe (~70 m); bei Belegung kostenloses Parken im Dorf",
+      "pets": "Kleine Haustiere (≤5 kg) auf Anfrage",
+      "kitchen": "Kleine Küchenzeile unter der hölzernen Innentreppe",
+      "amenities": [
+        "Klimaanlage und Temperaturregelung",
+        "Kleine Küchenzeile",
+        "Privater Balkon mit Meerblick",
+        "WLAN inklusive"
+      ],
+      "hardConstraints": [
+        "Nicht stufenfrei — Steinstufen vom Dorfweg zum Eingang",
+        "Hölzerne Innentreppe zum Ontas und zum Schlafzimmer"
+      ],
       "name": "Haus Leonidas"
     },
     "margarita": {
+      "view": "Meerblick von der Veranda im ersten Stock",
+      "parking": "Gemeinsamer privater Gästeparkplatz in der Nähe (~70 m); bei Belegung kostenloses Parken im Dorf",
+      "pets": "Kleine Haustiere (≤5 kg) auf Anfrage",
+      "kitchen": "Hauptküche + Außenküchenzeile",
+      "amenities": [
+        "Klimaanlage und Temperaturregelung (Erdgeschoss + Zweibettzimmer im Obergeschoss)",
+        "Voll ausgestattete Küche und Außenküchenzeile",
+        "Weitläufige Veranda mit Meerblick",
+        "Essbereich im Freien",
+        "WLAN inklusive"
+      ],
+      "hardConstraints": [
+        "Nicht stufenfrei — gewölbter Hofzugang und Innentreppen",
+        "Innentreppe vom Erdgeschoss ins Obergeschoss",
+        "Bad über den Hofbereich zugänglich"
+      ],
       "name": "Haus Margarita"
     },
     "demetra": {
+      "view": "Bergblick",
+      "parking": "Gemeinsamer privater Gästeparkplatz in der Nähe (~40 m); bei Belegung kostenloses Parken im Dorf",
+      "pets": "Kleine Haustiere (≤5 kg) auf Anfrage",
+      "kitchen": "Voll ausgestattete Küche",
+      "amenities": [
+        "Klimaanlage und Temperaturregelung",
+        "Voll ausgestattete Küche",
+        "Gemeinsamer Pool mit Sonnenliegen",
+        "Essbereich im Freien",
+        "WLAN inklusive"
+      ],
+      "hardConstraints": [
+        "Nicht stufenfrei — mindestens eine Stufe vom Weg zum Eingang",
+        "Der Pool wird gemeinsam mit Haus Penelope genutzt"
+      ],
       "name": "Haus Demetra"
     },
     "penelope": {
+      "view": "Blick auf Berge und Olivenhain",
+      "parking": "Gemeinsamer privater Gästeparkplatz in der Nähe (~40 m); bei Belegung kostenloses Parken im Dorf",
+      "pets": "Kleine Haustiere (≤5 kg) auf Anfrage",
+      "kitchen": "Außenküche auf der Veranda",
+      "amenities": [
+        "Klimaanlage und Temperaturregelung",
+        "Voll ausgestattete Außenküche auf der Veranda",
+        "Gemeinsamer Pool mit Sonnenliegen",
+        "Essbereich im Freien",
+        "WLAN inklusive"
+      ],
+      "hardConstraints": [
+        "Nicht stufenfrei — Treppen vom Weg vom Parkplatz zum Poolbereich und zur Veranda",
+        "Hölzerne Innentreppe zum Ontas",
+        "Pool- und Grillbereich werden gemeinsam mit Haus Demetra genutzt"
+      ],
       "name": "Haus Penelope"
     },
     "erato": {
+      "view": "Berge und Olivenhain",
+      "parking": "Gemeinsamer privater Gästeparkplatz in der Nähe (~10 m); bei Belegung kostenloses Parken im Dorf",
+      "pets": "Kleine Haustiere (≤5 kg) auf Anfrage",
+      "kitchen": "Kleine Küche",
+      "amenities": [
+        "Klimaanlage",
+        "Kleine Küche",
+        "Privater Pool",
+        "Private Poolterrasse",
+        "Gemauerter Grill",
+        "WLAN inklusive"
+      ],
+      "hardConstraints": [
+        "Eingang über Stufen abwärts erreichbar — nicht stufenfrei",
+        "Privater Pool — Kinder müssen beaufsichtigt werden"
+      ],
       "name": "Haus Erato"
     },
     "clio": {
+      "view": "Poolblick, Berge und Olivenhain",
+      "parking": "Gemeinsamer privater Gästeparkplatz in der Nähe (~10 m); bei Belegung kostenloses Parken im Dorf",
+      "pets": "Kleine Haustiere (≤5 kg) auf Anfrage",
+      "kitchen": "Kleine Küche",
+      "amenities": [
+        "Klimaanlage",
+        "Kleine Küche",
+        "Balkon",
+        "Dusche",
+        "WLAN inklusive"
+      ],
+      "hardConstraints": [
+        "Nicht stufenfrei — mindestens eine Stufe vom Weg zum Eingang",
+        "Über Haus Erato; Innentreppen im Haus",
+        "Nur Poolblick — bei separater Buchung kein Poolzugang"
+      ],
       "name": "Haus Clio"
     },
     "efterpi": {
+      "view": "Privater Innenhof / Dorflage",
+      "parking": "Gemeinsamer privater Gästeparkplatz in der Nähe; bei Belegung kostenloses Parken im Dorf",
+      "pets": "Kleine Haustiere (≤5 kg) auf Anfrage",
+      "kitchen": "Küchenzeile im Innenbereich + Außenküche mit Grill",
+      "amenities": [
+        "Klimaanlage und Temperaturregelung",
+        "Küchenzeile im Innenbereich und Außenküche mit Grill",
+        "Privater Innenhof",
+        "WLAN inklusive"
+      ],
+      "hardConstraints": [
+        "Nicht stufenfrei — Stufen hinunter zum Innenhof",
+        "Ontas über eine hölzerne Innentreppe erreichbar"
+      ],
       "name": "Haus Efterpi"
     },
     "kalliopi": {
+      "view": "Dorfinneres / Berge",
+      "parking": "Gemeinsamer privater Gästeparkplatz in der Nähe; bei Belegung kostenloses Parken im Dorf",
+      "pets": "Kleine Haustiere (≤5 kg) auf Anfrage",
+      "kitchen": "Miniküche",
+      "amenities": [
+        "Klimaanlage und Temperaturregelung",
+        "Miniküche",
+        "Privater Balkon",
+        "WLAN inklusive"
+      ],
+      "hardConstraints": [
+        "Nicht stufenfrei — Steintreppe zum Eingang am Balkon",
+        "Haus im Obergeschoss über Haus Efterpi; Ontas über eine hölzerne Innentreppe erreichbar"
+      ],
       "name": "Haus Kalliopi"
     },
     "monastiri": {
+      "view": "Meerblick von den oberen Balkonen",
+      "parking": "Gemeinsamer privater Gästeparkplatz in der Nähe; bei Belegung kostenloses Parken im Dorf",
+      "pets": "Kleine Haustiere (≤5 kg) auf Anfrage",
+      "kitchen": "Küchenbereich auf der obersten Ebene",
+      "amenities": [
+        "Klimaanlage und Temperaturregelung",
+        "Küchenbereich auf der obersten Ebene",
+        "Privater Tauchpool im Innenhof",
+        "Balkone mit Meerblick",
+        "Grillbereich",
+        "Essbereich im Freien",
+        "WLAN inklusive"
+      ],
+      "hardConstraints": [
+        "Nicht stufenfrei — Eingang über den Innenhof und Innentreppen",
+        "Haus auf mehreren Ebenen mit Innentreppen",
+        "Privater Tauchpool"
+      ],
       "name": "Haus Monastiri"
     }
   },
@@ -62,6 +222,7 @@
   "pairings": {
     "A nearby combination suitable for larger families or friends travelling together.": "Eine Kombination benachbarter Häuser, geeignet für größere Familien oder Freunde, die zusammen reisen.",
     "A nearby two-home option for extended families or friends.": "Zwei benachbarte Häuser für größere Familien oder Freunde.",
+    "A suggested combination for guests who want two separate homes in close proximity.": "Eine vorgeschlagene Kombination für Gäste, die zwei getrennte Häuser in unmittelbarer Nähe möchten.",
     "A suggested three-home cluster in close proximity for larger groups.": "Drei nah beieinander liegende Häuser, vorgeschlagen für größere Gruppen."
   }
 }

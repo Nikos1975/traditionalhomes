@@ -66,11 +66,18 @@ export function getPropertySeo(
 }
 
 export function getVillaSeo(locale: string | undefined, unit: VillaSeoUnit, poolLabel: string): PageSeoMeta {
-  const titleSuffix = getSeoCopy(locale).templates.titleSuffix;
+  const templates = getSeoCopy(locale).templates;
+  // Only English lowercases a mid-sentence label. German nouns keep their capital.
+  const poolText = normalizeLocale(locale) === defaultLocale ? poolLabel.toLowerCase() : poolLabel;
 
   return {
-    title: `${unit.name} - ${unit.location} | ${titleSuffix}`,
-    description: `${unit.name} is a traditional Cretan villa with private pool in Vrouchas, above Plaka and Elounda. Sleeps ${unit.sleeps}, with ${unit.bedrooms} bedrooms, ${unit.bathrooms} bathrooms, and a ${poolLabel.toLowerCase()}.`,
+    title: `${unit.name} - ${unit.location} | ${templates.titleSuffix}`,
+    description: templates.villa.description
+      .replace('{name}', unit.name)
+      .replace('{sleeps}', String(unit.sleeps))
+      .replace('{bedrooms}', String(unit.bedrooms))
+      .replace('{bathrooms}', String(unit.bathrooms))
+      .replace('{pool}', poolText),
   };
 }
 

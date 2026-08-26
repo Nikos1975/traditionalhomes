@@ -1,0 +1,129 @@
+{
+  "breadcrumb": {
+    "ariaLabel": "Navigationspfad",
+    "home": "Startseite",
+    "current": "FAQ"
+  },
+  "heading": {
+    "lead": "Häufige",
+    "emphasis": "Fragen"
+  },
+  "intro": "Praktische Angaben zu Zugang, Pools, Parken, WLAN, Haustieren und Buchungsbedingungen.",
+  "sidebar": {
+    "label": "In diesem Bereich",
+    "navAriaLabel": "FAQ-Kategorien",
+    "helpText": "Sie brauchen direkte Hilfe?",
+    "contactCta": "Kontakt aufnehmen"
+  },
+  "accessLink": "Ausführliche Hinweise zur Barrierefreiheit",
+  "mobileCta": {
+    "heading": "Noch eine Frage offen?",
+    "action": "Schreiben Sie uns"
+  },
+  "categories": {
+    "access": "Zugang & Mobilität",
+    "pools": "Pools",
+    "amenities": "Ausstattung & Technik",
+    "location": "Lage",
+    "policies": "Regeln für den Aufenthalt"
+  },
+  "order": ["access", "pools", "amenities", "location", "policies"],
+  "items": [
+    {
+      "id": "step-free-access",
+      "category": "access",
+      "question": "Sind die Unterkünfte stufenfrei oder mit dem Rollstuhl zugänglich?",
+      "answer": "Nein. Alle Unterkünfte liegen in traditionellen Steindörfern mit unebenem Gelände. Bei jeder Unterkunft führt mindestens eine Stufe vom Weg oder vom Parkplatz zum Eingang. Einige Unterkünfte haben Innentreppen zwischen den Ebenen. Alle Angaben zum Zugang finden Sie auf der Seite mit den Richtlinien und auf der Seite der jeweiligen Unterkunft."
+    },
+    {
+      "id": "internal-stairs",
+      "category": "access",
+      "question": "Welche Unterkünfte haben Innentreppen?",
+      "answer": "Haus Argyro, Leonidas, Margarita, Penelope, Erato, Clio, Efterpi, Kalliopi, Monastiri und die Almond Tree Villa haben alle Innentreppen oder versetzte Ebenen. Haus Demetra ist die einzige Unterkunft, die im Inneren auf einer Ebene liegt. Genaue Angaben zum Zugang finden Sie auf der Seite der jeweiligen Unterkunft."
+    },
+    {
+      "id": "luggage-access",
+      "category": "access",
+      "question": "Ist der Weg mit dem Gepäck einfach?",
+      "answer": "Die Unterkünfte liegen in traditionellen Hangdörfern, der Weg mit dem Gepäck ist deshalb von Haus zu Haus unterschiedlich. Bei einigen Häusern in Mavrikiano führt ein kurzer Weg vom Parkplatz über Dorfwege oder Stufen. Bei der Almond Tree Villa liegt der Parkplatz an der Straße etwa 30 m entfernt, vom Parkplatz zum Eingang führen mehrere Stufen.<br><br>Wir schicken vor dem Check-in Hinweise zur Ankunft und begleiten Gäste, wo es nötig ist. Wenn Sie mit schwerem Gepäck, einem Kinderwagen oder eingeschränkter Mobilität reisen, sehen Sie bitte auf der Seite der jeweiligen Unterkunft nach oder schreiben Sie uns vor der Buchung."
+    },
+    {
+      "id": "fewest-stairs",
+      "category": "access",
+      "question": "Welche Unterkunft eignet sich für Gäste, die möglichst wenige Treppen möchten?",
+      "answer": "Haus Demetra ist die beste Wahl für Gäste, die im Inneren eine Aufteilung auf einer Ebene bevorzugen. Bitte beachten Sie, dass die Dorflage selbst nicht vollständig stufenfrei ist und der Weg vom Parkplatz weiterhin Pfade oder Stufen enthalten kann.<br><br>Die meisten anderen Häuser haben Innentreppen, versetzte Ebenen, Balkone oder traditionelle Aufteilungen mit Stufen. Auf jeder Seite einer Unterkunft stehen die genauen Hinweise zum Zugang."
+    },
+    {
+      "id": "children",
+      "category": "access",
+      "question": "Können Kinder in den Unterkünften wohnen?",
+      "answer": "Ja, Kinder können hier wohnen, Familien sollten die Unterkunft aber sorgfältig auswählen. Viele Häuser haben Treppen, versetzte Ebenen, Balkone, Dorfwege oder Zugang zu einem Pool.<br><br>An Pools, Balkonen, Treppen und im Außenbereich müssen Kinder beaufsichtigt werden. Familien mit Kleinkindern sollten vor der Buchung die Hinweise zum Zugang auf der Seite der jeweiligen Unterkunft lesen."
+    },
+    {
+      "id": "pools-private-or-shared",
+      "category": "pools",
+      "question": "Sind die Pools privat oder werden sie gemeinsam genutzt?",
+      "answer": "Haus Erato, Haus Monastiri und die Almond Tree Villa haben jeweils einen privaten Pool. Haus Penelope und Haus Demetra teilen sich einen Pool, der ausschließlich den Gästen dieser beiden Häuser vorbehalten ist. Die übrigen Häuser haben keinen Pool."
+    },
+    {
+      "id": "wifi",
+      "category": "amenities",
+      "question": "Ist WLAN inklusive?",
+      "answer": "Ja. In allen Unterkünften ist kostenloses WLAN enthalten. Wegen der Steinmauern ist die Abdeckung von Haus zu Haus unterschiedlich — in den meisten Fällen reicht das WLAN bis auf die Terrasse."
+    },
+    {
+      "id": "pets",
+      "category": "policies",
+      "question": "Sind Haustiere erlaubt?",
+      "answer": "Kleine Haustiere bis 5 kg können auf Anfrage angenommen werden. Bitte schreiben Sie uns vor der Buchung, damit wir dies für Ihre Termine und Ihre Unterkunft bestätigen können. Es kann eine Reinigungsgebühr anfallen."
+    },
+    {
+      "id": "check-in-check-out",
+      "category": "policies",
+      "question": "Wann sind Check-in und Check-out?",
+      "answer": "Check-in ist ab 15:00 Uhr. Check-out ist bis 11:00 Uhr."
+    },
+    {
+      "id": "where-are-the-houses",
+      "category": "location",
+      "question": "Wo genau liegen die Häuser?",
+      "answer": "Die Steinhäuser liegen im Dorf Mavrikiano am Hang oberhalb von Schisma, dem Hafenzentrum von Elounda. Die Almond Tree Villa liegt in Vrouchas, weiter nördlich und höher gelegen.<br><br>Von den Häusern in Mavrikiano sind es etwa 3 Fahrminuten nach Schisma und zum Hafen von Elounda und etwa 7 Fahrminuten nach Plaka. Von der Almond Tree Villa in Vrouchas sind es etwa 5 Fahrminuten zum Ufer von Plaka und etwa 12 Fahrminuten ins Zentrum von Elounda und nach Schisma. Die genauen GPS-Koordinaten erhalten Sie mit Ihrer Buchungsbestätigung."
+    },
+    {
+      "id": "sea-views",
+      "category": "location",
+      "question": "Welche Unterkünfte haben Meerblick?",
+      "answer": "Haus Argyro, Haus Margarita, Haus Leonidas und Haus Monastiri haben Meerblick von ihrer Lage, der Veranda, dem Balkon oder den Schlafbereichen aus. Die Almond Tree Villa in Vrouchas blickt auf das Kretische Meer, Olivenhaine, Garten, Pool und Berge.<br><br>Haus Erato, Haus Clio, Haus Demetra und Haus Penelope sind eher Häuser mit Blick auf den Pool, die Berge oder das Dorf. Haus Efterpi und Haus Kalliopi sind traditionelle Dorfhäuser ohne diese Ausrichtung zum Meer.<br><br>Bitte sehen Sie vor der Buchung auf der Seite der jeweiligen Unterkunft nach Aussicht, Außenbereich und Aufteilung."
+    },
+    {
+      "id": "car-needed",
+      "category": "location",
+      "question": "Brauche ich ein Auto?",
+      "answer": "Ein Auto wird dringend empfohlen, besonders für die Almond Tree Villa in Vrouchas und für Ausflüge nach Plaka, an die Strände, zu Tavernen und an die Küste.<br><br>Die Häuser in Mavrikiano liegen näher an Schisma, dem Hafenzentrum von Elounda. Viele Gäste gehen bergab nach Elounda zu Fuß, der Rückweg führt jedoch bergauf, und das Dorf hat Steigungen und Stufen. Für Komfort, Gepäck, Strandtage und das Abendessen ist ein Auto in der Regel die einfachste Lösung."
+    },
+    {
+      "id": "distances-shops-beaches",
+      "category": "location",
+      "question": "Wie weit sind Geschäfte, Strände und Tavernen entfernt?",
+      "answer": "Von den Häusern in Mavrikiano sind es etwa 3 Fahrminuten zum Hafen von Elounda und etwa 7 Fahrminuten nach Plaka. Manche Gäste gehen zu Fuß hinunter nach Elounda, der Rückweg führt bergauf.<br><br>Von der Almond Tree Villa in Vrouchas sind es etwa 5 Fahrminuten zum Ufer von Plaka und etwa 12 Fahrminuten ins Zentrum von Elounda. Vrouchas ist ruhiger und lässt sich am besten mit dem Auto erkunden."
+    },
+    {
+      "id": "arrival",
+      "category": "location",
+      "question": "Wie läuft die Ankunft ab?",
+      "answer": "Wir schicken vor dem Check-in Kartenangaben und Hinweise zur Ankunft.<br><br>Bei den Häusern in Mavrikiano treffen sich Gäste in der Regel am gemeinsamen Parkplatz und werden zum Haus begleitet. Für die Almond Tree Villa gelten eigene Hinweise zur Ankunft. Wir empfehlen, unseren Kartenlinks zu folgen und sich nicht allein auf allgemeine Navigations-Apps zu verlassen."
+    },
+    {
+      "id": "parking",
+      "category": "amenities",
+      "question": "Gibt es Parkmöglichkeiten?",
+      "answer": "Für die Häuser in Mavrikiano gibt es in der Nähe einen gemeinsamen privaten Gästeparkplatz mit Platz für insgesamt bis zu 5 Autos. Ist der gemeinsame Parkplatz belegt, lässt sich im Dorf in der Regel kostenlos parken. Die genauen Angaben zum Parken stehen auf der Seite der jeweiligen Unterkunft."
+    },
+    {
+      "id": "cancellation",
+      "category": "policies",
+      "question": "Wie sind die Stornierungsbedingungen?",
+      "answer": "{cancellationPolicy}"
+    }
+  ]
+}

@@ -56,6 +56,15 @@
     "access": {
       "clioParking": "Etwa 10 m vom Parkplatz"
     },
-    "arrivalInstructions": "Wir empfangen unsere Gäste persönlich am Parkplatz, helfen beim Gepäck und bringen Sie zu Ihrem Haus."
+    "arrivalInstructions": "Wir empfangen unsere Gäste persönlich am Parkplatz, helfen beim Gepäck und bringen Sie zu Ihrem Haus.",
+    "villa": {
+      "pool": "Privater Pool 9 m × 4 m",
+      "view": "Blick auf das Kretische Meer, den Garten und die Berge",
+      "outdoor": "Private Poolterrasse, schilfbeschattete Balkone und Garten",
+      "locationNote": "Das Dorf Vrouchas liegt oberhalb der Häuser in Mavrikiano. {relation} von hier.",
+      "arrivalPrimary": "Nutzen Sie für die Anreise die Karte der Villa.",
+      "arrivalAlternative": "Alternative: Gepäck kann kurz in der Nähe der Villa abgestellt werden.",
+      "arrivalMeeting": "In der Regel treffen wir unsere Gäste in der Nähe der Villa und begleiten sie persönlich bei der Ankunft (Frau Olga)."
+    }
   }
 }

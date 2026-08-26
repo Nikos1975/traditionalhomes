@@ -1,19 +1,27 @@
 import { defaultLocale, normalizeLocale } from './config';
+import aboutEn from './locales/en/about.json';
 import commonEn from './locales/en/common.json';
+import contactEn from './locales/en/contact.json';
+import faqEn from './locales/en/faq.json';
 import formsEn from './locales/en/forms.json';
 import guideEn from './locales/en/guide.json';
 import homeEn from './locales/en/home.json';
 import locationEn from './locales/en/location.json';
 import navigationEn from './locales/en/navigation.json';
+import policiesEn from './locales/en/policies.json';
 import propertiesEn from './locales/en/properties.json';
 import seoEn from './locales/en/seo.json';
+import aboutDe from './locales/de/about.json';
 import commonDe from './locales/de/common.json';
+import contactDe from './locales/de/contact.json';
+import faqDe from './locales/de/faq.json';
 import formsDe from './locales/de/forms.json';
 import guideDe from './locales/de/guide.json';
 import homeDe from './locales/de/home.json';
 import seoDe from './locales/de/seo.json';
 import locationDe from './locales/de/location.json';
 import navigationDe from './locales/de/navigation.json';
+import policiesDe from './locales/de/policies.json';
 import propertiesDe from './locales/de/properties.json';
 
 /**
@@ -26,20 +34,28 @@ import propertiesDe from './locales/de/properties.json';
  */
 const dictionaries = {
   en: {
+    about: aboutEn,
     common: commonEn,
+    contact: contactEn,
+    faq: faqEn,
     navigation: navigationEn,
     forms: formsEn,
     seo: seoEn,
     guide: guideEn,
+    policies: policiesEn,
     properties: propertiesEn,
     location: locationEn,
     home: homeEn,
   },
   de: {
+    about: aboutDe,
     common: commonDe,
+    contact: contactDe,
+    faq: faqDe,
     navigation: navigationDe,
     forms: formsDe,
     guide: guideDe,
+    policies: policiesDe,
     properties: propertiesDe,
     location: locationDe,
     home: homeDe,
@@ -153,4 +169,20 @@ export function getLocationCopy(locale: string | undefined = defaultLocale) {
 
 export function getHomeCopy(locale: string | undefined = defaultLocale) {
   return getTranslations(locale).home;
+}
+
+export function getAboutCopy(locale: string | undefined = defaultLocale) {
+  return getTranslations(locale).about;
+}
+
+export function getFaqCopy(locale: string | undefined = defaultLocale) {
+  return getTranslations(locale).faq;
+}
+
+export function getPoliciesCopy(locale: string | undefined = defaultLocale) {
+  return getTranslations(locale).policies;
+}
+
+export function getContactCopy(locale: string | undefined = defaultLocale) {
+  return getTranslations(locale).contact;
 }

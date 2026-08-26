@@ -6,6 +6,20 @@ const root = new URL('../', import.meta.url);
 const readText = (path) => readFile(new URL(path, root), 'utf8');
 const asDataUrl = (code) => `data:text/javascript;base64,${Buffer.from(code).toString('base64')}`;
 
+/** Stable internal ids. Public paths always come from the route map. */
+const HOUSE_SLUGS = [
+  'argyro',
+  'leonidas',
+  'margarita',
+  'demetra',
+  'penelope',
+  'erato',
+  'clio',
+  'efterpi',
+  'kalliopi',
+  'monastiri',
+];
+
 const loadLanguageSwitcher = async () => {
   const ts = (await import('typescript')).default;
   const transpile = async (path) => {
@@ -43,29 +57,43 @@ test('language switcher exposes only launched locales and prefers equivalent rou
   assert.equal(germanLocation.find((link) => link.locale === 'en')?.href, '/en/location/');
 });
 
-test('language switcher never fabricates a deep route for an untranslated property', async () => {
+test('language switcher never fabricates an English segment under /de/', async () => {
   const { getLanguageSwitcherLinks } = await loadLanguageSwitcher();
-  const links = getLanguageSwitcherLinks('en', '/en/houses/monastiri/');
-  const german = links.find((link) => link.locale === 'de');
 
-  // The reported preview URL. A translated segment is never inferred, so this
-  // must be unreachable from every branch of the resolver.
-  for (const link of links) {
-    assert.notEqual(link.href, '/de/houses/monastiri/');
-    assert.doesNotMatch(link.href, /^\/de\/houses\//, `${link.href} fabricates an English segment under /de/`);
+  // A translated segment is never inferred, so the reported preview URL must be
+  // unreachable from every branch of the resolver, for every property.
+  for (const slug of HOUSE_SLUGS) {
+    for (const path of [`/en/houses/${slug}/`, `/de/ferienhaeuser/${slug}/`]) {
+      for (const locale of ['en', 'de']) {
+        for (const link of getLanguageSwitcherLinks(locale, path)) {
+          assert.notEqual(link.href, `/de/houses/${slug}/`);
+          assert.doesNotMatch(link.href, /^\/de\/houses\//, `${link.href} fabricates an English segment under /de/`);
+        }
+      }
+    }
+  }
+});
+
+test('language switcher resolves every translated property to its exact equivalent', async () => {
+  const { getLanguageSwitcherLinks } = await loadLanguageSwitcher();
+
+  for (const slug of HOUSE_SLUGS) {
+    const toGerman = getLanguageSwitcherLinks('en', `/en/houses/${slug}/`).find((link) => link.locale === 'de');
+    const toEnglish = getLanguageSwitcherLinks('de', `/de/ferienhaeuser/${slug}/`).find((link) => link.locale === 'en');
+
+    assert.equal(toGerman?.href, `/de/ferienhaeuser/${slug}/`, `${slug} must switch to its German page`);
+    assert.equal(toGerman?.fallback, 'none', `${slug} must not fall back`);
+    assert.equal(toEnglish?.href, `/en/houses/${slug}/`, `${slug} must switch back to its English page`);
+    assert.equal(toEnglish?.fallback, 'none', `${slug} must not fall back`);
   }
 
-  // Nearest real localized parent, not the homepage and not a guess.
-  assert.equal(german?.href, '/de/ferienhaeuser/');
-  assert.equal(german?.fallback, 'parent');
-  assert.equal(german?.isFallbackToHome, false);
+  const villaToGerman = getLanguageSwitcherLinks('en', '/en/villa/almond-tree-villa/').find((l) => l.locale === 'de');
+  const villaToEnglish = getLanguageSwitcherLinks('de', '/de/villa/almond-tree-villa/').find((l) => l.locale === 'en');
 
-  // Every other untranslated house behaves the same way.
-  for (const slug of ['leonidas', 'margarita', 'demetra', 'penelope', 'erato', 'clio', 'efterpi', 'kalliopi']) {
-    const target = getLanguageSwitcherLinks('en', `/en/houses/${slug}/`).find((link) => link.locale === 'de');
-
-    assert.equal(target?.href, '/de/ferienhaeuser/', `${slug} must fall back to the German collection`);
-  }
+  assert.equal(villaToGerman?.href, '/de/villa/almond-tree-villa/');
+  assert.equal(villaToGerman?.fallback, 'none');
+  assert.equal(villaToEnglish?.href, '/en/villa/almond-tree-villa/');
+  assert.equal(villaToEnglish?.fallback, 'none');
 });
 
 test('language switcher prefers a real equivalent over the parent fallback', async () => {
@@ -76,34 +104,72 @@ test('language switcher prefers a real equivalent over the parent fallback', asy
   assert.equal(german?.fallback, 'none');
 });
 
-test('language switcher falls back to the villa collection, then the homepage', async () => {
+test('language switcher keeps the parent fallback available for untranslated content', async () => {
   const { getLanguageSwitcherLinks } = await loadLanguageSwitcher();
 
-  // The villa has no German detail page, but the collection that lists it does.
-  const villa = getLanguageSwitcherLinks('en', '/en/villa/almond-tree-villa/').find((link) => link.locale === 'de');
-  assert.equal(villa?.href, '/de/ferienhaeuser/');
-  assert.equal(villa?.fallback, 'parent');
+  /**
+   * Every real property is translated now, so the parent tier is exercised
+   * against a fixture map — the shape the real map had before that batch —
+   * rather than against a page that no longer exists. The tier stays a safety
+   * mechanism for genuinely untranslated future content, not normal behaviour.
+   */
+  const fixture = {
+    home: { segments: { en: [], de: [] } },
+    houses: { segments: { en: ['houses'], de: ['ferienhaeuser'] } },
+    house: {
+      segments: { en: ['houses'], de: ['ferienhaeuser'] },
+      dynamic: true,
+      content: { monastiri: { en: 'monastiri' } },
+    },
+    villa: { segments: { en: ['villa'] }, dynamic: true },
+  };
+  const german = (path) => getLanguageSwitcherLinks('en', path, fixture).find((link) => link.locale === 'de');
 
-  // A route with no declared parent still lands on a page that exists.
+  assert.equal(german('/en/houses/monastiri/')?.href, '/de/ferienhaeuser/');
+  assert.equal(german('/en/houses/monastiri/')?.fallback, 'parent');
+  assert.equal(german('/en/houses/monastiri/')?.isFallbackToHome, false);
+  assert.equal(german('/en/villa/almond-tree-villa/')?.href, '/de/ferienhaeuser/');
+  assert.equal(german('/en/villa/almond-tree-villa/')?.fallback, 'parent');
+});
+
+test('language switcher falls back to the target homepage when nothing else exists', async () => {
+  const { getLanguageSwitcherLinks } = await loadLanguageSwitcher();
+
+  // The informational pages are translated, so they switch exactly.
   const faq = getLanguageSwitcherLinks('en', '/en/faq/').find((link) => link.locale === 'de');
-  assert.equal(faq?.href, '/de/');
-  assert.equal(faq?.fallback, 'home');
+  assert.equal(faq?.href, '/de/faq/');
+  assert.equal(faq?.fallback, 'none');
+
+  // The blog is deliberately English-only, and has no declared parent, so it
+  // lands on a page that exists rather than on a fabricated URL.
+  const blog = getLanguageSwitcherLinks('en', '/en/blog/').find((link) => link.locale === 'de');
+  assert.equal(blog?.href, '/de/');
+  assert.equal(blog?.fallback, 'home');
 
   // An unknown path is not matched, and is never turned into a locale URL.
   const unknown = getLanguageSwitcherLinks('en', '/en/nothing-here/').find((link) => link.locale === 'de');
   assert.equal(unknown?.href, '/de/');
 });
 
-test('language switcher falls back to the real target homepage when no equivalent page exists', async () => {
+test('language switcher exposes native labels and reciprocal informational routes', async () => {
   const { getLanguageSwitcherLinks } = await loadLanguageSwitcher();
 
   const contact = getLanguageSwitcherLinks('en', '/en/contact/');
   const german = contact.find((link) => link.locale === 'de');
 
-  assert.equal(german?.href, '/de/');
-  assert.equal(german?.isFallbackToHome, true);
+  assert.equal(german?.href, '/de/kontakt/');
+  assert.equal(german?.isFallbackToHome, false);
   assert.equal(german?.label, 'Deutsch');
   assert.equal(german?.shortLabel, 'DE');
+
+  for (const [en, de] of [
+    ['/en/about/', '/de/ueber-uns/'],
+    ['/en/policies/', '/de/richtlinien/'],
+    ['/en/guide/mavrikiano/', '/de/reisefuehrer/mavrikiano/'],
+  ]) {
+    assert.equal(getLanguageSwitcherLinks('en', en).find((l) => l.locale === 'de')?.href, de);
+    assert.equal(getLanguageSwitcherLinks('de', de).find((l) => l.locale === 'en')?.href, en);
+  }
 });
 
 test('header renders compact desktop and native-label mobile language selectors', async () => {
@@ -137,12 +203,16 @@ test('German primary navigation exposes only routes that currently have German p
     navigation.main.map(({ label, href }) => ({ label, href })),
     [
       { label: 'Häuser', href: '/en/houses/' },
+      { label: 'Villa', href: '/en/villa/almond-tree-villa/' },
       { label: 'Lage', href: '/en/location/' },
+      { label: 'FAQ', href: '/en/faq/' },
+      { label: 'Über uns', href: '/en/about/' },
+      { label: 'Kontakt', href: '/en/contact/' },
     ],
   );
 
-  const authoredFallbacks = navigation.main.filter(({ href }) =>
-    ['/en/villa/', '/en/faq/', '/en/about/', '/en/blog/', '/en/contact/'].some((prefix) => href.startsWith(prefix)),
-  );
+  // The blog is the one section German does not own, so it stays out of the
+  // primary navigation: every entry above resolves to a real German page.
+  const authoredFallbacks = navigation.main.filter(({ href }) => href.startsWith('/en/blog/'));
   assert.deepEqual(authoredFallbacks, []);
 });

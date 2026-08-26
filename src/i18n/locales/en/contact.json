@@ -1,0 +1,72 @@
+{
+  "breadcrumb": {
+    "ariaLabel": "Breadcrumb",
+    "home": "Home",
+    "current": "Contact"
+  },
+  "heading": {
+    "lead": "Get in",
+    "emphasis": "Touch"
+  },
+  "intro": "Questions about a specific property or a large group booking? Use the form below and we will respond as soon as possible.",
+  "form": {
+    "ariaLabel": "Contact form",
+    "honeypotLabel": "Website",
+    "nameLabel": "Name",
+    "namePlaceholder": "Your name",
+    "emailLabel": "Email",
+    "emailPlaceholder": "you@example.com",
+    "propertyLabel": "Property (Optional)",
+    "messageLabel": "Message",
+    "messagePlaceholder": "Your question or message…",
+    "turnstileError": "Verification could not be completed. Please try again before sending your message.",
+    "submit": "Send Message",
+    "sending": "Sending...",
+    "error": "Unable to send this message. Please try again.",
+    "errorFallback": "Unable to send this message.",
+    "errorEmailPrefix": "You can also email us at",
+    "noteBeforeLink": "We aim to respond within one business day. For immediate availability, please use our ",
+    "noteLink": "online system",
+    "noteBetweenLinks": ". If the form does not send, email us at ",
+    "noteAfterEmail": "."
+  },
+  "propertyOptions": {
+    "": "— General Enquiry —",
+    "argyro": "House Argyro",
+    "leonidas": "House Leonidas",
+    "margarita": "House Margarita",
+    "dimitra": "House Dimitra",
+    "penelope": "House Penelope",
+    "erato": "House Erato",
+    "clio": "House Clio",
+    "efterpi": "House Efterpi",
+    "kalliopi": "House Kalliopi",
+    "monastiri": "House Monastiri",
+    "almond-tree-villa": "Almond Tree Villa (Vrouchas)",
+    "multiple": "Multiple Properties"
+  },
+  "success": {
+    "heading": "Message Received",
+    "body": "Thank you for reaching out. We will get back to you shortly."
+  },
+  "aside": {
+    "help": {
+      "heading": "Before You Write",
+      "emailBefore": "For direct email, write to ",
+      "emailAfter": ".",
+      "bookingBefore": "For live availability and pricing, our ",
+      "bookingLink": "Booking System",
+      "bookingAfter": " is always up to date.",
+      "faqBefore": "Quick answers regarding Wi-Fi, pools, and check-in can be found on our ",
+      "faqLink": "FAQ page",
+      "faqAfter": ".",
+      "policiesBefore": "Detailed mobility information and house rules are listed on our ",
+      "policiesLink": "Policies page",
+      "policiesAfter": "."
+    },
+    "group": {
+      "heading": "Group Gatherings",
+      "body": "Planning a retreat or a large family gathering? We can assist in coordinating simultaneous bookings across multiple houses in Mavrikiano."
+    }
+  }
+}

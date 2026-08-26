@@ -8,6 +8,9 @@
       "bedroom": "Schlafzimmer",
       "bedrooms": "Schlafzimmer",
       "tail": "Traditionelles kretisches Haus in Elounda."
+    },
+    "villa": {
+      "description": "{name} ist eine traditionelle kretische Villa mit privatem Pool in Vrouchas, oberhalb von Plaka und Elounda. Platz für {sleeps} Gäste, {bedrooms} Schlafzimmer, {bathrooms} Bäder, {pool}."
     }
   },
   "pages": {
@@ -22,6 +25,22 @@
     "location": {
       "title": "Lage — Mavrikiano & Vrouchas bei Elounda | Elounda Traditional Homes",
       "description": "Mavrikiano und Vrouchas liegen oberhalb der Bucht von Elounda im Nordosten Kretas. Fünf Minuten zum Meer, abseits des Trubels."
+    },
+    "about": {
+      "title": "Über uns | Elounda Traditional Homes",
+      "description": "Elounda Traditional Homes: eine familiengeführte Sammlung restaurierter Steinhäuser in Mavrikiano, Elounda, Kreta, und eine Villa in Vrouchas."
+    },
+    "faq": {
+      "title": "FAQ — Häufige Fragen | Elounda Traditional Homes",
+      "description": "Häufige Fragen zu Elounda Traditional Homes: Zugang, Pools, Haustiere, WLAN, Parken, Anreise und Buchungsbedingungen."
+    },
+    "policies": {
+      "title": "Hausordnung & Richtlinien | Elounda Traditional Homes",
+      "description": "Hausordnung, Zugang, Haustiere, Check-in und Check-out, Ruhezeiten und Stornierung bei Elounda Traditional Homes."
+    },
+    "contact": {
+      "title": "Kontakt & Anfragen | Elounda Traditional Homes",
+      "description": "Kontakt zu Elounda Traditional Homes — Fragen zu den Unterkünften oder Buchungsanfragen für Mavrikiano und Vrouchas."
     }
   }
 }

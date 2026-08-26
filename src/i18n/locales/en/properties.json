@@ -57,6 +57,15 @@
     "access": {
       "clioParking": "About 10 m from parking"
     },
-    "arrivalInstructions": "We personally meet our guests at the parking area to assist with luggage and guide you to your home."
+    "arrivalInstructions": "We personally meet our guests at the parking area to assist with luggage and guide you to your home.",
+    "villa": {
+      "pool": "Private 9 m × 4 m pool",
+      "view": "Cretan Sea, garden and mountain views",
+      "outdoor": "Private pool terrace, reed-shaded balconies and garden",
+      "locationNote": "The village of Vrouchas sits above the houses in Mavrikiano. {relation} from here.",
+      "arrivalPrimary": "Use the villa map for arrival.",
+      "arrivalAlternative": "Alternative: You may drop luggage briefly near the villa.",
+      "arrivalMeeting": "We usually meet guests near the villa and guide them personally on arrival (Mrs Olga)."
+    }
   }
 }

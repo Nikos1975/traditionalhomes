@@ -11,6 +11,9 @@
       "bedroom": "bedroom",
       "bedrooms": "bedrooms",
       "tail": "Traditional Cretan home in Elounda."
+    },
+    "villa": {
+      "description": "{name} is a traditional Cretan villa with private pool in Vrouchas, above Plaka and Elounda. Sleeps {sleeps}, with {bedrooms} bedrooms, {bathrooms} bathrooms, and a {pool}."
     }
   },
   "pages": {

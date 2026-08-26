@@ -1,0 +1,72 @@
+{
+  "breadcrumb": {
+    "ariaLabel": "Navigationspfad",
+    "home": "Startseite",
+    "current": "Kontakt"
+  },
+  "heading": {
+    "lead": "Schreiben Sie",
+    "emphasis": "uns"
+  },
+  "intro": "Fragen zu einer bestimmten Unterkunft oder zu einer Buchung für eine größere Gruppe? Nutzen Sie das Formular; wir antworten so bald wie möglich.",
+  "form": {
+    "ariaLabel": "Kontaktformular",
+    "honeypotLabel": "Website",
+    "nameLabel": "Name",
+    "namePlaceholder": "Ihr Name",
+    "emailLabel": "E-Mail",
+    "emailPlaceholder": "sie@beispiel.de",
+    "propertyLabel": "Unterkunft (optional)",
+    "messageLabel": "Nachricht",
+    "messagePlaceholder": "Ihre Frage oder Nachricht…",
+    "turnstileError": "Die Überprüfung konnte nicht abgeschlossen werden. Bitte versuchen Sie es erneut, bevor Sie Ihre Nachricht senden.",
+    "submit": "Nachricht senden",
+    "sending": "Wird gesendet …",
+    "error": "Diese Nachricht konnte nicht gesendet werden. Bitte versuchen Sie es erneut.",
+    "errorFallback": "Diese Nachricht konnte nicht gesendet werden.",
+    "errorEmailPrefix": "Sie können uns auch schreiben an",
+    "noteBeforeLink": "Wir antworten in der Regel innerhalb eines Werktags. Die aktuelle Verfügbarkeit sehen Sie sofort in unserem ",
+    "noteLink": "Buchungssystem",
+    "noteBetweenLinks": ". Falls das Formular nicht sendet, schreiben Sie uns an ",
+    "noteAfterEmail": "."
+  },
+  "propertyOptions": {
+    "": "— Allgemeine Anfrage —",
+    "argyro": "Haus Argyro",
+    "leonidas": "Haus Leonidas",
+    "margarita": "Haus Margarita",
+    "dimitra": "Haus Dimitra",
+    "penelope": "Haus Penelope",
+    "erato": "Haus Erato",
+    "clio": "Haus Clio",
+    "efterpi": "Haus Efterpi",
+    "kalliopi": "Haus Kalliopi",
+    "monastiri": "Haus Monastiri",
+    "almond-tree-villa": "Almond Tree Villa (Vrouchas)",
+    "multiple": "Mehrere Unterkünfte"
+  },
+  "success": {
+    "heading": "Nachricht erhalten",
+    "body": "Danke für Ihre Nachricht. Wir melden uns in Kürze bei Ihnen."
+  },
+  "aside": {
+    "help": {
+      "heading": "Bevor Sie schreiben",
+      "emailBefore": "Für eine direkte E-Mail schreiben Sie an ",
+      "emailAfter": ".",
+      "bookingBefore": "Aktuelle Verfügbarkeit und Preise finden Sie stets in unserem ",
+      "bookingLink": "Buchungssystem",
+      "bookingAfter": ".",
+      "faqBefore": "Kurze Antworten zu WLAN, Pools und Check-in stehen auf unserer ",
+      "faqLink": "FAQ-Seite",
+      "faqAfter": ".",
+      "policiesBefore": "Ausführliche Angaben zu Mobilität und Hausordnung stehen auf unserer ",
+      "policiesLink": "Seite mit den Richtlinien",
+      "policiesAfter": "."
+    },
+    "group": {
+      "heading": "Gruppen und Familienfeiern",
+      "body": "Sie planen einen Rückzug oder ein größeres Familientreffen? Wir helfen dabei, mehrere Häuser in Mavrikiano für dieselben Termine zu koordinieren."
+    }
+  }
+}

@@ -42,5 +42,20 @@ The website provides official accommodation descriptions, location information, 
 - [Startseite](https://traditional-homes.gr/de/): German homepage.
 - [Ferienhäuser](https://traditional-homes.gr/de/ferienhaeuser/): German collection page for the stone houses and the villa.
 - [Haus Argyro](https://traditional-homes.gr/de/ferienhaeuser/argyro/): German page for House Argyro.
+- [Haus Leonidas](https://traditional-homes.gr/de/ferienhaeuser/leonidas/): German page for House Leonidas.
+- [Haus Margarita](https://traditional-homes.gr/de/ferienhaeuser/margarita/): German page for House Margarita.
+- [Haus Demetra](https://traditional-homes.gr/de/ferienhaeuser/demetra/): German page for House Demetra.
+- [Haus Penelope](https://traditional-homes.gr/de/ferienhaeuser/penelope/): German page for House Penelope.
+- [Haus Erato](https://traditional-homes.gr/de/ferienhaeuser/erato/): German page for House Erato.
+- [Haus Clio](https://traditional-homes.gr/de/ferienhaeuser/clio/): German page for House Clio.
+- [Haus Efterpi](https://traditional-homes.gr/de/ferienhaeuser/efterpi/): German page for House Efterpi.
+- [Haus Kalliopi](https://traditional-homes.gr/de/ferienhaeuser/kalliopi/): German page for House Kalliopi.
+- [Haus Monastiri](https://traditional-homes.gr/de/ferienhaeuser/monastiri/): German page for House Monastiri.
+- [Almond Tree Villa](https://traditional-homes.gr/de/villa/almond-tree-villa/): German page for Almond Tree Villa.
 - [Lage](https://traditional-homes.gr/de/lage/): German location page for Mavrikiano and Vrouchas.
-- [Vrouchas Reiseführer](https://traditional-homes.gr/de/reisefuehrer/vrouchas/): German version of the Vrouchas guide. Other pages are currently English only.
+- [Mavrikiano Reiseführer](https://traditional-homes.gr/de/reisefuehrer/mavrikiano/): German version of the Mavrikiano guide.
+- [Vrouchas Reiseführer](https://traditional-homes.gr/de/reisefuehrer/vrouchas/): German version of the Vrouchas guide.
+- [Über uns](https://traditional-homes.gr/de/ueber-uns/): German page about the family restoration project.
+- [Kontakt](https://traditional-homes.gr/de/kontakt/): German contact and enquiry form.
+- [FAQ](https://traditional-homes.gr/de/faq/): German answers on access, pools, pets, Wi-Fi, parking and booking policies.
+- [Richtlinien](https://traditional-homes.gr/de/richtlinien/): German house rules, access, check-in and cancellation information. The articles are currently English only.

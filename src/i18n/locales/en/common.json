@@ -113,7 +113,8 @@
       "photoNumbered": "Photo {n}",
       "heroPhotoOf": "Hero photo of {name}",
       "mainViewOf": "Main view of {name}",
-      "photoOfNumbered": "{name} — photo {n}"
+      "photoOfNumbered": "{name} — photo {n}",
+      "heroImageOf": "Hero image of {name}"
     },
     "map": {
       "villages": {
@@ -298,6 +299,11 @@
         "guide": {
           "vrouchasTitle": "Vrouchas Area Guide",
           "practicalAreaDetails": "Practical area details"
+        },
+        "sharedPool": {
+          "intro": "This property's swimming pool is shared exclusively with",
+          "and": "and",
+          "note": "Booking both houses together gives one group use of both houses around the same shared pool area."
         }
       }
     }
