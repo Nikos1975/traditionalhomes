@@ -135,26 +135,41 @@ test('language switcher keeps the parent fallback available for untranslated con
 test('language switcher falls back to the target homepage when nothing else exists', async () => {
   const { getLanguageSwitcherLinks } = await loadLanguageSwitcher();
 
-  // A route with no declared parent still lands on a page that exists.
+  // The informational pages are translated, so they switch exactly.
   const faq = getLanguageSwitcherLinks('en', '/en/faq/').find((link) => link.locale === 'de');
-  assert.equal(faq?.href, '/de/');
-  assert.equal(faq?.fallback, 'home');
+  assert.equal(faq?.href, '/de/faq/');
+  assert.equal(faq?.fallback, 'none');
+
+  // The blog is deliberately English-only, and has no declared parent, so it
+  // lands on a page that exists rather than on a fabricated URL.
+  const blog = getLanguageSwitcherLinks('en', '/en/blog/').find((link) => link.locale === 'de');
+  assert.equal(blog?.href, '/de/');
+  assert.equal(blog?.fallback, 'home');
 
   // An unknown path is not matched, and is never turned into a locale URL.
   const unknown = getLanguageSwitcherLinks('en', '/en/nothing-here/').find((link) => link.locale === 'de');
   assert.equal(unknown?.href, '/de/');
 });
 
-test('language switcher falls back to the real target homepage when no equivalent page exists', async () => {
+test('language switcher exposes native labels and reciprocal informational routes', async () => {
   const { getLanguageSwitcherLinks } = await loadLanguageSwitcher();
 
   const contact = getLanguageSwitcherLinks('en', '/en/contact/');
   const german = contact.find((link) => link.locale === 'de');
 
-  assert.equal(german?.href, '/de/');
-  assert.equal(german?.isFallbackToHome, true);
+  assert.equal(german?.href, '/de/kontakt/');
+  assert.equal(german?.isFallbackToHome, false);
   assert.equal(german?.label, 'Deutsch');
   assert.equal(german?.shortLabel, 'DE');
+
+  for (const [en, de] of [
+    ['/en/about/', '/de/ueber-uns/'],
+    ['/en/policies/', '/de/richtlinien/'],
+    ['/en/guide/mavrikiano/', '/de/reisefuehrer/mavrikiano/'],
+  ]) {
+    assert.equal(getLanguageSwitcherLinks('en', en).find((l) => l.locale === 'de')?.href, de);
+    assert.equal(getLanguageSwitcherLinks('de', de).find((l) => l.locale === 'en')?.href, en);
+  }
 });
 
 test('header renders compact desktop and native-label mobile language selectors', async () => {
@@ -188,12 +203,16 @@ test('German primary navigation exposes only routes that currently have German p
     navigation.main.map(({ label, href }) => ({ label, href })),
     [
       { label: 'Häuser', href: '/en/houses/' },
+      { label: 'Villa', href: '/en/villa/almond-tree-villa/' },
       { label: 'Lage', href: '/en/location/' },
+      { label: 'FAQ', href: '/en/faq/' },
+      { label: 'Über uns', href: '/en/about/' },
+      { label: 'Kontakt', href: '/en/contact/' },
     ],
   );
 
-  const authoredFallbacks = navigation.main.filter(({ href }) =>
-    ['/en/villa/', '/en/faq/', '/en/about/', '/en/blog/', '/en/contact/'].some((prefix) => href.startsWith(prefix)),
-  );
+  // The blog is the one section German does not own, so it stays out of the
+  // primary navigation: every entry above resolves to a real German page.
+  const authoredFallbacks = navigation.main.filter(({ href }) => href.startsWith('/en/blog/'));
   assert.deepEqual(authoredFallbacks, []);
 });

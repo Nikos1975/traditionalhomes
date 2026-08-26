@@ -26,6 +26,18 @@ const PILOT_ID = 'vrouchas';
 const EN_PILOT = `/en/guide/${PILOT_ID}/`;
 const DE_PILOT = `/de/reisefuehrer/${PILOT_ID}/`;
 const UNBUILT_LOCALES = ['fr', 'ru', 'zh', 'ar', 'he'];
+const GERMAN_STATIC_ROUTES = [
+  '/de/',
+  '/de/ferienhaeuser/',
+  '/de/lage/',
+  '/de/ueber-uns/',
+  '/de/kontakt/',
+  '/de/faq/',
+  '/de/richtlinien/',
+  '/de/reisefuehrer/mavrikiano/',
+  '/de/reisefuehrer/vrouchas/',
+];
+
 /** Stable internal ids of the houses that own a German detail page. */
 const GERMAN_HOUSE_IDS = [
   'argyro',
@@ -145,17 +157,19 @@ describe('Stage 3 German route pilot — route map', () => {
 
     // German owns the property routes and the cluster routes; everything else
     // still resolves to null rather than being guessed.
-    assert.equal(routeMap.resolveRoute('de', 'blogArticle', 'elounda-guide'), null);
-    assert.equal(routeMap.resolveRoute('de', 'contact'), null);
-    assert.equal(routeMap.resolveRoute('de', 'faq'), null);
-    assert.equal(routeMap.resolveRoute('de', 'about'), null);
-    assert.equal(routeMap.resolveRoute('de', 'policies'), null);
+    // The blog is the one section German does not own; everything else the
+    // German site links to now resolves to a real German route.
     assert.equal(routeMap.resolveRoute('de', 'blog'), null);
-    assert.equal(routeMap.resolveRoute('de', 'house', 'not-a-house'), null);
+    assert.equal(routeMap.resolveRoute('de', 'blogArticle', 'elounda-guide'), null);
+    assert.equal(routeMap.resolveRoute('de', 'contact'), '/de/kontakt/');
+    assert.equal(routeMap.resolveRoute('de', 'faq'), '/de/faq/');
+    assert.equal(routeMap.resolveRoute('de', 'about'), '/de/ueber-uns/');
+    assert.equal(routeMap.resolveRoute('de', 'policies'), '/de/richtlinien/');
+    assert.equal(routeMap.resolveRoute('de', 'guide', 'mavrikiano'), '/de/reisefuehrer/mavrikiano/');
 
-    // German owns the guide segment but only the Vrouchas guide itself.
-    assert.equal(routeMap.resolveRoute('de', 'guide', 'mavrikiano'), null);
-    assert.throws(() => routeMap.routePath('de', 'guide', 'mavrikiano'), /No "de" route/);
+    // Content the map does not declare is still never guessed.
+    assert.equal(routeMap.resolveRoute('de', 'house', 'not-a-house'), null);
+    assert.throws(() => routeMap.routePath('de', 'blog'), /No "de" route/);
     assert.throws(() => routeMap.assertRoute('fr', 'guide', 'vrouchas'), /No "fr" route/);
   });
 
@@ -163,7 +177,9 @@ describe('Stage 3 German route pilot — route map', () => {
     const { routeMap } = await loadModules();
 
     assert.deepEqual(routeMap.routeLocales('guide', 'vrouchas'), ['en', 'de']);
-    assert.deepEqual(routeMap.routeLocales('guide', 'mavrikiano'), ['en']);
+    assert.deepEqual(routeMap.routeLocales('guide', 'mavrikiano'), ['en', 'de']);
+    // The blog stays English-only, so it advertises no alternate at all.
+    assert.deepEqual(routeMap.routeLocales('blog'), ['en']);
     assert.deepEqual(routeMap.routeLocales('houses'), ['en', 'de']);
     assert.deepEqual(routeMap.routeLocales('home'), ['en', 'de']);
     assert.deepEqual(routeMap.routeLocales('location'), ['en', 'de']);
@@ -181,8 +197,8 @@ describe('Stage 3 German route pilot — route map', () => {
     ]);
 
     // A route with a single locale advertises nothing at all.
-    assert.deepEqual(routeMap.routeAlternates('guide', 'mavrikiano'), [
-      { locale: 'en', hreflang: 'en', path: '/en/guide/mavrikiano/' },
+    assert.deepEqual(routeMap.routeAlternates('blog'), [
+      { locale: 'en', hreflang: 'en', path: '/en/blog/' },
     ]);
   });
 
@@ -201,9 +217,17 @@ describe('Stage 3 German route pilot — route map', () => {
     const germanCollection = routeMap.resolveAuthoredHref('de', '/en/houses/');
     assert.deepEqual(germanCollection, { href: '/de/ferienhaeuser/', locale: 'de', isFallback: false });
 
-    // A section German does not own still falls back, and says so.
-    const germanFallback = routeMap.resolveAuthoredHref('de', '/en/contact/');
-    assert.deepEqual(germanFallback, { href: '/en/contact/', locale: 'en', isFallback: true, hreflang: 'en' });
+    // German owns the informational routes too, so their authored English hrefs
+    // resolve German.
+    assert.deepEqual(routeMap.resolveAuthoredHref('de', '/en/contact/'), {
+      href: '/de/kontakt/',
+      locale: 'de',
+      isFallback: false,
+    });
+
+    // The blog is the one section German does not own: it still falls back, and says so.
+    const germanFallback = routeMap.resolveAuthoredHref('de', '/en/blog/');
+    assert.deepEqual(germanFallback, { href: '/en/blog/', locale: 'en', isFallback: true, hreflang: 'en' });
 
     // English pages are never marked as falling back.
     const english = routeMap.resolveAuthoredHref('en', '/en/policies/#access');
@@ -448,7 +472,10 @@ describe('Stage 3 German route pilot — source contracts', () => {
     // German now ships its own page SEO metadata for the routes it owns.
     assert.equal(await exists('src/i18n/locales/de/seo.json'), true, 'German page SEO metadata must exist');
     const seoDe = JSON.parse(await readText('src/i18n/locales/de/seo.json'));
-    assert.deepEqual(Object.keys(seoDe.pages).sort(), ['home', 'houses', 'location']);
+    assert.deepEqual(
+      Object.keys(seoDe.pages).sort(),
+      ['about', 'contact', 'faq', 'home', 'houses', 'location', 'policies'],
+    );
     for (const page of Object.values(seoDe.pages)) {
       assert.ok(page.title.length > 0 && page.description.length > 0);
     }
@@ -566,7 +593,8 @@ describe('Stage 3 German route pilot — generated output', async () => {
   });
 
   it('does not emit hreflang on pages that have no translated equivalent', async () => {
-    for (const route of ['en/blog', 'en/guide/mavrikiano', 'en/contact', 'en/faq']) {
+    // The blog is the only section left without a German equivalent.
+    for (const route of ['en/blog', 'en/blog/elounda-beaches']) {
       assert.deepEqual(alternates(await page(route)), [], `${route} should not advertise alternates`);
     }
   });
@@ -801,10 +829,7 @@ describe('Stage 3 German route pilot — generated output', async () => {
     // property detail pages, derived rather than hard-coded.
     const germanLinks = links.filter((url) => url.startsWith(`${SITE}/de/`));
     const germanRoutes = new Set([
-      `${SITE}/de/`,
-      `${SITE}/de/ferienhaeuser/`,
-      `${SITE}/de/lage/`,
-      `${SITE}${DE_PILOT}`,
+      ...GERMAN_STATIC_ROUTES.map((route) => `${SITE}${route}`),
       `${SITE}/de/villa/almond-tree-villa/`,
       ...GERMAN_HOUSE_IDS.map((id) => `${SITE}/de/ferienhaeuser/${id}/`),
     ]);
@@ -1041,11 +1066,8 @@ describe('Stage 3 German route pilot — generated output', async () => {
     const german = urls.filter((url) => url.startsWith(`${SITE}/de/`)).sort();
 
     assert.deepEqual(german, [
-      `${SITE}/de/`,
-      `${SITE}/de/ferienhaeuser/`,
+      ...GERMAN_STATIC_ROUTES.map((route) => `${SITE}${route}`),
       ...GERMAN_HOUSE_IDS.map((id) => `${SITE}/de/ferienhaeuser/${id}/`),
-      `${SITE}/de/lage/`,
-      `${SITE}/de/reisefuehrer/vrouchas/`,
       `${SITE}/de/villa/almond-tree-villa/`,
     ].sort());
 
@@ -1056,7 +1078,7 @@ describe('Stage 3 German route pilot — generated output', async () => {
 
   it('generates no German page the route map does not declare', async () => {
     // Sections German does not own produce no page, in any spelling.
-    for (const route of [['de', 'kontakt'], ['de', 'contact'], ['de', 'faq'], ['de', 'blog'], ['de', 'about']]) {
+    for (const route of [['de', 'contact'], ['de', 'blog'], ['de', 'about'], ['de', 'policies'], ['de', 'guide']]) {
       await assert.rejects(access(join(outputPath, ...route, 'index.html')), `/${route.join('/')}/ must not exist`);
     }
 

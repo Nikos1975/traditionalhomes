@@ -18,8 +18,24 @@
       "href": "/en/houses/"
     },
     {
+      "label": "Villa",
+      "href": "/en/villa/almond-tree-villa/"
+    },
+    {
       "label": "Lage",
       "href": "/en/location/"
+    },
+    {
+      "label": "FAQ",
+      "href": "/en/faq/"
+    },
+    {
+      "label": "Über uns",
+      "href": "/en/about/"
+    },
+    {
+      "label": "Kontakt",
+      "href": "/en/contact/"
     }
   ]
 }

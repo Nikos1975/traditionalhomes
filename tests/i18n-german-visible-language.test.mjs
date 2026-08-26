@@ -40,6 +40,12 @@ const ROUTE_PAIRS = [
   // so a newly translated property cannot be added without being compared.
   ...HOUSE_IDS.map((id) => [`de/ferienhaeuser/${id}`, `en/houses/${id}`]),
   [`de/villa/${VILLA_ID}`, `en/villa/${VILLA_ID}`],
+  // The remaining non-blog informational pages.
+  ['de/reisefuehrer/mavrikiano', 'en/guide/mavrikiano'],
+  ['de/ueber-uns', 'en/about'],
+  ['de/kontakt', 'en/contact'],
+  ['de/faq', 'en/faq'],
+  ['de/richtlinien', 'en/policies'],
 ];
 
 /**
@@ -53,7 +59,9 @@ const IDENTICAL_BY_DESIGN = [
   /^(Almond Tree Villa|Elounda Traditional Homes|WebHotelier|Google Maps|traditional-homes\.gr)/,
   /Elounda Traditional Homes/,
   /^(Argyro|Clio|Demetra|Efterpi|Erato|Kalliopi|Leonidas|Margarita|Monastiri|Penelope)\b/,
-  /^(FAQ|Blog|Details|Pool|Villa|Balkon|Garten|Veranda|Terrasse|Filter|Taxis|WLAN|Info):?$/,
+  /^(FAQ|Blog|Details|Pool|Pools|Villa|Balkon|Garten|Veranda|Terrasse|Filter|Taxis|WLAN|Info|Name|Website):?$/,
+  // Contact addresses are identifiers, not copy, and stay untranslated by design.
+  /^[^@\s]+@[^@\s]+\.[a-z]{2,}$/,
   // Loanword compounds and counts that read the same in both languages.
   /^(Private Villa · Vrouchas|\d+ Villa)$/,
   /^(HER|JTR|SIT)$/,

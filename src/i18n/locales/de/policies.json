@@ -1,0 +1,65 @@
+{
+  "breadcrumb": {
+    "ariaLabel": "Navigationspfad",
+    "home": "Startseite",
+    "current": "Richtlinien"
+  },
+  "heading": {
+    "lead": "Unsere",
+    "emphasis": "Hausordnung"
+  },
+  "intro": "Wichtige Angaben zu Ihrem Aufenthalt, zum Zugang und zu unserem Umgang mit der Nachbarschaft im Dorf.",
+  "sidebar": {
+    "label": "Auf dieser Seite",
+    "quote": "„Unsere Regeln dienen dem ruhigen Zusammenleben im Dorf und dem Aufenthalt aller Gäste.“"
+  },
+  "order": ["access", "check-in-out", "pets", "wifi", "quiet-hours", "smoking", "cancellation"],
+  "sections": {
+    "access": "Zugang & Mobilität",
+    "check-in-out": "Check-in & Check-out",
+    "pets": "Haustiere",
+    "wifi": "Internet",
+    "quiet-hours": "Ruhezeiten",
+    "smoking": "Rauchen",
+    "cancellation": "Stornierung"
+  },
+  "access": {
+    "heading": "Zugang & Mobilität",
+    "criticalLabel": "Wichtige Hinweise zur Anreise",
+    "terrain": "Alle Unterkünfte sind traditionelle Steinhäuser in historischen Hangdörfern. Das Gelände besteht aus unebenem Kopfsteinpflaster, gestuften Gassen und abschüssigen Wegen. <strong>Keine der Unterkünfte ist stufenfrei</strong>, und sie sind nicht für den Zugang mit dem Rollstuhl geeignet.",
+    "quirks": "Jedes Haus hat seine baulichen Eigenheiten. Manche Schlafzimmer werden zum Beispiel über eine äußere Steintreppe erreicht, andere haben traditionelle, tiefer gelegene Eingänge.",
+    "link": "Zugang der einzelnen Unterkünfte ansehen"
+  },
+  "checkInOut": {
+    "heading": "Anreise & Abreise",
+    "checkInLabel": "Check-in ab",
+    "checkOutLabel": "Check-out bis",
+    "note": "Frühere Anreise und spätere Abreise sind nach Verfügbarkeit und je nach Reinigungsplan möglich."
+  },
+  "blocks": {
+    "pets": {
+      "title": "Haustiere",
+      "text": "{pets}. Bitte stimmen Sie sich vor der Buchung mit uns ab. Es kann eine Gebühr für die professionelle Reinigung anfallen, damit das Haus für die nächsten Gäste einwandfrei ist."
+    },
+    "wifi": {
+      "title": "Internet",
+      "text": "{wifi}. Der Zugang ist schnell, die dicken Steinmauern können das Signal auf den Terrassen im Freien jedoch einschränken."
+    },
+    "quiet-hours": {
+      "title": "Ruhezeiten",
+      "text": "Ruhezeiten gelten von {quietHours}. Wir bitten Sie, aus Rücksicht auf die Nachbarschaft nach 23:00 Uhr Geräusche und Musik auf der Terrasse gering zu halten."
+    },
+    "smoking": {
+      "title": "Rauchen",
+      "text": "Nach den Gesundheits- und Brandschutzvorschriften ist das Rauchen im Inneren der Unterkünfte streng untersagt. Auf den Terrassen im Freien ist es erlaubt; bitte löschen Sie wegen der Brandgefahr im Sommer alles sorgfältig."
+    },
+    "cancellation": {
+      "title": "Stornierung",
+      "text": "{cancellationPolicy}"
+    }
+  },
+  "footer": {
+    "question": "Fragen zu diesen Bedingungen?",
+    "action": "Gästeservice kontaktieren"
+  }
+}

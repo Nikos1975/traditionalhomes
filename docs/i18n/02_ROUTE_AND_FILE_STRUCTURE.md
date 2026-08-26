@@ -174,8 +174,8 @@ src/components/pages/
 - `/en/blog/` is the canonical English-only blog route; `/blog/**` is redirect-only.
 - Adding translated routes, hreflang output, a language selector, or sitemap locale expansion requires a separate approved stage.
 - `GuidePage.astro` is implemented as of Stage 3 and was the first shared page renderer. `src/pages/en/guide/vrouchas.astro` and `src/pages/de/reisefuehrer/vrouchas.astro` are thin wrappers over it.
-- `HomePage.astro`, `CollectionPage.astro`, `LocationPage.astro`, `HouseDetailPage.astro` and `VillaDetailPage.astro` are implemented. Every English and German route file for those pages is a thin wrapper that passes `locale` explicitly.
-- `ContactPage.astro`, `FaqPage.astro`, `PoliciesPage.astro`, `BlogIndexPage.astro` and `BlogArticlePage.astro` are still proposals.
+- `HomePage.astro`, `CollectionPage.astro`, `LocationPage.astro`, `HouseDetailPage.astro`, `VillaDetailPage.astro`, `AboutPage.astro`, `ContactPage.astro`, `FaqPage.astro` and `PoliciesPage.astro` are implemented. Every English and German route file for those pages is a thin wrapper that passes `locale` explicitly.
+- `BlogIndexPage.astro` and `BlogArticlePage.astro` are still proposals: the blog is deliberately English-only, so no locale needs a shared blog renderer yet.
 
 ## Blog Migration Note
 

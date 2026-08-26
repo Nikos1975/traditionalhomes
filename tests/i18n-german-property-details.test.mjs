@@ -469,12 +469,23 @@ describe('German property details — generated output', async () => {
     const urls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(([, url]) => url);
     const german = urls.filter((url) => url.startsWith(`${SITE}/de/`)).sort();
 
+    // Derived from the route map's German routes, so a new German page is added
+    // in one place rather than listed twice.
+    const staticGerman = [
+      '/de/',
+      '/de/ferienhaeuser/',
+      '/de/lage/',
+      '/de/ueber-uns/',
+      '/de/kontakt/',
+      '/de/faq/',
+      '/de/richtlinien/',
+      '/de/reisefuehrer/mavrikiano/',
+      '/de/reisefuehrer/vrouchas/',
+    ];
+
     assert.deepEqual(german, [
-      `${SITE}/de/`,
-      `${SITE}/de/ferienhaeuser/`,
-      ...HOUSE_IDS.map((id) => `${SITE}${deHouse(id)}`).sort(),
-      `${SITE}/de/lage/`,
-      `${SITE}/de/reisefuehrer/vrouchas/`,
+      ...staticGerman.map((route) => `${SITE}${route}`),
+      ...HOUSE_IDS.map((id) => `${SITE}${deHouse(id)}`),
       `${SITE}${DE_VILLA}`,
     ].sort());
 

@@ -1,0 +1,43 @@
+{
+  "breadcrumb": {
+    "ariaLabel": "Navigationspfad",
+    "home": "Startseite",
+    "current": "Unsere Geschichte"
+  },
+  "heading": {
+    "lead": "Kretisches Erbe",
+    "emphasis": "bewahren"
+  },
+  "intro": "„Ein familiengeführtes Restaurierungsprojekt rund um traditionelle Steinhäuser, Dorfwege und ruhigere Aufenthalte oberhalb von Elounda.“",
+  "paragraphs": {
+    "project": "Elounda Traditional Homes ist mehr als eine Sammlung von Unterkünften; es ist ein langfristiges Projekt zur Bewahrung alter Bausubstanz. Seit 1994 arbeitet unsere Familie daran, den historischen Ruinen in Mavrikiano und Vrouchas neues Leben zu geben.",
+    "houses": "Die zehn Häuser in Mavrikiano wurden über mehrere Jahre einzeln restauriert. Uns ist wichtig, die ursprünglichen Steinmauern und die traditionellen Holzbalken zu erhalten und zugleich praktischen Komfort zu ergänzen: WLAN, funktionierende Küchen, Klimaanlage und gute Betten.",
+    "villaBeforeName": "Unsere größere Villa, ",
+    "villaAfterName": " in Vrouchas, bietet 230 m², fünf Schlafräume, zwei Bäder, einen privaten Pool von 9 m x 4 m, schilfbeschattete Balkone und Blick auf das Kretische Meer, Olivenhaine, Garten, Pool und Berge."
+  },
+  "pillars": {
+    "architecture": {
+      "title": "Die Architektur",
+      "body": "Wir erhalten die ursprüngliche Steinbauweise und die traditionellen Grundrisse, sodass der Charakter der Häuser bestehen bleibt, während moderner Komfort hinzukommt."
+    },
+    "experience": {
+      "title": "Der Aufenthalt",
+      "body": "Unser Ziel ist ein unkomplizierter Aufenthalt: wohnen in einem echten Dorf, abseits von Hotelanlagen, mit dem Meer im Hintergrund."
+    }
+  },
+  "actions": {
+    "houses": "Häuser ansehen",
+    "contact": "Kontakt aufnehmen"
+  },
+  "image": {
+    "alt": "Historischer Datumsstein von 1902, verbunden mit dem Ursprung der restaurierten Steinhäuser in Mavrikiano",
+    "badgeLabel": "Ursprung des Steinhauses"
+  },
+  "locationCard": {
+    "heading": "Die Lage",
+    "bodyBeforeVillage": "Unsere Unterkünfte verteilen sich auf zwei Orte: das historische Dorf ",
+    "bodyBetweenVillages": " (Häuser) und die ruhigen Höhen von ",
+    "bodyAfterVillages": " (Villa).",
+    "footnote": "Mavrikiano & Vrouchas, Elounda, Kreta"
+  }
+}

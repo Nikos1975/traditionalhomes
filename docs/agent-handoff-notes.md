@@ -1,5 +1,153 @@
 # Agent Handoff Notes
 
+### 2026-08-26 - RESUMED and completed: German non-blog site, ready for review (PR #80)
+
+Supersedes the checkpoint entry below, which stays as the record of the pause. Nothing pushed, PR #80 not merged.
+
+- Resumed from the checkpoint. Branch `feat/i18n-german-property-details`, PR #80 open and already targeting `main`.
+- **Conflict resolution audited file by file, not taken on trust.** The `origin/main` merge produced three conflicts. For each one: `src/i18n/language-switcher.ts` and `tests/i18n-language-switcher.test.mjs` are add/add (absent at the merge base `80d7615`), `tests/i18n-german-route-pilot.test.mjs` is a content conflict. In all three, `origin/main`'s blob is **byte-identical** to the same file at `5e73dfb`, PR #79's tip — the squash commit introduced no change of its own — so `--ours` discarded nothing from main. Confirmed twice over: the merge result equals our pre-merge blob in every case, and the whole merged tree hash equals `98541a0`'s tree. `git diff --stat 5e73dfb 4423565` is empty.
+- **Typecheck regression found and fixed during validation.** The first full run showed **7** errors, not the predicted 2: `FaqPage.astro` and `PoliciesPage.astro` indexed their typed copy objects with a plain `string` from the JSON `order` array, giving five `ts(7053)` implicit-any errors. Fixed by narrowing the order array once per component (`type CategoryId = keyof typeof copy.categories`, `type SectionId = keyof typeof copy.sections`) rather than loosening the types.
+- **Documentation completed** (the outstanding item at checkpoint): `docs/architecture/repo-wireframe.md` and `.mmd` (four new shared renderers, the German cluster now covering the whole non-blog site), `docs/i18n/02_ROUTE_AND_FILE_STRUCTURE.md` (About/Contact/Faq/Policies renderers implemented; only the blog renderers remain proposals), and `docs/i18n/03_TRANSLATION_STATUS.md` (six status rows moved to Localized, the German cluster table extended to twenty routes, the slug rationale recorded, the `site-copy` presentation layer documented, and the "not yet German" paragraph reduced to the blog with the enforcing test named).
+
+#### Full validation, all run after the final edit
+
+| Check | Result |
+|---|---|
+| `npm test` | **414 tests, 413 pass, 1 fail** |
+| `npm run typecheck` | **2 errors, 0 warnings, 3 hints** (161 files) |
+| `npm run build` | **57 pages** |
+| `npm run seo:links` | exit **0**, no findings |
+| `git diff --check` | clean |
+
+The single test failure is `warns when WebP is larger than a practical PNG source and accepts Windows source paths`, which asserts Windows backslash handling and cannot pass on Linux; it fails identically on unmodified `origin/main`. It should pass on Windows.
+
+Typecheck difference against `origin/main`, per file rather than by count: `origin/main` has three errors — `src/components/UnitCard.astro` `ts(2339)`, `src/components/booking/BookingHandoffForm.astro` `ts(2322)`, and `src/pages/en/guide/mavrikiano.astro` `ts(2345)`. The first two are unchanged. The third is **gone** because that page moved onto the shared `GuidePage` renderer, which takes narrowed frontmatter through `guideFrontmatter`. That is a baseline improvement, not a regression, and no new diagnostic was introduced.
+
+#### Locale contract, verified against the built site
+
+Of the 20 German pages, the only internal `/en/` destinations reached from `/de/**` are `/en/blog/` (footer, every page) and `/en/blog/elounda-and-mirabello-bay/` (two contextual links) — the intended exception. Every other cross-locale link is a marked language-selector target. `tests/i18n-locale-leakage.test.mjs` enforces this and proves the exception is a route family, not a `/en/` prefix wildcard.
+
+#### State at handover
+
+37 files differ from the pushed head `98541a0`: 21 new, 16 modified. Not committed on the Windows worktree, not pushed, PR #80 untouched.
+
+Remaining: commit, push, rewrite the PR #80 description (it still claims a property-only scope), and verify the Cloudflare preview on desktop and mobile — the footer especially, plus the mobile menu, the language selector and long German labels.
+
+### 2026-08-26 - CHECKPOINT: German non-blog site completion, work in progress (PR #80)
+
+**Status: paused mid-task at the user's request. Nothing is broken, nothing is half-edited, nothing was pushed.**
+
+- Objective: no `/de/**` page should send a visitor to an English internal page, with the blog as the one intentional exception. Follows the merged German property-detail work already on this branch.
+- Branch `feat/i18n-german-property-details`. Local HEAD `a3b1bfc` — a merge commit that brings `origin/main` `4423565` into the branch. PR #80 is **open** and already targets **main**; no retarget was needed and none was made.
+- The merge was necessary because PR #79 was squash-merged, so the branch and main had diverged at `80d7615`. `git merge origin/main` produced three add/add conflicts (`src/i18n/language-switcher.ts`, `tests/i18n-german-route-pilot.test.mjs`, `tests/i18n-language-switcher.test.mjs`). `origin/main`'s tree is byte-identical to `5e73dfb` (PR #79's tip), so all three were resolved with `--ours`; the merged tree hash equals `98541a0`'s tree exactly, i.e. the merge changed no file content. No force-push, no history rewrite.
+
+#### Link audit that drove the work
+
+All 15 German pages were scanned in the built output. Non-language-switcher `/en/` destinations reached from `/de/**` were: `/en/about/` (16), `/en/contact/` (31), `/en/faq/` (16), `/en/policies/` (31), `/en/policies/#access` (16), `/en/guide/mavrikiano/` (2), plus the blog (`/en/blog/` on every page and one contextual article link). No stale or broken links. `Hausordnung`, `Richtlinien` and `Barrierefreiheit` proved to be three labels for the **same** page, so one German policies page serves all three — no duplicates were created. The English FAQ page emits **no** FAQ structured data (`FAQPage` JSON-LD), so there was no schema to mirror.
+
+#### Completed in this session
+
+- Five new German routes, all declared in `src/i18n/route-map.ts`, none inferred from the English path: `/de/ueber-uns/`, `/de/kontakt/`, `/de/faq/`, `/de/richtlinien/`, `/de/reisefuehrer/mavrikiano/`. Slugs translate the *route id* the way `location`→`lage` does; `faq` stays `faq` for the same reason `villa` stays `villa`.
+- Four new shared renderers — `AboutPage`, `ContactPage`, `FaqPage`, `PoliciesPage` in `src/components/pages/` — with the English routes reduced to thin wrappers, matching the existing `HouseDetailPage`/`VillaDetailPage`/`GuidePage` pattern. Mavrikiano moved onto the existing `GuidePage`, so both guides now share one renderer.
+- `src/guides/de/Mavrikiano-Guide.md`: full German translation of the English master, tables and all. The open cross-language correction proposals recorded in `docs/i18n/03_TRANSLATION_STATUS.md` (Elounda Canal attribution, salt-pan dating, Gournia, Spinalonga admission prices, boat fares, bus service) were translated **as they stand**, per the documented contract that locales stay factually aligned until a correction is approved for every language at once.
+- New locale resources: `en|de/about.json`, `en|de/faq.json`, `en|de/policies.json`, `en|de/contact.json`, wired through `src/i18n/translate.ts` with `getAboutCopy`/`getFaqCopy`/`getPoliciesCopy`/`getContactCopy`.
+- New `src/i18n/site-copy.ts` + `src/i18n/locales/de/site-copy.json`: the `inventory-display.ts` pattern applied to `src/data/siteCopy.json`, so check-in/out times, the pet and Wi-Fi rules, quiet hours, the cancellation reference and the access note stay a single factual source and German only presents them. No second German copy of a policy fact.
+- Contact security preserved exactly: one `action="/api/contact"`, the honeypot, `required`/`minlength`/`maxlength`, the Turnstile widget and all three callbacks, and the submit-gating logic are unchanged and locale-independent. `functions/api/contact.js` untouched. Only presentation strings were localized, including the ones previously hardcoded inside the inline script (`Sending...`, the success panel, the error fallback), now passed via `define:vars` so German success and error states render in German. Form field `name`/`value` attributes are byte-identical, so the API contract cannot shift.
+- German primary navigation extended from `[Häuser, Lage]` to `[Häuser, Villa, Lage, FAQ, Über uns, Kontakt]` — the English set minus Blog, so every entry is a real German page. The footer needed no href change: its entries are authored English paths resolved through the route map.
+- `public/llms.txt` now lists all 20 real German routes.
+- New `tests/i18n-locale-leakage.test.mjs`: scans every built `/de/**` page and fails on any internal `/en/` link that is neither the marked language selector nor inside the blog route family — and the blog prefixes are derived from the route map rather than allow-listed, with a unit test proving `/en/`, `/en/faq/`, `/en/blogging/` and friends are **not** accepted. It also checks the reverse direction and that every German route the map declares has a generated page.
+
+#### Verified state at checkpoint
+
+- `npm run build`: **57 pages** (52 before this session, +5 as predicted).
+- Link audit re-run on the built site: the **only** non-switcher `/en/` destinations left from `/de/**` are `/en/blog/` and `/en/blog/elounda-and-mirabello-bay/` — exactly the intended exception.
+- Visible-language parity re-run across all 20 German pages against their English counterparts: clean. Four strings are shared by design and were added to the existing allow-list (`Pools`, `Name`, `Website`, and an email-address pattern) rather than granted a blanket exemption.
+- Focused suites, all green: `i18n-locale-leakage` 5/5, `i18n-german-visible-language` 31/31, and `i18n-foundation` + `i18n-language-switcher` + `i18n-german-route-pilot` + `i18n-german-property-details` + `llms-txt` together **89/89**.
+
+#### Not yet done
+
+- Full `npm test`, `npm run typecheck`, `npm run seo:links`, `git diff --check`. Expect the typecheck baseline to move from **3 errors to 2**: moving `src/pages/en/guide/mavrikiano.astro` onto `GuidePage` removes the `ts(2345)` `Record<string, any>` error. That is a baseline improvement, not a regression — report the per-file difference against `origin/main` rather than the count alone.
+- Documentation: `docs/architecture/repo-wireframe.md` / `.mmd`, `docs/i18n/02_ROUTE_AND_FILE_STRUCTURE.md` and `docs/i18n/03_TRANSLATION_STATUS.md` still describe the pre-session route set.
+- Cloudflare preview verification (desktop + mobile, footer especially), which needs the branch pushed.
+- Commit, push, and the PR #80 description rewrite — the description still claims a property-only scope.
+
+#### Unresolved issues and decisions
+
+1. **Push is blocked from the agent environment.** The cloud container's git proxy refuses `Nikos1975/traditionalhomes` ("not in this session's authorized repository set"), there is no `gh` CLI, and the GitHub API is gated. Read access works. **Nikos must run the commit, the push and the PR edit.**
+2. **Stale `index.lock` still present** at `D:\_projects\_traditional-homes\.git\worktrees\_traditional-homes-german-properties\index.lock`. Every git command in that worktree fails until it is deleted. This is the first step on resume.
+3. `src/pages/en/contact.astro`'s property `<select>` offers value `dimitra` labelled "House Dimitra", while `inventory.json` has slug `demetra` / name "House Demetra". Pre-existing; the value is submitted to the API, so it was left exactly as-is and the German label mirrors it ("Haus Dimitra"). Worth a separate decision.
+4. The About page restates villa figures (230 m², five sleeping rooms, 9 m x 4 m pool) in prose in both locales. This follows the established precedent of the German property markdown masters — long-form prose restates facts per locale, structured display derives from inventory — but it is prose duplication either way.
+5. `docs/i18n/03_TRANSLATION_STATUS.md` still carries a "Deferred: language switcher" section that PR #79 made stale. Left untouched deliberately.
+
+## Resume Here
+
+Everything below runs on Windows in `D:\_projects\_traditional-homes-german-properties`.
+
+**Step 1 — unblock git (required first, one command):**
+
+```
+del "D:\_projects\_traditional-homes\.git\worktrees\_traditional-homes-german-properties\index.lock"
+```
+
+**Step 2 — confirm the state matches this note:**
+
+```
+git status
+git branch --show-current          :: expect feat/i18n-german-property-details
+git log -1 --oneline               :: expect the merge of origin/main into the branch
+```
+
+Expect 15 modified and 21 new files (36 paths) on top of `98541a0`.
+
+**The merge of `origin/main` has not been applied on this machine.** It must be done, and the order matters: the delivered work touches two of the three files that conflict, so commit first, then merge.
+
+```
+git add -A
+git commit -m "wip: checkpoint German i18n completion"
+git fetch origin
+git merge origin/main
+:: three add/add conflicts are expected and are a squash-merge artifact only
+git checkout --ours src/i18n/language-switcher.ts tests/i18n-german-route-pilot.test.mjs tests/i18n-language-switcher.test.mjs
+git add src/i18n/language-switcher.ts tests/i18n-german-route-pilot.test.mjs tests/i18n-language-switcher.test.mjs
+git commit --no-edit
+```
+
+`origin/main`'s tree is byte-identical to `5e73dfb`, so `--ours` discards nothing: verify with `git diff --stat HEAD^1 HEAD` — it must be empty.
+
+**Step 3 — run the validation that was not reached:**
+
+```
+npm ci
+npm test
+npm run typecheck
+npm run build
+npm run seo:links
+git diff --check
+```
+
+Expected: build **57 pages**; typecheck **2 errors, 0 warnings, 3 hints** (down from the 3-error baseline because the Mavrikiano guide moved onto the shared renderer — confirm the missing one is the `src/pages/en/guide/mavrikiano.astro` `ts(2345)` error and report the difference against `origin/main`). The only expected `npm test` failure on Linux is the Windows-path WebP test, which should **pass** on Windows.
+
+**Step 4 — finish the documentation (not started):**
+
+Update `docs/architecture/repo-wireframe.md` and `.mmd` (add the four new shared renderers and the five new German routes), `docs/i18n/02_ROUTE_AND_FILE_STRUCTURE.md` (About/Contact/Faq/Policies renderers are now implemented, not proposals) and `docs/i18n/03_TRANSLATION_STATUS.md` (German now owns 20 routes; only the blog remains English).
+
+**Step 5 — commit and push (only after step 3 is green):**
+
+```
+git add -A
+git status
+git diff --cached --stat
+git commit -m "feat(i18n): complete the German site outside the blog"
+git push origin feat/i18n-german-property-details
+```
+
+**Step 6 — PR #80:** it already targets `main`; do not retarget and do not merge. Rewrite the description, which still claims a property-only scope, to cover: German property details, the five remaining non-blog German pages, the Mavrikiano guide, the locale-safe link audit, the intentional blog exception, the routing/SEO contracts, the validation results and the preview status.
+
+**Step 7 — Cloudflare preview**, desktop and mobile: `/de/`, `/de/ferienhaeuser/`, one house, `/de/villa/almond-tree-villa/`, `/de/lage/`, `/de/ueber-uns/`, `/de/kontakt/` (submit the form once), `/de/faq/`, `/de/richtlinien/`, `/de/reisefuehrer/mavrikiano/`. Check the footer specifically, plus the mobile menu, the language selector and long German labels for overflow.
+
+**Do not merge PR #80.**
+
+
 ### 2026-08-26 - German property detail layer completed (branch feat/i18n-german-property-details)
 
 - Objective: give the remaining nine houses and Almond Tree Villa real German detail pages so the language selector resolves every property to its exact German equivalent, and the German property cards stop falling back to English.

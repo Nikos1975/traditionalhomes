@@ -26,9 +26,8 @@ If an English claim looks wrong or outdated, it is raised as a proposed
 once approved. Until then the locales stay factually aligned. Open proposals are
 listed at the end of this document.
 
-German is **not** translated sitewide. German owns the fifteen public routes
-listed in "German cluster" below: the four cluster routes, all ten house detail
-pages and the villa detail page. Every other German string resolves to the
+German is **not** translated sitewide, but as of this stage it owns the whole
+public site except the blog: twenty routes, listed in "German cluster" below. Every other German string resolves to the
 English source through the documented partial-overlay fallback in
 `src/i18n/translate.ts`, and every link to a page German does not own carries an
 explicit `hreflang="en"`.
@@ -59,17 +58,17 @@ keeps the length of the factual list.
 | House detail pages | Source present | Localized | Not started | Not started | Not started | Not started | Not started | Ready for QA | All ten houses at `/de/ferienhaeuser/<slug>/`, generated from the shared `HouseDetailPage.astro`. Slugs are stable across locales. |
 | Villa page | Source present | Localized | Not started | Not started | Not started | Not started | Not started | Ready for QA | `/de/villa/almond-tree-villa/` renders the shared `VillaDetailPage.astro`. `villa` is the German generic noun as well, so the segment is declared per locale, not inferred; the property's proper name keeps its stable slug. |
 | Location page | Source present | Localized | Not started | Not started | Not started | Not started | Not started | Ready for QA | `/de/lage/` renders the shared `LocationPage.astro`; copy in `location.json`. |
-| Contact page | Source present | Not started | Not started | Not started | Not started | Not started | Not started | Not started | Contact form must keep posting to `/api/contact`. |
-| FAQ page | Source present | Not started | Not started | Not started | Not started | Not started | Not started | Not started | Long bodies may need content collection handling. |
-| Policies page | Source present | Not started | Not started | Not started | Not started | Not started | Not started | Not started | Long bodies may need content collection handling. |
-| About page | Source present | Not started | Not started | Not started | Not started | Not started | Not started | Not started | Keep factual claims conservative. |
-| Mavrikiano guide | Source present | Not started | Not started | Not started | Not started | Not started | Not started | Not started | Area guides follow the blog editorial system. |
+| Contact page | Source present | Localized | Not started | Not started | Not started | Not started | Not started | Ready for QA | `/de/kontakt/` renders the shared `ContactPage.astro`. One `action="/api/contact"`, one honeypot, one Turnstile flow; only presentation strings are localized, including the ones the inline script needs. |
+| FAQ page | Source present | Localized | Not started | Not started | Not started | Not started | Not started | Ready for QA | `/de/faq/` renders the shared `FaqPage.astro`; the sixteen questions are keyed by stable id in `faq.json`. No `FAQPage` structured data exists on either locale. |
+| Policies page | Source present | Localized | Not started | Not started | Not started | Not started | Not started | Ready for QA | `/de/richtlinien/` renders the shared `PoliciesPage.astro`. `Hausordnung`, `Richtlinien` and `Barrierefreiheit` are three labels for this one page, matching English. |
+| About page | Source present | Localized | Not started | Not started | Not started | Not started | Not started | Ready for QA | `/de/ueber-uns/` renders the shared `AboutPage.astro`; copy in `about.json`. |
+| Mavrikiano guide | Source present | Localized | Not started | Not started | Not started | Not started | Not started | Ready for QA | `/de/reisefuehrer/mavrikiano/` renders the shared `GuidePage.astro` from `src/guides/de/Mavrikiano-Guide.md`. The English route moved onto the same renderer. |
 | Vrouchas guide | Source present | Localized | Not started | Not started | Not started | Not started | Not started | Ready for QA | Complete faithful localization at `/de/reisefuehrer/vrouchas/`: all seven sections and three subsections of the English master, same facts. |
 | Blog index | Source present | Not started | Not started | Not started | Not started | Not started | Not started | Not started | English-only canonical route is `/en/blog/`; legacy `/blog/` redirects permanently. |
 | Blog posts | Source present | Not started | Not started | Not started | Not started | Not started | Not started | Not started | English-only canonical article routes are `/en/blog/<slug>/`; no translated routes exist. |
 | Header/Footer | Extracted | Pilot | Not started | Not started | Not started | Not started | Not started | Ready for QA | German labels exist in the `de` overlay for the chrome the pilot renders. Hrefs still resolve through the route map, so untranslated sections keep their English URL and carry `hreflang="en"`. |
 | Booking/contact UI | Partially extracted | Pilot | Not started | Not started | Not started | Not started | Not started | Ready for QA | German labels cover only the mobile booking bar and chat trigger rendered on the pilot page. `defaultItemName` (analytics) and `chatPopupEmail` deliberately stay English. Contact page copy and `/api/contact` are untouched. |
-| SEO/meta | Source present | Not started | Not started | Not started | Not started | Not started | Not started | Not started | SEO strings remain split between page files, `siteCopy.json`, and `seo.json`; canonical, hreflang, and sitemap require QA. |
+| SEO/meta | Source present | Localized | Not started | Not started | Not started | Not started | Not started | Ready for QA | Every non-blog page takes its title and description from `seo.json`; German declares its own `pages` entries. Canonicals self-reference, alternates are reciprocal, and the sitemap lists only generated routes. |
 | Gallery alt/captions | Source present | Localized | Not started | Not started | Not started | Not started | Not started | Ready for QA | An authored alt is the English master and renders verbatim in English. Other locales render the same picture through the shared vocabulary in `src/i18n/locales/<locale>/gallery-tokens.json` via `localizedAlt`. |
 
 ## Stage 3 pilot scope
@@ -166,12 +165,30 @@ applied to every locale at once.
 | `house` | `monastiri` | `/en/houses/monastiri/` | `/de/ferienhaeuser/monastiri/` |
 | `villa` | `almond-tree-villa` | `/en/villa/almond-tree-villa/` | `/de/villa/almond-tree-villa/` |
 | `location` | — | `/en/location/` | `/de/lage/` |
+| `about` | — | `/en/about/` | `/de/ueber-uns/` |
+| `contact` | — | `/en/contact/` | `/de/kontakt/` |
+| `faq` | — | `/en/faq/` | `/de/faq/` |
+| `policies` | — | `/en/policies/` | `/de/richtlinien/` |
 | `guide` | `vrouchas` | `/en/guide/vrouchas/` | `/de/reisefuehrer/vrouchas/` |
+| `guide` | `mavrikiano` | `/en/guide/mavrikiano/` | `/de/reisefuehrer/mavrikiano/` |
+
+`faq` keeps its segment in German for the same reason `villa` does: it is the
+German term unchanged. Both are still *declared* per locale, never inferred from
+the English path. `policies` translates the route id (`richtlinien`), the way
+`location` becomes `lage`, rather than the page's "House Rules" heading.
 
 Shared renderers in `src/components/pages/`: `HomePage`, `CollectionPage`,
-`LocationPage`, `HouseDetailPage`, `VillaDetailPage`, `GuidePage`. Every route
-file is a thin wrapper that passes `locale` explicitly. There is no parallel
-German implementation and no client-side translation runtime.
+`LocationPage`, `HouseDetailPage`, `VillaDetailPage`, `GuidePage`, `AboutPage`,
+`ContactPage`, `FaqPage`, `PoliciesPage`. Every route file is a thin wrapper that
+passes `locale` explicitly. There is no parallel German implementation and no
+client-side translation runtime.
+
+Shared site facts in `src/data/siteCopy.json` — check-in and check-out times, the
+pet and Wi-Fi rules, quiet hours, the cancellation reference and the access note —
+stay a single factual source. `src/i18n/site-copy.ts` applies the same
+presentation pattern as `src/i18n/inventory-display.ts`: the default locale
+renders the factual value verbatim, German renders its mapped presentation, and
+nothing unmapped is invented.
 
 Locale resources added for German: `home.json`, `location.json`,
 `properties.json`, `seo.json`, plus additions to `forms.json`. Long-form
@@ -182,7 +199,7 @@ English page, and only its display title comes from the German content entry.
 
 ### Visible-language completeness
 
-All fifteen German routes are audited against their rendered HTML, not against
+All twenty German routes are audited against their rendered HTML, not against
 the translation payload. Two checks run in `tests/i18n-german-visible-language.test.mjs`:
 
 1. **EN↔DE parity.** A visible string — text node, `aria-label`, `alt`, `title`
@@ -198,11 +215,16 @@ Legitimately untranslated on a German page: proper and place names, brand names,
 `WebHotelier` item identifiers such as `data-item-name`, airport codes, URLs, and
 links to routes German does not own — those carry `hreflang="en"` by design.
 
-Not yet German: contact, FAQ, policies, about, the Mavrikiano guide, and all
-blog articles. Those links appear on German pages with their English URL and an
-explicit `hreflang="en"`. The language selector's parent and homepage fallback
-tiers remain in place for that content; no translated property relies on them
-any more.
+Not yet German: the blog index and every blog article, deliberately. Those are
+the only links that appear on a German page with an English URL, and they carry
+an explicit `hreflang="en"`. `tests/i18n-locale-leakage.test.mjs` enforces exactly
+that: an internal `/en/` link from a `/de/` page fails unless it is the marked
+language selector or falls inside the blog route family, and the blog prefixes
+are derived from the route map rather than allow-listed, so the exception cannot
+widen into a general `/en/` licence.
+
+The language selector's parent and homepage fallback tiers remain in place for
+future untranslated content; nothing on the site relies on them any more.
 
 ### Deferred: language switcher
 

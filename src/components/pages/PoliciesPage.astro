@@ -1,0 +1,211 @@
+---
+import Base from '../../layouts/Base.astro';
+import siteCopyData from '../../data/siteCopy.json';
+import type { Locale } from '../../i18n/config';
+import { assertRoute, resolveLocalizedLink, routeAlternates, routePath } from '../../i18n/route-map';
+import { canonicalUrl, getPageSeo } from '../../i18n/seo';
+import { siteText } from '../../i18n/site-copy';
+import { getPoliciesCopy } from '../../i18n/translate';
+import type { SiteCopy } from '../../types';
+
+interface Props {
+  /** Active locale. Always passed explicitly by the route file, never inferred from route state. */
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+
+assertRoute(locale, 'policies');
+
+const copy = getPoliciesCopy(locale);
+const siteCopy = siteCopyData as SiteCopy;
+const pageSeo = getPageSeo(locale, 'policies');
+const alternates = routeAlternates('policies');
+const homeLink = resolveLocalizedLink(locale, 'home');
+const housesLink = resolveLocalizedLink(locale, 'houses');
+const contactLink = resolveLocalizedLink(locale, 'contact');
+
+/**
+ * `src/data/siteCopy.json` stays the single factual source for the stay rules.
+ * The copy deck names placeholders only, so no locale restates a policy fact —
+ * each renders the locale's presentation of the same central value.
+ */
+const policyFacts: Record<string, string> = {
+  pets: siteText(locale, 'pets', siteCopy.pets),
+  wifi: siteText(locale, 'wifi', siteCopy.wifi),
+  quietHours: siteText(locale, 'quietHours', siteCopy.quietHours),
+  cancellationPolicy: siteText(locale, 'cancellationPolicy', siteCopy.cancellationPolicy),
+};
+const withFacts = (text: string) =>
+  text.replace(/\{(\w+)\}/g, (match, key: string) => policyFacts[key] ?? match);
+
+/**
+ * The copy deck stores the section order as plain strings; every entry is a key
+ * of `sections`, so narrowing it once here keeps the lookups typed.
+ */
+type SectionId = keyof typeof copy.sections;
+type BlockId = keyof typeof copy.blocks;
+const order = copy.order as SectionId[];
+
+/**
+ * Numbered in the order the page declares, so a locale never renumbers a
+ * section. `access` and `check-in-out` render their own markup above; every
+ * remaining id is a key of `blocks`.
+ */
+const blocks = order
+  .filter((id): id is Exclude<SectionId, 'access' | 'check-in-out'> => id !== 'access' && id !== 'check-in-out')
+  .map((id) => ({
+    id,
+    number: String(order.indexOf(id) + 1).padStart(2, '0'),
+    title: copy.blocks[id as BlockId].title,
+    text: withFacts(copy.blocks[id as BlockId].text),
+  }));
+---
+
+<Base
+  title={pageSeo.title}
+  description={pageSeo.description}
+  canonicalUrl={canonicalUrl(routePath(locale, 'policies'))}
+  locale={locale}
+>
+  {
+    alternates.length > 1 && (
+      <Fragment slot="head">
+        {alternates.map((alternate) => (
+          <link rel="alternate" hreflang={alternate.hreflang} href={canonicalUrl(alternate.path)} />
+        ))}
+      </Fragment>
+    )
+  }
+
+  <div class="site-max site-pad py-16 md:py-24">
+
+    {/* BREADCRUMB */}
+    <nav class="text-[10px] uppercase tracking-[0.4em] text-stone-400 mb-12 font-bold" aria-label={copy.breadcrumb.ariaLabel}>
+      <ol class="flex items-center gap-2" role="list">
+        <li><a href={homeLink.href} hreflang={homeLink.hreflang} class="hover:text-stone-900 transition-colors">{copy.breadcrumb.home}</a></li>
+        <li aria-hidden="true" class="text-stone-200">/</li>
+        <li class="text-stone-900" aria-current="page">{copy.breadcrumb.current}</li>
+      </ol>
+    </nav>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+
+      {/* LEFT: STICKY NAVIGATION */}
+      <aside class="hidden lg:block lg:col-span-3 sticky top-32">
+        <p class="text-[10px] uppercase tracking-[0.3em] font-bold text-stone-900 mb-6">{copy.sidebar.label}</p>
+        <ul class="space-y-4 border-l border-stone-100">
+          {order.map((sectionId) => (
+            <li>
+              <a
+                href={`#${sectionId}`}
+                class="block pl-4 text-sm text-stone-500 hover:text-primary hover:border-l hover:border-primary -ml-px transition-all duration-200"
+              >
+                {copy.sections[sectionId]}
+              </a>
+            </li>
+          ))}
+        </ul>
+        <div class="mt-12 p-6 bg-stone-50 rounded-2xl border border-stone-100">
+           <p class="text-xs text-stone-500 leading-relaxed italic">
+             {copy.sidebar.quote}
+           </p>
+        </div>
+      </aside>
+
+      {/* RIGHT: CONTENT */}
+      <div class="lg:col-span-8 lg:col-start-5 max-w-3xl">
+        <header class="mb-16">
+          <h1 class="font-serif text-5xl md:text-6xl text-stone-950 mb-6 leading-tight tracking-tight">
+            {copy.heading.lead} <span class="italic text-stone-400">{copy.heading.emphasis}</span>
+          </h1>
+          <p class="text-xl text-stone-500 font-light leading-relaxed">
+            {copy.intro}
+          </p>
+        </header>
+
+        <div class="space-y-20">
+
+          {/* ACCESS & MOBILITY */}
+          <section id="access" class="scroll-mt-32 group">
+            <div class="flex items-center gap-4 mb-6">
+               <span class="text-[10px] font-bold text-primary tracking-widest uppercase">01</span>
+               <h2 class="font-serif text-3xl text-stone-950">{copy.access.heading}</h2>
+            </div>
+
+            <div class="bg-primary/5 border border-primary/20 rounded-[2rem] p-8 mb-8 shadow-sm">
+              <div class="flex items-start gap-4 text-primary mb-4">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                <p class="font-bold uppercase tracking-widest text-[11px]">{copy.access.criticalLabel}</p>
+              </div>
+              <p class="text-stone-900 leading-relaxed font-medium">{siteText(locale, 'accessNoteFull', siteCopy.accessNoteFull)}</p>
+            </div>
+
+            <div class="space-y-6 text-stone-600 font-light leading-relaxed">
+              <p set:html={copy.access.terrain}></p>
+              <p>
+                {copy.access.quirks}
+              </p>
+              <a href={housesLink.href} hreflang={housesLink.hreflang} class="inline-flex items-center gap-2 text-stone-900 font-bold text-xs uppercase tracking-widest border-b border-stone-200 hover:border-primary transition-all pb-1 group">
+                {copy.access.link}
+                <svg class="group-hover:translate-x-1 transition-transform" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </a>
+            </div>
+          </section>
+
+          {/* CHECK-IN/OUT */}
+          <section id="check-in-out" class="scroll-mt-32">
+            <div class="flex items-center gap-4 mb-8">
+               <span class="text-[10px] font-bold text-primary tracking-widest uppercase">02</span>
+               <h2 class="font-serif text-3xl text-stone-950">{copy.checkInOut.heading}</h2>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
+              <div class="p-8 bg-stone-50 rounded-3xl border border-stone-100 text-center group hover:bg-stone-950 transition-colors duration-500">
+                <p class="text-[10px] uppercase tracking-widest text-stone-400 font-bold mb-2 group-hover:text-primary">{copy.checkInOut.checkInLabel}</p>
+                <p class="font-serif text-4xl text-stone-950 group-hover:text-white">{siteText(locale, 'checkIn', siteCopy.checkIn)}</p>
+              </div>
+              <div class="p-8 bg-stone-50 rounded-3xl border border-stone-100 text-center group hover:bg-stone-950 transition-colors duration-500">
+                <p class="text-[10px] uppercase tracking-widest text-stone-400 font-bold mb-2 group-hover:text-primary">{copy.checkInOut.checkOutLabel}</p>
+                <p class="font-serif text-4xl text-stone-950 group-hover:text-white">{siteText(locale, 'checkOut', siteCopy.checkOut)}</p>
+              </div>
+            </div>
+            <p class="text-stone-500 font-light text-sm italic text-center">
+              {copy.checkInOut.note}
+            </p>
+          </section>
+
+          {/* REUSABLE POLICY BLOCKS */}
+          {blocks.map(policy => (
+            <section id={policy.id} class="scroll-mt-32 pt-12 border-t border-stone-100">
+              <div class="flex items-center gap-4 mb-6">
+                 <span class="text-[10px] font-bold text-stone-300 tracking-widest uppercase">{policy.number}</span>
+                 <h2 class="font-serif text-2xl text-stone-950">{policy.title}</h2>
+              </div>
+              <p class="text-stone-600 font-light leading-relaxed">{policy.text}</p>
+            </section>
+          ))}
+
+        </div>
+
+        {/* FINAL FOOTER NOTES */}
+        <footer class="mt-24 pt-12 border-t border-stone-100 text-center">
+          <p class="text-stone-400 text-sm font-light mb-8 italic">
+            {copy.footer.question}
+          </p>
+          <a href={contactLink.href} hreflang={contactLink.hreflang} class="btn-cta bg-transparent border-stone-200 text-stone-950 hover:bg-stone-50 px-12 py-5">
+            {copy.footer.action}
+          </a>
+        </footer>
+      </div>
+
+    </div>
+  </div>
+
+</Base>
+
+<style>
+  /* Smooth scrolling for anchor links */
+  html {
+    scroll-behavior: smooth;
+  }
+</style>

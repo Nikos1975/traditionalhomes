@@ -94,10 +94,15 @@ export const routeMap = {
     },
   },
   location: { segments: { en: ['location'], de: ['lage'] } },
-  contact: { segments: { en: ['contact'] } },
-  faq: { segments: { en: ['faq'] } },
-  about: { segments: { en: ['about'] } },
-  policies: { segments: { en: ['policies'] } },
+  contact: { segments: { en: ['contact'], de: ['kontakt'] } },
+  // "FAQ" is the German term unchanged, like "Villa"; the segment is still
+  // declared per locale rather than inferred from the English path.
+  faq: { segments: { en: ['faq'], de: ['faq'] } },
+  about: { segments: { en: ['about'], de: ['ueber-uns'] } },
+  policies: { segments: { en: ['policies'], de: ['richtlinien'] } },
+  // The blog is deliberately English-only for now. German pages may link to it,
+  // and `tests/i18n-locale-leakage.test.mjs` treats exactly this route family as
+  // the one allowed cross-locale destination.
   blog: { segments: { en: ['blog'] } },
   blogArticle: { segments: { en: ['blog'] }, dynamic: true },
   guide: {
@@ -106,8 +111,7 @@ export const routeMap = {
     dynamic: true,
     content: {
       vrouchas: { en: 'vrouchas', de: 'vrouchas' },
-      // No German page exists for Mavrikiano, so no German slug is declared.
-      mavrikiano: { en: 'mavrikiano' },
+      mavrikiano: { en: 'mavrikiano', de: 'mavrikiano' },
     },
   },
 } as const satisfies Record<RouteId, RouteDefinition>;

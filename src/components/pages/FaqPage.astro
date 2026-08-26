@@ -1,0 +1,157 @@
+---
+import Base from '../../layouts/Base.astro';
+import siteCopyData from '../../data/siteCopy.json';
+import type { Locale } from '../../i18n/config';
+import { assertRoute, resolveLocalizedLink, routeAlternates, routePath } from '../../i18n/route-map';
+import { canonicalUrl, getPageSeo } from '../../i18n/seo';
+import { siteText } from '../../i18n/site-copy';
+import { getFaqCopy } from '../../i18n/translate';
+import type { SiteCopy } from '../../types';
+
+interface Props {
+  /** Active locale. Always passed explicitly by the route file, never inferred from route state. */
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+
+assertRoute(locale, 'faq');
+
+const copy = getFaqCopy(locale);
+const siteCopy = siteCopyData as SiteCopy;
+const pageSeo = getPageSeo(locale, 'faq');
+const alternates = routeAlternates('faq');
+const homeLink = resolveLocalizedLink(locale, 'home');
+const contactLink = resolveLocalizedLink(locale, 'contact');
+const policiesLink = resolveLocalizedLink(locale, 'policies');
+
+/**
+ * `siteCopy.json` stays the single source for the cancellation reference. The
+ * answer text only names the placeholder, so neither locale restates the fact.
+ */
+const answerText = (answer: string) =>
+  answer.replace('{cancellationPolicy}', siteText(locale, 'cancellationPolicy', siteCopy.cancellationPolicy));
+
+/**
+ * The copy deck stores the section order as plain strings; every entry is a key
+ * of `categories`, so narrowing it once here keeps the lookups typed.
+ */
+type CategoryId = keyof typeof copy.categories;
+const order = copy.order as CategoryId[];
+---
+
+<Base
+  title={pageSeo.title}
+  description={pageSeo.description}
+  canonicalUrl={canonicalUrl(routePath(locale, 'faq'))}
+  locale={locale}
+>
+  {
+    alternates.length > 1 && (
+      <Fragment slot="head">
+        {alternates.map((alternate) => (
+          <link rel="alternate" hreflang={alternate.hreflang} href={canonicalUrl(alternate.path)} />
+        ))}
+      </Fragment>
+    )
+  }
+
+  <div class="site-max site-pad py-16 md:py-24">
+
+    {/* BREADCRUMBS */}
+    <nav class="text-[10px] uppercase tracking-[0.3em] text-stone-400 mb-8 font-bold" aria-label={copy.breadcrumb.ariaLabel}>
+      <ol class="flex items-center gap-2" role="list">
+        <li><a href={homeLink.href} hreflang={homeLink.hreflang} class="hover:text-stone-900 transition-colors">{copy.breadcrumb.home}</a></li>
+        <li aria-hidden="true" class="text-stone-200">/</li>
+        <li class="text-stone-900" aria-current="page">{copy.breadcrumb.current}</li>
+      </ol>
+    </nav>
+
+    {/* HERO SECTION */}
+    <div class="max-w-3xl mb-16 md:mb-24">
+      <h1 class="font-serif text-5xl md:text-7xl text-stone-900 mb-8 leading-tight tracking-tight">
+        {copy.heading.lead} <span class="italic text-stone-400">{copy.heading.emphasis}</span>
+      </h1>
+      <p class="text-xl text-stone-500 font-light leading-relaxed max-w-2xl">
+        {copy.intro}
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 relative">
+
+      {/* STICKY SIDE NAV */}
+      <aside class="lg:col-span-3 hidden lg:block">
+        <div class="sticky top-32 space-y-8">
+          <div>
+            <p class="text-[10px] uppercase tracking-[0.3em] font-bold text-stone-400 mb-6">{copy.sidebar.label}</p>
+            <nav class="flex flex-col gap-4" aria-label={copy.sidebar.navAriaLabel}>
+              {order.map((categoryId) => (
+                <a
+                  href={`#${categoryId}`}
+                  class="text-sm text-stone-600 hover:text-stone-950 hover:translate-x-1 transition-all duration-300 flex items-center gap-3 group"
+                >
+                  <span class="w-1.5 h-1.5 rounded-full bg-stone-200 group-hover:bg-primary transition-colors"></span>
+                  {copy.categories[categoryId]}
+                </a>
+              ))}
+            </nav>
+          </div>
+
+          <div class="p-6 bg-stone-50 rounded-2xl border border-stone-100">
+            <p class="text-xs text-stone-500 font-light mb-4 leading-relaxed italic">{copy.sidebar.helpText}</p>
+            <a href={contactLink.href} hreflang={contactLink.hreflang} class="btn-cta text-xs py-2 w-full justify-center">{copy.sidebar.contactCta}</a>
+          </div>
+        </div>
+      </aside>
+
+      {/* FAQ CONTENT */}
+      <div class="lg:col-span-9 space-y-24">
+        {order.map((categoryId) => {
+          const items = copy.items.filter((item) => item.category === categoryId);
+          if (!items.length) return null;
+          return (
+            <section id={categoryId} aria-labelledby={`${categoryId}-heading`} class="scroll-mt-32 animate-in fade-in slide-in-from-bottom-4 duration-700">
+              <h2 id={`${categoryId}-heading`} class="font-serif text-3xl text-stone-900 mb-10 flex items-baseline gap-4">
+                {copy.categories[categoryId]}
+                <span class="h-px flex-1 bg-stone-100"></span>
+              </h2>
+
+              <dl class="space-y-12">
+                {items.map((item) => (
+                  <div class="group">
+                    <dt class="font-serif text-xl text-stone-900 mb-3 group-hover:text-primary transition-colors duration-300">
+                      {item.question}
+                    </dt>
+                    <dd class="text-stone-500 leading-relaxed font-light text-lg max-w-3xl" set:html={answerText(item.answer)}></dd>
+                    {item.category === 'access' && (
+                      <dd class="mt-4">
+                        <a href={`${policiesLink.href}#access`} hreflang={policiesLink.hreflang} class="text-xs uppercase tracking-widest font-bold text-stone-400 hover:text-stone-900 border-b border-stone-100 hover:border-stone-900 transition-all pb-1">
+                          {copy.accessLink}
+                        </a>
+                      </dd>
+                    )}
+                  </div>
+                ))}
+              </dl>
+            </section>
+          );
+        })}
+      </div>
+    </div>
+
+    {/* MOBILE CALL TO ACTION */}
+    <div class="mt-24 pt-12 border-t border-stone-100 text-center lg:hidden">
+      <p class="font-serif text-2xl text-stone-900 mb-4 italic">{copy.mobileCta.heading}</p>
+      <a href={contactLink.href} hreflang={contactLink.hreflang} class="btn-cta">{copy.mobileCta.action}</a>
+    </div>
+
+  </div>
+
+</Base>
+
+<style>
+  /* Smooth scrolling for the category links */
+  html {
+    scroll-behavior: smooth;
+  }
+</style>

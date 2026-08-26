@@ -1,0 +1,135 @@
+{
+  "breadcrumb": {
+    "ariaLabel": "Breadcrumb",
+    "home": "Home",
+    "current": "FAQ"
+  },
+  "heading": {
+    "lead": "Frequently Asked",
+    "emphasis": "Questions"
+  },
+  "intro": "Practical information about access, pools, parking, Wi-Fi, pets, and booking policies.",
+  "sidebar": {
+    "label": "In this section",
+    "navAriaLabel": "FAQ categories",
+    "helpText": "Need direct assistance?",
+    "contactCta": "Contact Us"
+  },
+  "accessLink": "View Detailed Accessibility Guide",
+  "mobileCta": {
+    "heading": "Still have a question?",
+    "action": "Contact our Team"
+  },
+  "categories": {
+    "access": "Access & Mobility",
+    "pools": "Pools",
+    "amenities": "Amenities & Tech",
+    "location": "Location",
+    "policies": "Stay Policies"
+  },
+  "order": [
+    "access",
+    "pools",
+    "amenities",
+    "location",
+    "policies"
+  ],
+  "items": [
+    {
+      "id": "step-free-access",
+      "category": "access",
+      "question": "Are the properties step-free or wheelchair accessible?",
+      "answer": "No. All properties are located in traditional stone villages with uneven terrain. Each property has at least one step from the path or parking area to the entrance. Some properties have internal stairs between floors. Full access information is available on the Policies page and on each individual property page."
+    },
+    {
+      "id": "internal-stairs",
+      "category": "access",
+      "question": "Which properties have internal stairs?",
+      "answer": "House Argyro, Leonidas, Margarita, Penelope, Erato, Clio, Efterpi, Kalliopi, Monastiri, and Almond Tree Villa all have internal stairs or split-level floors. House Demetra is the only property featuring a single-floor layout once inside. Check the individual property page for specific access detail."
+    },
+    {
+      "id": "luggage-access",
+      "category": "access",
+      "question": "Is luggage access easy?",
+      "answer": "The properties are in traditional hillside villages, so luggage access varies by house. Some Mavrikiano houses involve a short walk from the parking area through village paths or steps. Almond Tree Villa has street parking about 30 m away, with several steps from the parking area to the entrance.<br><br>We send arrival details before check-in and guide guests where needed. If you are travelling with heavy luggage, a stroller, or mobility concerns, please check the individual property page or contact us before booking."
+    },
+    {
+      "id": "fewest-stairs",
+      "category": "access",
+      "question": "Which property is best for guests who want fewer stairs?",
+      "answer": "House Demetra is the best option for guests who prefer a single-floor layout once inside the house. Please note that the village setting itself is not fully step-free, and access from the parking area may still include paths or steps.<br><br>Most other houses have internal stairs, split levels, balconies, or traditional stepped layouts. Each property page includes specific access notes."
+    },
+    {
+      "id": "children",
+      "category": "access",
+      "question": "Can children stay in the properties?",
+      "answer": "Yes, children can stay, but families should choose the property carefully. Many houses have stairs, split levels, balconies, village paths, or pool access.<br><br>Children must be supervised around pools, balconies, stairs, and outdoor areas. Families with toddlers or very young children should check the access notes on each property page before booking."
+    },
+    {
+      "id": "pools-private-or-shared",
+      "category": "pools",
+      "question": "Are the pools private or shared?",
+      "answer": "House Erato, House Monastiri, and Almond Tree Villa each have a private pool. House Penelope and House Demetra share one pool, for the exclusive use of guests staying in those two houses. The remaining houses do not have a pool."
+    },
+    {
+      "id": "wifi",
+      "category": "amenities",
+      "question": "Is Wi-Fi included?",
+      "answer": "Yes. Free Wi-Fi is included in all properties. Coverage varies between properties due to stone wall construction — in most cases Wi-Fi reaches the terrace."
+    },
+    {
+      "id": "pets",
+      "category": "policies",
+      "question": "Are pets allowed?",
+      "answer": "Small pets up to 5 kg may be accepted on request. Please contact us before booking to confirm availability for your specific dates and property. A cleaning fee may apply."
+    },
+    {
+      "id": "check-in-check-out",
+      "category": "policies",
+      "question": "What are the check-in and check-out times?",
+      "answer": "Check-in is from 15:00. Check-out is by 11:00."
+    },
+    {
+      "id": "where-are-the-houses",
+      "category": "location",
+      "question": "Where are the houses exactly?",
+      "answer": "The stone houses are in Mavrikiano village, on the hillside above Schisma, the harbour centre of Elounda. Almond Tree Villa is in Vrouchas, further north and higher in elevation.<br><br>From the Mavrikiano houses, Schisma / Elounda harbour is about 3 minutes by car and Plaka is about 7 minutes by car. From Almond Tree Villa in Vrouchas, Plaka shoreline is about 5 minutes by car and Elounda centre / Schisma is about 12 minutes by car. Exact GPS coordinates are provided with your booking confirmation."
+    },
+    {
+      "id": "sea-views",
+      "category": "location",
+      "question": "Which properties have sea views?",
+      "answer": "House Argyro, House Margarita, House Leonidas, and House Monastiri have sea views from their setting, veranda, balcony, or bedroom areas. Almond Tree Villa in Vrouchas has views toward the Cretan Sea, olive groves, garden, pool, and mountains.<br><br>House Erato, House Clio, House Demetra, and House Penelope are more pool, mountain, or village-setting houses. House Efterpi and House Kalliopi are traditional village houses without the same sea-view positioning.<br><br>Please check each property page for the exact view, outdoor area, and layout before booking."
+    },
+    {
+      "id": "car-needed",
+      "category": "location",
+      "question": "Do I need a car?",
+      "answer": "A car is strongly recommended, especially for Almond Tree Villa in Vrouchas and for exploring Plaka, beaches, tavernas, and the coast.<br><br>The Mavrikiano houses are closer to Schisma, the harbour centre of Elounda. Many guests can walk downhill to Elounda, but the return walk is uphill and the village has slopes and steps. For comfort, luggage, beach trips, and evening meals, a car is usually the easiest option."
+    },
+    {
+      "id": "distances-shops-beaches",
+      "category": "location",
+      "question": "How far are shops, beaches, and tavernas?",
+      "answer": "From the Mavrikiano houses, Elounda harbor is about 3 minutes by car, and Plaka is about 7 minutes by car. Some guests walk down to Elounda, but the return is uphill.<br><br>From Almond Tree Villa in Vrouchas, Plaka shoreline is about 5 minutes by car and Elounda center is about 12 minutes by car. Vrouchas is quieter and works best with a car."
+    },
+    {
+      "id": "arrival",
+      "category": "location",
+      "question": "How does arrival work?",
+      "answer": "We send map details and arrival instructions before check-in.<br><br>For the Mavrikiano houses, guests usually meet at the shared parking area and are guided to the house. Almond Tree Villa uses its own villa-specific arrival instructions. We recommend following our map links rather than relying only on general navigation apps."
+    },
+    {
+      "id": "parking",
+      "category": "amenities",
+      "question": "Is parking available?",
+      "answer": "For the Mavrikiano houses, shared private guest parking is available nearby, with space for up to 5 cars in total. If the shared parking area is full, guests can usually park for free around the village. Specific parking information is listed on each property page."
+    },
+    {
+      "id": "cancellation",
+      "category": "policies",
+      "question": "What is the cancellation policy?",
+      "answer": "{cancellationPolicy}"
+    }
+  ]
+}

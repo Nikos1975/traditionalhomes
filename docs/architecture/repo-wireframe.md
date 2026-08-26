@@ -47,12 +47,12 @@ flowchart TD
   pages --> houseDetail["/en/houses/[slug]/"]
   pages --> villaDetail["/en/villa/[slug]/<br/>shared VillaDetailPage renderer"]
   pages --> blogRoutes["/en/blog/ + /en/blog/[slug]<br/>/blog/** redirects (301)"]
-  pages --> infoPages["about, faq, policies, location, contact, guides"]
-  pages --> guidePilot["/en/guide/vrouchas/ + /de/reisefuehrer/vrouchas/<br/>shared GuidePage renderer (i18n pilot)"]
+  pages --> infoPages["about, faq, policies, location, contact, guides<br/>shared renderers, EN + DE thin wrappers"]
+  pages --> guidePilot["/en/guide/[place]/ + /de/reisefuehrer/[place]/<br/>shared GuidePage renderer (Vrouchas + Mavrikiano)"]
   guidePilot --> guidePage["components/pages/GuidePage.astro"]
-  pages --> sharedRenderers["components/pages/<br/>HomePage, CollectionPage, LocationPage, HouseDetailPage, VillaDetailPage, GuidePage"]
+  pages --> sharedRenderers["components/pages/<br/>HomePage, CollectionPage, LocationPage, HouseDetailPage,<br/>VillaDetailPage, GuidePage, AboutPage, ContactPage, FaqPage, PoliciesPage"]
   sharedRenderers --> i18n
-  pages --> deCluster["/de/ + /de/ferienhaeuser/ + /de/ferienhaeuser/[slug]/ + /de/villa/[slug]/ + /de/lage/<br/>German cluster and all property details (thin wrappers)"]
+  pages --> deCluster["/de/ + /de/ferienhaeuser/ + /de/ferienhaeuser/[slug]/ + /de/villa/[slug]/ + /de/lage/<br/>/de/ueber-uns/ + /de/kontakt/ + /de/faq/ + /de/richtlinien/ + /de/reisefuehrer/[place]/<br/>whole German site except the blog (thin wrappers)"]
   deCluster --> sharedRenderers
   guidePage --> i18n
 

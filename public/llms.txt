@@ -53,4 +53,9 @@ The website provides official accommodation descriptions, location information, 
 - [Haus Monastiri](https://traditional-homes.gr/de/ferienhaeuser/monastiri/): German page for House Monastiri.
 - [Almond Tree Villa](https://traditional-homes.gr/de/villa/almond-tree-villa/): German page for Almond Tree Villa.
 - [Lage](https://traditional-homes.gr/de/lage/): German location page for Mavrikiano and Vrouchas.
-- [Vrouchas Reiseführer](https://traditional-homes.gr/de/reisefuehrer/vrouchas/): German version of the Vrouchas guide. Contact, FAQ, policies, about, and the articles are currently English only.
+- [Mavrikiano Reiseführer](https://traditional-homes.gr/de/reisefuehrer/mavrikiano/): German version of the Mavrikiano guide.
+- [Vrouchas Reiseführer](https://traditional-homes.gr/de/reisefuehrer/vrouchas/): German version of the Vrouchas guide.
+- [Über uns](https://traditional-homes.gr/de/ueber-uns/): German page about the family restoration project.
+- [Kontakt](https://traditional-homes.gr/de/kontakt/): German contact and enquiry form.
+- [FAQ](https://traditional-homes.gr/de/faq/): German answers on access, pools, pets, Wi-Fi, parking and booking policies.
+- [Richtlinien](https://traditional-homes.gr/de/richtlinien/): German house rules, access, check-in and cancellation information. The articles are currently English only.

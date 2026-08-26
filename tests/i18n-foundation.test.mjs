@@ -43,10 +43,12 @@ describe('Stage 1 i18n foundation', () => {
       home: await readText('src/components/pages/HomePage.astro'),
       houses: await readText('src/components/pages/CollectionPage.astro'),
       location: await readText('src/components/pages/LocationPage.astro'),
-      contact: await readText('src/pages/en/contact.astro'),
-      faq: await readText('src/pages/en/faq.astro'),
-      policies: await readText('src/pages/en/policies.astro'),
-      about: await readText('src/pages/en/about.astro'),
+      // Every informational page is a shared renderer now; the English route
+      // files are thin wrappers that pass the default locale.
+      contact: await readText('src/components/pages/ContactPage.astro'),
+      faq: await readText('src/components/pages/FaqPage.astro'),
+      policies: await readText('src/components/pages/PoliciesPage.astro'),
+      about: await readText('src/components/pages/AboutPage.astro'),
     };
 
     assert.deepEqual(seoCopy.pages, {
@@ -114,7 +116,8 @@ describe('Stage 1 i18n foundation', () => {
     // The villa route is a thin wrapper since the German villa page was added;
     // its SEO is formatted by the shared renderer it delegates to.
     const villaPage = await readText('src/components/pages/VillaDetailPage.astro');
-    const mavrikianoGuide = await readText('src/pages/en/guide/mavrikiano.astro');
+    // Both guides are thin wrappers over the shared renderer, which formats their SEO.
+    const mavrikianoGuide = await readText('src/components/pages/GuidePage.astro');
     // The Vrouchas route is a thin wrapper since the Stage 3 pilot; its SEO is
     // formatted by the shared renderer it delegates to.
     const guidePage = await readText('src/components/pages/GuidePage.astro');
@@ -126,6 +129,7 @@ describe('Stage 1 i18n foundation', () => {
     assert.match(housePage, /getPropertySeo\(/);
     assert.match(villaPage, /getVillaSeo\(/);
     assert.match(mavrikianoGuide, /getGuideSeo\(/);
+    assert.match(await readText('src/pages/en/guide/mavrikiano.astro'), /guideId="mavrikiano"/);
     assert.match(guidePage, /getGuideSeo\(locale, frontmatter, fallbackDescription\)/);
 
     // SEO copy may carry the *labels* ("sleeps", "bedrooms") because the
@@ -531,10 +535,10 @@ describe('Stage 1 i18n foundation', () => {
   it('uses route and SEO helpers on static English pages without changing blog or contact endpoints', async () => {
     const staticPages = {
       homePage: await readText('src/components/pages/HomePage.astro'),
-      about: await readText('src/pages/en/about.astro'),
-      contact: await readText('src/pages/en/contact.astro'),
-      faq: await readText('src/pages/en/faq.astro'),
-      policies: await readText('src/pages/en/policies.astro'),
+      about: await readText('src/components/pages/AboutPage.astro'),
+      contact: await readText('src/components/pages/ContactPage.astro'),
+      faq: await readText('src/components/pages/FaqPage.astro'),
+      policies: await readText('src/components/pages/PoliciesPage.astro'),
       housesIndex: await readText('src/pages/en/houses/index.astro'),
       collectionPage: await readText('src/components/pages/CollectionPage.astro'),
       mavrikianoGuide: await readText('src/pages/en/guide/mavrikiano.astro'),
@@ -552,13 +556,18 @@ describe('Stage 1 i18n foundation', () => {
     assert.match(staticPages.homePage, /canonicalUrl\(routePath\(locale, 'home'\)\)/);
     assert.match(staticPages.homePage, /resolveLocalizedLink\(locale, 'house', 'argyro'\)/);
     assert.match(staticPages.homePage, /resolveLocalizedLink\(locale, 'villa', villa\.slug\)/);
-    assert.match(staticPages.about, /localizedCanonical\(defaultLocale, localizedPath\(defaultLocale, 'about'\)\)/);
+    // The shared renderers resolve their own canonical and links through the
+    // route map, so each locale gets its own URL.
+    assert.match(staticPages.about, /canonicalUrl\(routePath\(locale, 'about'\)\)/);
+    // The endpoint, the honeypot and the field constraints are locale-independent.
     assert.match(staticPages.contact, /action="\/api\/contact"/);
-    assert.match(staticPages.contact, /contactSentPath = `\$\{localizedPath\(defaultLocale, 'contact'\)\}\?sent=1`/);
-    assert.match(staticPages.contact, /<script define:vars=\{\{ contactSentPath \}\}>/);
-    assert.match(staticPages.faq, /localizedPath\(defaultLocale, 'policies'\)\}\#access/);
+    assert.match(staticPages.contact, /name="website"/);
+    assert.match(staticPages.contact, /data-sitekey=\{turnstileSiteKey\}/);
+    assert.match(staticPages.contact, /contactSentPath = `\$\{routePath\(locale, 'contact'\)\}\?sent=1`/);
+    assert.match(staticPages.contact, /<script define:vars=\{\{ contactSentPath, scriptCopy \}\}>/);
+    assert.match(staticPages.faq, /\$\{policiesLink\.href\}#access/);
     assert.match(staticPages.collectionPage, /canonicalUrl\(routePath\(locale, 'houses'\)\)/);
-    assert.match(staticPages.mavrikianoGuide, /guidePath\('mavrikiano'\)/);
+    assert.match(staticPages.mavrikianoGuide, /guideId="mavrikiano"/);
     assert.match(staticPages.guidePage, /routePath\(locale, 'guide', guideId\)/);
 
     const navigation = await readJson('src/i18n/locales/en/navigation.json');

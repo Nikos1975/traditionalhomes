@@ -1,0 +1,43 @@
+{
+  "breadcrumb": {
+    "ariaLabel": "Breadcrumb",
+    "home": "Home",
+    "current": "Our Story"
+  },
+  "heading": {
+    "lead": "Preserving",
+    "emphasis": "Cretan Heritage"
+  },
+  "intro": "\"A family-run restoration project built around traditional stone houses, village paths, and slower stays above Elounda.\"",
+  "paragraphs": {
+    "project": "Elounda Traditional Homes is more than a collection of properties; it is a long-term project in architectural preservation. Since 1994, our family has worked to breathe new life into the historic ruins of Mavrikiano and Vrouchas.",
+    "houses": "The ten houses in Mavrikiano have been individually restored over several years. We focus on keeping the original stone walls and traditional wood beams while adding practical comforts such as Wi-Fi, functional kitchens, air conditioning, and comfortable bedding.",
+    "villaBeforeName": "Our larger villa, ",
+    "villaAfterName": " in Vrouchas, offers 230 m², five sleeping rooms, two bathrooms, a private 9 m x 4 m pool, reed-shaded balconies, and views toward the Cretan Sea, olive groves, garden, pool, and mountains."
+  },
+  "pillars": {
+    "architecture": {
+      "title": "The Architecture",
+      "body": "We maintain original stone construction and traditional layouts, ensuring the soul of the home remains intact while adding modern comforts."
+    },
+    "experience": {
+      "title": "The Experience",
+      "body": "Our aim is a straightforward experience: stay in a real village, away from resort infrastructure, where the sea is your backdrop."
+    }
+  },
+  "actions": {
+    "houses": "Explore the Houses",
+    "contact": "Get in Touch"
+  },
+  "image": {
+    "alt": "Historic 1902 date stone connected with the origin of the restored stone houses in Mavrikiano",
+    "badgeLabel": "Stone House Origin"
+  },
+  "locationCard": {
+    "heading": "The Location",
+    "bodyBeforeVillage": "Our properties are split between two distinct areas: the historic village of ",
+    "bodyBetweenVillages": " (houses) and the tranquil heights of ",
+    "bodyAfterVillages": " (villa).",
+    "footnote": "Mavrikiano & Vrouchas, Elounda, Crete"
+  }
+}

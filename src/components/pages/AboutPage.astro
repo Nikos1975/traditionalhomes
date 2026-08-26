@@ -1,0 +1,129 @@
+---
+import Base from '../../layouts/Base.astro';
+import type { Locale } from '../../i18n/config';
+import { assertRoute, resolveLocalizedLink, routeAlternates, routePath } from '../../i18n/route-map';
+import { canonicalUrl, getPageSeo } from '../../i18n/seo';
+import { getAboutCopy } from '../../i18n/translate';
+
+interface Props {
+  /** Active locale. Always passed explicitly by the route file, never inferred from route state. */
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+
+assertRoute(locale, 'about');
+
+const copy = getAboutCopy(locale);
+const pageSeo = getPageSeo(locale, 'about');
+const alternates = routeAlternates('about');
+const homeLink = resolveLocalizedLink(locale, 'home');
+const housesLink = resolveLocalizedLink(locale, 'houses');
+const contactLink = resolveLocalizedLink(locale, 'contact');
+---
+
+<Base
+  title={pageSeo.title}
+  description={pageSeo.description}
+  canonicalUrl={canonicalUrl(routePath(locale, 'about'))}
+  locale={locale}
+>
+  {
+    alternates.length > 1 && (
+      <Fragment slot="head">
+        {alternates.map((alternate) => (
+          <link rel="alternate" hreflang={alternate.hreflang} href={canonicalUrl(alternate.path)} />
+        ))}
+      </Fragment>
+    )
+  }
+
+  <div class="site-max site-pad py-16 md:py-24">
+
+    {/* BREADCRUMB */}
+    <nav class="text-[10px] uppercase tracking-[0.4em] text-stone-400 mb-12 font-bold" aria-label={copy.breadcrumb.ariaLabel}>
+      <ol class="flex items-center gap-2" role="list">
+        <li><a href={homeLink.href} hreflang={homeLink.hreflang} class="hover:text-stone-900 transition-colors">{copy.breadcrumb.home}</a></li>
+        <li aria-hidden="true" class="text-stone-200">/</li>
+        <li class="text-stone-900" aria-current="page">{copy.breadcrumb.current}</li>
+      </ol>
+    </nav>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24">
+
+      {/* LEFT: TEXT CONTENT */}
+      <div class="lg:col-span-7">
+        <header class="mb-12">
+          <h1 class="font-serif text-5xl md:text-7xl text-stone-950 mb-8 leading-tight tracking-tight">
+            {copy.heading.lead} <br/> <span class="italic text-stone-400">{copy.heading.emphasis}</span>
+          </h1>
+          <p class="text-2xl text-stone-600 font-light leading-relaxed font-serif italic">
+            {copy.intro}
+          </p>
+        </header>
+
+        <div class="space-y-8 text-stone-600 leading-relaxed font-light text-lg">
+          <p>
+            {copy.paragraphs.project}
+          </p>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-10 py-6">
+            <div class="border-l border-stone-200 pl-6">
+              <h3 class="text-stone-950 font-bold uppercase tracking-widest text-[10px] mb-2">{copy.pillars.architecture.title}</h3>
+              <p class="text-sm">{copy.pillars.architecture.body}</p>
+            </div>
+            <div class="border-l border-stone-200 pl-6">
+              <h3 class="text-stone-950 font-bold uppercase tracking-widest text-[10px] mb-2">{copy.pillars.experience.title}</h3>
+              <p class="text-sm">{copy.pillars.experience.body}</p>
+            </div>
+          </div>
+
+          <p>
+            {copy.paragraphs.houses}
+          </p>
+
+          <p>
+            {copy.paragraphs.villaBeforeName}<strong class="text-stone-950 font-medium">Almond Tree Villa</strong>{copy.paragraphs.villaAfterName}
+          </p>
+        </div>
+
+        {/* CTAS */}
+        <div class="mt-16 pt-12 border-t border-stone-100">
+          <div class="flex flex-wrap gap-4">
+            <a href={housesLink.href} hreflang={housesLink.hreflang} class="btn-cta bg-accent-sage text-stone-900 hover:bg-accent-sage-hover hover:text-stone-900 px-10 py-4">{copy.actions.houses}</a>
+            <a href={contactLink.href} hreflang={contactLink.hreflang} class="btn-cta bg-transparent border-stone-200 text-stone-950 hover:bg-stone-50 px-10 py-4">{copy.actions.contact}</a>
+          </div>
+        </div>
+      </div>
+
+      {/* RIGHT: EDITORIAL IMAGERY & QUICK INFO */}
+      <aside class="lg:col-span-5 space-y-12">
+        <div class="relative group">
+          <div class="aspect-[3/4] rounded-[3rem] overflow-hidden shadow-2xl">
+            <img
+              src="/images/about/house-date-stone-1902.jpg"
+              alt={copy.image.alt}
+              class="w-full h-full object-cover grayscale-[20%] group-hover:scale-105 transition-transform duration-1000"
+            />
+          </div>
+          <div class="absolute -bottom-6 -right-6 bg-primary p-8 rounded-2xl shadow-xl hidden md:block">
+            <p class="text-white font-serif text-3xl">1902</p>
+            <p class="text-white/80 text-[10px] uppercase tracking-widest font-bold">{copy.image.badgeLabel}</p>
+          </div>
+        </div>
+
+        <div class="bg-stone-50 rounded-[2.5rem] p-10 border border-stone-100">
+          <h2 class="font-serif text-2xl text-stone-950 mb-6 font-medium">{copy.locationCard.heading}</h2>
+          <p class="text-sm text-stone-500 leading-relaxed mb-6 font-light">
+            {copy.locationCard.bodyBeforeVillage}<span class="text-stone-900 font-medium">Mavrikiano</span>{copy.locationCard.bodyBetweenVillages}<span class="text-stone-900 font-medium">Vrouchas</span>{copy.locationCard.bodyAfterVillages}
+          </p>
+          <p class="text-[10px] text-stone-400 font-bold uppercase tracking-widest">
+            {copy.locationCard.footnote}
+          </p>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+
+</Base>
