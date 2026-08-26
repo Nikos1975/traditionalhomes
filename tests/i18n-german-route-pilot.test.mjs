@@ -26,6 +26,19 @@ const PILOT_ID = 'vrouchas';
 const EN_PILOT = `/en/guide/${PILOT_ID}/`;
 const DE_PILOT = `/de/reisefuehrer/${PILOT_ID}/`;
 const UNBUILT_LOCALES = ['fr', 'ru', 'zh', 'ar', 'he'];
+/** Stable internal ids of the houses that own a German detail page. */
+const GERMAN_HOUSE_IDS = [
+  'argyro',
+  'leonidas',
+  'margarita',
+  'demetra',
+  'penelope',
+  'erato',
+  'clio',
+  'efterpi',
+  'kalliopi',
+  'monastiri',
+];
 
 /**
  * Anchors, with the one distinction the navigation contract depends on.
@@ -130,11 +143,15 @@ describe('Stage 3 German route pilot — route map', () => {
       assert.equal(routeMap.resolveRoute(locale, 'blogArticle', 'elounda-guide'), null);
     }
 
-    // German owns the cluster routes only; everything else still resolves to null.
+    // German owns the property routes and the cluster routes; everything else
+    // still resolves to null rather than being guessed.
     assert.equal(routeMap.resolveRoute('de', 'blogArticle', 'elounda-guide'), null);
-    assert.equal(routeMap.resolveRoute('de', 'villa', 'almond-tree-villa'), null);
     assert.equal(routeMap.resolveRoute('de', 'contact'), null);
-    assert.equal(routeMap.resolveRoute('de', 'house', 'leonidas'), null);
+    assert.equal(routeMap.resolveRoute('de', 'faq'), null);
+    assert.equal(routeMap.resolveRoute('de', 'about'), null);
+    assert.equal(routeMap.resolveRoute('de', 'policies'), null);
+    assert.equal(routeMap.resolveRoute('de', 'blog'), null);
+    assert.equal(routeMap.resolveRoute('de', 'house', 'not-a-house'), null);
 
     // German owns the guide segment but only the Vrouchas guide itself.
     assert.equal(routeMap.resolveRoute('de', 'guide', 'mavrikiano'), null);
@@ -151,9 +168,11 @@ describe('Stage 3 German route pilot — route map', () => {
     assert.deepEqual(routeMap.routeLocales('home'), ['en', 'de']);
     assert.deepEqual(routeMap.routeLocales('location'), ['en', 'de']);
     assert.deepEqual(routeMap.routeLocales('house', 'argyro'), ['en', 'de']);
-    // Houses without German content stay English-only.
-    assert.deepEqual(routeMap.routeLocales('house', 'leonidas'), ['en']);
-    assert.deepEqual(routeMap.routeLocales('villa', 'almond-tree-villa'), ['en']);
+    // Every property is translated, so every property advertises both locales.
+    assert.deepEqual(routeMap.routeLocales('house', 'leonidas'), ['en', 'de']);
+    assert.deepEqual(routeMap.routeLocales('villa', 'almond-tree-villa'), ['en', 'de']);
+    // Content the map does not declare for German stays English-only.
+    assert.deepEqual(routeMap.routeLocales('house', 'not-a-house'), ['en']);
 
     assert.deepEqual(routeMap.routeAlternates('guide', 'vrouchas'), [
       { locale: 'en', hreflang: 'en', path: EN_PILOT },
@@ -206,9 +225,12 @@ describe('Stage 3 German route pilot — route map', () => {
     assert.equal(routes.blogArticlePath('elounda-guide', 'en'), '/en/blog/elounda-guide/');
     assert.equal(routes.guidePath('mavrikiano'), '/en/guide/mavrikiano/');
     assert.equal(routes.guidePath('vrouchas', 'de'), DE_PILOT);
-    // Helpers never fabricate a locale URL: they fall back to the English page.
+    // Helpers never fabricate a locale URL. Translated content resolves to its
+    // own German page; anything the map does not declare falls back to English.
     assert.equal(routes.housePath('argyro', 'de'), '/de/ferienhaeuser/argyro/');
-    assert.equal(routes.housePath('leonidas', 'de'), '/en/houses/leonidas/');
+    assert.equal(routes.housePath('leonidas', 'de'), '/de/ferienhaeuser/leonidas/');
+    assert.equal(routes.villaPath('almond-tree-villa', 'de'), '/de/villa/almond-tree-villa/');
+    assert.equal(routes.housePath('not-a-house', 'de'), '/en/houses/not-a-house/');
   });
 });
 
@@ -775,7 +797,19 @@ describe('Stage 3 German route pilot — generated output', async () => {
     const links = [...llms.matchAll(/\[[^\]]+\]\(([^\s)]+)\)/g)].map(([, url]) => url);
 
     assert.ok(links.includes(`${SITE}${DE_PILOT}`), 'llms.txt must list the real German route');
-    assert.equal(links.filter((url) => url.startsWith(`${SITE}/de/`)).length, 5, 'only real German routes belong in llms.txt');
+    // One entry per real German route: the four cluster routes plus the ten
+    // property detail pages, derived rather than hard-coded.
+    const germanLinks = links.filter((url) => url.startsWith(`${SITE}/de/`));
+    const germanRoutes = new Set([
+      `${SITE}/de/`,
+      `${SITE}/de/ferienhaeuser/`,
+      `${SITE}/de/lage/`,
+      `${SITE}${DE_PILOT}`,
+      `${SITE}/de/villa/almond-tree-villa/`,
+      ...GERMAN_HOUSE_IDS.map((id) => `${SITE}/de/ferienhaeuser/${id}/`),
+    ]);
+
+    assert.deepEqual([...germanLinks].sort(), [...germanRoutes].sort(), 'only real German routes belong in llms.txt');
 
     // One global file: no per-language llms variants.
     assert.equal(await exists('public/llms-de.txt'), false);
@@ -871,26 +905,23 @@ describe('Stage 3 German route pilot — generated output', async () => {
     }
   });
 
-  it('never offers a fabricated German URL for an untranslated property page', async () => {
-    const html = await page('en/houses/monastiri');
-    const german = anchors(html).filter((link) => link.isLanguageSwitcher && link.href?.startsWith('/de/'));
+  it('offers the exact German equivalent for every property, never a fabricated URL', async () => {
+    const properties = [
+      ...GERMAN_HOUSE_IDS.map((id) => ({ en: `en/houses/${id}`, de: `/de/ferienhaeuser/${id}/` })),
+      { en: 'en/villa/almond-tree-villa', de: '/de/villa/almond-tree-villa/' },
+    ];
 
-    assert.ok(german.length > 0, 'the English property page must offer a German choice');
+    for (const { en, de } of properties) {
+      const german = anchors(await page(en)).filter((link) => link.isLanguageSwitcher && link.href?.startsWith('/de/'));
 
-    for (const { href } of german) {
-      // The URL the preview reported. It has no page and must never be emitted.
-      assert.notEqual(href, '/de/houses/monastiri/');
-      assert.doesNotMatch(href, /^\/de\/houses\//, `${href} carries an English segment under /de/`);
-      // Nearest real localized parent, and it really exists.
-      assert.equal(href, '/de/ferienhaeuser/');
-      await access(join(outputPath, href, 'index.html'));
-    }
+      assert.ok(german.length > 0, `${en} must offer a German choice`);
 
-    // Argyro is translated, so it keeps its own German page.
-    for (const { href } of anchors(await page('en/houses/argyro')).filter(
-      (link) => link.isLanguageSwitcher && link.href?.startsWith('/de/'),
-    )) {
-      assert.equal(href, '/de/ferienhaeuser/argyro/');
+      for (const { href } of german) {
+        // The URL the preview once reported. It has no page and must never be emitted.
+        assert.doesNotMatch(href, /^\/de\/houses\//, `${href} carries an English segment under /de/`);
+        assert.equal(href, de, `${en} must switch to its own German page`);
+        await access(join(outputPath, href, 'index.html'));
+      }
     }
   });
 
@@ -910,16 +941,17 @@ describe('Stage 3 German route pilot — generated output', async () => {
     assert.deepEqual(offenders, []);
   });
 
-  it('marks every English property fallback on the German collection instead of hiding it', async () => {
+  it('links every German property card to its own German detail page', async () => {
     const html = await page('de/ferienhaeuser');
     const germanCopy = JSON.parse(await readText('src/i18n/locales/de/common.json'));
     const fallbackLabel = germanCopy.ui.property.card.detailsInEnglish;
     const cards = [...html.matchAll(/<article[\s\S]*?<\/article>/g)].map(([card]) => card);
+    const expectedFor = (slug) =>
+      slug === 'almond-tree-villa' ? `/de/villa/${slug}/` : `/de/ferienhaeuser/${slug}/`;
 
     assert.ok(cards.length >= 11, `expected every property to render a card, found ${cards.length}`);
 
     let translated = 0;
-    let fallbacks = 0;
 
     for (const card of cards) {
       const slug = card.match(/data-id="([^"]+)"/)?.[1];
@@ -933,58 +965,31 @@ describe('Stage 3 German route pilot — generated output', async () => {
 
       assert.ok(links.length > 0, `${slug} card has no internal link`);
 
-      for (const { href, hreflang, lang } of links) {
+      for (const { href, hreflang } of links) {
         // No phantom locale URL, and whatever it points at was really built.
         assert.doesNotMatch(href, /^\/de\/houses\//, `${slug}: ${href} fabricates a German route`);
         await access(join(outputPath, href.split('#')[0], 'index.html'));
 
-        if (href.startsWith('/de/')) {
-          assert.equal(hreflang, undefined, `${slug}: ${href} is in-locale and must not be marked`);
-          continue;
-        }
-
-        // Leaving German must be declared on every clickable part of the card.
-        assert.equal(hreflang, 'en', `${slug}: ${href} leaves German without hreflang`);
-        assert.equal(lang, 'en', `${slug}: ${href} leaves German without lang`);
+        // Every property is translated, so no card leaves German at all.
+        assert.ok(href.startsWith('/de/'), `${slug}: ${href} leaves German although a German page exists`);
+        assert.equal(hreflang, undefined, `${slug}: ${href} is in-locale and must not be marked`);
       }
 
-      const leavesGerman = links.some(({ href }) => !href.startsWith('/de/'));
-
-      // A card that sends the reader to English must say so in visible German copy.
-      assert.equal(
-        card.includes(fallbackLabel),
-        leavesGerman,
-        leavesGerman
-          ? `${slug}: an English fallback must say so in visible German copy`
-          : `${slug}: a translated card must not claim its details are English`,
-      );
+      // The fallback label is reserved for genuinely untranslated content.
+      assert.ok(!card.includes(fallbackLabel), `${slug}: a translated card must not claim its details are English`);
 
       // A group card offers its two members, so only single-property cards are
       // required to point every link at one page.
       if (slug?.startsWith('group-')) continue;
 
-      if (slug === 'argyro') {
-        translated += 1;
-        assert.ok(
-          links.every(({ href }) => href.startsWith('/de/')),
-          'Argyro is translated and must not link to English',
-        );
-        assert.equal(links[0].href, '/de/ferienhaeuser/argyro/');
-        continue;
-      }
-
-      fallbacks += 1;
-
-      const expected = slug === 'almond-tree-villa' ? `/en/villa/${slug}/` : `/en/houses/${slug}/`;
-
       assert.ok(
-        links.every(({ href }) => href === expected),
-        `${slug}: every card link must point at the same English detail page`,
+        links.every(({ href }) => href === expectedFor(slug)),
+        `${slug}: every card link must point at ${expectedFor(slug)}`,
       );
+      translated += 1;
     }
 
-    assert.equal(translated, 1, 'exactly one German property page exists today');
-    assert.ok(fallbacks >= 10, 'every other property is still an explicit English fallback');
+    assert.equal(translated, 11, 'every house and the villa own a German detail page');
   });
 
   it('serialises only the active locale into client-side script payloads', async () => {
@@ -1038,22 +1043,33 @@ describe('Stage 3 German route pilot — generated output', async () => {
     assert.deepEqual(german, [
       `${SITE}/de/`,
       `${SITE}/de/ferienhaeuser/`,
-      `${SITE}/de/ferienhaeuser/argyro/`,
+      ...GERMAN_HOUSE_IDS.map((id) => `${SITE}/de/ferienhaeuser/${id}/`),
       `${SITE}/de/lage/`,
       `${SITE}/de/reisefuehrer/vrouchas/`,
-    ]);
+      `${SITE}/de/villa/almond-tree-villa/`,
+    ].sort());
 
     for (const url of urls) {
       await access(join(outputPath, new URL(url).pathname, 'index.html'));
     }
   });
 
-  it('generates no German page for a house without German content', async () => {
-    for (const slug of ['leonidas', 'margarita', 'clio', 'monastiri']) {
-      await assert.rejects(access(join(outputPath, 'de', 'ferienhaeuser', slug, 'index.html')));
+  it('generates no German page the route map does not declare', async () => {
+    // Sections German does not own produce no page, in any spelling.
+    for (const route of [['de', 'kontakt'], ['de', 'contact'], ['de', 'faq'], ['de', 'blog'], ['de', 'about']]) {
+      await assert.rejects(access(join(outputPath, ...route, 'index.html')), `/${route.join('/')}/ must not exist`);
     }
-    await assert.rejects(access(join(outputPath, 'de', 'villa', 'almond-tree-villa', 'index.html')));
-    await assert.rejects(access(join(outputPath, 'de', 'kontakt', 'index.html')));
+
+    // A German property page exists only where the map declares a German slug,
+    // so an id the map does not carry never produces one.
+    await assert.rejects(access(join(outputPath, 'de', 'ferienhaeuser', 'not-a-house', 'index.html')));
+
+    const germanHouses = (await readdir(join(outputPath, 'de', 'ferienhaeuser'), { withFileTypes: true }))
+      .filter((entry) => entry.isDirectory())
+      .map((entry) => entry.name)
+      .sort();
+
+    assert.deepEqual(germanHouses, [...GERMAN_HOUSE_IDS].sort(), 'exactly the declared houses are generated');
   });
 
   it('keeps the blog canonical contract unchanged', async () => {

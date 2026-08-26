@@ -111,7 +111,9 @@ describe('Stage 1 i18n foundation', () => {
     const seoCopy = await readJson('src/i18n/locales/en/seo.json');
     const seo = await readText('src/i18n/seo.ts');
     const housePage = await readText('src/components/pages/HouseDetailPage.astro');
-    const villaPage = await readText('src/pages/en/villa/[slug].astro');
+    // The villa route is a thin wrapper since the German villa page was added;
+    // its SEO is formatted by the shared renderer it delegates to.
+    const villaPage = await readText('src/components/pages/VillaDetailPage.astro');
     const mavrikianoGuide = await readText('src/pages/en/guide/mavrikiano.astro');
     // The Vrouchas route is a thin wrapper since the Stage 3 pilot; its SEO is
     // formatted by the shared renderer it delegates to.
@@ -425,6 +427,11 @@ describe('Stage 1 i18n foundation', () => {
           sharedPool: 'Shared pool',
         },
         guide: { vrouchasTitle: 'Vrouchas Area Guide', practicalAreaDetails: 'Practical area details' },
+        sharedPool: {
+          intro: "This property's swimming pool is shared exclusively with",
+          and: 'and',
+          note: 'Booking both houses together gives one group use of both houses around the same shared pool area.',
+        },
       },
     });
 
@@ -435,7 +442,9 @@ describe('Stage 1 i18n foundation', () => {
     const unitCard = await readText('src/components/UnitCard.astro');
     const groupCard = await readText('src/components/GroupCard.astro');
     const housePage = await readText('src/components/pages/HouseDetailPage.astro');
-    const villaPage = await readText('src/pages/en/villa/[slug].astro');
+    // The villa route is a thin wrapper since the German villa page was added;
+    // the shared renderer it delegates to owns the interface copy.
+    const villaPage = await readText('src/components/pages/VillaDetailPage.astro');
     const blogIndex = await readText('src/pages/en/blog/index.astro');
     const blogPost = await readText('src/pages/en/blog/[...slug].astro');
     const base = await readText('src/layouts/Base.astro');
@@ -448,7 +457,8 @@ describe('Stage 1 i18n foundation', () => {
     }
 
     assert.match(housePage, /getCommonCopy\(locale\)\.ui\.property/);
-    assert.match(villaPage, /getCommonCopy\(defaultLocale\)\.ui\.property/);
+    // The villa renderer is locale-aware now, like the house renderer.
+    assert.match(villaPage, /getCommonCopy\(locale\)\.ui\.property/);
     assert.match(blogIndex, /blogArticlePath\(post\.id, defaultLocale\)/);
     assert.match(blogPost, /blogIndexPath\(defaultLocale\)/);
     assert.match(blogPost, /blogArticlePath\(post\.id, defaultLocale\)/);
@@ -467,7 +477,7 @@ describe('Stage 1 i18n foundation', () => {
       singlePinMap: await readText('src/components/maps/SinglePinMap.astro'),
       unitCard: await readText('src/components/UnitCard.astro'),
       housePage: await readText('src/components/pages/HouseDetailPage.astro'),
-      villaPage: await readText('src/pages/en/villa/[slug].astro'),
+      villaPage: await readText('src/components/pages/VillaDetailPage.astro'),
       locationPage: await readText('src/components/pages/LocationPage.astro'),
       blogIndex: await readText('src/pages/en/blog/index.astro'),
       blogPost: await readText('src/pages/en/blog/[...slug].astro'),
@@ -489,14 +499,25 @@ describe('Stage 1 i18n foundation', () => {
       assert.doesNotMatch(file, /`\/en\/(?:houses|villa)\/\$\{/);
     }
 
-    assert.match(files.atAGlance, /housePath\(slug, locale\)/);
+    // The shared-pool neighbour is resolved through the authoritative inventory:
+    // the slug is the routing key, the inventory owns the name, and the locale
+    // only presents it. A name is never derived from slug formatting.
+    assert.match(files.atAGlance, /housePath\(shared\.slug, locale\)/);
+    assert.match(files.atAGlance, /unitName\(locale, shared\.slug, shared\.name\)/);
+    assert.doesNotMatch(files.atAGlance, /slug\.replace\(/);
     assert.match(files.groupCard, /resolveLocalizedLink\(locale, 'house', firstMemberSlug\)/);
     assert.match(files.mapPreview, /resolveLocalizedLink\(locale, 'location'\)/);
     assert.match(files.masterLocationMap, /unit\.type === 'villa'[\s\S]*resolveLocalizedLink\(locale, 'villa', unit\.slug\)[\s\S]*resolveLocalizedLink\(locale, 'house', unit\.slug\)/);
     assert.match(files.singlePinMap, /location\.type === 'villa'[\s\S]*villaPath\(location\.slug, locale\)[\s\S]*housePath\(location\.slug, locale\)/);
     assert.match(files.unitCard, /unit\.type === "villa"[\s\S]*resolveLocalizedLink\(locale, 'villa', unit\.slug\)[\s\S]*resolveLocalizedLink\(locale, 'house', unit\.slug\)/);
     assert.match(files.housePage, /canonicalUrl\(routePath\(locale, 'house', slug\)\)/);
-    assert.match(files.villaPage, /Astro\.redirect\(localizedPath\(defaultLocale, 'houses'\), 302\)/);
+    // The villa renderer resolves its own canonical and links through the route
+    // map, the same way the house renderer does. The unreachable redirect guard
+    // the English-only page carried is gone: getStaticPaths supplies the unit,
+    // and missing locale content fails the build loudly instead of redirecting.
+    assert.match(files.villaPage, /canonicalUrl\(routePath\(locale, 'villa', slug\)\)/);
+    assert.match(files.villaPage, /resolveLocalizedLink\(locale, 'houses'\)/);
+    assert.doesNotMatch(files.villaPage, /Astro\.redirect/);
     assert.match(files.locationPage, /unit\.type === 'villa'[\s\S]*resolveLocalizedLink\(locale, 'villa', unit\.slug\)[\s\S]*resolveLocalizedLink\(locale, 'house', unit\.slug\)/);
 
     for (const file of helperManagedFiles) {

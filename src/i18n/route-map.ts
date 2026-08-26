@@ -69,20 +69,30 @@ export const routeMap = {
     segments: { en: ['houses'], de: ['ferienhaeuser'] },
     dynamic: true,
     content: {
+      // Every house owns a German detail page, so each declares its German slug.
+      // The slug is the property's proper name and is stable across locales.
       argyro: { en: 'argyro', de: 'argyro' },
-      // The remaining houses have no German page yet, so no German slug is declared.
-      clio: { en: 'clio' },
-      demetra: { en: 'demetra' },
-      efterpi: { en: 'efterpi' },
-      erato: { en: 'erato' },
-      kalliopi: { en: 'kalliopi' },
-      leonidas: { en: 'leonidas' },
-      margarita: { en: 'margarita' },
-      monastiri: { en: 'monastiri' },
-      penelope: { en: 'penelope' },
+      clio: { en: 'clio', de: 'clio' },
+      demetra: { en: 'demetra', de: 'demetra' },
+      efterpi: { en: 'efterpi', de: 'efterpi' },
+      erato: { en: 'erato', de: 'erato' },
+      kalliopi: { en: 'kalliopi', de: 'kalliopi' },
+      leonidas: { en: 'leonidas', de: 'leonidas' },
+      margarita: { en: 'margarita', de: 'margarita' },
+      monastiri: { en: 'monastiri', de: 'monastiri' },
+      penelope: { en: 'penelope', de: 'penelope' },
     },
   },
-  villa: { segments: { en: ['villa'] }, dynamic: true },
+  villa: {
+    // "Villa" is the German generic noun as well, so the German segment is
+    // declared rather than inferred from the English one; the property's proper
+    // name keeps its stable slug, exactly as the houses do.
+    segments: { en: ['villa'], de: ['villa'] },
+    dynamic: true,
+    content: {
+      'almond-tree-villa': { en: 'almond-tree-villa', de: 'almond-tree-villa' },
+    },
+  },
   location: { segments: { en: ['location'], de: ['lage'] } },
   contact: { segments: { en: ['contact'] } },
   faq: { segments: { en: ['faq'] } },

@@ -8,6 +8,9 @@
       "bedroom": "Schlafzimmer",
       "bedrooms": "Schlafzimmer",
       "tail": "Traditionelles kretisches Haus in Elounda."
+    },
+    "villa": {
+      "description": "{name} ist eine traditionelle kretische Villa mit privatem Pool in Vrouchas, oberhalb von Plaka und Elounda. Platz für {sleeps} Gäste, {bedrooms} Schlafzimmer, {bathrooms} Bäder, {pool}."
     }
   },
   "pages": {

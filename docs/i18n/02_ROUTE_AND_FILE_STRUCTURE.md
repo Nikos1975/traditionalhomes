@@ -56,8 +56,9 @@ blogArticle/
   elounda-beaches    /en/blog/elounda-beaches/       /de/blog/straende-in-elounda/
 ```
 
-Only the first row exists today. The rest are covered by unit tests against a
-fixture map so the capability is proven without creating German URLs.
+The first three rows exist today, for every house and for the villa. The
+`blogArticle` row is still covered by unit tests against a fixture map, so a
+locale-specific editorial slug is proven without creating a German blog URL.
 
 `src/i18n/routes.ts` remains the low-level path primitive plus thin,
 route-map-backed helpers. It never decides which routes exist.
@@ -172,8 +173,9 @@ src/components/pages/
 - Locale resources contain reusable interface copy and SEO templates, not inventory facts, property names, slugs, identifiers, coordinates, or operational data.
 - `/en/blog/` is the canonical English-only blog route; `/blog/**` is redirect-only.
 - Adding translated routes, hreflang output, a language selector, or sitemap locale expansion requires a separate approved stage.
-- `GuidePage.astro` is implemented as of Stage 3 and is the first shared page renderer. `src/pages/en/guide/vrouchas.astro` and `src/pages/de/reisefuehrer/vrouchas.astro` are thin wrappers over it.
-- The remaining page renderers listed above are still proposals.
+- `GuidePage.astro` is implemented as of Stage 3 and was the first shared page renderer. `src/pages/en/guide/vrouchas.astro` and `src/pages/de/reisefuehrer/vrouchas.astro` are thin wrappers over it.
+- `HomePage.astro`, `CollectionPage.astro`, `LocationPage.astro`, `HouseDetailPage.astro` and `VillaDetailPage.astro` are implemented. Every English and German route file for those pages is a thin wrapper that passes `locale` explicitly.
+- `ContactPage.astro`, `FaqPage.astro`, `PoliciesPage.astro`, `BlogIndexPage.astro` and `BlogArticlePage.astro` are still proposals.
 
 ## Blog Migration Note
 

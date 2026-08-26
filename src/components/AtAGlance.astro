@@ -1,7 +1,8 @@
 ---
+import inventory from '../inventory/inventory.json';
 import { housePath } from '../i18n/routes';
 import { defaultLocale, type Locale } from '../i18n/config';
-import { unitList, unitText } from '../i18n/inventory-display';
+import { unitList, unitName, unitText } from '../i18n/inventory-display';
 import { getCommonCopy } from '../i18n/translate';
 import { formatPropertyCount } from '../i18n/property-counts';
 import type { InventoryUnit } from '../types';
@@ -14,6 +15,19 @@ interface Props {
 const { unit, locale = defaultLocale } = Astro.props;
 const propertyCopy = getCommonCopy(locale).ui.property;
 const derivedCopy = propertyCopy.derived;
+const sharedPoolCopy = propertyCopy.detail.sharedPool;
+
+/**
+ * Properties that share this pool, resolved through the authoritative inventory.
+ *
+ * `sharedPoolWith` holds stable routing keys, not names: the inventory owns the
+ * unit's identity and name, and `unitName` presents that name in the active
+ * locale. A key the inventory does not own is not rendered at all, so a slug can
+ * never reach the page as if it were a property name.
+ */
+const sharedPoolUnits = (unit.sharedPoolWith ?? [])
+  .map((sharedSlug) => (inventory as InventoryUnit[]).find((candidate) => candidate.slug === sharedSlug))
+  .filter((shared): shared is InventoryUnit => Boolean(shared));
 
 // Determine if there's a custom bathroom constraint (e.g. courtyard access).
 // The constraint itself is a factual inventory value, so it is read back through
@@ -215,15 +229,15 @@ const formatAccess = (unit: InventoryUnit) => {
          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
       </div>
       <p class="text-sm text-stone-600 leading-relaxed font-light pt-1">
-        This property's swimming pool is shared exclusively with 
-        {unit.sharedPoolWith.map((slug, index) => (
+        {sharedPoolCopy.intro}
+        {sharedPoolUnits.map((shared, index) => (
           <span>
-            {index > 0 ? ' and ' : ' '}
-            <a href={housePath(slug, locale)} class="font-medium text-body-text underline hover:text-primary transition-colors capitalize">
-              {slug.replace('-', ' ')}
+            {index > 0 ? ` ${sharedPoolCopy.and} ` : ' '}
+            <a href={housePath(shared.slug, locale)} class="font-medium text-body-text underline hover:text-primary transition-colors">
+              {unitName(locale, shared.slug, shared.name)}
             </a>
           </span>
-        ))}. Booking both houses together gives one group use of both houses around the same shared pool area.
+        ))}. {sharedPoolCopy.note}
       </p>
     </div>
   )}

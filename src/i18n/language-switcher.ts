@@ -1,5 +1,5 @@
 import { defaultLocale, getLocaleMeta, supportedLocales, type Locale } from './config';
-import { resolveRoute, routeMap, routePath, type RouteDefinition, type RouteId } from './route-map';
+import { resolveRoute, routeMap, routePath, type RouteDefinition, type RouteId, type RouteMap } from './route-map';
 
 export type LanguageSwitchLink = {
   locale: Locale;
@@ -40,7 +40,7 @@ const ROUTE_PARENTS: Partial<Record<RouteId, RouteId>> = {
  * Reverse-match one real localized URL to its locale-independent route id.
  * Unknown or undeclared locale URLs return null rather than being guessed.
  */
-export function matchLocalizedPath(path: string): LocalizedRouteMatch | null {
+export function matchLocalizedPath(path: string, map: RouteMap = routeMap): LocalizedRouteMatch | null {
   const pathname = path.split('#')[0].split('?')[0];
   const parts = trimSlashes(pathname).split('/').filter(Boolean);
   const locale = supportedLocales.find((candidate) => candidate === parts[0]);
@@ -50,7 +50,7 @@ export function matchLocalizedPath(path: string): LocalizedRouteMatch | null {
   }
 
   const routeParts = parts.slice(1);
-  const definitions = Object.entries(routeMap) as [RouteId, RouteDefinition][];
+  const definitions = Object.entries(map) as [RouteId, RouteDefinition][];
   const candidates = definitions
     .flatMap(([routeId, definition]) => {
       const segments = definition.segments[locale];
@@ -103,18 +103,26 @@ export function matchLocalizedPath(path: string): LocalizedRouteMatch | null {
  * guessing, so no locale URL is ever fabricated. A path segment is never
  * translated or swapped: `/de/houses/monastiri/` cannot be produced by any
  * branch of this function.
+ *
+ * `map` defaults to the real route map and exists so the parent and homepage
+ * tiers stay under deterministic test coverage even when every real page has a
+ * translation, exactly as `resolveRoute` and its siblings already allow.
  */
-export function getLanguageSwitcherLinks(currentLocale: Locale, currentPath: string): LanguageSwitchLink[] {
-  const currentRoute = matchLocalizedPath(currentPath);
-  const launchedLocales = supportedLocales.filter((locale) => resolveRoute(locale, 'home') !== null);
+export function getLanguageSwitcherLinks(
+  currentLocale: Locale,
+  currentPath: string,
+  map: RouteMap = routeMap,
+): LanguageSwitchLink[] {
+  const currentRoute = matchLocalizedPath(currentPath, map);
+  const launchedLocales = supportedLocales.filter((locale) => resolveRoute(locale, 'home', undefined, map) !== null);
 
   return launchedLocales.map((targetLocale) => {
     const equivalent = currentRoute
-      ? resolveRoute(targetLocale, currentRoute.routeId, currentRoute.contentId)
+      ? resolveRoute(targetLocale, currentRoute.routeId, currentRoute.contentId, map)
       : null;
     const parentId = currentRoute ? ROUTE_PARENTS[currentRoute.routeId] : undefined;
-    const parent = equivalent || !parentId ? null : resolveRoute(targetLocale, parentId);
-    const href = equivalent ?? parent ?? routePath(targetLocale, 'home');
+    const parent = equivalent || !parentId ? null : resolveRoute(targetLocale, parentId, undefined, map);
+    const href = equivalent ?? parent ?? routePath(targetLocale, 'home', undefined, map);
     const meta = getLocaleMeta(targetLocale);
     const fallback = equivalent ? 'none' : parent ? 'parent' : 'home';
 

@@ -112,7 +112,8 @@
       "photoNumbered": "Foto {n}",
       "heroPhotoOf": "Titelfoto von {name}",
       "mainViewOf": "Hauptansicht von {name}",
-      "photoOfNumbered": "{name} — Foto {n}"
+      "photoOfNumbered": "{name} — Foto {n}",
+      "heroImageOf": "Titelbild von {name}"
     },
     "map": {
       "villages": {
@@ -297,6 +298,11 @@
         "guide": {
           "vrouchasTitle": "Reiseführer Vrouchas",
           "practicalAreaDetails": "Praktische Angaben zur Umgebung"
+        },
+        "sharedPool": {
+          "intro": "Der Pool dieses Hauses wird ausschließlich gemeinsam genutzt mit",
+          "and": "und",
+          "note": "Wenn beide Häuser zusammen gebucht werden, nutzt eine Gruppe beide Häuser rund um denselben gemeinsamen Poolbereich."
         }
       }
     }

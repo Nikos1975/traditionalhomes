@@ -2,18 +2,26 @@
 import VillaDetailPage from '../../../components/pages/VillaDetailPage.astro';
 import inventory from '../../../inventory/inventory.json';
 import { validateInventory } from '../../../utils/validateInventory';
-import { defaultLocale } from '../../../i18n/config';
+import { publicSlug } from '../../../i18n/route-map';
 import type { InventoryUnit } from '../../../types';
 
+/**
+ * Only villas the route map declares for German are generated. Adding one here
+ * is a route-map + content change, not a component change.
+ */
 export async function getStaticPaths() {
   const units = inventory as InventoryUnit[];
   validateInventory(units);
+
   return units
-    .filter((u) => u.type === 'villa')
-    .map((unit) => ({ params: { slug: unit.slug }, props: { unit } }));
+    .filter((unit) => unit.type === 'villa')
+    .flatMap((unit) => {
+      const slug = publicSlug('de', 'villa', unit.slug);
+      return slug ? [{ params: { slug }, props: { unit } }] : [];
+    });
 }
 
 const { unit } = Astro.props as { unit: InventoryUnit };
 ---
 
-<VillaDetailPage locale={defaultLocale} unit={unit} />
+<VillaDetailPage locale="de" unit={unit} />

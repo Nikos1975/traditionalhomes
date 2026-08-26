@@ -26,8 +26,9 @@ If an English claim looks wrong or outdated, it is raised as a proposed
 once approved. Until then the locales stay factually aligned. Open proposals are
 listed at the end of this document.
 
-German is **not** translated sitewide. German owns the five public routes
-listed in "German cluster" below. Every other German string resolves to the
+German is **not** translated sitewide. German owns the fifteen public routes
+listed in "German cluster" below: the four cluster routes, all ten house detail
+pages and the villa detail page. Every other German string resolves to the
 English source through the documented partial-overlay fallback in
 `src/i18n/translate.ts`, and every link to a page German does not own carries an
 explicit `hreflang="en"`.
@@ -55,8 +56,8 @@ keeps the length of the factual list.
 |---|---|---|---|---|---|---|---|---|---|
 | Homepage | Source present | Localized | Not started | Not started | Not started | Not started | Not started | Ready for QA | `/de/` renders the shared `HomePage.astro`; copy in `home.json`. |
 | Houses index | Source present | Localized | Not started | Not started | Not started | Not started | Not started | Ready for QA | `/de/ferienhaeuser/` renders the shared `CollectionPage.astro`; copy in `properties.json`. Filtering logic is shared, not forked. |
-| House detail pages | Source present | Partial | Not started | Not started | Not started | Not started | Not started | Ready for QA | Argyro only, at `/de/ferienhaeuser/argyro/`, as the reference house. The other nine have no German content and therefore no German route. |
-| Villa page | Source present | Not started | Not started | Not started | Not started | Not started | Not started | Not started | Stable slug should be preserved. |
+| House detail pages | Source present | Localized | Not started | Not started | Not started | Not started | Not started | Ready for QA | All ten houses at `/de/ferienhaeuser/<slug>/`, generated from the shared `HouseDetailPage.astro`. Slugs are stable across locales. |
+| Villa page | Source present | Localized | Not started | Not started | Not started | Not started | Not started | Ready for QA | `/de/villa/almond-tree-villa/` renders the shared `VillaDetailPage.astro`. `villa` is the German generic noun as well, so the segment is declared per locale, not inferred; the property's proper name keeps its stable slug. |
 | Location page | Source present | Localized | Not started | Not started | Not started | Not started | Not started | Ready for QA | `/de/lage/` renders the shared `LocationPage.astro`; copy in `location.json`. |
 | Contact page | Source present | Not started | Not started | Not started | Not started | Not started | Not started | Not started | Contact form must keep posting to `/api/contact`. |
 | FAQ page | Source present | Not started | Not started | Not started | Not started | Not started | Not started | Not started | Long bodies may need content collection handling. |
@@ -154,13 +155,23 @@ applied to every locale at once.
 | `home` | — | `/en/` | `/de/` |
 | `houses` | — | `/en/houses/` | `/de/ferienhaeuser/` |
 | `house` | `argyro` | `/en/houses/argyro/` | `/de/ferienhaeuser/argyro/` |
+| `house` | `leonidas` | `/en/houses/leonidas/` | `/de/ferienhaeuser/leonidas/` |
+| `house` | `margarita` | `/en/houses/margarita/` | `/de/ferienhaeuser/margarita/` |
+| `house` | `demetra` | `/en/houses/demetra/` | `/de/ferienhaeuser/demetra/` |
+| `house` | `penelope` | `/en/houses/penelope/` | `/de/ferienhaeuser/penelope/` |
+| `house` | `erato` | `/en/houses/erato/` | `/de/ferienhaeuser/erato/` |
+| `house` | `clio` | `/en/houses/clio/` | `/de/ferienhaeuser/clio/` |
+| `house` | `efterpi` | `/en/houses/efterpi/` | `/de/ferienhaeuser/efterpi/` |
+| `house` | `kalliopi` | `/en/houses/kalliopi/` | `/de/ferienhaeuser/kalliopi/` |
+| `house` | `monastiri` | `/en/houses/monastiri/` | `/de/ferienhaeuser/monastiri/` |
+| `villa` | `almond-tree-villa` | `/en/villa/almond-tree-villa/` | `/de/villa/almond-tree-villa/` |
 | `location` | — | `/en/location/` | `/de/lage/` |
 | `guide` | `vrouchas` | `/en/guide/vrouchas/` | `/de/reisefuehrer/vrouchas/` |
 
 Shared renderers in `src/components/pages/`: `HomePage`, `CollectionPage`,
-`LocationPage`, `HouseDetailPage`, `GuidePage`. Every route file is a thin
-wrapper that passes `locale` explicitly. There is no parallel German
-implementation and no client-side translation runtime.
+`LocationPage`, `HouseDetailPage`, `VillaDetailPage`, `GuidePage`. Every route
+file is a thin wrapper that passes `locale` explicitly. There is no parallel
+German implementation and no client-side translation runtime.
 
 Locale resources added for German: `home.json`, `location.json`,
 `properties.json`, `seo.json`, plus additions to `forms.json`. Long-form
@@ -171,8 +182,8 @@ English page, and only its display title comes from the German content entry.
 
 ### Visible-language completeness
 
-All five German routes were audited against their rendered HTML, not against the
-translation payload. Two checks run in `tests/i18n-german-visible-language.test.mjs`:
+All fifteen German routes are audited against their rendered HTML, not against
+the translation payload. Two checks run in `tests/i18n-german-visible-language.test.mjs`:
 
 1. **EN↔DE parity.** A visible string — text node, `aria-label`, `alt`, `title`
    or `placeholder` — that is identical on the German page and on its English
@@ -187,9 +198,11 @@ Legitimately untranslated on a German page: proper and place names, brand names,
 `WebHotelier` item identifiers such as `data-item-name`, airport codes, URLs, and
 links to routes German does not own — those carry `hreflang="en"` by design.
 
-Not yet German: the remaining nine houses, Almond Tree Villa, contact, FAQ,
-policies, about, and all blog articles. Those links appear on German pages with
-their English URL and an explicit `hreflang="en"`.
+Not yet German: contact, FAQ, policies, about, the Mavrikiano guide, and all
+blog articles. Those links appear on German pages with their English URL and an
+explicit `hreflang="en"`. The language selector's parent and homepage fallback
+tiers remain in place for that content; no translated property relies on them
+any more.
 
 ### Deferred: language switcher
 
