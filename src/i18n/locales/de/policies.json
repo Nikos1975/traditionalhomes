@@ -16,7 +16,7 @@
   "order": ["access", "check-in-out", "pets", "wifi", "quiet-hours", "smoking", "cancellation"],
   "sections": {
     "access": "Zugang & Mobilität",
-    "check-in-out": "Check-in & Check-out",
+    "check-in-out": "Anreise & Abreise",
     "pets": "Haustiere",
     "wifi": "Internet",
     "quiet-hours": "Ruhezeiten",
