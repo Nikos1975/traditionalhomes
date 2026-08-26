@@ -361,6 +361,7 @@ describe('Stage 1 i18n foundation', () => {
         villa: 'Villa',
         editorNote: "Editor's Note:",
         details: 'Details',
+        detailsInEnglish: 'Details in English',
         checkDates: 'Check dates',
         features: {
           directSeaView: 'Direct Sea View',

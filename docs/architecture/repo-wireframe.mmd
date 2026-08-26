@@ -15,7 +15,7 @@ flowchart TD
   src --> components["components<br/>cards, maps, gallery, booking"]
   src --> content["content<br/>houses, villa, blog"]
   src --> inventory["inventory<br/>inventory.json, groups, pairings"]
-  src --> i18n["i18n<br/>locale config, route map, routes, translations, SEO helpers"]
+  src --> i18n["i18n<br/>locale config, route map, routes, translations, selector + SEO helpers"]
   src --> data["data<br/>siteCopy, gallery, locations"]
   src --> utils["utils<br/>validation, gallery sorting, filters, maps"]
   src --> styles["styles/global.css"]
@@ -26,6 +26,8 @@ flowchart TD
   base --> footer["Footer"]
   base --> mobileBooking["Mobile booking bar"]
   base --> i18n
+  header --> languageSelector["EN/DE language selector<br/>equivalent route or target-locale home"]
+  languageSelector --> i18n
 
   pages --> rootRedirect["/ redirects to /en/"]
   pages --> notFound["/404.html<br/>custom not-found fallback"]
@@ -83,6 +85,7 @@ flowchart TD
   apiContact --> cloudflareEmail["Cloudflare Email REST API"]
 
   i18n --> routeMap["route-map.ts<br/>internal route ids to localized public paths"]
+  i18n --> languageSwitcher["language-switcher.ts<br/>real-locale visibility + route-aware switching"]
   i18n --> enLocale["English locale JSON<br/>common, navigation, forms, seo, guide"]
   i18n --> deLocale["German locale JSON overlay<br/>partial, falls back to English"]
 

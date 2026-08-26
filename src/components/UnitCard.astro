@@ -23,6 +23,19 @@ const unitPageLink =
     ? resolveLocalizedLink(locale, 'villa', unit.slug)
     : resolveLocalizedLink(locale, 'house', unit.slug);
 
+/**
+ * A card whose detail page is not translated yet still links to the English
+ * page, but it says so. Every clickable part of the card carries the target
+ * language, and the action button names it in words, so a reader never leaves
+ * the locale without being told. The alternative — fabricating a `/de/` detail
+ * URL — would 404, and suppressing the link would hide a real page.
+ */
+const detailsInEnglish = unitPageLink.isFallback;
+const detailsLabel = detailsInEnglish
+  ? propertyCopy.card.detailsInEnglish
+  : propertyCopy.card.details;
+const detailsHint = detailsInEnglish ? propertyCopy.card.detailsInEnglish : undefined;
+
 // 2. IMAGE AUTOMATION
 const allImages = import.meta.glob(
   "/src/assets/images/**/*.{webp,jpg,jpeg,png}",
@@ -72,7 +85,8 @@ const homepageFeatureLabel = homepageFeatureKey ? propertyCopy.card.features[hom
 >
   {/* OPTIMIZED IMAGE SECTION */}
   <a
-    href={unitPageLink.href} hreflang={unitPageLink.hreflang}
+    href={unitPageLink.href} hreflang={unitPageLink.hreflang} lang={unitPageLink.hreflang}
+    title={detailsHint}
     class="block relative overflow-hidden bg-stone-900 aspect-[4/3]"
     tabindex="-1"
     aria-hidden="true"
@@ -111,7 +125,8 @@ const homepageFeatureLabel = homepageFeatureKey ? propertyCopy.card.features[hom
           {displayLocation}
         </p>
         <a
-          href={unitPageLink.href} hreflang={unitPageLink.hreflang}
+          href={unitPageLink.href} hreflang={unitPageLink.hreflang} lang={unitPageLink.hreflang}
+          title={detailsHint}
           class="font-serif text-3xl text-body-text group-hover:text-primary transition-colors leading-tight block"
         >
           {unitName(locale, unit.slug, unit.name)}
@@ -192,10 +207,10 @@ const homepageFeatureLabel = homepageFeatureKey ? propertyCopy.card.features[hom
     {/* ACTION BUTTONS */}
     <div class="mt-auto pt-6 border-t border-stone-100 flex gap-3">
       <a
-        href={unitPageLink.href} hreflang={unitPageLink.hreflang}
+        href={unitPageLink.href} hreflang={unitPageLink.hreflang} lang={unitPageLink.hreflang}
         class="btn-outline flex-1 py-3 px-0 text-center rounded-xl bg-white shadow-sm hover:shadow-md transition-shadow"
       >
-        {propertyCopy.card.details}
+        {detailsLabel}
       </a>
       <a
         href={siteCopy.bookingEngineUrl}

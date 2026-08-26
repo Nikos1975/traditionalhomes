@@ -42,6 +42,13 @@ const nameA = firstMemberSlug ? unitName(locale, firstMemberSlug, units.find(u =
 const nameB = secondMemberSlug ? unitName(locale, secondMemberSlug, units.find(u => u.slug === secondMemberSlug)?.name ?? secondMemberSlug) : '';
 const detailLinkA = firstMemberSlug ? resolveLocalizedLink(locale, 'house', firstMemberSlug) : null;
 const detailLinkB = secondMemberSlug ? resolveLocalizedLink(locale, 'house', secondMemberSlug) : null;
+
+/**
+ * Same rule as the property cards: a member whose detail page is not translated
+ * yet still links to the English page, and the button says so rather than
+ * moving a German reader into English silently.
+ */
+const englishFallbackLabel = propertyCopy.card.detailsInEnglish;
 ---
 
 <article
@@ -150,11 +157,33 @@ const detailLinkB = secondMemberSlug ? resolveLocalizedLink(locale, 'house', sec
 
     {/* ACTIONS */}
     <div class="pt-6 border-t border-stone-100 grid grid-cols-1 sm:grid-cols-3 gap-3">
-      <a href={detailLinkA?.href ?? '#'} hreflang={detailLinkA?.hreflang} class="btn-outline py-3 px-0 text-center rounded-xl bg-white shadow-sm hover:shadow-md transition-shadow">
+      <a
+        href={detailLinkA?.href ?? '#'}
+        hreflang={detailLinkA?.hreflang}
+        lang={detailLinkA?.hreflang}
+        title={detailLinkA?.isFallback ? englishFallbackLabel : undefined}
+        class="btn-outline py-3 px-0 text-center rounded-xl bg-white shadow-sm hover:shadow-md transition-shadow"
+      >
         {propertyCopy.group.viewProperty.replace('{name}', nameA)}
+        {detailLinkA?.isFallback && (
+          <span class="block font-sans text-[10px] font-bold uppercase tracking-[0.14em] text-stone-400">
+            {englishFallbackLabel}
+          </span>
+        )}
       </a>
-      <a href={detailLinkB?.href ?? '#'} hreflang={detailLinkB?.hreflang} class="btn-outline py-3 px-0 text-center rounded-xl bg-white shadow-sm hover:shadow-md transition-shadow">
+      <a
+        href={detailLinkB?.href ?? '#'}
+        hreflang={detailLinkB?.hreflang}
+        lang={detailLinkB?.hreflang}
+        title={detailLinkB?.isFallback ? englishFallbackLabel : undefined}
+        class="btn-outline py-3 px-0 text-center rounded-xl bg-white shadow-sm hover:shadow-md transition-shadow"
+      >
         {propertyCopy.group.viewProperty.replace('{name}', nameB)}
+        {detailLinkB?.isFallback && (
+          <span class="block font-sans text-[10px] font-bold uppercase tracking-[0.14em] text-stone-400">
+            {englishFallbackLabel}
+          </span>
+        )}
       </a>
       <a 
         href="https://traditionalhomes.reserve-online.net/" 

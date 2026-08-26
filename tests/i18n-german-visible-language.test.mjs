@@ -59,8 +59,21 @@ const ENGLISH_GALLERY_WORDS = [
   'select ',
 ];
 
+/**
+ * The language selector is not page copy.
+ *
+ * Its labels name the languages themselves — `EN`, `DE`, `English`, `Deutsch` —
+ * so they are identical on both locales by design, and translating them would be
+ * wrong. The anchors carry `data-language-switcher-link`, so they are removed
+ * here rather than maintained as a growing allow-list of locale names.
+ * `tests/i18n-language-switcher.test.mjs` owns those labels. The selector's own
+ * heading stays in the comparison, because it really is translated copy.
+ */
+const withoutLanguageSwitcherLinks = (html) =>
+  html.replace(/<a\b[^>]*\bdata-language-switcher-link\b[^>]*>[\s\S]*?<\/a>/gi, ' ');
+
 const strip = (html) =>
-  html
+  withoutLanguageSwitcherLinks(html)
     .replace(/<script[\s\S]*?<\/script>/gi, ' ')
     .replace(/<style[\s\S]*?<\/style>/gi, ' ')
     .replace(/<head[\s\S]*?<\/head>/gi, ' ')

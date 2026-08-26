@@ -27,10 +27,21 @@ const EN_PILOT = `/en/guide/${PILOT_ID}/`;
 const DE_PILOT = `/de/reisefuehrer/${PILOT_ID}/`;
 const UNBUILT_LOCALES = ['fr', 'ru', 'zh', 'ar', 'he'];
 
+/**
+ * Anchors, with the one distinction the navigation contract depends on.
+ *
+ * Ordinary navigation stays inside the active locale, or is marked as a
+ * deliberate English fallback. The language selector does the opposite on
+ * purpose: crossing locales is its entire function, so it carries a stable
+ * marker and is exempt from the fallback and in-locale hreflang rules. Its
+ * target must still be a page that really exists, and its own behaviour is
+ * covered by `tests/i18n-language-switcher.test.mjs`.
+ */
 const anchors = (html) =>
   [...html.matchAll(/<a\b([^>]*)>/g)].map(([, attrs]) => ({
     href: attrs.match(/\bhref="([^"]*)"/)?.[1],
     hreflang: attrs.match(/\bhreflang="([^"]*)"/)?.[1],
+    isLanguageSwitcher: /\bdata-language-switcher-link\b/.test(attrs),
   }));
 
 const alternates = (html) =>
@@ -331,6 +342,23 @@ describe('Stage 3 German route pilot — source contracts', () => {
     // English source, so a typo can never become a silently missing string.
     const namespaces = ['common', 'navigation', 'forms', 'guide'];
 
+    /**
+     * Lists where a locale selects from the English inventory instead of
+     * translating it entry for entry.
+     *
+     * `navigation.main` is the locale's launch surface, not a translation list:
+     * English holds every primary route, and a locale publishes only the ones
+     * whose pages really exist. Entries are therefore matched by their stable
+     * authored `href` rather than by array index, so omitting one never shifts
+     * the meaning of the entries a locale does keep. Every other array stays
+     * under the whole-list-or-nothing rule below; membership here is explicit
+     * and per path, never inferred from an array's contents.
+     *
+     * Which routes German may expose is a separate question, owned by
+     * `tests/i18n-language-switcher.test.mjs`.
+     */
+    const LOCALE_SELECTION_LISTS = new Set(['navigation.main']);
+
     for (const namespace of namespaces) {
       const source = JSON.parse(await readText(`src/i18n/locales/en/${namespace}.json`));
       const overlay = JSON.parse(await readText(`src/i18n/locales/de/${namespace}.json`));
@@ -341,6 +369,36 @@ describe('Stage 3 German route pilot — source contracts', () => {
             Array.isArray(sourceValue) && Array.isArray(overlayValue),
             `de/${namespace}.json ${path} changes the shape of the English source`,
           );
+
+          if (LOCALE_SELECTION_LISTS.has(path)) {
+            const sourceByHref = new Map(sourceValue.map((item) => [item?.href, item]));
+            const claimed = new Set();
+
+            overlayValue.forEach((item, index) => {
+              const href = item?.href;
+
+              assert.equal(
+                typeof href,
+                'string',
+                `de/${namespace}.json ${path}[${index}] must carry the authored href it selects`,
+              );
+              assert.ok(
+                sourceByHref.has(href),
+                `de/${namespace}.json ${path} selects ${href}, which the English navigation does not offer`,
+              );
+              assert.ok(
+                !claimed.has(href),
+                `de/${namespace}.json ${path} selects ${href} more than once`,
+              );
+              claimed.add(href);
+
+              // The selected entry still has to match the English item's shape.
+              assertSubset(sourceByHref.get(href), item, `${path}[href=${href}]`);
+            });
+
+            return;
+          }
+
           assert.equal(
             overlayValue.length,
             sourceValue.length,
@@ -508,11 +566,14 @@ describe('Stage 3 German route pilot — generated output', async () => {
   it('keeps every internal link on the German pilot pointing at a page that exists', async () => {
     const html = await page('de/reisefuehrer/vrouchas');
 
-    for (const { href, hreflang } of anchors(html)) {
+    for (const { href, hreflang, isLanguageSwitcher } of anchors(html)) {
       if (!href?.startsWith('/')) continue;
 
       const pathname = href.split('#')[0];
       await access(join(outputPath, pathname, 'index.html'));
+
+      // The language selector crosses locales by design; only its target is checked here.
+      if (isLanguageSwitcher) continue;
 
       // A link that leaves the active locale must say so.
       if (pathname.startsWith('/de/')) {
@@ -526,8 +587,15 @@ describe('Stage 3 German route pilot — generated output', async () => {
   it('keeps English internal links free of fallback markup', async () => {
     const html = await page('en/guide/vrouchas');
 
-    for (const { href, hreflang } of anchors(html)) {
+    for (const { href, hreflang, isLanguageSwitcher } of anchors(html)) {
       if (!href?.startsWith('/')) continue;
+
+      if (isLanguageSwitcher) {
+        // Still a real page, but a deliberate cross-locale link rather than a fallback.
+        await access(join(outputPath, href.split('#')[0].split('?')[0], 'index.html'));
+        continue;
+      }
+
       assert.equal(hreflang, undefined, `${href} on an English page should not be marked as a fallback`);
     }
   });
@@ -780,11 +848,15 @@ describe('Stage 3 German route pilot — generated output', async () => {
     for (const route of germanRoutes) {
       const html = await page(route);
 
-      for (const { href, hreflang } of anchors(html)) {
+      for (const { href, hreflang, isLanguageSwitcher } of anchors(html)) {
         if (!href?.startsWith('/')) continue;
 
         const pathname = href.split('#')[0].split('?')[0];
         await access(join(outputPath, pathname, 'index.html'));
+
+        // Switching language to the English equivalent is the selector's purpose,
+        // not an unwanted fallback from German navigation.
+        if (isLanguageSwitcher) continue;
 
         if (pathname.startsWith('/de/')) {
           assert.equal(hreflang, undefined, `${route}: ${href} is in-locale and must not carry hreflang`);
@@ -797,6 +869,122 @@ describe('Stage 3 German route pilot — generated output', async () => {
         }
       }
     }
+  });
+
+  it('never offers a fabricated German URL for an untranslated property page', async () => {
+    const html = await page('en/houses/monastiri');
+    const german = anchors(html).filter((link) => link.isLanguageSwitcher && link.href?.startsWith('/de/'));
+
+    assert.ok(german.length > 0, 'the English property page must offer a German choice');
+
+    for (const { href } of german) {
+      // The URL the preview reported. It has no page and must never be emitted.
+      assert.notEqual(href, '/de/houses/monastiri/');
+      assert.doesNotMatch(href, /^\/de\/houses\//, `${href} carries an English segment under /de/`);
+      // Nearest real localized parent, and it really exists.
+      assert.equal(href, '/de/ferienhaeuser/');
+      await access(join(outputPath, href, 'index.html'));
+    }
+
+    // Argyro is translated, so it keeps its own German page.
+    for (const { href } of anchors(await page('en/houses/argyro')).filter(
+      (link) => link.isLanguageSwitcher && link.href?.startsWith('/de/'),
+    )) {
+      assert.equal(href, '/de/ferienhaeuser/argyro/');
+    }
+  });
+
+  it('emits no /de/houses/ URL anywhere in the generated site', async () => {
+    const offenders = [];
+
+    for (const file of await readdir(outputPath, { recursive: true, withFileTypes: true })) {
+      if (!file.isFile() || !file.name.endsWith('.html')) continue;
+
+      const html = await readFile(join(file.parentPath ?? file.path, file.name), 'utf8');
+
+      if (/(?:href|content)="(?:https:\/\/traditional-homes\.gr)?\/de\/houses\//.test(html)) {
+        offenders.push(relative(outputPath, join(file.parentPath ?? file.path, file.name)));
+      }
+    }
+
+    assert.deepEqual(offenders, []);
+  });
+
+  it('marks every English property fallback on the German collection instead of hiding it', async () => {
+    const html = await page('de/ferienhaeuser');
+    const germanCopy = JSON.parse(await readText('src/i18n/locales/de/common.json'));
+    const fallbackLabel = germanCopy.ui.property.card.detailsInEnglish;
+    const cards = [...html.matchAll(/<article[\s\S]*?<\/article>/g)].map(([card]) => card);
+
+    assert.ok(cards.length >= 11, `expected every property to render a card, found ${cards.length}`);
+
+    let translated = 0;
+    let fallbacks = 0;
+
+    for (const card of cards) {
+      const slug = card.match(/data-id="([^"]+)"/)?.[1];
+      const links = [...card.matchAll(/<a\b([^>]*)>/g)]
+        .map(([, attrs]) => ({
+          href: attrs.match(/\bhref="([^"]*)"/)?.[1],
+          hreflang: attrs.match(/\bhreflang="([^"]*)"/)?.[1],
+          lang: attrs.match(/\blang="([^"]*)"/)?.[1],
+        }))
+        .filter((link) => link.href?.startsWith('/'));
+
+      assert.ok(links.length > 0, `${slug} card has no internal link`);
+
+      for (const { href, hreflang, lang } of links) {
+        // No phantom locale URL, and whatever it points at was really built.
+        assert.doesNotMatch(href, /^\/de\/houses\//, `${slug}: ${href} fabricates a German route`);
+        await access(join(outputPath, href.split('#')[0], 'index.html'));
+
+        if (href.startsWith('/de/')) {
+          assert.equal(hreflang, undefined, `${slug}: ${href} is in-locale and must not be marked`);
+          continue;
+        }
+
+        // Leaving German must be declared on every clickable part of the card.
+        assert.equal(hreflang, 'en', `${slug}: ${href} leaves German without hreflang`);
+        assert.equal(lang, 'en', `${slug}: ${href} leaves German without lang`);
+      }
+
+      const leavesGerman = links.some(({ href }) => !href.startsWith('/de/'));
+
+      // A card that sends the reader to English must say so in visible German copy.
+      assert.equal(
+        card.includes(fallbackLabel),
+        leavesGerman,
+        leavesGerman
+          ? `${slug}: an English fallback must say so in visible German copy`
+          : `${slug}: a translated card must not claim its details are English`,
+      );
+
+      // A group card offers its two members, so only single-property cards are
+      // required to point every link at one page.
+      if (slug?.startsWith('group-')) continue;
+
+      if (slug === 'argyro') {
+        translated += 1;
+        assert.ok(
+          links.every(({ href }) => href.startsWith('/de/')),
+          'Argyro is translated and must not link to English',
+        );
+        assert.equal(links[0].href, '/de/ferienhaeuser/argyro/');
+        continue;
+      }
+
+      fallbacks += 1;
+
+      const expected = slug === 'almond-tree-villa' ? `/en/villa/${slug}/` : `/en/houses/${slug}/`;
+
+      assert.ok(
+        links.every(({ href }) => href === expected),
+        `${slug}: every card link must point at the same English detail page`,
+      );
+    }
+
+    assert.equal(translated, 1, 'exactly one German property page exists today');
+    assert.ok(fallbacks >= 10, 'every other property is still an explicit English fallback');
   });
 
   it('serialises only the active locale into client-side script payloads', async () => {

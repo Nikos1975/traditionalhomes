@@ -9,6 +9,7 @@
   "menuLabel": "Menu",
   "openMenuLabel": "Open navigation menu",
   "closeMenuLabel": "Close navigation menu",
+  "languageSwitcherLabel": "Language",
   "actions": {
     "checkDates": "Check Dates"
   },

@@ -1,5 +1,6 @@
 ---
 import { defaultLocale, type Locale } from '../i18n/config';
+import { getLanguageSwitcherLinks } from '../i18n/language-switcher';
 import { resolveAuthoredHref } from '../i18n/route-map';
 import { getCommonCopy, getNavigationCopy } from '../i18n/translate';
 
@@ -23,6 +24,7 @@ const navLinks = navigation.main.map((link) => {
 const brandLink = resolveAuthoredHref(locale, navigation.brand.homeHref);
 
 const currentPath = Astro.url.pathname;
+const languageLinks = getLanguageSwitcherLinks(locale, currentPath);
 const bookingUrl = 'https://traditionalhomes.reserve-online.net/';
 ---
 
@@ -79,8 +81,35 @@ const bookingUrl = 'https://traditionalhomes.reserve-online.net/';
       })}
     </nav>
 
-    {/* CTA & MOBILE TOGGLE */}
-    <div class="flex flex-shrink-0 items-center gap-4">
+    {/* LANGUAGE, CTA & MOBILE TOGGLE */}
+    <div class="flex flex-shrink-0 items-center gap-3 sm:gap-4">
+      {languageLinks.length > 1 && (
+        <nav
+          class="hidden sm:flex items-center rounded-full border border-stone-200 bg-white/80 p-1 shadow-sm backdrop-blur-sm"
+          aria-label={navigation.languageSwitcherLabel}
+          data-language-switcher="desktop"
+        >
+          {languageLinks.map((link) => (
+            <a
+              href={link.href}
+              hreflang={link.hreflang}
+              lang={link.hreflang}
+              data-language-switcher-link
+              title={link.label}
+              aria-current={link.isActive ? 'page' : undefined}
+              class:list={[
+                'flex min-w-9 items-center justify-center rounded-full px-2 py-1.5 font-sans text-[10px] font-bold uppercase tracking-[0.16em] transition-colors duration-200',
+                link.isActive
+                  ? 'bg-stone-900 text-white'
+                  : 'text-stone-500 hover:bg-stone-100 hover:text-stone-900'
+              ]}
+            >
+              {link.shortLabel}
+            </a>
+          ))}
+        </nav>
+      )}
+
       <a
         href={bookingUrl}
         target="_blank"
@@ -153,6 +182,33 @@ const bookingUrl = 'https://traditionalhomes.reserve-online.net/';
         );
       })}
     </ul>
+
+    {languageLinks.length > 1 && (
+      <div class="flex-shrink-0 border-t border-stone-200 bg-stone-50 px-4 py-3" data-language-switcher="mobile">
+        <p class="px-2 pb-2 font-sans text-[10px] font-bold uppercase tracking-[0.2em] text-stone-400">
+          {navigation.languageSwitcherLabel}
+        </p>
+        <div class="grid grid-cols-2 gap-2">
+          {languageLinks.map((link) => (
+            <a
+              href={link.href}
+              hreflang={link.hreflang}
+              lang={link.hreflang}
+              data-language-switcher-link
+              aria-current={link.isActive ? 'page' : undefined}
+              class:list={[
+                'rounded-xl px-3 py-2.5 text-center font-sans text-sm font-semibold transition-colors duration-200',
+                link.isActive
+                  ? 'bg-stone-900 text-white'
+                  : 'bg-white text-stone-600 hover:bg-stone-100 hover:text-stone-900'
+              ]}
+            >
+              {link.label}
+            </a>
+          ))}
+        </div>
+      </div>
+    )}
 
     <div class="flex-shrink-0 border-t border-stone-200 bg-white p-4">
       <a
