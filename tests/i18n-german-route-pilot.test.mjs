@@ -871,6 +871,122 @@ describe('Stage 3 German route pilot — generated output', async () => {
     }
   });
 
+  it('never offers a fabricated German URL for an untranslated property page', async () => {
+    const html = await page('en/houses/monastiri');
+    const german = anchors(html).filter((link) => link.isLanguageSwitcher && link.href?.startsWith('/de/'));
+
+    assert.ok(german.length > 0, 'the English property page must offer a German choice');
+
+    for (const { href } of german) {
+      // The URL the preview reported. It has no page and must never be emitted.
+      assert.notEqual(href, '/de/houses/monastiri/');
+      assert.doesNotMatch(href, /^\/de\/houses\//, `${href} carries an English segment under /de/`);
+      // Nearest real localized parent, and it really exists.
+      assert.equal(href, '/de/ferienhaeuser/');
+      await access(join(outputPath, href, 'index.html'));
+    }
+
+    // Argyro is translated, so it keeps its own German page.
+    for (const { href } of anchors(await page('en/houses/argyro')).filter(
+      (link) => link.isLanguageSwitcher && link.href?.startsWith('/de/'),
+    )) {
+      assert.equal(href, '/de/ferienhaeuser/argyro/');
+    }
+  });
+
+  it('emits no /de/houses/ URL anywhere in the generated site', async () => {
+    const offenders = [];
+
+    for (const file of await readdir(outputPath, { recursive: true, withFileTypes: true })) {
+      if (!file.isFile() || !file.name.endsWith('.html')) continue;
+
+      const html = await readFile(join(file.parentPath ?? file.path, file.name), 'utf8');
+
+      if (/(?:href|content)="(?:https:\/\/traditional-homes\.gr)?\/de\/houses\//.test(html)) {
+        offenders.push(relative(outputPath, join(file.parentPath ?? file.path, file.name)));
+      }
+    }
+
+    assert.deepEqual(offenders, []);
+  });
+
+  it('marks every English property fallback on the German collection instead of hiding it', async () => {
+    const html = await page('de/ferienhaeuser');
+    const germanCopy = JSON.parse(await readText('src/i18n/locales/de/common.json'));
+    const fallbackLabel = germanCopy.ui.property.card.detailsInEnglish;
+    const cards = [...html.matchAll(/<article[\s\S]*?<\/article>/g)].map(([card]) => card);
+
+    assert.ok(cards.length >= 11, `expected every property to render a card, found ${cards.length}`);
+
+    let translated = 0;
+    let fallbacks = 0;
+
+    for (const card of cards) {
+      const slug = card.match(/data-id="([^"]+)"/)?.[1];
+      const links = [...card.matchAll(/<a\b([^>]*)>/g)]
+        .map(([, attrs]) => ({
+          href: attrs.match(/\bhref="([^"]*)"/)?.[1],
+          hreflang: attrs.match(/\bhreflang="([^"]*)"/)?.[1],
+          lang: attrs.match(/\blang="([^"]*)"/)?.[1],
+        }))
+        .filter((link) => link.href?.startsWith('/'));
+
+      assert.ok(links.length > 0, `${slug} card has no internal link`);
+
+      for (const { href, hreflang, lang } of links) {
+        // No phantom locale URL, and whatever it points at was really built.
+        assert.doesNotMatch(href, /^\/de\/houses\//, `${slug}: ${href} fabricates a German route`);
+        await access(join(outputPath, href.split('#')[0], 'index.html'));
+
+        if (href.startsWith('/de/')) {
+          assert.equal(hreflang, undefined, `${slug}: ${href} is in-locale and must not be marked`);
+          continue;
+        }
+
+        // Leaving German must be declared on every clickable part of the card.
+        assert.equal(hreflang, 'en', `${slug}: ${href} leaves German without hreflang`);
+        assert.equal(lang, 'en', `${slug}: ${href} leaves German without lang`);
+      }
+
+      const leavesGerman = links.some(({ href }) => !href.startsWith('/de/'));
+
+      // A card that sends the reader to English must say so in visible German copy.
+      assert.equal(
+        card.includes(fallbackLabel),
+        leavesGerman,
+        leavesGerman
+          ? `${slug}: an English fallback must say so in visible German copy`
+          : `${slug}: a translated card must not claim its details are English`,
+      );
+
+      // A group card offers its two members, so only single-property cards are
+      // required to point every link at one page.
+      if (slug?.startsWith('group-')) continue;
+
+      if (slug === 'argyro') {
+        translated += 1;
+        assert.ok(
+          links.every(({ href }) => href.startsWith('/de/')),
+          'Argyro is translated and must not link to English',
+        );
+        assert.equal(links[0].href, '/de/ferienhaeuser/argyro/');
+        continue;
+      }
+
+      fallbacks += 1;
+
+      const expected = slug === 'almond-tree-villa' ? `/en/villa/${slug}/` : `/en/houses/${slug}/`;
+
+      assert.ok(
+        links.every(({ href }) => href === expected),
+        `${slug}: every card link must point at the same English detail page`,
+      );
+    }
+
+    assert.equal(translated, 1, 'exactly one German property page exists today');
+    assert.ok(fallbacks >= 10, 'every other property is still an explicit English fallback');
+  });
+
   it('serialises only the active locale into client-side script payloads', async () => {
     const german = await page('de');
     const english = await page('en');

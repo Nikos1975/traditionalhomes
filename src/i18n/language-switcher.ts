@@ -8,6 +8,8 @@ export type LanguageSwitchLink = {
   href: string;
   hreflang: string;
   isActive: boolean;
+  /** Which tier of the fallback hierarchy produced `href`. */
+  fallback: 'none' | 'parent' | 'home';
   isFallbackToHome: boolean;
 };
 
@@ -18,6 +20,21 @@ type LocalizedRouteMatch = {
 };
 
 const trimSlashes = (value: string) => value.replace(/^\/+|\/+$/g, '');
+
+/**
+ * Where a locale lands when it has no equivalent for a deep page.
+ *
+ * Declared per route, never inferred from a URL: a property detail belongs to
+ * the collection that lists it, so a reader switching language arrives at the
+ * real localized collection rather than being dropped on the homepage. A route
+ * with no declared parent, or whose parent the target locale does not own,
+ * falls through to that locale's homepage.
+ */
+const ROUTE_PARENTS: Partial<Record<RouteId, RouteId>> = {
+  house: 'houses',
+  villa: 'houses',
+  blogArticle: 'blog',
+};
 
 /**
  * Reverse-match one real localized URL to its locale-independent route id.
@@ -74,10 +91,18 @@ export function matchLocalizedPath(path: string): LocalizedRouteMatch | null {
 /**
  * Build the visible language choices for the current page.
  *
- * A locale is visible only after its real homepage exists in routeMap. When the
- * current page has an equivalent route in the target locale, link to it;
- * otherwise fall back to that locale's real homepage. No locale URL is ever
- * fabricated.
+ * A locale is visible only after its real homepage exists in routeMap. The
+ * target URL is chosen by descending a fallback hierarchy:
+ *
+ *   1. the equivalent page in the target locale, when it really exists;
+ *   2. otherwise the nearest declared parent that locale really owns
+ *      (`/en/houses/monastiri/` → `/de/ferienhaeuser/`);
+ *   3. otherwise that locale's homepage.
+ *
+ * Every candidate comes from `resolveRoute`, which returns null rather than
+ * guessing, so no locale URL is ever fabricated. A path segment is never
+ * translated or swapped: `/de/houses/monastiri/` cannot be produced by any
+ * branch of this function.
  */
 export function getLanguageSwitcherLinks(currentLocale: Locale, currentPath: string): LanguageSwitchLink[] {
   const currentRoute = matchLocalizedPath(currentPath);
@@ -87,8 +112,11 @@ export function getLanguageSwitcherLinks(currentLocale: Locale, currentPath: str
     const equivalent = currentRoute
       ? resolveRoute(targetLocale, currentRoute.routeId, currentRoute.contentId)
       : null;
-    const href = equivalent ?? routePath(targetLocale, 'home');
+    const parentId = currentRoute ? ROUTE_PARENTS[currentRoute.routeId] : undefined;
+    const parent = equivalent || !parentId ? null : resolveRoute(targetLocale, parentId);
+    const href = equivalent ?? parent ?? routePath(targetLocale, 'home');
     const meta = getLocaleMeta(targetLocale);
+    const fallback = equivalent ? 'none' : parent ? 'parent' : 'home';
 
     return {
       locale: targetLocale,
@@ -97,7 +125,8 @@ export function getLanguageSwitcherLinks(currentLocale: Locale, currentPath: str
       href,
       hreflang: meta.lang,
       isActive: targetLocale === currentLocale,
-      isFallbackToHome: equivalent === null,
+      fallback,
+      isFallbackToHome: fallback === 'home',
     };
   });
 }
