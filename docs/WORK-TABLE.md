@@ -26,7 +26,7 @@ Every LLM/agent working on this repository must:
 
 - Primary 30-day website objective: **more direct bookings + stronger organic visibility**.
 - Pause new content and extract more value from pages that already exist.
-- Fix the known TypeScript baseline errors first so typecheck becomes a useful quality gate.
+- Keep the TypeScript baseline at zero errors so typecheck remains a useful quality gate.
 - Use Google Search Console as the authoritative source for query-to-page SEO decisions.
 - Prefer indexation, distribution, internal linking, snippet improvement, and conversion work over new URLs or articles.
 - Do not start full German Blog translation without evidence of German search demand.
@@ -53,32 +53,36 @@ Every LLM/agent working on this repository must:
 
 # P0 — Technical Quality
 
-- [ ] Fix `src/components/UnitCard.astro` TypeScript error: `InventoryUnit.village` typing mismatch.
+- [x] Fix `src/components/UnitCard.astro` TypeScript error: `InventoryUnit.village` typing mismatch.
   - Owner: Nikos / Coding Agent
+  - Completed: 2026-08-27
   - Evidence:
-  - Blocker:
-  - Next step: isolated PR only; no unrelated refactor.
+    - PR #81
+    - implementation commit: `b1c51e6`
+    - merge commit: `6ffb207`
 
-- [ ] Fix `src/components/booking/BookingHandoffForm.astro` TypeScript error: invalid `rel` on `<form>`.
+- [x] Fix `src/components/booking/BookingHandoffForm.astro` TypeScript error: invalid `rel` on `<form>`.
   - Owner: Nikos / Coding Agent
+  - Completed: 2026-08-27
   - Evidence:
-  - Blocker:
-  - Next step: preserve runtime/security/booking behavior.
+    - PR #81
+    - implementation commit: `b1c51e6`
+    - merge commit: `6ffb207`
 
-- [ ] `npm run typecheck` → 0 errors.
-  - Evidence:
+- [x] `npm run typecheck` → 0 errors.
+  - Evidence: Windows validation on `b1c51e6`: 0 errors, 0 warnings, 3 hints.
 
-- [ ] `npm test` → PASS after the P0 fixes.
-  - Evidence:
+- [x] `npm test` → PASS after the P0 fixes.
+  - Evidence: Windows validation on `b1c51e6`: 414 tests, 414 pass, 0 fail, 0 cancelled.
 
-- [ ] `npm run build` → PASS after the P0 fixes.
-  - Evidence:
+- [x] `npm run build` → PASS after the P0 fixes.
+  - Evidence: Windows validation on `b1c51e6`: PASS, 57 pages built, sitemap generated.
 
-- [ ] `npm run seo:links` → PASS after the P0 fixes.
-  - Evidence:
+- [x] `npm run seo:links` → PASS after the P0 fixes.
+  - Evidence: Windows validation on `b1c51e6`: PASS.
 
-- [ ] `git diff --check` → clean for the P0 PR.
-  - Evidence:
+- [x] `git diff --check` → clean for the P0 PR.
+  - Evidence: clean during isolated PR validation; final Windows validation worktree also returned clean `git status --short`.
 
 ---
 
@@ -227,6 +231,11 @@ Not active during the current sprint unless Nikos explicitly promotes an item:
 - [x] PR #80 merged: German non-Blog site rollout.
   - Evidence: `https://github.com/Nikos1975/traditionalhomes/pull/80`
   - Merge commit: `4c777c4`
+- [x] PR #81 merged: remaining TypeScript baseline errors cleared.
+  - Evidence: `https://github.com/Nikos1975/traditionalhomes/pull/81`
+  - Implementation commit: `b1c51e6`
+  - Merge commit: `6ffb207`
+  - Windows validation: 414/414 tests pass; typecheck 0 errors; build 57 pages; `seo:links` pass; clean validation worktree.
 - [x] Strategic decision: pause new content and concentrate on distribution/indexation of existing content.
 - [x] Strategic decision: fix the two known TypeScript errors before the next SEO workstream.
 - [x] Strategic decision: primary 30-day website objective is direct bookings + stronger organic visibility.
