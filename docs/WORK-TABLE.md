@@ -88,7 +88,7 @@ Every LLM/agent working on this repository must:
 
 # P1 — Production / Indexation
 
-- [ ] Record a final production smoke test at 100% browser zoom.
+- [x] Record a final production smoke test at 100% browser zoom.
   - Check: `/de/`
   - Check: `/de/ferienhaeuser/`
   - Check: at least 3 German property detail pages
@@ -96,19 +96,19 @@ Every LLM/agent working on this repository must:
   - Check: `/de/faq/`
   - Check: `/de/richtlinien/`
   - Check: EN ↔ DE switching
-  - Evidence:
+  - Evidence: 2026-08-28 production smoke test PASS — 8 required German routes loaded successfully at 100% browser zoom; German content appeared where expected; navigation and primary CTAs worked; images loaded after normal lazy-load scrolling; EN ↔ DE switching passed for collection, property, and contact equivalents; no issues found.
 
-- [ ] Verify sitemap contains only intended generated German URLs.
-  - Evidence:
+- [x] Verify sitemap contains only intended generated German URLs.
+  - Evidence: 2026-08-28 production sitemap PASS — contains 20 intended German URLs.
 
-- [ ] Verify German pages use self-referencing canonicals.
-  - Evidence:
+- [x] Verify German pages use self-referencing canonicals.
+  - Evidence: 2026-08-28 production canonical check PASS — all 20 German URLs use self-referencing canonicals.
 
-- [ ] Verify reciprocal EN ↔ DE `hreflang` only where real equivalents exist.
-  - Evidence:
+- [x] Verify reciprocal EN ↔ DE `hreflang` only where real equivalents exist.
+  - Evidence: 2026-08-28 production hreflang check PASS — reciprocal EN ↔ DE hreflang exists only for actual equivalents.
 
-- [ ] Confirm there are no unintended `/de/houses/*` public routes/indexation targets.
-  - Evidence:
+- [x] Confirm there are no unintended `/de/houses/*` public routes/indexation targets.
+  - Evidence: 2026-08-28 production route/indexation check PASS — `/de/houses/` and all 10 corresponding property variants return 404; zero `/de/houses/*` URLs appear in the sitemap.
 
 - [ ] Establish the first German discovery/indexation baseline in Google Search Console.
   - Evidence:
