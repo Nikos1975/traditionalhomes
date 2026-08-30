@@ -110,8 +110,8 @@ Every LLM/agent working on this repository must:
 - [x] Confirm there are no unintended `/de/houses/*` public routes/indexation targets.
   - Evidence: 2026-08-28 production route/indexation check PASS — `/de/houses/` and all 10 corresponding property variants return 404; zero `/de/houses/*` URLs appear in the sitemap.
 
-- [ ] Establish the first German discovery/indexation baseline in Google Search Console.
-  - Evidence:
+- [x] Establish the first German discovery/indexation baseline in Google Search Console.
+  - Evidence: 2026-08-28 first post-rollout baseline — sitemap submission status Success and resubmitted (previous last read 2026-08-21; 36 pages previously discovered); `/de/` and `/de/reisefuehrer/mavrikiano/` were initially not on Google, passed live tests, and had indexing requested; `/de/ferienhaeuser/` and `/de/kontakt/` were on Google; initial German Search Performance was 0. Google has begun discovery/indexing; no technical indexation defect identified.
 
 ---
 
