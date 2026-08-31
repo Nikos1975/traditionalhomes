@@ -113,6 +113,15 @@ Every LLM/agent working on this repository must:
 - [x] Establish the first German discovery/indexation baseline in Google Search Console.
   - Evidence: 2026-08-28 first post-rollout baseline — sitemap submission status Success and resubmitted (previous last read 2026-08-21; 36 pages previously discovered); `/de/` and `/de/reisefuehrer/mavrikiano/` were initially not on Google, passed live tests, and had indexing requested; `/de/ferienhaeuser/` and `/de/kontakt/` were on Google; initial German Search Performance was 0. Google has begun discovery/indexing; no technical indexation defect identified.
 
+- [x] Fix the confirmed GSC legacy `component/mailto` 5xx URL in production.
+  - Owner: Nikos / Coding Agent
+  - Completed: 2026-08-31
+  - Evidence:
+    - Affected URL: `https://traditional-homes.gr/index.php/en/component/mailto/?tmpl=component&template=boutique&link=bfd25c5855a7c69f620bf8c6a6b6045f57e2f22f`
+    - PR #84; implementation commit: `32ce1e7021d64330452952de540f3f523c74866e`; merge commit: `81b8f15bb3c5eeccb83f8f5e43a20b31ed18f6f0`
+    - 2026-08-31 production verification: HTTP 301 to `/en/contact/` with legacy query parameters preserved, then HTTP 200 after one redirect; no redirect loop or chain; destination self-canonical is `https://traditional-homes.gr/en/contact/`.
+    - **FIXED IN PRODUCTION — Google recrawl/revalidation pending.**
+
 ---
 
 # P2 — Search Console Baseline

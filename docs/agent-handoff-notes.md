@@ -1,5 +1,12 @@
 # Agent Handoff Notes
 
+### 2026-08-31 - GSC legacy mailto 5xx fixed in production (PR #84)
+
+- Google Search Console reported the legacy Joomla `component/mailto` URL as a 5xx, so one exact permanent redirect to `/en/contact/` was added.
+- PR #84 implemented the redirect at `32ce1e7021d64330452952de540f3f523c74866e`; merge commit: `81b8f15bb3c5eeccb83f8f5e43a20b31ed18f6f0`.
+- Production verification on 2026-08-31: the exact GSC URL returned HTTP 301 to `/en/contact/` with its legacy query parameters preserved, then HTTP 200 after one redirect; no redirect loop or chain. `/en/contact/` has the self-canonical `https://traditional-homes.gr/en/contact/`.
+- **FIXED IN PRODUCTION — Google recrawl/revalidation pending.**
+
 ### 2026-08-26 - RESUMED and completed: German non-blog site, ready for review (PR #80)
 
 Supersedes the checkpoint entry below, which stays as the record of the pause. Nothing pushed, PR #80 not merged.
