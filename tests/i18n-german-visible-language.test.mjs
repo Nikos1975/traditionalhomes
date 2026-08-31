@@ -4,6 +4,7 @@ import { mkdtemp, readFile, rm, writeFile } from 'node:fs/promises';
 import { join, relative } from 'node:path';
 import { promisify } from 'node:util';
 import { after, describe, it } from 'node:test';
+import { createServer } from 'vite';
 
 const execFileAsync = promisify(execFile);
 const root = new URL('../', import.meta.url);
@@ -126,6 +127,7 @@ const altTexts = (html) =>
   [...strip(html).matchAll(/\balt="([^"]*)"/g)].map(([, value]) => value.replace(/&amp;/g, '&'));
 
 const numbersIn = (value) => (String(value).match(/\d+(?:[.,]\d+)?/g) ?? []).map((n) => n.replace(',', '.'));
+const parkingDistanceIn = (value) => String(value).match(/~?\d+(?:[.,]\d+)?\s*m\b/i)?.[0] ?? null;
 
 describe('German visible-language completeness — generated output', async () => {
   const temporaryDirectory = await mkdtemp(join(process.cwd(), '.astro-i18n-visible-'));
@@ -331,6 +333,76 @@ describe('German presentation mappings stay bound to the factual source', async 
       assert.ok(
         fields.name.includes(properName),
         `German name for ${slug} drops the proper name "${properName}"`,
+      );
+    }
+  });
+
+  it('sources every German parking distance from inventory and keeps distance-free mappings literal-free', () => {
+    const failures = [];
+
+    for (const [slug, fields] of Object.entries(display.units ?? {})) {
+      const parking = fields.parking;
+      if (!parking) continue;
+
+      const factual = units.get(slug)?.parking;
+      const distance = parkingDistanceIn(factual);
+
+      if (distance) {
+        if (!parking.includes('{distance}')) {
+          failures.push(`${slug}: expected {distance} for ${distance}`);
+        }
+        if (parkingDistanceIn(parking)) {
+          failures.push(`${slug}: locale mapping duplicates a factual distance`);
+        }
+      } else {
+        if (parking.includes('{distance}')) {
+          failures.push(`${slug}: locale mapping fabricates a distance placeholder`);
+        }
+        if (parkingDistanceIn(parking)) {
+          failures.push(`${slug}: locale mapping fabricates a distance`);
+        }
+      }
+    }
+
+    assert.deepEqual(failures, [], failures.join(' | '));
+  });
+
+  it('interpolates parking distances from the current inventory and falls back to factual parking when extraction fails', async () => {
+    const vite = await createServer({ appType: 'custom', server: { middlewareMode: true } });
+    after(() => vite.close());
+
+    const { unitText } = await vite.ssrLoadModule('/src/i18n/inventory-display.ts');
+
+    for (const [slug, fields] of Object.entries(display.units ?? {})) {
+      const factual = units.get(slug)?.parking;
+      const distance = parkingDistanceIn(factual);
+      if (!factual || !distance || !fields.parking?.includes('{distance}')) continue;
+
+      const expected = fields.parking.replaceAll('{distance}', distance);
+      assert.equal(
+        unitText('de', slug, 'parking', factual),
+        expected,
+        `${slug}: rendered parking must use the distance currently in inventory`,
+      );
+    }
+
+    const { localizeParking } = await vite.ssrLoadModule('/src/i18n/inventory-display.ts');
+    assert.equal(
+      localizeParking('Parken in der Nähe ({distance})', 'Shared private guest parking nearby'),
+      'Shared private guest parking nearby',
+      'a missing authoritative distance must fail closed to the factual value',
+    );
+
+    for (const factual of [null, undefined, '']) {
+      assert.equal(
+        localizeParking('Parken in der Nähe ({distance})', factual),
+        factual,
+        'missing factual parking must not emit an unresolved distance placeholder',
+      );
+      assert.equal(
+        unitText('de', 'argyro', 'parking', factual),
+        factual,
+        'unitText must route missing parking through the fail-closed renderer',
       );
     }
   });

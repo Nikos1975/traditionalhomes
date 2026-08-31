@@ -2,7 +2,7 @@
   "units": {
     "argyro": {
       "view": "Meerblick von der Veranda im ersten Stock",
-      "parking": "Gemeinsamer privater Gästeparkplatz in der Nähe (~80 m); bei Belegung kostenloses Parken im Dorf",
+      "parking": "Gemeinsamer privater Gästeparkplatz in der Nähe ({distance}); bei Belegung kostenloses Parken im Dorf",
       "pets": "Kleine Haustiere (≤5 kg) auf Anfrage",
       "kitchen": "Vollküche + Außenküchenzeile",
       "amenities": [
@@ -21,7 +21,7 @@
     "almond-tree-villa": {
       "accessDetail": "Hanglage im Dorf Vrouchas, Elounda. Die Villa eignet sich am besten für Gäste, die mit Stufen, Dorfwegen und Innentreppen zurechtkommen.",
       "view": "Kretisches Meer, Olivenhaine, Garten, Pool, Berge",
-      "parking": "Kostenloses Parken an der Straße (~30 m)",
+      "parking": "Kostenloses Parken an der Straße ({distance})",
       "pets": "Kleine Haustiere (≤5 kg) auf Anfrage",
       "kitchen": "Hauptküche, Außenküche und Grill",
       "amenities": [
@@ -45,7 +45,7 @@
     },
     "leonidas": {
       "view": "Meerblick",
-      "parking": "Gemeinsamer privater Gästeparkplatz in der Nähe (~70 m); bei Belegung kostenloses Parken im Dorf",
+      "parking": "Gemeinsamer privater Gästeparkplatz in der Nähe ({distance}); bei Belegung kostenloses Parken im Dorf",
       "pets": "Kleine Haustiere (≤5 kg) auf Anfrage",
       "kitchen": "Kleine Küchenzeile unter der hölzernen Innentreppe",
       "amenities": [
@@ -62,7 +62,7 @@
     },
     "margarita": {
       "view": "Meerblick von der Veranda im ersten Stock",
-      "parking": "Gemeinsamer privater Gästeparkplatz in der Nähe (~70 m); bei Belegung kostenloses Parken im Dorf",
+      "parking": "Gemeinsamer privater Gästeparkplatz in der Nähe ({distance}); bei Belegung kostenloses Parken im Dorf",
       "pets": "Kleine Haustiere (≤5 kg) auf Anfrage",
       "kitchen": "Hauptküche + Außenküchenzeile",
       "amenities": [
@@ -81,7 +81,7 @@
     },
     "demetra": {
       "view": "Bergblick",
-      "parking": "Gemeinsamer privater Gästeparkplatz in der Nähe (~40 m); bei Belegung kostenloses Parken im Dorf",
+      "parking": "Gemeinsamer privater Gästeparkplatz in der Nähe ({distance}); bei Belegung kostenloses Parken im Dorf",
       "pets": "Kleine Haustiere (≤5 kg) auf Anfrage",
       "kitchen": "Voll ausgestattete Küche",
       "amenities": [
@@ -99,7 +99,7 @@
     },
     "penelope": {
       "view": "Blick auf Berge und Olivenhain",
-      "parking": "Gemeinsamer privater Gästeparkplatz in der Nähe (~40 m); bei Belegung kostenloses Parken im Dorf",
+      "parking": "Gemeinsamer privater Gästeparkplatz in der Nähe ({distance}); bei Belegung kostenloses Parken im Dorf",
       "pets": "Kleine Haustiere (≤5 kg) auf Anfrage",
       "kitchen": "Außenküche auf der Veranda",
       "amenities": [
@@ -118,7 +118,7 @@
     },
     "erato": {
       "view": "Berge und Olivenhain",
-      "parking": "Gemeinsamer privater Gästeparkplatz in der Nähe (~10 m); bei Belegung kostenloses Parken im Dorf",
+      "parking": "Gemeinsamer privater Gästeparkplatz in der Nähe ({distance}); bei Belegung kostenloses Parken im Dorf",
       "pets": "Kleine Haustiere (≤5 kg) auf Anfrage",
       "kitchen": "Kleine Küche",
       "amenities": [
@@ -137,7 +137,7 @@
     },
     "clio": {
       "view": "Poolblick, Berge und Olivenhain",
-      "parking": "Gemeinsamer privater Gästeparkplatz in der Nähe (~10 m); bei Belegung kostenloses Parken im Dorf",
+      "parking": "Gemeinsamer privater Gästeparkplatz in der Nähe ({distance}); bei Belegung kostenloses Parken im Dorf",
       "pets": "Kleine Haustiere (≤5 kg) auf Anfrage",
       "kitchen": "Kleine Küche",
       "amenities": [
