@@ -58,6 +58,23 @@ const presentation: Partial<Record<Locale, LocalePresentation>> = {
   de: unitsDe as LocalePresentation,
 };
 
+const parkingDistance = (factual: string): string | undefined =>
+  factual.match(/~?\d+(?:[.,]\d+)?\s*m\b/i)?.[0];
+
+/**
+ * Render the one supported factual token in a localized parking presentation.
+ * A locale mapping may choose the surrounding German wording, but any distance
+ * stays in inventory. If inventory does not supply the requested token, retain
+ * its factual parking value rather than rendering a stale localized sentence.
+ */
+export function localizeParking(mapping: string | undefined, factual: string): string {
+  if (!mapping) return factual;
+  if (!mapping.includes('{distance}')) return mapping;
+
+  const distance = parkingDistance(factual);
+  return distance ? mapping.replaceAll('{distance}', distance) : factual;
+}
+
 /** Descriptive unit field as the locale renders it. */
 export function unitText(
   locale: Locale,
@@ -69,7 +86,9 @@ export function unitText(
     return factual;
   }
 
-  return presentation[locale]?.units?.[slug]?.[field] ?? factual;
+  const mapped = presentation[locale]?.units?.[slug]?.[field];
+
+  return field === 'parking' && factual ? localizeParking(mapped, factual) : mapped ?? factual;
 }
 
 /** Descriptive unit list as the locale renders it, entry for entry. */
