@@ -120,7 +120,7 @@ Every LLM/agent working on this repository must:
     - Affected URL: `https://traditional-homes.gr/index.php/en/component/mailto/?tmpl=component&template=boutique&link=bfd25c5855a7c69f620bf8c6a6b6045f57e2f22f`
     - PR #84; implementation commit: `32ce1e7021d64330452952de540f3f523c74866e`; merge commit: `81b8f15bb3c5eeccb83f8f5e43a20b31ed18f6f0`
     - 2026-08-31 production verification: HTTP 301 to `/en/contact/` with legacy query parameters preserved, then HTTP 200 after one redirect; no redirect loop or chain; destination self-canonical is `https://traditional-homes.gr/en/contact/`.
-    - **FIXED IN PRODUCTION — Google recrawl/revalidation pending.**
+    - **FIXED IN PRODUCTION — GSC Validate Fix submitted 2026-08-31 — Google recrawl/revalidation pending.**
 
 ---
 
