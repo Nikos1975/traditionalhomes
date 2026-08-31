@@ -1,5 +1,6 @@
 old_url,old_path,new_path,redirect_status,confidence,include_in_public_redirects,evidence,notes
 https://www.traditional-homes.gr/,/,/en/,301,high,yes,Old root redirects to English Joomla homepage and new Astro root already redirects to /en/.,Preserve English homepage as canonical landing route.
+https://www.traditional-homes.gr/leonidas,/leonidas,/en/houses/leonidas/,301,high,yes,GSC 404 example 2026-08-31 plus existing verified Leonidas current route.,Exact legacy property URL; no trailing-slash variant added without independent evidence.
 https://www.traditional-homes.gr/index.php,/index.php,/en/,301,high,yes,Existing redirect rule and Joomla entry point.,Keep exact rule; no wildcard.
 https://www.traditional-homes.gr/index.php/en,/index.php/en,/en/,301,high,yes,Old English homepage title matches new English homepage purpose.,Exact legacy homepage path.
 https://www.traditional-homes.gr/index.php/en/,/index.php/en/,/en/,301,high,yes,Old English homepage title matches new English homepage purpose.,Exact legacy homepage path with trailing slash.

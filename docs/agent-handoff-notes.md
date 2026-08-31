@@ -1,5 +1,11 @@
 # Agent Handoff Notes
 
+### 2026-08-31 - GSC Not Found examples: Leonidas redirect added
+
+- Added one exact permanent redirect: `/leonidas` → `/en/houses/leonidas/` (301).
+- No additional redirect was added for the other four GSC examples: `/index.php/en/contact/components` remains a malformed/orphan 404; `/index.php/en/apartments` remains on hold; `/images/web_3c.pdf` has no verified current equivalent and remains 404; the `component/mailto` query-string variant is already covered by the existing exact rule.
+- Production verification of `/leonidas` remains pending.
+
 ### 2026-08-31 - GSC legacy mailto 5xx fixed in production (PR #84)
 
 - Google Search Console reported the legacy Joomla `component/mailto` URL as a 5xx, so one exact permanent redirect to `/en/contact/` was added.
