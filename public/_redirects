@@ -29,6 +29,7 @@
 /index.php/en/about-us-2/penelope   /en/houses/penelope/   301
 /index.php/en/almond-tree-villas    /en/villa/almond-tree-villa/  301
 /index.php/en/contact    /en/contact/                   301
+/index.php/en/component/mailto/ /en/contact/              301
 /index.php/en/elounda    /en/location/                  301
 
 # Trailing slash enforcement (handled by Astro build, but belt-and-braces)

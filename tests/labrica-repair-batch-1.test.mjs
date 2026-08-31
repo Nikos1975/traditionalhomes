@@ -39,6 +39,7 @@ const expectedRedirects = [
   { from: '/index.php/en/about-us-2/penelope', to: '/en/houses/penelope/', status: 301 },
   { from: '/index.php/en/almond-tree-villas', to: '/en/villa/almond-tree-villa/', status: 301 },
   { from: '/index.php/en/contact', to: '/en/contact/', status: 301 },
+  { from: '/index.php/en/component/mailto/', to: '/en/contact/', status: 301 },
   { from: '/index.php/en/elounda', to: '/en/location/', status: 301 },
   { from: '/en', to: '/en/', status: 301 },
   { from: '/en/houses', to: '/en/houses/', status: 301 },
