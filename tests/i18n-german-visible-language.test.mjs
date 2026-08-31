@@ -392,5 +392,18 @@ describe('German presentation mappings stay bound to the factual source', async 
       'Shared private guest parking nearby',
       'a missing authoritative distance must fail closed to the factual value',
     );
+
+    for (const factual of [null, undefined, '']) {
+      assert.equal(
+        localizeParking('Parken in der Nähe ({distance})', factual),
+        factual,
+        'missing factual parking must not emit an unresolved distance placeholder',
+      );
+      assert.equal(
+        unitText('de', 'argyro', 'parking', factual),
+        factual,
+        'unitText must route missing parking through the fail-closed renderer',
+      );
+    }
   });
 });
