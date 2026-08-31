@@ -133,7 +133,7 @@ Every LLM/agent working on this repository must:
   - Evidence/file:
 
 - [ ] Review Page Indexing report.
-  - Evidence:
+  - Partial evidence: 2026-08-31 GSC Not Found examples classified — `/index.php/en/contact/components` is legacy malformed/orphan (keep 404); `/index.php/en/apartments` remains hold at the existing medium-confidence, non-public mapping; `/images/web_3c.pdf` is a legacy document with no verified current equivalent (keep 404); the legacy `component/mailto` query-string variant is already covered by the existing exact redirect; `/leonidas` is a high-confidence legacy property URL and has one exact redirect to `/en/houses/leonidas/` pending production verification. Other 404/indexation classifications remain open.
 
 - [ ] Review submitted sitemap status.
   - Evidence:

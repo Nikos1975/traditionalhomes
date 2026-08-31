@@ -21,6 +21,7 @@ const expectedRedirects = [
   { from: '/blog/', to: '/en/blog/', status: 301 },
   { from: '/blog/*', to: '/en/blog/:splat', status: 301 },
   { from: '/', to: '/en/', status: 301 },
+  { from: '/leonidas', to: '/en/houses/leonidas/', status: 301 },
   { from: '/index.php', to: '/en/', status: 301 },
   { from: '/index.php/', to: '/en/', status: 301 },
   { from: '/index.php/en', to: '/en/', status: 301 },

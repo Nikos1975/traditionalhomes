@@ -11,6 +11,7 @@
 # Verified high-confidence old-site redirects.
 # Source inventory: docs/seo/old-site-url-inventory.csv
 # Review map: docs/seo/redirect-map.csv
+/leonidas                 /en/houses/leonidas/           301
 /index.php                /en/                          301
 /index.php/               /en/                          301
 /index.php/en             /en/                          301
