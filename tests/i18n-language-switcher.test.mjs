@@ -196,6 +196,22 @@ test('header renders compact desktop and native-label mobile language selectors'
   assert.match(deNavigation, /"languageSwitcherLabel": "Sprache"/);
 });
 
+test('desktop header preserves the full brand and one-line navigation alongside language controls', async () => {
+  const header = await readText('src/components/Header.astro');
+  const brand = header.match(/<a\b[\s\S]*?aria-label=\{navigation\.brand\.homeAriaLabel\}[\s\S]*?<\/a>/)?.[0] ?? '';
+  const brandName = brand.match(/<span class="[^"]*font-serif[^"]*">[\s\S]*?\{common\.brand\.name\}[\s\S]*?<\/span>/)?.[0] ?? '';
+  const desktopNavigation = header.match(/\{\/\* DESKTOP NAVIGATION \*\/\}[\s\S]*?\{\/\* LANGUAGE, CTA & MOBILE TOGGLE \*\/\}/)?.[0] ?? '';
+
+  assert.match(header, /max-w-screen-2xl/, 'header needs its own wider desktop container');
+  assert.doesNotMatch(brandName, /\btruncate\b/, 'desktop brand must not rely on truncate');
+  assert.match(brandName, /\bwhitespace-nowrap\b/, 'desktop brand must stay on one line');
+  assert.match(brandName, /xl:overflow-visible/, 'desktop brand must not clip');
+  assert.match(brand, /\bxl:flex-none\b/, 'desktop brand must not shrink when desktop navigation is active');
+  assert.match(desktopNavigation, /\bwhitespace-nowrap\b/, 'desktop navigation labels must not wrap');
+  assert.match(header, /data-language-switcher="desktop"/);
+  assert.match(header, /data-language-switcher="mobile"/);
+});
+
 test('German primary navigation exposes only routes that currently have German pages', async () => {
   const navigation = JSON.parse(await readText('src/i18n/locales/de/navigation.json'));
 
