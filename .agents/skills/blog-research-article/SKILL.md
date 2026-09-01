@@ -48,10 +48,11 @@ Follow this sequence:
 6. Draft only from verified claims and the approved editorial interpretation. Clearly distinguish documented history from tradition. Omit uncertain and rejected claims. The dossier constrains the article but does not dictate its section order.
 7. Keep new articles at `draft: true` until manual approval.
 8. Use owned images by default. Process an approved image with `npm run blog:image`. If rights or attribution are unclear, omit image frontmatter and report the required specification.
-9. Run `npm run blog:validate -- <article-path>`.
-10. Run the repository tests, `npm run typecheck`, and `npm run build`, one command at a time on Windows.
-11. Review the diff and stage only the topic research, article, validator/workflow files, and required handoff documentation.
-12. Commit on the dedicated branch, push it, and open a draft pull request for manual approval.
+9. Before declaring the draft complete, compare it with the research dossier and claims register. Report whether any high-value verified material was omitted solely for brevity. If so, apply the Evidence-Led Depth rule in `.ai/prompts/blog-editorial-system.md`: reconsider the omission and incorporate it when leaving it out would materially reduce the reader's understanding.
+10. Run `npm run blog:validate -- <article-path>`.
+11. Run the repository tests, `npm run typecheck`, and `npm run build`, one command at a time on Windows.
+12. Review the diff and stage only the topic research, article, validator/workflow files, and required handoff documentation.
+13. Commit on the dedicated branch, push it, and open a draft pull request for manual approval.
 
 Resume a stopped run with `npm run blog:scaffold -- --resume <run-id>`. When the run is blocked, resume uses `resumeBlockedRun(run, now)` to restore the recorded previous state, clear the block, preserve completed states, and update the timestamp. Resume preserves user-edited research and blocks unrelated changed files. Inspect an article without writing files with `npm run blog:status -- --slug <slug> --simulate`; status reports the inspected slug's self-match separately from external overlap and wraps simulation metadata around a schema-valid run.
 

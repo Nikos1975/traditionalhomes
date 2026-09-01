@@ -353,6 +353,68 @@ Do not add media merely because it exists. Each item should contribute distinct 
 
 The conclusion should explain what the history of this particular place reveals about a larger change in everyday life. It should arise from the evidence and thesis, not from sentimentality or tourism language.
 
+## Evidence-Led Depth
+
+Depth follows evidence, not an arbitrary word count.
+
+For research-led historical, geographical, cultural, archaeological,
+environmental, architectural, local-history, and place-based content:
+
+- Do not compress well-supported material merely to fit a conventional blog
+  length, SEO word-count target, or assumed attention span.
+- Develop the subject to the depth necessary to explain it properly when
+  verified research supports substantial depth. A 4,000–6,000+ word piece is
+  acceptable when the evidence and subject justify it.
+- Prefer a shorter piece when the evidence is limited.
+- Never lengthen content merely to meet a target.
+
+Every additional paragraph or section must contribute at least one of:
+
+- verified factual evidence;
+- geographical or historical explanation;
+- causality;
+- relationships between places, people, systems, or periods;
+- human-scale context;
+- useful interpretation grounded in evidence; or
+- clarification of uncertainty or conflicting evidence.
+
+Do not use length for its own sake. Avoid padding, repetition, generic
+transitions, SEO filler, duplicated material from related pages, unsupported
+detail, and unnecessary summaries of material already established.
+
+When a completed research dossier contains materially useful evidence that the
+draft does not incorporate, do not assume the article should remain short. Ask:
+
+“What important, well-supported understanding would the reader lose if this
+material were omitted?”
+
+If the answer is material to understanding the subject, incorporate it.
+
+For existing live pages, preserve search intent and avoid unnecessary URL,
+canonical, title, metadata, or structural changes simply because the body is
+expanded.
+
+SEO is a constraint and distribution consideration, not a reason to suppress
+useful researched content.
+
+Apply this priority order:
+
+1. factual accuracy;
+2. evidence quality;
+3. complete understanding of the subject supported by the available evidence;
+4. clear narrative architecture;
+5. human readability;
+6. search intent / SEO;
+7. word count.
+
+Word count is an outcome, not a target.
+
+### Drafting Completion Checkpoint
+
+Before declaring a research-led draft complete, compare it with its research
+dossier and report whether any high-value verified material was omitted solely
+for brevity. If so, reconsider the omission before completion.
+
 ## Structure Rules by Post Type
 
 ### Area Guide
