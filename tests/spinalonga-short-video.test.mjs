@@ -25,9 +25,13 @@ test('Spinalonga Short follows the introduction and precedes the first historica
 
 test('the shared blog renderer contains Short embeds without changing article width', async () => {
   const renderer = await readSource('src/pages/en/blog/[...slug].astro');
+  const headingStyles = renderer.match(/\.blog-article :global\(\.blog-short-video h2\) \{([\s\S]*?)\}/)?.[1] ?? '';
 
   assert.match(renderer, /\.blog-short-video-frame\)[\s\S]*width: min\(100%, 24rem\)/);
   assert.match(renderer, /\.blog-short-video-frame\)[\s\S]*aspect-ratio: 9 \/ 16/);
+  assert.match(headingStyles, /max-width: 24rem/);
+  assert.match(headingStyles, /margin: 0 auto 0\.75rem/);
+  assert.match(headingStyles, /text-align: center/);
 });
 
 test('the Short caption is excluded from article drop-cap styling', async () => {
