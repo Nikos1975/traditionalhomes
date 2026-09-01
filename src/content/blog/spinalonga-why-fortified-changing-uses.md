@@ -15,6 +15,21 @@ imageCredit: "Photo: Nikos Pasparakis / Elounda Traditional Homes of Crete"
 
 Spinalonga is not the remains of one historical episode. Its walls, streets and buildings record successive systems that reused the same confined island: defence, settlement, compulsory isolation, and later archaeological conservation and public memory. To understand why it was fortified, it helps to follow those changing uses—and its continuing connection with Elounda, Plaka and Mirabello Bay.
 
+<section class="blog-short-video" aria-labelledby="spinalonga-short-video-heading">
+  <h2 id="spinalonga-short-video-heading">Spinalonga: a short historical documentary</h2>
+  <div class="blog-short-video-frame">
+    <iframe
+      src="https://www.youtube-nocookie.com/embed/Wvd9OVLDNic"
+      title="Spinalonga: Why It Was Fortified and How Its Uses Changed"
+      loading="lazy"
+      referrerpolicy="strict-origin-when-cross-origin"
+      allow="fullscreen; picture-in-picture"
+      allowfullscreen
+    ></iframe>
+  </div>
+  <p class="blog-short-video-caption">A short visual introduction to Spinalonga’s changing role — from Venetian fortification and Ottoman settlement to compulsory isolation and a place of memory.</p>
+</section>
+
 ## A small island in a strategic bay
 
 Spinalonga is a rocky islet at the mouth of Elounda’s natural harbour. It faces Plaka and sits between the sheltered Gulf of Elounda and the wider approaches from Mirabello Bay. That position made it a useful place from which to watch movement through the bay long before the familiar Venetian works were built.
