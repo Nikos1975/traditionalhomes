@@ -33,13 +33,13 @@ const bookingUrl = 'https://traditionalhomes.reserve-online.net/';
   id="main-header"
   style="height: var(--header-h, 88px);" 
 >
-  <div class="site-max site-pad h-full flex items-center justify-between gap-4">
+  <div class="site-pad mx-auto h-full w-full max-w-screen-2xl flex items-center justify-between gap-4">
 
     {/* BRANDING / MASTHEAD */}
     <a
       href={brandLink.href}
       hreflang={brandLink.hreflang}
-      class="group flex min-w-0 flex-shrink items-center gap-3 sm:gap-4"
+      class="group flex min-w-0 flex-shrink items-center gap-3 sm:gap-4 xl:flex-none"
       aria-label={navigation.brand.homeAriaLabel}
     >
       <img 
@@ -50,7 +50,7 @@ const bookingUrl = 'https://traditionalhomes.reserve-online.net/';
         class="h-10 w-10 flex-shrink-0 transition-transform duration-700 ease-out group-hover:scale-110 sm:h-12 sm:w-12"
       />
       <div class="flex min-w-0 flex-col leading-none">
-        <span class="truncate font-serif text-xl tracking-tight text-stone-900 transition-colors duration-300 group-hover:text-primary sm:text-2xl">
+        <span class="overflow-hidden text-ellipsis whitespace-nowrap font-serif text-xl tracking-tight text-stone-900 transition-colors duration-300 group-hover:text-primary sm:text-2xl xl:overflow-visible xl:text-clip">
           {common.brand.name}
         </span>
         <span class="mt-1.5 truncate font-sans text-[8px] font-bold uppercase tracking-[0.22em] text-stone-400 sm:text-[9px] sm:tracking-[0.3em]">
@@ -60,7 +60,7 @@ const bookingUrl = 'https://traditionalhomes.reserve-online.net/';
     </a>
 
     {/* DESKTOP NAVIGATION */}
-    <nav class="hidden xl:flex items-center gap-2" aria-label={navigation.mainAriaLabel}>
+    <nav class="hidden xl:flex items-center gap-1 2xl:gap-2" aria-label={navigation.mainAriaLabel}>
       {navLinks.map(({ label, href, hreflang }) => {
         const isActive = currentPath === href || currentPath.startsWith(href.replace(/\/$/, '') + '/');
         return (
@@ -68,7 +68,7 @@ const bookingUrl = 'https://traditionalhomes.reserve-online.net/';
             href={href}
             hreflang={hreflang}
             class:list={[
-              'font-sans text-[11px] uppercase tracking-[0.2em] px-4 py-2 rounded-full transition-all duration-300 font-bold',
+              'whitespace-nowrap font-sans text-[11px] uppercase tracking-[0.2em] px-2.5 py-2 rounded-full transition-all duration-300 font-bold 2xl:px-4',
               isActive
                 ? 'text-stone-900 bg-stone-100/80 shadow-sm'
                 : 'text-stone-500 hover:text-stone-900 hover:bg-stone-50'
