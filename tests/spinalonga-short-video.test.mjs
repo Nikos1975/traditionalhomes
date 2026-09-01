@@ -29,3 +29,12 @@ test('the shared blog renderer contains Short embeds without changing article wi
   assert.match(renderer, /\.blog-short-video-frame\)[\s\S]*width: min\(100%, 24rem\)/);
   assert.match(renderer, /\.blog-short-video-frame\)[\s\S]*aspect-ratio: 9 \/ 16/);
 });
+
+test('the Short caption is excluded from article drop-cap styling', async () => {
+  const renderer = await readSource('src/pages/en/blog/[...slug].astro');
+  const directArticleDropCapSelectors = renderer.match(/\.blog-article :global\(> p:first-of-type::first-letter\)/g) ?? [];
+
+  assert.equal(directArticleDropCapSelectors.length, 3, 'base, desktop, and mobile drop caps target only direct article paragraphs');
+  assert.doesNotMatch(renderer, /\.blog-article :global\(p:first-of-type::first-letter\)/);
+  assert.doesNotMatch(renderer, /\.blog-short-video-caption[^{}]*::first-letter/);
+});
