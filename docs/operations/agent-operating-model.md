@@ -120,6 +120,94 @@ Git commands are allowed for inspection, explicit-path staging, committing reque
 
 PowerShell cleanup commands are allowed only for generated output or caches when needed, such as `dist/` and `node_modules/.vite/`. Do not delete source, content, public assets, or docs as cleanup.
 
+## Failure budget and retry policy
+
+This is the general retry and stop budget. `docs/operations/repeated-failures-playbook.md` remains the source of specific remediation recipes.
+
+### Failure classification
+
+Before retrying a failed command or tool, classify it as:
+
+1. **PRODUCT** — caused by the code or content currently being changed.
+2. **KNOWN ENVIRONMENT** — matches a failure class in `docs/operations/repeated-failures-playbook.md`.
+3. **UNRELATED ENVIRONMENT / TOOLING** — unrelated to the source diff, such as incomplete `node_modules`, dependency-install corruption, an unavailable browser or tool process, a shell or environment permission restriction, an unavailable external executable, or a network/tooling failure.
+
+### Core retry rule
+
+Use one diagnosis -> one documented remediation -> one retry -> stop that validation path if it still fails. Do not enter iterative repair loops.
+
+### Same-command retry budget
+
+Do not rerun the same failing command without a materially different documented remediation. For a known environment failure, apply the documented remediation once and retry once. If the same failure class remains, stop and report it.
+
+### Dependency-install budget
+
+For tasks that are not explicitly dependency or package-management work:
+
+- Run `npm install` or `npm ci` only when dependencies are genuinely absent, and allow at most one install attempt in a disposable worktree.
+- If that installation leaves `node_modules` incomplete or corrupted, treat the validation environment as broken and preserve the source diff for reporting.
+- Never repair dependencies package-by-package, copy dependency files or directories from another worktree, or modify `package.json` or `package-lock.json` to repair an environment problem.
+- Copying `prismjs`, or any other dependency internals, from another worktree is not an approved recovery procedure.
+
+### Optional tool fallback budget
+
+For optional or nonessential validation, use at most one reasonable already-available alternative. Do not install new tooling during an unrelated task just to complete optional validation. If the primary tool and that fallback both fail, report the validation path as blocked.
+
+For example, if `agent-browser` fails, one existing alternative may be tried; otherwise report visual QA as blocked.
+
+### Validation tiers
+
+Use the cheapest, highest-signal validation first:
+
+| Tier | Validation |
+|---|---|
+| 1 | Exact regression or unit test; targeted static or source contract; `git diff --check` |
+| 2 | Related subsystem tests; `npm run typecheck` when relevant |
+| 3 | Full `npm test`; build; SEO or link validation when relevant |
+
+Do not rerun a validation tier that already passed unless the source diff changed afterward. A later unrelated environment or tooling failure does not invalidate earlier successful validation evidence; preserve that evidence.
+
+### Stop conditions
+
+Stop additional tool execution and report instead when:
+
+- The same environment failure remains after its one remediation and retry.
+- Dependency installation leaves `node_modules` incomplete.
+- Environment or security policy blocks an action.
+- The second equivalent optional tool fails.
+- Continuing would require unrelated environment surgery.
+- Further validation would not materially increase confidence.
+
+### Forbidden environment surgery
+
+During ordinary feature or fix work, do not:
+
+- Reconstruct `node_modules` manually.
+- Copy dependency internals from another checkout or worktree.
+- Repeatedly install or uninstall packages.
+- Modify application source to accommodate workstation-specific failures.
+- Modify lockfiles to repair a local environment.
+- Cycle through several equivalent tools after optional validation fails.
+
+If such repair is genuinely required, stop and propose a separate environment-maintenance task.
+
+### Blocked validation reporting
+
+When validation is blocked, report only:
+
+```text
+BLOCKED VALIDATION
+- command/tool
+- failure class
+- remediation attempted
+- result
+- source diff affected: yes/no
+- successful validation still available
+- recommended next action
+```
+
+Do not narrate every intermediate tool invocation.
+
 ## 5. Task classification before action
 
 | Task class | Build required? | Commit allowed? | Files that may be staged | Stop and ask Nikos when |

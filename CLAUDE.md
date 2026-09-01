@@ -47,6 +47,7 @@
 - Do not pause only to report partial progress. Continue until completion or a genuine blocker.
 - Keep final reports concise: changed scope, validation, commit/PR state, and remaining issues.
 - Token efficiency never overrides correctness, safety, protected-file rules, verification gates, or required approvals.
+- For command or tool failures, follow the Failure Budget and Tool Retry Policy in `docs/operations/agent-operating-model.md`: classify the failure before retrying, use at most one documented remediation plus one retry for the same environment failure, preserve successful validation evidence, and stop rather than entering environment-repair loops.
 
 ## Documentation update rules
 
