@@ -70,6 +70,59 @@ describe('mobile property hero gallery', async () => {
     assert.doesNotMatch(component, /preventDefault\(\)/);
   });
 
+  it('keeps the mobile gallery hit-testable beneath the decorative and content layers', async () => {
+    for (const pagePath of [
+      'src/components/pages/HouseDetailPage.astro',
+      'src/components/pages/VillaDetailPage.astro',
+    ]) {
+      const page = await readText(pagePath);
+
+      assert.match(
+        page,
+        /class=['"][^'"]*pointer-events-none[^'"]*bg-gradient-to-b[^'"]*['"]|class=['"][^'"]*bg-gradient-to-b[^'"]*pointer-events-none[^'"]*['"]/,
+        `${pagePath}: the decorative gradient must not intercept touch input`,
+      );
+      assert.match(
+        page,
+        /class=['"][^'"]*pointer-events-none[^'"]*md:pointer-events-auto[^'"]*relative z-20|class=['"][^'"]*relative z-20[^'"]*pointer-events-none[^'"]*md:pointer-events-auto[^'"]*['"]/,
+        `${pagePath}: the full-height mobile content layer must pass touch input through`,
+      );
+      assert.match(
+        page,
+        /<nav class=['"][^'"]*pointer-events-auto[^'"]*['"]/,
+        `${pagePath}: breadcrumb links must remain interactive`,
+      );
+    }
+  });
+
+  it('centers only the changing mobile caption', async () => {
+    for (const pagePath of [
+      'src/components/pages/HouseDetailPage.astro',
+      'src/components/pages/VillaDetailPage.astro',
+    ]) {
+      const page = await readText(pagePath);
+
+      assert.match(page, /<p[\s\S]*?class=['"][^'"]*w-full[^'"]*text-center[^'"]*md:hidden[^'"]*['"][\s\S]*?data-mobile-hero-caption/, pagePath);
+      assert.doesNotMatch(page, /<h1 class=['"][^'"]*text-center/, pagePath);
+    }
+  });
+
+  it('uses one compact mobile gap before At a Glance while retaining desktop rhythm', async () => {
+    for (const pagePath of [
+      'src/components/pages/HouseDetailPage.astro',
+      'src/components/pages/VillaDetailPage.astro',
+    ]) {
+      const page = await readText(pagePath);
+
+      assert.match(page, /<main class=['"]site-max site-pad py-8 md:py-16['"]>/, pagePath);
+      assert.match(
+        page,
+        /<div class=['"]lg:col-span-8['"]>[\s\S]*?data-desktop-property-gallery[\s\S]*?<div class=['"]space-y-14 md:mt-14['"]>[\s\S]*?<section aria-label=\{propertyCopy\.detail\.sections\.atAGlance\} class=['"]md:border-t md:border-stone-100 md:pt-12['"]>/,
+        pagePath,
+      );
+    }
+  });
+
   it('uses the sorted property collection in the mobile hero and keeps the lower gallery desktop-only', async () => {
     for (const pagePath of [
       'src/components/pages/HouseDetailPage.astro',

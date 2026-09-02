@@ -202,7 +202,7 @@ const contactLink = resolveLocalizedLink(locale, 'contact');
       locale={locale}
       firstImagePosition={heroPosition}
     />
-    <div class="absolute inset-0 bg-gradient-to-b from-stone-900/30 via-transparent to-stone-900/70 z-10"></div>
+    <div class="pointer-events-none absolute inset-0 bg-gradient-to-b from-stone-900/30 via-transparent to-stone-900/70 z-10"></div>
     {heroSrc && (
       <div
         class="absolute inset-0 hidden bg-center bg-cover md:block"
@@ -211,8 +211,8 @@ const contactLink = resolveLocalizedLink(locale, 'contact');
         aria-label={galleryCopy.heroPhotoOf.replace('{name}', displayName)}
       ></div>
     )}
-    <div class="relative z-20 site-max site-pad h-full flex flex-col justify-end pb-10 md:pb-14">
-      <nav class="text-[10px] uppercase tracking-[0.35em] mb-5 text-white/70" aria-label={propertyCopy.detail.breadcrumbs.ariaLabel}>
+    <div class="pointer-events-none md:pointer-events-auto relative z-20 site-max site-pad h-full flex flex-col justify-end pb-10 md:pb-14">
+      <nav class="pointer-events-auto text-[10px] uppercase tracking-[0.35em] mb-5 text-white/70" aria-label={propertyCopy.detail.breadcrumbs.ariaLabel}>
         <a href={homeLink.href} hreflang={homeLink.hreflang} class="hover:text-white transition-colors">{propertyCopy.detail.breadcrumbs.home}</a>
         <span class="mx-2 opacity-50">/</span>
         <a href={housesLink.href} hreflang={housesLink.hreflang} class="hover:text-white transition-colors">{propertyCopy.detail.breadcrumbs.houses}</a>
@@ -227,7 +227,7 @@ const contactLink = resolveLocalizedLink(locale, 'contact');
       </p>
       {galleryItems[0] && (
         <p
-          class="mt-2 max-w-[32rem] overflow-hidden text-xs font-light leading-relaxed text-white/75 md:hidden"
+          class="mt-2 w-full max-w-[32rem] overflow-hidden text-center text-xs font-light leading-relaxed text-white/75 md:hidden"
           style="display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;"
           data-mobile-hero-caption
         >
@@ -283,19 +283,20 @@ const contactLink = resolveLocalizedLink(locale, 'contact');
   </div>
 
   {/* ── 3. MAIN CONTENT ──────────────────────────── */}
-  <main class="site-max site-pad py-12 md:py-16">
+  <main class="site-max site-pad py-8 md:py-16">
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
 
       {/* LEFT — content column */}
-      <div class="lg:col-span-8 space-y-14">
+      <div class="lg:col-span-8">
 
         {/* 3a. Gallery */}
         <section data-desktop-property-gallery class="hidden md:block" aria-label={propertyCopy.detail.sections.propertyPhotosAria}>
           <HouseGallery locale={locale} images={gallery} unitName={displayName} />
         </section>
 
+        <div class="space-y-14 md:mt-14">
         {/* 3b. At a Glance */}
-        <section aria-label={propertyCopy.detail.sections.atAGlance} class="border-t border-stone-100 pt-12">
+        <section aria-label={propertyCopy.detail.sections.atAGlance} class="md:border-t md:border-stone-100 md:pt-12">
           <h2 class="font-serif text-2xl text-body-text mb-8">{propertyCopy.detail.sections.atAGlance}</h2>
           <AtAGlance unit={unit} locale={locale} />
         </section>
@@ -373,6 +374,7 @@ const contactLink = resolveLocalizedLink(locale, 'contact');
           </section>
         )}
 
+        </div>
       </div>
 
       {/* RIGHT — sticky sidebar */}
