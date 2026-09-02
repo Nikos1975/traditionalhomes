@@ -1,5 +1,14 @@
 import { defaultLocale, type Locale } from '../i18n/config';
 import { localizeGalleryLabel } from '../i18n/inventory-display';
+import { getCommonCopy } from '../i18n/translate';
+import type { GalleryImage } from '../types';
+
+export interface GalleryItem {
+  src: string;
+  srcset: string;
+  alt: string;
+  label: string;
+}
 /**
  * Extract the first (smallest) URL from a srcset string.
  *
@@ -121,4 +130,32 @@ export function localizedAlt(
   }
 
   return locale === defaultLocale ? alt : filenameLabel(src, alt, locale);
+}
+
+/**
+ * Build the single localized representation shared by property photo UIs.
+ * Gallery data remains the source for URLs and authored English alt text;
+ * non-default locales reuse the existing filename-token translation pipeline.
+ */
+export function buildGalleryItems(
+  images: GalleryImage[],
+  unitName: string,
+  locale: Locale = defaultLocale,
+): GalleryItem[] {
+  const galleryCopy = getCommonCopy(locale).ui.gallery;
+
+  return images.map((img, index) => {
+    const photoNumber = index + 1;
+    const numberedPhoto = galleryCopy.photoNumbered.replace('{n}', String(photoNumber));
+    const photoFallback = galleryCopy.photoOfNumbered
+      .replace('{name}', unitName)
+      .replace('{n}', String(photoNumber));
+
+    return {
+      src: img.src,
+      srcset: img.srcset ?? '',
+      alt: localizedAlt(img.src, img.alt, photoFallback, locale),
+      label: filenameLabel(img.src, img.alt ?? numberedPhoto, locale),
+    };
+  });
 }

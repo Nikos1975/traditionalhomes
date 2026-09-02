@@ -66,14 +66,22 @@ flowchart TD
   houseDetail --> content
   houseDetail --> galleryData["gallery.json"]
   houseDetail --> locations["locations.ts"]
-  houseDetail --> houseGallery["HouseGallery"]
+  houseDetail --> mobileHeroGallery["MobilePropertyHero<br/>mobile carousel"]
+  houseDetail --> houseGallery["HouseGallery<br/>desktop gallery + lightbox"]
   houseDetail --> atAGlance["AtAGlance"]
   houseDetail --> singleMap["SinglePinMap"]
 
   villaDetail --> inventory
   villaDetail --> content
   villaDetail --> galleryData
+  villaDetail --> mobileHeroGallery
+  villaDetail --> houseGallery
   villaDetail --> singleMap
+
+  mobileHeroGallery --> galleryItems["galleryHelpers.buildGalleryItems<br/>shared localized captions + alt text"]
+  houseGallery --> galleryItems
+  galleryItems --> galleryData
+  galleryItems --> i18n
 
   blogRoutes --> content
   docs --> blogResearch["research/blog/&lt;slug&gt;<br/>brief, sources, claims"]
@@ -111,7 +119,7 @@ flowchart TD
 - Treat `docs/i18n/00_I18N_MASTER_PLAN.md` as the control document before multilingual route, page, or translation work.
 - Stage 1 i18n foundation lives under `src/i18n/` and currently provides English-first shared UI strings, locale metadata, real-route mapping, and route-aware language switching.
 - `src/i18n/language-switcher.ts` exposes only launched locales, switches to an equivalent localized route when one exists, and otherwise uses the target locale homepage rather than fabricating a URL.
-- Property and villa routes combine structured inventory, Markdown content, gallery data, location data, and shared components.
+- Property and villa routes combine structured inventory, Markdown content, gallery data, location data, and shared components. On mobile, `MobilePropertyHero` presents the sorted photo collection directly in the hero; from the existing `md` breakpoint upward, `HouseGallery` retains the desktop gallery and lightbox. Both consume the same localized gallery-item builder.
 - `src/pages/404.astro` exists so missing static routes, including not-yet-created locale-prefixed paths, return a not-found page instead of the root redirect stub.
 - Public URL assets live under `public/`; imported image assets live under `src/assets/images/`.
 - The contact form posts to `/api/contact`, handled by `functions/api/contact.js`.

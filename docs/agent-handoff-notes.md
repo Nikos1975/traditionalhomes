@@ -1,5 +1,13 @@
 # Agent Handoff Notes
 
+### 2026-09-03 - Mobile property hero gallery (local, uncommitted)
+
+- Branch `feat/mobile-hero-gallery` in `D:\_projects\_traditional-homes-mobile-hero-gallery`, based on `origin/main` `2b51e76`; nothing committed or pushed.
+- House and villa pages now use the existing sorted `gallery.json` photo collection as a mobile-only hero carousel. The current hero remains first, title/location/breadcrumb/gradient and booking UI are unchanged, and the lower `HouseGallery` is hidden below the existing `md` breakpoint while its desktop gallery/lightbox behavior remains intact.
+- `MobilePropertyHero.astro` provides semantic responsive images, localized arrow buttons, a live counter, a caption derived by the same `buildGalleryItems` path as the desktop gallery, and a 48px horizontal pointer threshold with `touch-action: pan-y`. Only slide 1 is eager/high priority; later slides are lazy.
+- Browser verification at 390×844 passed on `/en/houses/erato/` and `/de/ferienhaeuser/erato/`: arrows and synthetic touch swipe advanced image/counter/caption, vertical scrolling remained available, no hero lightbox opened, and German controls/captions stayed localized. At 1280×900 the mobile hero was hidden and the desktop gallery/lightbox remained present.
+- Final validation after the caption-timing correction: focused property/i18n tests passed (59/59), typecheck passed with 0 errors, and the build produced 57 pages. The fresh `origin/main` baseline full suite has one unrelated failure for the Mirabello map's missing responsive `sizes`/`srcset`.
+
 ### 2026-08-31 - GSC Not Found examples: Leonidas redirect added
 
 - Added one exact permanent redirect: `/leonidas` → `/en/houses/leonidas/` (301).
