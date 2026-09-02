@@ -83,6 +83,40 @@ describe('blog index image delivery', () => {
     assert.doesNotMatch(source, /background-image:\s*url\(/);
     assert.doesNotMatch(source, /style=\{`background-image:/);
   });
+
+  it('keeps each regular-card photograph URL inert until that card is initialized', async () => {
+    const source = await readSource('src/pages/en/blog/index.astro');
+
+    assert.match(source, /\{post\.data\.image && \(\s*<img\s+data-src=\{post\.data\.image\}\s+data-blog-card-image/);
+    assert.doesNotMatch(source, /<img[^>]*\ssrc=\{post\.data\.image\}/);
+  });
+
+  it('initializes only the interacted regular card on pointer entry or keyboard focus', async () => {
+    const source = await readSource('src/pages/en/blog/index.astro');
+
+    assert.match(source, /const initializeCardImage = \(card: HTMLElement\) =>/);
+    assert.match(source, /card\.dataset\.imageInitialized === 'true'/);
+    assert.match(source, /image\.src = image\.dataset\.src/);
+    assert.match(source, /card\.dataset\.imageInitialized = 'true'/);
+    assert.match(source, /card\.addEventListener\('pointerenter', \(\) => initializeCardImage\(card\), \{ once: true \}\)/);
+    assert.match(source, /card\.addEventListener\('focusin', \(\) => initializeCardImage\(card\), \{ once: true \}\)/);
+  });
+
+  it('marks a regular-card photograph loaded after a successful load, including cached images', async () => {
+    const source = await readSource('src/pages/en/blog/index.astro');
+
+    assert.match(source, /const markImageLoaded = \(\) => \{\s*image\.dataset\.loaded = 'true';\s*\}/);
+    assert.match(source, /image\.addEventListener\('load', markImageLoaded, \{ once: true \}\)/);
+    assert.match(source, /image\.complete && image\.naturalWidth > 0[\s\S]*markImageLoaded\(\)/);
+    assert.doesNotMatch(source, /image\.dataset\.initialized/);
+  });
+
+  it('reveals only loaded regular-card photographs at 25% opacity over 500ms', async () => {
+    const source = await readSource('src/pages/en/blog/index.astro');
+
+    assert.match(source, /\.blog-card-image \{[\s\S]*opacity:\s*0;[\s\S]*transition:\s*opacity 500ms ease;/);
+    assert.match(source, /\.blog-card:hover \.blog-card-image\[data-loaded="true"\],[\s\S]*\.blog-card:focus-visible \.blog-card-image\[data-loaded="true"\][\s\S]*\{\s*opacity:\s*0\.25;/);
+  });
 });
 
 describe('shared blog article availability CTA', () => {

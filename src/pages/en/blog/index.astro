@@ -247,7 +247,18 @@ const postsByCategory = categories.map(category => ({
 
             <div class="grid grid-cols-1 items-stretch gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-8">
               {categoryPosts.map(post => (
-                <a href={blogArticlePath(post.id, defaultLocale)} class="group/card blog-card relative flex h-full min-h-[21rem] flex-col overflow-hidden rounded-lg border border-stone-200/90 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-stone-300 hover:shadow-card-hover focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/35">
+                <a href={blogArticlePath(post.id, defaultLocale)} class="group/card blog-card relative flex h-full min-h-[21rem] flex-col overflow-hidden rounded-lg border border-stone-200/90 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-stone-300 hover:shadow-card-hover focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/35" data-blog-card>
+                  {post.data.image && (
+                    <img
+                      data-src={post.data.image}
+                      data-blog-card-image
+                      alt=""
+                      loading="lazy"
+                      decoding="async"
+                      class="blog-card-image absolute inset-0 z-[1] h-full w-full object-cover"
+                      aria-hidden="true"
+                    />
+                  )}
                   <div class="absolute inset-0 z-0 bg-gradient-to-br from-white via-white/95 to-stone-50/90 transition-colors duration-300 group-hover/card:from-white/95 group-hover/card:via-stone-50/92 group-hover/card:to-stone-100/86" aria-hidden="true"></div>
                   <div class="relative z-10 flex h-full flex-col p-6 sm:p-7">
                     <div class="mb-6 flex items-start justify-between gap-4 text-[10px] uppercase tracking-[0.18em]">
@@ -294,6 +305,35 @@ const postsByCategory = categories.map(category => ({
   </div>
 
 <script>
+  const cards = document.querySelectorAll('[data-blog-card]');
+
+  const initializeCardImage = (card: HTMLElement) => {
+    if (card.dataset.imageInitialized === 'true') return;
+
+    const image = card.querySelector('[data-blog-card-image]');
+    if (!(image instanceof HTMLImageElement) || !image.dataset.src) return;
+
+    const markImageLoaded = () => {
+      image.dataset.loaded = 'true';
+    };
+
+    image.addEventListener('load', markImageLoaded, { once: true });
+    image.src = image.dataset.src;
+    delete image.dataset.src;
+    card.dataset.imageInitialized = 'true';
+
+    if (image.complete && image.naturalWidth > 0) {
+      markImageLoaded();
+    }
+  };
+
+  cards.forEach(card => {
+    if (!(card instanceof HTMLElement)) return;
+
+    card.addEventListener('pointerenter', () => initializeCardImage(card), { once: true });
+    card.addEventListener('focusin', () => initializeCardImage(card), { once: true });
+  });
+
   const hero = document.querySelector('[data-blog-hero]');
 
   if (hero instanceof HTMLElement) {
@@ -435,6 +475,16 @@ const postsByCategory = categories.map(category => ({
 </script>
 
 <style>
+  .blog-card-image {
+    opacity: 0;
+    transition: opacity 500ms ease;
+  }
+
+  .blog-card:hover .blog-card-image[data-loaded="true"],
+  .blog-card:focus-visible .blog-card-image[data-loaded="true"] {
+    opacity: 0.25;
+  }
+
   .blog-featured-slide {
     opacity: 1;
     transform: translateX(0);
@@ -499,6 +549,7 @@ const postsByCategory = categories.map(category => ({
   }
 
   @media (prefers-reduced-motion: reduce) {
+    .blog-card-image,
     .blog-featured-slide,
     .blog-featured-control,
     .blog-featured-thumb img {
