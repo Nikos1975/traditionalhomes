@@ -1,6 +1,6 @@
 # Traditional Homes — Permanent Work Table
 
-**Last reviewed:** 2026-08-27  
+**Last reviewed:** 2026-09-03  
 **Primary objective:** increase direct-booking potential and organic visibility from the existing `traditional-homes.gr` website.  
 **Current sprint:** 2026-08-27 → 2026-09-26  
 **Content rule:** new article production is paused during this sprint.
@@ -230,6 +230,12 @@ Not active during the current sprint unless Nikos explicitly promotes an item:
 - New URLs without evidence
 - Speculative SEO rewrites
 - Broad refactors unrelated to an active defect or measurable objective
+- [ ] Implement minimal site-wide conversion-event tracking with Cloudflare Zaraz, without making Google Analytics a dependency.
+  - Core events: `phone_call_click`, `booking_click`, `contact_submit`, `directions_click`, `property_click`.
+  - Context parameters: `page_type`, `article_slug`, `property_slug` / `destination_property`, `locale`, `placement`.
+  - Include Blog attribution so article → property / booking / contact / phone actions can be measured.
+  - Keep tracking deliberately minimal; do not add scroll-depth, gallery, image, TOC, or other low-value interaction events unless a future decision specifically requires them.
+  - Purpose: measure commercial intent and which existing pages/articles contribute to direct-booking actions without creating analytics noise.
 
 ---
 
