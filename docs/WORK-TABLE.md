@@ -188,6 +188,34 @@ Audit the path:
 - [ ] Review Google Business Profile reservation link.
 - [ ] Record actual friction before redesigning anything.
 
+- [ ] Run a real-device mobile conversion smoke test on representative pages.
+  - Test one sea-view house, one pool house, one German property page, and Almond Tree Villa.
+  - Verify hero/gallery, call/contact CTA, Check Dates, WebHotelier handoff, back navigation, and sticky booking UI.
+  - Test on an actual Android phone, not emulator only.
+  - Record date, device, route, and any friction found.
+
+- [ ] Add a compact mobile-only click-to-call strip on property pages.
+  - Placement: after property facts and before `At a Glance`.
+  - Visible number: `+30 697 289 0090`.
+  - Use semantic `tel:+306972890090`.
+  - Localize the CTA for EN/DE while keeping the number unchanged.
+  - Keep desktop unchanged and keep the CTA compact/secondary to booking.
+  - Later connect it to `phone_call_click` conversion tracking.
+
+- [ ] Establish a real-user mobile performance baseline before further performance changes.
+  - Review Cloudflare RUM / Web Analytics performance data.
+  - Prioritize LCP, CLS and INP on Home, Houses collection, one property page, Location and one major Blog article.
+  - Record the baseline before changing performance code.
+  - Investigate only pages with measured problems rather than optimizing speculatively.
+
+- [ ] Verify the complete direct-booking handoff end-to-end.
+  - Test property page → Check Dates → WebHotelier.
+  - Confirm the correct property/room mapping.
+  - Confirm dates and guest parameters where applicable.
+  - Test EN and DE.
+  - Test mobile and desktop.
+  - Verify there is no broken or confusing return path.
+
 Evidence / findings:
 
 ---
@@ -230,12 +258,34 @@ Not active during the current sprint unless Nikos explicitly promotes an item:
 - New URLs without evidence
 - Speculative SEO rewrites
 - Broad refactors unrelated to an active defect or measurable objective
+
 - [ ] Implement minimal site-wide conversion-event tracking with Cloudflare Zaraz, without making Google Analytics a dependency.
   - Core events: `phone_call_click`, `booking_click`, `contact_submit`, `directions_click`, `property_click`.
   - Context parameters: `page_type`, `article_slug`, `property_slug` / `destination_property`, `locale`, `placement`.
   - Include Blog attribution so article → property / booking / contact / phone actions can be measured.
   - Keep tracking deliberately minimal; do not add scroll-depth, gallery, image, TOC, or other low-value interaction events unless a future decision specifically requires them.
   - Purpose: measure commercial intent and which existing pages/articles contribute to direct-booking actions without creating analytics noise.
+
+- [ ] Audit existing high-value Blog articles for natural commercial-path opportunities.
+  - Check whether relevant articles naturally link to Location, Houses collection, and appropriate property pages.
+  - Do not force property links where editorial relevance is weak.
+  - Prioritize articles already receiving impressions or traffic.
+  - Measure article → property / booking / contact / phone contribution after conversion-event tracking exists.
+
+- [ ] Standardize measurable Google Business Profile links.
+  - Verify the website link and reservation link.
+  - Add consistent UTM attribution where supported and appropriate.
+  - Confirm destination pages and redirects.
+  - Record the final production URLs.
+
+- [ ] Create a lightweight quarterly website conversion health check.
+  - Confirm contact-form submission works.
+  - Confirm booking links resolve to the correct WebHotelier destination.
+  - Confirm phone links open the dialer.
+  - Confirm Maps/directions links open the correct locations.
+  - Confirm sitemap responds successfully.
+  - Confirm representative EN/DE routes render correctly.
+  - Record the date and failures/fixes rather than redesigning without evidence.
 
 ---
 
