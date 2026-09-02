@@ -55,14 +55,22 @@ flowchart TD
   houseDetail --> content
   houseDetail --> galleryData["gallery.json"]
   houseDetail --> locations["locations.ts"]
-  houseDetail --> houseGallery["HouseGallery"]
+  houseDetail --> mobileHeroGallery["MobilePropertyHero<br/>mobile carousel"]
+  houseDetail --> houseGallery["HouseGallery<br/>desktop gallery + lightbox"]
   houseDetail --> atAGlance["AtAGlance"]
   houseDetail --> singleMap["SinglePinMap"]
 
   villaDetail --> inventory
   villaDetail --> content
   villaDetail --> galleryData
+  villaDetail --> mobileHeroGallery
+  villaDetail --> houseGallery
   villaDetail --> singleMap
+
+  mobileHeroGallery --> galleryItems["galleryHelpers.buildGalleryItems<br/>shared localized captions + alt text"]
+  houseGallery --> galleryItems
+  galleryItems --> galleryData
+  galleryItems --> i18n
 
   blogRoutes --> content
   docs --> blogResearch["research/blog/&lt;slug&gt;<br/>brief, sources, claims"]

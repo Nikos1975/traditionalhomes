@@ -21,7 +21,7 @@
 import type { GalleryImage } from "../../types";
 import { defaultLocale, type Locale } from "../../i18n/config";
 import { getCommonCopy } from "../../i18n/translate";
-import { filenameLabel, localizedAlt, placeholderSrc } from "../../utils/galleryHelpers";
+import { buildGalleryItems, filenameLabel, localizedAlt, placeholderSrc } from "../../utils/galleryHelpers";
 
 interface Props {
   images: GalleryImage[];
@@ -57,12 +57,7 @@ const numberedPhoto = (n: number) => galleryCopy.photoNumbered.replace("{n}", St
 const photoOfNumbered = (name: string, n: number) =>
   galleryCopy.photoOfNumbered.replace("{name}", name).replace("{n}", String(n));
 
-const galleryItems = images.map((img, i) => ({
-  src: img.src,
-  srcset: img.srcset ?? "",
-  alt: localizedAlt(img.src, img.alt, photoOfNumbered(unitName, i + 1), locale),
-  label: filenameLabel(img.src, img.alt ?? numberedPhoto(i + 1), locale),
-}));
+const galleryItems = buildGalleryItems(images, unitName, locale);
 const galleryClientLabels = {
   hidePhotoGallery: galleryCopy.hidePhotoGallery,
   viewAllPhotos: galleryCopy.viewAllPhotos,

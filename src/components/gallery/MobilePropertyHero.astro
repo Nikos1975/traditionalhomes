@@ -1,0 +1,167 @@
+---
+import { getCommonCopy } from '../../i18n/translate';
+import { defaultLocale, type Locale } from '../../i18n/config';
+import type { GalleryItem } from '../../utils/galleryHelpers';
+
+interface Props {
+  items: GalleryItem[];
+  unitName: string;
+  locale?: Locale;
+  firstImagePosition?: string;
+}
+
+const {
+  items,
+  unitName,
+  locale = defaultLocale,
+  firstImagePosition = 'center',
+} = Astro.props;
+const galleryCopy = getCommonCopy(locale).ui.gallery;
+const total = items.length;
+const uid = `mph-${unitName.toLowerCase().replace(/[^a-z0-9]/g, '').slice(0, 12)}`;
+---
+
+{total > 0 && (
+  <div
+    id={uid}
+    class="mobile-property-hero absolute inset-0 overflow-hidden md:hidden"
+    role="region"
+    aria-label={galleryCopy.photosOf.replace('{name}', unitName)}
+    data-mobile-property-hero
+  >
+    <div
+      class="mobile-property-hero-track flex h-full w-full"
+      data-mobile-hero-track
+    >
+      {items.map((item, index) => (
+        <figure
+          class="h-full w-full shrink-0"
+          aria-hidden={index === 0 ? 'false' : 'true'}
+          data-mobile-hero-slide
+          data-label={item.label}
+        >
+          <img
+            src={item.src}
+            srcset={item.srcset}
+            sizes="100vw"
+            alt={item.alt}
+            class="h-full w-full object-cover"
+            style={index === 0 ? `object-position:${firstImagePosition};` : undefined}
+            loading={index === 0 ? 'eager' : 'lazy'}
+            fetchpriority={index === 0 ? 'high' : 'auto'}
+            decoding="async"
+          />
+        </figure>
+      ))}
+    </div>
+
+    {total > 1 && (
+      <>
+        <button
+          type="button"
+          class="absolute left-3 top-1/2 z-30 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/40 bg-black/35 text-white shadow-lg backdrop-blur-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+          aria-label={galleryCopy.previousPhoto}
+          data-mobile-hero-previous
+        >
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="15 18 9 12 15 6" />
+          </svg>
+        </button>
+        <button
+          type="button"
+          class="absolute right-3 top-1/2 z-30 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/40 bg-black/35 text-white shadow-lg backdrop-blur-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+          aria-label={galleryCopy.nextPhoto}
+          data-mobile-hero-next
+        >
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="9 18 15 12 9 6" />
+          </svg>
+        </button>
+      </>
+    )}
+
+    <span
+      class="absolute right-4 top-4 z-30 rounded-full bg-black/45 px-2.5 py-1 text-[11px] font-medium tabular-nums text-white backdrop-blur-sm"
+      role="status"
+      aria-live="polite"
+      data-mobile-hero-counter
+    >
+      1 / {total}
+    </span>
+  </div>
+)}
+
+<script is:inline define:vars={{ uid }}>
+  (function () {
+    var root = document.getElementById(uid);
+    if (!root) return;
+
+    var track = root.querySelector('[data-mobile-hero-track]');
+    var slides = root.querySelectorAll('[data-mobile-hero-slide]');
+    var counter = root.querySelector('[data-mobile-hero-counter]');
+    var previous = root.querySelector('[data-mobile-hero-previous]');
+    var next = root.querySelector('[data-mobile-hero-next]');
+    var total = slides.length;
+    var activeIndex = 0;
+    var pointerStart = null;
+    const SWIPE_THRESHOLD = 48;
+
+    function normalizeIndex(index) {
+      return ((index % total) + total) % total;
+    }
+
+    function show(index) {
+      if (!track || total === 0) return;
+      var caption = root.parentElement
+        ? root.parentElement.querySelector('[data-mobile-hero-caption]')
+        : null;
+      activeIndex = normalizeIndex(index);
+      track.style.transform = 'translateX(-' + activeIndex * 100 + '%)';
+
+      slides.forEach(function (slide, slideIndex) {
+        slide.setAttribute('aria-hidden', slideIndex === activeIndex ? 'false' : 'true');
+      });
+
+      var item = slides[activeIndex];
+      if (caption && item) caption.textContent = item.getAttribute('data-label') || '';
+      if (counter) counter.textContent = activeIndex + 1 + ' / ' + total;
+    }
+
+    if (previous) previous.addEventListener('click', function () { show(activeIndex - 1); });
+    if (next) next.addEventListener('click', function () { show(activeIndex + 1); });
+
+    root.addEventListener('pointerdown', function (event) {
+      if (event.pointerType !== 'touch' && event.pointerType !== 'pen') return;
+      pointerStart = { pointerId: event.pointerId, x: event.clientX, y: event.clientY };
+    });
+
+    root.addEventListener('pointerup', function (event) {
+      if (!pointerStart || pointerStart.pointerId !== event.pointerId) return;
+      var deltaX = event.clientX - pointerStart.x;
+      var deltaY = event.clientY - pointerStart.y;
+      pointerStart = null;
+
+      if (Math.abs(deltaX) >= SWIPE_THRESHOLD && Math.abs(deltaX) > Math.abs(deltaY)) {
+        show(activeIndex + (deltaX < 0 ? 1 : -1));
+      }
+    });
+
+    root.addEventListener('pointercancel', function () { pointerStart = null; });
+  })();
+</script>
+
+<style>
+  .mobile-property-hero {
+    touch-action: pan-y;
+  }
+
+  .mobile-property-hero-track {
+    transition: transform 320ms ease;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .mobile-property-hero-track {
+      transition: none;
+    }
+  }
+</style>
