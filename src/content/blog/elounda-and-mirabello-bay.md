@@ -25,7 +25,17 @@ That is why Elounda belongs in a wider Mirabello story without becoming identica
 
 Agios Nikolaos faces more directly into the larger marine basin. Hillside settlements such as Mavrikiano belong to the same local geography but occupy a different topographic position from the waterfront; administratively, Mavrikiano is listed in the Municipal Community of Elounda. The result is one bay made into many different working, political and social spaces.
 
-> **Planned visual — geographic/topographic map:** Mirabello Bay in relation to Agios Nikolaos, Elounda/Schisma, Mavrikiano, Olous, the Elounda salt pans, Poros and the canal, Kolokytha, Plaka and Spinalonga.
+<figure>
+  <img
+    src="/images/blog/elounda-and-mirabello-bay/mirabello-bay-map.png"
+    alt="Map of Mirabello Bay and the Elounda area showing Agios Nikolaos, Elounda, Mavrikiano, Olous, Poros, Kolokytha, Plaka and Spinalonga."
+    width="775"
+    height="783"
+    loading="lazy"
+    decoding="async"
+  />
+  <figcaption>Mirabello Bay and the Elounda area, showing the relationship between the wider gulf, the protected Elounda basin, Poros, Kolokytha and Spinalonga. Map imagery: Google Earth.</figcaption>
+</figure>
 
 ## Before Mirabello Was “Mirabello”
 
