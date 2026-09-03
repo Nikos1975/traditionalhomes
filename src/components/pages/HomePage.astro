@@ -206,14 +206,19 @@ const chooseStayOptions = [
     {villa && (
       <div class="mt-20 pt-20 border-t border-stone-100" aria-labelledby="almond-feature-title">
         <div class="almond-feature-panel grid grid-cols-1 lg:grid-cols-12 gap-0 overflow-hidden rounded-[2rem] border border-stone-100 bg-white shadow-premium">
-          <div class="lg:col-span-7 min-h-[300px] md:min-h-[360px] lg:min-h-[460px]">
+          <a
+            href={villaLink?.href ?? housesLink.href}
+            hreflang={villaLink?.hreflang}
+            aria-label={copy.villa.ctaView}
+            class="lg:col-span-7 min-h-[300px] md:min-h-[360px] lg:min-h-[460px]"
+          >
             <img
               src="/images/villa/1024/almond-tree-villa-garden-pool-wide-01-1024.webp"
               alt={copy.villa.imageAlt}
               loading="lazy"
               class="h-full w-full object-cover"
             />
-          </div>
+          </a>
           <div class="lg:col-span-5 p-8 md:p-10 lg:p-12 flex flex-col justify-center bg-white text-body-text">
             <span class="text-[10px] uppercase tracking-[0.3em] font-bold text-stone-400 mb-4 block">{copy.villa.kicker}</span>
             <h3 id="almond-feature-title" class="font-serif text-[30px] md:text-[36px] text-body-text mb-5 leading-tight">{copy.villa.heading}</h3>

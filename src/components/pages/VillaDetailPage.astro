@@ -19,7 +19,7 @@ import { getCommonCopy, getPropertiesCopy } from '../../i18n/translate';
 import { unitList, unitText } from '../../i18n/inventory-display';
 import { formatPropertyCount } from '../../i18n/property-counts';
 import { sortGalleryImages } from '../../utils/sortGalleryImages';
-import { buildGalleryItems } from '../../utils/galleryHelpers';
+import { buildGalleryItems, reorderGalleryForDesktop } from '../../utils/galleryHelpers';
 import type { InventoryUnit, SiteCopy, GalleryImage } from '../../types';
 
 interface Props {
@@ -79,6 +79,7 @@ const { Content } = await render(entry);
  */
 const displayName = (entry.data as { title?: string }).title ?? unit.name;
 const galleryItems = buildGalleryItems(gallery, displayName, locale);
+const desktopGallery = reorderGalleryForDesktop(gallery);
 
 // HELPERS
 const isSeaView = unit.view.toLowerCase().includes('sea') || unit.view.toLowerCase().includes('bay');
@@ -222,7 +223,7 @@ const vrouchasGuideLink = resolveLocalizedLink(locale, 'guide', 'vrouchas');
       <div class="lg:col-span-8">
 
         <section data-desktop-property-gallery class="hidden md:block" aria-label={propertyCopy.detail.sections.propertyPhotosAria}>
-          <HouseGallery locale={locale} images={gallery} unitName={displayName} />
+          <HouseGallery locale={locale} images={desktopGallery} unitName={displayName} />
         </section>
 
         <div class="space-y-14 md:mt-14">
