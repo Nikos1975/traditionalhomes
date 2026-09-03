@@ -123,6 +123,46 @@ describe('mobile property hero gallery', async () => {
     }
   });
 
+  it('defines one localized, mobile-only click-to-call card with the whole card tappable', async () => {
+    const component = await readText('src/components/contact/MobileCallCta.astro');
+    const english = JSON.parse(await readText('src/i18n/locales/en/common.json'));
+    const german = JSON.parse(await readText('src/i18n/locales/de/common.json'));
+
+    assert.equal(english.ui.property.detail.call.label, 'Call Nikos');
+    assert.equal(german.ui.property.detail.call.label, 'Nikos anrufen');
+    assert.equal(english.ui.property.detail.call.ariaLabel, 'Call Nikos at {phone}');
+    assert.equal(german.ui.property.detail.call.ariaLabel, 'Nikos unter {phone} anrufen');
+    assert.match(component, /const PHONE_DISPLAY = ['"]\+30 697 289 0090['"]/);
+    assert.match(component, /const PHONE_HREF = ['"]tel:\+306972890090['"]/);
+    assert.match(component, /<a[\s\S]*?data-mobile-call-cta[\s\S]*?href=\{PHONE_HREF\}[\s\S]*?aria-label=\{ariaLabel\}[\s\S]*?<\/a>/);
+    assert.match(component, /class=['"][^'"]*md:hidden[^'"]*['"]/);
+    assert.match(component, /class=['"][^'"]*inline-flex[^'"]*min-h-14[^'"]*['"]/);
+    assert.doesNotMatch(component, /data-mobile-call-cta[\s\S]*?class=['"][^'"]*w-full[^'"]*['"]/);
+    assert.match(component, /<svg[\s\S]*?aria-hidden=['"]true['"][\s\S]*?focusable=['"]false['"]/);
+    assert.match(component, /\{callCopy\.label\}/);
+    assert.match(component, /\{PHONE_DISPLAY\}/);
+    assert.match(component, /callCopy\.ariaLabel\.replace\(['"]\{phone\}['"], PHONE_DISPLAY\)/);
+    assert.doesNotMatch(component, /analytics|zaraz|phone_call_click/i);
+  });
+
+  it('places the shared call card after essential facts and before At a Glance on both page renderers', async () => {
+    for (const pagePath of [
+      'src/components/pages/HouseDetailPage.astro',
+      'src/components/pages/VillaDetailPage.astro',
+    ]) {
+      const page = await readText(pagePath);
+
+      assert.match(page, /import MobileCallCta from ['"]\.\.\/contact\/MobileCallCta\.astro['"]/);
+      assert.match(
+        page,
+        /data-essential-facts[\s\S]*?<MobileCallCta locale=\{locale\} \/>[\s\S]*?<main[\s\S]*?propertyCopy\.detail\.sections\.atAGlance/,
+        pagePath,
+      );
+      assert.equal(page.match(/<MobileCallCta locale=\{locale\} \/>/g)?.length, 1, pagePath);
+      assert.doesNotMatch(page, /tel:\+306972890090/, pagePath);
+    }
+  });
+
   it('uses the sorted property collection in the mobile hero and keeps the lower gallery desktop-only', async () => {
     for (const pagePath of [
       'src/components/pages/HouseDetailPage.astro',

@@ -4,6 +4,7 @@ import HouseGallery from '../gallery/HouseGallery.astro';
 import MobilePropertyHero from '../gallery/MobilePropertyHero.astro';
 import AtAGlance from '../AtAGlance.astro';
 import BookingHandoffForm from '../booking/BookingHandoffForm.astro';
+import MobileCallCta from '../contact/MobileCallCta.astro';
 import SinglePinMap from '../maps/SinglePinMap.astro';
 import inventory from '../../inventory/inventory.json';
 import siteCopyData from '../../data/siteCopy.json';
@@ -238,7 +239,7 @@ const contactLink = resolveLocalizedLink(locale, 'contact');
   </header>
 
   {/* ── 2. ESSENTIAL FACTS BAR ───────────────────── */}
-  <div class="bg-white border-b border-stone-100 shadow-sm sticky top-0 z-30">
+  <div data-essential-facts class="bg-white border-b border-stone-100 shadow-sm sticky top-0 z-30">
     <div class="site-max site-pad py-4 flex items-center gap-6 md:gap-10 overflow-x-auto text-xs md:text-sm text-stone-600 font-medium whitespace-nowrap">
 
       <span class="flex items-center gap-2">
@@ -281,6 +282,8 @@ const contactLink = resolveLocalizedLink(locale, 'contact');
       </span>
     </div>
   </div>
+
+  <MobileCallCta locale={locale} />
 
   {/* ── 3. MAIN CONTENT ──────────────────────────── */}
   <main class="site-max site-pad py-8 md:py-16">

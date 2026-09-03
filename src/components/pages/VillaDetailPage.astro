@@ -6,6 +6,7 @@ import HouseGallery from '../gallery/HouseGallery.astro';
 import MobilePropertyHero from '../gallery/MobilePropertyHero.astro';
 import AtAGlance from '../AtAGlance.astro';
 import BookingHandoffForm from '../booking/BookingHandoffForm.astro';
+import MobileCallCta from '../contact/MobileCallCta.astro';
 import SinglePinMap from '../maps/SinglePinMap.astro';
 import galleryData from '../../data/gallery.json';
 import siteCopyData from '../../data/siteCopy.json';
@@ -170,7 +171,7 @@ const vrouchasGuideLink = resolveLocalizedLink(locale, 'guide', 'vrouchas');
     </div>
   </header>
 
-  <div class="bg-white border-b border-stone-100 shadow-sm sticky top-0 z-30">
+  <div data-essential-facts class="bg-white border-b border-stone-100 shadow-sm sticky top-0 z-30">
     <div class="site-max site-pad py-4 flex items-center gap-6 md:gap-10 overflow-x-auto text-xs md:text-sm text-stone-600 font-medium whitespace-nowrap">
       <span class="flex items-center gap-2">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" class="text-stone-400 shrink-0">
@@ -212,6 +213,8 @@ const vrouchasGuideLink = resolveLocalizedLink(locale, 'guide', 'vrouchas');
       </span>
     </div>
   </div>
+
+  <MobileCallCta locale={locale} />
 
   <main class="site-max site-pad py-8 md:py-16">
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">

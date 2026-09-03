@@ -405,6 +405,10 @@ describe('Stage 1 i18n foundation', () => {
           suggestedNearbyCombinationsAria: 'Suggested nearby combinations',
           suggestedCombinations: 'Traveling together? Suggested nearby combinations',
         },
+        call: {
+          label: 'Call Nikos',
+          ariaLabel: 'Call Nikos at {phone}',
+        },
         booking: {
           checkDates: 'Check dates',
           checkThisHouse: 'Check this house',
