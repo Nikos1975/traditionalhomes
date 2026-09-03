@@ -270,6 +270,10 @@
           "suggestedNearbyCombinationsAria": "Vorschläge für benachbarte Häuser",
           "suggestedCombinations": "Sie reisen zu mehreren? Vorschläge für benachbarte Häuser"
         },
+        "call": {
+          "label": "Nikos anrufen",
+          "ariaLabel": "Nikos unter {phone} anrufen"
+        },
         "booking": {
           "checkDates": "Termine prüfen",
           "checkThisHouse": "Dieses Haus prüfen",

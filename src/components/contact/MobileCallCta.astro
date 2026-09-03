@@ -1,0 +1,43 @@
+---
+import type { Locale } from '../../i18n/config';
+import { getCommonCopy } from '../../i18n/translate';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const callCopy = getCommonCopy(locale).ui.property.detail.call;
+const PHONE_DISPLAY = '+30 697 289 0090';
+const PHONE_HREF = 'tel:+306972890090';
+const ariaLabel = callCopy.ariaLabel.replace('{phone}', PHONE_DISPLAY);
+---
+
+<div class="site-max site-pad pt-4 md:hidden">
+  <a
+    data-mobile-call-cta
+    href={PHONE_HREF}
+    aria-label={ariaLabel}
+    class="inline-flex min-h-14 items-center gap-3 rounded-xl border border-stone-200 bg-stone-50 px-4 py-3 text-stone-700 active:bg-stone-100"
+  >
+    <svg
+      aria-hidden="true"
+      focusable="false"
+      width="18"
+      height="18"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="1.75"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      class="shrink-0 text-stone-500"
+    >
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.33 1.78.62 2.63a2 2 0 0 1-.45 2.11L8 9.73a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.85.29 1.73.5 2.63.62A2 2 0 0 1 22 16.92z" />
+    </svg>
+    <span class="min-w-0">
+      <span class="block text-sm font-medium leading-tight text-body-text">{callCopy.label}</span>
+      <span class="mt-1 block text-xs leading-tight tracking-wide text-stone-500">{PHONE_DISPLAY}</span>
+    </span>
+  </a>
+</div>
