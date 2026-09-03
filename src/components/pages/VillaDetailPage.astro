@@ -131,7 +131,20 @@ const vrouchasGuideLink = resolveLocalizedLink(locale, 'guide', 'vrouchas');
       as="image"
       href={heroEntry.src}
       imagesrcset={heroEntry.srcset}
-      imagesizes="(min-width:1280px) 900px, (min-width:1024px) 66vw, 100vw"
+      imagesizes="100vw"
+      media="(max-width: 767px)"
+      fetchpriority="high"
+    />
+  )}
+
+  {heroImage && (
+    <link
+      slot="head"
+      rel="preload"
+      as="image"
+      href={heroImage}
+      media="(min-width: 768px)"
+      fetchpriority="high"
     />
   )}
 

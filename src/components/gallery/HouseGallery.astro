@@ -9,10 +9,7 @@
  *
  * Performance:
  *   - Hero: blur-up placeholder (480px blurred via CSS) + full image fades in on load
- *   - Hero img: loading="eager" fetchpriority="high"
- *   - All other images: loading="lazy"
- *   - Preload link is injected by the PAGE via Base layout's <slot name="head">
- *     (see [slug].astro for usage)
+ *   - This gallery sits below the page hero, so all of its images load lazily
  *
  * Props
  *   images   – GalleryImage[] already sorted (use sortGalleryImages before passing)
@@ -98,7 +95,7 @@ const galleryClientLabels = {
       aria-hidden="true"
       alt=""
       class="absolute inset-0 w-full h-full object-cover scale-110 blur-xl pointer-events-none"
-      loading="eager"
+      loading="lazy"
       fetchpriority="low"
       decoding="async"
     />
@@ -124,8 +121,8 @@ const galleryClientLabels = {
         class="w-full h-full object-cover"
         style="opacity:0; transition:opacity 0.7s ease;"
         onload="this.style.opacity='1'"
-        loading="eager"
-        fetchpriority="high"
+        loading="lazy"
+        fetchpriority="low"
         decoding="async"
       />
     </div>
@@ -254,7 +251,7 @@ const galleryClientLabels = {
               sizes="100vw"
               alt={localizedAlt(img.src, img.alt, photoOfNumbered(unitName, i + 1), locale)}
               class="w-full h-full object-cover"
-              loading={i === 0 ? "eager" : "lazy"}
+              loading="lazy"
               decoding="async"
             />
           </div>

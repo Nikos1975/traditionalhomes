@@ -41,14 +41,16 @@ const uid = `mph-${unitName.toLowerCase().replace(/[^a-z0-9]/g, '').slice(0, 12)
           data-label={item.label}
         >
           <img
-            src={item.src}
-            srcset={item.srcset}
+            src={index === 0 ? item.src : undefined}
+            srcset={index === 0 ? item.srcset : undefined}
+            data-src={index > 0 ? item.src : undefined}
+            data-srcset={index > 0 ? item.srcset : undefined}
             sizes="100vw"
             alt={item.alt}
             class="h-full w-full object-cover"
             style={index === 0 ? `object-position:${firstImagePosition};` : undefined}
             loading={index === 0 ? 'eager' : 'lazy'}
-            fetchpriority={index === 0 ? 'high' : 'auto'}
+            fetchpriority={index === 0 ? 'high' : 'low'}
             decoding="async"
           />
         </figure>
@@ -110,12 +112,29 @@ const uid = `mph-${unitName.toLowerCase().replace(/[^a-z0-9]/g, '').slice(0, 12)
       return ((index % total) + total) % total;
     }
 
+    function loadSlide(index) {
+      var slide = slides[index];
+      var image = slide ? slide.querySelector('img') : null;
+      if (!image) return;
+
+      var src = image.getAttribute('data-src');
+      var srcset = image.getAttribute('data-srcset');
+      if (!src) return;
+
+      image.fetchPriority = 'high';
+      if (srcset) image.srcset = srcset;
+      image.src = src;
+      image.removeAttribute('data-src');
+      image.removeAttribute('data-srcset');
+    }
+
     function show(index) {
       if (!track || total === 0) return;
       var caption = root.parentElement
         ? root.parentElement.querySelector('[data-mobile-hero-caption]')
         : null;
       activeIndex = normalizeIndex(index);
+      loadSlide(activeIndex);
       track.style.transform = 'translateX(-' + activeIndex * 100 + '%)';
 
       slides.forEach(function (slide, slideIndex) {
