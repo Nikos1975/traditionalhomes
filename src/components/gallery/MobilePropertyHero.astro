@@ -159,9 +159,30 @@ const uid = `mph-${unitName.toLowerCase().replace(/[^a-z0-9]/g, '').slice(0, 12)
     transition: transform 320ms ease;
   }
 
+  @media (max-width: 767px) and (prefers-reduced-motion: no-preference) {
+    [data-mobile-hero-slide][aria-hidden='false'] img {
+      animation: mobile-property-hero-zoom 14s ease-out forwards;
+    }
+  }
+
+  @keyframes mobile-property-hero-zoom {
+    from {
+      transform: scale(1);
+    }
+
+    to {
+      transform: scale(1.05);
+    }
+  }
+
   @media (prefers-reduced-motion: reduce) {
     .mobile-property-hero-track {
       transition: none;
+    }
+
+    [data-mobile-hero-slide] img {
+      animation: none;
+      transform: scale(1);
     }
   }
 </style>
