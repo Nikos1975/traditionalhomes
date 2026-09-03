@@ -9,6 +9,15 @@ export interface GalleryItem {
   alt: string;
   label: string;
 }
+
+/**
+ * Start the desktop gallery after the page hero while retaining every photo.
+ * Single-image galleries keep their original array and remain unchanged.
+ */
+export function reorderGalleryForDesktop<T>(images: T[]): T[] {
+  return images.length > 1 ? [...images.slice(1), images[0]] : images;
+}
+
 /**
  * Extract the first (smallest) URL from a srcset string.
  *
