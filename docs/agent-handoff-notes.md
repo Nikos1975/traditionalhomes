@@ -1,5 +1,14 @@
 # Agent Handoff Notes
 
+### 2026-09-03 - Property image loading Phase 1 (local, uncommitted)
+
+- Branch `perf/property-image-loading-phase1` in `D:\_projects\_traditional-homes-property-image-loading`, based on `origin/main` `e8fe838`; nothing committed or pushed.
+- `HouseGallery` now treats its below-page-hero lead, placeholder, mobile fallback, thumbnails, and expanded grid as lazy/non-high-priority resources. `MobilePropertyHero` renders real `src`/`srcset` only for slide 1 and assigns a later slide's responsive sources immediately before arrow/swipe navigation. House and villa pages use mutually exclusive mobile-responsive and desktop-1600 hero preloads, both explicitly high priority.
+- Cold-cache Chrome Slow-4G validation at 390x844 DPR 2 retained the first responsive hero as the image LCP candidate and reduced pre-LCP image requests/transfer from 9/1.727 MB to 6/1.035 MB for Margarita, 9/1.604 MB to 6/1.056 MB for Leonidas, 9/3.701 MB to 6/0.760 MB for Almond Tree Villa, and 9/0.658 MB to 6/0.230 MB for Argyro. English and German Margarita used the same hero and request/byte profile. Measured single-run mobile LCP changed from 12.144s to 8.344s, 11.424s to 8.468s, 11.888s to 6.660s, and 5.376s to 3.496s respectively; treat these local lab runs as directional, not production RUM.
+- At 1440x900 Slow 4G, the desktop LCP remained the 1600px CSS-background hero and the incorrect 1024px responsive hero request disappeared. Pre-LCP requests/transfer changed from 15/4.698 MB to 13/2.983 MB for Margarita, 15/4.459 MB to 13/2.828 MB for Leonidas, 15/6.054 MB to 13/4.756 MB for the villa, and 15/1.543 MB to 13/0.884 MB for Argyro. Lazy below-fold gallery requests can still begin before a very slow desktop LCP, but they are no longer eager/high priority.
+- Browser interaction checks passed: only slide 1 loaded initially; Next loaded exactly slide 2 and updated image, counter, caption, and transform; synthetic horizontal swipe advanced, vertical movement did not, Previous returned; `touch-action: pan-y` remained. Mobile and desktop screenshots showed no layout/design regression. The validation host prefers reduced motion, and the browser correctly disabled zoom there; no-preference zoom/restart rules remain covered by focused tests.
+- Validation: focused tests 17/17 pass; typecheck 0 errors (3 existing hints); build passes with 57 pages; `seo:links` passes; `git diff --check origin/main` is clean. Full `npm test` is 444/445 with the existing unrelated Mirabello map responsive-image failure, reproduced on the clean `e8fe838` baseline. Final scope is seven files with 157 insertions and 17 deletions, including the untracked 88-line focused regression test.
+
 ### 2026-09-03 - Mobile property hero gallery (local, uncommitted)
 
 - Branch `feat/mobile-hero-gallery` in `D:\_projects\_traditional-homes-mobile-hero-gallery`, based on `origin/main` `2b51e76`; nothing committed or pushed.

@@ -175,8 +175,7 @@ const contactLink = resolveLocalizedLink(locale, 'contact');
   ogImage={ogImage}
   locale={locale}
 >
-  {/* Preload the gallery hero image so the browser fetches it early,
-      before it encounters the <img> later in the DOM. */}
+  {/* Preload exactly the page-hero resource used at the active breakpoint. */}
   {alternates.length > 1 && (
     <Fragment slot="head">
       {alternates.map((alternate) => (
@@ -192,7 +191,20 @@ const contactLink = resolveLocalizedLink(locale, 'contact');
       as="image"
       href={heroEntry.src}
       imagesrcset={heroEntry.srcset}
-      imagesizes="(min-width:1280px) 900px, (min-width:1024px) 66vw, 100vw"
+      imagesizes="100vw"
+      media="(max-width: 767px)"
+      fetchpriority="high"
+    />
+  )}
+
+  {heroSrc && (
+    <link
+      slot="head"
+      rel="preload"
+      as="image"
+      href={heroSrc}
+      media="(min-width: 768px)"
+      fetchpriority="high"
     />
   )}
 

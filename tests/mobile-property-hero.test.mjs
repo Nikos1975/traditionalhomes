@@ -36,9 +36,11 @@ describe('mobile property hero gallery', async () => {
     const component = await readText('src/components/gallery/MobilePropertyHero.astro');
 
     assert.match(component, /items\.map\(\(item, index\) =>/);
-    assert.match(component, /<img[\s\S]*?src=\{item\.src\}[\s\S]*?srcset=\{item\.srcset\}/);
+    assert.match(component, /<img[\s\S]*?src=\{index === 0 \? item\.src : undefined\}[\s\S]*?srcset=\{index === 0 \? item\.srcset : undefined\}/);
+    assert.match(component, /data-src=\{index > 0 \? item\.src : undefined\}/);
+    assert.match(component, /data-srcset=\{index > 0 \? item\.srcset : undefined\}/);
     assert.match(component, /loading=\{index === 0 \? ['"]eager['"] : ['"]lazy['"]\}/);
-    assert.match(component, /fetchpriority=\{index === 0 \? ['"]high['"] : ['"]auto['"]\}/);
+    assert.match(component, /fetchpriority=\{index === 0 \? ['"]high['"] : ['"]low['"]\}/);
     assert.match(component, /sizes=['"]100vw['"]/);
     assert.doesNotMatch(component, /background-image/);
   });
