@@ -70,6 +70,34 @@ describe('mobile property hero gallery', async () => {
     assert.doesNotMatch(component, /preventDefault\(\)/);
   });
 
+  it('applies a subtle slow zoom only to the active mobile hero image layer', async () => {
+    const component = await readText('src/components/gallery/MobilePropertyHero.astro');
+
+    assert.match(
+      component,
+      /@media \(max-width: 767px\) and \(prefers-reduced-motion: no-preference\)[\s\S]*?\[data-mobile-hero-slide\]\[aria-hidden=['"]false['"]\] img\s*\{[\s\S]*?animation:\s*mobile-property-hero-zoom 14s ease-out forwards/,
+    );
+    assert.match(
+      component,
+      /@keyframes mobile-property-hero-zoom[\s\S]*?from\s*\{\s*transform:\s*scale\(1\);\s*\}[\s\S]*?to\s*\{\s*transform:\s*scale\(1\.05\);\s*\}/,
+    );
+    assert.doesNotMatch(component, /mobile-property-hero-track[^}]*animation:/);
+    assert.doesNotMatch(component, /\[data-mobile-hero-slide\]\s*\{[^}]*animation:/);
+  });
+
+  it('restarts zoom through active-slide state and disables it for reduced motion', async () => {
+    const component = await readText('src/components/gallery/MobilePropertyHero.astro');
+
+    assert.match(
+      component,
+      /slides\.forEach\(function \(slide, slideIndex\)[\s\S]*?slide\.setAttribute\(['"]aria-hidden['"], slideIndex === activeIndex \? ['"]false['"] : ['"]true['"]\)/,
+    );
+    assert.match(
+      component,
+      /@media \(prefers-reduced-motion: reduce\)[\s\S]*?\[data-mobile-hero-slide\] img\s*\{[\s\S]*?animation:\s*none[\s\S]*?transform:\s*scale\(1\)/,
+    );
+  });
+
   it('keeps the mobile gallery hit-testable beneath the decorative and content layers', async () => {
     for (const pagePath of [
       'src/components/pages/HouseDetailPage.astro',
