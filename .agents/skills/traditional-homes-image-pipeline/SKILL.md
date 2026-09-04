@@ -1,6 +1,6 @@
 ---
 name: traditional-homes-image-pipeline
-description: Use when adding, auditing, resizing, compressing, or integrating raster photographs for Traditional Homes: homepage or landing heroes, blog heroes, property cards, galleries, social/Open Graph images, responsive candidates, oversized CSS backgrounds, or image-related LCP/page-weight issues. Do not use for SVGs, logos, illustrations, article writing, unrelated CSS/design work, bulk image migration, or automatic duplicate deletion.
+description: "Use when adding, auditing, resizing, compressing, or integrating raster photographs for Traditional Homes: homepage or landing heroes, blog heroes, property cards, galleries, social/Open Graph images, responsive candidates, oversized CSS backgrounds, or image-related LCP/page-weight issues. Do not use for SVGs, logos, illustrations, article writing, unrelated CSS/design work, bulk image migration, or automatic duplicate deletion."
 ---
 
 # Traditional Homes Image Pipeline
