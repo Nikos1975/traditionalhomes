@@ -1,6 +1,6 @@
 # Traditional Homes — Permanent Work Table
 
-**Last reviewed:** 2026-09-03  
+**Last reviewed:** 2026-09-04  
 **Primary objective:** increase direct-booking potential and organic visibility from the existing `traditional-homes.gr` website.  
 **Current sprint:** 2026-08-27 → 2026-09-26  
 **Content rule:** new article production is paused during this sprint.
@@ -286,6 +286,17 @@ Not active during the current sprint unless Nikos explicitly promotes an item:
   - Confirm sitemap responds successfully.
   - Confirm representative EN/DE routes render correctly.
   - Record the date and failures/fixes rather than redesigning without evidence.
+
+- [ ] Revisit property-image delivery using Astro `astro:assets`; keep current approved photographs and defer implementation until explicitly promoted.
+  - Status: parked on 2026-09-04; no production image change requested now.
+  - Proven finding: Margarita files under `src/assets/images` and `public/images` are byte-for-byte identical at 480/768/1024/1600/2400, but Astro-generated derivatives from the same 1024 source are much smaller: 480 = 27.7 KB vs 251.9 KB direct, 768 = 60.3 KB vs 591.2 KB direct, 1024 = 112.5 KB vs 993.6 KB direct (about 89–90% reduction).
+  - Future POC: migrate Margarita hero only to the existing Astro image pipeline first; verify visual parity, crop, browser `currentSrc`, transferred bytes, mobile LCP and desktop LCP before extending to other properties.
+  - Master rule: one largest approved master per photograph; use genuine 2400 where it exists, otherwise 1600/highest approved size; never upscale.
+  - Current availability: most houses have only 1–2 genuine 2400 images and the remainder top out at 1600; Almond Tree has 32 curated 1600 images and no genuine 2400 set.
+  - Almond provenance note: compare RAW root only, no subfolders. Current root-only result: 31 RAW names vs 32 Astro 1600 names; 30 exact matches; Astro-only names are `almond-tree-villa-garden-pool-02` and `almond-tree-villa-hero-outdoor-dining-terrace-02`; RAW-only name is `almond-tree-villa-hero-garden-pool-01`. Leave unresolved for future visual mapping.
+  - Keep `public/images` during migration because the current site still references it directly from galleries, location data, homepage and other static paths. Delete redundant property derivatives only after all direct references are removed and production verification passes.
+  - The manual q76 Phase-2 derivative experiment is not approved for deployment; no commit/push/PR should be made from that rejected image set.
+  - After an Astro-based image pipeline is accepted, add deterministic `web-performance-gate` CI checks for asset budgets/outliers, loading behavior and browser smoke verification.
 
 ---
 
